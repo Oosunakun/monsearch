@@ -3,6 +3,7 @@
       <v-row>
         <v-col cols="12">
           <h1 class="text-h4 mb-4">仮ページ</h1>
+          テストです！
         </v-col>
       </v-row>
   
