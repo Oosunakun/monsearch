@@ -1,0 +1,28 @@
+# --- Database (SQLite) ---
+# 実データはトークン消費と精度の観点から除外
+/public/data/*.sqlite
+
+# --- Nuxt / Nitro ---
+.nuxt/
+.output/
+.data/
+dist/
+
+# --- Dependency Management ---
+node_modules/
+*-lock.json
+*.lock
+
+# --- Build & Cache ---
+.cache/
+*.log
+
+# --- Environment ---
+.env
+.env.*
+!.env.example
+
+# --- Media ---
+# バイナリデータを除外
+public/img/
+public/videos/
