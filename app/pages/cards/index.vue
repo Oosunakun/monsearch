@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { CardDetail, ElementCode } from '~~/types/card'
+
 type SearchCondition = {
   id: string
   label: string
@@ -60,6 +62,51 @@ const cardRows = computed<CardRow[]>(() =>
   }))
 )
 
+const detailModalOpen = ref(false)
+const selectedCard = ref<CardDetail | null>(null)
+
+const elementMap: Record<string, ElementCode> = {
+  火: 'Fire',
+  水: 'Water',
+  土: 'Earth',
+  風: 'Air',
+  聖: 'Holy',
+  魔: 'Curse',
+  喰: 'Eater',
+  獣: 'Beast',
+  荒: 'Savage',
+  機: 'Machina'
+}
+
+const openCardDetail = (row: CardRow) => {
+  selectedCard.value = {
+    card_id: row.id,
+    name: row.cardName,
+    card_category: 'Unit',
+    elements: [elementMap[row.element] ?? 'Fire'],
+    level: row.level,
+    attack: row.attack,
+    defense: row.defense,
+    move_type: '歩行',
+    races: [row.race],
+    spell_slots: ['*'],
+    effects: [
+      {
+        title: 'サンプル能力',
+        timing: 'Battle',
+        condition: 'モック条件',
+        text: `${row.cardName}のダミー効果テキストです。`
+      }
+    ],
+    flavor_text: 'モック表示用のフレーバーテキストです。',
+    illustrator: 'ダミー',
+    product_name: '悠久のハルシオン',
+    rarity: row.rarity,
+    reference_label: `${row.setCode}-${row.id.padStart(3, '0')}`
+  }
+  detailModalOpen.value = true
+}
+
 const clearConditions = () => {
   activeConditions.value = []
 }
@@ -107,7 +154,11 @@ const clearConditions = () => {
         class="cards-table"
       >
         <template #item="{ item }">
-          <tr class="cards-table__row" :class="{ 'cards-table__row--zebra': item.zebra }">
+          <tr
+            class="cards-table__row"
+            :class="{ 'cards-table__row--zebra': item.zebra }"
+            @click="openCardDetail(item)"
+          >
             <td class="px-2 py-2">{{ item.setCode }}</td>
             <td class="px-2 py-2">
               <span class="text-accent">{{ item.cardName }}</span>
@@ -123,6 +174,12 @@ const clearConditions = () => {
         </template>
       </v-data-table>
     </v-card>
+
+    <CardDetailModal
+      v-if="selectedCard"
+      v-model="detailModalOpen"
+      :card="selectedCard"
+    />
   </section>
 </template>
 
@@ -146,5 +203,9 @@ const clearConditions = () => {
 
 .cards-table__row:hover td {
   background: #eef7e3;
+}
+
+.cards-table__row {
+  cursor: pointer;
 }
 </style>
