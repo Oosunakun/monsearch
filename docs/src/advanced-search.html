@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モンサチ | 詳細検索</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { main: "#7EBA03", accent: "#009DA5" },
+          fontFamily: { sans: ["Noto Sans JP", "sans-serif"] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-[#333333]">
+  <div class="min-h-screen flex flex-col">
+    <header class="border-b border-[#DDE3D2]">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-[#3E2723]">モンサチ</h1>
+          <p class="text-xs">モンコレTCG検索支援サイト</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs"><option>カードプール: オープン</option></select>
+          <div class="h-10 rounded-md bg-[#F2F8E8] p-1 flex items-center gap-1 text-xs">
+            <button class="h-full px-3 rounded bg-main text-white font-semibold">カード名</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">種族・タイプ</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">キーワード</button>
+          </div>
+          <input class="h-10 w-64 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="例: ドラゴン" />
+          <button class="h-10 rounded-md bg-main px-6 text-sm font-bold text-white">検索</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="border-b border-[#E6EBD9]">
+      <div class="mx-auto max-w-[1360px] px-6 py-3 flex flex-wrap gap-2 text-sm">
+        <a href="card-list.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">カードリスト</a>
+        <a href="advanced-search.html" class="rounded-md border border-main bg-main px-4 py-2 font-semibold text-white">詳細検索</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">使用制限</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">ルール</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">大会情報</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">About</a>
+      </div>
+    </nav>
+
+    <main class="mx-auto w-full max-w-[1360px] flex-1 px-6 py-5">
+      <h2 class="mb-4 text-2xl font-bold text-[#3E2723]">詳細検索</h2>
+
+      <form class="space-y-4">
+        <section class="rounded-lg border border-[#DDE6CF] p-4">
+          <h3 class="mb-3 text-sm font-bold">基本情報</h3>
+          <div class="grid grid-cols-1 gap-2 lg:grid-cols-3">
+            <input class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs lg:col-span-2" placeholder="カード名 例: ドラゴンナイト" />
+            <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs"><option>カテゴリ: ユニット</option></select>
+            <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs"><option>レアリティ: Sレア</option></select>
+            <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs"><option>カードプール: オープン</option></select>
+            <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs lg:col-span-2"><option>セット: 6D 悠久のハルシオン</option></select>
+          </div>
+        </section>
+
+        <section class="rounded-lg border border-[#DDE6CF] p-4">
+          <h3 class="mb-3 text-sm font-bold">ユニット情報</h3>
+          <div class="grid grid-cols-1 gap-2 lg:grid-cols-3">
+            <input class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="レベル From:1  To:8" />
+            <input class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="攻撃力 From:1  To:10" />
+            <input class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="防御力 From:1  To:10" />
+            <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs"><option>移動タイプ: 飛行 / 歩行</option></select>
+          </div>
+          <div class="mt-3">
+            <p class="mb-2 text-xs font-semibold">属性（複数選択）</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <label class="inline-flex h-8 items-center rounded-full border border-[#F4B7B2] bg-[#FCE8E6] px-3 text-[#C62828]"><input type="checkbox" class="mr-1">火</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#90CAF9] bg-[#E3F2FD] px-3 text-[#1565C0]"><input type="checkbox" class="mr-1">水</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#C5E1A5] bg-[#F1F8E9] px-3 text-[#558B2F]"><input type="checkbox" class="mr-1">土</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#A5D6A7] bg-[#E8F5E9] px-3 text-[#2E7D32]"><input type="checkbox" class="mr-1">風</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#FFE082] bg-[#FFF8E1] px-3 text-[#F9A825]"><input type="checkbox" class="mr-1">聖</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#CE93D8] bg-[#F3E5F5] px-3 text-[#6A1B9A]"><input type="checkbox" class="mr-1">魔</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#BCAAA4] bg-[#EFEBE9] px-3 text-[#4E342E]"><input type="checkbox" class="mr-1">喰</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#FFCC80] bg-[#FFF3E0] px-3 text-[#EF6C00]"><input type="checkbox" class="mr-1">獣</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#B0BEC5] bg-[#ECEFF1] px-3 text-[#455A64]"><input type="checkbox" class="mr-1">荒</label>
+              <label class="inline-flex h-8 items-center rounded-full border border-[#80DEEA] bg-[#E0F7FA] px-3 text-[#00838F]"><input type="checkbox" class="mr-1">機</label>
+            </div>
+          </div>
+        </section>
+
+        <section class="rounded-lg border border-[#DDE6CF] p-4">
+          <h3 class="mb-3 text-sm font-bold">種族・タイプ</h3>
+          <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
+            <input class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="種族 例: ドラゴン" />
+            <input class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="カードタイプ 例: 英雄点持ちユニット" />
+          </div>
+        </section>
+
+        <section class="rounded-lg border border-[#DDE6CF] p-4">
+          <h3 class="mb-3 text-sm font-bold">キーワード</h3>
+          <input class="h-10 w-full rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="キーワード 例: 即時召喚" />
+        </section>
+
+        <div class="flex flex-wrap gap-3">
+          <button class="h-12 rounded-md bg-main px-10 text-sm font-bold text-white">検索する</button>
+          <button type="reset" class="h-12 rounded-md bg-[#9AA0A6] px-10 text-sm font-bold text-white">条件をリセット</button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="bg-[#333333] text-white text-xs">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-2 sm:flex-row sm:justify-between">
+        <p>当サイトの情報は非公式データです。利用は自己責任でお願いします。</p>
+        <p>© Monsearch Archive</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

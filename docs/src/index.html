@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モンサチ | エクスパンション一覧</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            main: "#7EBA03",
+            mainSoft: "#BEDC81",
+            accent: "#009DA5",
+            accentSoft: "#93CACF"
+          },
+          fontFamily: {
+            sans: ["Noto Sans JP", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-[#333333]">
+  <div class="min-h-screen flex flex-col">
+    <header class="border-b border-[#DDE3D2]">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-[#3E2723]">モンサチ</h1>
+          <p class="text-xs">モンコレTCG検索支援サイト</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs">
+            <option>カードプール: オープン</option>
+            <option>カードプール: ネオスタン</option>
+          </select>
+          <div class="h-10 rounded-md bg-[#F2F8E8] p-1 flex items-center gap-1 text-xs">
+            <button class="h-full px-3 rounded bg-main text-white font-semibold">カード名</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">種族・タイプ</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">キーワード</button>
+          </div>
+          <input class="h-10 w-64 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="例: ドラゴン" />
+          <button class="h-10 rounded-md bg-main px-6 text-sm font-bold text-white">検索</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="border-b border-[#E6EBD9]">
+      <div class="mx-auto max-w-[1360px] px-6 py-3 flex flex-wrap gap-2 text-sm">
+        <a href="card-list.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">カードリスト</a>
+        <a href="advanced-search.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">詳細検索</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">使用制限</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">ルール</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">大会情報</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">About</a>
+      </div>
+    </nav>
+
+    <main class="mx-auto w-full max-w-[1360px] flex-1 px-6 py-5">
+      <h2 class="mb-3 text-2xl font-bold text-[#3E2723]">エクスパンション一覧</h2>
+      <div class="overflow-x-auto border border-[#DCE5CE]">
+        <table class="w-full min-w-[980px] text-sm">
+          <thead class="bg-mainSoft text-[#3E2723]">
+            <tr class="h-11 text-left">
+              <th class="px-3">セットコード</th>
+              <th class="px-3">タイトル</th>
+              <th class="px-3">ブロック</th>
+              <th class="px-3">備考</th>
+              <th class="px-3">発売日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="5" class="bg-accent px-3 py-2 font-bold text-white">第六極神紀ブロック</td></tr>
+            <tr class="border-b border-[#EEF3E4]"><td class="px-3 py-2">6D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">悠久のハルシオン</a></td><td class="px-3 py-2">第六極神紀</td><td class="px-3 py-2">最終セット</td><td class="px-3 py-2">2014-03-14</td></tr>
+            <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4]"><td class="px-3 py-2">6C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">アゾールの黒い旋風</a></td><td class="px-3 py-2">第六極神紀</td><td class="px-3 py-2">再録強化</td><td class="px-3 py-2">2013-11-22</td></tr>
+            <tr class="border-b border-[#EEF3E4]"><td class="px-3 py-2">6B</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">紅河の戦慄</a></td><td class="px-3 py-2">第六極神紀</td><td class="px-3 py-2">英雄点導入</td><td class="px-3 py-2">2013-07-19</td></tr>
+
+            <tr><td colspan="5" class="bg-accent px-3 py-2 font-bold text-white">第五聖竜帝国ブロック</td></tr>
+            <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4]"><td class="px-3 py-2">5D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">魔海神の魔壺</a></td><td class="px-3 py-2">第五聖竜帝国</td><td class="px-3 py-2">大型環境</td><td class="px-3 py-2">2012-12-14</td></tr>
+            <tr class="border-b border-[#EEF3E4]"><td class="px-3 py-2">5C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">剣姫</a></td><td class="px-3 py-2">第五聖竜帝国</td><td class="px-3 py-2">構築人気</td><td class="px-3 py-2">2012-09-28</td></tr>
+
+            <tr><td colspan="5" class="bg-accent px-3 py-2 font-bold text-white">第四風神雷神ブロック</td></tr>
+            <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4]"><td class="px-3 py-2">4D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">天空の覇者</a></td><td class="px-3 py-2">第四風神雷神</td><td class="px-3 py-2">属性推し</td><td class="px-3 py-2">2011-12-09</td></tr>
+            <tr class="border-b border-[#EEF3E4]"><td class="px-3 py-2">4C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">神霊獣の咆哮</a></td><td class="px-3 py-2">第四風神雷神</td><td class="px-3 py-2">耐性環境</td><td class="px-3 py-2">2011-08-26</td></tr>
+            <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4]"><td class="px-3 py-2">4B</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">雷鳴の舞姫</a></td><td class="px-3 py-2">第四風神雷神</td><td class="px-3 py-2">先攻重視</td><td class="px-3 py-2">2011-05-13</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer class="bg-[#333333] text-white text-xs">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-2 sm:flex-row sm:justify-between">
+        <p>当サイトの情報は非公式データです。利用は自己責任でお願いします。</p>
+        <p>© Monsearch Archive</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
