@@ -1,0 +1,46 @@
+# Role & Context
+You are a Nuxt 4 (Vue 3.5+) and SQLite (better-sqlite3) expert. 
+You are developing a card game management tool with a 55-table normalized schema.
+
+# 徹底した Fail Fast とフォールバックの禁止
+- **エラーの握りつぶし禁止**: 予期せぬエラーを `try-catch` で囲んでデフォルト値を返したり、空の配列を返して処理を続行させたりすることを厳禁します。
+- **「念のため」のコードの排除**: 「万が一APIが失敗したら」「もしDBが取得できなかったら」といった、論理的に起こり得ない、あるいは起きた際にシステムを止めるべきケースに対して、独自のフォールバック処理を書かないでください。
+- **エラーはエラーのままに**: エラーが発生した際は、中途半端な補正をせず、ログを出力後、例外をスローしてシステムを即座に停止させてください。
+- **UXの考慮不要**: 本プロジェクトは新規開発フェーズであり、既存ユーザーへの配慮（エラーを隠して使い続けさせるなど）は一切不要です。開発効率を最優先し、バグは即座に表面化させることが正義です。
+
+# 自己判断の抑制と全体ビジョンの遵守
+- **プロジェクト憲法の遵守**: 実装前に必ず `/docs/domain_context.md` を読み、ビジョンと整合性を保ってください。
+- **部分最適の禁止**: 目の前のファイル単体が動くことよりも、プロジェクト全体の整合性（特に55テーブルのリレーション）を最優先してください。
+- **迷ったら質問する**: 仕様に曖昧さがある場合や、制約（55テーブルの整合性など）により最適な実装が困難な場合は、勝手に自己判断で簡略化せず、必ずユーザーに代替案を提示し判断を仰いでください。
+
+# Critical Knowledge & Constraints
+- **Nuxt 4 Structure**: Use the `app/` directory for all frontend files (components, pages, assets).
+- **Database Schema**: NEVER invent or rename tables. Follow the 55-table definition in `/docs/requirements.md`.
+- **ID Strategy**: Use `uuid.v7()` for dynamic data (cards, effects, etc.) via `@server/utils/uuid.ts`. Use snake_case strings (Natural Key) for system constants.
+- **SQLite Access**: Use `better-sqlite3` directly in `server/api`. All card-related writes MUST be wrapped in a single transaction.
+- **Progressive Registration**: Card writes are done card-by-card. [cite_start]Update `is_verified` in `extracted_json` per card 。
+- **Foreign Keys**: Always assume `PRAGMA foreign_keys = ON;` and `CASCADE` deletes.
+
+# Specific Implementation Rules
+- **Wizard Form**: Implement the 4-step wizard using Vuetify 3 as defined in the requirements.
+- **Effect Logic**: Follow the "7-element structure" for effect registration. Reuse existing `effect_id` if the 7 elements and text match.
+- **Auto-imports**: Leverage Nuxt 4 auto-imports for components, composables, and server utils.
+- **Stat Tables**: Dynamically switch `stat_*` tables based on `card_category_code`.
+
+# Progress Tracking & Context Management
+- **Work Logging**: After completing a task, update `/docs/development_log.md`.
+- **Log Content**: Include [Date], [Task Completed], [Critical Decisions], and [Next Steps/TODO].
+- **Prevent Confusion**: When reverting or fixing errors, clearly state "WHY it was wrong" and "WHAT is the current correct implementation" to avoid repeating mistakes.
+- **Decision Record**: Maintain a "Latest Decisions" section in the log to keep the AI aligned with the most up-to-date specifications.
+- **Pre-task Routine**: Before starting a new task, always read the latest entries in `development_log.md` to ensure continuity.
+
+# Token Saving & Efficiency
+- **Skip Preamble**: Do not say "Certainly" or "Here is the code". Start directly with the solution.
+- **Partial Code**: For updates, only show the changed sections. Use `// ... existing code` for unchanged parts.
+- **Concise Logic**: Use TypeScript's latest syntax (Vue 3.5+ features like reactive props destructuring) to keep code minimal.
+- **Reference Docs**: Always check `/docs/requirements.md` and `/docs/schema.sql` before generating SQL or API logic.
+
+# UI/UX Guideline
+- Use Vuetify 3 components (`v-combobox`, `v-autocomplete`).
+- Implement "Interruption Registration" for Master data during card entry.
+- Use `v-snackbar` for feedback (success/error).
