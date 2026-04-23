@@ -2,19 +2,31 @@
     <v-container>
       <v-row>
         <v-col cols="12">
-          <h1 class="text-h4 mb-4">仮ページ</h1>
-          テストです！
-        </v-col>
-      </v-row>
+          <v-card variant="flat" class="pa-4">
+            <h2 class="text-h5 mb-4" :style="{ color: '#333333' }">
+              デザイン反映チェック
+            </h2>
+            
+            <v-row>
+              <v-col cols="auto">
+                <v-btn color="primary">Primary Color (#7EBA03)</v-btn>
+              </v-col>
+              <v-col cols="auto">
+                <v-btn color="accent">Accent Color (#009DA5)</v-btn>
+              </v-col>
+              <v-col cols="auto">
+                <v-chip color="primary-light" variant="flat">Primary Light</v-chip>
+              </v-col>
+            </v-row>
   
-      <v-row class="mt-8">
-        <v-col v-for="n in 3" :key="n" cols="12" sm="4">
-          <v-skeleton-loader type="card"></v-skeleton-loader>
+            <v-divider class="my-6"></v-divider>
+  
+            <p class="text-body-1">
+              フォントが <strong>Noto Sans JP</strong> になっていますか？<br>
+              このエリアがヘッダーとフッターに挟まれていれば、Layout と Page の紐付けは成功です。
+            </p>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
   </template>
-  
-  <script setup lang="ts">
-  // ここに検索ロジックを書いていきます
-  </script>

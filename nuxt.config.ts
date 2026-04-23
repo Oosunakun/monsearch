@@ -33,9 +33,23 @@ export default defineNuxtConfig({
   vuetify: {
     vuetifyOptions: {
       theme: {
-        defaultTheme: 'light',
-      },
-      blueprint: {
+        defaultTheme: 'myCustomTheme',
+        themes: {
+          myCustomTheme: {
+            dark: false, // 今回はライトテーマとして定義
+            colors: {
+              primary: '#7EBA03',
+              'primary-light': '#BEDC81', // キャメルケースよりケバブケースが推奨されます
+              accent: '#009DA5',
+              'accent-light': '#93CACF',
+              // Vuetifyの基本カラーも定義しておくと便利です
+              secondary: '#BEDC81', 
+              surface: '#FFFFFF',
+              background: '#F5F5F5',
+              'on-surface': '#333333', // textDarkの色をここに割り当て
+            }
+          }
+        },
       }
     }
   },

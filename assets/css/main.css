@@ -10,8 +10,9 @@ html, body {
   /* Vuetify は独自のクラス名でフォントを指定しているため、.v-application を指定します */
   .v-application {
     font-family: 'Noto Sans JP', sans-serif !important;
+    color: #333333 !important;
   }
-  
+
   /* ボタンや見出しなど、特定のウェイトを適用したい場合 */
   .v-btn, .text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6 {
     font-family: 'Noto Sans JP', sans-serif !important;
