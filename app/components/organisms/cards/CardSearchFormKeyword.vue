@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { KeywordSearchForm } from '~~/app/types/ui/search'
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 
 const props = defineProps<{
   modelValue: KeywordSearchForm
@@ -12,9 +13,7 @@ const emit = defineEmits<{
 
 <template>
   <v-card variant="outlined">
-    <v-sheet color="secondary" class="px-4 py-2 text-subtitle-2 font-weight-bold">
-      キーワード
-    </v-sheet>
+    <AppSectionHeader title="キーワード" />
     <v-card-text>
       <v-text-field
         :model-value="modelValue.keyword"

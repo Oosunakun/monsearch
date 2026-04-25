@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BasicSearchForm, SelectOption } from '~~/app/types/ui/search'
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 
 const props = defineProps<{
   modelValue: BasicSearchForm
@@ -23,9 +24,7 @@ const updateField = <K extends keyof BasicSearchForm>(key: K, value: BasicSearch
 
 <template>
   <v-card variant="outlined">
-    <v-sheet color="secondary" class="px-4 py-2 text-subtitle-2 font-weight-bold">
-      基本情報
-    </v-sheet>
+    <AppSectionHeader title="基本情報" />
     <v-card-text>
       <v-row dense>
         <v-col cols="12" lg="8">

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SearchResultHeader, SearchResultRow } from '~~/app/types/ui/search'
+import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 
 defineProps<{
   headers: SearchResultHeader[]
@@ -21,7 +22,7 @@ defineProps<{
       class="search-table"
     >
       <template #item="{ item }">
-        <tr class="search-table__row" :class="{ 'search-table__row--zebra': item.zebra }">
+        <ZebraTableRow :zebra="item.zebra">
           <td class="px-2 py-2">{{ item.setCode }}</td>
           <td class="px-2 py-2"><span class="text-accent">{{ item.cardName }}</span></td>
           <td class="px-2 py-2">{{ item.category }}</td>
@@ -31,7 +32,7 @@ defineProps<{
           <td class="px-2 py-2">{{ item.attack }}</td>
           <td class="px-2 py-2">{{ item.defense }}</td>
           <td class="px-2 py-2">{{ item.rarity }}</td>
-        </tr>
+        </ZebraTableRow>
       </template>
     </v-data-table>
   </v-card>
@@ -47,15 +48,4 @@ defineProps<{
   font-weight: 700;
 }
 
-.search-table :deep(tbody tr td) {
-  border-bottom: 1px solid #eef3e4;
-}
-
-.search-table__row--zebra td {
-  background: #f8fbf1;
-}
-
-.search-table__row:hover td {
-  background: #eef7e3;
-}
 </style>

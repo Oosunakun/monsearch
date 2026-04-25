@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CardListHeader, CardListRow } from '~~/app/types/ui/cards'
+import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 
 defineProps<{
   headers: CardListHeader[]
@@ -26,9 +27,9 @@ const emit = defineEmits<{
       class="cards-table"
     >
       <template #item="{ item }">
-        <tr
-          class="cards-table__row"
-          :class="{ 'cards-table__row--zebra': item.zebra }"
+        <ZebraTableRow
+          :zebra="item.zebra"
+          clickable
           @click="emit('rowClick', item)"
         >
           <td class="px-2 py-2">{{ item.setCode }}</td>
@@ -42,7 +43,7 @@ const emit = defineEmits<{
           <td class="px-2 py-2">{{ item.attack }}</td>
           <td class="px-2 py-2">{{ item.defense }}</td>
           <td class="px-2 py-2">{{ item.rarity }}</td>
-        </tr>
+        </ZebraTableRow>
       </template>
     </v-data-table>
   </v-card>
@@ -58,19 +59,4 @@ const emit = defineEmits<{
   font-weight: 700;
 }
 
-.cards-table :deep(tbody tr td) {
-  border-bottom: 1px solid #eef3e4;
-}
-
-.cards-table__row--zebra td {
-  background: #f8fbf1;
-}
-
-.cards-table__row:hover td {
-  background: #eef7e3;
-}
-
-.cards-table__row {
-  cursor: pointer;
-}
 </style>

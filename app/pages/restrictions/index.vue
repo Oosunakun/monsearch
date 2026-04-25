@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
+
 type NoticeItem = {
   id: string
   text: string
@@ -90,9 +93,7 @@ const limitedRows = computed<RestrictionRow[]>(() =>
 <template>
   <section class="d-flex flex-column ga-4">
     <v-card variant="outlined">
-      <v-sheet color="primary" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        注意事項
-      </v-sheet>
+      <AppSectionHeader title="注意事項" color="primary" text-class="text-white" />
       <v-card-text>
         <p v-for="item in noticeItems" :key="item.id" class="text-body-2 mb-2">
           {{ item.text }}
@@ -104,9 +105,7 @@ const limitedRows = computed<RestrictionRow[]>(() =>
     </v-card>
 
     <v-card variant="outlined">
-      <v-sheet color="accent" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        構築条件＜オープン：フルオープンオプション＞
-      </v-sheet>
+      <AppSectionHeader title="構築条件＜オープン：フルオープンオプション＞" color="accent" text-class="text-white" />
       <v-card-text>
         <p v-for="item in policyNotes" :key="item.id" class="text-body-2 mb-2" :class="{ 'font-weight-bold': item.id === 'title' }">
           {{ item.text }}
@@ -115,9 +114,7 @@ const limitedRows = computed<RestrictionRow[]>(() =>
     </v-card>
 
     <v-card variant="outlined">
-      <v-sheet color="accent" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        使用できるエクスパンション
-      </v-sheet>
+      <AppSectionHeader title="使用できるエクスパンション" color="accent" text-class="text-white" />
       <v-card-text>
         <ul class="pl-5">
           <li v-for="item in availableExpansions" :key="item.id" class="text-body-2 text-accent mb-1">
@@ -128,9 +125,7 @@ const limitedRows = computed<RestrictionRow[]>(() =>
     </v-card>
 
     <v-card variant="outlined">
-      <v-sheet color="primary" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        禁止カード
-      </v-sheet>
+      <AppSectionHeader title="禁止カード" color="primary" text-class="text-white" />
       <v-data-table
         :headers="headers"
         :items="bannedRows"
@@ -143,21 +138,19 @@ const limitedRows = computed<RestrictionRow[]>(() =>
         class="restriction-table"
       >
         <template #item="{ item }">
-          <tr class="restriction-table__row" :class="{ 'restriction-table__row--zebra': item.zebra }">
+          <ZebraTableRow :zebra="item.zebra">
             <td class="px-3 py-2">{{ item.setCode }}</td>
             <td class="px-3 py-2"><span class="text-accent">{{ item.cardName }}</span></td>
             <td class="px-3 py-2">{{ item.category }}</td>
             <td class="px-3 py-2">{{ item.restrictionType }}</td>
             <td class="px-3 py-2">{{ item.period }}</td>
-          </tr>
+          </ZebraTableRow>
         </template>
       </v-data-table>
     </v-card>
 
     <v-card variant="outlined">
-      <v-sheet color="primary" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        制限カード
-      </v-sheet>
+      <AppSectionHeader title="制限カード" color="primary" text-class="text-white" />
       <v-data-table
         :headers="headers"
         :items="limitedRows"
@@ -170,13 +163,13 @@ const limitedRows = computed<RestrictionRow[]>(() =>
         class="restriction-table"
       >
         <template #item="{ item }">
-          <tr class="restriction-table__row" :class="{ 'restriction-table__row--zebra': item.zebra }">
+          <ZebraTableRow :zebra="item.zebra">
             <td class="px-3 py-2">{{ item.setCode }}</td>
             <td class="px-3 py-2"><span class="text-accent">{{ item.cardName }}</span></td>
             <td class="px-3 py-2">{{ item.category }}</td>
             <td class="px-3 py-2">{{ item.restrictionType }}</td>
             <td class="px-3 py-2">{{ item.period }}</td>
-          </tr>
+          </ZebraTableRow>
         </template>
       </v-data-table>
     </v-card>
@@ -193,15 +186,4 @@ const limitedRows = computed<RestrictionRow[]>(() =>
   font-weight: 700;
 }
 
-.restriction-table :deep(tbody tr td) {
-  border-bottom: 1px solid #eef3e4;
-}
-
-.restriction-table__row--zebra td {
-  background: #f8fbf1;
-}
-
-.restriction-table__row:hover td {
-  background: #eef7e3;
-}
 </style>

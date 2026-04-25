@@ -10,6 +10,7 @@ import CardSearchFormUnit from '~~/app/components/organisms/cards/CardSearchForm
 import CardSearchFormRaceType from '~~/app/components/organisms/cards/CardSearchFormRaceType.vue'
 import CardSearchFormKeyword from '~~/app/components/organisms/cards/CardSearchFormKeyword.vue'
 import CardSearchResultTable from '~~/app/components/organisms/cards/CardSearchResultTable.vue'
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 
 const categoryOptions: SelectOption[] = [
   { title: 'ユニット', value: 'unit' },
@@ -134,9 +135,7 @@ const runSearch = () => {
       </div>
     </v-form>
 
-    <v-sheet color="secondary" class="px-4 py-2 text-subtitle-2 font-weight-bold mt-6 mb-3">
-      検索結果
-    </v-sheet>
+    <AppSectionHeader title="検索結果" class="mt-6 mb-3" />
     <p class="text-subtitle-1 font-weight-bold mb-2" style="color: #3E2723;">
       {{ results.length }}件
     </p>

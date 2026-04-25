@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { ElementOption, SelectOption, UnitSearchForm } from '~~/app/types/ui/search'
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import ElementChipToggle from '~~/app/components/atoms/search/ElementChipToggle.vue'
 
 const props = defineProps<{
   modelValue: UnitSearchForm
@@ -39,9 +41,7 @@ const toggleElement = (value: string) => {
 
 <template>
   <v-card variant="outlined">
-    <v-sheet color="secondary" class="px-4 py-2 text-subtitle-2 font-weight-bold">
-      ユニット情報
-    </v-sheet>
+    <AppSectionHeader title="ユニット情報" />
     <v-card-text>
       <v-row dense>
         <v-col cols="12" md="4">
@@ -128,16 +128,15 @@ const toggleElement = (value: string) => {
         属性（複数選択）
       </p>
       <div class="d-flex flex-wrap ga-2">
-        <v-chip
+        <ElementChipToggle
           v-for="element in elementOptions"
           :key="element.value"
+          :label="element.label"
+          :value="element.value"
           :color="element.color"
-          :variant="modelValue.selectedElements.includes(element.value) ? 'flat' : 'outlined'"
-          :prepend-icon="modelValue.selectedElements.includes(element.value) ? 'mdi-check' : undefined"
-          @click="toggleElement(element.value)"
-        >
-          {{ element.label }}
-        </v-chip>
+          :selected="modelValue.selectedElements.includes(element.value)"
+          @toggle="toggleElement"
+        />
       </div>
     </v-card-text>
   </v-card>

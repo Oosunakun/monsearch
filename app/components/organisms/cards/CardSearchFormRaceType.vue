@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { RaceTypeSearchForm } from '~~/app/types/ui/search'
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 
 const props = defineProps<{
   modelValue: RaceTypeSearchForm
@@ -19,9 +20,7 @@ const updateField = <K extends keyof RaceTypeSearchForm>(key: K, value: RaceType
 
 <template>
   <v-card variant="outlined">
-    <v-sheet color="secondary" class="px-4 py-2 text-subtitle-2 font-weight-bold">
-      種族・タイプ
-    </v-sheet>
+    <AppSectionHeader title="種族・タイプ" />
     <v-card-text>
       <v-row dense>
         <v-col cols="12" md="6">

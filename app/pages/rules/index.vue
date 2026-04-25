@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
+
 type NoticeItem = {
   id: string
   text: string
@@ -60,9 +63,7 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
 <template>
   <section class="d-flex flex-column ga-4">
     <v-card variant="outlined">
-      <v-sheet color="primary" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        注意事項
-      </v-sheet>
+      <AppSectionHeader title="注意事項" color="primary" text-class="text-white" />
       <v-card-text>
         <p v-for="item in noticeItems" :key="item.id" class="text-body-2 mb-2">
           {{ item.text }}
@@ -76,9 +77,7 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
     </v-card>
 
     <v-card variant="outlined">
-      <v-sheet color="accent" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        カードテキストの置き換え
-      </v-sheet>
+      <AppSectionHeader title="カードテキストの置き換え" color="accent" text-class="text-white" />
       <v-data-table
         :headers="replacementHeaders"
         :items="replacementRows"
@@ -91,19 +90,17 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
         class="rules-table"
       >
         <template #item="{ item }">
-          <tr class="rules-table__row" :class="{ 'rules-table__row--zebra': item.zebra }">
+          <ZebraTableRow :zebra="item.zebra">
             <td class="px-3 py-2">{{ item.beforeText }}</td>
             <td class="px-3 py-2">{{ item.afterText }}</td>
             <td class="px-3 py-2">{{ item.note }}</td>
-          </tr>
+          </ZebraTableRow>
         </template>
       </v-data-table>
     </v-card>
 
     <v-card variant="outlined">
-      <v-sheet color="accent" class="px-4 py-2 text-subtitle-2 font-weight-bold text-white">
-        構築ルールの補足
-      </v-sheet>
+      <AppSectionHeader title="構築ルールの補足" color="accent" text-class="text-white" />
       <v-card-text>
         <ul class="pl-5">
           <li
@@ -130,15 +127,4 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
   font-weight: 700;
 }
 
-.rules-table :deep(tbody tr td) {
-  border-bottom: 1px solid #eef3e4;
-}
-
-.rules-table__row--zebra td {
-  background: #f8fbf1;
-}
-
-.rules-table__row:hover td {
-  background: #eef7e3;
-}
 </style>
