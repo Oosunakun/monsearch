@@ -13,7 +13,7 @@ todos:
     status: completed
   - id: split-cards-search
     content: "`cards/search` の4セクションフォームと結果テーブルを分割する"
-    status: pending
+    status: completed
   - id: split-layout-header
     content: "`default.vue` のヘッダー/ナビ/クイック検索を独立コンポーネント化する"
     status: pending
