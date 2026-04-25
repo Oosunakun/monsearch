@@ -16,7 +16,7 @@ todos:
     status: completed
   - id: split-layout-header
     content: "`default.vue` のヘッダー/ナビ/クイック検索を独立コンポーネント化する"
-    status: pending
+    status: completed
   - id: refactor-detail-modal
     content: "`CardDetailModal` のカテゴリ分岐重複を `CardEffectList` 系へ移す"
     status: pending

@@ -1,0 +1,74 @@
+<script setup lang="ts">
+import type { NavItem, QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
+import MobileNavList from '~~/app/components/molecules/navigation/MobileNavList.vue'
+import NavButtonGroup from '~~/app/components/molecules/navigation/NavButtonGroup.vue'
+import QuickSearchBar from '~~/app/components/molecules/search/QuickSearchBar.vue'
+
+const props = defineProps<{
+  drawer: boolean
+  navItems: NavItem[]
+  quickSearchState: QuickSearchState
+  cardPools: QuickSearchOption[]
+  searchTypes: QuickSearchOption[]
+}>()
+
+const emit = defineEmits<{
+  'update:drawer': [value: boolean]
+  'update:quickSearchState': [value: QuickSearchState]
+  navigate: [path: string]
+  submitQuickSearch: []
+}>()
+
+const route = useRoute()
+const activePath = computed(() => route.path)
+</script>
+
+<template>
+  <MobileNavList
+    :model-value="drawer"
+    :items="navItems"
+    :active-path="activePath"
+    @update:model-value="emit('update:drawer', $event)"
+    @navigate="emit('navigate', $event)"
+  />
+
+  <v-app-bar color="surface" border="b" elevation="0" class="header-app-bar">
+    <v-container class="py-3" style="max-width: 1360px;">
+      <div class="d-flex flex-column flex-lg-row align-lg-center justify-lg-space-between ga-3">
+        <div class="d-flex align-center justify-space-between ga-2">
+          <div>
+            <p class="text-h4 font-weight-bold mb-1 header-site-title">
+              モンさーち！
+            </p>
+            <p class="text-caption">
+              モンコレTCG検索支援サイト
+            </p>
+          </div>
+          <v-app-bar-nav-icon class="d-lg-none" @click="emit('update:drawer', !drawer)" />
+        </div>
+
+        <QuickSearchBar
+          :model-value="quickSearchState"
+          :card-pools="cardPools"
+          :search-types="searchTypes"
+          @update:model-value="emit('update:quickSearchState', $event)"
+          @submit="emit('submitQuickSearch')"
+        />
+      </div>
+
+      <NavButtonGroup :items="navItems" :active-path="activePath" />
+    </v-container>
+  </v-app-bar>
+</template>
+
+<style scoped>
+.header-site-title {
+  color: #3e2723;
+  line-height: 1.1;
+}
+
+.header-app-bar :deep(.v-toolbar__content) {
+  height: auto !important;
+  align-items: stretch;
+}
+</style>
