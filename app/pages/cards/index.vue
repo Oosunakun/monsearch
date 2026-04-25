@@ -1,28 +1,15 @@
 <script setup lang="ts">
-import type { CardDetail, ElementCode } from '~~/types/card'
+import type { CardDetail } from '~~/types/card'
+import type {
+  CardListHeader,
+  CardListRow,
+  CardListSourceRow,
+  SearchCondition
+} from '~~/app/types/ui/cards'
+import ActiveConditionChips from '~~/app/components/molecules/cards/ActiveConditionChips.vue'
+import CardListTable from '~~/app/components/organisms/cards/CardListTable.vue'
 
-type SearchCondition = {
-  id: string
-  label: string
-}
-
-type CardRow = {
-  id: string
-  setCode: string
-  cardName: string
-  category: string
-  race: string
-  element: string
-  level: number
-  attack: number
-  defense: number
-  rarity: string
-  zebra: boolean
-}
-
-type CardSource = Omit<CardRow, 'zebra'>
-
-const headers = [
+const headers: CardListHeader[] = [
   { title: 'セット', key: 'setCode', sortable: false },
   { title: 'カード名', key: 'cardName', sortable: false },
   { title: 'カテゴリ', key: 'category', sortable: false },
@@ -40,7 +27,7 @@ const activeConditions = ref<SearchCondition[]>([
   { id: 'element', label: '属性: 火/風' }
 ])
 
-const sourceRows: CardSource[] = [
+const sourceRows: CardListSourceRow[] = [
   { id: '1', setCode: '6D', cardName: '蒼穹の古龍', category: 'ユニット', race: 'ドラゴン', element: '火', level: 6, attack: 7, defense: 6, rarity: 'S' },
   { id: '2', setCode: '6D', cardName: '烈風のドレイク', category: 'ユニット', race: 'ドラゴン', element: '風', level: 5, attack: 6, defense: 4, rarity: 'R' },
   { id: '3', setCode: '6C', cardName: '黒曜のギガンテス', category: 'ユニット', race: 'ジャイアント', element: '土', level: 4, attack: 5, defense: 6, rarity: 'UC' },
@@ -55,7 +42,7 @@ const sourceRows: CardSource[] = [
   { id: '12', setCode: '4B', cardName: '焔刃のサラマンダー', category: 'ユニット', race: 'サラマンダー', element: '火', level: 4, attack: 5, defense: 3, rarity: 'R' }
 ]
 
-const cardRows = computed<CardRow[]>(() =>
+const cardRows = computed<CardListRow[]>(() =>
   sourceRows.map((row, index) => ({
     ...row,
     zebra: index % 2 === 1
@@ -64,46 +51,10 @@ const cardRows = computed<CardRow[]>(() =>
 
 const detailModalOpen = ref(false)
 const selectedCard = ref<CardDetail | null>(null)
+const { mapCardRowToDetail } = useCardDetailMapper()
 
-const elementMap: Record<string, ElementCode> = {
-  火: 'Fire',
-  水: 'Water',
-  土: 'Earth',
-  風: 'Air',
-  聖: 'Holy',
-  魔: 'Curse',
-  喰: 'Eater',
-  獣: 'Beast',
-  荒: 'Savage',
-  機: 'Machina'
-}
-
-const openCardDetail = (row: CardRow) => {
-  selectedCard.value = {
-    card_id: row.id,
-    name: row.cardName,
-    card_category: 'Unit',
-    elements: [elementMap[row.element] ?? 'Fire'],
-    level: row.level,
-    attack: row.attack,
-    defense: row.defense,
-    move_type: '歩行',
-    races: [row.race],
-    spell_slots: ['*'],
-    effects: [
-      {
-        title: 'サンプル能力',
-        timing: 'Battle',
-        condition: 'モック条件',
-        text: `${row.cardName}のダミー効果テキストです。`
-      }
-    ],
-    flavor_text: 'モック表示用のフレーバーテキストです。',
-    illustrator: 'ダミー',
-    product_name: '悠久のハルシオン',
-    rarity: row.rarity,
-    reference_label: `${row.setCode}-${row.id.padStart(3, '0')}`
-  }
+const openCardDetail = (row: CardListRow) => {
+  selectedCard.value = mapCardRowToDetail(row)
   detailModalOpen.value = true
 }
 
@@ -114,66 +65,13 @@ const clearConditions = () => {
 
 <template>
   <section>
-    <v-sheet
-      color="secondary"
-      class="d-flex flex-wrap align-center justify-space-between ga-3 pa-3 mb-4"
-      border
-      rounded
-    >
-      <div class="d-flex flex-wrap ga-2">
-        <v-chip
-          v-for="condition in activeConditions"
-          :key="condition.id"
-          color="accent-light"
-          text-color="accent"
-          variant="flat"
-          size="small"
-        >
-          {{ condition.label }}
-        </v-chip>
-      </div>
-      <v-btn color="grey-darken-1" variant="flat" size="small" @click="clearConditions">
-        条件をクリア
-      </v-btn>
-    </v-sheet>
+    <ActiveConditionChips :conditions="activeConditions" @clear="clearConditions" />
 
     <p class="text-subtitle-1 font-weight-bold mb-2" style="color: #3E2723;">
       検索結果 {{ cardRows.length }}件
     </p>
 
-    <v-card variant="outlined">
-      <v-data-table
-        :headers="headers"
-        :items="cardRows"
-        item-value="id"
-        fixed-header
-        height="620"
-        density="comfortable"
-        hide-default-footer
-        items-per-page="-1"
-        class="cards-table"
-      >
-        <template #item="{ item }">
-          <tr
-            class="cards-table__row"
-            :class="{ 'cards-table__row--zebra': item.zebra }"
-            @click="openCardDetail(item)"
-          >
-            <td class="px-2 py-2">{{ item.setCode }}</td>
-            <td class="px-2 py-2">
-              <span class="text-accent">{{ item.cardName }}</span>
-            </td>
-            <td class="px-2 py-2">{{ item.category }}</td>
-            <td class="px-2 py-2">{{ item.race }}</td>
-            <td class="px-2 py-2">{{ item.element }}</td>
-            <td class="px-2 py-2">{{ item.level }}</td>
-            <td class="px-2 py-2">{{ item.attack }}</td>
-            <td class="px-2 py-2">{{ item.defense }}</td>
-            <td class="px-2 py-2">{{ item.rarity }}</td>
-          </tr>
-        </template>
-      </v-data-table>
-    </v-card>
+    <CardListTable :headers="headers" :items="cardRows" @row-click="openCardDetail" />
 
     <CardDetailModal
       v-if="selectedCard"
@@ -182,30 +80,3 @@ const clearConditions = () => {
     />
   </section>
 </template>
-
-<style scoped>
-.cards-table :deep(thead th) {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: rgb(var(--v-theme-primary));
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.cards-table :deep(tbody tr td) {
-  border-bottom: 1px solid #eef3e4;
-}
-
-.cards-table__row--zebra td {
-  background: #f8fbf1;
-}
-
-.cards-table__row:hover td {
-  background: #eef7e3;
-}
-
-.cards-table__row {
-  cursor: pointer;
-}
-</style>

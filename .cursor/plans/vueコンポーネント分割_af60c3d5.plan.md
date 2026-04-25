@@ -4,13 +4,13 @@ overview: "`app/` 配下のモック実装を Atomic Design と Vuetify4 の責�
 todos:
   - id: design-types
     content: 検索条件・一覧行・オプションのUI型を `app/types/ui` に定義する
-    status: pending
+    status: completed
   - id: split-cards-index
     content: "`cards/index` を `ActiveConditionChips` と `CardListTable` に分離する"
-    status: pending
+    status: completed
   - id: extract-detail-mapper
     content: 詳細モーダル用の変換処理を `useCardDetailMapper` に抽出する
-    status: pending
+    status: completed
   - id: split-cards-search
     content: "`cards/search` の4セクションフォームと結果テーブルを分割する"
     status: pending
