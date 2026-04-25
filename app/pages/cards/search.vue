@@ -35,6 +35,7 @@ const sourceRows: SearchResultSource[] = mockCardSearchResultSourceRows
 
 const { formState, resetForm, toSearchRequestDto, withZebraRows } = useCardSearchForm()
 const results = computed(() => withZebraRows(sourceRows))
+const isSearchResultLoading = ref(false)
 
 const resetConditions = () => {
   resetForm()
@@ -93,8 +94,14 @@ const runSearch = () => {
     </v-form>
 
     <AppSectionHeader title="検索結果" class="mt-6 mb-3" />
-    <ResultCountLabel :count="results.length" prefix="" />
+    <ResultCountLabel :count="isSearchResultLoading ? 0 : results.length" prefix="" />
 
-    <CardSearchResultTable :headers="headers" :items="results" />
+    <CardSearchResultTable :headers="headers" :items="results" :is-loading="isSearchResultLoading">
+      <template #actions>
+        <v-btn variant="outlined" color="secondary" @click="resetConditions">
+          検索条件をクリア
+        </v-btn>
+      </template>
+    </CardSearchResultTable>
   </section>
 </template>

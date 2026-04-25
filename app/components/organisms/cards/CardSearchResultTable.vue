@@ -2,17 +2,38 @@
 import type { SearchResultHeader, SearchResultRow } from '~~/app/types/ui/search'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
+import EmptyState from '~~/app/components/atoms/common/EmptyState.vue'
+import SkeletonLoader from '~~/app/components/atoms/common/SkeletonLoader.vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 
-defineProps<{
-  headers: SearchResultHeader[]
-  items: SearchResultRow[]
-}>()
+withDefaults(
+  defineProps<{
+    headers: SearchResultHeader[]
+    items: SearchResultRow[]
+    isLoading?: boolean
+  }>(),
+  {
+    isLoading: false
+  }
+)
 </script>
 
 <template>
   <v-card variant="outlined">
-    <StickyTableHeaderRow :text-color="UI_COLORS.WHITE" :header-background="UI_COLORS.PRIMARY">
+    <SkeletonLoader
+      v-if="isLoading"
+      preset="table-rows"
+      :height="520"
+      :min-height="520"
+    />
+
+    <EmptyState v-else-if="items.length === 0">
+      <template #actions>
+        <slot name="actions" />
+      </template>
+    </EmptyState>
+
+    <StickyTableHeaderRow v-else :text-color="UI_COLORS.WHITE" :header-background="UI_COLORS.PRIMARY">
       <v-data-table
         :headers="headers"
         :items="items"

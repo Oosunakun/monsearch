@@ -2,12 +2,14 @@
 import type { CardListHeader, CardListRow } from '~~/app/types/ui/cards'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
+import SkeletonLoader from '~~/app/components/atoms/common/SkeletonLoader.vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 
 defineProps<{
   headers: CardListHeader[]
   items: CardListRow[]
   height?: number | string
+  isLoading?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -17,7 +19,14 @@ const emit = defineEmits<{
 
 <template>
   <v-card variant="outlined">
-    <StickyTableHeaderRow :text-color="UI_COLORS.WHITE" :header-background="UI_COLORS.PRIMARY">
+    <SkeletonLoader
+      v-if="isLoading"
+      preset="table-rows"
+      :height="height ?? 620"
+      :min-height="height ?? 620"
+    />
+
+    <StickyTableHeaderRow v-else :text-color="UI_COLORS.WHITE" :header-background="UI_COLORS.PRIMARY">
       <v-data-table
         :headers="headers"
         :items="items"

@@ -27,6 +27,9 @@ const cardRows = computed<CardListRow[]>(() =>
   }))
 )
 
+const isListLoading = ref(false)
+const isDetailLoading = ref(false)
+
 const detailModalOpen = ref(false)
 const selectedCard = ref<CardDetail | null>(null)
 const { mapCardRowToDetail } = useCardDetailMapper()
@@ -47,12 +50,18 @@ const clearConditions = () => {
 
     <ResultCountLabel :count="cardRows.length" />
 
-    <CardListTable :headers="headers" :items="cardRows" @row-click="openCardDetail" />
+    <CardListTable
+      :headers="headers"
+      :items="cardRows"
+      :is-loading="isListLoading"
+      @row-click="openCardDetail"
+    />
 
     <CardDetailModal
       v-if="selectedCard"
       v-model="detailModalOpen"
       :card="selectedCard"
+      :is-loading="isDetailLoading"
     />
   </section>
 </template>
