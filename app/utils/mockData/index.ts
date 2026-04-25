@@ -1,0 +1,6 @@
+export * from './about'
+export * from './cards'
+export * from './indexPage'
+export * from './restrictions'
+export * from './rules'
+export * from './search'
