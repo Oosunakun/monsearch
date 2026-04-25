@@ -103,7 +103,6 @@ const limitedRows = computed<RestrictionRow[]>(() =>
           density="comfortable"
           hide-default-footer
           items-per-page="-1"
-          class="restriction-table"
         >
           <template #item="{ item }">
             <ZebraTableRow :zebra="item.zebra">
@@ -130,7 +129,6 @@ const limitedRows = computed<RestrictionRow[]>(() =>
           density="comfortable"
           hide-default-footer
           items-per-page="-1"
-          class="restriction-table"
         >
           <template #item="{ item }">
             <ZebraTableRow :zebra="item.zebra">

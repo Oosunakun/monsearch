@@ -21,7 +21,6 @@ defineProps<{
         density="comfortable"
         hide-default-footer
         items-per-page="-1"
-        class="search-table"
       >
         <template #item="{ item }">
           <ZebraTableRow :zebra="item.zebra">

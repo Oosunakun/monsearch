@@ -86,7 +86,6 @@ const historyRows = computed<HistoryRow[]>(() =>
           density="comfortable"
           hide-default-footer
           items-per-page="-1"
-          class="about-table"
         >
           <template #item="{ item }">
             <ZebraTableRow :zebra="item.zebra">

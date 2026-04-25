@@ -4,22 +4,22 @@ overview: "`.vue` 全体の重複装飾・色ハードコード・`scoped` 依�
 todos:
   - id: audit-style-duplicates
     content: 重複装飾・色定義・scoped依存の対象ファイルを確定し優先度を付ける
-    status: pending
+    status: completed
   - id: add-color-constants
     content: "`app/utils/constants/colors.ts` を導入しコンポーネント内の色ロジックを参照化する"
-    status: pending
+    status: completed
   - id: extend-existing-atoms
     content: "`AppSectionHeader`/`ZebraTableRow` の再利用性を拡張し既存画面へ適用する"
-    status: pending
+    status: completed
   - id: introduce-new-atoms
     content: "`StickyTableHeaderRow`/`SectionCardShell`/`ResultCountLabel`/`ContentMaxWidthContainer` を追加する"
-    status: pending
+    status: completed
   - id: migrate-pages-organisms
     content: ページ・Organismsの重複クラスとインライン style を Atoms + Vuetify utility へ段階移行する
-    status: pending
+    status: completed
   - id: verify-each-step
     content: 各ステップで typecheck/build と主要画面の見た目一致確認を実施する
-    status: pending
+    status: completed
 isProject: false
 ---
 

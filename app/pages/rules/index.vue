@@ -73,7 +73,6 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
           density="comfortable"
           hide-default-footer
           items-per-page="-1"
-          class="rules-table"
         >
           <template #item="{ item }">
             <ZebraTableRow :zebra="item.zebra">

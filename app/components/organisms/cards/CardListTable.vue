@@ -26,7 +26,6 @@ const emit = defineEmits<{
         density="comfortable"
         hide-default-footer
         items-per-page="-1"
-        class="cards-table"
       >
         <template #item="{ item }">
           <ZebraTableRow

@@ -2,6 +2,7 @@
 import type { CardDetail, ElementCode } from '~~/types/card'
 import CardMetaChips from '~~/app/components/molecules/cards/CardMetaChips.vue'
 import CardEffectList from '~~/app/components/organisms/cards/CardEffectList.vue'
+import SectionCardShell from '~~/app/components/atoms/common/SectionCardShell.vue'
 import { CARD_CATEGORY_COLORS, CARD_ELEMENT_COLORS } from '~~/app/utils/constants/colors'
 
 const props = withDefaults(
@@ -80,31 +81,25 @@ const isToken = computed(() => props.card.card_category === 'Token')
           <span v-else class="text-subtitle-2 text-grey-darken-1">Card Image</span>
         </v-responsive>
 
-        <v-card variant="tonal" class="mb-3">
-          <v-card-text class="text-caption">
-            <p>種族: {{ card.races.length > 0 ? card.races.join(' / ') : '-' }}</p>
-            <p>スペルスロット: {{ card.spell_slots.length > 0 ? card.spell_slots.join(' ') : '-' }}</p>
-            <p v-if="isUnit || isToken">移動タイプ: {{ card.move_type ?? '-' }}</p>
-            <p v-if="isLand">地形カテゴリ: {{ card.races.length > 0 ? card.races.join(' / ') : '-' }}</p>
-          </v-card-text>
-        </v-card>
+        <SectionCardShell content-class="text-caption">
+          <p>種族: {{ card.races.length > 0 ? card.races.join(' / ') : '-' }}</p>
+          <p>スペルスロット: {{ card.spell_slots.length > 0 ? card.spell_slots.join(' ') : '-' }}</p>
+          <p v-if="isUnit || isToken">移動タイプ: {{ card.move_type ?? '-' }}</p>
+          <p v-if="isLand">地形カテゴリ: {{ card.races.length > 0 ? card.races.join(' / ') : '-' }}</p>
+        </SectionCardShell>
 
         <CardEffectList :card="card" />
 
-        <v-card v-if="card.flavor_text" variant="tonal" class="mb-3">
-          <v-card-text class="py-2">
-            <p class="text-caption font-italic text-grey-darken-1">
-              {{ card.flavor_text }}
-            </p>
-          </v-card-text>
-        </v-card>
+        <SectionCardShell v-if="card.flavor_text" content-class="py-2">
+          <p class="text-caption font-italic text-grey-darken-1">
+            {{ card.flavor_text }}
+          </p>
+        </SectionCardShell>
 
-        <v-card variant="tonal">
-          <v-card-text class="text-caption py-2">
-            <p>レア: {{ card.rarity }} / 参照: {{ card.reference_label }}</p>
-            <p>イラスト: {{ card.illustrator }} / 収録: {{ card.product_name }}</p>
-          </v-card-text>
-        </v-card>
+        <SectionCardShell :margin-bottom="false" content-class="text-caption py-2">
+          <p>レア: {{ card.rarity }} / 参照: {{ card.reference_label }}</p>
+          <p>イラスト: {{ card.illustrator }} / 収録: {{ card.product_name }}</p>
+        </SectionCardShell>
       </div>
     </v-card>
   </v-dialog>
