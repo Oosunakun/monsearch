@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import type { CardDetail, CardCategory, ElementCode } from '~~/types/card'
+import type { CardCategory, CardDetail, ElementCode } from '~~/types/card'
+import CardMetaChips from '~~/app/components/molecules/cards/CardMetaChips.vue'
+import CardEffectList from '~~/app/components/organisms/cards/CardEffectList.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -15,16 +17,6 @@ const props = withDefaults(
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
 }>()
-
-const categoryLabelMap: Record<CardCategory, string> = {
-  Unit: 'ユニット',
-  Spell: 'スペル',
-  Item: 'アイテム',
-  Land: '地形',
-  Ritual: '召喚術師',
-  Summoner: '召喚術師',
-  Token: 'トークン'
-}
 
 const categoryColorMap: Record<CardCategory, string> = {
   Unit: '#5E748A',
@@ -49,27 +41,6 @@ const elementColorMap: Record<ElementCode, string> = {
   Machina: '#00ACC1'
 }
 
-const elementLabelMap: Record<ElementCode, string> = {
-  Fire: '火',
-  Water: '水',
-  Earth: '土',
-  Air: '風',
-  Holy: '聖',
-  Curse: '魔',
-  Eater: '喰',
-  Beast: '獣',
-  Savage: '荒',
-  Machina: '機'
-}
-
-const timingColorMap: Record<string, string> = {
-  Battle: 'red',
-  Field: 'blue',
-  Deck: 'amber',
-  Passive: 'teal',
-  Other: 'grey'
-}
-
 const isOpen = computed({
   get: () => props.modelValue,
   set: (value: boolean) => emit('update:modelValue', value)
@@ -89,26 +60,13 @@ const modalThemeStyle = computed<Record<string, string>>(() => {
   }
 })
 
-const categoryLabel = computed(() => categoryLabelMap[props.card.card_category] ?? props.card.card_category)
-const powerLabel = computed(() => {
-  if (props.card.level == null || props.card.attack == null || props.card.defense == null) {
-    return null
-  }
-  return `Lv${props.card.level} / ${props.card.attack}/${props.card.defense}`
-})
-
 const close = () => {
   isOpen.value = false
 }
 
 const isUnit = computed(() => props.card.card_category === 'Unit')
-const isSpell = computed(() => props.card.card_category === 'Spell')
-const isItem = computed(() => props.card.card_category === 'Item')
 const isLand = computed(() => props.card.card_category === 'Land')
 const isToken = computed(() => props.card.card_category === 'Token')
-const isSummoner = computed(
-  () => props.card.card_category === 'Summoner' || props.card.card_category === 'Ritual'
-)
 </script>
 
 <template>
@@ -132,44 +90,7 @@ const isSummoner = computed(
       </div>
 
       <v-sheet class="mx-3 mb-3 pa-3 text-white card-modal__header" rounded="lg">
-        <div class="d-flex align-start justify-space-between ga-2 flex-wrap">
-          <div class="d-flex flex-wrap ga-1">
-            <v-chip
-              v-for="element in card.elements"
-              :key="element"
-              size="x-small"
-              variant="flat"
-              class="text-white"
-              :style="{ backgroundColor: elementColorMap[element] }"
-            >
-              {{ elementLabelMap[element] }}
-            </v-chip>
-            <v-chip
-              v-if="powerLabel"
-              size="x-small"
-              variant="flat"
-              color="grey-lighten-3"
-            >
-              {{ powerLabel }}
-            </v-chip>
-            <v-chip
-              v-if="card.move_type"
-              size="x-small"
-              variant="flat"
-              color="grey-lighten-3"
-            >
-              {{ card.move_type }}
-            </v-chip>
-          </div>
-          <v-chip
-            size="x-small"
-            variant="flat"
-            class="font-weight-bold"
-            color="secondary"
-          >
-            {{ categoryLabel }}
-          </v-chip>
-        </div>
+        <CardMetaChips :card="card" />
         <p class="text-h5 font-weight-bold mt-2">
           {{ card.name }}
         </p>
@@ -190,83 +111,7 @@ const isSummoner = computed(
           </v-card-text>
         </v-card>
 
-        <div v-if="isUnit" class="mb-3">
-          <v-card v-for="(effect, index) in card.effects" :key="`unit-${index}`" variant="outlined" class="mb-2">
-            <v-card-text class="py-2">
-              <div class="d-flex justify-space-between align-center mb-1">
-                <strong class="text-body-2">{{ effect.title }}</strong>
-                <v-chip size="x-small" :color="timingColorMap[effect.timing] ?? 'grey'" class="text-white">
-                  {{ effect.timing }}
-                </v-chip>
-              </div>
-              <p v-if="effect.condition" class="text-caption text-grey-darken-1 mb-1">【条件】{{ effect.condition }}</p>
-              <p class="text-body-2">{{ effect.text }}</p>
-            </v-card-text>
-          </v-card>
-        </div>
-
-        <div v-else-if="isSpell" class="mb-3">
-          <v-card v-for="(effect, index) in card.effects" :key="`spell-${index}`" variant="outlined" class="mb-2">
-            <v-card-text class="py-2">
-              <div class="d-flex justify-space-between align-center mb-1">
-                <strong class="text-body-2">{{ effect.title }}</strong>
-                <v-chip size="x-small" :color="timingColorMap[effect.timing] ?? 'grey'" class="text-white">
-                  {{ effect.timing }}
-                </v-chip>
-              </div>
-              <p v-if="effect.condition" class="text-caption text-grey-darken-1 mb-1">【条件】{{ effect.condition }}</p>
-              <p class="text-body-2">{{ effect.text }}</p>
-            </v-card-text>
-          </v-card>
-        </div>
-
-        <div v-else-if="isItem" class="mb-3">
-          <v-card v-for="(effect, index) in card.effects" :key="`item-${index}`" variant="outlined" class="mb-2">
-            <v-card-text class="py-2">
-              <div class="d-flex justify-space-between align-center mb-1">
-                <strong class="text-body-2">{{ effect.title }}</strong>
-                <v-chip size="x-small" :color="timingColorMap[effect.timing] ?? 'grey'" class="text-white">
-                  {{ effect.timing }}
-                </v-chip>
-              </div>
-              <p v-if="effect.condition" class="text-caption text-grey-darken-1 mb-1">【条件】{{ effect.condition }}</p>
-              <p class="text-body-2">{{ effect.text }}</p>
-            </v-card-text>
-          </v-card>
-        </div>
-
-        <div v-else-if="isLand" class="mb-3">
-          <v-card v-for="(effect, index) in card.effects" :key="`land-${index}`" variant="outlined" class="mb-2">
-            <v-card-text class="py-2">
-              <div class="d-flex justify-space-between align-center mb-1">
-                <strong class="text-body-2">{{ effect.title }}</strong>
-                <v-chip size="x-small" :color="timingColorMap[effect.timing] ?? 'grey'" class="text-white">
-                  {{ effect.timing }}
-                </v-chip>
-              </div>
-              <p v-if="effect.condition" class="text-caption text-grey-darken-1 mb-1">【条件】{{ effect.condition }}</p>
-              <p class="text-body-2">{{ effect.text }}</p>
-            </v-card-text>
-          </v-card>
-        </div>
-
-        <div v-else-if="isToken" class="mb-3">
-          <v-card variant="outlined">
-            <v-card-text class="py-2">
-              <p class="text-body-2 mb-1">トークン専用効果</p>
-              <p class="text-caption text-grey-darken-1">永続効果や生成条件をここに表示します。</p>
-            </v-card-text>
-          </v-card>
-        </div>
-
-        <div v-else-if="isSummoner" class="mb-3">
-          <v-card variant="outlined">
-            <v-card-text class="py-2">
-              <p class="text-body-2 mb-1">召喚術師情報</p>
-              <p class="text-caption text-grey-darken-1">召喚条件・専用能力・関連カードをここに表示します。</p>
-            </v-card-text>
-          </v-card>
-        </div>
+        <CardEffectList :card="card" />
 
         <v-card v-if="card.flavor_text" variant="tonal" class="mb-3">
           <v-card-text class="py-2">

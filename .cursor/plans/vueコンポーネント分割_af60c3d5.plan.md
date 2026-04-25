@@ -19,7 +19,7 @@ todos:
     status: completed
   - id: refactor-detail-modal
     content: "`CardDetailModal` のカテゴリ分岐重複を `CardEffectList` 系へ移す"
-    status: pending
+    status: completed
 isProject: false
 ---
 
