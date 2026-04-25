@@ -3,6 +3,7 @@ import type { NavItem } from '~~/app/types/ui/layout'
 import AppFooter from '~~/app/components/organisms/layout/AppFooter.vue'
 import AppHeader from '~~/app/components/organisms/layout/AppHeader.vue'
 import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
+import { UI_COLORS } from '~~/app/utils/constants/colors'
 
 const router = useRouter()
 const drawer = ref(false)
@@ -25,6 +26,8 @@ const moveTo = async (path: string) => {
 
 <template>
   <v-app>
+    <NuxtLoadingIndicator :color="UI_COLORS.PRIMARY" :height="2" />
+
     <AppHeader
       :drawer="drawer"
       :nav-items="navItems"

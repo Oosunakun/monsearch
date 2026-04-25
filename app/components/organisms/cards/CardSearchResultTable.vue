@@ -11,12 +11,14 @@ withDefaults(
   defineProps<{
     headers: SearchResultHeader[]
     items: SearchResultRow[]
+    activeConditionChips?: string[]
     isLoading?: boolean
     isError?: boolean
     errorTitle?: string
     errorText?: string
   }>(),
   {
+    activeConditionChips: () => [],
     isLoading: false,
     isError: false,
     errorTitle: 'データの取得に失敗しました',
@@ -27,6 +29,21 @@ withDefaults(
 
 <template>
   <v-card variant="outlined">
+    <div v-if="activeConditionChips.length > 0" class="px-4 pt-4 pb-2">
+      <p class="text-caption mb-2" :style="{ color: UI_COLORS.headingBrown }">適用中の検索条件</p>
+      <div class="d-flex flex-wrap ga-2">
+        <v-chip
+          v-for="chip in activeConditionChips"
+          :key="chip"
+          size="small"
+          variant="outlined"
+          :color="UI_COLORS.SECONDARY"
+        >
+          {{ chip }}
+        </v-chip>
+      </div>
+    </div>
+
     <SkeletonLoader
       v-if="isLoading"
       preset="table-rows"
@@ -58,8 +75,8 @@ withDefaults(
         fixed-header
         height="520"
         density="comfortable"
-        hide-default-footer
-        items-per-page="-1"
+        :items-per-page="10"
+        :items-per-page-options="[10, 20, 50]"
       >
         <template #item="{ item }">
           <ZebraTableRow :zebra="item.zebra">
@@ -78,3 +95,10 @@ withDefaults(
     </StickyTableHeaderRow>
   </v-card>
 </template>
+
+<style scoped>
+:deep(.v-pagination .v-btn--active) {
+  background: v-bind('UI_COLORS.PRIMARY');
+  color: v-bind('UI_COLORS.WHITE');
+}
+</style>
