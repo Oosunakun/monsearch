@@ -34,16 +34,41 @@ const headers: SearchResultHeader[] = mockSearchResultHeaders
 const sourceRows: SearchResultSource[] = mockCardSearchResultSourceRows
 
 const { formState, resetForm, toSearchRequestDto, withZebraRows } = useCardSearchForm()
-const results = computed(() => withZebraRows(sourceRows))
+const displayedRows = ref<SearchResultSource[]>([...sourceRows])
+const results = computed(() => withZebraRows(displayedRows.value))
 const isSearchResultLoading = ref(false)
+const isSearchResultError = ref(false)
+const searchErrorTitle = ref('データの取得に失敗しました')
+const searchErrorText = ref('時間をおいて再試行してください。')
+
+const SEARCH_SIMULATION_DELAY_MS = 1800
 
 const resetConditions = () => {
   resetForm()
+  isSearchResultError.value = false
+  displayedRows.value = [...sourceRows]
 }
 
-const runSearch = () => {
+const runSearch = async () => {
   const payload = toSearchRequestDto()
   console.info('mock search payload', payload)
+
+  isSearchResultLoading.value = true
+  isSearchResultError.value = false
+
+  await new Promise(resolve => setTimeout(resolve, SEARCH_SIMULATION_DELAY_MS))
+
+  const shouldSimulateError = payload.keyword.toLowerCase() === 'error'
+  if (shouldSimulateError) {
+    isSearchResultError.value = true
+    displayedRows.value = []
+    isSearchResultLoading.value = false
+    return
+  }
+
+  const shouldShowEmpty = payload.card_name.toLowerCase() === 'empty'
+  displayedRows.value = shouldShowEmpty ? [] : [...sourceRows]
+  isSearchResultLoading.value = false
 }
 </script>
 
@@ -94,12 +119,25 @@ const runSearch = () => {
     </v-form>
 
     <AppSectionHeader title="検索結果" class="mt-6 mb-3" />
-    <ResultCountLabel :count="isSearchResultLoading ? 0 : results.length" prefix="" />
+    <ResultCountLabel :count="isSearchResultLoading || isSearchResultError ? 0 : results.length" prefix="" />
 
-    <CardSearchResultTable :headers="headers" :items="results" :is-loading="isSearchResultLoading">
-      <template #actions>
+    <CardSearchResultTable
+      :headers="headers"
+      :items="results"
+      :is-loading="isSearchResultLoading"
+      :is-error="isSearchResultError"
+      :error-title="searchErrorTitle"
+      :error-text="searchErrorText"
+    >
+      <template #empty-actions>
         <v-btn variant="outlined" color="secondary" @click="resetConditions">
           検索条件をクリア
+        </v-btn>
+      </template>
+
+      <template #error-actions>
+        <v-btn color="secondary" variant="flat" @click="runSearch">
+          再試行
         </v-btn>
       </template>
     </CardSearchResultTable>

@@ -2,6 +2,7 @@
 import type { SearchResultHeader, SearchResultRow } from '~~/app/types/ui/search'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
+import AppErrorState from '~~/app/components/atoms/common/AppErrorState.vue'
 import EmptyState from '~~/app/components/atoms/common/EmptyState.vue'
 import SkeletonLoader from '~~/app/components/atoms/common/SkeletonLoader.vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
@@ -11,9 +12,15 @@ withDefaults(
     headers: SearchResultHeader[]
     items: SearchResultRow[]
     isLoading?: boolean
+    isError?: boolean
+    errorTitle?: string
+    errorText?: string
   }>(),
   {
-    isLoading: false
+    isLoading: false,
+    isError: false,
+    errorTitle: 'データの取得に失敗しました',
+    errorText: '時間をおいて再試行してください。'
   }
 )
 </script>
@@ -27,9 +34,19 @@ withDefaults(
       :min-height="520"
     />
 
+    <AppErrorState
+      v-else-if="isError"
+      :title="errorTitle"
+      :text="errorText"
+    >
+      <template #actions>
+        <slot name="error-actions" />
+      </template>
+    </AppErrorState>
+
     <EmptyState v-else-if="items.length === 0">
       <template #actions>
-        <slot name="actions" />
+        <slot name="empty-actions" />
       </template>
     </EmptyState>
 
