@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { mockExpansionHeaders, mockExpansionSources } from '~~/app/utils/mockData'
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 
 type ExpansionBase = {
   id: string
@@ -56,9 +58,7 @@ const tableRows = computed<ExpansionRow[]>(() => {
 
 <template>
   <section>
-    <h2 class="text-h4 font-weight-bold mb-4" style="color: #3E2723;">
-      エクスパンション一覧
-    </h2>
+    <AppSectionHeader title="エクスパンション一覧" color="secondary" class="mb-4" />
 
     <v-card variant="outlined">
       <v-data-table
@@ -80,10 +80,10 @@ const tableRows = computed<ExpansionRow[]>(() => {
               </v-sheet>
             </td>
           </tr>
-          <tr
+          <ZebraTableRow
             v-else
+            :zebra="item.zebra"
             class="expansion-table__item-row"
-            :class="{ 'expansion-table__item-row--zebra': item.zebra }"
           >
             <td class="px-3 py-2">{{ item.setCode }}</td>
             <td class="px-3 py-2">
@@ -92,7 +92,7 @@ const tableRows = computed<ExpansionRow[]>(() => {
             <td class="px-3 py-2">{{ item.block }}</td>
             <td class="px-3 py-2">{{ item.note }}</td>
             <td class="px-3 py-2">{{ item.releaseDate }}</td>
-          </tr>
+          </ZebraTableRow>
         </template>
       </v-data-table>
     </v-card>
@@ -107,18 +107,6 @@ const tableRows = computed<ExpansionRow[]>(() => {
   background: rgb(var(--v-theme-secondary));
   color: #3e2723;
   font-weight: 700;
-}
-
-.expansion-table :deep(tbody tr td) {
-  border-bottom: 1px solid #eef3e4;
-}
-
-.expansion-table__item-row--zebra td {
-  background: #f8fbf1;
-}
-
-.expansion-table__item-row:hover td {
-  background: #eef7e3;
 }
 
 .expansion-table__section-row td {

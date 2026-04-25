@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CardCategory, CardDetail, ElementCode } from '~~/types/card'
+import { CARD_ELEMENT_COLORS } from '~~/app/utils/constants/colors'
 
 const props = defineProps<{
   card: CardDetail
@@ -13,19 +14,6 @@ const categoryLabelMap: Record<CardCategory, string> = {
   Ritual: '召喚術師',
   Summoner: '召喚術師',
   Token: 'トークン'
-}
-
-const elementColorMap: Record<ElementCode, string> = {
-  Fire: '#E53935',
-  Water: '#1E88E5',
-  Earth: '#7CB342',
-  Air: '#43A047',
-  Holy: '#FBC02D',
-  Curse: '#8E24AA',
-  Eater: '#6D4C41',
-  Beast: '#EF6C00',
-  Savage: '#546E7A',
-  Machina: '#00ACC1'
 }
 
 const elementLabelMap: Record<ElementCode, string> = {
@@ -60,7 +48,7 @@ const powerLabel = computed(() => {
         size="x-small"
         variant="flat"
         class="text-white"
-        :style="{ backgroundColor: elementColorMap[element] }"
+        :style="{ backgroundColor: CARD_ELEMENT_COLORS[element] }"
       >
         {{ elementLabelMap[element] }}
       </v-chip>

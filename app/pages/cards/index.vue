@@ -8,6 +8,7 @@ import type {
 } from '~~/app/types/ui/cards'
 import ActiveConditionChips from '~~/app/components/molecules/cards/ActiveConditionChips.vue'
 import CardListTable from '~~/app/components/organisms/cards/CardListTable.vue'
+import ResultCountLabel from '~~/app/components/atoms/common/ResultCountLabel.vue'
 import {
   mockActiveSearchConditions,
   mockCardListHeaders,
@@ -44,9 +45,7 @@ const clearConditions = () => {
   <section>
     <ActiveConditionChips :conditions="activeConditions" @clear="clearConditions" />
 
-    <p class="text-subtitle-1 font-weight-bold mb-2" style="color: #3E2723;">
-      検索結果 {{ cardRows.length }}件
-    </p>
+    <ResultCountLabel :count="cardRows.length" />
 
     <CardListTable :headers="headers" :items="cardRows" @row-click="openCardDetail" />
 

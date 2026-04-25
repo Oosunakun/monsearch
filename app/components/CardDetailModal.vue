@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { CardCategory, CardDetail, ElementCode } from '~~/types/card'
+import type { CardDetail, ElementCode } from '~~/types/card'
 import CardMetaChips from '~~/app/components/molecules/cards/CardMetaChips.vue'
 import CardEffectList from '~~/app/components/organisms/cards/CardEffectList.vue'
+import { CARD_CATEGORY_COLORS, CARD_ELEMENT_COLORS } from '~~/app/utils/constants/colors'
 
 const props = withDefaults(
   defineProps<{
@@ -18,39 +19,16 @@ const emit = defineEmits<{
   'update:modelValue': [value: boolean]
 }>()
 
-const categoryColorMap: Record<CardCategory, string> = {
-  Unit: '#5E748A',
-  Spell: '#4F8A56',
-  Item: '#6D4C41',
-  Land: '#A37A1E',
-  Ritual: '#8E24AA',
-  Summoner: '#8E24AA',
-  Token: '#546E7A'
-}
-
-const elementColorMap: Record<ElementCode, string> = {
-  Fire: '#E53935',
-  Water: '#1E88E5',
-  Earth: '#7CB342',
-  Air: '#43A047',
-  Holy: '#FBC02D',
-  Curse: '#8E24AA',
-  Eater: '#6D4C41',
-  Beast: '#EF6C00',
-  Savage: '#546E7A',
-  Machina: '#00ACC1'
-}
-
 const isOpen = computed({
   get: () => props.modelValue,
   set: (value: boolean) => emit('update:modelValue', value)
 })
 
 const modalThemeStyle = computed<Record<string, string>>(() => {
-  const categoryColor = categoryColorMap[props.card.card_category] ?? '#5E748A'
+  const categoryColor = CARD_CATEGORY_COLORS[props.card.card_category]
   const elementColor =
     props.card.elements.length > 0
-      ? elementColorMap[props.card.elements[0] as ElementCode]
+      ? CARD_ELEMENT_COLORS[props.card.elements[0] as ElementCode]
       : categoryColor
 
   return {

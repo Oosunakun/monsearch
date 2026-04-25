@@ -11,6 +11,7 @@ import CardSearchFormRaceType from '~~/app/components/organisms/cards/CardSearch
 import CardSearchFormKeyword from '~~/app/components/organisms/cards/CardSearchFormKeyword.vue'
 import CardSearchResultTable from '~~/app/components/organisms/cards/CardSearchResultTable.vue'
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import ResultCountLabel from '~~/app/components/atoms/common/ResultCountLabel.vue'
 import {
   mockCardSearchResultSourceRows,
   mockSearchCardPoolOptions,
@@ -47,9 +48,7 @@ const runSearch = () => {
 
 <template>
   <section>
-    <h2 class="text-h4 font-weight-bold mb-4" style="color: #3E2723;">
-      詳細検索
-    </h2>
+    <AppSectionHeader title="詳細検索" color="secondary" class="mb-4" />
 
     <v-form class="d-flex flex-column ga-4" @submit.prevent="runSearch">
       <v-expansion-panels multiple variant="accordion">
@@ -94,9 +93,7 @@ const runSearch = () => {
     </v-form>
 
     <AppSectionHeader title="検索結果" class="mt-6 mb-3" />
-    <p class="text-subtitle-1 font-weight-bold mb-2" style="color: #3E2723;">
-      {{ results.length }}件
-    </p>
+    <ResultCountLabel :count="results.length" prefix="" />
 
     <CardSearchResultTable :headers="headers" :items="results" />
   </section>

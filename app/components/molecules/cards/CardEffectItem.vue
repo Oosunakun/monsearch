@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import type { CardEffect, EffectTiming } from '~~/types/card'
+import type { CardEffect } from '~~/types/card'
+import { CARD_EFFECT_TIMING_COLORS } from '~~/app/utils/constants/colors'
 
 defineProps<{
   effect: CardEffect
 }>()
 
-const timingColorMap: Record<EffectTiming, string> = {
-  Battle: 'red',
-  Field: 'blue',
-  Deck: 'amber',
-  Passive: 'teal',
-  Other: 'grey'
-}
 </script>
 
 <template>
@@ -19,7 +13,7 @@ const timingColorMap: Record<EffectTiming, string> = {
     <v-card-text class="py-2">
       <div class="d-flex justify-space-between align-center mb-1">
         <strong class="text-body-2">{{ effect.title }}</strong>
-        <v-chip size="x-small" :color="timingColorMap[effect.timing]" class="text-white">
+        <v-chip size="x-small" :color="CARD_EFFECT_TIMING_COLORS[effect.timing]" class="text-white">
           {{ effect.timing }}
         </v-chip>
       </div>
