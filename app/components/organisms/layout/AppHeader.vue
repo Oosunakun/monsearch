@@ -4,6 +4,7 @@ import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxW
 import MobileNavList from '~~/app/components/molecules/navigation/MobileNavList.vue'
 import NavButtonGroup from '~~/app/components/molecules/navigation/NavButtonGroup.vue'
 import QuickSearchBar from '~~/app/components/molecules/search/QuickSearchBar.vue'
+import { UI_COLORS } from '~~/app/utils/constants/colors'
 
 const props = defineProps<{
   drawer: boolean
@@ -38,7 +39,7 @@ const activePath = computed(() => route.path)
       <div class="d-flex flex-column flex-lg-row align-lg-center justify-lg-space-between ga-3">
         <div class="d-flex align-center justify-space-between ga-2">
           <div>
-            <p class="text-h4 font-weight-bold mb-1 header-site-title">
+            <p class="text-h4 font-weight-bold mb-1 header-site-title" :style="{ color: UI_COLORS.HEADING_BROWN }">
               モンさーち！
             </p>
             <p class="text-caption">
@@ -64,7 +65,6 @@ const activePath = computed(() => route.path)
 
 <style scoped>
 .header-site-title {
-  color: #3e2723;
   line-height: 1.1;
 }
 

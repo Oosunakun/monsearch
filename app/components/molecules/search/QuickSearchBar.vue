@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
+import { UI_COLORS } from '~~/app/utils/constants/colors'
 
 const props = defineProps<{
   modelValue: QuickSearchState
@@ -21,7 +22,14 @@ const updateField = <K extends keyof QuickSearchState>(key: K, value: QuickSearc
 </script>
 
 <template>
-  <v-form class="d-flex flex-wrap align-center ga-2 header-search-form" @submit.prevent="emit('submit')">
+  <v-form
+    class="d-flex flex-wrap align-center ga-2 header-search-form"
+    :style="{
+      '--quick-search-text-color': UI_COLORS.HEADING_BROWN,
+      '--quick-search-active-text-color': UI_COLORS.WHITE
+    }"
+    @submit.prevent="emit('submit')"
+  >
     <v-select
       :model-value="modelValue.selectedCardPool"
       :items="cardPools"
@@ -96,12 +104,12 @@ const updateField = <K extends keyof QuickSearchState>(key: K, value: QuickSearc
 .search-type-toggle :deep(.v-btn) {
   text-transform: none;
   min-width: 74px;
-  color: #3e2723;
+  color: var(--quick-search-text-color);
 }
 
 .search-type-toggle :deep(.v-btn--active) {
   background: rgb(var(--v-theme-primary));
-  color: #ffffff;
+  color: var(--quick-search-active-text-color);
 }
 
 @media (max-width: 959px) {

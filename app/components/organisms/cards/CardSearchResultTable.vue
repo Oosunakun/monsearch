@@ -2,6 +2,7 @@
 import type { SearchResultHeader, SearchResultRow } from '~~/app/types/ui/search'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
+import { UI_COLORS } from '~~/app/utils/constants/colors'
 
 defineProps<{
   headers: SearchResultHeader[]
@@ -11,7 +12,7 @@ defineProps<{
 
 <template>
   <v-card variant="outlined">
-    <StickyTableHeaderRow theme="primary" text-color="#ffffff">
+    <StickyTableHeaderRow :text-color="UI_COLORS.WHITE" :header-background="UI_COLORS.PRIMARY">
       <v-data-table
         :headers="headers"
         :items="items"

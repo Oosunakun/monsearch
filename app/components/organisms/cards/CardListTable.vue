@@ -2,6 +2,7 @@
 import type { CardListHeader, CardListRow } from '~~/app/types/ui/cards'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
+import { UI_COLORS } from '~~/app/utils/constants/colors'
 
 defineProps<{
   headers: CardListHeader[]
@@ -16,7 +17,7 @@ const emit = defineEmits<{
 
 <template>
   <v-card variant="outlined">
-    <StickyTableHeaderRow theme="primary" text-color="#ffffff">
+    <StickyTableHeaderRow :text-color="UI_COLORS.WHITE" :header-background="UI_COLORS.PRIMARY">
       <v-data-table
         :headers="headers"
         :items="items"

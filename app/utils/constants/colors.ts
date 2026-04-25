@@ -32,6 +32,10 @@ export const CARD_EFFECT_TIMING_COLORS: Record<EffectTiming, string> = {
 }
 
 export const UI_COLORS = {
+  PRIMARY: 'rgb(var(--v-theme-primary))',
+  SECONDARY: 'rgb(var(--v-theme-secondary))',
+  WHITE: '#ffffff',
+  HEADING_BROWN: '#3E2723',
   headingBrown: '#3E2723',
   tableBorder: '#eef3e4',
   tableZebra: '#f8fbf1',

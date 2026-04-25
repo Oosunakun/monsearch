@@ -2,6 +2,7 @@
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
+import { UI_COLORS } from '~~/app/utils/constants/colors'
 import {
   mockRuleConstructionNotes,
   mockRuleReplacementHeaders,
@@ -63,7 +64,7 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
 
     <v-card variant="outlined">
       <AppSectionHeader title="カードテキストの置き換え" color="accent" text-class="text-white" />
-      <StickyTableHeaderRow theme="secondary" text-color="#3e2723">
+      <StickyTableHeaderRow :text-color="UI_COLORS.HEADING_BROWN" :header-background="UI_COLORS.SECONDARY">
         <v-data-table
           :headers="replacementHeaders"
           :items="replacementRows"

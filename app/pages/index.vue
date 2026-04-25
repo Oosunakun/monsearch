@@ -3,6 +3,7 @@ import { mockExpansionHeaders, mockExpansionSources } from '~~/app/utils/mockDat
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
+import { UI_COLORS } from '~~/app/utils/constants/colors'
 
 type ExpansionBase = {
   id: string
@@ -62,7 +63,7 @@ const tableRows = computed<ExpansionRow[]>(() => {
     <AppSectionHeader title="エクスパンション一覧" color="secondary" class="mb-4" />
 
     <v-card variant="outlined">
-      <StickyTableHeaderRow theme="secondary" text-color="#3e2723">
+      <StickyTableHeaderRow :text-color="UI_COLORS.HEADING_BROWN" :header-background="UI_COLORS.SECONDARY">
         <v-data-table
           :headers="headers"
           :items="tableRows"

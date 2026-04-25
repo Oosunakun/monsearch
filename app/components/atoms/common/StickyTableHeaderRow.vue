@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import { UI_COLORS } from '~~/app/utils/constants/colors'
+
 withDefaults(
   defineProps<{
     theme?: 'primary' | 'secondary'
+    headerBackground?: string
     textColor?: string
   }>(),
   {
     theme: 'secondary',
+    headerBackground: '',
     textColor: ''
   }
 )
@@ -15,7 +19,10 @@ withDefaults(
   <div
     class="sticky-table-header-row"
     :class="`sticky-table-header-row--${theme}`"
-    :style="textColor ? { '--sticky-header-text-color': textColor } : undefined"
+    :style="{
+      '--sticky-header-bg': headerBackground || (theme === 'primary' ? UI_COLORS.PRIMARY : UI_COLORS.SECONDARY),
+      '--sticky-header-text-color': textColor || 'inherit'
+    }"
   >
     <slot />
   </div>
@@ -27,14 +34,7 @@ withDefaults(
   top: 0;
   z-index: 2;
   font-weight: 700;
-  color: var(--sticky-header-text-color, inherit);
-}
-
-.sticky-table-header-row--primary :deep(thead th) {
-  background: rgb(var(--v-theme-primary));
-}
-
-.sticky-table-header-row--secondary :deep(thead th) {
-  background: rgb(var(--v-theme-secondary));
+  background: var(--sticky-header-bg);
+  color: var(--sticky-header-text-color);
 }
 </style>
