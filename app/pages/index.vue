@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { mockExpansionHeaders, mockExpansionSources } from '~~/app/utils/mockData'
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 
 type ExpansionBase = {
@@ -61,54 +62,47 @@ const tableRows = computed<ExpansionRow[]>(() => {
     <AppSectionHeader title="エクスパンション一覧" color="secondary" class="mb-4" />
 
     <v-card variant="outlined">
-      <v-data-table
-        :headers="headers"
-        :items="tableRows"
-        item-value="id"
-        fixed-header
-        height="560"
-        density="comfortable"
-        hide-default-footer
-        items-per-page="-1"
-        class="expansion-table"
-      >
-        <template #item="{ item }">
-          <tr v-if="item.kind === 'section'" class="expansion-table__section-row">
-            <td :colspan="headers.length" class="pa-0">
-              <v-sheet color="accent" class="px-3 py-2 text-white font-weight-bold">
-                {{ item.sectionTitle }}
-              </v-sheet>
-            </td>
-          </tr>
-          <ZebraTableRow
-            v-else
-            :zebra="item.zebra"
-            class="expansion-table__item-row"
-          >
-            <td class="px-3 py-2">{{ item.setCode }}</td>
-            <td class="px-3 py-2">
-              <span class="text-accent">{{ item.title }}</span>
-            </td>
-            <td class="px-3 py-2">{{ item.block }}</td>
-            <td class="px-3 py-2">{{ item.note }}</td>
-            <td class="px-3 py-2">{{ item.releaseDate }}</td>
-          </ZebraTableRow>
-        </template>
-      </v-data-table>
+      <StickyTableHeaderRow theme="secondary" text-color="#3e2723">
+        <v-data-table
+          :headers="headers"
+          :items="tableRows"
+          item-value="id"
+          fixed-header
+          height="560"
+          density="comfortable"
+          hide-default-footer
+          items-per-page="-1"
+          class="expansion-table"
+        >
+          <template #item="{ item }">
+            <tr v-if="item.kind === 'section'" class="expansion-table__section-row">
+              <td :colspan="headers.length" class="pa-0">
+                <v-sheet color="accent" class="px-3 py-2 text-white font-weight-bold">
+                  {{ item.sectionTitle }}
+                </v-sheet>
+              </td>
+            </tr>
+            <ZebraTableRow
+              v-else
+              :zebra="item.zebra"
+              class="expansion-table__item-row"
+            >
+              <td class="px-3 py-2">{{ item.setCode }}</td>
+              <td class="px-3 py-2">
+                <span class="text-accent">{{ item.title }}</span>
+              </td>
+              <td class="px-3 py-2">{{ item.block }}</td>
+              <td class="px-3 py-2">{{ item.note }}</td>
+              <td class="px-3 py-2">{{ item.releaseDate }}</td>
+            </ZebraTableRow>
+          </template>
+        </v-data-table>
+      </StickyTableHeaderRow>
     </v-card>
   </section>
 </template>
 
 <style scoped>
-.expansion-table :deep(thead th) {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: rgb(var(--v-theme-secondary));
-  color: #3e2723;
-  font-weight: 700;
-}
-
 .expansion-table__section-row td {
   border-bottom: none;
 }

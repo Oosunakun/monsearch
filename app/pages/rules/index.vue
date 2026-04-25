@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import {
   mockRuleConstructionNotes,
@@ -62,25 +63,27 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
 
     <v-card variant="outlined">
       <AppSectionHeader title="カードテキストの置き換え" color="accent" text-class="text-white" />
-      <v-data-table
-        :headers="replacementHeaders"
-        :items="replacementRows"
-        item-value="id"
-        fixed-header
-        height="320"
-        density="comfortable"
-        hide-default-footer
-        items-per-page="-1"
-        class="rules-table"
-      >
-        <template #item="{ item }">
-          <ZebraTableRow :zebra="item.zebra">
-            <td class="px-3 py-2">{{ item.beforeText }}</td>
-            <td class="px-3 py-2">{{ item.afterText }}</td>
-            <td class="px-3 py-2">{{ item.note }}</td>
-          </ZebraTableRow>
-        </template>
-      </v-data-table>
+      <StickyTableHeaderRow theme="secondary" text-color="#3e2723">
+        <v-data-table
+          :headers="replacementHeaders"
+          :items="replacementRows"
+          item-value="id"
+          fixed-header
+          height="320"
+          density="comfortable"
+          hide-default-footer
+          items-per-page="-1"
+          class="rules-table"
+        >
+          <template #item="{ item }">
+            <ZebraTableRow :zebra="item.zebra">
+              <td class="px-3 py-2">{{ item.beforeText }}</td>
+              <td class="px-3 py-2">{{ item.afterText }}</td>
+              <td class="px-3 py-2">{{ item.note }}</td>
+            </ZebraTableRow>
+          </template>
+        </v-data-table>
+      </StickyTableHeaderRow>
     </v-card>
 
     <v-card variant="outlined">
@@ -101,14 +104,3 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
   </section>
 </template>
 
-<style scoped>
-.rules-table :deep(thead th) {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: rgb(var(--v-theme-secondary));
-  color: #3e2723;
-  font-weight: 700;
-}
-
-</style>

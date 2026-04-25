@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavItem, QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
+import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
 import MobileNavList from '~~/app/components/molecules/navigation/MobileNavList.vue'
 import NavButtonGroup from '~~/app/components/molecules/navigation/NavButtonGroup.vue'
 import QuickSearchBar from '~~/app/components/molecules/search/QuickSearchBar.vue'
@@ -33,7 +34,7 @@ const activePath = computed(() => route.path)
   />
 
   <v-app-bar color="surface" border="b" elevation="0" class="header-app-bar">
-    <v-container class="py-3" style="max-width: 1360px;">
+    <ContentMaxWidthContainer class="py-3">
       <div class="d-flex flex-column flex-lg-row align-lg-center justify-lg-space-between ga-3">
         <div class="d-flex align-center justify-space-between ga-2">
           <div>
@@ -57,7 +58,7 @@ const activePath = computed(() => route.path)
       </div>
 
       <NavButtonGroup :items="navItems" :active-path="activePath" />
-    </v-container>
+    </ContentMaxWidthContainer>
   </v-app-bar>
 </template>
 

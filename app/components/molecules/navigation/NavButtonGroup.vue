@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavItem } from '~~/app/types/ui/layout'
+import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
 
 defineProps<{
   items: NavItem[]
@@ -9,7 +10,7 @@ defineProps<{
 
 <template>
   <v-sheet class="header-nav-wrap d-none d-lg-block" border="b">
-    <v-container class="py-2" style="max-width: 1360px;">
+    <ContentMaxWidthContainer class="py-2">
       <div class="d-flex flex-wrap ga-2">
         <v-btn
           v-for="item in items"
@@ -23,7 +24,7 @@ defineProps<{
           {{ item.label }}
         </v-btn>
       </div>
-    </v-container>
+    </ContentMaxWidthContainer>
   </v-sheet>
 </template>
 

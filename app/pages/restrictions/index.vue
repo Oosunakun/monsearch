@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import {
   mockAvailableExpansions,
@@ -92,64 +93,56 @@ const limitedRows = computed<RestrictionRow[]>(() =>
 
     <v-card variant="outlined">
       <AppSectionHeader title="禁止カード" color="primary" text-class="text-white" />
-      <v-data-table
-        :headers="headers"
-        :items="bannedRows"
-        item-value="id"
-        fixed-header
-        height="340"
-        density="comfortable"
-        hide-default-footer
-        items-per-page="-1"
-        class="restriction-table"
-      >
-        <template #item="{ item }">
-          <ZebraTableRow :zebra="item.zebra">
-            <td class="px-3 py-2">{{ item.setCode }}</td>
-            <td class="px-3 py-2"><span class="text-accent">{{ item.cardName }}</span></td>
-            <td class="px-3 py-2">{{ item.category }}</td>
-            <td class="px-3 py-2">{{ item.restrictionType }}</td>
-            <td class="px-3 py-2">{{ item.period }}</td>
-          </ZebraTableRow>
-        </template>
-      </v-data-table>
+      <StickyTableHeaderRow theme="secondary" text-color="#3e2723">
+        <v-data-table
+          :headers="headers"
+          :items="bannedRows"
+          item-value="id"
+          fixed-header
+          height="340"
+          density="comfortable"
+          hide-default-footer
+          items-per-page="-1"
+          class="restriction-table"
+        >
+          <template #item="{ item }">
+            <ZebraTableRow :zebra="item.zebra">
+              <td class="px-3 py-2">{{ item.setCode }}</td>
+              <td class="px-3 py-2"><span class="text-accent">{{ item.cardName }}</span></td>
+              <td class="px-3 py-2">{{ item.category }}</td>
+              <td class="px-3 py-2">{{ item.restrictionType }}</td>
+              <td class="px-3 py-2">{{ item.period }}</td>
+            </ZebraTableRow>
+          </template>
+        </v-data-table>
+      </StickyTableHeaderRow>
     </v-card>
 
     <v-card variant="outlined">
       <AppSectionHeader title="制限カード" color="primary" text-class="text-white" />
-      <v-data-table
-        :headers="headers"
-        :items="limitedRows"
-        item-value="id"
-        fixed-header
-        height="420"
-        density="comfortable"
-        hide-default-footer
-        items-per-page="-1"
-        class="restriction-table"
-      >
-        <template #item="{ item }">
-          <ZebraTableRow :zebra="item.zebra">
-            <td class="px-3 py-2">{{ item.setCode }}</td>
-            <td class="px-3 py-2"><span class="text-accent">{{ item.cardName }}</span></td>
-            <td class="px-3 py-2">{{ item.category }}</td>
-            <td class="px-3 py-2">{{ item.restrictionType }}</td>
-            <td class="px-3 py-2">{{ item.period }}</td>
-          </ZebraTableRow>
-        </template>
-      </v-data-table>
+      <StickyTableHeaderRow theme="secondary" text-color="#3e2723">
+        <v-data-table
+          :headers="headers"
+          :items="limitedRows"
+          item-value="id"
+          fixed-header
+          height="420"
+          density="comfortable"
+          hide-default-footer
+          items-per-page="-1"
+          class="restriction-table"
+        >
+          <template #item="{ item }">
+            <ZebraTableRow :zebra="item.zebra">
+              <td class="px-3 py-2">{{ item.setCode }}</td>
+              <td class="px-3 py-2"><span class="text-accent">{{ item.cardName }}</span></td>
+              <td class="px-3 py-2">{{ item.category }}</td>
+              <td class="px-3 py-2">{{ item.restrictionType }}</td>
+              <td class="px-3 py-2">{{ item.period }}</td>
+            </ZebraTableRow>
+          </template>
+        </v-data-table>
+      </StickyTableHeaderRow>
     </v-card>
   </section>
 </template>
-
-<style scoped>
-.restriction-table :deep(thead th) {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: rgb(var(--v-theme-secondary));
-  color: #3e2723;
-  font-weight: 700;
-}
-
-</style>

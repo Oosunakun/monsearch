@@ -2,6 +2,7 @@
 import type { NavItem } from '~~/app/types/ui/layout'
 import AppFooter from '~~/app/components/organisms/layout/AppFooter.vue'
 import AppHeader from '~~/app/components/organisms/layout/AppHeader.vue'
+import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
 
 const router = useRouter()
 const drawer = ref(false)
@@ -37,9 +38,9 @@ const moveTo = async (path: string) => {
     />
 
     <v-main class="bg-background">
-      <v-container class="py-5" style="max-width: 1360px;">
+      <ContentMaxWidthContainer class="py-5">
         <slot />
-      </v-container>
+      </ContentMaxWidthContainer>
     </v-main>
 
     <AppFooter />
