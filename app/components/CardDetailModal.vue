@@ -2,6 +2,9 @@
 import {
   isItemCard,
   isLandCard,
+  isRitualCard,
+  isSpellCard,
+  isSummonerCard,
   isTokenCard,
   isUnitCard
 } from '~~/types/card'
@@ -56,6 +59,10 @@ const isUnit = computed(() => isUnitCard(props.card))
 const isLand = computed(() => isLandCard(props.card))
 const isToken = computed(() => isTokenCard(props.card))
 const isItem = computed(() => isItemCard(props.card))
+const spellCard = computed(() => (isSpellCard(props.card) ? props.card : null))
+const ritualCard = computed(() => (isRitualCard(props.card) ? props.card : null))
+const summonerCard = computed(() => (isSummonerCard(props.card) ? props.card : null))
+const landCard = computed(() => (isLandCard(props.card) ? props.card : null))
 </script>
 
 <template>
@@ -104,6 +111,38 @@ const isItem = computed(() => isItemCard(props.card))
             <p v-if="isUnit || isToken">移動タイプ: {{ card.move_type ?? '-' }}</p>
             <p v-if="isLand">地形カテゴリ: {{ card.land_category ?? '-' }}</p>
             <p v-if="isItem">アイテム分類: {{ card.item_category ?? '-' }}</p>
+          </SectionCardShell>
+
+          <SectionCardShell content-class="text-caption">
+            <template v-if="spellCard">
+              <p>スペルタイプ: {{ spellCard.spell_type ?? '-' }}</p>
+              <p>出現頻度: {{ spellCard.frequency ?? '-' }}</p>
+            </template>
+
+            <template v-else-if="summonerCard">
+              <p>召喚術師クラス: {{ summonerCard.summoner_class ?? '-' }}</p>
+              <p>初期手札: {{ summonerCard.starting_hand ?? '-' }}</p>
+            </template>
+
+            <template v-else-if="landCard">
+              <p>地形リミット: {{ landCard.limit ?? '-' }}</p>
+              <p>地形分類: {{ landCard.land_category ?? '-' }}</p>
+            </template>
+
+            <template v-else-if="ritualCard">
+              <p>儀式対象: {{ ritualCard.ritual_target ?? '-' }}</p>
+              <p>儀式コスト: {{ ritualCard.ritual_cost ?? '-' }}</p>
+            </template>
+
+            <template v-else-if="isItem">
+              <p>攻撃補正: {{ card.attack ?? '-' }}</p>
+              <p>防御補正: {{ card.defense ?? '-' }}</p>
+            </template>
+
+            <template v-else-if="isUnit || isToken">
+              <p>レベル: {{ card.level ?? '-' }}</p>
+              <p>攻撃力: {{ card.attack ?? '-' }} / 防御力: {{ card.defense ?? '-' }}</p>
+            </template>
           </SectionCardShell>
 
           <CardEffectList :card="card" />
