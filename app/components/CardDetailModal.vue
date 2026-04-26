@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import {
+  isItemCard,
+  isLandCard,
+  isTokenCard,
+  isUnitCard
+} from '~~/types/card'
 import type { CardDetail, ElementCode } from '~~/types/card'
 import CardMetaChips from '~~/app/components/molecules/cards/CardMetaChips.vue'
 import CardEffectList from '~~/app/components/organisms/cards/CardEffectList.vue'
@@ -31,8 +37,8 @@ const isOpen = computed({
 const modalThemeStyle = computed<Record<string, string>>(() => {
   const categoryColor = CARD_CATEGORY_COLORS[props.card.card_category]
   const elementColor =
-    props.card.elements.length > 0
-      ? CARD_ELEMENT_COLORS[props.card.elements[0] as ElementCode]
+    props.card.element.length > 0
+      ? CARD_ELEMENT_COLORS[props.card.element[0] as ElementCode]
       : categoryColor
 
   return {
@@ -46,9 +52,10 @@ const close = () => {
   isOpen.value = false
 }
 
-const isUnit = computed(() => props.card.card_category === 'Unit')
-const isLand = computed(() => props.card.card_category === 'Land')
-const isToken = computed(() => props.card.card_category === 'Token')
+const isUnit = computed(() => isUnitCard(props.card))
+const isLand = computed(() => isLandCard(props.card))
+const isToken = computed(() => isTokenCard(props.card))
+const isItem = computed(() => isItemCard(props.card))
 </script>
 
 <template>
@@ -92,23 +99,18 @@ const isToken = computed(() => props.card.card_category === 'Token')
           </v-responsive>
 
           <SectionCardShell content-class="text-caption">
-            <p>種族: {{ card.races.length > 0 ? card.races.join(' / ') : '-' }}</p>
-            <p>スペルスロット: {{ card.spell_slots.length > 0 ? card.spell_slots.join(' ') : '-' }}</p>
+            <p>種族: {{ card.race && card.race.length > 0 ? card.race.join(' / ') : '-' }}</p>
+            <p>タイプ: {{ card.type && card.type.length > 0 ? card.type.join(' / ') : '-' }}</p>
             <p v-if="isUnit || isToken">移動タイプ: {{ card.move_type ?? '-' }}</p>
-            <p v-if="isLand">地形カテゴリ: {{ card.races.length > 0 ? card.races.join(' / ') : '-' }}</p>
+            <p v-if="isLand">地形カテゴリ: {{ card.land_category ?? '-' }}</p>
+            <p v-if="isItem">アイテム分類: {{ card.item_category ?? '-' }}</p>
           </SectionCardShell>
 
           <CardEffectList :card="card" />
 
-          <SectionCardShell v-if="card.flavor_text" content-class="py-2">
-            <p class="text-caption font-italic text-grey-darken-1">
-              {{ card.flavor_text }}
-            </p>
-          </SectionCardShell>
-
           <SectionCardShell :margin-bottom="false" content-class="text-caption py-2">
-            <p>レア: {{ card.rarity }} / 参照: {{ card.reference_label }}</p>
-            <p>イラスト: {{ card.illustrator }} / 収録: {{ card.product_name }}</p>
+            <p>レア: {{ card.rarity }} / 参照: {{ card.reference_label ?? card.product_note }}</p>
+            <p>イラスト: {{ card.illustrator ?? '-' }} / 収録: {{ card.product_name ?? '-' }}</p>
           </SectionCardShell>
         </div>
       </template>

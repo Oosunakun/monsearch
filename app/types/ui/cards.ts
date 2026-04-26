@@ -9,12 +9,12 @@ export type CardListSourceRow = {
   id: string
   setCode: string
   cardName: string
-  category: string
-  race: string
-  element: string
-  level: number
-  attack: number
-  defense: number
+  category: CardCategory
+  race?: string
+  element?: string
+  level?: number
+  attack?: number
+  defense?: number
   rarity: string
 }
 

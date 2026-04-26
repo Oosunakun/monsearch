@@ -6,9 +6,13 @@ import type {
 } from '~~/app/types/ui/search'
 
 export const mockSearchCategoryOptions: SelectOption[] = [
-  { title: 'ユニット', value: 'unit' },
-  { title: 'スペル', value: 'spell' },
-  { title: '地形', value: 'terrain' }
+  { title: 'ユニット', value: 'Unit' },
+  { title: '戦闘スペル', value: 'Spell' },
+  { title: 'アイテム', value: 'Item' },
+  { title: '儀式スペル', value: 'Ritual' },
+  { title: '地形', value: 'Land' },
+  { title: '召喚術師', value: 'Summoner' },
+  { title: 'その他', value: 'Token' }
 ]
 
 export const mockSearchRarityOptions: SelectOption[] = [
@@ -35,16 +39,16 @@ export const mockSearchMoveTypeOptions: SelectOption[] = [
 ]
 
 export const mockSearchElementOptions: ElementOption[] = [
-  { label: '火', value: 'fire', color: 'red' },
-  { label: '水', value: 'water', color: 'blue' },
-  { label: '土', value: 'earth', color: 'light-green' },
-  { label: '風', value: 'wind', color: 'green' },
-  { label: '聖', value: 'holy', color: 'amber' },
-  { label: '魔', value: 'dark', color: 'purple' },
-  { label: '喰', value: 'eat', color: 'brown' },
-  { label: '獣', value: 'beast', color: 'deep-orange' },
-  { label: '荒', value: 'wild', color: 'blue-grey' },
-  { label: '機', value: 'machine', color: 'cyan' }
+  { label: '火', value: 'Fire', color: 'red' },
+  { label: '水', value: 'Water', color: 'blue' },
+  { label: '土', value: 'Earth', color: 'light-green' },
+  { label: '風', value: 'Air', color: 'green' },
+  { label: '聖', value: 'Holy', color: 'amber' },
+  { label: '魔', value: 'Curse', color: 'purple' },
+  { label: '喰', value: 'Eater', color: 'brown' },
+  { label: '獣', value: 'Beast', color: 'deep-orange' },
+  { label: '荒', value: 'Savage', color: 'blue-grey' },
+  { label: '機', value: 'Machina', color: 'cyan' }
 ]
 
 export const mockSearchResultHeaders: SearchResultHeader[] = [
@@ -60,9 +64,11 @@ export const mockSearchResultHeaders: SearchResultHeader[] = [
 ]
 
 export const mockCardSearchResultSourceRows: SearchResultSource[] = [
-  { id: '1', setCode: '6D', cardName: '蒼穹の古龍', category: 'ユニット', race: 'ドラゴン', element: '火', level: 6, attack: 7, defense: 6, rarity: 'S' },
-  { id: '2', setCode: '6D', cardName: '烈風のドレイク', category: 'ユニット', race: 'ドラゴン', element: '風', level: 5, attack: 6, defense: 4, rarity: 'R' },
-  { id: '3', setCode: '6C', cardName: '黒曜のギガンテス', category: 'ユニット', race: 'ジャイアント', element: '土', level: 4, attack: 5, defense: 6, rarity: 'UC' },
-  { id: '4', setCode: '5D', cardName: '聖盾のパラディン', category: 'ユニット', race: 'ヒューマン', element: '聖', level: 5, attack: 4, defense: 6, rarity: 'UC' },
-  { id: '5', setCode: '4B', cardName: '焔刃のサラマンダー', category: 'ユニット', race: 'サラマンダー', element: '火', level: 4, attack: 5, defense: 3, rarity: 'R' }
+  { id: 'unit-001', setCode: '6D', cardName: '蒼穹の古龍', category: 'Unit', race: 'ドラゴン', element: '火/風', level: 6, attack: 7, defense: 6, rarity: 'S' },
+  { id: 'spell-001', setCode: '6D', cardName: 'フレイム・ストライク', category: 'Spell', type: 'ダメージ', element: '火', rarity: 'R' },
+  { id: 'item-001', setCode: '6C', cardName: '剛力の戦斧', category: 'Item', itemCategory: '武器', race: 'ウォリアー', attack: 3, defense: 1, rarity: 'UC' },
+  { id: 'ritual-001', setCode: '6C', cardName: '契約召喚の儀', category: 'Ritual', type: '儀式', rarity: 'R' },
+  { id: 'land-001', setCode: '6B', cardName: '業火の山脈', category: 'Land', landCategory: '火山', level: 6, rarity: 'C' },
+  { id: 'summoner-001', setCode: '6B', cardName: '赤焔の召喚術師アレク', category: 'Summoner', type: '召喚術師', rarity: 'S' },
+  { id: 'token-001', setCode: 'TK', cardName: '炎の使い魔トークン', category: 'Token', race: '使い魔', element: '火', level: 2, attack: 2, defense: 2, rarity: 'Token' }
 ]

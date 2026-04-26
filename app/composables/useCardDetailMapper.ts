@@ -1,45 +1,35 @@
-import type { CardDetail, ElementCode } from '~~/types/card'
+import type { CardDetail, CardCategory } from '~~/types/card'
 import type { CardListRow } from '~~/app/types/ui/cards'
+import { mockCardDetails } from '~~/app/utils/mockData'
 
-const elementMap: Record<string, ElementCode> = {
-  火: 'Fire',
-  水: 'Water',
-  土: 'Earth',
-  風: 'Air',
-  聖: 'Holy',
-  魔: 'Curse',
-  喰: 'Eater',
-  獣: 'Beast',
-  荒: 'Savage',
-  機: 'Machina'
+const categoryMap: Record<CardListRow['category'], CardCategory> = {
+  Unit: 'Unit',
+  Spell: 'Spell',
+  Item: 'Item',
+  Ritual: 'Ritual',
+  Land: 'Land',
+  Summoner: 'Summoner',
+  Token: 'Token'
 }
 
 export const useCardDetailMapper = () => {
-  const mapCardRowToDetail = (row: CardListRow): CardDetail => ({
-    card_id: row.id,
-    name: row.cardName,
-    card_category: 'Unit',
-    elements: [elementMap[row.element] ?? 'Fire'],
-    level: row.level,
-    attack: row.attack,
-    defense: row.defense,
-    move_type: '歩行',
-    races: [row.race],
-    spell_slots: ['*'],
-    effects: [
-      {
-        title: 'サンプル能力',
-        timing: 'Battle',
-        condition: 'モック条件',
-        text: `${row.cardName}のダミー効果テキストです。`
-      }
-    ],
-    flavor_text: 'モック表示用のフレーバーテキストです。',
-    illustrator: 'ダミー',
-    product_name: '悠久のハルシオン',
-    rarity: row.rarity,
-    reference_label: `${row.setCode}-${row.id.padStart(3, '0')}`
-  })
+  const mapCardRowToDetail = (row: CardListRow): CardDetail => {
+    const fromMock = mockCardDetails.find(card => card.id === row.id)
+    if (fromMock) {
+      return fromMock
+    }
+
+    return {
+      id: row.id,
+      name: row.cardName,
+      card_category: categoryMap[row.category] ?? 'Token',
+      rarity: row.rarity,
+      element: [],
+      product_note: `${row.setCode}-${row.id}`,
+      type: [],
+      effects: [{ category: 'none', text: `${row.cardName} のダミー効果です。` }]
+    }
+  }
 
   return {
     mapCardRowToDetail

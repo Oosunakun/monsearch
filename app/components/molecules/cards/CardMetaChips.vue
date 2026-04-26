@@ -8,10 +8,10 @@ const props = defineProps<{
 
 const categoryLabelMap: Record<CardCategory, string> = {
   Unit: 'ユニット',
-  Spell: 'スペル',
+  Spell: '戦闘スペル',
   Item: 'アイテム',
   Land: '地形',
-  Ritual: '召喚術師',
+  Ritual: '儀式スペル',
   Summoner: '召喚術師',
   Token: 'トークン'
 }
@@ -43,14 +43,14 @@ const powerLabel = computed(() => {
   <div class="d-flex align-start justify-space-between ga-2 flex-wrap">
     <div class="d-flex flex-wrap ga-1">
       <v-chip
-        v-for="element in card.elements"
+        v-for="element in card.element"
         :key="element"
         size="x-small"
         variant="flat"
         class="text-white"
         :style="{ backgroundColor: CARD_ELEMENT_COLORS[element] }"
       >
-        {{ elementLabelMap[element] }}
+        {{ elementLabelMap[element] ?? element }}
       </v-chip>
       <v-chip
         v-if="powerLabel"

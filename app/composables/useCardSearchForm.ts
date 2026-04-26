@@ -8,10 +8,12 @@ import type {
 const createInitialState = (): CardSearchFormState => ({
   basic: {
     cardName: '',
-    selectedCategory: 'unit',
+    selectedCategory: 'Unit',
     selectedRarity: 'S',
     selectedCardPool: 'open',
-    selectedSet: '6D'
+    selectedSet: '6D',
+    selectedItemCategory: '',
+    selectedLandCategory: ''
   },
   unit: {
     levelFrom: 1,
@@ -21,11 +23,13 @@ const createInitialState = (): CardSearchFormState => ({
     defenseFrom: 1,
     defenseTo: 10,
     selectedMoveType: 'flying',
-    selectedElements: []
+    selectedElements: [],
+    selectedSpecific: ''
   },
   raceType: {
     raceKeyword: '',
-    cardTypeKeyword: ''
+    cardTypeKeyword: '',
+    selectedType: ''
   },
   keyword: {
     keyword: ''
@@ -53,12 +57,16 @@ export const useCardSearchForm = () => {
       defense_from: formState.value.unit.defenseFrom,
       defense_to: formState.value.unit.defenseTo,
       move_type_code: formState.value.unit.selectedMoveType,
-      element_codes: formState.value.unit.selectedElements
+      element_codes: formState.value.unit.selectedElements,
+      specific_code: formState.value.unit.selectedSpecific
     },
     race_type: {
       race_keyword: formState.value.raceType.raceKeyword.trim(),
-      card_type_keyword: formState.value.raceType.cardTypeKeyword.trim()
+      card_type_keyword: formState.value.raceType.cardTypeKeyword.trim(),
+      type_keyword: formState.value.raceType.selectedType.trim()
     },
+    item_category_code: formState.value.basic.selectedItemCategory,
+    land_category_code: formState.value.basic.selectedLandCategory,
     keyword: formState.value.keyword.keyword.trim()
   })
 

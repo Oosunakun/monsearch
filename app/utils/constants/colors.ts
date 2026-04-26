@@ -1,4 +1,4 @@
-import type { CardCategory, EffectTiming, ElementCode } from '~~/types/card'
+import type { CardCategory, ElementCode } from '~~/types/card'
 
 export const CARD_CATEGORY_COLORS: Record<CardCategory, string> = {
   Unit: '#5E748A',
@@ -23,7 +23,7 @@ export const CARD_ELEMENT_COLORS: Record<ElementCode, string> = {
   Machina: '#00ACC1'
 }
 
-export const CARD_EFFECT_TIMING_COLORS: Record<EffectTiming, string> = {
+export const CARD_EFFECT_TIMING_COLORS: Record<string, string> = {
   Battle: 'red',
   Field: 'blue',
   Deck: 'amber',

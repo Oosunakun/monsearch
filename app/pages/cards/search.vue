@@ -57,8 +57,12 @@ const createActiveConditionChips = (payload: ReturnType<typeof toSearchRequestDt
   if (payload.set_code) chips.push(`セット: ${payload.set_code}`)
   if (payload.unit.move_type_code) chips.push(`移動タイプ: ${payload.unit.move_type_code}`)
   if (payload.unit.element_codes.length > 0) chips.push(`属性: ${payload.unit.element_codes.join(', ')}`)
+  if (payload.item_category_code) chips.push(`アイテム分類: ${payload.item_category_code}`)
+  if (payload.land_category_code) chips.push(`地形分類: ${payload.land_category_code}`)
+  if (payload.unit.specific_code) chips.push(`特殊条件: ${payload.unit.specific_code}`)
   if (payload.race_type.race_keyword) chips.push(`種族: ${payload.race_type.race_keyword}`)
   if (payload.race_type.card_type_keyword) chips.push(`カードタイプ: ${payload.race_type.card_type_keyword}`)
+  if (payload.race_type.type_keyword) chips.push(`タイプ: ${payload.race_type.type_keyword}`)
   if (payload.keyword) chips.push(`キーワード: ${payload.keyword}`)
 
   return chips
