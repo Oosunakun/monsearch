@@ -2,6 +2,7 @@
 import type { ElementOption, SelectOption, UnitSearchForm } from '~~/app/types/ui/search'
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 import ElementChipToggle from '~~/app/components/atoms/search/ElementChipToggle.vue'
+import type { ElementCode } from '~~/types/card'
 
 const props = defineProps<{
   modelValue: UnitSearchForm
@@ -31,11 +32,11 @@ const updateField = <K extends keyof UnitSearchForm>(key: K, value: UnitSearchFo
 
 const toggleElement = (value: string) => {
   const selected = props.modelValue.selectedElements
-  const next = selected.includes(value)
+  const next = selected.includes(value as ElementCode)
     ? selected.filter((entry) => entry !== value)
     : [...selected, value]
 
-  updateField('selectedElements', next)
+  updateField('selectedElements', next as ElementCode[])
 }
 </script>
 
@@ -43,7 +44,7 @@ const toggleElement = (value: string) => {
   <v-card variant="outlined">
     <AppSectionHeader title="ユニット情報" />
     <v-card-text>
-      <v-row dense>
+      <v-row density="comfortable">
         <v-col cols="12" md="4">
           <div class="d-flex ga-2">
             <v-text-field
@@ -134,7 +135,7 @@ const toggleElement = (value: string) => {
           :label="element.label"
           :value="element.value"
           :color="element.color"
-          :selected="modelValue.selectedElements.includes(element.value)"
+          :selected="modelValue.selectedElements.includes(element.value as ElementCode)"
           @toggle="toggleElement"
         />
       </div>

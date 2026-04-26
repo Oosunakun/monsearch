@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BasicSearchForm, SelectOption } from '~~/app/types/ui/search'
+import type { CardCategory } from '~~/types/card'
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 
 const props = defineProps<{
@@ -26,7 +27,7 @@ const updateField = <K extends keyof BasicSearchForm>(key: K, value: BasicSearch
   <v-card variant="outlined">
     <AppSectionHeader title="基本情報" />
     <v-card-text>
-      <v-row dense>
+      <v-row density="comfortable">
         <v-col cols="12" lg="8">
           <v-text-field
             :model-value="modelValue.cardName"
@@ -48,7 +49,7 @@ const updateField = <K extends keyof BasicSearchForm>(key: K, value: BasicSearch
             variant="outlined"
             density="comfortable"
             hide-details
-            @update:model-value="updateField('selectedCategory', String($event ?? ''))"
+            @update:model-value="updateField('selectedCategory', $event as CardCategory | '')"
           />
         </v-col>
         <v-col cols="12" lg="4">

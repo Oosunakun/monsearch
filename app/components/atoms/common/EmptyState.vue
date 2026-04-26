@@ -20,7 +20,7 @@ withDefaults(
     :text="text"
   >
     <template #actions>
-      <slot name="actions" />
+      <slot name="actions"></slot>
     </template>
   </v-empty-state>
 </template>

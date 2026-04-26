@@ -11,6 +11,6 @@ withDefaults(
 
 <template>
   <v-container class="mx-auto" :style="{ maxWidth }">
-    <slot />
+    <slot></slot>
   </v-container>
 </template>

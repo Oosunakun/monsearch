@@ -14,7 +14,7 @@ withDefaults(
 <template>
   <v-card variant="tonal" :class="{ 'mb-3': marginBottom }">
     <v-card-text :class="contentClass">
-      <slot />
+      <slot></slot>
     </v-card-text>
   </v-card>
 </template>

@@ -24,7 +24,7 @@ withDefaults(
       '--sticky-header-text-color': textColor || 'inherit'
     }"
   >
-    <slot />
+    <slot></slot>
   </div>
 </template>
 

@@ -13,7 +13,7 @@ withDefaults(
 
 <template>
   <tr class="zebra-table-row" :class="{ 'zebra-table-row--zebra': zebra, 'zebra-table-row--clickable': clickable }">
-    <slot />
+    <slot></slot>
   </tr>
 </template>
 

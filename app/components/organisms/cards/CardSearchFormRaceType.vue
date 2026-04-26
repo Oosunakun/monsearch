@@ -22,7 +22,7 @@ const updateField = <K extends keyof RaceTypeSearchForm>(key: K, value: RaceType
   <v-card variant="outlined">
     <AppSectionHeader title="種族・タイプ" />
     <v-card-text>
-      <v-row dense>
+      <v-row density="comfortable">
         <v-col cols="12" md="6">
           <v-text-field
             :model-value="modelValue.raceKeyword"

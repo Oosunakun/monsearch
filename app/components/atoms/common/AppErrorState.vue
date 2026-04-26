@@ -24,7 +24,7 @@ withDefaults(
       class="app-error-state"
     >
       <template #actions>
-        <slot name="actions" />
+        <slot name="actions"></slot>
       </template>
     </v-empty-state>
   </v-sheet>

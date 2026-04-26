@@ -1,0 +1,16 @@
+<script setup lang="ts">
+import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+
+</script>
+
+<template>
+  <section class="d-flex flex-column ga-4">
+    <v-card variant="outlined">
+      <AppSectionHeader title="大会情報" color="primary" text-class="text-white" />
+      <v-card-text>
+        ここに大会情報を表示（仮）
+      </v-card-text>
+    </v-card>
+  </section>
+</template>
+

@@ -6,7 +6,7 @@ import NavButtonGroup from '~~/app/components/molecules/navigation/NavButtonGrou
 import QuickSearchBar from '~~/app/components/molecules/search/QuickSearchBar.vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 
-const props = defineProps<{
+const { drawer, navItems, quickSearchState, cardPools, searchTypes } = defineProps<{
   drawer: boolean
   navItems: NavItem[]
   quickSearchState: QuickSearchState

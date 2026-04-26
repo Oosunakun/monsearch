@@ -57,13 +57,13 @@ withDefaults(
       :text="errorText"
     >
       <template #actions>
-        <slot name="error-actions" />
+        <slot name="error-actions"></slot>
       </template>
     </AppErrorState>
 
     <EmptyState v-else-if="items.length === 0">
       <template #actions>
-        <slot name="empty-actions" />
+        <slot name="empty-actions"></slot>
       </template>
     </EmptyState>
 

@@ -42,7 +42,7 @@ const moveTo = async (path: string) => {
 
     <v-main class="bg-background">
       <ContentMaxWidthContainer class="py-5">
-        <slot />
+        <slot></slot>
       </ContentMaxWidthContainer>
     </v-main>
 
