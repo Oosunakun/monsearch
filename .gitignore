@@ -25,3 +25,6 @@ logs
 
 # SQLite files
 *.sqlite
+
+# Wrangler files
+.wrangler/

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: '2026-04-26',
   nitro: {
     preset: 'cloudflare-pages',
     prerender: {
@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    'vuetify-nuxt-module'
+    'vuetify-nuxt-module',
+    '@nuxt/eslint'
   ],
   ssr: true,
   typescript: {
@@ -51,6 +52,14 @@ export default defineNuxtConfig({
           }
         },
       }
+    }
+  },
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+      ]
     }
   },
   devtools: { enabled: true }

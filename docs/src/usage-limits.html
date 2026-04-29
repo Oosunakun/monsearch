@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モンさーち！ | 使用制限</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            main: "#7EBA03",
+            mainSoft: "#BEDC81",
+            accent: "#009DA5",
+            accentSoft: "#93CACF"
+          },
+          fontFamily: {
+            sans: ["Noto Sans JP", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-[#333333]">
+  <div class="min-h-screen flex flex-col">
+    <header class="border-b border-[#DDE3D2]">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-[#3E2723]">モンさーち！</h1>
+          <p class="text-xs">モンコレTCG検索支援サイト</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs"><option>カードプール: オープン</option></select>
+          <div class="h-10 rounded-md bg-[#F2F8E8] p-1 flex items-center gap-1 text-xs">
+            <button class="h-full px-3 rounded bg-main text-white font-semibold">カード名</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">種族・タイプ</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">キーワード</button>
+          </div>
+          <input class="h-10 w-64 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="例: ドラゴン" />
+          <button class="h-10 rounded-md bg-main px-6 text-sm font-bold text-white">検索</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="border-b border-[#E6EBD9]">
+      <div class="mx-auto max-w-[1360px] px-6 py-3 flex flex-wrap gap-2 text-sm">
+        <a href="card-list.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">カードリスト</a>
+        <a href="advanced-search.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">詳細検索</a>
+        <a href="usage-limits.html" class="rounded-md border border-main bg-main px-4 py-2 font-semibold text-white">使用制限</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">ルール</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">大会情報</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">About</a>
+      </div>
+    </nav>
+
+    <main class="mx-auto w-full max-w-[1360px] flex-1 px-6 py-5 space-y-4">
+      <section class="overflow-hidden rounded-md border border-[#DCE5CE]">
+        <h2 class="bg-main px-3 py-2 text-sm font-bold text-white">注意事項</h2>
+        <div class="space-y-2 bg-white px-4 py-3 text-sm">
+          <p>適用優先順位: 禁止 ＞ 期間禁止 ＞ 期間制限 ＝ 封印制限</p>
+          <p>最終更新日: 2026-04-22</p>
+          <p><a href="#" class="text-accent hover:underline">公式情報はモンスター・コレクションTCG公式サイトの告知をご確認ください。</a></p>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#D9E8E9]">
+        <h2 class="bg-accent px-3 py-2 text-sm font-bold text-white">構築条件＜オープン：フルオープンオプション＞</h2>
+        <div class="space-y-2 bg-white px-4 py-3 text-sm">
+          <p>デックは50枚構築、同名カードは3枚まで。オープン環境で使用可能な全プールから選択できます。</p>
+          <p class="font-bold">タイトルカードは記載された勢力・属性条件を満たす場合のみ採用可能です。</p>
+          <p>適用期間: 2026年4月1日〜次回改訂告知前日まで</p>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#D9E8E9]">
+        <h2 class="bg-accent px-3 py-2 text-sm font-bold text-white">使用できるエクスパンション</h2>
+        <div class="bg-white px-5 py-3 text-sm">
+          <ul class="list-disc space-y-1 pl-5 text-accent">
+            <li><a href="#" class="hover:underline">6D: 悠久のハルシオン</a></li>
+            <li><a href="#" class="hover:underline">6C: アゾールの黒い旋風</a></li>
+            <li><a href="#" class="hover:underline">6B: 紅河の戦慄</a></li>
+            <li><a href="#" class="hover:underline">5D: 魔海神の魔壺</a></li>
+            <li><a href="#" class="hover:underline">5C: 剣姫</a></li>
+            <li><a href="#" class="hover:underline">4D: 天空の覇者</a></li>
+            <li><a href="#" class="hover:underline">4C: 神霊獣の咆哮</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#DCE5CE]">
+        <h2 class="bg-main px-3 py-2 text-sm font-bold text-white">禁止カード</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[980px] text-xs">
+            <thead class="bg-mainSoft text-[#3E2723]">
+              <tr class="h-10 text-left">
+                <th class="px-3">セットコード</th>
+                <th class="px-3">カード名</th>
+                <th class="px-3">カテゴリ</th>
+                <th class="px-3">禁止種別</th>
+                <th class="px-3">適用期間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">禁書庫のアークデーモン</a></td><td class="px-3 py-2">ユニット</td><td class="px-3 py-2">禁止</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">終焉のブラックホール</a></td><td class="px-3 py-2">戦闘スペル</td><td class="px-3 py-2">期間禁止</td><td class="px-3 py-2">2026-04-01〜2026-07-31</td></tr>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6B</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">次元断のミラージュ</a></td><td class="px-3 py-2">地形</td><td class="px-3 py-2">禁止</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">5D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">冥界門のパンドラ</a></td><td class="px-3 py-2">儀式スペル</td><td class="px-3 py-2">期間禁止</td><td class="px-3 py-2">2026-04-01〜2026-12-31</td></tr>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">5C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">零域のタイダルウェーブ</a></td><td class="px-3 py-2">戦闘スペル</td><td class="px-3 py-2">禁止</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">4D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">影縫いのグラビティ</a></td><td class="px-3 py-2">装備品</td><td class="px-3 py-2">期間禁止</td><td class="px-3 py-2">2026-04-01〜2026-10-31</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#DCE5CE]">
+        <h2 class="bg-main px-3 py-2 text-sm font-bold text-white">制限カード</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[980px] text-xs">
+            <thead class="bg-mainSoft text-[#3E2723]">
+              <tr class="h-10 text-left">
+                <th class="px-3">セットコード</th>
+                <th class="px-3">カード名</th>
+                <th class="px-3">カテゴリ</th>
+                <th class="px-3">制限種別</th>
+                <th class="px-3">適用期間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">双極のタイタン</a></td><td class="px-3 py-2">ユニット</td><td class="px-3 py-2">期間制限</td><td class="px-3 py-2">2026-04-01〜2026-09-30</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">暴威のフェンリル</a></td><td class="px-3 py-2">ユニット</td><td class="px-3 py-2">封印制限</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">魔弾のスナイパー</a></td><td class="px-3 py-2">戦闘スペル</td><td class="px-3 py-2">期間制限</td><td class="px-3 py-2">2026-04-01〜2026-08-31</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6B</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">霧都のアサシン</a></td><td class="px-3 py-2">ユニット</td><td class="px-3 py-2">封印制限</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">6B</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">崩落のゲート</a></td><td class="px-3 py-2">地形</td><td class="px-3 py-2">期間制限</td><td class="px-3 py-2">2026-04-01〜2026-10-31</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">5D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">聖域のグリフォン</a></td><td class="px-3 py-2">ユニット</td><td class="px-3 py-2">封印制限</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">5C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">幽冥のヴェール</a></td><td class="px-3 py-2">儀式スペル</td><td class="px-3 py-2">期間制限</td><td class="px-3 py-2">2026-04-01〜2026-12-31</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">5C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">時逆のクロノス</a></td><td class="px-3 py-2">ユニット</td><td class="px-3 py-2">封印制限</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+              <tr class="border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">4D</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">雷刃のハルバード</a></td><td class="px-3 py-2">装備品</td><td class="px-3 py-2">期間制限</td><td class="px-3 py-2">2026-04-01〜2026-11-30</td></tr>
+              <tr class="bg-[#F8FBF1] border-b border-[#EEF3E4] hover:bg-[#EEF7E3]"><td class="px-3 py-2">4C</td><td class="px-3 py-2"><a href="#" class="text-accent hover:underline">深森のアルラウネ</a></td><td class="px-3 py-2">ユニット</td><td class="px-3 py-2">封印制限</td><td class="px-3 py-2">2026-04-01〜</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[#333333] text-white text-xs">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-2 sm:flex-row sm:justify-between">
+        <p>当サイトの情報は非公式データです。利用は自己責任でお願いします。</p>
+        <p>© Monsearch Archive</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モンさーち！ | About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            main: "#7EBA03",
+            mainSoft: "#BEDC81",
+            accent: "#009DA5",
+            accentSoft: "#93CACF"
+          },
+          fontFamily: {
+            sans: ["Noto Sans JP", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-[#333333]">
+  <div class="min-h-screen flex flex-col">
+    <header class="border-b border-[#DDE3D2]">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h1 class="text-3xl font-bold text-[#3E2723]">モンさーち！</h1>
+          <p class="text-xs">モンコレTCG検索支援サイト</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <select class="h-10 rounded-md border border-[#CBD5C0] px-3 text-xs"><option>カードプール: オープン</option></select>
+          <div class="h-10 rounded-md bg-[#F2F8E8] p-1 flex items-center gap-1 text-xs">
+            <button class="h-full px-3 rounded bg-main text-white font-semibold">カード名</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">種族・タイプ</button>
+            <button class="h-full px-3 rounded bg-[#EAF2D7] text-[#3E2723]">キーワード</button>
+          </div>
+          <input class="h-10 w-64 rounded-md border border-[#CBD5C0] px-3 text-xs" placeholder="例: ドラゴン" />
+          <button class="h-10 rounded-md bg-main px-6 text-sm font-bold text-white">検索</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="border-b border-[#E6EBD9]">
+      <div class="mx-auto max-w-[1360px] px-6 py-3 flex flex-wrap gap-2 text-sm">
+        <a href="card-list.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">カードリスト</a>
+        <a href="advanced-search.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">詳細検索</a>
+        <a href="usage-limits.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">使用制限</a>
+        <a href="rules.html" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">ルール</a>
+        <a href="#" class="rounded-md border border-[#D1D9C2] px-4 py-2 hover:bg-[#F8FBF1]">大会情報</a>
+        <a href="about.html" class="rounded-md border border-main bg-main px-4 py-2 font-semibold text-white">About</a>
+      </div>
+    </nav>
+
+    <main class="mx-auto w-full max-w-[1360px] flex-1 px-6 py-5 space-y-4">
+      <section class="overflow-hidden rounded-md border border-[#DCE5CE]">
+        <h2 class="bg-main px-3 py-2 text-sm font-bold text-white">免責事項</h2>
+        <div class="space-y-2 bg-white px-4 py-3 text-sm">
+          <p>本サイトはモンコレTCG情報を扱う非公式ファンサイトです。</p>
+          <p>掲載情報は可能な限り正確性を確保していますが、内容の完全性・最新性を保証するものではありません。</p>
+          <p>カード画像・テキスト等の著作権は各権利者（株式会社ブロッコリー等）に帰属します。</p>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#D9E8E9]">
+        <h2 class="bg-accent px-3 py-2 text-sm font-bold text-white">このサイトについて</h2>
+        <div class="space-y-2 bg-white px-4 py-3 text-sm">
+          <p>モンさーち！は、モンコレTCGのカード検索・制限情報確認・構築検討を効率化するためのデータベース主体ポータルです。</p>
+          <p>対象ユーザーは中〜上級プレイヤーを想定し、1画面で多くの情報を把握できる高密度UIを提供します。</p>
+          <p>主な機能: エクスパンション一覧、詳細検索、カードリスト、使用制限、ルール参照。</p>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#D9E8E9]">
+        <h2 class="bg-accent px-3 py-2 text-sm font-bold text-white">謝辞</h2>
+        <div class="space-y-2 bg-white px-4 py-3 text-sm">
+          <p>カードデータ整理に協力いただいたコミュニティ有志の皆さまに感謝いたします。</p>
+          <p>検証プレイログ提供・裁定確認にご協力いただいた店舗スタッフおよび大会運営関係者の皆さま、ありがとうございます。</p>
+          <p>継続的なフィードバックをくださるプレイヤーの皆さまの支援により、本サイトは改善を続けています。</p>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#DCE5CE]">
+        <h2 class="bg-main px-3 py-2 text-sm font-bold text-white">更新履歴</h2>
+        <div class="bg-white px-4 py-3 text-sm">
+          <ul class="space-y-1">
+            <li>[2026-04-22] Aboutページを追加、免責事項・リンク情報を整理</li>
+            <li>[2026-04-21] ルールページを公開、テキスト置き換え例を掲載</li>
+            <li>[2026-04-20] 使用制限ページを追加、禁止/制限カード一覧を更新</li>
+            <li>[2026-04-18] 詳細検索フォームの属性フィルタを改善</li>
+            <li>[2026-04-15] カードリストの表示速度を改善</li>
+            <li>[2026-04-10] エクスパンション一覧のブロック表示を追加</li>
+            <li>[2026-04-01] サイト公開</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#D9E8E9]">
+        <h2 class="bg-accent px-3 py-2 text-sm font-bold text-white">リンク</h2>
+        <div class="bg-white px-4 py-3 space-y-2">
+          <a href="#" class="block rounded-md border border-[#D9E8E9] bg-[#F6FCFC] px-3 py-2 hover:bg-[#EEF7F7]">
+            <p class="text-sm font-bold text-accent">モンスター・コレクションTCG公式サイト</p>
+            <p class="text-xs text-[#333333]">最新ルール・大会情報・製品情報の一次情報を確認できます。</p>
+          </a>
+          <a href="#" class="block rounded-md border border-[#D9E8E9] bg-[#F6FCFC] px-3 py-2 hover:bg-[#EEF7F7]">
+            <p class="text-sm font-bold text-accent">公式FAQ・裁定集</p>
+            <p class="text-xs text-[#333333]">裁定の細かな差異やテキスト置き換え確認に利用します。</p>
+          </a>
+          <a href="#" class="block rounded-md border border-[#D9E8E9] bg-[#F6FCFC] px-3 py-2 hover:bg-[#EEF7F7]">
+            <p class="text-sm font-bold text-accent">プレイヤーコミュニティWiki</p>
+            <p class="text-xs text-[#333333]">カード運用例や対戦レポートなど、実践的な情報がまとまっています。</p>
+          </a>
+          <a href="#" class="block rounded-md border border-[#D9E8E9] bg-[#F6FCFC] px-3 py-2 hover:bg-[#EEF7F7]">
+            <p class="text-sm font-bold text-accent">公認大会情報ページ</p>
+            <p class="text-xs text-[#333333]">直近の店舗大会・大型大会スケジュール確認にご利用ください。</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="overflow-hidden rounded-md border border-[#D9E8E9]">
+        <h2 class="bg-accent px-3 py-2 text-sm font-bold text-white">お問い合わせ</h2>
+        <div class="space-y-2 bg-white px-4 py-3 text-sm">
+          <p>誤記の報告・機能要望・掲載内容のご相談は、以下の連絡先からお願いします。</p>
+          <p><a href="#" class="font-bold text-accent hover:underline">X（旧Twitter）DM: @monsearch_support</a></p>
+          <p><a href="https://example.com/monsearch-contact" class="text-accent hover:underline">連絡フォーム: https://example.com/monsearch-contact</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-[#333333] text-white text-xs">
+      <div class="mx-auto max-w-[1360px] px-6 py-4 flex flex-col gap-2 sm:flex-row sm:justify-between">
+        <p>当サイトの情報は非公式データです。利用は自己責任でお願いします。</p>
+        <p>© Monsearch Archive</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

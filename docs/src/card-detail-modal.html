@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モンさーち！ | カード詳細モーダル</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            main: "#7EBA03",
+            mainSoft: "#BEDC81",
+            accent: "#009DA5",
+            accentSoft: "#93CACF"
+          },
+          fontFamily: {
+            sans: ["Noto Sans JP", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-[#333333]">
+  <main class="mx-auto max-w-[1840px] px-4 py-4">
+    <h1 class="mb-3 text-xl font-bold">カード詳細モーダル（3パターン）</h1>
+
+    <section class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <!-- A: ユニット -->
+      <article class="rounded-xl bg-black/60 p-5 flex flex-col items-center gap-3">
+        <div class="w-full max-w-[380px] rounded-xl border-2 border-[#5E748A] bg-white p-3">
+          <div class="mb-2 flex justify-end">
+            <button class="h-5 w-5 rounded-full bg-slate-100 text-sm font-bold leading-5 text-[#333333]">×</button>
+          </div>
+
+          <header class="mb-2 rounded-lg bg-[#5E748A] p-2 text-white">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-1">
+                <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#E53E3E] px-1 text-[10px] font-bold">火</span>
+                <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">Lv5</span>
+                <span class="rounded bg-amber-200 px-1.5 py-0.5 text-[10px] font-bold text-amber-900">英1</span>
+                <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">5/4</span>
+                <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">飛行</span>
+              </div>
+              <span class="rounded-full bg-mainSoft px-2 py-0.5 text-[10px] font-bold text-slate-800">ユニット</span>
+            </div>
+            <div class="mt-1 flex gap-1">
+              <span class="rounded-full bg-teal-100 px-2 py-0.5 text-[10px] font-bold text-teal-800">即時召喚</span>
+              <span class="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-900">ヒーロー</span>
+            </div>
+            <h2 class="mt-1 text-2xl font-bold">イフリート</h2>
+          </header>
+
+          <section class="mb-2 flex aspect-[4/3] items-center justify-center rounded-lg bg-slate-200">
+            <span class="text-lg text-slate-400">Card Image</span>
+          </section>
+
+          <section class="mb-2 rounded-lg bg-slate-50 p-2 text-[11px] leading-4">
+            <p>種族: スピリット / デーモン</p>
+            <p>タイプ: 火属性ユニット</p>
+            <p>イニシアチブ: +0</p>
+            <p>アイテムスロット: なし</p>
+            <p>スペルスロット: ●●喰</p>
+            <p>チャージ: 0</p>
+            <p>ディフェンダー: 0</p>
+            <p>耐性: なし</p>
+          </section>
+
+          <section class="mb-2 space-y-1.5">
+            <div class="rounded-lg border border-slate-200 bg-white p-2">
+              <div class="mb-1 flex items-center justify-between">
+                <strong class="text-[13px]">炎の渦</strong>
+                <span class="rounded-full bg-[#E53E3E] px-2 py-0.5 text-[10px] font-bold text-white">Battle</span>
+              </div>
+              <p class="text-[11px] italic text-slate-600">【条件】ダミー条件テキスト</p>
+              <p class="text-xs">ダミー効果テキスト。対象にダメージを与える。</p>
+            </div>
+          </section>
+
+          <section class="mb-2 rounded-lg bg-slate-50 p-2">
+            <p class="text-[11px] italic text-slate-600">'ダミーフレーバーテキスト。'</p>
+            <p class="text-right text-[10px] text-slate-500">—— 出典ダミー</p>
+          </section>
+
+          <footer class="rounded-lg bg-slate-50 p-2 text-[10px] text-slate-600">
+            <p>レア:S / ブロック:AN / 勢力:伏魔殿 / M20A-014</p>
+            <p>イラスト: ダミー / 収録: 悠久のハルシオン</p>
+          </footer>
+        </div>
+        <p class="text-[11px] text-slate-200">背景クリック / ESC / × で閉じる</p>
+      </article>
+
+      <!-- B: 戦闘スペル -->
+      <article class="rounded-xl bg-black/60 p-5 flex flex-col items-center gap-3">
+        <div class="w-full max-w-[380px] rounded-xl border-2 border-[#4F8A56] bg-white p-3">
+          <div class="mb-2 flex justify-end">
+            <button class="h-5 w-5 rounded-full bg-slate-100 text-sm font-bold leading-5 text-[#333333]">×</button>
+          </div>
+
+          <header class="mb-2 rounded-lg bg-[#4F8A56] p-2 text-white">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-1">
+                <span class="rounded bg-cyan-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">ALL</span>
+                <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">速攻</span>
+                <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">秘伝</span>
+                <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">魔法</span>
+              </div>
+              <span class="rounded-full bg-mainSoft px-2 py-0.5 text-[10px] font-bold text-slate-800">戦闘スペル</span>
+            </div>
+            <h2 class="mt-1 text-2xl font-bold">ファイアサークル</h2>
+          </header>
+
+          <section class="mb-2 flex aspect-[4/3] items-center justify-center rounded-lg bg-slate-200">
+            <span class="text-lg text-slate-400">Card Image</span>
+          </section>
+
+          <section class="mb-2 rounded-lg bg-green-50 p-2 text-[11px] leading-4">
+            <p>種族: -</p>
+            <p>タイプ: 呪文魔法 / 秘伝魔法</p>
+            <p>イニシアチブ: -</p>
+            <p>アイテムスロット: -</p>
+            <p>スペルスロット: ALL</p>
+            <p>チャージ: -</p>
+            <p>ディフェンダー: -</p>
+            <p>耐性: -</p>
+          </section>
+
+          <section class="mb-2 space-y-1.5">
+            <div class="rounded-lg border border-emerald-100 bg-white p-2">
+              <div class="mb-1 flex items-center justify-between">
+                <strong class="text-[13px]">普通</strong>
+                <span class="rounded-full bg-[#3182CE] px-2 py-0.5 text-[10px] font-bold text-white">Field</span>
+              </div>
+              <p class="text-[11px] italic text-slate-600">【条件】ダミー（普通タイミング）</p>
+              <p class="text-xs">ダミー効果テキスト。対象ユニット1体に補正を与える。</p>
+            </div>
+            <div class="rounded-lg border border-emerald-100 bg-white p-2">
+              <div class="mb-1 flex items-center justify-between">
+                <strong class="text-[13px]">対抗</strong>
+                <span class="rounded-full bg-[#E53E3E] px-2 py-0.5 text-[10px] font-bold text-white">Battle</span>
+              </div>
+              <p class="text-[11px] italic text-slate-600">【条件】ダミー（対抗タイミング）</p>
+              <p class="text-xs">ダミー効果テキスト。追加ダメージを与える。</p>
+            </div>
+          </section>
+
+          <footer class="rounded-lg bg-green-50 p-2 text-[10px] text-slate-600">
+            <p>レア:UC / ブロック:AN / 勢力:ALL / M20A-113</p>
+            <p>イラスト: ダミー / 収録: 悠久のハルシオン</p>
+          </footer>
+        </div>
+        <p class="text-[11px] text-slate-200">背景クリック / ESC / × で閉じる</p>
+      </article>
+
+      <!-- C: 地形 -->
+      <article class="rounded-xl bg-black/60 p-5 flex flex-col items-center gap-3">
+        <div class="w-full max-w-[380px] rounded-xl border-2 border-[#A37A1E] bg-white p-3">
+          <div class="mb-2 flex justify-end">
+            <button class="h-5 w-5 rounded-full bg-slate-100 text-sm font-bold leading-5 text-[#333333]">×</button>
+          </div>
+
+          <header class="mb-2 rounded-lg bg-[#A37A1E] p-2 text-white">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-1">
+                <span class="rounded bg-amber-900 px-1.5 py-0.5 text-[10px] font-bold text-white">無</span>
+                <span class="rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-700">L8</span>
+                <span class="rounded bg-amber-200 px-1.5 py-0.5 text-[10px] font-bold text-amber-900">大自然</span>
+              </div>
+              <span class="rounded-full bg-amber-200 px-2 py-0.5 text-[10px] font-bold text-amber-900">地形</span>
+            </div>
+            <h2 class="mt-1 text-2xl font-bold">白いジャングル</h2>
+          </header>
+
+          <section class="mb-2 flex aspect-[4/3] items-center justify-center rounded-lg bg-slate-200">
+            <span class="text-lg text-slate-400">Card Image</span>
+          </section>
+
+          <section class="mb-2 rounded-lg bg-amber-50 p-2 text-[11px] leading-4">
+            <p>種族: -</p>
+            <p>タイプ: 地形</p>
+            <p>LIMIT: 8</p>
+            <p>地形カテゴリ: 大自然</p>
+            <p>スペルスロット: -</p>
+            <p>チャージ: -</p>
+            <p>ディフェンダー: -</p>
+            <p>耐性: -</p>
+          </section>
+
+          <section class="mb-2 space-y-1.5">
+            <div class="rounded-lg border border-amber-200 bg-white p-2">
+              <div class="mb-1 flex items-center justify-between">
+                <strong class="text-[13px]">白霧の領域</strong>
+                <span class="rounded-full bg-[#3182CE] px-2 py-0.5 text-[10px] font-bold text-white">Field</span>
+              </div>
+              <p class="text-[11px] italic text-slate-600">【条件】ダミー（地形にユニット2体以上）</p>
+              <p class="text-xs">ダミー効果テキスト。地形内ユニットに補正を与える。</p>
+            </div>
+            <div class="rounded-lg border border-amber-200 bg-white p-2">
+              <div class="mb-1 flex items-center justify-between">
+                <strong class="text-[13px]">密林の迷彩</strong>
+                <span class="rounded-full bg-[#D69E2E] px-2 py-0.5 text-[10px] font-bold text-white">Deck</span>
+              </div>
+              <p class="text-[11px] italic text-slate-600">【条件】ダミー（敵地形あり）</p>
+              <p class="text-xs">ダミー効果テキスト。イニシアチブを上昇させる。</p>
+            </div>
+          </section>
+
+          <footer class="rounded-lg bg-amber-50 p-2 text-[10px] text-slate-600">
+            <p>レア:R / ブロック:AN / 勢力:野生の王国 / M20A-146</p>
+            <p>イラスト: ダミー / 収録: 悠久のハルシオン</p>
+          </footer>
+        </div>
+        <p class="text-[11px] text-slate-200">背景クリック / ESC / × で閉じる</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
