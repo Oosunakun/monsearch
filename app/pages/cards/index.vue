@@ -9,6 +9,7 @@ import type {
 import ActiveConditionChips from '~~/app/components/molecules/cards/ActiveConditionChips.vue'
 import CardListTable from '~~/app/components/organisms/cards/CardListTable.vue'
 import ResultCountLabel from '~~/app/components/atoms/common/ResultCountLabel.vue'
+import CardDetailModal from '~~/app/components/organisms/cards/CardDetailModal.vue'
 import {
   mockActiveSearchConditions,
   mockCardListHeaders,

@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import type { NavItem, QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
-import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
-import MobileNavList from '~~/app/components/molecules/navigation/MobileNavList.vue'
-import NavButtonGroup from '~~/app/components/molecules/navigation/NavButtonGroup.vue'
+import type { QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
 import QuickSearchBar from '~~/app/components/molecules/search/QuickSearchBar.vue'
-import { UI_COLORS } from '~~/app/utils/constants/colors'
+import SearchMagnifyButton from '~~/app/components/molecules/search/SearchMagnifyButton.vue'
+import HeaderTitle from '~~/app/components/molecules/layout/HeaderTitle.vue'
 
-const { drawer, navItems, quickSearchState, cardPools, searchTypes } = defineProps<{
+const { drawer, isMobile, quickSearchState, cardPools, searchTypes } = defineProps<{
   drawer: boolean
-  navItems: NavItem[]
+  isMobile: boolean
   quickSearchState: QuickSearchState
   cardPools: QuickSearchOption[]
   searchTypes: QuickSearchOption[]
@@ -20,35 +18,27 @@ const emit = defineEmits<{
   navigate: [path: string]
   submitQuickSearch: []
 }>()
-
-const route = useRoute()
-const activePath = computed(() => route.path)
 </script>
 
 <template>
-  <MobileNavList
-    :model-value="drawer"
-    :items="navItems"
-    :active-path="activePath"
-    @update:model-value="emit('update:drawer', $event)"
-    @navigate="emit('navigate', $event)"
-  />
+  <v-app-bar border="b" elevation="0" density="compact">
+    
+    <!-- モバイル: ハンバーガー（左固定） -->
+    <v-app-bar-nav-icon
+      v-if="isMobile"
+      class="flex-shrink-0"
+      @click="$emit('update:drawer', !drawer)"
+    />
 
-  <v-app-bar color="surface" border="b" elevation="0" class="header-app-bar">
-    <ContentMaxWidthContainer class="py-3">
-      <div class="d-flex flex-column flex-lg-row align-lg-center justify-lg-space-between ga-3">
-        <div class="d-flex align-center justify-space-between ga-2">
-          <div>
-            <p class="text-h4 font-weight-bold mb-1 header-site-title" :style="{ color: UI_COLORS.HEADING_BROWN }">
-              モンさーち！
-            </p>
-            <p class="text-caption">
-              モンコレTCG検索支援サイト
-            </p>
-          </div>
-          <v-app-bar-nav-icon class="d-lg-none" @click="emit('update:drawer', !drawer)" />
-        </div>
+    <!-- タイトル -->
+    <HeaderTitle 
+      :is-mobile = "isMobile"
+    />
 
+    <!-- PC: 検索エリア（右寄せ・幅上限あり） -->
+    <template v-if="!isMobile">
+      <v-spacer />
+      <div class="pc-search-zone">
         <QuickSearchBar
           :model-value="quickSearchState"
           :card-pools="cardPools"
@@ -57,19 +47,35 @@ const activePath = computed(() => route.path)
           @submit="emit('submitQuickSearch')"
         />
       </div>
+    </template>
+    <!-- モバイル: 虫眼鏡（右固定） -->
+    <template v-else>
+      <v-spacer />
+      <SearchMagnifyButton />
+    </template>
 
-      <NavButtonGroup :items="navItems" :active-path="activePath" />
-    </ContentMaxWidthContainer>
   </v-app-bar>
 </template>
-
 <style scoped>
-.header-site-title {
-  line-height: 1.1;
+.v-app-bar {
+  user-select: none;
 }
 
-.header-app-bar :deep(.v-toolbar__content) {
-  height: auto !important;
-  align-items: stretch;
+/* v-app-bar内部のflexコンテナを上書きして3ゾーン構造を作る */
+:deep(.v-app-bar__content) {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  overflow: visible;
+}
+
+.pc-search-zone {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;            /* 固定幅・spacerに押されて右端へ */
+  width: clamp(360px, 40vw, 560px); /* 画面幅に応じて伸縮 */
+  min-width: 0;
+  padding-right: 15px;
 }
 </style>

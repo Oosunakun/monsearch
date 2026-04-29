@@ -11,7 +11,7 @@ defineProps<{
 <template>
   <v-sheet class="header-nav-wrap d-none d-lg-block" border="b">
     <ContentMaxWidthContainer class="py-2">
-      <div class="d-flex flex-wrap ga-2">
+      <div class="d-flex flex-wrap justify-center ga-4">
         <v-btn
           v-for="item in items"
           :key="item.to"
@@ -35,5 +35,7 @@ defineProps<{
 
 .nav-btn {
   text-transform: none;
+  width: 10em;
+  height: 2.8em;
 }
 </style>
