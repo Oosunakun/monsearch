@@ -73,6 +73,12 @@ const LAYOUT_MOBILE_MAX_WIDTH = computed(() => thresholds.value.md - 1)
   </v-app>
 </template>
 <style scoped>
+/* SkeletonLoaderで隠せない・かつJS前に必要な要素はv-bindを用いずハードコードとします */
+:deep(.v-main) {
+  /* LAYOUT_HEADER.HEIGHTの値が将来変わる場合は、この1行も合わせて変更する必要があります */
+  padding-top: 48px !important;
+}
+
 @media (min-width: v-bind('`${LAYOUT_PC_MIN_WIDTH}px`')) {
   /* 初期レンダリング時のガタつきを抑えるための先行スタイル */
   :deep(.v-navigation-drawer.is-expanded) {
@@ -96,9 +102,6 @@ const LAYOUT_MOBILE_MAX_WIDTH = computed(() => thresholds.value.md - 1)
   /* 共通：高さの固定 */
   :deep(.v-app-bar) {
     height: v-bind('`${LAYOUT_HEADER.HEIGHT}px`') !important;
-  }
-  :deep(.v-main) {
-    padding-top: v-bind('`${LAYOUT_HEADER.HEIGHT}px`') !important;
   }
 
   /* フッターもヘッダー同様に左余白を先行適用 */

@@ -36,5 +36,7 @@ withDefaults(
   font-weight: 700;
   background: var(--sticky-header-bg);
   color: var(--sticky-header-text-color);
+  padding-left: 0.75rem;
+  height: 2.75rem;
 }
 </style>

@@ -10,8 +10,7 @@ defineProps<{
 <template>
   <NuxtLink
     to="/"
-    class="d-flex flex-column justify-center align-center px-3 py-1 rounded site-title-link text-decoration-none"
-    :class="isMobile ? 'title-mobile' : 'title-pc flex-shrink-0'"
+    class="d-flex flex-column justify-center align-center px-3 py-1 rounded site-title-link text-decoration-none flex-shrink-0 title-default title-mobile "
   >
     <h1 class="font-weight-bold header-site-title" :style="{ color: UI_COLORS.HEADING_BROWN }">
       ■ モンさーち！ ■
@@ -44,18 +43,22 @@ defineProps<{
 }
 
 /* タイトル: PC時は左固定 */
-.title-pc {
+.title-default {
   height: 44px;
   transform: translateY(-2px);
   transform: translateX( 2px);
 }
 
 /* タイトル: モバイル時は絶対中央配置 */
-.title-mobile {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(-2px);
-  height: 44px;
-  pointer-events: auto;
+/* SkeletonLoaderで隠せない・かつJS前に必要な要素はv-bindを用いずハードコードとします */
+@media (max-width: 839px) {
+  .title-mobile {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-2px);
+    height: 44px;
+    pointer-events: auto;
+  }
 }
+
 </style>

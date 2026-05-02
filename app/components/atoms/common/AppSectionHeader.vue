@@ -13,7 +13,12 @@ withDefaults(
 </script>
 
 <template>
-  <v-sheet :color="color" class="px-4 py-2 text-subtitle-2 font-weight-bold" :class="textClass">
+    <v-sheet 
+      :color="color"
+      class="px-3 py-1 text-subtitle-1 font-weight-bold"
+      :class="textClass"
+      style="font-size: large;"
+    >
     {{ title }}
   </v-sheet>
 </template>

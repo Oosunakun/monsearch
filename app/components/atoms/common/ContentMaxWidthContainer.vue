@@ -1,16 +1,27 @@
 <script setup lang="ts">
-withDefaults(
+import { useDisplay } from 'vuetify'
+
+const { thresholds } = useDisplay()
+
+const props = withDefaults(
   defineProps<{
     maxWidth?: string
   }>(),
   {
-    maxWidth: '1360px'
+    maxWidth: undefined
   }
 )
+
+const defaultMaxWidth = `${thresholds.value.lg}px`
+const actualMaxWidth = computed(() => props.maxWidth ?? defaultMaxWidth)
 </script>
 
 <template>
-  <v-container class="mx-auto" :style="{ maxWidth }">
+  <v-container
+    class="mx-auto pa-0"
+    :style="{ maxWidth: actualMaxWidth }"
+    fluid
+  >
     <slot></slot>
   </v-container>
 </template>

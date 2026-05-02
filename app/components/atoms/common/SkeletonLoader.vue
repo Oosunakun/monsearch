@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    preset?: 'table-rows' | 'card-detail' | 'chips'
+    preset?: 'table-rows' | 'card-detail' | 'chips' | 'app-bar'
     type?: string | string[]
     loading?: boolean
     height?: number | string
@@ -24,11 +24,13 @@ const resolvedType = computed<string | string[]>(() => {
   if (props.preset === 'card-detail') {
     return ['image', 'chip@3', 'heading', 'paragraph', 'paragraph', 'paragraph']
   }
-
   if (props.preset === 'chips') {
     return 'chip@6'
   }
-
+  // タイトル＋検索バー相当
+  if (props.preset === 'app-bar') {
+    return 'text'
+  }
   return 'table-tbody@10'
 })
 
