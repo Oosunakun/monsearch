@@ -13,7 +13,7 @@ const drawer = ref(mdAndUp.value)
 const rail = ref(false)
 
 const navItems: NavItem[] = [
-  { label: 'カードリスト', to: '/cards', icon: 'mdi-view-list' },
+  { label: 'カードセット', to: '/', icon: 'mdi-view-list' },
   { label: '詳細検索', to: '/cards/search', icon: 'mdi-magnify' },
   { label: '使用制限', to: '/restrictions', icon: 'mdi-alert-octagon' },
   { label: 'ルール', to: '/rules', icon: 'mdi-book-open-variant' },
