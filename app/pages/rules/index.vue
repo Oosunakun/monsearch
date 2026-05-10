@@ -1,15 +1,36 @@
 <script setup lang="ts">
+import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import SectionCardShell from '~~/app/components/molecules/common/SectionCardShell.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
+import QuestionAnswerList from '~~/app/components//organisms/rules/QuestionAnswerList.vue'
+import RuleSupplementList from '~~/app/components//organisms/rules/RuleSupplementList.vue'
+import CardRulingList from '~~/app/components//organisms/rules/CardRulingList.vue'
+
 import { UI_COLORS } from '~~/app/utils/constants/colors'
+import type { 
+  QuestionAnswerItem, 
+  RuleSupplementItem, 
+  TextChangeRuling, 
+  ErrataRuling, 
+  CardRulingItem,
+  TextIndividualRuling
+} from '~~/app/types/ui/rules'
+
 import {
   mockRuleConstructionNotes,
   mockRuleReplacementHeaders,
   mockRuleNoticeItems,
-  mockRuleReplacementSources
+  mockRuleReplacementSources,
+  mockRuleQuestionAnswerSources,
+  mockRuleSupplementSources,
+  mockRuleTextChangeSources,
+  mockRuleErrataSources,
+  mockRuleTextIndividualSources
 } from '~~/app/utils/mockData'
-
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
 type NoticeItem = {
   id: string
   text: string
@@ -44,63 +65,76 @@ const replacementRows = computed<TextReplacementRow[]>(() =>
     zebra: index % 2 === 1
   }))
 )
+
+
+const qaItems:QuestionAnswerItem[] = mockRuleQuestionAnswerSources
+const supplementItems:RuleSupplementItem[] = mockRuleSupplementSources
+
+const textIndividualRulingItems:TextIndividualRuling[] = mockRuleTextIndividualSources
+const textChangeRulingItems:TextChangeRuling[] = mockRuleTextChangeSources
+const errataRulingItems:ErrataRuling[] = mockRuleErrataSources
+const cardRulingItems:CardRulingItem[] =[
+  ... textIndividualRulingItems,
+  ... textChangeRulingItems,
+  ... errataRulingItems
+]
+
 </script>
 
 <template>
-  <section class="d-flex flex-column ga-4">
-    <v-card variant="outlined">
-      <AppSectionHeader title="注意事項" color="primary" text-class="text-white" />
-      <v-card-text>
-        <p v-for="item in noticeItems" :key="item.id" class="text-body-2 mb-2">
+  <ContentMaxWidthContainer>
+    <SectionCardShell>
+      <template #header>
+        <AppSectionHeader title="注意事項" color="primary" text-class="text-white" />
+      </template>
+      <ul>
+        <li v-for="item in noticeItems" :key="item.id">
           {{ item.text }}
-        </p>
-        <p class="text-body-2">
-          <a href="#" class="text-accent">
-            公式サイト・最新裁定: モンスター・コレクションTCG公式ルールページ
-          </a>
-        </p>
-      </v-card-text>
-    </v-card>
+        </li>
+      </ul>
+    </SectionCardShell>
 
-    <v-card variant="outlined">
-      <AppSectionHeader title="カードテキストの置き換え" color="accent" text-class="text-white" />
-      <StickyTableHeaderRow :text-color="UI_COLORS.HEADING_BROWN" :header-background="UI_COLORS.SECONDARY">
-        <v-data-table
-          :headers="replacementHeaders"
-          :items="replacementRows"
-          item-value="id"
-          fixed-header
-          height="320"
-          density="comfortable"
-          hide-default-footer
-          items-per-page="-1"
-        >
-          <template #item="{ item }">
-            <ZebraTableRow :zebra="item.zebra">
-              <td class="px-3 py-2">{{ item.beforeText }}</td>
-              <td class="px-3 py-2">{{ item.afterText }}</td>
-              <td class="px-3 py-2">{{ item.note }}</td>
-            </ZebraTableRow>
-          </template>
-        </v-data-table>
-      </StickyTableHeaderRow>
-    </v-card>
+    <SectionCardShell
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <AppSectionHeader title="カード裁定" color="accent" text-class="text-white" />
+      </template>
 
-    <v-card variant="outlined">
-      <AppSectionHeader title="構築ルールの補足" color="accent" text-class="text-white" />
-      <v-card-text>
-        <ul class="pl-5">
-          <li
-            v-for="note in constructionNotes"
-            :key="note.id"
-            class="text-body-2 mb-1"
-            :class="{ 'font-weight-bold': note.emphasized }"
-          >
-            {{ note.text }}
-          </li>
-        </ul>
-      </v-card-text>
-    </v-card>
-  </section>
+      <CardRulingList
+        :items="cardRulingItems"
+      />
+    </SectionCardShell>
+
+    <SectionCardShell
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <AppSectionHeader title="Q&A" color="accent" text-class="text-white" />
+      </template>
+
+      <QuestionAnswerList
+        :items="qaItems"
+      />
+    </SectionCardShell>
+
+
+    
+    <SectionCardShell
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <AppSectionHeader title="補足" color="accent" text-class="text-white" />
+      </template>
+
+      <RuleSupplementList
+        :items="supplementItems"
+      />
+    </SectionCardShell>
+
+  </ContentMaxWidthContainer>
 </template>
 
