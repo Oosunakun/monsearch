@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { KeywordSearchForm } from '~~/app/types/ui/search'
+import type { KeywordSearchForm } from '~/types/ui/_search'
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 
 const props = defineProps<{

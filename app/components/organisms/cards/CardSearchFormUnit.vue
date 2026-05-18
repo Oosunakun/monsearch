@@ -1,144 +1,67 @@
 <script setup lang="ts">
-import type { ElementOption, SelectOption, UnitSearchForm } from '~~/app/types/ui/search'
-import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
-import ElementChipToggle from '~~/app/components/atoms/search/ElementChipToggle.vue'
-import type { ElementCode } from '~~/types/card'
+import CardSearchFieldName from '~~/app/components/organisms/cards/search/CardSearchFieldName.vue'
+import CardSearchFieldElement from '~~/app/components/organisms/cards/search/CardSearchFieldElement.vue'
+import CardSearchFieldDivider from '~~/app/components/atoms/common/CardSearchFieldDivider.vue'
+import CardSearchFieldCardCategory from '~~/app/components/organisms/cards/search/CardSearchFieldCardCategory.vue'
+import CardSearchFieldCardType from '~~/app/components/organisms/cards/search/CardSearchFieldCardType.vue'
+import CardSearchFieldRace from '~~/app/components/organisms/cards/search/CardSearchFieldRace.vue'
+import CardSearchFieldKeyword from '~~/app/components/organisms/cards/search/CardSearchFieldKeyword.vue'
+import CardSearchFieldLevel from '~~/app/components/organisms/cards/search/CardSearchFieldLevel.vue'
+import CardSearchFieldAttack from '~~/app/components/organisms/cards/search/CardSearchFieldAttack.vue'
+import CardSearchFieldDefence from '~~/app/components/organisms/cards/search/CardSearchFieldDefence.vue'
+import CardSearchFieldInitiative from '~~/app/components/organisms/cards/search/CardSearchFieldInitiative.vue'
+import CardSearchFieldCharge from '~~/app/components/organisms/cards/search/CardSearchFieldCharge.vue'
+import CardSearchFieldDefender from '~~/app/components/organisms/cards/search/CardSearchFieldDefender.vue'
+import CardSearchFieldProduct from '~~/app/components/organisms/cards/search/CardSearchFieldProduct.vue'
+import CardSearchFieldLimit from '~~/app/components/organisms/cards/search/CardSearchFieldLimit.vue'
+import CardSearchFieldFaction from '~~/app/components/organisms/cards/search/CardSearchFieldFaction.vue'
+import CardSearchFieldBlock from '~~/app/components/organisms/cards/search/CardSearchFieldBlock.vue'
+import CardSearchFieldReferenceLabel from '~~/app/components/organisms/cards/search/CardSearchFieldReferenceLabel.vue'
+import CardSearchFieldIllustrator from '~~/app/components/organisms/cards/search/CardSearchFieldIllustrator.vue'
+import CardSearchFieldMoveType from '~~/app/components/organisms/cards/search/CardSearchFieldMoveType.vue'
+import CardSearchFieldRarity from '~~/app/components/organisms/cards/search/CardSearchFieldRarity.vue'
+import CardSearchFieldHero from '~~/app/components/organisms/cards/search/CardSearchFieldHero.vue'
+import CardSearchFieldLandCategory from '~~/app/components/organisms/cards/search/CardSearchFieldLandCategory.vue'
+import CardSearchFieldResistance from '~~/app/components/organisms/cards/search/CardSearchFieldResistance.vue'
+import CardSearchFieldAbilitySlotSpell from '~~/app/components/organisms/cards/search/CardSearchFieldAbilitySlotSpell.vue'
+import CardSearchFieldAbilitySlotItem from '~~/app/components/organisms/cards/search/CardSearchFieldAbilitySlotItem.vue'
+import CardSearchFieldCostSlotSpell from '~~/app/components/organisms/cards/search/CardSearchFieldCostSlotSpell.vue'
+import CardSearchFieldCostSlotItem from '~~/app/components/organisms/cards/search/CardSearchFieldCostSlotItem.vue'
+import CardSearchFieldEffectActivationCategory from '~~/app/components/organisms/cards/search/CardSearchFieldEffectActivationCategory.vue'
+import CardSearchFieldEffectActivationType from '~~/app/components/organisms/cards/search/CardSearchFieldEffectActivationType.vue'
+import CardSearchFieldEffectText from '~~/app/components/organisms/cards/search/CardSearchFieldEffectText.vue'
+import CardSearchFieldEffectType from '~~/app/components/organisms/cards/search/CardSearchFieldEffectType.vue'
 
-const props = defineProps<{
-  modelValue: UnitSearchForm
-  moveTypeOptions: SelectOption[]
-  elementOptions: ElementOption[]
-}>()
 
-const emit = defineEmits<{
-  'update:modelValue': [value: UnitSearchForm]
-}>()
 
-const toNullableNumber = (value: unknown): number | null => {
-  if (value === '' || value == null) {
-    return null
-  }
+import type { SearchForm } from '~~/app/types/ui/search'
 
-  const parsed = Number(value)
-  return Number.isNaN(parsed) ? null : parsed
-}
-
-const updateField = <K extends keyof UnitSearchForm>(key: K, value: UnitSearchForm[K]) => {
-  emit('update:modelValue', {
-    ...props.modelValue,
-    [key]: value
-  })
-}
-
-const toggleElement = (value: string) => {
-  const selected = props.modelValue.selectedElements
-  const next = selected.includes(value as ElementCode)
-    ? selected.filter((entry) => entry !== value)
-    : [...selected, value]
-
-  updateField('selectedElements', next as ElementCode[])
-}
+// 親から渡されたモデルを各フィールドに分配する
+const model = defineModel<SearchForm>({ required: true })
 </script>
 
 <template>
-  <v-card variant="outlined">
-    <AppSectionHeader title="ユニット情報" />
-    <v-card-text>
-      <v-row density="comfortable">
-        <v-col cols="12" md="4">
-          <div class="d-flex ga-2">
-            <v-text-field
-              :model-value="modelValue.levelFrom"
-              label="レベル From"
-              type="number"
-              variant="outlined"
-              density="comfortable"
-              hide-details
-              @update:model-value="updateField('levelFrom', toNullableNumber($event))"
-            />
-            <v-text-field
-              :model-value="modelValue.levelTo"
-              label="To"
-              type="number"
-              variant="outlined"
-              density="comfortable"
-              hide-details
-              @update:model-value="updateField('levelTo', toNullableNumber($event))"
-            />
-          </div>
-        </v-col>
-        <v-col cols="12" md="4">
-          <div class="d-flex ga-2">
-            <v-text-field
-              :model-value="modelValue.attackFrom"
-              label="攻撃力 From"
-              type="number"
-              variant="outlined"
-              density="comfortable"
-              hide-details
-              @update:model-value="updateField('attackFrom', toNullableNumber($event))"
-            />
-            <v-text-field
-              :model-value="modelValue.attackTo"
-              label="To"
-              type="number"
-              variant="outlined"
-              density="comfortable"
-              hide-details
-              @update:model-value="updateField('attackTo', toNullableNumber($event))"
-            />
-          </div>
-        </v-col>
-        <v-col cols="12" md="4">
-          <div class="d-flex ga-2">
-            <v-text-field
-              :model-value="modelValue.defenseFrom"
-              label="防御力 From"
-              type="number"
-              variant="outlined"
-              density="comfortable"
-              hide-details
-              @update:model-value="updateField('defenseFrom', toNullableNumber($event))"
-            />
-            <v-text-field
-              :model-value="modelValue.defenseTo"
-              label="To"
-              type="number"
-              variant="outlined"
-              density="comfortable"
-              hide-details
-              @update:model-value="updateField('defenseTo', toNullableNumber($event))"
-            />
-          </div>
-        </v-col>
-        <v-col cols="12" md="4">
-          <v-select
-            :model-value="modelValue.selectedMoveType"
-            :items="moveTypeOptions"
-            item-title="title"
-            item-value="value"
-            label="移動タイプ"
-            variant="outlined"
-            density="comfortable"
-            hide-details
-            @update:model-value="updateField('selectedMoveType', String($event ?? ''))"
-          />
-        </v-col>
-      </v-row>
-      <p class="text-caption font-weight-bold mt-4 mb-2">
-        属性（複数選択）
-      </p>
-      <div class="d-flex flex-wrap ga-2">
-        <ElementChipToggle
-          v-for="element in elementOptions"
-          :key="element.value"
-          :label="element.label"
-          :value="element.value"
-          :color="element.color"
-          :selected="modelValue.selectedElements.includes(element.value as ElementCode)"
-          @toggle="toggleElement"
-        />
-      </div>
-    </v-card-text>
-  </v-card>
+  <CardSearchFieldLevel v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldHero v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldAttack v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldDefence v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldMoveType v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldRace v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldAbilitySlotItem v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldAbilitySlotSpell v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldInitiative v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldCharge v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldDefender v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldResistance v-model="model" />
 </template>

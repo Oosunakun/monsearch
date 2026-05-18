@@ -1,0 +1,38 @@
+[
+    {
+        "label": "mdi-circle",
+        "value": "circle"
+    },
+    {
+        "label": "mdi-triangle",
+        "value": "triangle"
+    },
+    {
+        "label": "mdi-rhombus",
+        "value": "rhombus"
+    },
+    {
+        "label": "mdi-star",
+        "value": "star"
+    },
+    {
+        "label": "mdi-cards-club",
+        "value": "club"
+    },
+    {
+        "label": "mdi-cards-spade",
+        "value": "spade"
+    },
+    {
+        "label": "mdi-heart",
+        "value": "heart"
+    },
+    {
+        "label": "crescent",
+        "value": "crescent"
+    },
+    {
+        "label": "hexagram",
+        "value": "hexagram"
+    }
+]

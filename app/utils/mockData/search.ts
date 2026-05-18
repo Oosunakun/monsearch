@@ -3,7 +3,7 @@ import type {
   SearchResultHeader,
   SearchResultSource,
   SelectOption
-} from '~~/app/types/ui/search'
+} from '~/types/ui/_search'
 
 export const mockSearchCategoryOptions: SelectOption[] = [
   { title: 'ユニット', value: 'Unit' },

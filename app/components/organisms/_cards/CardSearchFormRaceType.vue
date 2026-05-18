@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { RaceTypeSearchForm } from '~~/app/types/ui/search'
+import type { RaceTypeSearchForm } from '~/types/ui/_search'
 import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
 
 const props = defineProps<{

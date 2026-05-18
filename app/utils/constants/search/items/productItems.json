@@ -1,0 +1,27 @@
+[
+    {
+        "label": "太陽の金の竜姫",
+        "value": "M20A",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "月の銀の魔狼",
+        "value": "M20B",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "召喚士",
+        "value": "M20C",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "竜騎士",
+        "value": "M20D",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "プロモーションカード(20th Anniversary)",
+        "value": "M20PR",
+        "color": "#EEEEEE"
+    }
+]

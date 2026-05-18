@@ -1,0 +1,17 @@
+[
+    {
+        "label": "マルチ",
+        "value": "multi",
+        "color": "yellow-darken-2"
+    },
+    {
+        "label": "消耗品",
+        "value": "consume",
+        "color": "yellow-darken-2"
+    },
+    {
+        "label": "錬金弾",
+        "value": "bullet",
+        "color": "yellow-darken-2"
+    }
+]

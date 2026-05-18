@@ -1,0 +1,17 @@
+[
+    {
+        "label": "ALL",
+        "value": "all",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "AN",
+        "value": "an",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "DE",
+        "value": "de",
+        "color": "#EEEEEE"
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "label": "ALL",
+        "value": "all",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "竜たちの冠",
+        "value": "f01",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "野生の王国",
+        "value": "f02",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "蜃気楼の彼方に",
+        "value": "f03",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "アリアオロの双魚宮",
+        "value": "f04",
+        "color": "#EEEEEE"
+    }
+]

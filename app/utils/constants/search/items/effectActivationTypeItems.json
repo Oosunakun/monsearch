@@ -1,0 +1,27 @@
+[
+    {
+        "label": "普通",
+        "value": "t01",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "対抗",
+        "value": "t02",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "儀式",
+        "value": "t03",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "条件",
+        "value": "t04",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "常時",
+        "value": "t05",
+        "color": "#EEEEEE"
+    }
+]

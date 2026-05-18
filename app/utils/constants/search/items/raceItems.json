@@ -1,0 +1,17 @@
+[
+    {
+        "label": "ドラゴン",
+        "value": "dragon",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "エルフ",
+        "value": "elf",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "魔獣",
+        "value": "beast",
+        "color": "#EEEEEE"
+    }
+]

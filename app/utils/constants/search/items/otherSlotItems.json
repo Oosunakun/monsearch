@@ -1,0 +1,22 @@
+[
+    {
+        "label": "手札",
+        "value": "hand",
+        "color": "gray"
+    },
+    {
+        "label": "山札",
+        "value": "deck",
+        "color": "gray"
+    },
+    {
+        "label": "捨札",
+        "value": "trash",
+        "color": "gray"
+    },
+    {
+        "label": "パワー",
+        "value": "power",
+        "color": "gray"
+    }
+]

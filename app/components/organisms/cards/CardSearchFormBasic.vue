@@ -1,97 +1,51 @@
 <script setup lang="ts">
-import type { BasicSearchForm, SelectOption } from '~~/app/types/ui/search'
-import type { CardCategory } from '~~/types/card'
-import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
+import CardSearchFieldName from '~~/app/components/organisms/cards/search/CardSearchFieldName.vue'
+import CardSearchFieldElement from '~~/app/components/organisms/cards/search/CardSearchFieldElement.vue'
+import CardSearchFieldDivider from '~~/app/components/atoms/common/CardSearchFieldDivider.vue'
+import CardSearchFieldCardCategory from '~~/app/components/organisms/cards/search/CardSearchFieldCardCategory.vue'
+import CardSearchFieldCardType from '~~/app/components/organisms/cards/search/CardSearchFieldCardType.vue'
+import CardSearchFieldKeyword from '~~/app/components/organisms/cards/search/CardSearchFieldKeyword.vue'
+import CardSearchFieldLevel from '~~/app/components/organisms/cards/search/CardSearchFieldLevel.vue'
+import CardSearchFieldAttack from '~~/app/components/organisms/cards/search/CardSearchFieldAttack.vue'
+import CardSearchFieldDefence from '~~/app/components/organisms/cards/search/CardSearchFieldDefence.vue'
+import CardSearchFieldInitiative from '~~/app/components/organisms/cards/search/CardSearchFieldInitiative.vue'
+import CardSearchFieldCharge from '~~/app/components/organisms/cards/search/CardSearchFieldCharge.vue'
+import CardSearchFieldDefender from '~~/app/components/organisms/cards/search/CardSearchFieldDefender.vue'
+import CardSearchFieldProduct from '~~/app/components/organisms/cards/search/CardSearchFieldProduct.vue'
+import CardSearchFieldLimit from '~~/app/components/organisms/cards/search/CardSearchFieldLimit.vue'
+import CardSearchFieldFaction from '~~/app/components/organisms/cards/search/CardSearchFieldFaction.vue'
+import CardSearchFieldBlock from '~~/app/components/organisms/cards/search/CardSearchFieldBlock.vue'
+import CardSearchFieldReferenceLabel from '~~/app/components/organisms/cards/search/CardSearchFieldReferenceLabel.vue'
+import CardSearchFieldIllustrator from '~~/app/components/organisms/cards/search/CardSearchFieldIllustrator.vue'
+import CardSearchFieldMoveType from '~~/app/components/organisms/cards/search/CardSearchFieldMoveType.vue'
+import CardSearchFieldRarity from '~~/app/components/organisms/cards/search/CardSearchFieldRarity.vue'
+import CardSearchFieldHero from '~~/app/components/organisms/cards/search/CardSearchFieldHero.vue'
+import CardSearchFieldLandCategory from '~~/app/components/organisms/cards/search/CardSearchFieldLandCategory.vue'
+import CardSearchFieldResistance from '~~/app/components/organisms/cards/search/CardSearchFieldResistance.vue'
+import CardSearchFieldAbilitySlotSpell from '~~/app/components/organisms/cards/search/CardSearchFieldAbilitySlotSpell.vue'
+import CardSearchFieldAbilitySlotItem from '~~/app/components/organisms/cards/search/CardSearchFieldAbilitySlotItem.vue'
+import CardSearchFieldCostSlotSpell from '~~/app/components/organisms/cards/search/CardSearchFieldCostSlotSpell.vue'
+import CardSearchFieldCostSlotItem from '~~/app/components/organisms/cards/search/CardSearchFieldCostSlotItem.vue'
+import CardSearchFieldEffectActivationCategory from '~~/app/components/organisms/cards/search/CardSearchFieldEffectActivationCategory.vue'
+import CardSearchFieldEffectActivationType from '~~/app/components/organisms/cards/search/CardSearchFieldEffectActivationType.vue'
+import CardSearchFieldEffectText from '~~/app/components/organisms/cards/search/CardSearchFieldEffectText.vue'
+import CardSearchFieldEffectType from '~~/app/components/organisms/cards/search/CardSearchFieldEffectType.vue'
 
-const props = defineProps<{
-  modelValue: BasicSearchForm
-  categoryOptions: SelectOption[]
-  rarityOptions: SelectOption[]
-  cardPoolOptions: SelectOption[]
-  setOptions: SelectOption[]
-}>()
+import type { SearchForm } from '~~/app/types/ui/search'
 
-const emit = defineEmits<{
-  'update:modelValue': [value: BasicSearchForm]
-}>()
-
-const updateField = <K extends keyof BasicSearchForm>(key: K, value: BasicSearchForm[K]) => {
-  emit('update:modelValue', {
-    ...props.modelValue,
-    [key]: value
-  })
-}
+// 親から渡されたモデルを各フィールドに分配する
+const model = defineModel<SearchForm>({ required: true })
 </script>
 
 <template>
-  <v-card variant="outlined">
-    <AppSectionHeader title="基本情報" />
-    <v-card-text>
-      <v-row density="comfortable">
-        <v-col cols="12" lg="8">
-          <v-text-field
-            :model-value="modelValue.cardName"
-            label="カード名"
-            placeholder="例: ドラゴンナイト"
-            variant="outlined"
-            density="comfortable"
-            hide-details
-            @update:model-value="updateField('cardName', String($event ?? ''))"
-          />
-        </v-col>
-        <v-col cols="12" lg="4">
-          <v-select
-            :model-value="modelValue.selectedCategory"
-            :items="categoryOptions"
-            item-title="title"
-            item-value="value"
-            label="カテゴリ"
-            variant="outlined"
-            density="comfortable"
-            hide-details
-            @update:model-value="updateField('selectedCategory', $event as CardCategory | '')"
-          />
-        </v-col>
-        <v-col cols="12" lg="4">
-          <v-select
-            :model-value="modelValue.selectedRarity"
-            :items="rarityOptions"
-            item-title="title"
-            item-value="value"
-            label="レアリティ"
-            variant="outlined"
-            density="comfortable"
-            hide-details
-            @update:model-value="updateField('selectedRarity', String($event ?? ''))"
-          />
-        </v-col>
-        <v-col cols="12" lg="4">
-          <v-select
-            :model-value="modelValue.selectedCardPool"
-            :items="cardPoolOptions"
-            item-title="title"
-            item-value="value"
-            label="カードプール"
-            variant="outlined"
-            density="comfortable"
-            hide-details
-            @update:model-value="updateField('selectedCardPool', String($event ?? ''))"
-          />
-        </v-col>
-        <v-col cols="12" lg="4">
-          <v-select
-            :model-value="modelValue.selectedSet"
-            :items="setOptions"
-            item-title="title"
-            item-value="value"
-            label="セット"
-            variant="outlined"
-            density="comfortable"
-            hide-details
-            @update:model-value="updateField('selectedSet', String($event ?? ''))"
-          />
-        </v-col>
-      </v-row>
-    </v-card-text>
-  </v-card>
+  <CardSearchFieldName v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldCardCategory v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldElement v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldCardType v-model="model" />
+  <CardSearchFieldDivider />
+  <CardSearchFieldKeyword v-model="model" />
 </template>
+

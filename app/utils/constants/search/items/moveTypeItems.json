@@ -1,0 +1,14 @@
+[
+    {
+        "label": "歩行",
+        "value": "walk"
+    },
+    {
+        "label": "飛行",
+        "value": "fly"
+    },
+    {
+        "label": "長距離飛行",
+        "value": "longfly"
+    }
+]

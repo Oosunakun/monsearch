@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SearchResultHeader, SearchResultRow } from '~~/app/types/ui/search'
+import type { SearchResultHeader, SearchResultRow } from '~/types/ui/_search'
 import ZebraTableRow from '~~/app/components/atoms/common/ZebraTableRow.vue'
 import StickyTableHeaderRow from '~~/app/components/atoms/common/StickyTableHeaderRow.vue'
 import AppErrorState from '~~/app/components/atoms/common/AppErrorState.vue'

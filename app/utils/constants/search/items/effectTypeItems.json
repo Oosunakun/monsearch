@@ -1,0 +1,17 @@
+[
+    {
+        "label": "□特殊能力",
+        "value": "s01",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "◎特殊能力",
+        "value": "s02",
+        "color": "#EEEEEE"
+    },
+    {
+        "label": "×特殊能力",
+        "value": "s03",
+        "color": "#EEEEEE"
+    }
+]
