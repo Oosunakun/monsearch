@@ -1,5 +1,9 @@
 import type { CardListHeader, CardListSourceRow, SearchCondition } from '~~/app/types/ui/cards'
 import type { CardDetail } from '~~/types/card'
+import finderCardFile from '~~/app/utils/mockData/items/cards.json'
+import type { FinderCards } from '~~/types/cards/finder_cards'
+
+export const mockFinderCards: FinderCards = finderCardFile as unknown as FinderCards
 
 export const mockCardListHeaders: CardListHeader[] = [
   { title: 'セット', key: 'setCode', sortable: false },
