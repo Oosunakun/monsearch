@@ -1,3 +1,5 @@
+/* eslint-disable no-irregular-whitespace */
+
 export const mockRuleReplacementHeaders = [
   { title: '変更前', key: 'beforeText', sortable: false },
   { title: '変更後', key: 'afterText', sortable: false },

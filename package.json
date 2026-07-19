@@ -27,6 +27,7 @@
     "happy-dom": "^20.9.0",
     "playwright-core": "^1.59.1",
     "vitest": "^4.1.5",
+    "vue-tsc": "^3.3.8",
     "vuetify-nuxt-module": "^0.19.5"
   }
 }

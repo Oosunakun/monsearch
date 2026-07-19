@@ -1,42 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
-import SectionCardShell from '~~/app/components/molecules/common/SectionCardShell.vue'
-import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
-import CardSearchActions from '~~/app/components/organisms/cards/CardSearchActions.vue'
-
-import CardSearchFieldName from '~~/app/components/organisms/cards/search/CardSearchFieldName.vue'
-import CardSearchFieldElement from '~~/app/components/organisms/cards/search/CardSearchFieldElement.vue'
-import type { SearchForm } from '~~/app/types/ui/search'
-
-import CardSearchFormBasic from '~~/app/components/organisms/cards/CardSearchFormBasic.vue'
-import CardSearchFormOrigin from '~~/app/components/organisms/cards/CardSearchFormOrigin.vue'
-import CardSearchFormUnit from '~~/app/components/organisms/cards/CardSearchFormUnit.vue'
-import CardSearchFormEquipment from '~~/app/components/organisms/cards/CardSearchFormEquipment.vue'
-import CardSearchFormLand from '~~/app/components/organisms/cards/CardSearchFormLand.vue'
-import CardSearchFormEffect from '~~/app/components/organisms/cards/CardSearchFormEffect.vue'
-import CardSearchFormOther from '~~/app/components/organisms/cards/CardSearchFormOther.vue'
-
-import { SEARCH_OPERATOR } from '~~/app/utils/constants/search/conditions'
-import type { NumericCondition, FilteredNumericCondition, SlotCondition } from '~~/app/types/ui/search'
-
+import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
+import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
+import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
+import SearchActions from '~~/app/components/cards/search/layout/SearchActions.vue'
+import SearchFormBasic from '~~/app/components/cards/search/layout/SearchFormBasic.vue'
+import SearchFormOrigin from '~~/app/components/cards/search/layout/SearchFormOrigin.vue'
+import SearchFormUnit from '~~/app/components/cards/search/layout/SearchFormUnit.vue'
+import SearchFormEquipment from '~~/app/components/cards/search/layout/SearchFormEquipment.vue'
+import SearchFormLand from '~~/app/components/cards/search/layout/SearchFormLand.vue'
+import SearchFormEffect from '~~/app/components/cards/search/layout/SearchFormEffect.vue'
+import SearchFormOther from '~~/app/components/cards/search/layout/SearchFormOther.vue'
 import { useCardSearchForm } from '~~/app/composables/useCardSearchForm'
 
-
 const router = useRouter()
-
-const { form, resetForm } = useCardSearchForm()
+const { form } = useCardSearchForm()
 
 // 明示的な検索実行
 const executeSearch = () => {
-  router.push('/cards')
-}
-
-// 簡易検索（テキスト＋エンター or ボタンクリックで即実行）
-const quickSearch = () => {
-  if (!form.value?.keyword) return
-  // 他の条件を上書きせず独立して実行するロジックへ
   router.push('/cards')
 }
 
@@ -67,10 +48,10 @@ const shownLandSectionCardShell = computed(() => {
       :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="基本情報" color="accent" text-class="text-white" />
+        <SectionHeader title="基本情報" color="accent" text-class="text-white" />
       </template>
       
-      <CardSearchFormBasic v-model="form" />
+      <SearchFormBasic v-model="form" />
     </SectionCardShell>
     
     <SectionCardShell
@@ -78,46 +59,46 @@ const shownLandSectionCardShell = computed(() => {
       :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="カードセット・所属" color="accent" text-class="text-white" />
+        <SectionHeader title="カードセット・所属" color="accent" text-class="text-white" />
       </template>
 
-      <CardSearchFormOrigin v-model="form" />
+      <SearchFormOrigin v-model="form" />
     </SectionCardShell>
 
     <SectionCardShell
-      :collapsible="true"
-      :initially-open="true"
       v-show="shownUnitSectionCardShell"
+      :collapsible="true"
+      :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="ユニット" color="accent" text-class="text-white" />
+        <SectionHeader title="ユニット" color="accent" text-class="text-white" />
       </template>
       
-      <CardSearchFormUnit v-model="form" />
+      <SearchFormUnit v-model="form" />
     </SectionCardShell>
 
     <SectionCardShell
-      :collapsible="true"
-      :initially-open="true"
       v-show="shownItemEquipSectionCardShell"
+      :collapsible="true"
+      :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="装備品" color="accent" text-class="text-white" />
+        <SectionHeader title="装備品" color="accent" text-class="text-white" />
       </template>
       
-      <CardSearchFormEquipment v-model="form" />
+      <SearchFormEquipment v-model="form" />
     </SectionCardShell>
 
     <SectionCardShell
-      :collapsible="true"
-      :initially-open="true"
       v-show="shownLandSectionCardShell"
+      :collapsible="true"
+      :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="地形" color="accent" text-class="text-white" />
+        <SectionHeader title="地形" color="accent" text-class="text-white" />
       </template>
       
-      <CardSearchFormLand v-model="form" />
+      <SearchFormLand v-model="form" />
     </SectionCardShell>
 
     <SectionCardShell
@@ -125,10 +106,10 @@ const shownLandSectionCardShell = computed(() => {
       :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="特殊能力・カード効果" color="accent" text-class="text-white" />
+        <SectionHeader title="特殊能力・カード効果" color="accent" text-class="text-white" />
       </template>
       
-      <CardSearchFormEffect v-model="form" />
+      <SearchFormEffect v-model="form" />
     </SectionCardShell>
 
     <SectionCardShell
@@ -136,12 +117,12 @@ const shownLandSectionCardShell = computed(() => {
       :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="その他" color="accent" text-class="text-white" />
+        <SectionHeader title="その他" color="accent" text-class="text-white" />
       </template>
       
-      <CardSearchFormOther v-model="form" />
+      <SearchFormOther v-model="form" />
     </SectionCardShell>
 
-    <CardSearchActions :on-execute="executeSearch" />
+    <SearchActions :on-execute="executeSearch" />
   </ContentMaxWidthContainer>
 </template>

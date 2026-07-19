@@ -1,6 +1,5 @@
-import type { Card } from '~~/types/cards/finder_cards'
+import type { Card } from '~~/types/cards/finderCards'
 import { mixWithWhiteHex, withAlphaHex } from '~~/app/utils/hexColor'
-
 
 // --------------------------------------------------
 
@@ -176,7 +175,6 @@ function decorateColor(
 
 export const createCardDesign = (card: Card) => {
 
-  // CardItemMeta.vue
   // 検索窓のロジックに合わせ、レアリティの表示タイプを安全に判定
   // ※カードレアリティのアイコン
   function rarityType() {
@@ -184,7 +182,6 @@ export const createCardDesign = (card: Card) => {
     return RARITY_ICON[code] || ''
   }
 
-  // CardSearchResultItem.vue
   // カテゴリに応じたカラーコード（Hex値）を直接解決してCSS変数に渡す
   // ※カード全体の背景色
   function baseBackgroundColor() {
@@ -194,7 +191,6 @@ export const createCardDesign = (card: Card) => {
     )
   }
 
-  // CardItemHeaderStat.vue
   // カード分類のアイコンに使用する色
   function categoryLabelColor () {
     return decorateColor(
@@ -220,7 +216,6 @@ export const createCardDesign = (card: Card) => {
 
   // ユニットまたは戦闘スペルから属性を取得するロジックをここに集約
   // ユニットカードの属性アイコンに使用する色
-  // function getElementColor(elementCode: string) {
   function elementIconColor() {
     const elementCode = getElementCode(card)
     return decorateColor(
@@ -229,7 +224,6 @@ export const createCardDesign = (card: Card) => {
     )
   }
 
-  // CardItemEffect.vue
   // カードの特殊能力欄の座布団に使用する色
   function effectBackgroundColor () {
     // Elements優先
@@ -242,7 +236,6 @@ export const createCardDesign = (card: Card) => {
     }
   
     // Card Category
-    // CATEGORY_EFFECT_COLOR
     return decorateColor(
       getCategoryColor(card, EFFECT_BACKGROUND_CATEGORY_COLORS),
       EFFECT_BACKGROUND_STYLE,

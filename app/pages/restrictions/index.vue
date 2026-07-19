@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
-import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
-import SectionCardShell from '~~/app/components/molecules/common/SectionCardShell.vue'
-import ProductTable from '~~/app/components/organisms/products/ProductTable.vue'
-import RestrictionTable from '~~/app/components/organisms/restrictions/RestrictionTable.vue'
-import type { RestrictionRow } from '~~/app/components/organisms/restrictions/RestrictionTable.vue'
-import RestrictionRelationTable from '~~/app/components/organisms/restrictions/RestrictionRelationTable.vue'
-import type { RestrictionRelationRow } from '~~/app/components/organisms/restrictions/RestrictionRelationTable.vue'
-import type { ProductRow } from '~~/app/components/organisms/products/ProductTable.vue'
+import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
+import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
+import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
+import ProductTable from '~~/app/components/products/ProductTable.vue'
+import RestrictionTable from '~~/app/components/restrictions/RestrictionTable.vue'
+import type { RestrictionRow } from '~~/app/components/restrictions/RestrictionTable.vue'
+import RestrictionRelationTable from '~~/app/components/restrictions/RestrictionRelationTable.vue'
+import type { RestrictionRelationRow } from '~~/app/components/restrictions/RestrictionRelationTable.vue'
+import type { ProductRow } from '~~/app/components/products/ProductTable.vue'
 import {
   mockRestrictionNoticeItems,
   mockRestrictionAvailableProductHeaders,
@@ -78,7 +78,7 @@ const restrictionRelationRows = computed<RestrictionRelationRow[]>(() => {
   <ContentMaxWidthContainer>
     <SectionCardShell>
       <template #header>
-        <AppSectionHeader title="注意事項" color="primary" text-class="text-white" />
+        <SectionHeader title="注意事項" color="primary" text-class="text-white" />
       </template>
       <ul>
         <li v-for="item in noticeItems" :key="item.id">
@@ -92,7 +92,7 @@ const restrictionRelationRows = computed<RestrictionRelationRow[]>(() => {
       :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="使用できるカードセット" color="accent" text-class="text-white" />
+        <SectionHeader title="使用できるカードセット" color="accent" text-class="text-white" />
       </template>
 
       <ProductTable
@@ -106,7 +106,7 @@ const restrictionRelationRows = computed<RestrictionRelationRow[]>(() => {
       :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="禁止カード、制限カード" color="accent" text-class="text-white" />
+        <SectionHeader title="禁止カード、制限カード" color="accent" text-class="text-white" />
       </template>
 
       <RestrictionTable
@@ -120,7 +120,7 @@ const restrictionRelationRows = computed<RestrictionRelationRow[]>(() => {
       :initially-open="true"
     >
       <template #header>
-        <AppSectionHeader title="召喚術師と紐づくカード" color="accent" text-class="text-white" />
+        <SectionHeader title="召喚術師と紐づくカード" color="accent" text-class="text-white" />
       </template>
 
       <RestrictionRelationTable

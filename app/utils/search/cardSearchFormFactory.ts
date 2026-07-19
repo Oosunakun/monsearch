@@ -9,7 +9,7 @@ import type {
   SlotCondition,
   SearchForm,
 } from '~~/app/types/ui/search'
-import { LAND_CATEGORY, LAND_CATEGORY_OPTIONS } from '../constants/search/options'
+import { LAND_CATEGORY } from '~~/app/utils/constants/search/options'
 
 export const defaultNumericCondition: NumericCondition = {
   value: null,

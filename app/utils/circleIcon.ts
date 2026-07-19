@@ -7,4 +7,3 @@ export interface CircleColorShifts {
   stroke: HslShift
   shadow: HslShift
 }
-

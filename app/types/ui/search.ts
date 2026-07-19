@@ -15,7 +15,7 @@ import type {
   Resistance 
 } from '~~/app/utils/constants/search/options'
 import type { SearchOperator, SearchFilter, LogicalMatch } from '~~/app/utils/constants/search/conditions'
-import type { CardCategory } from '~~/types/card'
+import type { CardCategoryCode } from '~~/types/cards/code'
 
 export type NumericCondition = {
   value: number | null
@@ -38,7 +38,7 @@ export type SearchForm = {
   // 基本情報
   // --------------------
   name: string
-  cardCategory: CardCategory | ''
+  cardCategory: CardCategoryCode | ''
   elements: Element[]
   cardTypes: CardType[]
   keyword: string

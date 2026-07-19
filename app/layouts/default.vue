@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { NavItem } from '~~/app/types/ui/layout'
-import AppHeader from '~~/app/components/organisms/layout/AppHeader.vue'
+import AppHeader from '~~/app/components/layout/AppHeader.vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 import { useDisplay } from 'vuetify'
 import { LAYOUT_SIDEBAR, LAYOUT_HEADER} from '~~/app/types/ui/layout'
-import AppNavigationDrawer from '~~/app/components/organisms/layout/AppNavigationDrawer.vue'
+import AppNavigationDrawer from '~~/app/components/layout/AppNavigationDrawer.vue'
 
 const { mdAndUp, thresholds, mobile } = useDisplay()
 

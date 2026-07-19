@@ -38,7 +38,7 @@ isProject: false
 
 ## 提案ディレクトリ構造
 - `app/components/atoms/`
-  - `common/AppSectionHeader.vue`
+  - `common/SectionHeader.vue`
   - `common/ZebraTableRow.vue`
   - `search/ElementChipToggle.vue`
 - `app/components/molecules/`
@@ -52,8 +52,8 @@ isProject: false
   - `layout/AppHeader.vue`
   - `layout/AppFooter.vue`
   - `cards/CardListTable.vue`
-  - `cards/CardSearchFormBasic.vue`
-  - `cards/CardSearchFormUnit.vue`
+  - `cards/SearchFormBasic.vue`
+  - `cards/SearchFormUnit.vue`
   - `cards/CardSearchFormRaceType.vue`
   - `cards/CardSearchFormKeyword.vue`
   - `cards/CardSearchResultTable.vue`
@@ -91,11 +91,11 @@ isProject: false
   - 役割: カード一覧テーブル（クリックで詳細表示）
   - props: `headers`, `items`, `loading?`
   - emits: `rowClick`
-- `CardSearchFormBasic`（Organism）
+- `SearchFormBasic`（Organism）
   - 役割: 基本情報セクション（名前/カテゴリ/レア/プール/セット）
   - props: `modelValue: BasicSearchForm`, `options`
   - emits: `update:modelValue`
-- `CardSearchFormUnit`（Organism）
+- `SearchFormUnit`（Organism）
   - 役割: ユニット情報（レベル/攻防/移動タイプ/属性）
   - props: `modelValue: UnitSearchForm`, `moveTypeOptions`, `elementOptions`
   - emits: `update:modelValue`
@@ -166,11 +166,11 @@ flowchart LR
    - グローバルUIの責務を整理し、ページロジックから分離
 4. `CardDetailModal` 内部分割（`CardMetaChips` / `CardEffectItem` / `CardEffectList`）
    - 重複描画を減らして保守性を上げる
-5. 横断共通化（`AppSectionHeader` / `ZebraTableRow`）
+5. 横断共通化（`SectionHeader` / `ZebraTableRow`）
    - `about/rules/restrictions` の重複UIを段階的に統一
 
 ## Vuetify4運用ルール（この分割で守る点）
 - `v-model` を使う入力系は `modelValue` + `update:modelValue` に統一
 - テーブル/フォームは `headers`・`items`・`options` を props で外出しし、表示コンポーネントを純粋化
-- `v-card` + `v-sheet` のセクション見出しパターンを `AppSectionHeader` で共通化
+- `v-card` + `v-sheet` のセクション見出しパターンを `SectionHeader` で共通化
 - スタイルは `scoped` を維持しつつ、再利用する見た目は atoms 側に集約

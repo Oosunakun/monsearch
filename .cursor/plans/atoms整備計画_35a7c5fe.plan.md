@@ -9,7 +9,7 @@ todos:
     content: "`app/utils/constants/colors.ts` を導入しコンポーネント内の色ロジックを参照化する"
     status: completed
   - id: extend-existing-atoms
-    content: "`AppSectionHeader`/`ZebraTableRow` の再利用性を拡張し既存画面へ適用する"
+    content: "`SectionHeader`/`ZebraTableRow` の再利用性を拡張し既存画面へ適用する"
     status: completed
   - id: introduce-new-atoms
     content: "`StickyTableHeaderRow`/`SectionCardShell`/`ResultCountLabel`/`ContentMaxWidthContainer` を追加する"
@@ -84,7 +84,7 @@ isProject: false
   - [app/components/molecules/search/QuickSearchBar.vue](app/components/molecules/search/QuickSearchBar.vue)
 
 - 既存 Atoms（拡張対象）
-  - [app/components/atoms/common/AppSectionHeader.vue](app/components/atoms/common/AppSectionHeader.vue)
+  - [app/components/atoms/common/SectionHeader.vue](app/components/atoms/common/SectionHeader.vue)
   - [app/components/atoms/common/ZebraTableRow.vue](app/components/atoms/common/ZebraTableRow.vue)
 
 ## 不要になる CSS クラス / インライン style の整理方針

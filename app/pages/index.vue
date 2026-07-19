@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { mockProductHeaders, mockProductSources } from '~~/app/utils/mockData'
-import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
-import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
-import SectionCardShell from '~~/app/components/molecules/common/SectionCardShell.vue'
-import ProductTable from '~~/app/components/organisms/products/ProductTable.vue'
-import type { ProductRow } from '~~/app/components/organisms/products/ProductTable.vue'
+import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
+import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
+import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
+import ProductTable from '~~/app/components/products/ProductTable.vue'
+import type { ProductRow } from '~~/app/components/products/ProductTable.vue'
 
 const productHeaders = mockProductHeaders
 const productSourceRows = mockProductSources
@@ -21,7 +21,7 @@ const productRows = computed<ProductRow[]>(() =>
   <ContentMaxWidthContainer>
     <SectionCardShell>
       <template #header>
-        <AppSectionHeader title="カードセット" color="primary" text-class="text-white" />
+        <SectionHeader title="カードセット" color="primary" text-class="text-white" />
       </template>
 
       <ProductTable

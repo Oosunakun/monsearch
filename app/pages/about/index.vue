@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ContentMaxWidthContainer from '~~/app/components/atoms/common/ContentMaxWidthContainer.vue'
-import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
-import SectionCardShell from '~~/app/components/molecules/common/SectionCardShell.vue'
-import ExternalLinkCard from '~~/app/components/molecules/common/ExternalLinkCard.vue'
-import HistoryTable from '~~/app/components/organisms/about/HistoryTable.vue'
-import type { HistoryRow } from '~~/app/components/organisms/about/HistoryTable.vue'
+import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
+import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
+import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
+import ExternalLinkCard from '~~/app/components/about/ExternalLinkCard.vue'
+import HistoryTable from '~~/app/components/about/HistoryTable.vue'
+import type { HistoryRow } from '~~/app/components/about/HistoryTable.vue'
 
 import {
   mockAboutDisclaimerItems,
@@ -49,7 +49,7 @@ const historyRows = computed<HistoryRow[]>(() =>
   <ContentMaxWidthContainer>
     <SectionCardShell>
       <template #header>
-        <AppSectionHeader title="免責事項" color="primary" text-class="text-white" />
+        <SectionHeader title="免責事項" color="primary" text-class="text-white" />
       </template>
       <ul>
         <li v-for="item in disclaimerItems" :key="item.id">
@@ -60,7 +60,7 @@ const historyRows = computed<HistoryRow[]>(() =>
 
     <SectionCardShell>
       <template #header>
-        <AppSectionHeader title="このサイトについて" color="primary" text-class="text-white" />
+        <SectionHeader title="このサイトについて" color="primary" text-class="text-white" />
       </template>
       <ul>
         <li v-for="item in aboutItems" :key="item.id">
@@ -71,7 +71,7 @@ const historyRows = computed<HistoryRow[]>(() =>
 
     <SectionCardShell>
       <template #header>
-        <AppSectionHeader title="謝辞" color="primary" text-class="text-white" />
+        <SectionHeader title="謝辞" color="primary" text-class="text-white" />
       </template>
       <ul>
         <li v-for="item in thanksItems" :key="item.id">
@@ -82,7 +82,7 @@ const historyRows = computed<HistoryRow[]>(() =>
 
     <SectionCardShell>
       <template #header>
-        <AppSectionHeader title="更新履歴" color="primary" text-class="text-white" />
+        <SectionHeader title="更新履歴" color="primary" text-class="text-white" />
       </template>
 
       <HistoryTable
@@ -93,7 +93,7 @@ const historyRows = computed<HistoryRow[]>(() =>
 
     <SectionCardShell>
       <template #header>
-        <AppSectionHeader title="リンク" color="primary" text-class="text-white" />
+        <SectionHeader title="リンク" color="primary" text-class="text-white" />
       </template>
       <v-row
         :no-gutters="false"
@@ -117,7 +117,7 @@ const historyRows = computed<HistoryRow[]>(() =>
 
     <SectionCardShell :margin-bottom="false">
       <template #header>
-        <AppSectionHeader title="お問い合わせ" color="primary" text-class="text-white" />
+        <SectionHeader title="お問い合わせ" color="primary" text-class="text-white" />
       </template>
       <p>
         誤記の報告・機能要望・掲載内容のご相談は、以下の連絡先からお願いします。
