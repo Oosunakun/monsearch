@@ -184,9 +184,13 @@ const summarySubtitle = computed(() => {
  * active panel override
  * ======================================= */
 
+.ruling-panel {
+  border-radius: 0;
+  border: 1px solid transparent;
+}
+
 .v-expansion-panel--active {
-  z-index: 2;
-  border: 1px solid v-bind('UI_COLORS.PRIMARY');
+  border-color: v-bind('UI_COLORS.PRIMARY');
 }
 
 .v-expansion-panel--active
@@ -349,10 +353,6 @@ const summarySubtitle = computed(() => {
 /* =========================================
  * animation
  * ======================================= */
-
-.animate-fade-in {
-  animation: fadeIn 0.25s ease-out;
-}
 
 @keyframes fadeIn {
   from {

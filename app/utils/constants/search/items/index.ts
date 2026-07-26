@@ -1,3 +1,4 @@
+export { default as additionalCombatItems } from './additionalCombatItems.json'
 export { default as blockItems } from './blockItems.json'
 export { default as cardTypeItems } from './cardTypeItems.json'
 export { default as chargeItems } from './chargeItems.json'

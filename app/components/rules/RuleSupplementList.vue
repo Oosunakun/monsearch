@@ -2,6 +2,7 @@
 import type { RuleSupplementItem } from '~~/app/types/ui/rules'
 import RuleSupplementExpansionItem from '~~/app/components/rules/RuleSupplementExpansionItem.vue'
 import EmptyState from '~~/app/components/common/app/EmptyState.vue'
+import SkeletonLoader from '~~/app/components/common/app/SkeletonLoader.vue'
 
 const props = defineProps<{
   items: RuleSupplementItem[]

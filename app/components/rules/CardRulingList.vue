@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import type { CardRulingItem, RulingType } from '~~/app/types/ui/rules'
 import CardRulingExpansionItem from '~~/app/components/rules/CardRulingExpansionItem.vue'
 import EmptyState from '~~/app/components/common/app/EmptyState.vue'
-import { LAYOUT_HEADER } from '~~/app/types/ui/layout'
+import SkeletonLoader from '~~/app/components/common/app/SkeletonLoader.vue'
 
 import {
   getRulingSearchText,
@@ -226,7 +226,7 @@ const getScrollBadgeTitle = (
  * ======================================= */
 
  .scroll-margin-top {
-  scroll-margin-top: v-bind('`${LAYOUT_HEADER.HEIGHT}px`');
+  scroll-margin-top: 48px;
 }
 
 /* =========================================

@@ -4,7 +4,7 @@ import StickyTableHeaderRow from '~~/app/components/common/layout/StickyTableHea
 import HistoryTableRow from '~~/app/components/about/HistoryTableRow.vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 import { useHydrated } from '~~/app/composables/useHydrated'
-import SkeletonLoader from '~/components/common/app/SkeletonLoader.vue'
+import SkeletonLoader from '~~/app/components/common/app/SkeletonLoader.vue'
 
 export type HistoryRow = {
   id: string

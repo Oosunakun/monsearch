@@ -9,7 +9,7 @@ import {
   isChangedNumericCondition,
 } from '~/utils/search/cardSearchChanged'
 import type { SearchForm } from '~~/app/types/ui/search'
-import { COMBAT_OPTIONS } from '~~/app/utils/constants/search/options'
+import { ADDITIONAL_COMBAT_OPTIONS } from '~~/app/utils/constants/search/options'
 import { useDisplay } from 'vuetify'
 const { mobile } = useDisplay()
 
@@ -39,7 +39,7 @@ const resetAll = () => {
   <SearchValueWithOperator
     v-model="model.additionalAttack.value"
     v-model:operator="model.additionalAttack.operator"
-    :items="COMBAT_OPTIONS"
+    :items="ADDITIONAL_COMBAT_OPTIONS"
   />
   </SearchRow>
 </template>

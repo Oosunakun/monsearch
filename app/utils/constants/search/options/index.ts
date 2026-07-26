@@ -1,3 +1,4 @@
+export * from './additionalCombat'
 export * from './block'
 export * from './cardCategory'
 export * from './cardType'

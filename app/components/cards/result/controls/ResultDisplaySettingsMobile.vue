@@ -49,7 +49,7 @@ const handleCancel = () => {
     variant="outlined"
     density="comfortable"
     color="grey-darken-2"
-    class="font-weight-bold flex-grow-1 button-border"
+    class="font-weight-bold flex-grow-1 button-border bg-white"
     prepend-icon="mdi-tune"
     style="height:34px"
     @click="isOpen = true"

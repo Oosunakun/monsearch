@@ -2,6 +2,7 @@
 import type { QuestionAnswerItem } from '~~/app/types/ui/rules'
 import QuestionAnswerExpansionItem from '~~/app/components/rules/QuestionAnswerExpansionItem.vue'
 import EmptyState from '~~/app/components/common/app/EmptyState.vue'
+import SkeletonLoader from '~~/app/components/common/app/SkeletonLoader.vue'
 
 const props = defineProps<{
   items: QuestionAnswerItem[]

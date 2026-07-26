@@ -3,7 +3,7 @@ import type { QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout
 import QuickSearchBar from '~~/app/components/layout/QuickSearchBar.vue'
 import SearchMagnifyButton from '~~/app/components/layout/SearchMagnifyButton.vue'
 import HeaderTitle from '~~/app/components/layout/HeaderTitle.vue'
-import SkeletonLoader from '~/components/common/app/SkeletonLoader.vue'
+import SkeletonLoader from '~~/app/components/common/app/SkeletonLoader.vue'
 
 const { drawer, isMobile, quickSearchState, cardPools, searchTypes } = defineProps<{
   drawer: boolean

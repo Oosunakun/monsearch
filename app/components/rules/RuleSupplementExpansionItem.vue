@@ -119,6 +119,7 @@ const formatText = (text?: string) => {
 
 .qa-panel {
   border-radius: 0;
+  border: 1px solid transparent;
 }
 
 .qa-title {
@@ -248,10 +249,6 @@ const formatText = (text?: string) => {
 /* =========================================
  * animation
  * ======================================= */
-
-.animate-fade-in {
-  animation: fadeIn 0.25s ease-out;
-}
 
 @keyframes fadeIn {
   from {

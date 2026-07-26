@@ -55,7 +55,7 @@ const HEADER_GRADIENT_COLORS: Record<string, string> = {
 
 
 const ELEMENT_ICON_COLORS: Record<string, string> = {
-  fire: '#D50000',
+  fire: '#F50000',
   water: '#0942FF',
   earth: '#00A823',
   air: '#8A30FF',
