@@ -6,7 +6,7 @@ import { useDisplay } from 'vuetify'
 import { LAYOUT_SIDEBAR, LAYOUT_HEADER} from '~~/app/types/ui/layout'
 import AppNavigationDrawer from '~~/app/components/layout/AppNavigationDrawer.vue'
 
-const { mdAndUp, thresholds, mobile } = useDisplay()
+const { mdAndUp, mobile } = useDisplay()
 
 // PC(md以上)なら表示、モバイルなら非表示で開始
 const drawer = ref(mdAndUp.value)
@@ -27,8 +27,6 @@ const { quickSearchState, cardPools, searchTypes, runQuickSearch } = useQuickSea
 watch(mdAndUp, (isDesktop) => {
   drawer.value = isDesktop
 })
-const LAYOUT_PC_MIN_WIDTH = computed(() => thresholds.value.md)
-const LAYOUT_MOBILE_MAX_WIDTH = computed(() => thresholds.value.md - 1)
 </script>
 
 <template>
@@ -79,7 +77,7 @@ const LAYOUT_MOBILE_MAX_WIDTH = computed(() => thresholds.value.md - 1)
   padding-top: 48px !important;
 }
 
-@media (min-width: v-bind('`${LAYOUT_PC_MIN_WIDTH}px`')) {
+@media (min-width: 960px) {
   /* 初期レンダリング時のガタつきを抑えるための先行スタイル */
   :deep(.v-navigation-drawer.is-expanded) {
     width: v-bind('`${LAYOUT_SIDEBAR.WIDTH}px`') !important;
@@ -116,7 +114,7 @@ const LAYOUT_MOBILE_MAX_WIDTH = computed(() => thresholds.value.md - 1)
 }
 
 /* モバイル時はヘッダーを横いっぱいに広げる */
-@media (max-width: v-bind('`${LAYOUT_MOBILE_MAX_WIDTH}px`')) {
+@media (max-width: 959px) {
   :deep(.v-app-bar) {
     left: 0 !important;
     width: 100% !important;

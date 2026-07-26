@@ -9,7 +9,7 @@ const props = defineProps<{
 }>()
 
 const selectedValues = defineModel<string[]>({
-  default: []
+  default: () => []
 })
 
 const { mobile } = useDisplay()
