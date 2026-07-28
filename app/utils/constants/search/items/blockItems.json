@@ -1,17 +1,67 @@
 [
-    {
-        "label": "ALL",
-        "value": "all",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "AN",
-        "value": "an",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "DE",
-        "value": "de",
-        "color": "#EEEEEE"
-    }
+  {
+    "label": "AN",
+    "value": "Anniversary",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "DE",
+    "value": "Deus",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "GE",
+    "value": "GodEater",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "I",
+    "value": "Block1",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "II",
+    "value": "Block2",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "III",
+    "value": "Block3",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "IV",
+    "value": "Block4",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "LE",
+    "value": "Legend",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "V",
+    "value": "Block5",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "VI",
+    "value": "Block6",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "∞",
+    "value": "Infinity",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "六王国",
+    "value": "SixKingdom",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "聖エルド伝",
+    "value": "EldLore",
+    "color": "#EEEEEE"
+  }
 ]

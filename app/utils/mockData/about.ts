@@ -1,19 +1,42 @@
-export const mockAboutDisclaimerItems = [
-  { id: 'd1', text: '本サイトはモンコレTCG情報を扱う非公式ファンサイトです。' },
-  { id: 'd2', text: '掲載情報は可能な限り正確性を確保していますが、内容の完全性・最新性を保証するものではありません。' },
-  { id: 'd3', text: 'カード画像・テキスト等の著作権は各権利者（株式会社ブロッコリー等）に帰属します。' }
-]
-
 export const mockAboutItems = [
-  { id: 'a1', text: 'モンさーち！は、モンコレTCGのカード検索・制限情報確認・構築検討を効率化するためのデータベース主体ポータルです。' },
-  { id: 'a2', text: '対象ユーザーは中〜上級プレイヤーを想定し、1画面で多くの情報を把握できる高密度UIを提供します。' },
-  { id: 'a3', text: '主な機能: エクスパンション一覧、詳細検索、カードリスト、使用制限、ルール参照。' }
+  {
+    id: 'overview',
+    subheading: '概要',
+    text: '本サイトは「モンスター・コレクション」関連作品のカード検索および各種情報を扱う非公式ファンサイトです。'
+  },
+  {
+    id: 'independence',
+    subheading: '本サイトの位置づけ',
+    text: '本サイトは個人が独自に制作・運営するものであり、他の検索サイト等とは関係ありません。'
+  },
+  {
+    id: 'copyright',
+    subheading: '著作権・商標',
+    text: '掲載しているテキスト・各種データおよび名称等の権利は、各権利者に帰属します。'
+  },
+  {
+    id: 'disclaimer',
+    subheading: '免責事項',
+    text: '掲載情報の完全性・最新性を保証するものではありません。正確な情報は必ず公式情報をご確認ください。'
+  }
 ]
 
 export const mockAboutThanksItems = [
-  { id: 't1', text: 'カードデータ整理に協力いただいたコミュニティ有志の皆さまに感謝いたします。' },
-  { id: 't2', text: '検証プレイログ提供・裁定確認にご協力いただいた店舗スタッフおよび大会運営関係者の皆さま、ありがとうございます。' },
-  { id: 't3', text: '継続的なフィードバックをくださるプレイヤーの皆さまの支援により、本サイトは改善を続けています。' }
+  {
+    id: 'creators',
+    subheading: '開発・歴代運営元',
+    text: '作品世界を生み出した開発元と、時代ごとの展開を支えてこられた歴代運営元の皆さまの歩みに感謝いたします。'
+  },
+  {
+    id: 'monsachi',
+    subheading: 'モンサチ 様',
+    text: '長年プレイヤーに愛された検索サイト「モンサチ」様より着想を得て開発いたしました。その存在に、心より感謝申し上げます。'
+  },
+  {
+    id: 'players',
+    subheading: 'プレイヤー・コミュニティ',
+    text: '日々ゲームを支え盛り上げている皆さまに感謝いたします。本サイトも、その一助となれば幸いです。'
+  }
 ]
 
 export const mockAboutHistoryHeaders = [
@@ -34,48 +57,98 @@ export const mockAboutHistorySourceRows = [
 
 export const mockAboutLinkItems = [
   {
-    id: 'l1',
-    title: 'モンスター・コレクションTCG公式サイト',
-    subtitle: '',
-    icon: 'mdi-web',
-    href: '#'
+    id: '1',
+    title: 'モンスター・コレクションLCG',
+    subtitle: 'モンコレTCG 30周年記念サイト',
+    icon: 'mdi-cards',
+    href: 'https://www.groupsne.co.jp/moncolle_lcg/'
   },
   {
-    id: 'l2',
-    title: '公式FAQ・裁定集',
-    subtitle: '',
-    icon: 'mdi-web',
-    href: '#'
+    id: '2',
+    title: 'モンコレ全日本選手権実行委員会',
+    subtitle: '大会運営X',
+    icon: 'mdi-trophy',
+    href: 'https://x.com/mc_sne_cs'
   },
   {
-    id: 'l3',
-    title: 'プレイヤーコミュニティWiki',
-    subtitle: '',
-    icon: 'mdi-web',
-    href: '#'
+    id: '3',
+    title: 'モンコレスケジュール',
+    subtitle: '非公式イベント情報',
+    icon: 'mdi-calendar-month-outline',
+    href: 'https://x.com/mc_schedule'
   },
   {
-    id: 'l4',
-    title: '公認大会情報ページ',
-    subtitle: '',
-    icon: 'mdi-web',
-    href: '#'
-  }
+    id: '4',
+    title: 'グループＳＮＥ',
+    subtitle: '公式サイト',
+    icon: 'mdi-domain',
+    href: 'https://groupsne.co.jp/'
+  },
+
+  {
+    id: '5',
+    title: 'モンコレTCG 第23回全日本選手権',
+    subtitle: '大会特設（2025年）',
+    icon: 'mdi-trophy-outline',
+    href: 'https://www.o-games.co.jp/moncolle'
+  },
+  {
+    id: '6',
+    title: 'モンコレD公式',
+    subtitle: '公式サポートページ',
+    icon: 'mdi-cards-outline',
+    href: 'https://fujimi-trpg-online.jp/game/moncolle_d.html'
+  },
+  {
+    id: '7',
+    title: 'モンコレD運営',
+    subtitle: '運営X',
+    icon: 'mdi-bullhorn-outline',
+    href: 'https://x.com/moncolle_d'
+  },
+  {
+    id: '8',
+    title: 'モンスターコレクション Wiki',
+    subtitle: '非公式Wiki',
+    icon: 'mdi-book-open-page-variant-outline',
+    href: 'https://wikiwiki.jp/moncolle/'
+  },
+  {
+    id: '9',
+    title: 'TCGデータベース',
+    subtitle: '非公式カードリスト資料',
+    icon: 'mdi-database-outline',
+    href: 'https://tcg-db.nikita.jp/explist/mc/'
+  },
+  {
+    id: '10',
+    title: 'ぎふもこBlog',
+    subtitle: '個人ブログ',
+    icon: 'mdi-account-heart-outline',
+    href: 'https://gifumoko.seesaa.net/'
+  },
+  {
+    id: '11',
+    title: 'ぎふも娘D',
+    subtitle: 'Xアカウント',
+    icon: 'mdi-account-heart-outline',
+    href: 'https://x.com/gifumoco'
+  },
 ]
 
 export const mockAboutContactItems = [
   {
-    id: 'l1',
+    id: '1',
     title: 'X (旧Twitter)',
-    subtitle: '',
+    subtitle: '@Oosunakun',
     icon: 'mdi-twitter',
-    href: '#'
+    href: 'https://x.com/Oosunakun'
   },
   {
-    id: 'l2',
+    id: '2',
     title: 'GitHub',
-    subtitle: '',
+    subtitle: 'Oosunakun/monsearch',
     icon: 'mdi-github',
-    href: '#'
+    href: 'https://github.com/Oosunakun/monsearch'
   },
 ]

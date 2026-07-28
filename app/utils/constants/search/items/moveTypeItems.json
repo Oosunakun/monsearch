@@ -1,14 +1,17 @@
 [
-    {
-        "label": "歩行",
-        "value": "walk"
-    },
-    {
-        "label": "飛行",
-        "value": "fly"
-    },
-    {
-        "label": "長距離飛行",
-        "value": "longfly"
-    }
+  {
+    "label": "歩行",
+    "value": "Walk",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "長距離飛行",
+    "value": "LongFly",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "飛行",
+    "value": "Fly",
+    "color": "#EEEEEE"
+  }
 ]

@@ -1,27 +1,7 @@
 [
-    {
-        "label": "ALL",
-        "value": "all",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "火炎",
-        "value": "fire",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "津波",
-        "value": "wave",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "地震",
-        "value": "quake",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "竜巻",
-        "value": "tornado",
-        "color": "#EEEEEE"
-    }
+  {
+    "label": "耐性：ALL(N減)",
+    "value": "8b141e89",
+    "color": "#EEEEEE"
+  }
 ]

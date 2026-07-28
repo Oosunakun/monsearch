@@ -1,17 +1,17 @@
 [
-    {
-        "label": "Deck",
-        "value": "deck",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "Battle",
-        "value": "battle",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "Field",
-        "value": "field",
-        "color": "#EEEEEE"
-    }
+  {
+    "label": "[Battle]",
+    "value": "Battle",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[Deck]",
+    "value": "Deck",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[Field]",
+    "value": "Field",
+    "color": "#EEEEEE"
+  }
 ]

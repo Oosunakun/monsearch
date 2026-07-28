@@ -1,5 +1,16 @@
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 
+export const mockRestrictionNoticeItems = [
+  {
+    id: 'description1',
+    text: '本サイトの掲載内容は公式資料に基づく非公式の参照情報です。'
+  },
+  {
+    id: 'description2',
+    text: '正確な内容は必ず公式情報をご確認ください。'
+  }
+]
+
 export const mockRestrictionAvailableProductHeaders = [
   { title: 'カードセット名', key: 'productName', sortable: false },
   { title: '備考', key: 'productNote', sortable: false },
@@ -151,9 +162,4 @@ export const mockRestrictionRelationSources = [
       { id: 'M20F-055', referenceLabel: 'M20F-055', restrictionStatus: '1枚制限', name: 'ティンクルスター', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
     ]
   },
-]
-
-export const mockRestrictionNoticeItems = [
-  { id: 'priority', text: '適用優先順位: 禁止 ＞ 期間禁止 ＞ 期間制限 ＝ 封印制限' },
-  { id: 'updated', text: '最終更新日: 2026-04-22' }
 ]

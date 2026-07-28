@@ -1,27 +1,52 @@
 [
-    {
-        "label": "普通",
-        "value": "t01",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "対抗",
-        "value": "t02",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "儀式",
-        "value": "t03",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "条件",
-        "value": "t04",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "常時",
-        "value": "t05",
-        "color": "#EEEEEE"
-    }
+  {
+    "label": "[儀式]",
+    "value": "40545bd2",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[対抗]",
+    "value": "50cd7b9f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[常時(強制)]",
+    "value": "42df9e55",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[常時]",
+    "value": "a6225959",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[普通]",
+    "value": "7bbb1765",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[普通／対抗]",
+    "value": "fcf4559a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[普通｜対抗不可]",
+    "value": "795786f2",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[条件(強制)]",
+    "value": "1aaf66f8",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[条件]",
+    "value": "1539f3b3",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[速攻]",
+    "value": "c30a3bc8",
+    "color": "#EEEEEE"
+  }
 ]

@@ -1,27 +1,37 @@
 [
-    {
-        "label": "太陽の金の竜姫",
-        "value": "M20A",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "月の銀の魔狼",
-        "value": "M20B",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "召喚士",
-        "value": "M20C",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "竜騎士",
-        "value": "M20D",
-        "color": "#EEEEEE"
-    },
-    {
-        "label": "プロモーションカード(20th Anniversary)",
-        "value": "M20PR",
-        "color": "#EEEEEE"
-    }
+  {
+    "label": "20th Anniversary スペシャルサプライセット 召喚士",
+    "value": "073ce193",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "20th Anniversary スペシャルサプライセット 竜騎士",
+    "value": "a859f77f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "プロモーションカード(20th Anniversary)",
+    "value": "952b12b0",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "モンスター・コレクションDeus",
+    "value": "437192ad",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "双星のシャンバラ",
+    "value": "f144e5f5",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "太陽の金の竜姫",
+    "value": "91122d7e",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "月の銀の魔狼",
+    "value": "be7cc8cc",
+    "color": "#EEEEEE"
+  }
 ]

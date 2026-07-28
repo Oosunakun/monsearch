@@ -1,17 +1,20 @@
 /* eslint-disable no-irregular-whitespace */
 
+export const mockRuleNoticeItems = [
+  {
+    id: 'description1',
+    text: '本サイトの掲載内容は公式資料に基づく非公式の参照情報です。'
+  },
+  {
+    id: 'description2',
+    text: '正確な内容は必ず公式情報をご確認ください。'
+  }
+]
+
 export const mockRuleReplacementHeaders = [
   { title: '変更前', key: 'beforeText', sortable: false },
   { title: '変更後', key: 'afterText', sortable: false },
   { title: '補足', key: 'note', sortable: false }
-]
-
-export const mockRuleNoticeItems = [
-  {
-    id: 'description',
-    text: '本サイトのルール解説は公式資料に基づいて作成していますが、非公式の補助情報です。大会参加時は必ず公式規定をご確認ください。'
-  },
-  { id: 'updated', text: '最終更新日: 2026-04-22' }
 ]
 
 export const mockRuleConstructionNotes = [
@@ -31,7 +34,7 @@ export const mockRuleReplacementSources = [
 
 
 export const  mockRuleQuestionAnswerSources = JSON.parse(String.raw`
-  [
+[
   {
     "id": "1",
     "question_no": "001",
@@ -1083,8 +1086,7 @@ export const  mockRuleQuestionAnswerSources = JSON.parse(String.raw`
     "source_name": "ルールについてのQ&A"
   }
 ]
-  `)
-
+`)
 
 export const  mockRuleSupplementSources = JSON.parse(String.raw`
 [
@@ -1189,7 +1191,7 @@ export const  mockRuleSupplementSources = JSON.parse(String.raw`
     "source_name": "大会運営ルール"
   }
 ]
-  `)
+`)
 
 export const mockRuleTextChangeSources = JSON.parse(String.raw`
 [
@@ -1460,7 +1462,7 @@ export const mockRuleTextChangeSources = JSON.parse(String.raw`
     "source_name": "ＴＣＧレギュレーション概要"
   }
 ]
-  `)
+`)
 
 export const mockRuleErrataSources = JSON.parse(String.raw`
 [
@@ -2213,4 +2215,4 @@ export const mockRuleTextIndividualSources = JSON.parse(String.raw`
     "source_name": "モンコレD-TCGレギュレーション読み替えリスト"
   }
 ]
-  `)
+`)

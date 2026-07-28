@@ -7,7 +7,6 @@ import HistoryTable from '~~/app/components/about/HistoryTable.vue'
 import type { HistoryRow } from '~~/app/components/about/HistoryTable.vue'
 
 import {
-  mockAboutDisclaimerItems,
   mockAboutHistoryHeaders,
   mockAboutHistorySourceRows,
   mockAboutItems,
@@ -16,8 +15,9 @@ import {
   mockAboutContactItems
 } from '~~/app/utils/mockData'
 
-type TextItem = {
+type AboutItem = {
   id: string
+  subheading: string
   text: string
 }
 
@@ -29,9 +29,8 @@ type LinkItem = {
   href: string
 }
 
-const disclaimerItems: TextItem[] = mockAboutDisclaimerItems
-const aboutItems: TextItem[] = mockAboutItems
-const thanksItems: TextItem[] = mockAboutThanksItems
+const aboutItems: AboutItem[] = mockAboutItems
+const thanksItems: AboutItem[] = mockAboutThanksItems
 const historyHeaders = mockAboutHistoryHeaders
 const historySourceRows = mockAboutHistorySourceRows
 const linkItems: LinkItem[] = mockAboutLinkItems
@@ -49,22 +48,11 @@ const historyRows = computed<HistoryRow[]>(() =>
   <ContentMaxWidthContainer>
     <SectionCardShell>
       <template #header>
-        <SectionHeader title="免責事項" color="primary" text-class="text-white" />
+        <SectionHeader title="当サイトについて" color="primary" text-class="text-white" />
       </template>
-      <ul>
-        <li v-for="item in disclaimerItems" :key="item.id">
-          {{ item.text }}
-        </li>
-      </ul>
-    </SectionCardShell>
-
-    <SectionCardShell>
-      <template #header>
-        <SectionHeader title="このサイトについて" color="primary" text-class="text-white" />
-      </template>
-      <ul>
+      <ul class="about-notice-list">
         <li v-for="item in aboutItems" :key="item.id">
-          {{ item.text }}
+          <span class="font-weight-bold">{{ item.subheading }}：</span>{{ item.text }}
         </li>
       </ul>
     </SectionCardShell>
@@ -73,9 +61,9 @@ const historyRows = computed<HistoryRow[]>(() =>
       <template #header>
         <SectionHeader title="謝辞" color="primary" text-class="text-white" />
       </template>
-      <ul>
+      <ul class="about-notice-list">
         <li v-for="item in thanksItems" :key="item.id">
-          {{ item.text }}
+          <span class="font-weight-bold">{{ item.subheading }}：</span>{{ item.text }}
         </li>
       </ul>
     </SectionCardShell>
@@ -109,6 +97,7 @@ const historyRows = computed<HistoryRow[]>(() =>
           <ExternalLinkCard
             :title="item.title"
             :subtitle="item.subtitle"
+            :icon="item.icon"
             :href="item.href"
           />
         </v-col>
@@ -120,7 +109,7 @@ const historyRows = computed<HistoryRow[]>(() =>
         <SectionHeader title="お問い合わせ" color="primary" text-class="text-white" />
       </template>
       <p>
-        誤記の報告・機能要望・掲載内容のご相談は、以下の連絡先からお願いします。
+        誤記の報告、機能要望、掲載内容に関するご相談は、下記よりお寄せください。
       </p>
       <v-row
         :no-gutters="false"
@@ -156,4 +145,20 @@ const historyRows = computed<HistoryRow[]>(() =>
   margin-top: 4px;
 }
 
+.about-notice-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.about-notice-list li {
+  margin-bottom: 0.5rem; 
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.about-notice-list li:last-child {
+  margin-bottom: 0;
+}
 </style>

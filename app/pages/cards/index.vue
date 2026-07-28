@@ -70,20 +70,8 @@ const pagedCards = computed(() => {
   return sortedCards.value.slice(start, end)
 })
 
-// 仮の検索条件データ
-const searchConditions = ref({
-  keyword: 'エメラルド',
-  elements: ['地', '風'],
-  categories: ['ユニット', '戦闘スペル'],
-  rarities: ['SR', 'R'],
-})
-
-// 表示用検索条件アイテムの最適化（重複削減）
+// 表示用検索条件アイテムの最適化（仮置き）
 const conditionItems = computed(() => [
-  { label: 'キーワード', value: searchConditions.value.keyword },
-  { label: '属性', value: searchConditions.value.elements.join(', ') },
-  { label: 'カード分類', value: searchConditions.value.categories.join(', ') },
-  { label: 'レアリティ', value: searchConditions.value.rarities.join(', ') },
 ])
 
 // 全検索結果に対する分類別内訳のダミーデータ（統計値）
