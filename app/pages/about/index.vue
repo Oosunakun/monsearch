@@ -10,7 +10,6 @@ import {
   mockAboutHistoryHeaders,
   mockAboutHistorySourceRows,
   mockAboutItems,
-  mockAboutLinkItems,
   mockAboutThanksItems,
   mockAboutContactItems
 } from '~~/app/utils/mockData'
@@ -33,7 +32,6 @@ const aboutItems: AboutItem[] = mockAboutItems
 const thanksItems: AboutItem[] = mockAboutThanksItems
 const historyHeaders = mockAboutHistoryHeaders
 const historySourceRows = mockAboutHistorySourceRows
-const linkItems: LinkItem[] = mockAboutLinkItems
 const contactItems: LinkItem[] = mockAboutContactItems
 
 const historyRows = computed<HistoryRow[]>(() =>
@@ -77,31 +75,6 @@ const historyRows = computed<HistoryRow[]>(() =>
         :headers="historyHeaders"
         :rows="historyRows"
       />
-    </SectionCardShell>
-
-    <SectionCardShell>
-      <template #header>
-        <SectionHeader title="リンク" color="primary" text-class="text-white" />
-      </template>
-      <v-row
-        :no-gutters="false"
-        density="comfortable"
-        style="row-gap: 10px;"
-      >
-        <v-col
-          v-for="item in linkItems"
-          :key="item.id"
-          cols="12"
-          md="6"
-        >
-          <ExternalLinkCard
-            :title="item.title"
-            :subtitle="item.subtitle"
-            :icon="item.icon"
-            :href="item.href"
-          />
-        </v-col>
-      </v-row>
     </SectionCardShell>
 
     <SectionCardShell :margin-bottom="false">
