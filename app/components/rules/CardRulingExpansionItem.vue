@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
+import { computed, onBeforeUnmount } from 'vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
+import { useHeaderAwareExpandScroll  } from '~~/app/composables/useHeaderAwareScroll'
 import type { CardRulingItem } from '~~/app/types/ui/rules'
 import {
   getRulingTypeColor,
@@ -41,11 +41,20 @@ const summarySubtitle = computed(() => {
       return ''
   }
 })
+
+const expandScroll = useHeaderAwareExpandScroll()
+const { scrollAfterLayoutStable, cancel } = expandScroll
+
+const handleAfterEnter = () => {
+  scrollAfterLayoutStable()
+}
+
+onBeforeUnmount(cancel)
 </script>
 
 <template>
-  <v-expansion-panel class="ruling-panel">
-    <v-expansion-panel-title v-slot="{ expanded }" class="ruling-title pa-2">
+  <v-expansion-panel :ref="expandScroll.containerRef" class="ruling-panel">
+    <v-expansion-panel-title :ref="expandScroll.targetRef" v-slot="{ expanded }" class="ruling-title pa-2">
       <div class="d-flex flex-column align-center w-100 overflow-hidden">
         <div 
           class="d-flex align-center ga-1 w-100"
@@ -72,7 +81,7 @@ const summarySubtitle = computed(() => {
       </div>
     </v-expansion-panel-title>
 
-    <v-expansion-panel-text class="ruling-content-area">
+    <v-expansion-panel-text class="ruling-content-area" @after-enter="handleAfterEnter">
       <div class="ml-n3 mr-n3">
         <!-- related cards -->
         <div

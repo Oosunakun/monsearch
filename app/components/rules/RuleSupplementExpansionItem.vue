@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { RuleSupplementItem } from '~~/app/types/ui/rules'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
+import { useHeaderAwareExpandScroll  } from '~~/app/composables/useHeaderAwareScroll'
 
 defineProps<{ 
   item: RuleSupplementItem
@@ -9,11 +10,20 @@ defineProps<{
 const formatText = (text?: string) => {
   return text?.replace(/\\n/g, '\n') ?? ''
 }
+
+const expandScroll = useHeaderAwareExpandScroll()
+const { scrollAfterLayoutStable, cancel } = expandScroll
+
+const handleAfterEnter = () => {
+  scrollAfterLayoutStable()
+}
+
+onBeforeUnmount(cancel)
 </script>
 
 <template>
-  <v-expansion-panel class="qa-panel">
-    <v-expansion-panel-title v-slot="{ expanded }" class="qa-title pa-2">
+  <v-expansion-panel :ref="expandScroll.containerRef" class="qa-panel">
+    <v-expansion-panel-title :ref="expandScroll.targetRef" v-slot="{ expanded }" class="qa-title pa-2">
       <div class="d-flex align-center w-100">
         <div class="flex-grow-1 min-w-0">
           <!-- collapsed -->
@@ -56,7 +66,7 @@ const formatText = (text?: string) => {
       </div>
     </v-expansion-panel-title>
 
-    <v-expansion-panel-text class="qa-answer-area">
+    <v-expansion-panel-text class="qa-answer-area" @after-enter="handleAfterEnter">
       <div class="ml-n2 pr-n2">
         <!-- related cards -->
         <div
