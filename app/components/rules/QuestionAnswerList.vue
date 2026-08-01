@@ -77,7 +77,7 @@ const { isMounted } = useHydrated()
   <EmptyState v-if="filteredItems.length === 0" title="該当するQ&Aがありません" />
 
   <!-- アコーディオン一覧 -->
-  <v-expansion-panels variant="accordion" flat>
+  <v-expansion-panels variant="accordion" flat class="border rounded-md overflow-hidden">
     <QuestionAnswerExpansionItem
       v-for="item in filteredItems"
       :key="item.id"

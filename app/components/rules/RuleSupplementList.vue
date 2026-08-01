@@ -76,7 +76,7 @@ const { isMounted } = useHydrated()
   <EmptyState v-if="filteredItems.length === 0" title="該当する補足がありません" />
 
   <!-- アコーディオン一覧 -->
-  <v-expansion-panels variant="accordion" flat>
+  <v-expansion-panels variant="accordion" flat class="border rounded-md overflow-hidden">
     <RuleSupplementExpansionItem
       v-for="item in filteredItems"
       :key="item.id"

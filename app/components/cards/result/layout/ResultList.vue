@@ -101,6 +101,7 @@ watch(totalPages, page => {
           :sort-options="sortOptions"
           :sort-orders="sortOrders"
           :limit-options="limitOptions"
+          class="border overflow-hidden"
         />
       </div>
     </div>
@@ -109,6 +110,7 @@ watch(totalPages, page => {
       v-for="card in cards" 
       :key="card.card_id" 
       :card="card" 
+      
     />
   </div>
 

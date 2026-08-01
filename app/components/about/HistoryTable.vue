@@ -46,6 +46,7 @@ const { isMounted } = useHydrated()
         hide-default-footer
         items-per-page="-1"
         :hide-default-header="mobile"
+        class="border rounded-md overflow-hidden"
       >
         <template #item="{ item }">
           <HistoryTableRow

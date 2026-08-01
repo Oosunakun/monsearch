@@ -204,7 +204,7 @@ const getScrollBadgeTitle = (
 
     <EmptyState v-if="filteredItems.length === 0" title="該当するカード裁定がありません" />
 
-    <v-expansion-panels v-else v-model="openedPanelId" variant="accordion" flat>
+    <v-expansion-panels v-else v-model="openedPanelId" variant="accordion" flat class="border rounded-md overflow-hidden">
       <CardRulingExpansionItem
         v-for="(item, index) in filteredItems"
         :key="item.id"

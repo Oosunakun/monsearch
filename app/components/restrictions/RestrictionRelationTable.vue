@@ -58,6 +58,7 @@ const { isMounted } = useHydrated()
         hide-default-footer
         items-per-page="-1"
         :hide-default-header="mobile"
+        class="border rounded-md overflow-hidden"
       >
         <template #item="{ item }">
           <tr v-if="item.kind === 'section'">
@@ -66,7 +67,6 @@ const { isMounted } = useHydrated()
                 color="accent"
                 class="px-2 py-2 font-weight-bold d-flex flex-column"
                 min-height="auto"
-                rounded
               >
                 <div class="d-flex align-center font-weight-bold text-subtitle-2">
                   {{ item.sectionTitle }}
