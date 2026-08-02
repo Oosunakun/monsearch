@@ -59,9 +59,9 @@ const rarityType = computed(() => {
         {{ card.reference_label }}
       </span>
 
-      <span v-if="card.illustrator" class="square-chip text-truncate" style="max-width: 180px;" :title="card.illustrator">
+      <span v-if="card.illustrator_name" class="square-chip text-truncate" style="max-width: 180px;" :title="card.illustrator_name">
         <v-icon size="13" class="mr-1 text-grey-darken-1">mdi-palette</v-icon>
-        <span class="text-truncate">{{ card.illustrator }}</span>
+        <span class="text-truncate">{{ card.illustrator_name }}</span>
       </span>
     </div>
   </div>

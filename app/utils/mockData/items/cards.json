@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-07-12T09:11:17Z",
+  "generated_at": "2026-08-02T14:56:33Z",
   "cards": [
     {
       "card_id": "019d81a4-497a-768d-aaa6-24b742cbd519",
@@ -86,7 +86,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -190,7 +191,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -294,7 +296,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "田中久仁彦",
+      "illustrator_id": "019fc1ce-7b47-7001-9a30-108eb11d2c97",
+      "illustrator_name": "田中久仁彦",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -398,7 +401,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -502,7 +506,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -606,7 +611,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "田中久仁彦",
+      "illustrator_id": "019fc1ce-7b47-7001-9a30-108eb11d2c97",
+      "illustrator_name": "田中久仁彦",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -714,7 +720,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "ぽぽるちゃ",
+      "illustrator_id": "019fc1ce-7b47-7003-a74d-9b1204cdafee",
+      "illustrator_name": "ぽぽるちゃ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -822,7 +829,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -926,7 +934,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "斉藤コーキ",
+      "illustrator_id": "019fc1ce-7b47-7005-9e09-317d05dbdbfc",
+      "illustrator_name": "斉藤コーキ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1038,7 +1047,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "ニリツ",
+      "illustrator_id": "019fc1ce-7b47-7006-8712-220814c4a496",
+      "illustrator_name": "ニリツ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1150,7 +1160,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "ささきむつみ",
+      "illustrator_id": "019fc1ce-7b47-7007-9f4c-36d453130f5b",
+      "illustrator_name": "ささきむつみ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1272,7 +1283,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "るりあ046",
+      "illustrator_id": "019fc1ce-7b47-7008-9256-432ccae54b51",
+      "illustrator_name": "るりあ046",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1384,7 +1396,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "井上純一",
+      "illustrator_id": "019fc1ce-7b47-7009-af23-f7194ec2a06c",
+      "illustrator_name": "井上純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1503,7 +1516,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "奥田ひとし",
+      "illustrator_id": "019fc1ce-7b47-700a-bfdb-36d1034cdcc9",
+      "illustrator_name": "奥田ひとし",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1627,7 +1641,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1773,7 +1788,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "真時未砂",
+      "illustrator_id": "019fc1ce-7b47-700c-8fd7-4961eac56469",
+      "illustrator_name": "真時未砂",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1877,7 +1893,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -1975,7 +1992,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2121,7 +2139,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "吉村正人",
+      "illustrator_id": "019fc1ce-7b47-700e-a38a-57574cd33a7e",
+      "illustrator_name": "吉村正人",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2240,7 +2259,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "狭霧光明",
+      "illustrator_id": "019fc1ce-7b47-700f-81f2-5dde628d4704",
+      "illustrator_name": "狭霧光明",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2355,7 +2375,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2497,7 +2518,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "原友和",
+      "illustrator_id": "019fc1ce-7b47-7010-b0c2-eec7d0a8af37",
+      "illustrator_name": "原友和",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2621,7 +2643,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "米田仁士",
+      "illustrator_id": "019fc1ce-7b47-7011-8d71-1f24459afe58",
+      "illustrator_name": "米田仁士",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2733,7 +2756,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "小林裕也",
+      "illustrator_id": "019fc1ce-7b47-7012-bd4f-fd1a48aab436",
+      "illustrator_name": "小林裕也",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2841,7 +2865,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "ゆうくりっど",
+      "illustrator_id": "019fc1ce-7b47-7013-a2a5-b7a016ed054b",
+      "illustrator_name": "ゆうくりっど",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -2973,7 +2998,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3077,7 +3103,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3189,7 +3216,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3313,7 +3341,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "山鳥おふう",
+      "illustrator_id": "019fc1ce-7b47-7015-8f59-17b4afcd3e69",
+      "illustrator_name": "山鳥おふう",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3425,7 +3454,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "小林裕也",
+      "illustrator_id": "019fc1ce-7b47-7012-bd4f-fd1a48aab436",
+      "illustrator_name": "小林裕也",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3529,7 +3559,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田中光",
+      "illustrator_id": "019fc1ce-7b47-7016-a764-38b89c6d3270",
+      "illustrator_name": "田中光",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3633,7 +3664,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "狭霧光明",
+      "illustrator_id": "019fc1ce-7b47-700f-81f2-5dde628d4704",
+      "illustrator_name": "狭霧光明",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3772,7 +3804,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "椋本夏夜",
+      "illustrator_id": "019fc1ce-7b47-7017-afb3-8245a8f4bada",
+      "illustrator_name": "椋本夏夜",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -3891,7 +3924,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4033,7 +4067,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "米田仁士",
+      "illustrator_id": "019fc1ce-7b47-7011-8d71-1f24459afe58",
+      "illustrator_name": "米田仁士",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4138,7 +4173,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "森木靖泰",
+      "illustrator_id": "019fc1ce-7b47-7018-a169-fa8af5ed7afa",
+      "illustrator_name": "森木靖泰",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4284,7 +4320,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "獅子猿",
+      "illustrator_id": "019fc1ce-7b47-7019-8914-0d1e0f72155a",
+      "illustrator_name": "獅子猿",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4410,7 +4447,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4556,7 +4594,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "由利真珠郎",
+      "illustrator_id": "019fc1ce-7b47-701a-b503-44cfe4e154d2",
+      "illustrator_name": "由利真珠郎",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4695,7 +4734,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4807,7 +4847,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "今野隼史",
+      "illustrator_id": "019fc1ce-7b47-701b-b8a0-08f71727c9a5",
+      "illustrator_name": "今野隼史",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -4915,7 +4956,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "石田浩之",
+      "illustrator_id": "019fc1ce-7b47-701c-b92d-a6ef60daf2ed",
+      "illustrator_name": "石田浩之",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5019,7 +5061,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田中光",
+      "illustrator_id": "019fc1ce-7b47-7016-a764-38b89c6d3270",
+      "illustrator_name": "田中光",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5131,7 +5174,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5243,7 +5287,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "椎名優",
+      "illustrator_id": "019fc1ce-7b47-701d-8cac-c827b2070b28",
+      "illustrator_name": "椎名優",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5355,7 +5400,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "今野隼史",
+      "illustrator_id": "019fc1ce-7b47-701b-b8a0-08f71727c9a5",
+      "illustrator_name": "今野隼史",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5494,7 +5540,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "青木邦夫",
+      "illustrator_id": "019fc1ce-7b47-701e-ae8f-19cc41127e89",
+      "illustrator_name": "青木邦夫",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5640,7 +5687,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "山鳥おふう",
+      "illustrator_id": "019fc1ce-7b47-7015-8f59-17b4afcd3e69",
+      "illustrator_name": "山鳥おふう",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5786,7 +5834,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "しろー大野",
+      "illustrator_id": "019fc1ce-7b47-701f-b54c-fcad7ff92d42",
+      "illustrator_name": "しろー大野",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5884,7 +5933,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "今野隼史",
+      "illustrator_id": "019fc1ce-7b47-701b-b8a0-08f71727c9a5",
+      "illustrator_name": "今野隼史",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -5988,7 +6038,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "佐藤正浩",
+      "illustrator_id": "019fc1ce-7b47-7020-bda5-3e53ea101164",
+      "illustrator_name": "佐藤正浩",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6114,7 +6165,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "草彅琢仁",
+      "illustrator_id": "019fc1ce-7b47-7021-923c-46caab26e9fc",
+      "illustrator_name": "草彅琢仁",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6229,7 +6281,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6371,7 +6424,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "寺田克也",
+      "illustrator_id": "019fc1ce-7b47-7023-b5e7-9fa5c32b4280",
+      "illustrator_name": "寺田克也",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6493,7 +6547,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "青木邦夫",
+      "illustrator_id": "019fc1ce-7b47-701e-ae8f-19cc41127e89",
+      "illustrator_name": "青木邦夫",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6632,7 +6687,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "米田仁士",
+      "illustrator_id": "019fc1ce-7b47-7011-8d71-1f24459afe58",
+      "illustrator_name": "米田仁士",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6751,7 +6807,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "米田仁士",
+      "illustrator_id": "019fc1ce-7b47-7011-8d71-1f24459afe58",
+      "illustrator_name": "米田仁士",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6855,7 +6912,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "猫えモン",
+      "illustrator_id": "019fc1ce-7b47-7024-8e18-ec1fd4fe50b1",
+      "illustrator_name": "猫えモン",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -6963,7 +7021,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "ぽぽるちゃ",
+      "illustrator_id": "019fc1ce-7b47-7003-a74d-9b1204cdafee",
+      "illustrator_name": "ぽぽるちゃ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7075,7 +7134,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "四季童子",
+      "illustrator_id": "019fc1ce-7b47-7025-8443-5f98fc6ad1ad",
+      "illustrator_name": "四季童子",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7205,7 +7265,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "真時未砂",
+      "illustrator_id": "019fc1ce-7b47-700c-8fd7-4961eac56469",
+      "illustrator_name": "真時未砂",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7335,7 +7396,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "ゆうくりっど",
+      "illustrator_id": "019fc1ce-7b47-7013-a2a5-b7a016ed054b",
+      "illustrator_name": "ゆうくりっど",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7459,7 +7521,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "藤井英俊",
+      "illustrator_id": "019fc1ce-7b47-7026-b300-58a710934c1b",
+      "illustrator_name": "藤井英俊",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7560,7 +7623,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "石田浩之",
+      "illustrator_id": "019fc1ce-7b47-701c-b92d-a6ef60daf2ed",
+      "illustrator_name": "石田浩之",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7672,7 +7736,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "高梨かりた",
+      "illustrator_id": "019fc1ce-7b47-7027-8d73-d87013224243",
+      "illustrator_name": "高梨かりた",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7794,7 +7859,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "夏野すいか",
+      "illustrator_id": "019fc1ce-7b47-7028-86a5-81ee29c59c71",
+      "illustrator_name": "夏野すいか",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -7913,7 +7979,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "伊藤勢",
+      "illustrator_id": "019fc1ce-7b47-7029-bd59-ef8d7fd2f8ba",
+      "illustrator_name": "伊藤勢",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8011,7 +8078,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "西川秀明",
+      "illustrator_id": "019fc1ce-7b47-702a-95a6-497c9a6aba24",
+      "illustrator_name": "西川秀明",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8175,7 +8243,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8297,7 +8366,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8391,7 +8461,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "緑川美帆",
+      "illustrator_id": "019fc1ce-7b47-702c-a4bc-2d004a6ae2f1",
+      "illustrator_name": "緑川美帆",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8510,7 +8581,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "鈴木雅久",
+      "illustrator_id": "019fc1ce-7b47-702d-87a5-f4c28670ea26",
+      "illustrator_name": "鈴木雅久",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8649,7 +8721,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8773,7 +8846,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "伊藤勢",
+      "illustrator_id": "019fc1ce-7b47-7029-bd59-ef8d7fd2f8ba",
+      "illustrator_name": "伊藤勢",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8881,7 +8955,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "奥田ひとし",
+      "illustrator_id": "019fc1ce-7b47-700a-bfdb-36d1034cdcc9",
+      "illustrator_name": "奥田ひとし",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -8972,7 +9047,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "ヤトアキラ",
+      "illustrator_id": "019fc1ce-7b47-702e-b75d-3f4b8e70c1b4",
+      "illustrator_name": "ヤトアキラ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9072,7 +9148,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9184,7 +9261,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9296,7 +9374,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "和田慎二",
+      "illustrator_id": "019fc1ce-7b47-702f-9441-3b30bc1cc5da",
+      "illustrator_name": "和田慎二",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9408,7 +9487,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "桜瀬琥姫",
+      "illustrator_id": "019fc1ce-7b47-7030-8443-146c83ec5557",
+      "illustrator_name": "桜瀬琥姫",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9532,7 +9612,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "兎塚エイジ",
+      "illustrator_id": "019fc1ce-7b47-7031-afcf-ff17273630be",
+      "illustrator_name": "兎塚エイジ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9619,7 +9700,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "田中久仁彦",
+      "illustrator_id": "019fc1ce-7b47-7001-9a30-108eb11d2c97",
+      "illustrator_name": "田中久仁彦",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9731,7 +9813,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "結城信輝",
+      "illustrator_id": "019fc1ce-7b47-7032-8905-ee1a2ecaa34e",
+      "illustrator_name": "結城信輝",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9843,7 +9926,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -9941,7 +10025,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "一徳",
+      "illustrator_id": "019fc1ce-7b48-7000-9ab6-e9efcb31a35f",
+      "illustrator_name": "一徳",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10060,7 +10145,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "若菜等＋Ki",
+      "illustrator_id": "019fc1ce-7b48-7001-8170-cbeee40e699f",
+      "illustrator_name": "若菜等＋Ki",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10204,7 +10290,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "加藤龍勇",
+      "illustrator_id": "019fc1ce-7b48-7002-963f-37f58b738ada",
+      "illustrator_name": "加藤龍勇",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10351,7 +10438,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "代官山ゑびす",
+      "illustrator_id": "019fc1ce-7b48-7003-a8b2-bde2f67ce0e6",
+      "illustrator_name": "代官山ゑびす",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10518,7 +10606,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "はるかげ",
+      "illustrator_id": "019fc1ce-7b48-7004-957d-e30a8f1e5d77",
+      "illustrator_name": "はるかげ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10644,7 +10733,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "かんくろう",
+      "illustrator_id": "019fc1ce-7b48-7005-8c6a-d8b0725900cc",
+      "illustrator_name": "かんくろう",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10770,7 +10860,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "三好載克",
+      "illustrator_id": "019fc1ce-7b48-7006-9db2-50fd5f186fad",
+      "illustrator_name": "三好載克",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10882,7 +10973,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "C-Show",
+      "illustrator_id": "019fc1ce-7b48-7007-9a44-d44b63acbe9a",
+      "illustrator_name": "C-Show",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -10994,7 +11086,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤原ひさし",
+      "illustrator_id": "019fc1ce-7b48-7008-a215-acc269770b64",
+      "illustrator_name": "藤原ひさし",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11098,7 +11191,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "キヲー",
+      "illustrator_id": "019fc1ce-7b48-7009-a7ee-ef0366ea082b",
+      "illustrator_name": "キヲー",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11210,7 +11304,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11322,7 +11417,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "真嶋杏次",
+      "illustrator_id": "019fc1ce-7b48-700a-a156-506973f50112",
+      "illustrator_name": "真嶋杏次",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11434,7 +11530,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "小林裕也",
+      "illustrator_id": "019fc1ce-7b47-7012-bd4f-fd1a48aab436",
+      "illustrator_name": "小林裕也",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11546,7 +11643,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11658,7 +11756,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "ねじ太",
+      "illustrator_id": "019fc1ce-7b48-700c-898b-d4ac4dde3bb9",
+      "illustrator_name": "ねじ太",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11777,7 +11876,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "原友和",
+      "illustrator_id": "019fc1ce-7b47-7010-b0c2-eec7d0a8af37",
+      "illustrator_name": "原友和",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -11903,7 +12003,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "中村博文",
+      "illustrator_id": "019fc1ce-7b48-700d-8087-9a76ee64de82",
+      "illustrator_name": "中村博文",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12070,7 +12171,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "はるかげ",
+      "illustrator_id": "019fc1ce-7b48-7004-957d-e30a8f1e5d77",
+      "illustrator_name": "はるかげ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12196,7 +12298,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12322,7 +12425,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "平野耕太",
+      "illustrator_id": "019fc1ce-7b48-700e-b8e0-429049e88d51",
+      "illustrator_name": "平野耕太",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12468,7 +12572,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "兎塚エイジ",
+      "illustrator_id": "019fc1ce-7b47-7031-afcf-ff17273630be",
+      "illustrator_name": "兎塚エイジ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12594,7 +12699,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "石垣環",
+      "illustrator_id": "019fc1ce-7b48-700f-b132-54e2ae6d31f4",
+      "illustrator_name": "石垣環",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12733,7 +12839,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "若菜等＋Ki",
+      "illustrator_id": "019fc1ce-7b48-7001-8170-cbeee40e699f",
+      "illustrator_name": "若菜等＋Ki",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12879,7 +12986,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -12967,7 +13075,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13055,7 +13164,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "石田浩之",
+      "illustrator_id": "019fc1ce-7b47-701c-b92d-a6ef60daf2ed",
+      "illustrator_name": "石田浩之",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13163,7 +13273,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "相崎勝美",
+      "illustrator_id": "019fc1ce-7b48-7010-b369-8d0a9d8e22db",
+      "illustrator_name": "相崎勝美",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13251,7 +13362,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "久坂宗次",
+      "illustrator_id": "019fc1ce-7b48-7011-b756-463ac1af7429",
+      "illustrator_name": "久坂宗次",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13359,7 +13471,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13467,7 +13580,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "井上純一",
+      "illustrator_id": "019fc1ce-7b47-7009-af23-f7194ec2a06c",
+      "illustrator_name": "井上純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13575,7 +13689,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13683,7 +13798,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "若菜等＋Ki",
+      "illustrator_id": "019fc1ce-7b48-7001-8170-cbeee40e699f",
+      "illustrator_name": "若菜等＋Ki",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13771,7 +13887,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13859,7 +13976,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "ゆうくりっど",
+      "illustrator_id": "019fc1ce-7b47-7013-a2a5-b7a016ed054b",
+      "illustrator_name": "ゆうくりっど",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -13947,7 +14065,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14055,7 +14174,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "鶴田謙二",
+      "illustrator_id": "019fc1ce-7b48-7012-a26b-cdddba2ecbf9",
+      "illustrator_name": "鶴田謙二",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14163,7 +14283,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14251,7 +14372,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "い～どぅ～",
+      "illustrator_id": "019fc1ce-7b48-7013-a25b-d8533ef010f0",
+      "illustrator_name": "い～どぅ～",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14339,7 +14461,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "高梨かりた",
+      "illustrator_id": "019fc1ce-7b47-7027-8d73-d87013224243",
+      "illustrator_name": "高梨かりた",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14447,7 +14570,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "中村哲也",
+      "illustrator_id": "019fc1ce-7b48-7014-9e64-995c946a36f0",
+      "illustrator_name": "中村哲也",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14535,7 +14659,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "御崎友敬",
+      "illustrator_id": "019fc1ce-7b48-7015-b159-2a0b2b0e7cdd",
+      "illustrator_name": "御崎友敬",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14643,7 +14768,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "つかぽん",
+      "illustrator_id": "019fc1ce-7b48-7016-b18a-5254a0f6d2dd",
+      "illustrator_name": "つかぽん",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14751,7 +14877,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14859,7 +14986,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -14947,7 +15075,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "鈴木雅久",
+      "illustrator_id": "019fc1ce-7b47-702d-87a5-f4c28670ea26",
+      "illustrator_name": "鈴木雅久",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15035,7 +15164,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "ぽぽるちゃ",
+      "illustrator_id": "019fc1ce-7b47-7003-a74d-9b1204cdafee",
+      "illustrator_name": "ぽぽるちゃ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15123,7 +15253,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤井英俊",
+      "illustrator_id": "019fc1ce-7b47-7026-b300-58a710934c1b",
+      "illustrator_name": "藤井英俊",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15231,7 +15362,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "佐嶋真実",
+      "illustrator_id": "019fc1ce-7b48-7017-8cf0-4bf154d1407a",
+      "illustrator_name": "佐嶋真実",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15319,7 +15451,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "石垣環",
+      "illustrator_id": "019fc1ce-7b48-700f-b132-54e2ae6d31f4",
+      "illustrator_name": "石垣環",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15407,7 +15540,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "山吹ショウマ",
+      "illustrator_id": "019fc1ce-7b48-7018-a42b-fb98141d7e59",
+      "illustrator_name": "山吹ショウマ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15515,7 +15649,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "こいでたく",
+      "illustrator_id": "019fc1ce-7b48-7019-b955-3bcfad406427",
+      "illustrator_name": "こいでたく",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15603,7 +15738,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "草彅琢仁",
+      "illustrator_id": "019fc1ce-7b47-7021-923c-46caab26e9fc",
+      "illustrator_name": "草彅琢仁",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15711,7 +15847,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15819,7 +15956,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15907,7 +16045,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -15995,7 +16134,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "田中としひさ",
+      "illustrator_id": "019fc1ce-7b48-701a-8bf6-ba35ff890c06",
+      "illustrator_name": "田中としひさ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16103,7 +16243,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16191,7 +16332,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16299,7 +16441,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "中村哲也",
+      "illustrator_id": "019fc1ce-7b48-7014-9e64-995c946a36f0",
+      "illustrator_name": "中村哲也",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16407,7 +16550,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "るりあ046",
+      "illustrator_id": "019fc1ce-7b47-7008-9256-432ccae54b51",
+      "illustrator_name": "るりあ046",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16508,7 +16652,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "佐藤正浩",
+      "illustrator_id": "019fc1ce-7b47-7020-bda5-3e53ea101164",
+      "illustrator_name": "佐藤正浩",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16609,7 +16754,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "ミキタマコ",
+      "illustrator_id": "019fc1ce-7b48-701b-8817-30c3ce2e5fd5",
+      "illustrator_name": "ミキタマコ",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16690,7 +16836,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "佐藤正浩",
+      "illustrator_id": "019fc1ce-7b47-7020-bda5-3e53ea101164",
+      "illustrator_name": "佐藤正浩",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16791,7 +16938,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "佐藤正浩",
+      "illustrator_id": "019fc1ce-7b47-7020-bda5-3e53ea101164",
+      "illustrator_name": "佐藤正浩",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16872,7 +17020,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "佐藤正浩",
+      "illustrator_id": "019fc1ce-7b47-7020-bda5-3e53ea101164",
+      "illustrator_name": "佐藤正浩",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -16953,7 +17102,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "佐藤正浩",
+      "illustrator_id": "019fc1ce-7b47-7020-bda5-3e53ea101164",
+      "illustrator_name": "佐藤正浩",
       "product": {
         "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
         "product_category_code": "Booster",
@@ -17057,7 +17207,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17157,7 +17308,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "輪くすさが",
+      "illustrator_id": "019fc1ce-7b48-701c-87c2-9483299f544c",
+      "illustrator_name": "輪くすさが",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17261,7 +17413,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17365,7 +17518,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "四季童子",
+      "illustrator_id": "019fc1ce-7b47-7025-8443-5f98fc6ad1ad",
+      "illustrator_name": "四季童子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17469,7 +17623,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "西村キヌ",
+      "illustrator_id": "019fc1ce-7b48-701d-b599-e2974baf2f8a",
+      "illustrator_name": "西村キヌ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17573,7 +17728,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "松本嵩春",
+      "illustrator_id": "019fc1ce-7b48-701e-9349-2de32c5c40ec",
+      "illustrator_name": "松本嵩春",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17681,7 +17837,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "日田慶治",
+      "illustrator_id": "019fc1ce-7b48-701f-ab42-a1a3ad8c35ad",
+      "illustrator_name": "日田慶治",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17793,7 +17950,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "七水剛多",
+      "illustrator_id": "019fc1ce-7b48-7020-8e2e-4b3e915c3f16",
+      "illustrator_name": "七水剛多",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -17905,7 +18063,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "七水剛多",
+      "illustrator_id": "019fc1ce-7b48-7020-8e2e-4b3e915c3f16",
+      "illustrator_name": "七水剛多",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18024,7 +18183,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "七水剛多",
+      "illustrator_id": "019fc1ce-7b48-7020-8e2e-4b3e915c3f16",
+      "illustrator_name": "七水剛多",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18163,7 +18323,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "K2商会",
+      "illustrator_id": "019fc1ce-7b48-7021-a4df-d2e2a98cd9da",
+      "illustrator_name": "K2商会",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18271,7 +18432,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "伊藤勢",
+      "illustrator_id": "019fc1ce-7b47-7029-bd59-ef8d7fd2f8ba",
+      "illustrator_name": "伊藤勢",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18404,7 +18566,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18543,7 +18706,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "F.S",
+      "illustrator_id": "019fc1ce-7b48-7022-9030-9e856214a9c6",
+      "illustrator_name": "F.S",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18669,7 +18833,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18795,7 +18960,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -18941,7 +19107,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "しろー大野",
+      "illustrator_id": "019fc1ce-7b47-701f-b54c-fcad7ff92d42",
+      "illustrator_name": "しろー大野",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19063,7 +19230,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "輝竜司",
+      "illustrator_id": "019fc1ce-7b48-7023-bd20-60286dcc0588",
+      "illustrator_name": "輝竜司",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19189,7 +19357,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "松本嵩春",
+      "illustrator_id": "019fc1ce-7b48-701e-9349-2de32c5c40ec",
+      "illustrator_name": "松本嵩春",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19315,7 +19484,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19441,7 +19611,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19580,7 +19751,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "和田慎二",
+      "illustrator_id": "019fc1ce-7b47-702f-9441-3b30bc1cc5da",
+      "illustrator_name": "和田慎二",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19715,7 +19887,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19823,7 +19996,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -19990,7 +20164,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "るりあ046",
+      "illustrator_id": "019fc1ce-7b47-7008-9256-432ccae54b51",
+      "illustrator_name": "るりあ046",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20109,7 +20284,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "森木靖泰",
+      "illustrator_id": "019fc1ce-7b47-7018-a169-fa8af5ed7afa",
+      "illustrator_name": "森木靖泰",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20221,7 +20397,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "ヤトアキラ",
+      "illustrator_id": "019fc1ce-7b47-702e-b75d-3f4b8e70c1b4",
+      "illustrator_name": "ヤトアキラ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20353,7 +20530,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "青木邦夫",
+      "illustrator_id": "019fc1ce-7b47-701e-ae8f-19cc41127e89",
+      "illustrator_name": "青木邦夫",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20465,7 +20643,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "青木邦夫",
+      "illustrator_id": "019fc1ce-7b47-701e-ae8f-19cc41127e89",
+      "illustrator_name": "青木邦夫",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20595,7 +20774,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "椋本夏夜",
+      "illustrator_id": "019fc1ce-7b47-7017-afb3-8245a8f4bada",
+      "illustrator_name": "椋本夏夜",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20707,7 +20887,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20819,7 +21000,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -20949,7 +21131,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21086,7 +21269,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かんくろう",
+      "illustrator_id": "019fc1ce-7b48-7005-8c6a-d8b0725900cc",
+      "illustrator_name": "かんくろう",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21202,7 +21386,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "はるかげ",
+      "illustrator_id": "019fc1ce-7b48-7004-957d-e30a8f1e5d77",
+      "illustrator_name": "はるかげ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21321,7 +21506,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "槻城ゆう子",
+      "illustrator_id": "019fc1ce-7b48-7024-882b-808e76bb6d68",
+      "illustrator_name": "槻城ゆう子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21440,7 +21626,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "七水剛多",
+      "illustrator_id": "019fc1ce-7b48-7020-8e2e-4b3e915c3f16",
+      "illustrator_name": "七水剛多",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21566,7 +21753,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21685,7 +21873,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "米田仁士",
+      "illustrator_id": "019fc1ce-7b47-7011-8d71-1f24459afe58",
+      "illustrator_name": "米田仁士",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21831,7 +22020,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "しろー大野",
+      "illustrator_id": "019fc1ce-7b47-701f-b54c-fcad7ff92d42",
+      "illustrator_name": "しろー大野",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -21975,7 +22165,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "碧風羽",
+      "illustrator_id": "019fc1ce-7b48-7025-8ef2-ebaed1404772",
+      "illustrator_name": "碧風羽",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22121,7 +22312,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "藤井英俊",
+      "illustrator_id": "019fc1ce-7b47-7026-b300-58a710934c1b",
+      "illustrator_name": "藤井英俊",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22247,7 +22439,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "C-Show",
+      "illustrator_id": "019fc1ce-7b48-7007-9a44-d44b63acbe9a",
+      "illustrator_name": "C-Show",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22384,7 +22577,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "むらかわみちお",
+      "illustrator_id": "019fc1ce-7b48-7026-baa5-a15c4703fcc3",
+      "illustrator_name": "むらかわみちお",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22510,7 +22704,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "森木靖泰",
+      "illustrator_id": "019fc1ce-7b47-7018-a169-fa8af5ed7afa",
+      "illustrator_name": "森木靖泰",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22656,7 +22851,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "米田仁士",
+      "illustrator_id": "019fc1ce-7b47-7011-8d71-1f24459afe58",
+      "illustrator_name": "米田仁士",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22768,7 +22964,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22880,7 +23077,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "岡本喜劇",
+      "illustrator_id": "019fc1ce-7b48-7027-86aa-07cee035b186",
+      "illustrator_name": "岡本喜劇",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -22988,7 +23186,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "ぴぃたぁそると",
+      "illustrator_id": "019fc1ce-7b48-7028-95f6-de726e0b9f2b",
+      "illustrator_name": "ぴぃたぁそると",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23100,7 +23299,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "山吹ショウマ",
+      "illustrator_id": "019fc1ce-7b48-7018-a42b-fb98141d7e59",
+      "illustrator_name": "山吹ショウマ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23208,7 +23408,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "K2商会",
+      "illustrator_id": "019fc1ce-7b48-7021-a4df-d2e2a98cd9da",
+      "illustrator_name": "K2商会",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23320,7 +23521,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "椋本夏夜",
+      "illustrator_id": "019fc1ce-7b47-7017-afb3-8245a8f4bada",
+      "illustrator_name": "椋本夏夜",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23432,7 +23634,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "かんくろう",
+      "illustrator_id": "019fc1ce-7b48-7005-8c6a-d8b0725900cc",
+      "illustrator_name": "かんくろう",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23560,7 +23763,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23688,7 +23892,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "原友和",
+      "illustrator_id": "019fc1ce-7b47-7010-b0c2-eec7d0a8af37",
+      "illustrator_name": "原友和",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23800,7 +24005,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "金田榮路",
+      "illustrator_id": "019fc1ce-7b48-7029-8a80-b62303162b98",
+      "illustrator_name": "金田榮路",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -23939,7 +24145,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "F.S",
+      "illustrator_id": "019fc1ce-7b48-7022-9030-9e856214a9c6",
+      "illustrator_name": "F.S",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24051,7 +24258,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24188,7 +24396,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "かんくろう",
+      "illustrator_id": "019fc1ce-7b48-7005-8c6a-d8b0725900cc",
+      "illustrator_name": "かんくろう",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24307,7 +24516,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "K2商会",
+      "illustrator_id": "019fc1ce-7b48-7021-a4df-d2e2a98cd9da",
+      "illustrator_name": "K2商会",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24435,7 +24645,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "今野隼史",
+      "illustrator_id": "019fc1ce-7b47-701b-b8a0-08f71727c9a5",
+      "illustrator_name": "今野隼史",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24561,7 +24772,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24676,7 +24888,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "オカヤド",
+      "illustrator_id": "019fc1ce-7b48-702a-93b9-f31f8137655f",
+      "illustrator_name": "オカヤド",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24820,7 +25033,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "るりあ046",
+      "illustrator_id": "019fc1ce-7b47-7008-9256-432ccae54b51",
+      "illustrator_name": "るりあ046",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -24946,7 +25160,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "獅子猿",
+      "illustrator_id": "019fc1ce-7b47-7019-8914-0d1e0f72155a",
+      "illustrator_name": "獅子猿",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25072,7 +25287,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "桜瀬琥姫",
+      "illustrator_id": "019fc1ce-7b47-7030-8443-146c83ec5557",
+      "illustrator_name": "桜瀬琥姫",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25204,7 +25420,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25316,7 +25533,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "かわく",
+      "illustrator_id": "019fc1ce-7b48-702b-9d54-0aaee5edc61d",
+      "illustrator_name": "かわく",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25420,7 +25638,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "槻城ゆう子",
+      "illustrator_id": "019fc1ce-7b48-7024-882b-808e76bb6d68",
+      "illustrator_name": "槻城ゆう子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25532,7 +25751,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "槻城ゆう子",
+      "illustrator_id": "019fc1ce-7b48-7024-882b-808e76bb6d68",
+      "illustrator_name": "槻城ゆう子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25644,7 +25864,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "いのまたむつみ",
+      "illustrator_id": "019fc1ce-7b48-702c-8c68-00888c132231",
+      "illustrator_name": "いのまたむつみ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25774,7 +25995,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "椎名優",
+      "illustrator_id": "019fc1ce-7b47-701d-8cac-c827b2070b28",
+      "illustrator_name": "椎名優",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -25893,7 +26115,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "こちも",
+      "illustrator_id": "019fc1ce-7b48-702d-8563-30155dbf48b5",
+      "illustrator_name": "こちも",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26012,7 +26235,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "こちも",
+      "illustrator_id": "019fc1ce-7b48-702d-8563-30155dbf48b5",
+      "illustrator_name": "こちも",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26144,7 +26368,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "しろー大野",
+      "illustrator_id": "019fc1ce-7b47-701f-b54c-fcad7ff92d42",
+      "illustrator_name": "しろー大野",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26263,7 +26488,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "しろー大野",
+      "illustrator_id": "019fc1ce-7b47-701f-b54c-fcad7ff92d42",
+      "illustrator_name": "しろー大野",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26402,7 +26628,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "いのまたむつみ",
+      "illustrator_id": "019fc1ce-7b48-702c-8c68-00888c132231",
+      "illustrator_name": "いのまたむつみ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26528,7 +26755,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "しろー大野",
+      "illustrator_id": "019fc1ce-7b47-701f-b54c-fcad7ff92d42",
+      "illustrator_name": "しろー大野",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26654,7 +26882,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26780,7 +27009,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -26906,7 +27136,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27050,7 +27281,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "C-Show",
+      "illustrator_id": "019fc1ce-7b48-7007-9a44-d44b63acbe9a",
+      "illustrator_name": "C-Show",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27196,7 +27428,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "久坂宗次",
+      "illustrator_id": "019fc1ce-7b48-7011-b756-463ac1af7429",
+      "illustrator_name": "久坂宗次",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27318,7 +27551,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西川秀明",
+      "illustrator_id": "019fc1ce-7b47-702a-95a6-497c9a6aba24",
+      "illustrator_name": "西川秀明",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27444,7 +27678,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "Hayaken",
+      "illustrator_id": "019fc1ce-7b48-702e-b39d-bf29dfde709c",
+      "illustrator_name": "Hayaken",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27548,7 +27783,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "御崎智敬",
+      "illustrator_id": "019fc1ce-7b48-702f-a889-9010d85020c3",
+      "illustrator_name": "御崎智敬",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27676,7 +27912,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27784,7 +28021,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "カジミヤ",
+      "illustrator_id": "019fc1ce-7b48-7030-86dd-520affb4cd7c",
+      "illustrator_name": "カジミヤ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -27896,7 +28134,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28035,7 +28274,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "久坂宗次",
+      "illustrator_id": "019fc1ce-7b48-7011-b756-463ac1af7429",
+      "illustrator_name": "久坂宗次",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28174,7 +28414,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "七",
+      "illustrator_id": "019fc1ce-7b48-7031-a645-0c8085d8abfc",
+      "illustrator_name": "七",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28286,7 +28527,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "久坂宗次",
+      "illustrator_id": "019fc1ce-7b48-7011-b756-463ac1af7429",
+      "illustrator_name": "久坂宗次",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28412,7 +28654,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28558,7 +28801,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28704,7 +28948,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "緑川美帆",
+      "illustrator_id": "019fc1ce-7b47-702c-a4bc-2d004a6ae2f1",
+      "illustrator_name": "緑川美帆",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28850,7 +29095,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -28976,7 +29222,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -29102,7 +29349,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -29244,7 +29492,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -29379,7 +29628,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "K2商会",
+      "illustrator_id": "019fc1ce-7b48-7021-a4df-d2e2a98cd9da",
+      "illustrator_name": "K2商会",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -29514,7 +29764,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かんくろう",
+      "illustrator_id": "019fc1ce-7b48-7005-8c6a-d8b0725900cc",
+      "illustrator_name": "かんくろう",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -29633,7 +29884,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "加藤龍勇",
+      "illustrator_id": "019fc1ce-7b48-7002-963f-37f58b738ada",
+      "illustrator_name": "加藤龍勇",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -29768,7 +30020,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "藤沢孝",
+      "illustrator_id": "019fc1ce-7b48-7032-8016-1dee66519d64",
+      "illustrator_name": "藤沢孝",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -29887,7 +30140,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30026,7 +30280,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "加藤龍勇",
+      "illustrator_id": "019fc1ce-7b48-7002-963f-37f58b738ada",
+      "illustrator_name": "加藤龍勇",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30145,7 +30400,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30257,7 +30513,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "こさぎ",
+      "illustrator_id": "019fc1ce-7b48-7033-a4d9-f30db46ef36e",
+      "illustrator_name": "こさぎ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30369,7 +30626,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30477,7 +30735,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "U-K",
+      "illustrator_id": "019fc1ce-7b48-7034-a363-03d456e07ee9",
+      "illustrator_name": "U-K",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30609,7 +30868,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "寺田克也",
+      "illustrator_id": "019fc1ce-7b47-7023-b5e7-9fa5c32b4280",
+      "illustrator_name": "寺田克也",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30721,7 +30981,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "橋本正枝",
+      "illustrator_id": "019fc1ce-7b48-7035-b244-de1a276c5810",
+      "illustrator_name": "橋本正枝",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30858,7 +31119,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "橋本正枝",
+      "illustrator_id": "019fc1ce-7b48-7035-b244-de1a276c5810",
+      "illustrator_name": "橋本正枝",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -30997,7 +31259,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "山鳥おふう",
+      "illustrator_id": "019fc1ce-7b47-7015-8f59-17b4afcd3e69",
+      "illustrator_name": "山鳥おふう",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -31136,7 +31399,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "前河悠一",
+      "illustrator_id": "019fc1ce-7b48-7036-81ea-cb13a113f417",
+      "illustrator_name": "前河悠一",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -31244,7 +31508,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "伊藤真美",
+      "illustrator_id": "019fc1ce-7b48-7037-b62e-bc7ac9fd0b73",
+      "illustrator_name": "伊藤真美",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -31359,7 +31624,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -31498,7 +31764,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "碧風羽",
+      "illustrator_id": "019fc1ce-7b48-7025-8ef2-ebaed1404772",
+      "illustrator_name": "碧風羽",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -31624,7 +31891,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -31750,7 +32018,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "四季童子",
+      "illustrator_id": "019fc1ce-7b47-7025-8443-5f98fc6ad1ad",
+      "illustrator_name": "四季童子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -31876,7 +32145,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "若菜等＋Ki",
+      "illustrator_id": "019fc1ce-7b48-7001-8170-cbeee40e699f",
+      "illustrator_name": "若菜等＋Ki",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32002,7 +32272,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32148,7 +32419,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32294,7 +32566,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "F.S",
+      "illustrator_id": "019fc1ce-7b48-7022-9030-9e856214a9c6",
+      "illustrator_name": "F.S",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32429,7 +32702,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32564,7 +32838,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "K2商会",
+      "illustrator_id": "019fc1ce-7b48-7021-a4df-d2e2a98cd9da",
+      "illustrator_name": "K2商会",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32703,7 +32978,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "獅子猿",
+      "illustrator_id": "019fc1ce-7b47-7019-8914-0d1e0f72155a",
+      "illustrator_name": "獅子猿",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32786,7 +33062,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32869,7 +33146,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -32952,7 +33230,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "伊藤勢",
+      "illustrator_id": "019fc1ce-7b47-7029-bd59-ef8d7fd2f8ba",
+      "illustrator_name": "伊藤勢",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33035,7 +33314,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "高渡あゆみ",
+      "illustrator_id": "019fc1ce-7b48-7038-9493-d3e13a6c8a7a",
+      "illustrator_name": "高渡あゆみ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33138,7 +33418,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33221,7 +33502,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "金澤尚子",
+      "illustrator_id": "019fc1ce-7b48-7039-b5b9-c94e2f5cf23a",
+      "illustrator_name": "金澤尚子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33324,7 +33606,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "菊地且典",
+      "illustrator_id": "019fc1ce-7b48-703a-9fb9-e4806fd4312b",
+      "illustrator_name": "菊地且典",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33427,7 +33710,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "菊地且典",
+      "illustrator_id": "019fc1ce-7b48-703a-9fb9-e4806fd4312b",
+      "illustrator_name": "菊地且典",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33530,7 +33814,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "岡本喜劇",
+      "illustrator_id": "019fc1ce-7b48-7027-86aa-07cee035b186",
+      "illustrator_name": "岡本喜劇",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33633,7 +33918,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "菊地且典",
+      "illustrator_id": "019fc1ce-7b48-703a-9fb9-e4806fd4312b",
+      "illustrator_name": "菊地且典",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33730,7 +34016,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "こゆき",
+      "illustrator_id": "019fc1ce-7b48-703b-bae1-e469075c5fed",
+      "illustrator_name": "こゆき",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33827,7 +34114,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "こゆき",
+      "illustrator_id": "019fc1ce-7b48-703b-bae1-e469075c5fed",
+      "illustrator_name": "こゆき",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -33903,7 +34191,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "石垣環",
+      "illustrator_id": "019fc1ce-7b48-700f-b132-54e2ae6d31f4",
+      "illustrator_name": "石垣環",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34004,7 +34293,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "虫麻呂",
+      "illustrator_id": "019fc1ce-7b48-703c-9aa5-789bc3d02de3",
+      "illustrator_name": "虫麻呂",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34123,7 +34413,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "佐々木亮",
+      "illustrator_id": "019fc1ce-7b48-703d-9508-dcbd5ff7a218",
+      "illustrator_name": "佐々木亮",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34224,7 +34515,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "ツジヤスノリ",
+      "illustrator_id": "019fc1ce-7b48-703e-b47b-2ad7aa753ad6",
+      "illustrator_name": "ツジヤスノリ",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34322,7 +34614,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "紫堂恭子",
+      "illustrator_id": "019fc1ce-7b48-703f-8c07-e45aafdb0df6",
+      "illustrator_name": "紫堂恭子",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34427,7 +34720,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "前河悠一",
+      "illustrator_id": "019fc1ce-7b48-7036-81ea-cb13a113f417",
+      "illustrator_name": "前河悠一",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34511,7 +34805,8 @@
       "flavor_text": "",
       "rarity_code": "Uncommon",
       "rarity_name": "並",
-      "illustrator": "菅原健",
+      "illustrator_id": "019fc1ce-7b48-7040-bd51-2dd6f5af21da",
+      "illustrator_name": "菅原健",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34616,7 +34911,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "巴ヨシヤス",
+      "illustrator_id": "019fc1ce-7b48-7041-bc85-2ad16d0bdf16",
+      "illustrator_name": "巴ヨシヤス",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34721,7 +35017,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "ぴぃたぁそると",
+      "illustrator_id": "019fc1ce-7b48-7028-95f6-de726e0b9f2b",
+      "illustrator_name": "ぴぃたぁそると",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34822,7 +35119,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -34927,7 +35225,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "C-Show",
+      "illustrator_id": "019fc1ce-7b48-7007-9a44-d44b63acbe9a",
+      "illustrator_name": "C-Show",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -35028,7 +35327,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "一日郎",
+      "illustrator_id": "019fc1ce-7b48-7042-b68e-e156c504103c",
+      "illustrator_name": "一日郎",
       "product": {
         "product_id": "019d871f-5c5b-7139-907d-f1d8be7cc8cc",
         "product_category_code": "Booster",
@@ -35132,7 +35432,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "四季童子",
+      "illustrator_id": "019fc1ce-7b47-7025-8443-5f98fc6ad1ad",
+      "illustrator_name": "四季童子",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -35236,7 +35537,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -35382,7 +35684,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "いのまたむつみ",
+      "illustrator_id": "019fc1ce-7b48-702c-8c68-00888c132231",
+      "illustrator_name": "いのまたむつみ",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -35528,7 +35831,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "いのまたむつみ",
+      "illustrator_id": "019fc1ce-7b48-702c-8c68-00888c132231",
+      "illustrator_name": "いのまたむつみ",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -35674,7 +35978,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "田中としひさ",
+      "illustrator_id": "019fc1ce-7b48-701a-8bf6-ba35ff890c06",
+      "illustrator_name": "田中としひさ",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -35813,7 +36118,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "アオガチョウ",
+      "illustrator_id": "019fc1ce-7b48-7043-83a0-73f87417a8d7",
+      "illustrator_name": "アオガチョウ",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -35952,7 +36258,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "柴乃櫂人",
+      "illustrator_id": "019fc1ce-7b48-7044-b749-ec91981b0a71",
+      "illustrator_name": "柴乃櫂人",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -36098,7 +36405,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "四季童子",
+      "illustrator_id": "019fc1ce-7b47-7025-8443-5f98fc6ad1ad",
+      "illustrator_name": "四季童子",
       "product": {
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
@@ -36202,7 +36510,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -36306,7 +36615,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "柴乃櫂人",
+      "illustrator_id": "019fc1ce-7b48-7044-b749-ec91981b0a71",
+      "illustrator_name": "柴乃櫂人",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -36445,7 +36755,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "石渡太輔",
+      "illustrator_id": "019fc1ce-7b48-7045-9215-f4f94d034706",
+      "illustrator_name": "石渡太輔",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -36587,7 +36898,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "獅子猿",
+      "illustrator_id": "019fc1ce-7b47-7019-8914-0d1e0f72155a",
+      "illustrator_name": "獅子猿",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -36724,7 +37036,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -36888,7 +37201,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "吉村正人",
+      "illustrator_id": "019fc1ce-7b47-700e-a38a-57574cd33a7e",
+      "illustrator_name": "吉村正人",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -37045,7 +37359,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かわく",
+      "illustrator_id": "019fc1ce-7b48-702b-9d54-0aaee5edc61d",
+      "illustrator_name": "かわく",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -37209,7 +37524,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かわく",
+      "illustrator_id": "019fc1ce-7b48-702b-9d54-0aaee5edc61d",
+      "illustrator_name": "かわく",
       "product": {
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
@@ -37313,7 +37629,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -37417,7 +37734,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -37563,7 +37881,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "伊藤勢",
+      "illustrator_id": "019fc1ce-7b47-7029-bd59-ef8d7fd2f8ba",
+      "illustrator_name": "伊藤勢",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -37709,7 +38028,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "雨宮慶太",
+      "illustrator_id": "019fc1ce-7b48-7046-b631-04c4e4eb583e",
+      "illustrator_name": "雨宮慶太",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -37873,7 +38193,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "碧風羽",
+      "illustrator_id": "019fc1ce-7b48-7025-8ef2-ebaed1404772",
+      "illustrator_name": "碧風羽",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38012,7 +38333,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38136,7 +38458,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "兎塚エイジ",
+      "illustrator_id": "019fc1ce-7b47-7031-afcf-ff17273630be",
+      "illustrator_name": "兎塚エイジ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38262,7 +38585,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38350,7 +38674,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "ゆめき",
+      "illustrator_id": "019fc1ce-7b48-7047-a2d0-85f019ca78e0",
+      "illustrator_name": "ゆめき",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38438,7 +38763,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "真時未砂",
+      "illustrator_id": "019fc1ce-7b47-700c-8fd7-4961eac56469",
+      "illustrator_name": "真時未砂",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38526,7 +38852,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "輝楽",
+      "illustrator_id": "019fc1ce-7b48-7048-8837-b73c59508ba2",
+      "illustrator_name": "輝楽",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38614,7 +38941,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "今野隼史",
+      "illustrator_id": "019fc1ce-7b47-701b-b8a0-08f71727c9a5",
+      "illustrator_name": "今野隼史",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38702,7 +39030,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "柏餅よもぎ",
+      "illustrator_id": "019fc1ce-7b48-7049-9d33-7455dbee1c90",
+      "illustrator_name": "柏餅よもぎ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38790,7 +39119,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "村山竜大",
+      "illustrator_id": "019fc1ce-7b48-704a-b7a8-4986678b823e",
+      "illustrator_name": "村山竜大",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38894,7 +39224,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "こゆき",
+      "illustrator_id": "019fc1ce-7b48-703b-bae1-e469075c5fed",
+      "illustrator_name": "こゆき",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -38998,7 +39329,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -39102,7 +39434,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -39228,7 +39561,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -39363,7 +39697,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -39500,7 +39835,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "ヤトアキラ",
+      "illustrator_id": "019fc1ce-7b47-702e-b75d-3f4b8e70c1b4",
+      "illustrator_name": "ヤトアキラ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -39639,7 +39975,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "リヨ",
+      "illustrator_id": "019fc1ce-7b48-704b-aac6-0bd231b23752",
+      "illustrator_name": "リヨ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -39781,7 +40118,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -39927,7 +40265,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "結川カズノ",
+      "illustrator_id": "019fc1ce-7b48-704c-94f9-dfa9a7379be0",
+      "illustrator_name": "結川カズノ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -40010,7 +40349,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -40093,7 +40433,8 @@
       "flavor_text": "",
       "rarity_code": "Common",
       "rarity_name": "頻繁",
-      "illustrator": "かしわ",
+      "illustrator_id": "019fc1ce-7b47-7000-a63d-082fd801cb0f",
+      "illustrator_name": "かしわ",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -40197,7 +40538,8 @@
       "flavor_text": "",
       "rarity_code": "SuperRare",
       "rarity_name": "極稀",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
@@ -40301,7 +40643,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ケンゴロー",
+      "illustrator_id": "019fc1ce-7b48-704d-98e6-f191648e8152",
+      "illustrator_name": "西出ケンゴロー",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -40405,7 +40748,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ケンゴロー",
+      "illustrator_id": "019fc1ce-7b48-704d-98e6-f191648e8152",
+      "illustrator_name": "西出ケンゴロー",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -40509,7 +40853,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ケンゴロー",
+      "illustrator_id": "019fc1ce-7b48-704d-98e6-f191648e8152",
+      "illustrator_name": "西出ケンゴロー",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -40613,7 +40958,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ケンゴロー",
+      "illustrator_id": "019fc1ce-7b48-704d-98e6-f191648e8152",
+      "illustrator_name": "西出ケンゴロー",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -40717,7 +41063,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ケンゴロー",
+      "illustrator_id": "019fc1ce-7b48-704d-98e6-f191648e8152",
+      "illustrator_name": "西出ケンゴロー",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -40821,7 +41168,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ケンゴロー",
+      "illustrator_id": "019fc1ce-7b48-704d-98e6-f191648e8152",
+      "illustrator_name": "西出ケンゴロー",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -40912,7 +41260,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "七水剛多",
+      "illustrator_id": "019fc1ce-7b48-7020-8e2e-4b3e915c3f16",
+      "illustrator_name": "七水剛多",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -40995,7 +41344,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "bob",
+      "illustrator_id": "019fc1ce-7b48-704e-8352-490e8eb8dead",
+      "illustrator_name": "bob",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41099,7 +41449,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "山吹ショウマ",
+      "illustrator_id": "019fc1ce-7b48-7018-a42b-fb98141d7e59",
+      "illustrator_name": "山吹ショウマ",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41186,7 +41537,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "森木靖泰",
+      "illustrator_id": "019fc1ce-7b47-7018-a169-fa8af5ed7afa",
+      "illustrator_name": "森木靖泰",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41301,7 +41653,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "狭霧光明",
+      "illustrator_id": "019fc1ce-7b47-700f-81f2-5dde628d4704",
+      "illustrator_name": "狭霧光明",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41399,7 +41752,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41523,7 +41877,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "米田仁士",
+      "illustrator_id": "019fc1ce-7b47-7011-8d71-1f24459afe58",
+      "illustrator_name": "米田仁士",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41623,7 +41978,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "かんくろう",
+      "illustrator_id": "019fc1ce-7b48-7005-8c6a-d8b0725900cc",
+      "illustrator_name": "かんくろう",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41714,7 +42070,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41822,7 +42179,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "鈴木雅久",
+      "illustrator_id": "019fc1ce-7b47-702d-87a5-f4c28670ea26",
+      "illustrator_name": "鈴木雅久",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -41941,7 +42299,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "小林裕也",
+      "illustrator_id": "019fc1ce-7b47-7012-bd4f-fd1a48aab436",
+      "illustrator_name": "小林裕也",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42056,7 +42415,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "御崎智敬",
+      "illustrator_id": "019fc1ce-7b48-702f-a889-9010d85020c3",
+      "illustrator_name": "御崎智敬",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42175,7 +42535,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "中村哲也",
+      "illustrator_id": "019fc1ce-7b48-7014-9e64-995c946a36f0",
+      "illustrator_name": "中村哲也",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42290,7 +42651,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42402,7 +42764,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "吉崎観音",
+      "illustrator_id": "019fc1ce-7b48-704f-bf98-e892ab3f4a48",
+      "illustrator_name": "吉崎観音",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42514,7 +42877,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42618,7 +42982,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "C-SHOW",
+      "illustrator_id": "019fc1ce-7b48-7050-90bd-f7e911deddd6",
+      "illustrator_name": "C-SHOW",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42733,7 +43098,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42848,7 +43214,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "西村博之",
+      "illustrator_id": "019fc1ce-7b48-7051-bd0c-d3863be53ba8",
+      "illustrator_name": "西村博之",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -42956,7 +43323,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "田中光",
+      "illustrator_id": "019fc1ce-7b47-7016-a764-38b89c6d3270",
+      "illustrator_name": "田中光",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43095,7 +43463,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43207,7 +43576,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "佐嶋真実",
+      "illustrator_id": "019fc1ce-7b48-7017-8cf0-4bf154d1407a",
+      "illustrator_name": "佐嶋真実",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43298,7 +43668,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "竹本泉",
+      "illustrator_id": "019fc1ce-7b48-7052-8b36-2a0819b62f92",
+      "illustrator_name": "竹本泉",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43381,7 +43752,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "ナブランジャ",
+      "illustrator_id": "019fc1ce-7b48-7053-a9ca-fe62da15b86a",
+      "illustrator_name": "ナブランジャ",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43500,7 +43872,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "吉村正人",
+      "illustrator_id": "019fc1ce-7b47-700e-a38a-57574cd33a7e",
+      "illustrator_name": "吉村正人",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43598,7 +43971,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "中村博文",
+      "illustrator_id": "019fc1ce-7b48-700d-8087-9a76ee64de82",
+      "illustrator_name": "中村博文",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43713,7 +44087,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "四季童子",
+      "illustrator_id": "019fc1ce-7b47-7025-8443-5f98fc6ad1ad",
+      "illustrator_name": "四季童子",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43832,7 +44207,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -43936,7 +44312,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "ぽぽるちゃ",
+      "illustrator_id": "019fc1ce-7b47-7003-a74d-9b1204cdafee",
+      "illustrator_name": "ぽぽるちゃ",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44048,7 +44425,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44160,7 +44538,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "竹本泉",
+      "illustrator_id": "019fc1ce-7b48-7052-8b36-2a0819b62f92",
+      "illustrator_name": "竹本泉",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44279,7 +44658,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "伊藤真美",
+      "illustrator_id": "019fc1ce-7b48-7037-b62e-bc7ac9fd0b73",
+      "illustrator_name": "伊藤真美",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44398,7 +44778,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "加藤龍勇＋後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-7054-8332-3be1f089ae11",
+      "illustrator_name": "加藤龍勇＋後藤啓介",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44517,7 +44898,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "山吹ショウマ",
+      "illustrator_id": "019fc1ce-7b48-7018-a42b-fb98141d7e59",
+      "illustrator_name": "山吹ショウマ",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44629,7 +45011,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "西川秀明",
+      "illustrator_id": "019fc1ce-7b47-702a-95a6-497c9a6aba24",
+      "illustrator_name": "西川秀明",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44741,7 +45124,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44845,7 +45229,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "幻超ニ",
+      "illustrator_id": "019fc1ce-7b48-7055-81f3-e9f5317b4b3a",
+      "illustrator_name": "幻超ニ",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -44957,7 +45342,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45076,7 +45462,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "原友和",
+      "illustrator_id": "019fc1ce-7b47-7010-b0c2-eec7d0a8af37",
+      "illustrator_name": "原友和",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45195,7 +45582,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "るりあ046",
+      "illustrator_id": "019fc1ce-7b47-7008-9256-432ccae54b51",
+      "illustrator_name": "るりあ046",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45314,7 +45702,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "寺田克也",
+      "illustrator_id": "019fc1ce-7b47-7023-b5e7-9fa5c32b4280",
+      "illustrator_name": "寺田克也",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45433,7 +45822,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45521,7 +45911,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "C-SHOW",
+      "illustrator_id": "019fc1ce-7b48-7050-90bd-f7e911deddd6",
+      "illustrator_name": "C-SHOW",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45609,7 +46000,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45697,7 +46089,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "山吹ショウマ",
+      "illustrator_id": "019fc1ce-7b48-7018-a42b-fb98141d7e59",
+      "illustrator_name": "山吹ショウマ",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45785,7 +46178,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45873,7 +46267,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "つかぽん",
+      "illustrator_id": "019fc1ce-7b48-7016-b18a-5254a0f6d2dd",
+      "illustrator_name": "つかぽん",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -45961,7 +46356,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46049,7 +46445,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46137,7 +46534,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "小林裕也",
+      "illustrator_id": "019fc1ce-7b47-7012-bd4f-fd1a48aab436",
+      "illustrator_name": "小林裕也",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46225,7 +46623,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "鈴木雅久",
+      "illustrator_id": "019fc1ce-7b47-702d-87a5-f4c28670ea26",
+      "illustrator_name": "鈴木雅久",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46313,7 +46712,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "ぽぽるちゃ",
+      "illustrator_id": "019fc1ce-7b47-7003-a74d-9b1204cdafee",
+      "illustrator_name": "ぽぽるちゃ",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46401,7 +46801,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "佐々木亮",
+      "illustrator_id": "019fc1ce-7b48-703d-9508-dcbd5ff7a218",
+      "illustrator_name": "佐々木亮",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46489,7 +46890,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "七水剛多",
+      "illustrator_id": "019fc1ce-7b48-7020-8e2e-4b3e915c3f16",
+      "illustrator_name": "七水剛多",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46577,7 +46979,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "若菜等＋Ki",
+      "illustrator_id": "019fc1ce-7b48-7001-8170-cbeee40e699f",
+      "illustrator_name": "若菜等＋Ki",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46665,7 +47068,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "Maruto！",
+      "illustrator_id": "019fc1ce-7b48-7056-95f2-f7e838c915f4",
+      "illustrator_name": "Maruto！",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46753,7 +47157,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "加藤龍勇＋後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-7054-8332-3be1f089ae11",
+      "illustrator_name": "加藤龍勇＋後藤啓介",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46841,7 +47246,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "伊藤真美",
+      "illustrator_id": "019fc1ce-7b48-7037-b62e-bc7ac9fd0b73",
+      "illustrator_name": "伊藤真美",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -46929,7 +47335,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "るりあ046",
+      "illustrator_id": "019fc1ce-7b47-7008-9256-432ccae54b51",
+      "illustrator_name": "るりあ046",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47017,7 +47424,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "石垣環",
+      "illustrator_id": "019fc1ce-7b48-700f-b132-54e2ae6d31f4",
+      "illustrator_name": "石垣環",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47094,7 +47502,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "鶴田謙二",
+      "illustrator_id": "019fc1ce-7b48-7012-a26b-cdddba2ecbf9",
+      "illustrator_name": "鶴田謙二",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47171,7 +47580,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "四季童子",
+      "illustrator_id": "019fc1ce-7b47-7025-8443-5f98fc6ad1ad",
+      "illustrator_name": "四季童子",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47248,7 +47658,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47325,7 +47736,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "C-SHOW",
+      "illustrator_id": "019fc1ce-7b48-7050-90bd-f7e911deddd6",
+      "illustrator_name": "C-SHOW",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47402,7 +47814,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47479,7 +47892,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "鈴木雅久",
+      "illustrator_id": "019fc1ce-7b47-702d-87a5-f4c28670ea26",
+      "illustrator_name": "鈴木雅久",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47579,7 +47993,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "槻城ゆう子",
+      "illustrator_id": "019fc1ce-7b48-7024-882b-808e76bb6d68",
+      "illustrator_name": "槻城ゆう子",
       "product": {
         "product_id": "019da177-21b8-75eb-86e5-b429437192ad",
         "product_category_code": "Booster",
@@ -47683,7 +48098,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ゲンゴロー",
+      "illustrator_id": "019fc1ce-7b48-7057-83e3-da8b8f8b774e",
+      "illustrator_name": "西出ゲンゴロー",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -47795,7 +48211,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "柏餅よもぎ",
+      "illustrator_id": "019fc1ce-7b48-7049-9d33-7455dbee1c90",
+      "illustrator_name": "柏餅よもぎ",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -47886,7 +48303,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "みずさき。",
+      "illustrator_id": "019fc1ce-7b48-7058-9928-dccc8dedef4d",
+      "illustrator_name": "みずさき。",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48005,7 +48423,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "C-SHOW",
+      "illustrator_id": "019fc1ce-7b48-7050-90bd-f7e911deddd6",
+      "illustrator_name": "C-SHOW",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48124,7 +48543,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "みずさき。",
+      "illustrator_id": "019fc1ce-7b48-7058-9928-dccc8dedef4d",
+      "illustrator_name": "みずさき。",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48236,7 +48656,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "かんくろう",
+      "illustrator_id": "019fc1ce-7b48-7005-8c6a-d8b0725900cc",
+      "illustrator_name": "かんくろう",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48319,7 +48740,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "Element",
+      "illustrator_id": "019fc1ce-7b48-7059-9ba1-7991709ff1eb",
+      "illustrator_name": "Element",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48423,7 +48845,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "由利真珠郎",
+      "illustrator_id": "019fc1ce-7b47-701a-b503-44cfe4e154d2",
+      "illustrator_name": "由利真珠郎",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48511,7 +48934,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "安達洋介",
+      "illustrator_id": "019fc1ce-7b48-705a-a03a-9ce4ddb6b47f",
+      "illustrator_name": "安達洋介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48599,7 +49023,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "ぴぃたぁそると",
+      "illustrator_id": "019fc1ce-7b48-7028-95f6-de726e0b9f2b",
+      "illustrator_name": "ぴぃたぁそると",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48687,7 +49112,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "ぴぃたぁそると",
+      "illustrator_id": "019fc1ce-7b48-7028-95f6-de726e0b9f2b",
+      "illustrator_name": "ぴぃたぁそると",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48764,7 +49190,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "巴ヨシヤス",
+      "illustrator_id": "019fc1ce-7b48-7041-bc85-2ad16d0bdf16",
+      "illustrator_name": "巴ヨシヤス",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -48883,7 +49310,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "代官山ゑびす",
+      "illustrator_id": "019fc1ce-7b48-7003-a8b2-bde2f67ce0e6",
+      "illustrator_name": "代官山ゑびす",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49002,7 +49430,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "みずさき。",
+      "illustrator_id": "019fc1ce-7b48-7058-9928-dccc8dedef4d",
+      "illustrator_name": "みずさき。",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49106,7 +49535,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ゲンゴロー",
+      "illustrator_id": "019fc1ce-7b48-7057-83e3-da8b8f8b774e",
+      "illustrator_name": "西出ゲンゴロー",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49189,7 +49619,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "斉藤コーキ",
+      "illustrator_id": "019fc1ce-7b47-7005-9e09-317d05dbdbfc",
+      "illustrator_name": "斉藤コーキ",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49297,7 +49728,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "奥田ひとし",
+      "illustrator_id": "019fc1ce-7b47-700a-bfdb-36d1034cdcc9",
+      "illustrator_name": "奥田ひとし",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49409,7 +49841,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "小林裕也",
+      "illustrator_id": "019fc1ce-7b47-7012-bd4f-fd1a48aab436",
+      "illustrator_name": "小林裕也",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49521,7 +49954,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49629,7 +50063,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "C-SHOW",
+      "illustrator_id": "019fc1ce-7b48-7050-90bd-f7e911deddd6",
+      "illustrator_name": "C-SHOW",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49737,7 +50172,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "吉村正人",
+      "illustrator_id": "019fc1ce-7b47-700e-a38a-57574cd33a7e",
+      "illustrator_name": "吉村正人",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49876,7 +50312,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "末弥純",
+      "illustrator_id": "019fc1ce-7b47-700d-9900-8dbfe1e4e6ac",
+      "illustrator_name": "末弥純",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -49984,7 +50421,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50072,7 +50510,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "由羅カイリ",
+      "illustrator_id": "019fc1ce-7b48-705b-8466-79eb8c5d5188",
+      "illustrator_name": "由羅カイリ",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50160,7 +50599,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "つかぽん",
+      "illustrator_id": "019fc1ce-7b48-7016-b18a-5254a0f6d2dd",
+      "illustrator_name": "つかぽん",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50237,7 +50677,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "開田裕治",
+      "illustrator_id": "019fc1ce-7b47-700b-a130-6079bccd6696",
+      "illustrator_name": "開田裕治",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50314,7 +50755,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "弘司",
+      "illustrator_id": "019fc1ce-7b48-700b-bcf2-4e6a5bb0c6be",
+      "illustrator_name": "弘司",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50414,7 +50856,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ゲンゴロー",
+      "illustrator_id": "019fc1ce-7b48-7057-83e3-da8b8f8b774e",
+      "illustrator_name": "西出ゲンゴロー",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50497,7 +50940,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "こいでたく",
+      "illustrator_id": "019fc1ce-7b48-7019-b955-3bcfad406427",
+      "illustrator_name": "こいでたく",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50601,7 +51045,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "田中光",
+      "illustrator_id": "019fc1ce-7b47-7016-a764-38b89c6d3270",
+      "illustrator_name": "田中光",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50720,7 +51165,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "原友和",
+      "illustrator_id": "019fc1ce-7b47-7010-b0c2-eec7d0a8af37",
+      "illustrator_name": "原友和",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50832,7 +51278,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "原友和",
+      "illustrator_id": "019fc1ce-7b47-7010-b0c2-eec7d0a8af37",
+      "illustrator_name": "原友和",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -50951,7 +51398,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "ねじ太",
+      "illustrator_id": "019fc1ce-7b48-700c-898b-d4ac4dde3bb9",
+      "illustrator_name": "ねじ太",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51051,7 +51499,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "藤川純一",
+      "illustrator_id": "019fc1ce-7b47-7014-b859-c6a47146ac5d",
+      "illustrator_name": "藤川純一",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51134,7 +51583,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "吉井徹",
+      "illustrator_id": "019fc1ce-7b48-705c-8fe3-27beb6729ae9",
+      "illustrator_name": "吉井徹",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51222,7 +51672,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "bob",
+      "illustrator_id": "019fc1ce-7b48-704e-8352-490e8eb8dead",
+      "illustrator_name": "bob",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51310,7 +51761,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "田中としひさ",
+      "illustrator_id": "019fc1ce-7b48-701a-8bf6-ba35ff890c06",
+      "illustrator_name": "田中としひさ",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51398,7 +51850,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "石田ヒロユキ",
+      "illustrator_id": "019fc1ce-7b48-705d-81cd-6488b485f8a0",
+      "illustrator_name": "石田ヒロユキ",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51475,7 +51928,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "中村亮",
+      "illustrator_id": "019fc1ce-7b47-7022-ad13-b0f9f870f67c",
+      "illustrator_name": "中村亮",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51583,7 +52037,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "伊藤勢",
+      "illustrator_id": "019fc1ce-7b47-7029-bd59-ef8d7fd2f8ba",
+      "illustrator_name": "伊藤勢",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51683,7 +52138,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "西出ゲンゴロー",
+      "illustrator_id": "019fc1ce-7b48-7057-83e3-da8b8f8b774e",
+      "illustrator_name": "西出ゲンゴロー",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51774,7 +52230,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "C-SHOW",
+      "illustrator_id": "019fc1ce-7b48-7050-90bd-f7e911deddd6",
+      "illustrator_name": "C-SHOW",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -51886,7 +52343,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "佐々木亮",
+      "illustrator_id": "019fc1ce-7b48-703d-9508-dcbd5ff7a218",
+      "illustrator_name": "佐々木亮",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52005,7 +52463,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "加藤龍勇",
+      "illustrator_id": "019fc1ce-7b48-7002-963f-37f58b738ada",
+      "illustrator_name": "加藤龍勇",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52117,7 +52576,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "加藤龍勇＆後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-705e-b904-882910f1934d",
+      "illustrator_name": "加藤龍勇＆後藤啓介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52236,7 +52696,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "加藤龍勇＆後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-705e-b904-882910f1934d",
+      "illustrator_name": "加藤龍勇＆後藤啓介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52327,7 +52788,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "結城信輝",
+      "illustrator_id": "019fc1ce-7b47-7032-8905-ee1a2ecaa34e",
+      "illustrator_name": "結城信輝",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52466,7 +52928,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "加藤龍勇＆後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-705e-b904-882910f1934d",
+      "illustrator_name": "加藤龍勇＆後藤啓介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52605,7 +53068,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "加藤龍勇＆後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-705e-b904-882910f1934d",
+      "illustrator_name": "加藤龍勇＆後藤啓介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52693,7 +53157,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "加藤龍勇＆後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-705e-b904-882910f1934d",
+      "illustrator_name": "加藤龍勇＆後藤啓介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52781,7 +53246,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "久坂宗次",
+      "illustrator_id": "019fc1ce-7b48-7011-b756-463ac1af7429",
+      "illustrator_name": "久坂宗次",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52869,7 +53335,8 @@
       "flavor_text": "",
       "rarity_code": "Basic",
       "rarity_name": "基本",
-      "illustrator": "S.of.L",
+      "illustrator_id": "019fc1ce-7b49-7000-9ca2-471206d52306",
+      "illustrator_name": "S.of.L",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -52946,7 +53413,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "つかぽん",
+      "illustrator_id": "019fc1ce-7b48-7016-b18a-5254a0f6d2dd",
+      "illustrator_name": "つかぽん",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53058,7 +53526,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "加藤龍勇",
+      "illustrator_id": "019fc1ce-7b48-7002-963f-37f58b738ada",
+      "illustrator_name": "加藤龍勇",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53170,7 +53639,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "加藤龍勇＆後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-705e-b904-882910f1934d",
+      "illustrator_name": "加藤龍勇＆後藤啓介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53264,7 +53734,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "石田ヒロユキ",
+      "illustrator_id": "019fc1ce-7b48-705d-81cd-6488b485f8a0",
+      "illustrator_name": "石田ヒロユキ",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53376,7 +53847,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "こいでたく",
+      "illustrator_id": "019fc1ce-7b48-7019-b955-3bcfad406427",
+      "illustrator_name": "こいでたく",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53470,7 +53942,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "鈴木理華",
+      "illustrator_id": "019fc1ce-7b47-7033-8ce9-441bc0429cf7",
+      "illustrator_name": "鈴木理華",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53578,7 +54051,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "加藤龍勇＆後藤啓介",
+      "illustrator_id": "019fc1ce-7b48-705e-b904-882910f1934d",
+      "illustrator_name": "加藤龍勇＆後藤啓介",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53693,7 +54167,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "伊藤勢",
+      "illustrator_id": "019fc1ce-7b47-7029-bd59-ef8d7fd2f8ba",
+      "illustrator_name": "伊藤勢",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53801,7 +54276,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53895,7 +54371,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -53999,7 +54476,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "相沢美良",
+      "illustrator_id": "019fc1ce-7b47-7002-9384-d099dcec7233",
+      "illustrator_name": "相沢美良",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -54118,7 +54596,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "柴野櫂人",
+      "illustrator_id": "019fc1ce-7b49-7001-a85e-678e4e5de2e8",
+      "illustrator_name": "柴野櫂人",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -54233,7 +54712,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -54348,7 +54828,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "田口順子",
+      "illustrator_id": "019fc1ce-7b47-7004-b1d1-d1e8b7734836",
+      "illustrator_name": "田口順子",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",
@@ -54456,7 +54937,8 @@
       "flavor_text": "",
       "rarity_code": "Rare",
       "rarity_name": "稀",
-      "illustrator": "幻超二",
+      "illustrator_id": "019fc1ce-7b47-702b-b5ab-760efc679ed8",
+      "illustrator_name": "幻超二",
       "product": {
         "product_id": "019db068-7a4d-7742-a32c-7e72f144e5f5",
         "product_category_code": "Booster",

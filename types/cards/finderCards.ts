@@ -141,7 +141,8 @@ export interface Card {
   rarity_code: string;
   rarity_name: string;
   /** イラストレーター */
-  illustrator: string;
+  illustrator_id: string;
+  illustrator_name: string;
   /** 収録カードセット (products) */
   product: Product;
 
