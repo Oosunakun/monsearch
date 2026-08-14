@@ -1,129 +1,104 @@
-import type { CardCategory, ElementCode } from '~~/types/card'
+import type { 
+  Block, 
+  CardType, 
+  EffectActivationCategory, 
+  EffectActivationType, 
+  EffectType, 
+  Element, 
+  Faction, 
+  Illustrator, 
+  LandCategory, 
+  MoveType, 
+  Product, 
+  Race, 
+  Rarity, 
+  Resistance 
+} from '~~/app/utils/constants/search/options'
+import type { SearchOperator, SearchFilter, LogicalMatch } from '~~/app/utils/constants/search/conditions'
+import type { CardCategoryCode } from '~~/types/cards/code'
 
-export type SelectOption = {
-  title: string
-  value: string
+export type NumericCondition = {
+  value: number | null
+  operator: SearchOperator
+}
+export type FilteredNumericCondition = {
+  filterType: SearchFilter
+  value: number | null
+  operator: SearchOperator
+}
+export type SlotCondition = {
+  slots: Record<string, number>
+  match: LogicalMatch
 }
 
-export type ElementOption = {
-  label: string
-  value: string
-  color: string
-}
-
-export type BasicSearchForm = {
-  cardName: string
-  selectedCategory: CardCategory | ''
-  selectedRarity: string
-  selectedCardPool: string
-  selectedSet: string
-  selectedItemCategory: string
-  selectedLandCategory: string
-}
-
-export type UnitSearchForm = {
-  levelFrom: number | null
-  levelTo: number | null
-  attackFrom: number | null
-  attackTo: number | null
-  defenseFrom: number | null
-  defenseTo: number | null
-  selectedMoveType: string
-  selectedElements: ElementCode[]
-  selectedSpecific: '' | 'banilla'
-}
-
-export type RaceTypeSearchForm = {
-  raceKeyword: string
-  cardTypeKeyword: string
-  selectedType: string
-}
-
-export type KeywordSearchForm = {
+//--------------------------------------------------
+// SearchForm
+export type SearchForm = {
+  // --------------------
+  // 基本情報
+  // --------------------
+  name: string
+  cardCategory: CardCategoryCode | ''
+  elements: Element[]
+  cardTypes: CardType[]
   keyword: string
-}
 
-export type CardSearchFormState = {
-  basic: BasicSearchForm
-  unit: UnitSearchForm
-  raceType: RaceTypeSearchForm
-  keyword: KeywordSearchForm
-}
+  // --------------------
+  // カードセット・所属
+  // --------------------
+  products: Product[]
+  factions: Faction[]
+  blocks: Block[]
 
-export type SearchFilter = {
-  name?: string
-  card_category?: CardCategory
-  rarity?: string
-  card_pool?: string
-  product?: string
-  element?: ElementCode[]
-  move_type?: string
-  level_from?: number | null
-  level_to?: number | null
-  attack_from?: number | null
-  attack_to?: number | null
-  defense_from?: number | null
-  defense_to?: number | null
-  race?: string
-  type?: string
-  item_category?: string
-  land_category?: string
-  keyword?: string
-  specific?: {
-    banilla?: boolean
-  }
-}
+  // --------------------
+  // ユニット
+  // --------------------
+  level: FilteredNumericCondition
+  heroPoint: FilteredNumericCondition
+  attack: NumericCondition
+  defence: NumericCondition
+  moveTypes: MoveType[]
+  races: Race[]
+  abilityItemSlots: SlotCondition
+  abilitySpellSlots: SlotCondition
+  initiative: NumericCondition
+  charge: FilteredNumericCondition
+  defender: FilteredNumericCondition
+  resistances: Resistance[]
 
-export type SearchResultSource = {
-  id: string
-  setCode: string
-  cardName: string
-  category: CardCategory
-  race?: string
-  type?: string
-  itemCategory?: string
-  landCategory?: string
-  moveType?: string
-  element?: string
-  level?: number
-  attack?: number
-  defense?: number
-  rarity: string
-}
+  // --------------------
+  // 装備品
+  // --------------------
+  additionalAttack: NumericCondition
+  additionalDefence: NumericCondition
+  additionalAbilityItemSlots: SlotCondition
+  additionalAbilitySpellSlots: SlotCondition
+  additionalInitiative: NumericCondition
+  additionalCharge: FilteredNumericCondition
+  additionalDefender: FilteredNumericCondition
+  additionalResistances: Resistance[]
 
-export type SearchResultRow = SearchResultSource & {
-  zebra: boolean
-}
+  // --------------------
+  // 地形
+  // --------------------
+  limit: NumericCondition
+  landCategory: LandCategory
 
-export type SearchResultHeader = {
-  title: string
-  key: keyof SearchResultRow
-  sortable: boolean
-}
+  // --------------------
+  // 特殊能力・カード効果
+  // --------------------
+  costItemSlots: SlotCondition
+  costSpellSlots: SlotCondition
+  costOtherEntities: SlotCondition
+  effectTypes: EffectType[]
+  effectActivationTypes: EffectActivationType[]
+  effectActivationCategories: EffectActivationCategory[]
+  effectText: string
 
-export type CardSearchRequestDto = {
-  card_name: string
-  category_code: CardCategory | ''
-  rarity_code: string
-  card_pool_code: string
-  set_code: string
-  unit: {
-    level_from: number | null
-    level_to: number | null
-    attack_from: number | null
-    attack_to: number | null
-    defense_from: number | null
-    defense_to: number | null
-    move_type_code: string
-    element_codes: ElementCode[]
-    specific_code: '' | 'banilla'
-  }
-  race_type: {
-    race_keyword: string
-    card_type_keyword: string
-    type_keyword: string
-  }
-  item_category_code: string
-  land_category_code: string
-  keyword: string
+  // --------------------
+  // その他
+  // --------------------
+  rarities: Rarity[]
+  illustrators: Illustrator[]
+  referenceLabel: string
 }

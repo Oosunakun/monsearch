@@ -1,0 +1,32 @@
+[
+    {
+        "label": "火",
+        "value": "fire",
+        "color": "red"
+    },
+    {
+        "label": "水",
+        "value": "water",
+        "color": "blue"
+    },
+    {
+        "label": "土",
+        "value": "earth",
+        "color": "green"
+    },
+    {
+        "label": "風",
+        "value": "air",
+        "color": "purple"
+    },
+    {
+        "label": "聖",
+        "value": "holy",
+        "color": "yellow"
+    },
+    {
+        "label": "魔",
+        "value": "curse",
+        "color": "brown"
+    }
+]

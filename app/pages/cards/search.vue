@@ -1,198 +1,128 @@
 <script setup lang="ts">
-import type {
-  ElementOption,
-  SearchResultHeader,
-  SearchResultSource,
-  SelectOption
-} from '~~/app/types/ui/search'
-import CardSearchFormBasic from '~~/app/components/organisms/cards/CardSearchFormBasic.vue'
-import CardSearchFormUnit from '~~/app/components/organisms/cards/CardSearchFormUnit.vue'
-import CardSearchFormRaceType from '~~/app/components/organisms/cards/CardSearchFormRaceType.vue'
-import CardSearchFormKeyword from '~~/app/components/organisms/cards/CardSearchFormKeyword.vue'
-import CardSearchResultTable from '~~/app/components/organisms/cards/CardSearchResultTable.vue'
-import AppSectionHeader from '~~/app/components/atoms/common/AppSectionHeader.vue'
-import ResultCountLabel from '~~/app/components/atoms/common/ResultCountLabel.vue'
-import { UI_COLORS } from '~~/app/utils/constants/colors'
-import {
-  mockCardSearchResultSourceRows,
-  mockSearchCardPoolOptions,
-  mockSearchCategoryOptions,
-  mockSearchElementOptions,
-  mockSearchMoveTypeOptions,
-  mockSearchRarityOptions,
-  mockSearchResultHeaders,
-  mockSearchSetOptions
-} from '~~/app/utils/mockData'
+import { useRouter } from 'vue-router'
+import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
+import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
+import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
+import SearchActions from '~~/app/components/cards/search/layout/SearchActions.vue'
+import SearchFormBasic from '~~/app/components/cards/search/layout/SearchFormBasic.vue'
+import SearchFormOrigin from '~~/app/components/cards/search/layout/SearchFormOrigin.vue'
+import SearchFormUnit from '~~/app/components/cards/search/layout/SearchFormUnit.vue'
+import SearchFormEquipment from '~~/app/components/cards/search/layout/SearchFormEquipment.vue'
+import SearchFormLand from '~~/app/components/cards/search/layout/SearchFormLand.vue'
+import SearchFormEffect from '~~/app/components/cards/search/layout/SearchFormEffect.vue'
+import SearchFormOther from '~~/app/components/cards/search/layout/SearchFormOther.vue'
+import { useCardSearchForm } from '~~/app/composables/useCardSearchForm'
 
-const categoryOptions: SelectOption[] = mockSearchCategoryOptions
-const rarityOptions: SelectOption[] = mockSearchRarityOptions
-const cardPoolOptions: SelectOption[] = mockSearchCardPoolOptions
-const setOptions: SelectOption[] = mockSearchSetOptions
-const moveTypeOptions: SelectOption[] = mockSearchMoveTypeOptions
-const elementOptions: ElementOption[] = mockSearchElementOptions
-const headers: SearchResultHeader[] = mockSearchResultHeaders
+const router = useRouter()
+const { form } = useCardSearchForm()
 
-const sourceRows: SearchResultSource[] = mockCardSearchResultSourceRows
-
-const { formState, resetForm, toSearchRequestDto, withZebraRows } = useCardSearchForm()
-const displayedRows = ref<SearchResultSource[]>([...sourceRows])
-const results = computed(() => withZebraRows(displayedRows.value))
-const isSearchResultLoading = ref(false)
-const isSearchResultError = ref(false)
-const searchErrorTitle = ref('データの取得に失敗しました')
-const searchErrorText = ref('時間をおいて再試行してください。')
-const expansionPanels = ref<number[]>([0])
-const resultSectionRef = ref<HTMLElement | null>(null)
-const activeConditionChips = ref<string[]>([])
-
-const SEARCH_SIMULATION_DELAY_MS = 1800
-
-const createActiveConditionChips = (payload: ReturnType<typeof toSearchRequestDto>): string[] => {
-  const chips: string[] = []
-
-  if (payload.card_name) chips.push(`カード名: ${payload.card_name}`)
-  if (payload.category_code) chips.push(`カテゴリ: ${payload.category_code}`)
-  if (payload.rarity_code) chips.push(`レア: ${payload.rarity_code}`)
-  if (payload.card_pool_code) chips.push(`カードプール: ${payload.card_pool_code}`)
-  if (payload.set_code) chips.push(`セット: ${payload.set_code}`)
-  if (payload.unit.move_type_code) chips.push(`移動タイプ: ${payload.unit.move_type_code}`)
-  if (payload.unit.element_codes.length > 0) chips.push(`属性: ${payload.unit.element_codes.join(', ')}`)
-  if (payload.item_category_code) chips.push(`アイテム分類: ${payload.item_category_code}`)
-  if (payload.land_category_code) chips.push(`地形分類: ${payload.land_category_code}`)
-  if (payload.unit.specific_code) chips.push(`特殊条件: ${payload.unit.specific_code}`)
-  if (payload.race_type.race_keyword) chips.push(`種族: ${payload.race_type.race_keyword}`)
-  if (payload.race_type.card_type_keyword) chips.push(`カードタイプ: ${payload.race_type.card_type_keyword}`)
-  if (payload.race_type.type_keyword) chips.push(`タイプ: ${payload.race_type.type_keyword}`)
-  if (payload.keyword) chips.push(`キーワード: ${payload.keyword}`)
-
-  return chips
+// 明示的な検索実行
+const executeSearch = () => {
+  router.push('/cards')
 }
 
-const scrollToResultSection = () => {
-  resultSectionRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-
-const resetConditions = () => {
-  resetForm()
-  isSearchResultError.value = false
-  isSearchResultLoading.value = false
-  displayedRows.value = []
-  activeConditionChips.value = []
-  expansionPanels.value = [0]
-}
-
-const runSearch = async () => {
-  if (isSearchResultLoading.value) return
-
-  const payload = toSearchRequestDto()
-  console.info('mock search payload', payload)
-
-  activeConditionChips.value = createActiveConditionChips(payload)
-  expansionPanels.value = []
-  scrollToResultSection()
-
-  isSearchResultLoading.value = true
-  isSearchResultError.value = false
-
-  await new Promise(resolve => setTimeout(resolve, SEARCH_SIMULATION_DELAY_MS))
-
-  const shouldSimulateError = payload.keyword.toLowerCase() === 'error'
-  if (shouldSimulateError) {
-    isSearchResultError.value = true
-    displayedRows.value = []
-    isSearchResultLoading.value = false
-    return
+const shownUnitSectionCardShell = computed(() => {
+  if(!form.value.cardCategory) {
+    return true
   }
-
-  const shouldShowEmpty = payload.card_name.toLowerCase() === 'empty'
-  displayedRows.value = shouldShowEmpty ? [] : [...sourceRows]
-  isSearchResultLoading.value = false
-}
+  return ["unit", "token"].includes(form.value.cardCategory)
+})
+const shownItemEquipSectionCardShell = computed(() => {
+  if(!form.value.cardCategory) {
+    return true
+  }
+  return ["item-equip", "token"].includes(form.value.cardCategory)
+})
+const shownLandSectionCardShell = computed(() => {
+  if(!form.value.cardCategory) {
+    return true
+  }
+  return ["land", "token"].includes(form.value.cardCategory)
+})
 </script>
 
 <template>
-  <section>
-    <AppSectionHeader title="詳細検索" color="secondary" class="mb-4" />
-
-    <v-form class="d-flex flex-column ga-4" @submit.prevent="runSearch">
-      <v-expansion-panels v-model="expansionPanels" multiple variant="accordion">
-        <v-expansion-panel title="検索条件">
-          <v-expansion-panel-text>
-            <div class="d-flex flex-column ga-4">
-              <CardSearchFormBasic
-                :model-value="formState.basic"
-                :category-options="categoryOptions"
-                :rarity-options="rarityOptions"
-                :card-pool-options="cardPoolOptions"
-                :set-options="setOptions"
-                @update:model-value="formState.basic = $event"
-              />
-              <CardSearchFormUnit
-                :model-value="formState.unit"
-                :move-type-options="moveTypeOptions"
-                :element-options="elementOptions"
-                @update:model-value="formState.unit = $event"
-              />
-              <CardSearchFormRaceType
-                :model-value="formState.raceType"
-                @update:model-value="formState.raceType = $event"
-              />
-              <CardSearchFormKeyword
-                :model-value="formState.keyword"
-                @update:model-value="formState.keyword = $event"
-              />
-            </div>
-          </v-expansion-panel-text>
-        </v-expansion-panel>
-      </v-expansion-panels>
-
-      <div class="d-flex flex-wrap ga-3">
-        <v-btn
-          :color="UI_COLORS.PRIMARY"
-          size="large"
-          type="submit"
-          :loading="isSearchResultLoading"
-          :disabled="isSearchResultLoading"
-        >
-          検索する
-        </v-btn>
-        <v-btn
-          :color="UI_COLORS.SECONDARY"
-          variant="outlined"
-          size="large"
-          :disabled="isSearchResultLoading"
-          @click="resetConditions"
-        >
-          条件をリセット
-        </v-btn>
-      </div>
-    </v-form>
-
-    <div ref="resultSectionRef" class="mt-6">
-      <AppSectionHeader title="検索結果" class="mb-3" />
-      <ResultCountLabel :count="isSearchResultLoading || isSearchResultError ? 0 : results.length" prefix="" />
-    </div>
-
-    <CardSearchResultTable
-      :headers="headers"
-      :items="results"
-      :active-condition-chips="activeConditionChips"
-      :is-loading="isSearchResultLoading"
-      :is-error="isSearchResultError"
-      :error-title="searchErrorTitle"
-      :error-text="searchErrorText"
+  <ContentMaxWidthContainer>
+    <SectionCardShell
+      :collapsible="true"
+      :initially-open="true"
     >
-      <template #empty-actions>
-        <v-btn :color="UI_COLORS.SECONDARY" variant="outlined" @click="resetConditions">
-          検索条件をクリア
-        </v-btn>
+      <template #header>
+        <SectionHeader title="基本情報" color="accent" text-class="text-white" />
+      </template>
+      
+      <SearchFormBasic v-model="form" />
+    </SectionCardShell>
+    
+    <SectionCardShell
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <SectionHeader title="カードセット・所属" color="accent" text-class="text-white" />
       </template>
 
-      <template #error-actions>
-        <v-btn :color="UI_COLORS.SECONDARY" variant="flat" @click="runSearch">
-          再試行
-        </v-btn>
+      <SearchFormOrigin v-model="form" />
+    </SectionCardShell>
+
+    <SectionCardShell
+      v-show="shownUnitSectionCardShell"
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <SectionHeader title="ユニット" color="accent" text-class="text-white" />
       </template>
-    </CardSearchResultTable>
-  </section>
+      
+      <SearchFormUnit v-model="form" />
+    </SectionCardShell>
+
+    <SectionCardShell
+      v-show="shownItemEquipSectionCardShell"
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <SectionHeader title="装備品" color="accent" text-class="text-white" />
+      </template>
+      
+      <SearchFormEquipment v-model="form" />
+    </SectionCardShell>
+
+    <SectionCardShell
+      v-show="shownLandSectionCardShell"
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <SectionHeader title="地形" color="accent" text-class="text-white" />
+      </template>
+      
+      <SearchFormLand v-model="form" />
+    </SectionCardShell>
+
+    <SectionCardShell
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <SectionHeader title="特殊能力・カード効果" color="accent" text-class="text-white" />
+      </template>
+      
+      <SearchFormEffect v-model="form" />
+    </SectionCardShell>
+
+    <SectionCardShell
+      :collapsible="true"
+      :initially-open="true"
+    >
+      <template #header>
+        <SectionHeader title="その他" color="accent" text-class="text-white" />
+      </template>
+      
+      <SearchFormOther v-model="form" />
+    </SectionCardShell>
+
+    <SearchActions :on-execute="executeSearch" />
+  </ContentMaxWidthContainer>
 </template>

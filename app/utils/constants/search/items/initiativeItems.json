@@ -1,0 +1,49 @@
+[
+    {
+        "value": 1,
+        "label": "+1",
+        "colorPreset": "red"
+    },
+    {
+        "value": 2,
+        "label": "+2",
+        "colorPreset": "red"
+    },
+    {
+        "value": 3,
+        "label": "+3",
+        "colorPreset": "red"
+    },
+    {
+        "value": 4,
+        "label": "+4",
+        "colorPreset": "red",
+        "lineBreakAfter": true
+    },
+    {
+        "value": 0,
+        "label": "0",
+        "colorPreset": "undefined",
+        "lineBreakAfter": true
+    },
+    {
+        "value": -1,
+        "label": "-1",
+        "colorPreset": "blue"
+    },
+    {
+        "value": -2,
+        "label": "-2",
+        "colorPreset": "blue"
+    },
+    {
+        "value": -3,
+        "label": "-3",
+        "colorPreset": "blue"
+    },
+    {
+        "value": -4,
+        "label": "-4",
+        "colorPreset": "blue"
+    }
+]

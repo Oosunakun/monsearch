@@ -1,6 +1,7 @@
 export type NavItem = {
   label: string
   to: string
+  icon: string
 }
 
 export type QuickSearchOption = {
@@ -13,3 +14,12 @@ export type QuickSearchState = {
   selectedSearchType: string
   searchText: string
 }
+
+export const LAYOUT_SIDEBAR = {
+  WIDTH: 256,
+  RAIL_WIDTH: 56,
+} as const
+
+export const LAYOUT_HEADER = {
+  HEIGHT: 48,
+} as const

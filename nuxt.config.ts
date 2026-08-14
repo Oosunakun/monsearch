@@ -51,7 +51,10 @@ export default defineNuxtConfig({
             }
           }
         },
-      }
+      },
+      display: {
+        mobileBreakpoint: 'md',
+      },
     }
   },
   vite: {

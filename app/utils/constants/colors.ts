@@ -1,6 +1,6 @@
-import type { CardCategory, ElementCode } from '~~/types/card'
+import type { CardCategoryCode, ElementCode } from '~~/types/cards/code'
 
-export const CARD_CATEGORY_COLORS: Record<CardCategory, string> = {
+export const CARD_CATEGORY_COLORS: Record<CardCategoryCode, string> = {
   Unit: '#5E748A',
   Spell: '#4F8A56',
   Item: '#6D4C41',

@@ -8,7 +8,14 @@ export default withNuxt(
         'vue/multi-word-component-names': 'off',
 
         // 未使用変数のチェック
-        '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+            caughtErrorsIgnorePattern: '^_'
+          }
+        ],
 
         // --- HTML/Vue 構文ルール (健全なマークアップのための設定) ---
         'vue/html-self-closing': ['error', {
