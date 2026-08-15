@@ -1,50 +1,74 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# monsearch Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+## Principle I. Type Safety
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+実装は既存のTypeScript strict modeを維持すること。
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+型安全性を損なう実装（`any` 等）を避け、既存の型定義を活用する。
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+---
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+## Principle II. Testability
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+新たに追加するロジックにはUnit Testを作成する。
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+テストは実装の振る舞いを検証可能な粒度で作成する。
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+---
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Principle III. Incremental Change
+
+変更は対象Featureに必要な最小限とする。
+
+既存機能・画面・アーキテクチャに不要な変更やリファクタリングは行わない。
+
+---
+
+## Principle IV. Existing Architecture
+
+新しいFeatureは既存Repositoryの責務分割・ディレクトリ構成・実装方針を尊重する。
+
+同等の責務を持つ既存実装が存在する場合は、それに合わせる。
+
+---
+
+## Principle V. Human Review
+
+仕様・設計に影響する重要な判断は人間レビューを前提とする。
+
+承認済みSpecification・Planから逸脱する場合は、独断で進めず確認を行う。
+
+---
+
+## Additional Constraints
+
+- 初回検証では Spec Kit Core を使用する。
+- Coreで不足が確認できるまでは Community Extensions・独自Workflowは導入しない。
+- Brownfield Repositoryを前提として検証を行う。
+
+---
+
+## Development Workflow
+
+1. Repository Investigation
+2. Specification
+3. Clarification
+4. Plan
+5. Tasks
+6. Implementation
+7. Verification
+
+---
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- このConstitutionはプロジェクト全体の開発指針とする。
+- Principleの変更は人間レビューを経て実施する。
+- バージョンは意味のある変更時に更新する。
+- Specification・Plan・Implementationは本Constitutionに従う。
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+---
+
+**Version**: 0.1.0 | **Ratified**: 2026-08-16 | **Last Amended**: 2026-08-16
