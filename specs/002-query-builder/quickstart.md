@@ -23,6 +23,21 @@ npm run lint
 npm run build
 ```
 
+Validated on 2026-08-22. Because the local Volta npm shim was missing
+`npm-prefix.js`, the equivalent checked-in binaries were invoked directly:
+
+```powershell
+node node_modules/vitest/vitest.mjs --run cardSearchQuery --configLoader native --pool=threads --maxWorkers=1 --no-file-parallelism
+node node_modules/vitest/vitest.mjs --run --configLoader native --pool=threads --maxWorkers=1 --no-file-parallelism
+node node_modules/vue-tsc/bin/vue-tsc.js --noEmit
+node node_modules/eslint/bin/eslint.js .
+node node_modules/nuxt/bin/nuxt.mjs build
+```
+
+Results: focused query tests `10/10`, full suite `14/14`, typecheck and lint clean,
+and the Cloudflare Pages production build completed successfully. Nuxt reported
+pre-existing Vuetify `useLayout` auto-import and bundle-size warnings.
+
 Expected outcomes:
 
 - Builder/parser tests cover every mapping-table field family and pass.
