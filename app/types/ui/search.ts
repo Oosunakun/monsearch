@@ -1,21 +1,21 @@
-import type { 
-  Block, 
-  CardType, 
-  EffectActivationCategory, 
-  EffectActivationType, 
-  EffectType, 
-  Element, 
-  Faction, 
-  Illustrator, 
-  LandCategory, 
-  MoveType, 
-  Product, 
-  Race, 
-  Rarity, 
-  Resistance 
+import type {
+  Block,
+  CardCategory,
+  CardType,
+  EffectActivationCategory,
+  EffectActivationType,
+  EffectType,
+  Element,
+  Faction,
+  Illustrator,
+  LandCategory,
+  MoveType,
+  Product,
+  Race,
+  Rarity,
+  Resistance,
 } from '~~/app/utils/constants/search/options'
 import type { SearchOperator, SearchFilter, LogicalMatch } from '~~/app/utils/constants/search/conditions'
-import type { CardCategoryCode } from '~~/types/cards/code'
 
 export type NumericCondition = {
   value: number | null
@@ -38,7 +38,7 @@ export type SearchForm = {
   // 基本情報
   // --------------------
   name: string
-  cardCategory: CardCategoryCode | ''
+  cardCategory: CardCategory | ''
   elements: Element[]
   cardTypes: CardType[]
   keyword: string
@@ -102,3 +102,14 @@ export type SearchForm = {
   illustrators: Illustrator[]
   referenceLabel: string
 }
+
+export type LogicalCardSearchQuery = Partial<Record<
+  | 'nm' | 'cc' | 'el' | 'ct' | 'kw' | 'pd' | 'fa' | 'bl'
+  | 'lvm' | 'lv' | 'hem' | 'he' | 'at' | 'df' | 'mt' | 'ra'
+  | 'ism' | 'is' | 'ssm' | 'ss' | 'it' | 'chm' | 'ch' | 'dem'
+  | 'de' | 're' | 'aat' | 'adf' | 'aism' | 'ais' | 'assm'
+  | 'ass' | 'ait' | 'achm' | 'ach' | 'adem' | 'ade' | 'are'
+  | 'lm' | 'lc' | 'cism' | 'cis' | 'cssm' | 'css' | 'coem'
+  | 'coe' | 'eft' | 'eat' | 'eac' | 'etx' | 'rt' | 'il' | 'rl',
+  string
+>>

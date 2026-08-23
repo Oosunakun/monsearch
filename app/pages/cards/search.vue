@@ -12,13 +12,15 @@ import SearchFormLand from '~~/app/components/cards/search/layout/SearchFormLand
 import SearchFormEffect from '~~/app/components/cards/search/layout/SearchFormEffect.vue'
 import SearchFormOther from '~~/app/components/cards/search/layout/SearchFormOther.vue'
 import { useCardSearchForm } from '~~/app/composables/useCardSearchForm'
+import { buildCardSearchQuery } from '~~/app/utils/search/cardSearchQueryBuilder'
 
 const router = useRouter()
 const { form } = useCardSearchForm()
 
 // 明示的な検索実行
 const executeSearch = () => {
-  router.push('/cards')
+  const query = buildCardSearchQuery(form.value)
+  router.push(Object.keys(query).length ? { path: '/cards', query } : { path: '/cards' })
 }
 
 const shownUnitSectionCardShell = computed(() => {

@@ -9,6 +9,11 @@ import ResultSummary from '~~/app/components/cards/result/summary/ResultSummary.
 import ResultList from '~~/app/components/cards/result/layout/ResultList.vue'
 import { mockFinderCards}  from '~~/app/utils/mockData/cards'
 import { CARD_CATEGORY } from '~~/app/utils/constants/search/options/'
+import { useRoute } from 'vue-router'
+import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
+
+const route = useRoute()
+const searchForm = computed(() => parseCardSearchQuery(route.query))
 
 // 状態定義
 const sortItem = ref('id')
@@ -71,8 +76,12 @@ const pagedCards = computed(() => {
 })
 
 // 表示用検索条件アイテムの最適化（仮置き）
-const conditionItems = computed(() => [
-])
+const conditionItems = computed(() => {
+  const form = searchForm.value
+  return [form.name, form.keyword, form.effectText, form.referenceLabel]
+    .filter(Boolean)
+    .map(value => ({ label: value, value }))
+})
 
 // 全検索結果に対する分類別内訳のダミーデータ（統計値）
 const categoryBreakdown = computed(() => {
