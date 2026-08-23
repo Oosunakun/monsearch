@@ -67,7 +67,7 @@ export const createSearchForm = (): SearchForm => ({
   level: createFilteredNumericCondition(),
   heroPoint: createFilteredNumericCondition(),
   attack: createNumericCondition(),
-  defence: createNumericCondition(),
+  defense: createNumericCondition(),
   moveTypes: [],
   races: [],
   abilityItemSlots: createSlotCondition(),
@@ -81,7 +81,7 @@ export const createSearchForm = (): SearchForm => ({
   // 装備品
   // --------------------
   additionalAttack: createNumericCondition(),
-  additionalDefence: createNumericCondition(),
+  additionalDefense: createNumericCondition(),
   additionalAbilityItemSlots: createSlotCondition(),
   additionalAbilitySpellSlots: createSlotCondition(),
   additionalInitiative: createNumericCondition(),

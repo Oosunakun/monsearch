@@ -27,4 +27,4 @@ export const isEquipmentApplicable = (category: SearchFormCategory) => !category
 export const isLandApplicable = (category: SearchFormCategory) => !category || category === 'land' || category === 'token'
 export type SearchFormCategory = CardCategory | ''
 
-export const UI_TO_QUERY_ALIAS = { defence: 'df', additionalDefence: 'adf' } as const
+export const UI_TO_QUERY_ALIAS = { defense: 'df', additionalDefense: 'adf' } as const

@@ -50,14 +50,14 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
   put('pd', collection(form.products, PRODUCT_VALUES)); put('fa', collection(form.factions, FACTION_VALUES)); put('bl', collection(form.blocks, BLOCK_VALUES))
   if (isUnitApplicable(form.cardCategory)) {
     putFiltered('lvm', 'lv', form.level); putFiltered('hem', 'he', form.heroPoint)
-    putComparison('at', form.attack); putComparison('df', form.defence)
+    putComparison('at', form.attack); putComparison('df', form.defense)
     put('mt', collection(form.moveTypes, MOVE_TYPE_VALUES)); put('ra', collection(form.races, RACE_VALUES))
     putSlots('ism', 'is', form.abilityItemSlots, ITEM_SLOT_VALUES); putSlots('ssm', 'ss', form.abilitySpellSlots, SPELL_SLOT_VALUES)
     putComparison('it', form.initiative); putFiltered('chm', 'ch', form.charge)
     putFiltered('dem', 'de', form.defender); put('re', collection(form.resistances, RESISTANCE_VALUES))
   }
   if (isEquipmentApplicable(form.cardCategory)) {
-    putComparison('aat', form.additionalAttack); putComparison('adf', form.additionalDefence)
+    putComparison('aat', form.additionalAttack); putComparison('adf', form.additionalDefense)
     putSlots('aism', 'ais', form.additionalAbilityItemSlots, ITEM_SLOT_VALUES); putSlots('assm', 'ass', form.additionalAbilitySpellSlots, SPELL_SLOT_VALUES)
     putComparison('ait', form.additionalInitiative); putFiltered('achm', 'ach', form.additionalCharge)
     putFiltered('adem', 'ade', form.additionalDefender); put('are', collection(form.additionalResistances, RESISTANCE_VALUES))

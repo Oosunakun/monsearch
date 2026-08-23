@@ -3,7 +3,7 @@ import SearchFieldDivider from '~~/app/components/cards/search/shared/SearchFiel
 import SearchFieldRace from '~~/app/components/cards/search/unit/SearchFieldRace.vue'
 import SearchFieldLevel from '~~/app/components/cards/search/unit/SearchFieldLevel.vue'
 import SearchFieldAttack from '~~/app/components/cards/search/unit/SearchFieldAttack.vue'
-import SearchFieldDefence from '~~/app/components/cards/search/unit/SearchFieldDefence.vue'
+import SearchFieldDefense from '~~/app/components/cards/search/unit/SearchFieldDefense.vue'
 import SearchFieldInitiative from '~~/app/components/cards/search/unit/SearchFieldInitiative.vue'
 import SearchFieldCharge from '~~/app/components/cards/search/unit/SearchFieldCharge.vue'
 import SearchFieldDefender from '~~/app/components/cards/search/unit/SearchFieldDefender.vue'
@@ -26,7 +26,7 @@ const model = defineModel<SearchForm>({ required: true })
   <SearchFieldDivider />
   <SearchFieldAttack v-model="model" />
   <SearchFieldDivider />
-  <SearchFieldDefence v-model="model" />
+  <SearchFieldDefense v-model="model" />
   <SearchFieldDivider />
   <SearchFieldMoveType v-model="model" />
   <SearchFieldDivider />

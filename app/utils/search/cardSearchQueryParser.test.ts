@@ -4,9 +4,10 @@ import { parseCardSearchQuery } from './cardSearchQueryParser'
 
 describe('parseCardSearchQuery', () => {
   it('restores defaults and all value families', () => {
-    const form = parseCardSearchQuery({ nm: ' dragon ', cc: 'unit', el: ['water,fire', 'fire'], lvm: 'include', lv: 'eq:0', ssm: 'and', ss: 'water:2,fire:1' })
+    const form = parseCardSearchQuery({ nm: ' dragon ', cc: 'unit', el: ['water,fire', 'fire'], lvm: 'include', lv: 'eq:0', df: 'lte:4', adf: 'gte:2', ssm: 'and', ss: 'water:2,fire:1' })
     expect(form.name).toBe('dragon'); expect(form.cardCategory).toBe('unit')
     expect(form.elements).toEqual(['water', 'fire']); expect(form.level).toEqual({ filterType: 'include', operator: 'eq', value: 0 })
+    expect(form.defense).toEqual({ operator: 'lte', value: 4 }); expect(form.additionalDefense).toEqual({ operator: 'gte', value: 2 })
     expect(form.abilitySpellSlots).toEqual({ match: 'and', slots: { water: 2, fire: 1 } })
     expect(form.landCategory).toBe('all')
   })
