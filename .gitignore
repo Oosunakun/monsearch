@@ -36,3 +36,4 @@ Thumbs.db
 
 # Spec Kit files
 .specify/workflows/runs/
+.specify/bugs/

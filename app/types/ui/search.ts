@@ -56,7 +56,7 @@ export type SearchForm = {
   level: FilteredNumericCondition
   heroPoint: FilteredNumericCondition
   attack: NumericCondition
-  defence: NumericCondition
+  defense: NumericCondition
   moveTypes: MoveType[]
   races: Race[]
   abilityItemSlots: SlotCondition
@@ -70,7 +70,7 @@ export type SearchForm = {
   // 装備品
   // --------------------
   additionalAttack: NumericCondition
-  additionalDefence: NumericCondition
+  additionalDefense: NumericCondition
   additionalAbilityItemSlots: SlotCondition
   additionalAbilitySpellSlots: SlotCondition
   additionalInitiative: NumericCondition

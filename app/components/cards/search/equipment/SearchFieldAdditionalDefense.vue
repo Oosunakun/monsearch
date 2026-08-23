@@ -17,12 +17,12 @@ const model = defineModel<SearchForm>({ required: true })
 
 const enableReset = computed(() => {
   return isChangedNumericCondition(
-    model.value.additionalDefence,
+    model.value.additionalDefense,
     defaultNumericCondition,
   )
 })
 const resetAll = () => {
-  model.value.additionalDefence = createNumericCondition()
+  model.value.additionalDefense = createNumericCondition()
 }
 </script>
 <template>
@@ -37,8 +37,8 @@ const resetAll = () => {
     @reset="resetAll"
   >
   <SearchValueWithOperator
-    v-model="model.additionalDefence.value"
-    v-model:operator="model.additionalDefence.operator"
+    v-model="model.additionalDefense.value"
+    v-model:operator="model.additionalDefense.operator"
     :items="ADDITIONAL_COMBAT_OPTIONS"
   />
   </SearchRow>
