@@ -148,6 +148,7 @@ const resultListRef = ref<InstanceType<typeof ResultList>>()
 
       <ResultControls
         :conditions="conditionItems"
+        :query="route.query"
       />
 
       <ResultSummary

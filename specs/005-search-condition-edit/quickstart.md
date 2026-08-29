@@ -47,3 +47,15 @@ Expected outcomes:
 8. query なしの `/cards` から編集し、全既定値の form が開くことを確認する。
 
 詳細な遷移は [UI contract](contracts/search-condition-edit.md)、状態は [data model](data-model.md)、query の形式は `docs/architecture/query_specification.md` を参照する。
+
+## Validation record (2026-08-29)
+
+- focused test: PASS（5 files / 20 tests）
+- full test: PASS（9 files / 25 tests）
+- ESLint: PASS（変更対象ファイル）
+- typecheck: PASS（`vue-tsc --noEmit`）
+- production build: PASS（Cloudflare Pages preset）
+- manual code-path review: PASS（query の受け渡し、route-to-form 復元、canonical submit、不正値の field 単位回復を確認）
+- browser での目視操作: 未実施（同一 journey は page integration test で自動検証）
+
+Vitest は実行環境の子プロセス制約を避けるため `--pool=threads --maxWorkers=1` で実行した。Nuxt/Vuetify の既存 `useLayout` duplicate warning と build の chunk-size warning は出力されたが、いずれも成功終了した。

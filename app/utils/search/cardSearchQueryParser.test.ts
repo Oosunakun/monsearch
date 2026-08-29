@@ -22,4 +22,20 @@ describe('parseCardSearchQuery', () => {
     expect(buildCardSearchQuery(parseCardSearchQuery({ el: ['water', 'fire,water'], lv: 'eq:0', lvm: 'all' })))
       .toEqual({ el: 'fire,water', lv: 'eq:0' })
   })
+
+  it('recovers valid fields independently from unknown, invalid, incomplete, and duplicate input', () => {
+    const form = parseCardSearchQuery({
+      nm: ['discarded', '有効 🐉'],
+      at: 'invalid',
+      lvm: 'include',
+      lv: 'invalid',
+      ss: ['fire:1,bad', 'water:2,fire:3'],
+      unknown: 'ignored',
+    })
+
+    expect(form.name).toBe('有効 🐉')
+    expect(form.attack).toEqual({ operator: 'gte', value: null })
+    expect(form.level).toEqual({ filterType: 'all', operator: 'gte', value: null })
+    expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })
+  })
 })
