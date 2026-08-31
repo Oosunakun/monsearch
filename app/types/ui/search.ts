@@ -104,7 +104,7 @@ export type SearchForm = {
 }
 
 export type LogicalCardSearchQuery = Partial<Record<
-  | 'nm' | 'cc' | 'el' | 'ct' | 'kw' | 'pd' | 'fa' | 'bl'
+  | 'nm' | 'cc' | 'el' | 'ct' | 'kw' | 'att' | 'pd' | 'fa' | 'bl'
   | 'lvm' | 'lv' | 'hem' | 'he' | 'at' | 'df' | 'mt' | 'ra'
   | 'ism' | 'is' | 'ssm' | 'ss' | 'it' | 'chm' | 'ch' | 'dem'
   | 'de' | 're' | 'aat' | 'adf' | 'aism' | 'ais' | 'assm'
