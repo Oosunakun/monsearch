@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
+import type { QuickSearchOption, QuickSearchState, QuickSearchTarget } from '~~/app/types/ui/layout'
 import SearchTypeSelect from '~~/app/components/cards/search/shared/SearchTypeSelect.vue'
 
 const props = defineProps<{
   modelValue: QuickSearchState
   cardPools: QuickSearchOption[]
-  searchTypes: QuickSearchOption[]
+  searchTypes: QuickSearchOption<QuickSearchTarget>[]
   layout?: 'horizontal' | 'vertical'
 }>()
 
@@ -21,6 +21,12 @@ const updateField = <K extends keyof QuickSearchState>(key: K, value: QuickSearc
     ...props.modelValue,
     [key]: value
   })
+}
+
+const updateSearchType = (value: unknown) => {
+  if (value === 'name' || value === 'race-type' || value === 'keyword') {
+    updateField('selectedSearchType', value)
+  }
 }
 </script>
 
@@ -39,7 +45,7 @@ const updateField = <K extends keyof QuickSearchState>(key: K, value: QuickSearc
         hide-details
         style="height: 38px;"
         class="mb-2"
-        @update:model-value="updateField('selectedSearchType', String($event ?? ''))"
+        @update:model-value="updateSearchType"
       />
 
       <v-text-field
@@ -75,7 +81,7 @@ const updateField = <K extends keyof QuickSearchState>(key: K, value: QuickSearc
         <SearchTypeSelect
           :model-value="modelValue.selectedSearchType"
           :items="searchTypes"
-          @update:model-value="updateField('selectedSearchType', $event)"
+          @update:model-value="updateSearchType"
         />
         <v-divider vertical class="mx-1 my-1" />
       </template>

@@ -6,7 +6,7 @@ import type { CardCategory, LandCategory } from '~~/app/utils/constants/search/o
 import type { LogicalMatch, SearchFilter, SearchOperator } from '~~/app/utils/constants/search/conditions'
 
 export const CARD_SEARCH_QUERY_ALIASES = [
-  'nm', 'cc', 'el', 'ct', 'kw', 'pd', 'fa', 'bl', 'lvm', 'lv', 'hem', 'he',
+  'nm', 'cc', 'el', 'ct', 'kw', 'att', 'pd', 'fa', 'bl', 'lvm', 'lv', 'hem', 'he',
   'at', 'df', 'mt', 'ra', 'ism', 'is', 'ssm', 'ss', 'it', 'chm', 'ch',
   'dem', 'de', 're', 'aat', 'adf', 'aism', 'ais', 'assm', 'ass', 'ait',
   'achm', 'ach', 'adem', 'ade', 'are', 'lm', 'lc', 'cism', 'cis', 'cssm',

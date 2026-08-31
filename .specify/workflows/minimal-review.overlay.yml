@@ -1,0 +1,23 @@
+id: minimal-review
+extends: speckit
+priority: 10
+enabled: true
+
+edits:
+  - remove: review-spec
+
+  - replace: review-plan
+    step:
+      id: review-plan
+      type: gate
+      message: |
+        Review both Specification and Plan together.
+
+        Update spec.md and plan.md as needed.
+        When both documents are finalized, approve this gate to continue.
+
+      options:
+        - approve
+        - reject
+
+      on_reject: abort
