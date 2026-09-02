@@ -1,0 +1,614 @@
+erDiagram
+    cards {
+        TEXT card_id PK
+        TEXT reference_label
+        TEXT name
+        TEXT name_kana
+        TEXT card_category_code FK
+        TEXT flavor_text
+        TEXT rarity_code FK
+        TEXT illustrator_id FK
+        TEXT product_id FK
+        TEXT card_layout_code FK
+        TEXT override_ruleset_code FK
+        TEXT staging_card_id
+        TEXT edit_status_code FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_unit {
+        TEXT card_id PK
+        INTEGER level
+        INTEGER is_instant_summon
+        INTEGER is_hero
+        INTEGER hero_point
+        TEXT move_type_code FK
+        INTEGER attack
+        INTEGER defense
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_spell {
+        TEXT card_id PK
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_item {
+        TEXT card_id PK
+        TEXT item_category_code FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_item_consume {
+        TEXT card_id PK
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_item_equip {
+        TEXT card_id PK
+        INTEGER attack
+        INTEGER defense
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_item_bullet {
+        TEXT card_id PK
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_land {
+        TEXT card_id PK
+        INTEGER land_limit
+        TEXT land_category_code FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_ritual {
+        TEXT card_id PK
+        TEXT created_at
+        TEXT updated_at
+    }
+    stat_summoner {
+        TEXT card_id PK
+        TEXT arcana
+        TEXT secondary_name
+        TEXT secondary_name_kana
+        TEXT created_at
+        TEXT updated_at
+    }
+    trait_elements {
+        TEXT trait_element_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT element_code FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    elements {
+        TEXT element_code PK
+        INTEGER sequence_number
+        TEXT element_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    trait_card_types {
+        TEXT trait_card_type_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT card_type_id FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_types {
+        TEXT card_type_id PK
+        INTEGER sequence_number
+        TEXT card_type_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    trait_races {
+        TEXT trait_race_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT race_id FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    races {
+        TEXT race_id PK
+        INTEGER sequence_number
+        TEXT race_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    trait_tags {
+        TEXT trait_tag_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT tag_id FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    tags {
+        TEXT tag_id PK
+        TEXT tag_category_code FK
+        INTEGER sequence_number
+        TEXT tag_value
+        TEXT created_at
+        TEXT updated_at
+    }
+    feature_abilities {
+        TEXT feature_ability_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        INTEGER initiative
+        INTEGER charge
+        INTEGER defender
+        TEXT created_at
+        TEXT updated_at
+    }
+    feature_affinities {
+        TEXT feature_affinity_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT affinity_id FK
+        INTEGER affinity_value
+        TEXT created_at
+        TEXT updated_at
+    }
+    feature_ability_slots {
+        TEXT feature_ability_slot_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT ability_slot_type_code FK
+        INTEGER slot_count
+        TEXT created_at
+        TEXT updated_at
+    }
+    feature_effects {
+        TEXT feature_effect_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT effect_id FK
+        TEXT effect_extracted_json
+        TEXT effect_raw_text
+        TEXT effect_assignment_status_code FK
+        TEXT effect_failed_information
+        TEXT created_at
+        TEXT updated_at
+    }
+    trait_blocks {
+        TEXT trait_block_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT block_code FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    blocks {
+        TEXT block_code PK
+        INTEGER sequence_number
+        TEXT block_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    trait_factions {
+        TEXT trait_faction_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT faction_id FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    factions {
+        TEXT faction_id PK
+        INTEGER sequence_number
+        TEXT faction_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    products {
+        TEXT product_id PK
+        INTEGER sequence_number
+        TEXT product_category_code FK
+        TEXT product_name UK
+        TEXT short_name
+        TEXT official_short_name
+        TEXT provider_category_code FK
+        TEXT provider_code FK
+        TEXT release_ruleset_code FK
+        TEXT release_date
+        TEXT product_note
+        TEXT created_at
+        TEXT updated_at
+    }
+    product_categories {
+        TEXT product_category_code PK
+        INTEGER sequence_number
+        TEXT product_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_categories {
+        TEXT card_category_code PK
+        INTEGER sequence_number
+        TEXT card_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    item_categories {
+        TEXT item_category_code PK
+        INTEGER sequence_number
+        TEXT item_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    land_categories {
+        TEXT land_category_code PK
+        INTEGER sequence_number
+        TEXT land_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    move_types {
+        TEXT move_type_code PK
+        INTEGER sequence_number
+        TEXT move_type_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    rarities {
+        TEXT rarity_code PK
+        INTEGER sequence_number
+        TEXT rarity_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    illustrators {
+        TEXT illustrator_id PK
+        INTEGER sequence_number
+        TEXT illustrator_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    edit_statuses {
+        TEXT edit_status_code PK
+        INTEGER sequence_number
+        TEXT edit_status_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    provider_categories {
+        TEXT provider_category_code PK
+        INTEGER sequence_number
+        TEXT provider_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    providers {
+        TEXT provider_code PK
+        INTEGER sequence_number
+        TEXT provider_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    tag_categories {
+        TEXT tag_category_code PK
+        INTEGER sequence_number
+        TEXT tag_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    ability_slot_categories {
+        TEXT ability_slot_category_code PK
+        INTEGER sequence_number
+        TEXT ability_slot_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    ability_slot_types {
+        TEXT ability_slot_type_code PK
+        INTEGER sequence_number
+        TEXT ability_slot_category_code FK
+        TEXT ability_slot_type_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    affinities {
+        TEXT affinity_id PK
+        INTEGER sequence_number
+        TEXT affinity_name UK
+        TEXT affinity_category_code FK
+        TEXT damage_source_code FK
+        TEXT damage_attribute_code FK
+        TEXT affinity_modifier_type_code FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    affinity_categories {
+        TEXT affinity_category_code PK
+        INTEGER sequence_number
+        TEXT affinity_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    affinity_modifier_types {
+        TEXT affinity_modifier_type_code PK
+        INTEGER sequence_number
+        TEXT affinity_modifier_type_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    damage_sources {
+        TEXT damage_source_code PK
+        INTEGER sequence_number
+        TEXT damage_source_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    damage_attributes {
+        TEXT damage_attribute_code PK
+        INTEGER sequence_number
+        TEXT damage_attribute_name UK
+        INTEGER is_effective_target
+        INTEGER is_affinity_target
+        TEXT created_at
+        TEXT updated_at
+    }
+    effects {
+        TEXT effect_id PK
+        INTEGER sequence_number
+        TEXT effect_name
+        TEXT effect_activation_category_code FK
+        TEXT effect_activation_type_id FK
+        TEXT effect_activation_timing_id FK
+        TEXT effect_condition_id FK
+        TEXT effect_type_code FK
+        TEXT effect_cost_id FK
+        TEXT effect_target_id FK
+        TEXT effect_text
+        TEXT effect_composed_text
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_activation_categories {
+        TEXT effect_activation_category_code PK
+        INTEGER sequence_number
+        TEXT effect_activation_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_activation_types {
+        TEXT effect_activation_type_id PK
+        INTEGER sequence_number
+        TEXT effect_activation_type_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_activation_timings {
+        TEXT effect_activation_timing_id PK
+        INTEGER sequence_number
+        TEXT effect_activation_timing_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_condition_categories {
+        TEXT effect_condition_category_code PK
+        INTEGER sequence_number
+        TEXT effect_condition_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_conditions {
+        TEXT effect_condition_id PK
+        INTEGER sequence_number
+        TEXT effect_condition_category_code FK
+        TEXT effect_condition_text UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_types {
+        TEXT effect_type_code PK
+        INTEGER sequence_number
+        TEXT effect_type_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_costs {
+        TEXT effect_cost_id PK
+        INTEGER sequence_number
+        TEXT effect_cost_text UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_targets {
+        TEXT effect_target_id PK
+        INTEGER sequence_number
+        TEXT effect_target_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    effect_assignment_statuses {
+        TEXT effect_assignment_status_code PK
+        INTEGER sequence_number
+        TEXT effect_assignment_status_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    feature_errata {
+        TEXT feature_erratum_id PK
+        TEXT card_id FK
+        INTEGER sequence_number
+        TEXT erratum_category_id FK
+        TEXT before_text
+        TEXT after_text
+        TEXT revision_reason
+        TEXT effective_date
+        TEXT erratum_note
+        TEXT created_at
+        TEXT updated_at
+    }
+    erratum_categories {
+        TEXT erratum_category_id PK
+        INTEGER sequence_number
+        TEXT erratum_category_name UK
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_layouts {
+        TEXT card_layout_code PK
+        INTEGER sequence_number
+        TEXT card_layout_name
+        TEXT card_layout_type_code FK
+        TEXT card_layout_orb_code FK
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_layout_types {
+        TEXT card_layout_type_code PK
+        INTEGER sequence_number
+        TEXT card_layout_type_name
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_layout_orbs {
+        TEXT card_layout_orb_code PK
+        INTEGER sequence_number
+        TEXT card_layout_orb_name
+        TEXT card_layout_orb_shape_code FK
+        TEXT card_layout_orb_color
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_layout_orb_shapes {
+        TEXT card_layout_orb_shape_code PK
+        INTEGER sequence_number
+        TEXT card_layout_orb_shape_name
+        TEXT created_at
+        TEXT updated_at
+    }
+    rulesets {
+        TEXT ruleset_code PK
+        INTEGER sequence_number
+        TEXT ruleset_name
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_lineages {
+        TEXT card_lineage_id PK
+        INTEGER sequence_number
+        TEXT lineage_name
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_lineage_entries {
+        TEXT card_lineage_id PK,FK
+        TEXT card_id PK,FK
+        INTEGER sequence_number
+        TEXT created_at
+        TEXT updated_at
+    }
+    display_tokens {
+        TEXT token_category PK
+        TEXT token_key PK
+        INTEGER sequence_number
+        TEXT token_name
+        TEXT image_path
+        TEXT created_at
+        TEXT updated_at
+    }
+    staging_sources {
+        TEXT staging_source_id PK
+        TEXT raw_source
+        TEXT source_type
+        TEXT status
+        TEXT created_at
+        TEXT parsed_at
+        TEXT staging_source_note
+    }
+    staging_cards {
+        TEXT staging_card_id PK
+        TEXT staging_source_id FK
+        TEXT reference_label
+        TEXT extracted_json
+        INTEGER is_duplicate
+        TEXT error_message
+        TEXT status
+        TEXT parsed_at
+        TEXT committed_at
+    }
+    card_search_catalog {
+        TEXT card_id PK
+        TEXT full_text
+        TEXT archetype_text
+        TEXT body_text
+        TEXT created_at
+        TEXT updated_at
+    }
+    card_categories ||--o{ cards : ""
+    rarities ||--o{ cards : ""
+    illustrators ||--o{ cards : ""
+    products ||--o{ cards : ""
+    card_layouts ||--o{ cards : ""
+    rulesets ||--o{ cards : ""
+    staging_cards ||--o{ cards : ""
+    edit_statuses ||--o{ cards : ""
+    cards ||--o| stat_unit : ""
+    move_types ||--o| stat_unit : ""
+    cards ||--o| stat_spell : ""
+    cards ||--o| stat_item : ""
+    item_categories ||--o| stat_item : ""
+    cards ||--o| stat_item_consume : ""
+    cards ||--o| stat_item_equip : ""
+    cards ||--o| stat_item_bullet : ""
+    cards ||--o| stat_land : ""
+    land_categories ||--o| stat_land : ""
+    cards ||--o| stat_ritual : ""
+    cards ||--o| stat_summoner : ""
+    cards ||--o{ trait_elements : ""
+    elements ||--o{ trait_elements : ""
+    cards ||--o{ trait_card_types : ""
+    card_types ||--o{ trait_card_types : ""
+    cards ||--o{ trait_races : ""
+    races ||--o{ trait_races : ""
+    cards ||--o{ trait_tags : ""
+    tags ||--o{ trait_tags : ""
+    tag_categories ||--o{ tags : ""
+    cards ||--o{ feature_abilities : ""
+    cards ||--o{ feature_affinities : ""
+    affinities ||--o{ feature_affinities : ""
+    cards ||--o{ feature_ability_slots : ""
+    ability_slot_types ||--o{ feature_ability_slots : ""
+    cards ||--o{ feature_effects : ""
+    effects ||--o{ feature_effects : ""
+    effect_assignment_statuses ||--o{ feature_effects : ""
+    cards ||--o{ trait_blocks : ""
+    blocks ||--o{ trait_blocks : ""
+    cards ||--o{ trait_factions : ""
+    factions ||--o{ trait_factions : ""
+    product_categories ||--o{ products : ""
+    provider_categories ||--o{ products : ""
+    providers ||--o{ products : ""
+    rulesets ||--o{ products : ""
+    ability_slot_categories ||--o{ ability_slot_types : ""
+    affinity_categories ||--o{ affinities : ""
+    damage_sources ||--o{ affinities : ""
+    damage_attributes ||--o{ affinities : ""
+    affinity_modifier_types ||--o{ affinities : ""
+    effect_activation_categories ||--o{ effects : ""
+    effect_activation_types ||--o{ effects : ""
+    effect_activation_timings ||--o{ effects : ""
+    effect_conditions ||--o{ effects : ""
+    effect_types ||--o{ effects : ""
+    effect_costs ||--o{ effects : ""
+    effect_targets ||--o{ effects : ""
+    effect_condition_categories ||--o{ effect_conditions : ""
+    cards ||--o{ feature_errata : ""
+    erratum_categories ||--o{ feature_errata : ""
+    card_layout_types ||--o| card_layouts : ""
+    card_layout_orbs ||--o| card_layouts : ""
+    card_layout_orb_shapes ||--o| card_layout_orbs : ""
+    card_lineages ||--o| card_lineage_entries : ""
+    cards ||--o| card_lineage_entries : ""
+    staging_sources ||--o{ staging_cards : ""
+    cards ||--o| card_search_catalog : ""
