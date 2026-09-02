@@ -3,6 +3,7 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 import { buildCardSearchQuery } from './cardSearchQueryBuilder'
 import { parseCardSearchQuery } from './cardSearchQueryParser'
 import { createFreshSearchForm } from './cardSearchQueryTestFixtures'
+import { buildProductSearchLocation } from './productSearchLocation'
 
 describe('card search router round trip', () => {
   it('preserves Unicode, spaces, emoji and reserved punctuation', async () => {
@@ -12,5 +13,20 @@ describe('card search router round trip', () => {
     expect(buildCardSearchQuery(parseCardSearchQuery(router.currentRoute.value.query))).toEqual(query)
     const first = router.currentRoute.value.fullPath; await router.push({ path: '/cards', query })
     expect(router.currentRoute.value.fullPath).toBe(first)
+  })
+
+  it.each(['initial navigation', 'reload', 'bookmark/new tab/share'])('%s で product URL を安定して復元する', async () => {
+    const location = buildProductSearchLocation('91122d7e')!
+    const router = createRouter({ history: createMemoryHistory(), routes: [{ path: '/cards', component: { template: '<div />' } }] })
+    await router.push(location)
+    const logicalUrl = router.currentRoute.value.fullPath
+
+    expect(logicalUrl).toBe('/cards?pd=91122d7e')
+    expect(parseCardSearchQuery(router.currentRoute.value.query).products).toEqual(['91122d7e'])
+
+    const freshRouter = createRouter({ history: createMemoryHistory(), routes: [{ path: '/cards', component: { template: '<div />' } }] })
+    await freshRouter.push(logicalUrl)
+    expect(freshRouter.currentRoute.value.fullPath).toBe(logicalUrl)
+    expect(parseCardSearchQuery(freshRouter.currentRoute.value.query).products).toEqual(['91122d7e'])
   })
 })

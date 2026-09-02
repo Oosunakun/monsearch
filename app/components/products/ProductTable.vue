@@ -5,9 +5,11 @@ import ProductTableRow from '~~/app/components/products/ProductTableRow.vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 import { useHydrated } from '~~/app/composables/useHydrated'
 import SkeletonLoader from '~~/app/components/common/app/SkeletonLoader.vue'
+import type { Product } from '~~/app/utils/constants/search/options/product'
 
 export type ProductRow = {
   id: string
+  searchValue: Product
   shortName: string
   productName: string
   productNote: string
@@ -52,6 +54,7 @@ const { isMounted } = useHydrated()
         <template #item="{ item }">
           <ProductTableRow
             :short-name="item.shortName"
+            :search-value="item.searchValue"
             :product-name="item.productName"
             :product-note="item.productNote"
             :release-date="item.releaseDate"

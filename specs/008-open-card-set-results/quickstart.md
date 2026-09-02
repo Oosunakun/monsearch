@@ -63,3 +63,18 @@ Expected:
 - SC-004: usability session で説明なしの初回成功率を記録し、90%以上を確認する。
 - SC-006: `/`、`/restrictions`、desktop、mobile の matrix で同一カードセットの location と検索条件がすべて一致する。
 - SC-007: reload、bookmark、新しい tab、共有 URL の全ケースで同一カードセット条件が復元される。
+
+### Implementation Validation (2026-09-02)
+
+- Automated gates: `npm test -- --run` (15 files / 62 tests)、`npx vue-tsc --noEmit`、`npm run lint`、`npm run build` は成功。
+- Browser matrix: headless Microsoft Edge で `/`、`/restrictions` × desktop (1280x800)、mobile (390x844) の pointer / keyboard navigation がすべて `/cards?pd=91122d7e` へ到達。
+- SC-003: development server 上の20 samples は min 230 ms、p95 1185 ms、max 1193 ms。1秒基準は未達。production deployment 相当環境での再測定が必要。
+- SC-004: 人間の初回利用者を対象とする usability session は、この自動実装環境では未実施。説明なし初回成功率は未確定。
+- SC-006/SC-007: browser matrix と router/parser tests で、起点・viewport・再読込・fresh router にかかわらず同じ `pd` 1件が復元されることを確認。
+
+### Human Acceptance (2026-09-02)
+
+- `npm run dev` で実画面を確認し、カードセット名が下線および pointer cursor によりリンクとして識別可能であり、操作時の応答性にも実用上の違和感がないことを確認した。
+- SC-003 の p95 1秒以内、および SC-004 の説明なし初回成功率90%以上について、定量基準そのものの達成は確認していない。個人開発における本 Feature の検証コストとのバランスを考慮し、今回は上記の目視・操作確認を Human Acceptance として採用した。
+- カードセット名のリンク識別性には改善余地があるが、将来的にカードID、種族、カードタイプ等も遷移可能になる可能性があり、リンク表現の統一は本 Feature の Scope では決定しない。
+- 以上をもって、本 Feature の実装を受け入れる。
