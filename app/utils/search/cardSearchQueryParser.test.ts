@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { buildCardSearchQuery } from './cardSearchQueryBuilder'
 import { parseCardSearchQuery } from './cardSearchQueryParser'
+import { createSearchForm } from './cardSearchFormFactory'
 
 describe('parseCardSearchQuery', () => {
   it('restores defaults and all value families', () => {
@@ -37,5 +38,11 @@ describe('parseCardSearchQuery', () => {
     expect(form.attack).toEqual({ operator: 'gte', value: null })
     expect(form.level).toEqual({ filterType: 'all', operator: 'gte', value: null })
     expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })
+  })
+
+  it('canonical pd の再読込で product 1件だけを復元し、ほかは defaults にする', () => {
+    const expected = createSearchForm()
+    expected.products = ['91122d7e']
+    expect(parseCardSearchQuery({ pd: '91122d7e' })).toEqual(expected)
   })
 })
