@@ -1,0 +1,330 @@
+openapi: 3.1.0
+info:
+  title: monsearch Card Search API
+  version: 1.0.0
+  description: Query Specification 1.0.0と既存検索結果画面に対応するpage単位のカード検索API。
+paths:
+  /api/cards:
+    get:
+      operationId: searchCards
+      summary: 条件に一致するカードの1pageを取得する
+      description: >-
+        検索条件はdocs/architecture/query_specification.mdの全aliasと意味に従う。
+        未知parameterおよびinvalid valueは当該指定だけを無視し、残る有効条件で検索する。
+      x-query-specification:
+        document: docs/architecture/query_specification.md
+        version: 1.0.0
+        invalid-value-behavior: ignore-parameter-and-continue
+        unknown-parameter-behavior: ignore-and-continue
+        aliases:
+          - nm
+          - cc
+          - el
+          - ct
+          - kw
+          - pd
+          - fa
+          - bl
+          - lvm
+          - lv
+          - hem
+          - he
+          - at
+          - df
+          - mt
+          - ra
+          - ism
+          - is
+          - ssm
+          - ss
+          - it
+          - chm
+          - ch
+          - dem
+          - de
+          - re
+          - aat
+          - adf
+          - aism
+          - ais
+          - assm
+          - ass
+          - ait
+          - achm
+          - ach
+          - adem
+          - ade
+          - are
+          - lm
+          - lc
+          - cism
+          - cis
+          - cssm
+          - css
+          - coem
+          - coe
+          - eft
+          - eat
+          - eac
+          - etx
+          - rt
+          - il
+          - rl
+          - att
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Order'
+      responses:
+        '200':
+          description: 検索成功。条件なし、不正条件の無視、0件も含む。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardSearchResultPage'
+        '500':
+          description: 検索またはdata sourceの取得を完了できない。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardSearchFailure'
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 1始まり。不正値は1、最終page超過は最終pageを適用する。
+      schema: { type: integer, minimum: 1, default: 1 }
+    PerPage:
+      name: perPage
+      in: query
+      description: 不正値は20を適用する。
+      schema: { type: integer, enum: [20, 50, 100], default: 20 }
+    Sort:
+      name: sort
+      in: query
+      description: 不正値はidを適用する。
+      schema: { type: string, enum: [id, rarity, atk], default: id }
+    Order:
+      name: order
+      in: query
+      description: 不正値はascを適用する。
+      schema: { type: string, enum: [asc, desc], default: asc }
+  schemas:
+    CardSearchResultPage:
+      type: object
+      additionalProperties: false
+      required: [items, totalCount, page, perPage, totalPages, sort, categoryBreakdown]
+      properties:
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/CardSearchResultItem' }
+        totalCount: { type: integer, minimum: 0 }
+        page: { type: integer, minimum: 1 }
+        perPage: { type: integer, enum: [20, 50, 100] }
+        totalPages: { type: integer, minimum: 1 }
+        sort:
+          type: object
+          additionalProperties: false
+          required: [key, order]
+          properties:
+            key: { type: string, enum: [id, rarity, atk] }
+            order: { type: string, enum: [asc, desc] }
+        categoryBreakdown:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [categoryCode, count]
+            properties:
+              categoryCode: { type: string, minLength: 1 }
+              count: { type: integer, minimum: 1 }
+    CardSearchResultItem:
+      type: object
+      additionalProperties: false
+      required:
+        - card_id
+        - reference_label
+        - name
+        - card_category_code
+        - card_category_name
+        - unit
+        - spell
+        - item
+        - land
+        - ritual
+        - summoner
+        - card_types
+        - blocks
+        - factions
+        - effects
+        - rarity_code
+        - rarity_name
+        - illustrator_name
+        - product
+      properties:
+        card_id: { type: string, minLength: 1 }
+        reference_label: { type: string }
+        name: { type: string, minLength: 1 }
+        card_category_code: { type: string, minLength: 1 }
+        card_category_name: { type: string, minLength: 1 }
+        unit: { oneOf: [{ $ref: '#/components/schemas/UnitDisplay' }, { type: 'null' }] }
+        spell: { oneOf: [{ $ref: '#/components/schemas/SpellDisplay' }, { type: 'null' }] }
+        item: { oneOf: [{ $ref: '#/components/schemas/ItemDisplay' }, { type: 'null' }] }
+        land: { oneOf: [{ $ref: '#/components/schemas/LandDisplay' }, { type: 'null' }] }
+        ritual: { oneOf: [{ type: object, additionalProperties: false }, { type: 'null' }] }
+        summoner: { oneOf: [{ $ref: '#/components/schemas/SummonerDisplay' }, { type: 'null' }] }
+        card_types: { type: array, items: { $ref: '#/components/schemas/CardTypeDisplay' } }
+        blocks: { type: array, items: { $ref: '#/components/schemas/BlockDisplay' } }
+        factions: { type: array, items: { $ref: '#/components/schemas/FactionDisplay' } }
+        effects: { type: array, items: { $ref: '#/components/schemas/EffectDisplay' } }
+        rarity_code: { type: string }
+        rarity_name: { type: string }
+        illustrator_name: { type: string }
+        product: { $ref: '#/components/schemas/ProductDisplay' }
+    UnitDisplay:
+      type: object
+      additionalProperties: false
+      required: [level, is_instant_summon, is_hero, hero_point, move_type_name, attack, defense, elements, races, ability]
+      properties:
+        level: { type: number }
+        is_instant_summon: { type: boolean }
+        is_hero: { type: boolean }
+        hero_point: { type: number }
+        move_type_name: { type: string }
+        attack: { type: number }
+        defense: { type: number }
+        elements: { type: array, items: { $ref: '#/components/schemas/ElementDisplay' } }
+        races: { type: array, items: { $ref: '#/components/schemas/RaceDisplay' } }
+        ability: { oneOf: [{ $ref: '#/components/schemas/AbilityDisplay' }, { type: 'null' }] }
+    SpellDisplay:
+      type: object
+      additionalProperties: false
+      required: [elements]
+      properties:
+        elements: { type: array, items: { $ref: '#/components/schemas/ElementDisplay' } }
+    ItemDisplay:
+      type: object
+      additionalProperties: false
+      required: [item_category_name, consume, equip, bullet]
+      properties:
+        item_category_name: { type: string }
+        consume: { oneOf: [{ type: object, additionalProperties: false }, { type: 'null' }] }
+        equip: { oneOf: [{ $ref: '#/components/schemas/EquipDisplay' }, { type: 'null' }] }
+        bullet: { oneOf: [{ type: object, additionalProperties: false }, { type: 'null' }] }
+    EquipDisplay:
+      type: object
+      additionalProperties: false
+      required: [attack, defense, ability]
+      properties:
+        attack: { type: number }
+        defense: { type: number }
+        ability: { oneOf: [{ $ref: '#/components/schemas/AbilityDisplay' }, { type: 'null' }] }
+    LandDisplay:
+      type: object
+      additionalProperties: false
+      required: [land_limit]
+      properties:
+        land_limit: { type: number }
+    SummonerDisplay:
+      type: object
+      additionalProperties: false
+      required: [arcana, secondary_name]
+      properties:
+        arcana: { type: string }
+        secondary_name: { type: string }
+    AbilityDisplay:
+      type: object
+      additionalProperties: false
+      required: [initiative, charge, defender, ability_slots, affinities]
+      properties:
+        initiative: { type: number }
+        charge: { type: number }
+        defender: { type: number }
+        ability_slots: { type: array, items: { $ref: '#/components/schemas/AbilitySlotDisplay' } }
+        affinities: { type: array, items: { $ref: '#/components/schemas/AffinitySetDisplay' } }
+    AbilitySlotDisplay:
+      type: object
+      additionalProperties: false
+      required: [ability_slot_type_name, ability_slot_category_code, slot_count]
+      properties:
+        ability_slot_type_name: { type: string }
+        ability_slot_category_code: { type: string }
+        slot_count: { type: number }
+    AffinitySetDisplay:
+      type: object
+      additionalProperties: false
+      required: [affinity, affinity_value]
+      properties:
+        affinity:
+          type: object
+          additionalProperties: false
+          required: [affinity_category_code, affinity_category_name, damage_source_name, damage_attribute_name, affinity_modifier_type_code]
+          properties:
+            affinity_category_code: { type: string }
+            affinity_category_name: { type: string }
+            damage_source_name: { type: string }
+            damage_attribute_name: { type: string }
+            affinity_modifier_type_code: { type: string }
+        affinity_value: { type: number }
+    ElementDisplay:
+      type: object
+      additionalProperties: false
+      required: [element_code, element_name]
+      properties:
+        element_code: { type: string }
+        element_name: { type: string }
+    RaceDisplay:
+      type: object
+      additionalProperties: false
+      required: [race_id, race_name]
+      properties:
+        race_id: { type: string }
+        race_name: { type: string }
+    CardTypeDisplay:
+      type: object
+      additionalProperties: false
+      required: [card_type_id, card_type_name]
+      properties:
+        card_type_id: { type: string }
+        card_type_name: { type: string }
+    BlockDisplay:
+      type: object
+      additionalProperties: false
+      required: [block_name]
+      properties:
+        block_name: { type: string }
+    FactionDisplay:
+      type: object
+      additionalProperties: false
+      required: [faction_name]
+      properties:
+        faction_name: { type: string }
+    EffectDisplay:
+      type: object
+      additionalProperties: false
+      required: [effect_name, effect_type_name, effect_activation_type_name, effect_activation_category_code, effect_activation_timing_name, effect_cost_text, effect_target_name, effect_text]
+      properties:
+        effect_name: { type: string }
+        effect_type_name: { type: string }
+        effect_activation_type_name: { type: string }
+        effect_activation_category_code: { type: string }
+        effect_activation_timing_name: { type: string }
+        effect_cost_text: { type: string }
+        effect_target_name: { type: string }
+        effect_text: { type: string }
+    ProductDisplay:
+      type: object
+      additionalProperties: false
+      required: [product_name]
+      properties:
+        product_name: { type: string }
+    CardSearchFailure:
+      type: object
+      additionalProperties: false
+      required: [statusCode, code, message]
+      properties:
+        statusCode: { const: 500 }
+        code: { const: CARD_SEARCH_FAILED }
+        message: { type: string }
