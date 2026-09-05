@@ -1,23 +1,19 @@
 import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 
-describe('card list query boundary', () => {
-  it('consumes the current route through the defensive parser', () => {
-    const source = readFileSync(resolve('app/pages/cards/index.vue'), 'utf8')
-    expect(source).toContain('parseCardSearchQuery(route.query)')
-    expect(source).toContain(':query="route.query"')
-    expect(source).toContain('<ResultList')
+describe('cards result page', () => {
+  const source = readFileSync(resolve('app/pages/cards/index.vue'), 'utf8')
+  it('API responseだけで結果を描画する', () => {
+    expect(source).toContain('useCardSearch(routeQuery)')
+    expect(source).toContain(':cards="result.items"')
+    expect(source).not.toContain('mockFinderCards')
+    expect(source).not.toContain('cards.json')
   })
-
-  it('有効な product 条件を結果件数にかかわらず route query に保持する', () => {
-    const query = { pd: '073ce193' }
-    expect(parseCardSearchQuery(query).products).toEqual(['073ce193'])
-
-    const source = readFileSync(resolve('app/pages/cards/index.vue'), 'utf8')
-    expect(source).toContain(':query="route.query"')
-    expect(source).toContain(':cards="pagedCards"')
-    expect(source).toContain(':total-count="totalCount"')
+  it('loading・empty・error・successを相互排他的に表示する', () => {
+    expect(source).toContain("status === 'idle' || status === 'pending'")
+    expect(source).toContain("status === 'error'")
+    expect(source).toContain('result.totalCount === 0')
+    expect(source).toContain('@click="retry"')
   })
 })

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 import CategoryLabel from '~~/app/components/cards/shared/CategoryLabel.vue'
 import ElementIcon from '~~/app/components/common/icons/ElementIcon.vue'
 import SummonerIcon from '~~/app/components/common/icons/SummonerIcon.vue'
@@ -11,7 +11,7 @@ import { createCardDesign } from '~~/app/utils/cardDesign'
 import { darkenColor } from '~~/app/utils/hexColor'
 
 const props = defineProps<{
-  card: Card
+  card: CardSearchResultItem
 }>()
 
 // ユニットまたは戦闘スペルから属性を取得するロジックをここに集約

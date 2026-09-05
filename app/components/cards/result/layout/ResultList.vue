@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify'
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 import ResultDisplaySettings from '~~/app/components/cards/result/controls/ResultDisplaySettings.vue'
 import ResultItem from '~~/app/components/cards/result/layout/ResultItem.vue'
 import { LAYOUT_HEADER } from '~~/app/types/ui/layout'
@@ -9,7 +9,7 @@ const { mobile } = useDisplay()
 const rootRef = ref<HTMLElement>()
 
 const props = defineProps<{
-  cards: Card[]
+  cards: CardSearchResultItem[]
   totalCount: number
 }>()
 

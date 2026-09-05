@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 import HexagramIcon from '~~/app/components/common/icons/HexagramIcon.vue'
 import CrescentIcon from '~~/app/components/common/icons/CrescentIcon.vue'
 import { createCardDesign } from '~~/app/utils/cardDesign'
 const props = defineProps<{
-  card: Card
+  card: CardSearchResultItem
 }>()
 
 const design = createCardDesign(props.card)

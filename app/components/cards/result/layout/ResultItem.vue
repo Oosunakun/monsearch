@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify'
 import { computed } from 'vue'
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 import ItemHeader from '~~/app/components/cards/result/list/ItemHeader.vue'
 import ItemBody from '~~/app/components/cards/result/list/ItemBody.vue'
 import ItemEffect from '~~/app/components/cards/result/list/ItemEffect.vue'
@@ -10,7 +10,7 @@ import CardTextureBackground from '~~/app/components/cards/shared/CardTextureBac
 import { createCardDesign } from '~~/app/utils/cardDesign'
 
 const props = defineProps<{
-  card: Card
+  card: CardSearchResultItem
 }>()
 
 const { mobile } = useDisplay()

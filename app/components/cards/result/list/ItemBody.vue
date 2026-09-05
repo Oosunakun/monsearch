@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Card, AffinitySet } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
+import type { AffinitySet } from '~~/types/cards/finderCards'
 
 const props = defineProps<{
-  card: Card
+  card: CardSearchResultItem
 }>()
 
 // ---- ヘルパー関数 ----
@@ -36,7 +37,7 @@ const getAffinityText = (affinities: AffinitySet[]): string[] => {
 }
 
 // ---- ability取得 ----
-type RawAbility = NonNullable<Card['unit']>['ability']
+type RawAbility = NonNullable<CardSearchResultItem['unit']>['ability']
 const getAbility = (type: 'unit' | 'item'): RawAbility | undefined =>
   type === 'unit'
     ? props.card.unit?.ability

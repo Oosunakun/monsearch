@@ -66,3 +66,10 @@ Invoke-RestMethod 'http://localhost:3000/api/cards?lv=broken&page=bad&perPage=99
 - response itemだけで既存`ResultItem`、`ResultSummary`、`cardDesign`の表示が成立することを確認する。
 - responseに`search_support`、tags、errata、flavor text、source version/generated timestamp、未使用内部IDが含まれないことをcontract testで確認する。
 - Browser bundleが`app/utils/mockData/items/cards.json`を直接importしないことをbuild outputで確認する。
+
+## 実装後の確認結果
+
+- `GET /api/cards` は検索条件、sort、pagination、category内訳、公開projectionをServer側で処理する。
+- 結果画面はAPIのloading、success、0件、errorを分離し、error時は最後のrequestを再試行する。
+- 2026-09-04時点でunit/page tests、strict typecheck、ESLint、Cloudflare Pages buildを完了した。
+- client build成果物にはcards JSONの既知card IDおよび`cards.json`参照が含まれず、datasetはNitro API routeだけにbundleされた。

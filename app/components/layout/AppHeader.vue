@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
+import type { QuickSearchOption, QuickSearchState, QuickSearchTarget } from '~~/app/types/ui/layout'
 import QuickSearchBar from '~~/app/components/layout/QuickSearchBar.vue'
 import SearchMagnifyButton from '~~/app/components/layout/SearchMagnifyButton.vue'
 import HeaderTitle from '~~/app/components/layout/HeaderTitle.vue'
@@ -10,7 +10,7 @@ const { drawer, isMobile, quickSearchState, cardPools, searchTypes } = definePro
   isMobile: boolean
   quickSearchState: QuickSearchState
   cardPools: QuickSearchOption[]
-  searchTypes: QuickSearchOption[]
+  searchTypes: QuickSearchOption<QuickSearchTarget>[]
 }>()
 
 const emit = defineEmits<{
