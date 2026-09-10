@@ -1,4 +1,4 @@
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 import { mixWithWhiteHex, withAlphaHex } from '~~/app/utils/hexColor'
 
 // --------------------------------------------------
@@ -116,16 +116,16 @@ const EFFECT_BACKGROUND_STYLE: ColorDecoration = {
 
 // --------------------------------------------------
 
-function getCategoryCode(card: Card) {
+function getCategoryCode(card: CardSearchResultItem) {
   return card.card_category_code?.toLowerCase() ?? ''
 }
 
-function isHero(card: Card) {
+function isHero(card: CardSearchResultItem) {
   return getCategoryCode(card) === 'unit' && card.unit?.is_hero
 }
 
 function getHeroCategoryColor(
-  card: Card,
+  card: CardSearchResultItem,
   colors: Record<string, string>,
 ): string {
   if (isHero(card)) {
@@ -135,13 +135,13 @@ function getHeroCategoryColor(
 }
 
 function getCategoryColor(
-  card: Card,
+  card: CardSearchResultItem,
   colors: Record<string, string>,
 ): string {
   return colors[getCategoryCode(card)] ?? DEFAULT_COLOR
 }
 
-function getElementCode(card: Card) {
+function getElementCode(card: CardSearchResultItem) {
   const code =
     card.unit?.elements?.[0]?.element_code ??
     card.spell?.elements?.[0]?.element_code
@@ -173,7 +173,7 @@ function decorateColor(
 
 // --------------------------------------------------
 
-export const createCardDesign = (card: Card) => {
+export const createCardDesign = (card: CardSearchResultItem) => {
 
   // 検索窓のロジックに合わせ、レアリティの表示タイプを安全に判定
   // ※カードレアリティのアイコン

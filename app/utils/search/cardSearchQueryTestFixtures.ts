@@ -40,3 +40,13 @@ export const cloneSearchForm = (form: SearchForm): SearchForm => structuredClone
 export const expectSearchFormUnchanged = (form: SearchForm, snapshot: SearchForm) => {
   expect(form).toEqual(snapshot)
 }
+
+export const cardSearchParityQueries: Array<{ name: string, query: LocationQuery }> = [
+  { name: '条件なし', query: {} },
+  { name: 'primitive', query: { nm: 'ドラゴン' } },
+  { name: 'collection duplicate', query: { el: ['fire', 'water,fire'] } },
+  { name: 'comparison with zero', query: { at: 'eq:0' } },
+  { name: 'pair collection and modifier', query: { ssm: 'and', ss: 'fire:1,water:1' } },
+  { name: 'category applicability', query: { cc: 'unit', lv: 'gte:1' } },
+  { name: 'invalid mixed with valid', query: { lv: 'broken', rt: 'Rare' } },
+]
