@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import SearchRow from '~~/app/components/cards/search/shared/SearchRow.vue'
-import SearchValueWithOperator from '~~/app/components/cards/search/shared/SearchValueWithOperator.vue'
+import SearchFilterWithOperator from '~~/app/components/cards/search/shared/SearchFilterWithOperator.vue'
 import { 
-  defaultNumericCondition,
-  createNumericCondition,
+  defaultFilteredNumericCondition,
+  createFilteredNumericCondition,
 } from '~/utils/search/cardSearchFormFactory'
 import {
-  isChangedNumericCondition,
+  isChangedFilteredNumericCondition,
 } from '~/utils/search/cardSearchChanged'
 import type { SearchForm } from '~~/app/types/ui/search'
 import { INITIATIVE_OPTIONS } from '~~/app/utils/constants/search/options'
@@ -17,13 +17,13 @@ const { mobile } = useDisplay()
 const model = defineModel<SearchForm>({ required: true })
 
 const enableReset = computed(() => {
-  return isChangedNumericCondition(
+  return isChangedFilteredNumericCondition(
     model.value.additionalInitiative,
-    defaultNumericCondition,
+    defaultFilteredNumericCondition,
   )
 })
 const resetAll = () => {
-  model.value.additionalInitiative = createNumericCondition()
+  model.value.additionalInitiative = createFilteredNumericCondition()
 }
 </script>
 <template>
@@ -37,8 +37,9 @@ const resetAll = () => {
     :enable-reset="enableReset"
     @reset="resetAll"
   >
-  <SearchValueWithOperator
-    v-model="model.additionalInitiative.value"
+  <SearchFilterWithOperator
+    v-model:filter-type="model.additionalInitiative.filterType"
+    v-model:value="model.additionalInitiative.value"
     v-model:operator="model.additionalInitiative.operator"
     :items="INITIATIVE_OPTIONS"
   />

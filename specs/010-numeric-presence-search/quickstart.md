@@ -15,6 +15,16 @@
 6. `aitm=include`、`hem=exclude`、`lvm=exclude&lv=gte:2` を確認する。
 7. `0`、正数、負数、NULL の matcher 結果が、対象能力ごとの Modifier semantics と一致することを確認する。
 
-## 対象テスト
+## 実行済み検証
 
-Builder、Parser、factory、UI、server matcher の既存テストを局所実行する。実装・Tasks はこの段階の対象外である。
+以下を実行し、focused suite は 30/30 passed、strict typecheck と ESLint は clean となった。
+
+```powershell
+node node_modules/vitest/vitest.mjs --run app/utils/search/cardSearchFormFactory.test.ts app/utils/search/cardSearchQueryBuilder.test.ts app/utils/search/cardSearchQueryParser.test.ts server/utils/cardSearch/search.test.ts --configLoader native --pool=threads --maxWorkers=1 --no-file-parallelism
+node node_modules/vue-tsc/bin/vue-tsc.js --noEmit
+node node_modules/eslint/bin/eslint.js .
+node node_modules/nuxt/bin/nuxt.mjs build
+```
+
+Builder/Parser は `itm` / `aitm`、Modifier 単独、`exclude + Comparison` の canonicalization を検証し、server matcher は `0` と NULL、Hero Point、Level 例外を検証する。
+全テストは 21 files / 95 tests passed、Cloudflare Pages production build も完了した。Build 時の既知の Vuetify `useLayout` 重複警告と plugin timing 警告は残るが、失敗はない。

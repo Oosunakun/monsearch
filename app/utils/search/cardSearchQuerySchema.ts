@@ -7,8 +7,8 @@ import type { LogicalMatch, SearchFilter, SearchOperator } from '~~/app/utils/co
 
 export const CARD_SEARCH_QUERY_ALIASES = [
   'nm', 'cc', 'el', 'ct', 'kw', 'att', 'pd', 'fa', 'bl', 'lvm', 'lv', 'hem', 'he',
-  'at', 'df', 'mt', 'ra', 'ism', 'is', 'ssm', 'ss', 'it', 'chm', 'ch',
-  'dem', 'de', 're', 'aat', 'adf', 'aism', 'ais', 'assm', 'ass', 'ait',
+  'at', 'df', 'mt', 'ra', 'ism', 'is', 'ssm', 'ss', 'itm', 'it', 'chm', 'ch',
+  'dem', 'de', 're', 'aat', 'adf', 'aism', 'ais', 'assm', 'ass', 'aitm', 'ait',
   'achm', 'ach', 'adem', 'ade', 'are', 'lm', 'lc', 'cism', 'cis', 'cssm',
   'css', 'coem', 'coe', 'eft', 'eat', 'eac', 'etx', 'rt', 'il', 'rl',
 ] as const

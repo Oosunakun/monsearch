@@ -32,11 +32,12 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
   const query: LogicalCardSearchQuery = {}
   const put = (alias: keyof LogicalCardSearchQuery, value: string | undefined) => { if (value !== undefined) query[alias] = value }
   const putComparison = (alias: keyof LogicalCardSearchQuery, value: Readonly<NumericCondition>) => put(alias, comparison(value))
-  const putFiltered = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<FilteredNumericCondition>) => {
+  const putFiltered = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<FilteredNumericCondition>, alwaysShowValue = false) => {
     const base = comparison(value)
-    if (!base) return
-    if (isSearchFilter(value.filterType) && value.filterType !== 'all') put(modifier, value.filterType)
-    put(alias, base)
+    if (!isSearchFilter(value.filterType)) return
+    if (value.filterType !== 'all') put(modifier, value.filterType)
+    if (value.filterType === 'exclude' && !alwaysShowValue) return
+    if (base) put(alias, base)
   }
   const putSlots = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<SlotCondition>, allowed: ReadonlySet<string>) => {
     const base = pairs(value, allowed)
@@ -49,17 +50,17 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
   put('el', collection(form.elements, ELEMENT_VALUES)); put('ct', collection(form.cardTypes, CARD_TYPE_VALUES)); put('kw', text(form.keyword))
   put('pd', collection(form.products, PRODUCT_VALUES)); put('fa', collection(form.factions, FACTION_VALUES)); put('bl', collection(form.blocks, BLOCK_VALUES))
   if (isUnitApplicable(form.cardCategory)) {
-    putFiltered('lvm', 'lv', form.level); putFiltered('hem', 'he', form.heroPoint)
+    putFiltered('lvm', 'lv', form.level, true); putFiltered('hem', 'he', form.heroPoint)
     putComparison('at', form.attack); putComparison('df', form.defense)
     put('mt', collection(form.moveTypes, MOVE_TYPE_VALUES)); put('ra', collection(form.races, RACE_VALUES))
     putSlots('ism', 'is', form.abilityItemSlots, ITEM_SLOT_VALUES); putSlots('ssm', 'ss', form.abilitySpellSlots, SPELL_SLOT_VALUES)
-    putComparison('it', form.initiative); putFiltered('chm', 'ch', form.charge)
+    putFiltered('itm', 'it', form.initiative); putFiltered('chm', 'ch', form.charge)
     putFiltered('dem', 'de', form.defender); put('re', collection(form.resistances, RESISTANCE_VALUES))
   }
   if (isEquipmentApplicable(form.cardCategory)) {
     putComparison('aat', form.additionalAttack); putComparison('adf', form.additionalDefense)
     putSlots('aism', 'ais', form.additionalAbilityItemSlots, ITEM_SLOT_VALUES); putSlots('assm', 'ass', form.additionalAbilitySpellSlots, SPELL_SLOT_VALUES)
-    putComparison('ait', form.additionalInitiative); putFiltered('achm', 'ach', form.additionalCharge)
+    putFiltered('aitm', 'ait', form.additionalInitiative); putFiltered('achm', 'ach', form.additionalCharge)
     putFiltered('adem', 'ade', form.additionalDefender); put('are', collection(form.additionalResistances, RESISTANCE_VALUES))
   }
   if (isLandApplicable(form.cardCategory)) {

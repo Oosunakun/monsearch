@@ -24,6 +24,13 @@ describe('parseCardSearchQuery', () => {
       .toEqual({ el: 'fire,water', lv: 'eq:0' })
   })
 
+  it('restores standalone and excluded initiative modifiers while canonicalizing them', () => {
+    const form = parseCardSearchQuery({ itm: 'exclude', it: 'gte:2', aitm: 'include' })
+    expect(form.initiative).toEqual({ filterType: 'exclude', operator: 'gte', value: 2 })
+    expect(form.additionalInitiative.filterType).toBe('include')
+    expect(buildCardSearchQuery(form)).toEqual({ itm: 'exclude', aitm: 'include' })
+  })
+
   it('recovers valid fields independently from unknown, invalid, incomplete, and duplicate input', () => {
     const form = parseCardSearchQuery({
       nm: ['discarded', '有効 🐉'],
@@ -36,7 +43,7 @@ describe('parseCardSearchQuery', () => {
 
     expect(form.name).toBe('有効 🐉')
     expect(form.attack).toEqual({ operator: 'gte', value: null })
-    expect(form.level).toEqual({ filterType: 'all', operator: 'gte', value: null })
+    expect(form.level).toEqual({ filterType: 'include', operator: 'gte', value: null })
     expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })
   })
 
