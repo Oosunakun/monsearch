@@ -1,5 +1,7 @@
 # Data Model: 検索条件編集
 
+> **整合注記**: 数値 Modifier の復元・canonicalization は Feature 010 と Query Specification 1.1.0 を優先する。
+
 ## SearchResultLocation
 
 表示中の検索結果と現在条件を表す Vue Router location。
@@ -38,7 +40,7 @@
 | Single select | `cardCategory`, `landCategory` | 認識済み vocabulary のみ。無効値は既定値 |
 | Multi select | `elements`, `products`, `effectTypes` など | 全表現を merge、trim、検証、deduplicate |
 | Numeric comparison | `attack`, `defense`, `limit` など | 有効 operator と有限数の組だけ。zero を保持 |
-| Filtered numeric | `level`, `charge`, `defender` など | 有効 base がある場合だけ filter modifier を適用 |
+| Filtered numeric | `level`, `charge`, `defender` など | 既存 Modifier を復元。存在性対象は Modifier 単独を許可し、exclude時も内部 Comparison を保持できる |
 | Slot condition | ability/cost slot 群 | 有効 key と正数 count の pair がある場合だけ match を適用 |
 
 ## CanonicalSearchQuery

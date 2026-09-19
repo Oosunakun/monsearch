@@ -1,9 +1,11 @@
 # Contract: Card Search Logical URL Query
 
+> **整合注記**: 数値 Modifier の canonicalization は Query Specification 1.1.0 と Feature 010 が優先される。その他の Query Builder 契約は本書の範囲で維持する。
+
 ## Authority and route
 
 - The card-list route is `/cards`.
-- `docs/architecture/query_specification.md` version 1.0.0 is authoritative for aliases, logical value formats, canonical ordering, duplicate handling, defaults, and version policy.
+- `docs/architecture/query_specification.md` version 1.1.0 is authoritative for aliases, logical value formats, canonical ordering, duplicate handling, defaults, and version policy.
 - Version 1 does not include a version query parameter.
 
 ## Builder input and output
@@ -21,7 +23,7 @@
 2. Collections are copied, deduplicated, lexically sorted, and joined with `,`.
 3. Comparisons use `operator:value` and are omitted unless complete and finite; zero is valid.
 4. Pair collections use sorted `key:value` entries joined with `,`; invalid or non-positive counts are omitted.
-5. Filter and match modifiers are emitted only for an existing valid base condition and only when non-default.
+5. `all` modifiers are omitted. Existing numeric `include` / `exclude` modifiers may be emitted without a base comparison; `exclude` suppresses its comparison in canonical output while Parser restoration may retain it in the form. Level remains an exception.
 6. Default `landCategory: all` is omitted.
 7. Reserved syntax characters inside user text retain their literal meaning after framework encoding and parsing.
 8. Building does not mutate the supplied form.

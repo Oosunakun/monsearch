@@ -1,21 +1,21 @@
 # Query Data Specificationに伴う改訂候補
 
-**Status:** [Query Data Specification 1.0.0](query_data_specification.md)に伴う改訂一覧。正式URL仕様・実装の変更は未実施。
+**Status:** [Query Data Specification 1.1.0](query_data_specification.md)に伴う改訂一覧。実装変更は未実施。
 
-[Decision履歴](query_data_specification_note.md)に基づく影響調査。通常・追加イニシアチブへの所持Modifier追加、識別子の照合、コスト検索の公開前提等を扱う。Aliasは未決定であり、この文書では命名しない。
+[Decision履歴](query_data_specification_note.md)に基づく影響調査。通常・追加イニシアチブへの所持Modifier追加、識別子の照合、コスト検索の公開前提等を扱う。イニシアチブ Modifier の Alias と順序は Query Specification 1.1.0 で確定した。
 
 ## 合意した意味
 
 - 全13数値条件は非NULLの実数値のみを通常比較する。NULLは「なし」、0は実数値で、相互変換しない。
-- 通常・追加のinitiative / charge / defenderは`include`が非NULL（0を含む）、`exclude`がNULL、`all`が有無不問。
-- イニシアチブの既存Comparisonを維持し、通常・追加に所持Modifierを追加する。
-- 適用対象カードの能力行なしはexcludeに一致し、Comparisonには不一致。所持とComparisonはANDとし、矛盾は0件。複数行は合算せず、各条件を満たす行の存在で判定し、常備能力には同一行制約を課さない（D37〜D40）。
+- 通常・追加のinitiative / charge / defenderは`include`が非NULL（0を含む）、`exclude`がNULL、`all`が有無不問。Hero Pointも同じModifier語彙を使い、`exclude`時は`is_hero`を参照しComparisonを評価しない。
+- イニシアチブの既存Comparisonを維持し、通常・追加に`itm` / `aitm`の所持Modifierを追加する。canonical orderは`itm → it`、`aitm → ait`。
+- Modifier単独を有効な条件とする。`include`はComparisonがあれば追加評価し、`exclude`はComparisonを検索評価・Canonical URL出力に使用しない。ParserはForm内にComparisonを保持できる。Levelは`is_instant_summon`とLevel Comparisonを独立評価する例外とする。
 
 ## 影響範囲
 
 | 層 | ファイル | 改訂候補 |
 |---|---|---|
-| URL Query Specification | [query_specification.md](query_specification.md) | 通常・追加initiativeのModifier行、Alias、canonical順序、default省略規則、版更新を決定する。既存Comparisonは維持する |
+| URL Query Specification | [query_specification.md](query_specification.md) | `itm` / `aitm`、canonical順序、default省略、exclude時Comparison省略を反映済み。既存Comparisonは維持する |
 | Query Object / UI型 | [search.ts](../../app/types/ui/search.ts) | initiative / additionalInitiativeの数値条件にfilterを追加し、LogicalCardSearchQueryのAlias型を拡張する |
 | Query mapping | [cardSearchQuerySchema.ts](../../app/utils/search/cardSearchQuerySchema.ts) | Alias一覧を正式仕様の順序に合わせて拡張する |
 | 初期化・reset | [cardSearchFormFactory.ts](../../app/utils/search/cardSearchFormFactory.ts) | 両initiativeのfilter初期値を扱う |
@@ -47,7 +47,7 @@
 - 両initiativeのModifier単独・Comparison併用・all省略・round-trip。
 - 全数値項目のNULL非ヒット、0の通常比較、正負の比較。
 - 6能力値のNULL / 0 / 正数 / 負数と所持条件の組合せ。
-- 関連行なし・複数行・矛盾した条件をD37〜D40に従って検証する。複数行は現状のゲームデータにはなく、防御的ケースとして扱う。
+- 関連行なし・複数行・`exclude + Comparison` を今回の Modifier semantics に従って検証する。`exclude` は値なしを評価し、Comparisonを検索評価に使用しない。複数行は現状のゲームデータにはなく、防御的ケースとして扱う。
 
 ## mockと実カードの区別
 
@@ -84,7 +84,7 @@ URL語彙の定義自体を削除することは決定していない。構造�
 
 ### 数値・所持条件
 
-- 新Modifierの具体的Alias、順序、正式URL仕様の改訂版。
-- UIの入力・保持規則。検索SemanticsとBuilder / Parserでの矛盾条件の保持はD38で確定済み。
+- `itm` / `aitm`、順序、Modifier単独、exclude時Comparison非適用、Parser保持、Builder canonical化を Query Specification 1.1.0 と Query Data Specification 1.1.0 へ反映済み。
+- UIの入力・保持規則は本Featureの成果物で定義する。
 
 この文書は改訂候補の記録であり、URL仕様改訂の承認・実装変更の完了を示すものではない。本書の元となるDomain SemanticsはQuery Data Specificationで承認済みである。

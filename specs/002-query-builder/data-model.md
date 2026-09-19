@@ -1,5 +1,7 @@
 # Data Model: Card Search Query Builder
 
+> **整合注記**: 数値 Modifier に関する旧記述は Query Specification 1.1.0 と Feature 010 により更新される。Feature 010 の対象範囲では本書より新しい規則を優先する。
+
 ## SearchForm
 
 Mutable UI state owned by `useCardSearchForm`, grouped into basic, origin, unit, equipment, land, effect, and other sections.
@@ -22,7 +24,7 @@ An ordered collection of unique logical URL parameters. Keys are the stable alia
 | Text and primitive | `alias=value` | Trimmed non-empty value; default `landCategory: all` omitted |
 | Collection | `alias=v1,v2` | At least one unique valid value, sorted lexically |
 | Numeric comparison | `alias=operator:value` | Valid operator and finite operand |
-| Filtered comparison | base comparison plus optional modifier alias | Base condition valid; non-default filter only |
+| Filtered comparison | base comparison plus optional modifier alias | `all` omits modifier; `include` / `exclude` may be standalone; `exclude` omits the base comparison from canonical output |
 | Pair collection | `alias=k1:v1,k2:v2` | At least one valid entry, keys sorted lexically |
 | Logical match | optional modifier alias | Valid pair collection exists; non-default match only |
 
@@ -47,7 +49,7 @@ Parameter aliases and their normative order are defined exclusively by `docs/arc
 - `operator`: recognized comparison operator
 - `value`: finite number or `null`
 
-The filter modifier cannot exist in output without a valid comparison.
+For the existing numeric presence Modifiers, `include` and `exclude` are valid without a comparison. The Parser may restore a comparison beside `exclude`, while the Builder omits that comparison from the canonical output. Level remains an exception: its Comparison remains valid with `lvm=exclude`.
 
 ### SlotCondition
 

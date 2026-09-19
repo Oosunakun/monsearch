@@ -24,7 +24,7 @@
 
 **Performance Goals**: 定量latency、dataset規模、concurrency目標は今回設定しない。現在のcards JSONで通常のunit/integration testと主要API/UI動作確認が完了すること
 
-**Constraints**: Query Specification 1.0.0のalias・意味・Graceful Parsing、既存Browser検索との結果parity、`any`不使用、入力を変更しない検索、0を有効値として保持、UTF-8、Server-side sort/pagination、明示的な最小公開projection、`HTTP 500 / CARD_SEARCH_FAILED`へのfailure一本化、Browser bundleから全cards JSON依存を除去
+**Constraints**: Query Specification 1.1.0のalias・意味・Graceful Parsing、既存Browser検索との結果parity、`any`不使用、入力を変更しない検索、0を有効値として保持、UTF-8、Server-side sort/pagination、明示的な最小公開projection、`HTTP 500 / CARD_SEARCH_FAILED`へのfailure一本化、Browser bundleから全cards JSON依存を除去
 
 **Scale/Scope**: 既存の全検索条件、結果一覧page、Nitro endpoint 1件、検索domain、API取得state、現在のbundled dataset。DB、認証、履歴、新規検索項目、詳細API、performance/load/usability試験は対象外
 

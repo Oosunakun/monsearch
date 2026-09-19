@@ -8,7 +8,7 @@
 
 ## Decision 2: Query SpecificationをAPIでもGracefulに解釈する
 
-- **Decision**: `docs/architecture/query_specification.md` Version 1.0.0のalias、値形式、duplicate rule、default omission、category applicabilityをsource of truthとする。未知aliasとinvalid valueは当該指定だけを無視し、残る有効条件で検索する。制御parameterのinvalid valueも各defaultへ戻す。
+- **Decision**: `docs/architecture/query_specification.md` Version 1.1.0のalias、値形式、duplicate rule、default omission、category applicabilityをsource of truthとする。未知aliasとinvalid valueは当該指定だけを無視し、残る有効条件で検索する。制御parameterのinvalid valueも各defaultへ戻す。
 - **Rationale**: Query SpecificationのGraceful ParsingとHuman Review DecisionをそのままAPI境界へ適用できる。既存`parseCardSearchQuery`もcomparisonやcollectionの不正部分を無視する実装であり、Browserとの意味互換性を保ちやすい。
 - **Alternatives considered**: User Story版旧設計とslug版の `400 INVALID_QUERY` は有効条件まで検索不能にするため不採用。独自DTO/aliasはquery semanticsを二重管理するため不採用。
 

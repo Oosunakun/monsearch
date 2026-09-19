@@ -113,7 +113,7 @@
 ## Assumptions
 
 - User Storyと「ブラウザ内のカードデータ取得・検索処理をバックエンドへ移行する」というFeature Goalを維持する。
-- 検索条件のsource of truthは `docs/architecture/query_specification.md` Version 1.0.0であり、API固有の検索aliasや厳格validationは追加しない。
+- 検索条件のsource of truthは `docs/architecture/query_specification.md` Version 1.1.0であり、API固有の検索aliasや厳格validationは追加しない。
 - API制御parameterは `page`、`perPage`、`sort`、`order` とし、Query Specificationの検索parameterとは別に扱う。
 - 現在のdata sourceは `app/utils/mockData/items/cards.json` であり、DB接続とD1/SQLite等への移行は後続featureで扱う。
 - category別件数は現在の `ResultSummary` に必要なため全一致結果を対象に返す。表示labelとcolorは既存Browser側定義を使用する。

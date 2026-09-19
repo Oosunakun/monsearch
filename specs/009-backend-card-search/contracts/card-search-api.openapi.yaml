@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: monsearch Card Search API
   version: 1.0.0
-  description: Query Specification 1.0.0と既存検索結果画面に対応するpage単位のカード検索API。
+  description: Query Specification 1.1.0と既存検索結果画面に対応するpage単位のカード検索API。
 paths:
   /api/cards:
     get:
@@ -13,7 +13,7 @@ paths:
         未知parameterおよびinvalid valueは当該指定だけを無視し、残る有効条件で検索する。
       x-query-specification:
         document: docs/architecture/query_specification.md
-        version: 1.0.0
+        version: 1.1.0
         invalid-value-behavior: ignore-parameter-and-continue
         unknown-parameter-behavior: ignore-and-continue
         aliases:
