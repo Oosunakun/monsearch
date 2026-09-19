@@ -1,56 +1,257 @@
-|Query Object Property|Query Object Name|Parameter Alias|Value Format|Database Table Relation|Database Column Relation|Type Supplementary|
-|----|----|----|----|----|----|----|
-|name|カード名|nm|Primitive|cards|cards.name|自由記述|
-|cardCategory|カード分類|cc|Primitive|cards|cards.card_category_code|natural key|
-|elements|属性|el|Collection|cards <- trait_elements|trait_elements.element_code|natural key|
-|cardTypes|カードタイプ|ct|Collection|cards <- trait_card_types|trait_card_types.card_type_id|uuidv7|
-|keyword|キーワード|kw|Primitive|cards <- card_search_catalog|card_search_catalog.full_text|自由記述|
-|products|カードセット|pd|Collection|cards|cards.product_id|uuidv7|
-|factions|勢力|fa|Collection|cards <- trait_factions|trait_factions.faction_id|uuidv7|
-|blocks|ブロック|bl|Collection|cards <- trait_blocks|trait_blocks.block_code|natural key|
-|level.filterType|レベル（Modifier）|lvm|Modifier|cards <- stat_unit|stat_unit.is_instant_summon|"all" , "include" , "exclude"|
-|level|レベル|lv|Comparison|cards <- stat_unit|stat_unit.level|"gte" , "eq" , "lte"|
-|heroPoint.filterType|英雄点（Modifier）|hem|Modifier|cards <- stat_unit|stat_unit.is_hero|"all" , "include" , "exclude"|
-|heroPoint|英雄点|he|Comparison|cards <- stat_unit|stat_unit.hero_point|"gte" , "eq" , "lte"|
-|attack|攻撃力|at|Comparison|cards <- stat_unit|stat_unit.attack|"gte" , "eq" , "lte"|
-|defense|防御力|df|Comparison|cards <- stat_unit|stat_unit.defense|"gte" , "eq" , "lte"|
-|moveTypes|進軍タイプ|mt|Collection|cards <- stat_unit|stat_unit.move_type_code|natural key|
-|races|種族|ra|Collection|cards <- trait_races|trait_races.race_id|uuidv7|
-|abilityItemSlots|アイテム枠|is|Pair Collection|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|natural key|
-|abilityItemSlots.match|アイテム枠（Modifier）|ism|Modifier|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|"or" , "and" , "none"|
-|abilitySpellSlots|戦闘スペル枠|ss|Pair Collection|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|natural key|
-|abilitySpellSlots.match|戦闘スペル枠（Modifier）|ssm|Modifier|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|"or" , "and" , "none"|
-|initiative|イニシアチブ|it|Comparison|cards <- feature_abilities|feature_abilities.initiative|"gte" , "eq" , "lte"|
-|charge.filterType|チャージ（Modifier）|chm|Modifier|cards <- feature_abilities|feature_abilities.charge|"all" , "include" , "exclude"|
-|charge|チャージ|ch|Comparison|cards <- feature_abilities|feature_abilities.charge|"gte" , "eq" , "lte"|
-|defender.filterType|ディフェンダー（Modifier）|dem|Modifier|cards <- feature_abilities|feature_abilities.defender|"all" , "include" , "exclude"|
-|defender|ディフェンダー|de|Comparison|cards <- feature_abilities|feature_abilities.defender|"gte" , "eq" , "lte"|
-|resistances|耐性|re|Collection|cards <- feature_affinities|feature_affinities.affinity_id|uuidv7|
-|additionalAttack|追加攻撃力|aat|Comparison|cards <- stat_item_equip|stat_item_equip.attack|"gte" , "eq" , "lte"|
-|additionaldefense|追加防御力|adf|Comparison|cards <- stat_item_equip|stat_item_equip.defense|"gte" , "eq" , "lte"|
-|additionalAbilityItemSlots|追加アイテム枠|ais|Pair Collection|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|natural key|
-|additionalAbilityItemSlots.match|追加アイテム枠（Modifier）|aism|Modifier|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|"or" , "and" , "none"|
-|additionalAbilitySpellSlots|追加戦闘スペル枠|ass|Pair Collection|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|natural key|
-|additionalAbilitySpellSlots.match|追加戦闘スペル枠（Modifier）|assm|Modifier|cards <- feature_ability_slots|feature_ability_slots.ability_slot_type_code|"or" , "and" , "none"|
-|additionalInitiative|追加イニシアチブ|ait|Comparison|cards <- feature_abilities|feature_abilities.initiative|"gte" , "eq" , "lte"|
-|additionalCharge.filterType|追加チャージ（Modifier）|achm|Modifier|cards <- feature_abilities|feature_abilities.charge|"all" , "include" , "exclude"|
-|additionalCharge|追加チャージ|ach|Comparison|cards <- feature_abilities|feature_abilities.charge|"gte" , "eq" , "lte"|
-|additionalDefender.filterType|追加ディフェンダー（Modifier）|adem|Modifier|cards <- feature_abilities|feature_abilities.defender|"all" , "include" , "exclude"|
-|additionalDefender|追加ディフェンダー|ade|Comparison|cards <- feature_abilities|feature_abilities.defender|"gte" , "eq" , "lte"|
-|additionalResistances|追加耐性|are|Collection|cards <- feature_affinities|feature_affinities.affinity_id|uuidv7|
-|limit|リミット|lm|Comparison|cards <- stat_land|stat_land.number|"gte" , "eq" , "lte"|
-|landCategory|地形分類|lc|Primitive|cards <- stat_land|stat_land.land_category_code|natural key|
-|costItemSlots|コスト（アイテム）|cis|Pair Collection|cards <- feature_effects <- effects <- effect_costs|effect_costs.effect_cost_text|natural key|
-|costItemSlots.match|コスト（アイテム）（Modifier）|cism|Modifier|cards <- feature_effects <- effects <- effect_costs|effect_costs.effect_cost_text|"or" , "and" , "none"|
-|costSpellSlots|コスト（戦闘スペル）|css|Pair Collection|cards <- feature_effects <- effects <- effect_costs|effect_costs.effect_cost_text|natural key|
-|costSpellSlots.match|コスト（戦闘スペル）（Modifier）|cssm|Modifier|cards <- feature_effects <- effects <- effect_costs|effect_costs.effect_cost_text|"or" , "and" , "none"|
-|costOtherEntities|コスト（その他）|coe|Pair Collection|cards <- feature_effects <- effects <- effect_costs|effect_costs.effect_cost_text|natural key|
-|costOtherEntities.match|コスト（その他）（Modifier）|coem|Modifier|cards <- feature_effects <- effects <- effect_costs|effect_costs.effect_cost_text|"or" , "and" , "none"|
-|effectTypes|カード効果タイプ|eft|Collection|cards <- feature_effects <- effects|effect_costs.effect_type_code|natural key|
-|effectActivationTypes|カード効果宣言タイミング|eat|Collection|cards <- feature_effects <- effects|effects.effect_activation_type_id|uuidv7|
-|effectActivationCategories|カード効果有効時期分類|eac|Collection|cards <- feature_effects <- effects|effects.effect_activation_category_code|natural key|
-|effectText|カード効果テキスト|etx|Primitive|cards <- feature_effects <- effects|effects.effect_text|自由記述|
-|rarities|出現頻度|rt|Collection|cards|cards.rarity_code|natural key|
-|illustrators|イラストレーター|il|Collection|cards|cards.illustrator_id|uuidv7|
-|referenceLabel|カードNo（整理番号）|rl|Primitive|cards|cards.reference_label|自由記述|
-|archetypeText|種族・タイプ|att|Primitive|cards <- card_search_catalog|card_search_catalog.archetype_text|自由記述|
+# Query Data Specification — Decision履歴
+
+**Status:** Archived Decision Record（shared understanding確認済み）
+
+正式な検索規則と対応表は[Query Data Specification 1.0.0](query_data_specification.md)へ統合した。本書は撤回・更新を含む対話履歴であり、古い提案を現在の規範として扱わない。未決定事項・別設計の範囲は正式仕様と[改訂候補一覧](query_data_specification_revision_candidates.md)を参照する。
+
+## 合意済みDecision
+
+以下は対話の決定履歴である。後続Decisionで解決・更新された「未決定」や提案は、そのまま現在のfrontierを意味しない。現在の状態は設計ツリーおよび改訂候補を参照する。
+
+### ラウンド1：仕様の責務
+
+- **D1 / Q1 — 検索意味論を含む**: ParameterとDatabaseの対応に加え、対象データ、値の意味、比較・組合せ、未指定・NULL・関連行なしの扱いを規定する。具体的なSQLや最適化は実装側に委ねる。
+- **D2 / Q2 — Schema変更を検討可能とする**: 現行Schemaを調査の出発点とし、必要な検索意味論を表現できない場合はSchema変更も検討する。仕様上の合意とSchema変更の実施は別段階とする。
+- **D3 / Q3 — URL仕様との責務境界**: 正式採用済みの `query_specification.md` の名前・形式・正規化規則を前提とし、同仕様が規定していない検索意味論を補う。URL仕様に変更が必要な不足・矛盾は、独立した改訂論点として提示し、本仕様で上書きしない。
+
+### ラウンド2：検索の基本単位と一致条件
+
+- **D4 / Q4 — 検索対象の単位**: `cards`の1レコードを検索対象とする。同名カードでもレコードが異なれば別の対象であり、別レコードの情報を持ち寄って一致させない。
+- **D5 / Q5 — 条件の基本結合**: 原則として異なるParameter間はAND、通常のCollection内はORとする。Modifierによる変更を認め、Effects関連にはD6の同一Effect制約を適用する。未指定の条件は絞り込みを行わない。
+- **D6 / Q6 — 同一Effect内での一致**: Effects関連（効果タイプ・宣言タイミング・有効時期・効果テキスト・コスト）の指定条件すべてを、いずれか1つの同一Effectが満たした場合のみ一致する。Effect Aが指定タイプ、Effect Bが指定テキストを満たすだけでは一致しない。
+- **D7 / Q7 — 通常能力と追加能力**: 通常能力はユニット自身の能力、追加能力は装備品が装備先へ与える能力とする。共通featureテーブルから、カード分類およびアイテム分類に応じて抽出を出し分ける。効果テキストによる一時的・条件付き変更は効果検索で扱う。具体的な分類と適用範囲は別途確定する。
+- **D8 / Q8 — 即時召喚・英雄Modifier**: `lvm`は即時召喚、`hem`は英雄のboolean条件とする。`all`は有無不問、`include`は該当、`exclude`は非該当。数値比較とは独立し、Modifier単独でも有効とする。数値条件があればANDで結合する。例：`lv=gte:3&lvm=exclude`はレベル3以上かつ即時召喚不可。
+- **D9 / Q9 — コスト判定の方向性**: `effect_costs`内に指定コスト値が規定個数含まれているかを判定する。`fire:3`に対して「火火火」は一致し、「火火または火▽」は一致しない。具体的マッピング・個数の比較方法・選択式の扱いは別途Decisionとする。構造化データの追加は合意事項ではない。
+
+### ラウンド3：数量・選択肢・照合方法
+
+- **D10 / Q10 — コスト数量の下限**: 指定個数以上を一致とする。`fire:3`に対して「火火火火」は一致する。
+- **D11 / Q11 — コストキーワードの連続数**: 同じキーワードが連続してN個以上存在するかで判定する。`fire:3`に対して「火火火または水」は一致する。選択肢をまたいだ合算は行わない。複数ペアのANDと選択肢の関係、数字で個数を記すコストの詳細は未決定。
+- **D12 / Q12 — 能力枠数量の下限**: 通常・追加の能力枠は指定個数以上を一致とする。指定していない種類の枠が存在しても一致を妨げない。
+- **D13 / Q13 — Pair CollectionのModifier**: `or`は少なくとも1つのペア条件、`and`はすべてのペア条件を満たすこと。`none`は対象となる枠・コストが一切存在しないことを意味し、指定ペア条件の否定ではない。`none`ではPair値を判定に使用せず、URL QueryもModifierのみを渡す。例：ユニットの`ssm=none`は戦闘スペル枠を持たないユニットを抽出する。コスト種類ごとの不存在範囲とEffectの不存在の扱いは別途確認する。
+- **D14 / Q14 — Natural KeyとUUIDの照合**: Natural Keyは完全一致とする。UUIDはランダム部の末尾数文字へ短縮してURL Queryで渡し、後方一致とする。短縮時点でID衝突がチェック済みであることを前提とする。短縮長・衝突確認の対象集合・将来データ追加時の扱いは未決定。
+- **D15 / Q15 — 自由記述の照合**: 基本方針はリテラルな部分一致とする。空白による単語分割は今回含めず、今後のFeatureとする。`kw`は検索時に複数項目を横断照合するのではなく、対応する専用Table / Column（現メモでは`card_search_catalog.full_text`）を検索対象とする。文字の正規化は未決定。
+
+### ラウンド4：組合せと境界条件
+
+- **D16 / Q16 — コストANDと選択肢**: 複数ペアのANDは同じ選択肢内ですべて満たす必要がある。`css=fire:2,water:1&cssm=and`に対して「火火水」「火火水または土」は一致し、「火火または水」は一致しない。
+- **D17 / Q17 — コストnoneの対象種類**: `cism`はアイテム、`cssm`はスペル、`coem`はその他のコストの不存在を判定する。他種類のコストがあっても妨げない。全種類のコストの不存在は3つの`none`で指定する。
+- **D18 / Q18 — Effect自体の不存在**: コストnoneだけを指定しても、Effectを1つも持たないカードは一致しない。D6に従い、指定対象のコストがないEffectが少なくとも1つ存在する必要がある。
+- **D19 / Q19 — noneとPairの正規化**: `none`とPairが併記された場合はPairを捨て、再構築したURLにはModifierだけを残す。例：`ss=fire:2&ssm=none` → `ssm=none`。
+- **D20 / Q20 — URL値とDatabase値のMapping Table**: Parameterごとの変換表を定義する。Natural Keyの完全一致は変換後のDatabase値に対して適用する。例：`fire` → `SpellFire`、`cc=item-equip` → カード分類`Item`かつアイテム分類`Equip`。
+- **D21 / Q21 — 自由記述の正規化（現時点の採用方針・追加評価あり）**: `nm`・`etx`・`rl`・`att`・`kw`の検索語と対象文字列にNFKC正規化を適用し、英字の大文字小文字を区別しない。ひらがな／カタカナ変換や内部空白の削除・圧縮は行わない。日本語検索を主とする想定のため、Repository内データで表記揺れ吸収の利点と意図しない同一視の欠点を確認する。Parameterごとの一律適用の可否は、必要に応じて後続Decisionで見直す。
+
+### ラウンド5：正規化の見直しと残る境界
+
+- **D22 / Q22 — 限定的な文字正規化（D21を更新）**: `nm`・`etx`・`rl`・`att`・`kw`に共通して全半角の英数字・記号・カナを同一視し、全角空白を半角空白として扱い、英字の大文字小文字を区別しない。丸数字と通常数字、ローマ数字と英字は区別する。ひらがな／カタカナ変換、内部空白の削除・圧縮は行わない。NFKCの一律適用は採用しない。厳密な文字対応範囲は正式仕様に記載する。
+- **D23 / Q23 — 正規化の適用箇所**: 文字正規化は検索時の照合にのみ適用する。入力値・URL Query・保存原文・表示値そのものには適用せず保持する。
+- **D24 / Q24 — catalog欠損時**: `kw`・`att`の対象catalog行または対象列の値が存在しない場合は、その条件に非ヒットとする。別データへのfallbackは行わない。
+- **D25 / Q25 — 選択式コストとnone**: 対象種類のコストが全選択肢にわたり一切存在しないことを要求する。「火または手札1枚」は`cssm=none`に非ヒット。正の条件がいずれかの選択肢で成立することとは区別する。
+- **D26 / Q26 — UUID短縮の責務と名前空間**: URL QueryではUUID末尾の短縮値を渡し、検索側は対応するDatabase IDへ後方一致させる。短縮値生成・衝突チェックはParameter作成側の責務とし、検索ロジックの責務外とする。衝突を考慮する名前空間はParameterごとで、異なるParameter間の同一短縮値は許容する。短縮長は未決定であり、既存8文字を固定長として採用しない。最大6000種類超程度を想定し、4〜5文字も候補として作成側が別途決定する。検索仕様の確定に固定長の決定は要求しない。
+
+### ラウンド6：能力の適用範囲と欠損
+
+- **D27 / Q27 — 分類とToken**: 通常分類ではUnitの通常能力・ユニット数値、ItemかつEquipの追加能力・追加数値、Landのリミット・地形分類を対象とする。Tokenはどのカードの体裁にもなり得て、一部情報が欠損した状態や既存の基本分類に当てはまらない用途もある。Token分類自体から能力・statの適用範囲を制限せず、実際に対応データが存在するかで判断する。例として地形へのエンチャントのような効果を持つTokenもある。
+- **D28 / Q28 — NULLと0の基本原則・例外の保留**: 攻撃力・防御力などのNULLは値が未記載、0は実数値として0が記載された状態であり、区別する。NULLを0へ置き換えて通常の数値比較を行わない。ただしinitiativeには「イニシアチブ：0」というカード表記がなく、検索値0は「イニシアチブなし」を意図する。initiativeのNULLと検索値0、eq / lte / gteの意味は後続Decisionで確定する。
+- **Q29 — 未決定**: charge / defenderもNULL・0と検索上の意味を改めて検討する。正数=あり、0=なし、NULL=不明という提案は採用未確定。initiative / charge / defenderを含む全数値検索対象について、項目ごとにNULL / 0 / 正数（必要なら負数）とeq / lte / gteを列挙して確認する。
+- **D30 / Q30 — 同種枠の複数行**: 通常のカードデザインでは同種枠の重複は存在しないが、複数行がある場合も合算せず、それぞれ別々の数量として扱う。1行の確定数量へ統合することは前提としない。
+- **D31 / Q31 — 未抽出Effect**: 関連する`effects`が存在するものをEffects関連検索の対象とする。`etx`は`effects.effect_text`のみを検索し、未抽出原文へfallbackしない。未抽出EffectしかないカードはEffects条件に非ヒットとする。
+- **D32 / Q32 — コスト参照NULL**: `effects.effect_cost_id = NULL`は「コストなし」を意味し、「不明」は含まない。そのEffectは各種類のコストnoneに一致する。
+
+### ラウンド7：全数値項目の検索Semantics
+
+- **D33 / Q33 — 数値の基本規則**: 数値項目全体で0は実数値、NULLは「なし」として区別し、検索時にNULLを0相当へ変換しない。`at / df / aat / adf`は非NULLの実数値に対して`eq`は等値、`lte`は以下、`gte`は以上の通常比較を行う。NULLは全比較に非ヒット。正数・0・有効な負数はそのまま比較し、許容値域の定義とは分ける。
+- **D34 / Q34 — レベル・英雄点・リミット**: `lv / he / lm`もD33の通常比較を行う。英雄点0は実カードには現状存在せずUIでも選択肢外だが、将来を考慮して仕様上は通常の実数値として扱う。mockの非英雄の英雄点0を実カードの事実や「なし」の定義とはみなさない。
+- **D35 / Q35 — 通常・追加イニシアチブのModifier追加**: `it / ait`はNULLを能力なし、0を実数値0、その他の数値も通常の実数値とする。Comparisonは非NULL値のみ通常比較する。所持Modifierを追加し、`include`は非NULL（0を含む）、`exclude`はNULL、`all`は有無で絞り込まない。現状の実カードに0表記がなく`eq:0`が0件でも許容する。D28の検索値0を「なし」とする方向性およびQ35で提示したNULLの0換算案は採用しない。URL Query Specification・Query Object・Builder / Parser・UIなどの改訂候補を別途記録する。新ModifierのAliasは未決定とし、ここでは決めない。
+- **D36 / Q36 — 通常・追加チャージ／ディフェンダー**: `ch / de / ach / ade`もNULLは能力なし、0は実数値、その他は通常の実数値とする。比較は非NULL値のみ。`include`は非NULL（0含む）、`exclude`はNULLのみ、`all`は能力の有無で絞り込まない。実際のゲームデータに0が存在しない方針でも、検索仕様では0を「なし」と同一視しない。Q29の未決定事項のうち列値に対する所持・比較の意味を確定する。関連行自体がない場合やModifierとComparisonの併用・複数行は別途確認する。
+
+### ラウンド8：行の不存在と条件の組合せ
+
+- **D37 / Q37 — 能力行の不存在**: 適用対象のカードでは、能力行が存在しない場合も「能力なし」として`exclude`に一致し、Comparisonには一致しない。能力の適用対象ではないカードを「能力なし」として含めない。D27に従って適用対象を先に判断する。
+- **D38 / Q38 — 所持と比較のAND**: ModifierとComparisonはANDで評価する。`chm=exclude&ch=gte:2`のような矛盾条件は0件となり、条件を暗黙に捨てない。Builder / Parserでも両条件を保持する。同じ結果を保証できる評価省略は実装詳細として許容するが、`exclude`成立だけで矛盾条件全体を一致と判定してはならない。
+- **D39 / Q39 — 複数能力行の所持・比較**: 適用対象行のうち非NULL値を持つ行が1つ以上あれば`include`、1つもなければ`exclude`。Comparisonは、いずれかの行の非NULL値が比較条件を満たす場合に一致する。複数行の値は合算しない。現状のゲームデータには同じ能力の複数行はなく、防御的な仕様として定義する。
+- **D40 / Q40 — 異なる能力条件の結合**: 異なる能力条件はカード単位でそれぞれ満たせばよく、同一能力行での成立は要求しない。Effectsの同一Effect制約は常備能力には適用しない。例：行Aのinitiative=2、行Bのcharge=3で、それぞれの下限条件を満たせば一致する。現状データの存在を示すものではなく、防御的な仕様とする。
+
+### ラウンド9：枠数量とコストの境界
+
+- **D41 / Q41 — 枠数量0とnone**: 適用対象カードで、対象種類の枠に正の数量を持つ行が1つもなければ`none`に一致する。実データでは枠なしの場合はレコードを作成せず、数量0の行は存在しない。仮に数量0の行があっても所持数0として「枠なし」とする。ステータスの実数値0を「あり」とする能力所持条件とは区別する。
+- **D42 / Q42 — Pair Collection数量**: 枠・コスト等の個数指定は1以上の整数に限定する。0・負数・小数は有効な個数条件ではない。上限を現在のUI選択肢に固定しない。
+- **D43 / Q43 — Comparison検索値**: 全13項目の検索値は0・正数・負数の整数を受け付け、現在のカード値やUI選択肢に限定しない。小数は対象外。検索値の許容とDatabase上の有効なカード値の範囲は区別する。
+- **D44 / Q44 — 異なるコストParameter間のAND（訂正済み）**: D5・D6を維持する。`costItemSlots`（アイテムコスト）・`costSpellSlots`（スペルコスト）・`costOtherEntities`は異なるParameterとしてANDで結合し、同一Effectの同一コスト選択肢内で指定された正の条件すべてを満たす必要がある。「アイテム1個 または 火1個」に対してアイテム1個と火1個を両方指定した場合は非ヒット。同一Parameter内はCollection / Pair CollectionのOR・ModifierによるAND等に従う。コストnoneはD25に従い全選択肢で不存在を判定する。「スペル枠：火とアイテム枠の両方」も既存のParameter間ANDで表現できる。
+
+### Q44の訂正に伴う整理
+
+Q44の最初の回答はユーザーにより撤回された。Parameter間ORを前提としたL1〜L3およびQ45は取り消し、未決定事項から除外する。D5の原則AND・D6の同一Effect内での全条件充足・D17の3種類のnoneによる全種類コストなしの指定を維持する。Parameter間ANDを表現する新構文・将来Featureは、この論点には不要。
+
+### コストの対応表と原文解釈
+
+- **D46 / Q46 — コストMapping**: 下記のコストMapping Tableを採用する。同じ`multi`もParameterによって対応が異なる。パワーの表記は`▼`とし、別表記の受理は別途確認する。
+- **D47 / Q47 — コストのDomain Semanticsと解析方式の分離**: 検索対象は支払うコストとして記載された要素であり、単なる文字列の出現ではない。`手札1枚破棄(「錬金弾のカード」または戦闘スペルカード)`は`cis=bullet:1`に非ヒット。「何を検索するか」は本仕様に定義し、原文から構造をどう抽出・判定するかはRepositoryの実データ・Schemaを調査したうえで別途判断する。網羅性が未確認の解析ルールを推測で正式仕様にしない。
+- **D48 / Q48 — 数字表記の数量**: `hand / deck / trash`は`手札2枚`のような数字を数量として扱う。`coe=hand:2`に対して手札1枚は非ヒット、2枚・3枚はヒット。範囲指定・可変数量などの意味は別途確定する。
+
+#### 合意済みコストMapping Table
+
+| Parameter | URLキー | 支払うコストの表記 |
+|---|---|---|
+| `cis` | `multi` | `■` |
+| `cis` | `consume` | `□` |
+| `cis` | `bullet` | `弾` |
+| `css` | `fire` | `火` |
+| `css` | `water` | `水` |
+| `css` | `earth` | `土` |
+| `css` | `air` | `風` |
+| `css` | `holy` | `聖` |
+| `css` | `curse` | `魔` |
+| `css` | `multi` | `＊` |
+| `coe` | `hand` | `手札` |
+| `coe` | `deck` | `山札` |
+| `coe` | `trash` | `捨札` |
+| `coe` | `power` | `▼` |
+
+この表はDomain上の対応を定める。原文全体に対する単純な部分一致や、網羅的な構文解析規則を定義するものではない。
+
+### 範囲・任意コスト・公開前提
+
+- **D49 / Q49 — 数量範囲**: 許される数量の中に指定個数以上となる選択があれば一致する。`山札1～2枚破棄`は`coe=deck:2`に一致し、`deck:3`には一致しない。記号による数量範囲にも同じ考え方を適用する。
+- **D50 / Q50 — 任意のスペル枠**: 原文に特定属性が明示されているかだけでなく、指定された枠を実際に支払いへ使用できるかで判定する。`任意のスペル枠1～3つ消費`は、1枠以上支払えるため`css=fire:1`にも`css=multi:1`にも一致する。原文上のキーワード出現だけに限定する案は採用しない。複数Pairの同時支払い数量や代替可能性の詳細は別途確認する。
+- **D51 / Q51 — 語彙にないコストの存在**: `このユニット行動完了`もDomain上のその他コストとして扱う。`hand / deck / trash / power`で個別指定できないことは、コストがないことを意味しない。このコストがあるEffectは`coem=none`および全種類のコストなし条件には一致しない。ユーザーにとって「コストなし」は、行動完了等を含め何もコストが発生しないEffectを意味する。種類別noneの範囲はD17を維持する。
+
+### D52 / Q52 — コスト検索の公開前提と別設計
+
+本仕様はコスト検索のDomain Semanticsを定義する。原文の構造化方法、Schema変更、migration、解析方式、人間による確認方法は別設計とし、必要な構造化と検証が完了するまでコスト検索を公開対象としない。この責務分離はD1〜D3および既存002 / 009の実装範囲と整合する。
+
+解析できた部分だけで検索する方式や、解析不能なら非ヒットとするfallbackは正式採用しない。構造化方式が決まる前に検索時fallbackを推測で確定しない。未解析・未定義のコストを「コストなし」と同一視しない。
+
+現状はコストUI・URL送信・API受理が存在する一方、検索本体はコスト条件を評価していない。公開前提を満たすには、この露出・受理を制御する改訂が必要である。UIだけでなく既存URL・直接API指定を含む公開制御、公開対象データの構造化・人手確認要否・検証完了基準は別設計の未解決事項とする。URL仕様の語彙定義と検索機能の公開可否は分ける。現時点で公開制御の実装やURL語彙の削除は行っていない。
+
+### D53 / Q53 — 任意枠の同時支払いと重複計上の禁止
+
+ANDでは指定した各Pairを同時に満たせる支払い方が必要であり、同じ枠を複数Pairへ重複して数えない。これは構造化後のDomain Semanticsであり、原文解析方式を決定するものではない。
+
+`任意のスペル枠1～3つ消費`に対して、`css=fire:2,water:1&cssm=and`は計3枠で支払えるため一致、`css=fire:2,water:2&cssm=and`は計4枠必要なため非ヒット、`css=fire:2,water:2&cssm=or`はいずれか2枠で支払えるため一致する。
+
+### 所持枠と耐性
+
+- **D54 / Q54 — 所持枠Mapping**: `is / ais`では`multi → ItemMulti`、`consume → ItemConsume`、`bullet → ItemBullet`。`ss / ass`では`fire → SpellFire`、`water → SpellWater`、`earth → SpellEarth`、`air → SpellAir`、`holy → SpellHoly`、`curse → SpellCurse`、`multi → SpellMulti`。種類は`feature_ability_slots.ability_slot_type_code`、数量は`slot_count`で判定する。通常／追加の抽出範囲は既決の分類・stat規則に従う。
+- **D55 / Q55 — 所持枠の種類照合**: 所持枠は指定種類そのものを照合する。`ss=fire:1`は火枠に一致し、`＊`枠しかないカードには一致しない。コストの支払い可能性とは区別し、通常・追加のアイテム枠／スペル枠に共通適用する。
+- **D56 / Q56 — affinity IDによる照合**: `re / are`はD14・D26に従う短縮UUIDと`affinity_id`の後方一致で判定する。生成側の一意性前提により対象affinityが決まり、categoryもそのレコードの属性として決まるため、検索時に`affinity_category_code = Resistance`を追加しない。mockとSchema CHECKの分類軸の不整合は検索Semanticsと切り離して記録する。どちらの分類軸を正式採用するかは今回の回答では決定していない。
+- **D57 / Q57 — affinity_valueの除外**: `re / are`は指定IDの照合のみを検索条件とし、`affinity_value`を条件に含めない。同一IDなら軽減量等が異なっても種類の条件に一致する。
+
+### 残るMappingと入力の境界
+
+- **D58 / Q58 — Natural Key Mapping**: 以下の対応を採用する。`cc`の`unit / spell / land / ritual / summoner / token`は`Unit / Spell / Land / Ritual / Summoner / Token`、`item-consume / item-equip / item-bullet`は`Item`かつアイテム分類`Consume / Equip / Bullet`。`el`の`fire / water / earth / air / holy / curse`は`Fire / Water / Earth / Air / Holy / Curse`。`rt`の`circle / triangle / rhombus / star / club / spade / heart / crescent / hexagram`は`Basic / Common / Uncommon / Rare / SuperRare / Special / Promotion / DragonJr / Summoner`。`lc`は`none → None`、`ritual → Ritual`、`all`は絞り込みなし。`mt / bl / eft / eac`は既存選択肢のcodeを対応Database列にそのまま照合する。
+- **D59 / Q59 — eatの対象**: `eat`は`effects.effect_activation_type_id`を検索対象とする。`effect_activation_timing_id`は検索対象に含めない。
+- **D60 / Q60 — 対応IDのない短縮UUID**: 有効な形式の短縮UUIDでも対応するDatabase IDがなければ、その値は非ヒットとする。条件を削除して検索を広げない。同じCollectionの他のIDは通常のOR規則に従う。未知Parameter名や構文不正とは区別する。
+- **D61 / Q61 — Pairなしのor / and**: Pairを伴わない`or / and`は条件未指定とし、絞り込まず、URL再構築時にも省略する。単独で意味を持つ`none`は保持する。
+
+### 入力形式とコスト検索範囲
+
+- **D62 / Q62 — 未対応Natural Key**: MappingにないNatural Keyは未対応値としてParserで除外する。`el=fire,unknown`は`fire`のみ残し、`cc=unknown`は分類条件を除外する。D60の有効形式の短縮UUIDと対応ID不存在の扱いとは区別する。
+- **D63 / Q63 — 短縮UUIDの形式**: 有効形式は16進数字であること、大小文字を区別しないこと、所定の文字列長を満たすことを要件とする。空でない任意長の16進数字列を無条件に受理する案は採用しない。具体的な長さ、固定長か最低長かは未決定。最大6000件程度を想定し3〜5文字等も候補として生成側が衝突しない長さを別途決定する。D26の責務分離は維持し、長さ要件自体を省略しない。
+- **D64 / Q64 — 根拠のない代替払い一般化を採用しない**: cards.jsonのコスト・効果本文、rules.ts、docs、型定義を調査したが、「火を＊で支払える」「□を■で支払える」等の一般規則を確定する資料は見つからなかった。`このユニットの■または＊消費`等は個別Effectの明示的選択肢であり一般代替規則の根拠にはしない。ユーザーの指示に従い、D50・D53の任意スペル枠と、原文に明示された選択肢の範囲を維持し、仮想的な代替支払いルールを追加しない。
+
+## 対話の現在位置
+
+Q64までの回答・調査結果と保留範囲についてユーザーがshared understandingを確認した。合意事項は`query_data_specification.md`へ統合済み。途中のSKILL導入への移行は誤認として撤回されており、新たなSkillは導入していない。
+
+## 設計ツリー
+
+### 現在のfrontier（Q64調査後）
+
+- Q62はD62で確定。Q63の文字種・大小文字・所定長を必要とする要件はD63で確定。長さの具体値と方式は未決定として保持する。
+- Q64はRepository内で一般化の根拠が確認できなかったため、ユーザー指示に従いD64として対象範囲を確定した。
+- 別途決定すると合意した事項を除き、新たなDomain判断を要するfrontierはなく、shared understandingのユーザー確認は完了した。短縮UUIDの具体的長さ・方式は未決定のままであり、任意長受理として仕様の穴を埋めない。
+
+文字正規化・対応表は正式仕様へ統合した。initiative Aliasは別途URL改訂、コスト構造化・公開制御はD52の別設計として扱う。これらを同じHuman Decisionとして再質問しない。
+
+### 全体の状態
+
+- 仕様の責務・Schema変更の扱い・URL仕様との境界：合意済み（D1〜D3）
+- 検索対象の単位：合意済み（D4）
+- データの意味
+  - 通常能力と追加能力の意味・分類による抽出方針：合意済み（D7）
+  - カード分類ごとの適用方針・Tokenは実データで判定：合意済み（D27）
+  - 全13数値項目のNULL・0・比較演算、適用対象の能力行なし：合意済み（D33〜D37）
+  - 未抽出Effectの除外・コスト参照NULLはコストなし：合意済み（D31〜D32）
+- 条件の結合と一致判定
+  - Parameter間AND・通常Collection内OR：合意済み（D5）。コストParameter間もAND・同一選択肢内充足（D44）
+  - Pair CollectionのOR / AND・数量下限・noneの不存在検索：合意済み（D10〜D13）
+  - コストnoneの対象種類・Effect不存在・Pair併記時の正規化：合意済み（D17〜D19）
+  - 能力枠の行なし・数量0はnoneに一致：合意済み（D41）。コストnoneのParameter間結合もAND（D17・D44）
+  - 同一Effect内での一致：合意済み（D6）
+  - 即時召喚・英雄Modifierと数値条件の関係：合意済み（D8）
+  - イニシアチブ・チャージ・ディフェンダーの列値に対する比較とModifier：合意済み（D35〜D36）
+  - イニシアチブModifierのURL等への追加：改訂候補として調査・記録。Aliasは未決定
+  - ModifierとComparisonのAND、能力複数行時の非合算・カード単位判定：合意済み（D38〜D40）
+  - 同種枠の複数行は合算せず各行数量で扱う：合意済み（D30）
+- 文字列・識別子：リテラル部分一致・専用kw列・Natural Key完全一致・短縮UUID後方一致・Mapping Table方針は合意済み（D14〜D15、D20）
+  - 自由記述の限定的な文字正規化・照合時のみ適用・catalog欠損時非ヒット：合意済み（D22〜D24）。厳密な文字対応範囲は記載待ち
+  - UUID短縮長決定・生成・衝突チェック：Parameter作成側の責務。Parameterごとの名前空間、検索側の後方一致は合意済み（D26）
+- コスト：連続キーワードN個以上・同じ選択肢内のAND・具体的Mapping・手札等の数字表記は合意済み（D9〜D11、D16、D44、D46〜D48）
+  - 支払うコストのみを検索し、条件・説明中の語はコストとしない：合意済み（D47）
+  - 数量範囲・任意スペル枠の支払い可能性・語彙にないコストの存在・同時支払いと重複計上禁止：合意済み（D49〜D51・D53）。一般代替規則の根拠は確認できず、任意枠と明示された選択肢に留める（D64）
+  - 原文構造化・Schema / migration・解析・人手確認：別設計。必要な構造化・検証完了までコスト検索は公開対象外。部分解析検索・解析不能時非ヒットのfallbackは採用しない（D47・D52）
+- 全Parameterの対応確認・例：正式仕様へ統合済み。合意したDomain Semanticsを正式仕様とし、未決定事項・別設計の範囲を明示
+  - 所持枠のMapping・種類照合、re / areのIDのみ照合：合意済み（D54〜D57）
+  - Natural Key Mapping・eatの対象・対応IDなしは非ヒット・Pairなしor / andは未指定：合意済み（D58〜D61）
+
+## 合意済みの数値比較・所持条件一覧
+
+すべての行で、0は通常の実数値、NULLは「なし」。NULLは`eq / lte / gte`のいずれにも一致しない。非NULL値`x`と検索値`n`について、それぞれ`x = n`、`x <= n`、`x >= n`を評価する。能力行の不存在・複数行・Modifier併用はD37〜D40に従う。
+
+| 数値Parameter | 対象 | 所持・属性Modifier | include | exclude | all |
+|---|---|---|---|---|---|
+| `lv` | レベル | `lvm` | 即時召喚可能 | 即時召喚不可 | 即時召喚で絞り込まない |
+| `he` | 英雄点 | `hem` | 英雄 | 非英雄 | 英雄かどうかで絞り込まない |
+| `at` | 攻撃力 | なし | — | — | — |
+| `df` | 防御力 | なし | — | — | — |
+| `it` | イニシアチブ | 追加予定・Alias未決定 | 非NULL（0含む） | NULL | 有無で絞り込まない |
+| `ch` | チャージ | `chm` | 非NULL（0含む） | NULL | 有無で絞り込まない |
+| `de` | ディフェンダー | `dem` | 非NULL（0含む） | NULL | 有無で絞り込まない |
+| `aat` | 追加攻撃力 | なし | — | — | — |
+| `adf` | 追加防御力 | なし | — | — | — |
+| `ait` | 追加イニシアチブ | 追加予定・Alias未決定 | 非NULL（0含む） | NULL | 有無で絞り込まない |
+| `ach` | 追加チャージ | `achm` | 非NULL（0含む） | NULL | 有無で絞り込まない |
+| `ade` | 追加ディフェンダー | `adem` | 非NULL（0含む） | NULL | 有無で絞り込まない |
+| `lm` | リミット | なし | — | — | — |
+
+`lvm / hem`はboolean属性を指定するModifierであり、対応数値のNULL判定による所持Modifierではない。
+
+## 既存成果物との差分・改訂候補
+
+- **affinity分類軸の不整合**: mockでは`affinity_category_code = Resistance`、`affinity_modifier_type_code = DamageDecrease`だが、Schema CHECKは`Resistance / Weakness`をmodifier側、`DamageIncrease / DamageDecrease / DamageBlock`をcategory側で参照している。どちらを修正するかはデータモデルの別途確認事項。D56のID照合にcategoryフィルタを追加する根拠とはしない。
+
+- **D47のコスト原文調査**: [コスト原文の表記調査](query_cost_notation_research.md)に非空305件・90種類の観測パターン、曖昧な事例、Schemaの状態と網羅性の限界を記録した。解析方式は未確定のまま維持する。
+
+- **D35〜D36の改訂候補**: [イニシアチブModifier・数値／所持条件の影響一覧](query_data_specification_revision_candidates.md)に、URL仕様、Query Object、Builder / Parser、UI、検索、データ型、テスト、下位仕様への影響を記録した。Aliasは未決定。mockの0をNULLに自動変換しない。
+
+- **数値検索の調査結果**: Comparison対象は`lv / he / at / df / it / ch / de / aat / adf / ait / ach / ade / lm`の13項目。`stat_unit.level / attack / defense`はNOT NULL、その他の対象数値列はNULL可。今回のmockには親stat / abilityが存在する数値列のNULL実例はなく、NULLの意味はmockから決定しない。Token「スペクター」はレベル0、「時の扉」はunit自体が存在しない。イニシアチブの負数は通常・追加の両方に実例がある。非英雄256件の英雄点は全件0、英雄79件は全件1。これらの観測値を値域の上限・下限とはみなさない。
+- **D28に伴うSchema確認事項**: 攻撃力・防御力の未記載を数値NULLとして保存する必要がある場合、`stat_unit.attack / defense`のNOT NULL制約と整合させる必要がある。検索意味論とSchemaの保存制約を区別して検討する。
+
+- **D8に伴う下位仕様の見直し**: `specs/002-query-builder` の既存契約・data-modelには、有効な比較条件なしではModifierを扱わない旨の規定がある。合意した `lvm` / `hem` 単独有効と相違するため、正式化時にBuilder / Parserの契約・実装の改訂対象として確認する。D8を撤回する根拠とはしない。採用済みURL仕様本体の改訂要否は別途確認する。
+
+- **D13に伴う下位仕様の見直し**: 空のPair Collectionではmatch Modifierを扱わない既存契約を、`none`のModifier単独利用に対応させる必要がある。Pair併記時のCanonical Ruleは別途確認する。
+- **D14に伴う表記の見直し**: 対応表の`uuidv7`はDatabase側の識別子とURL側の短縮値を区別して記載する必要がある。
+- **正式URL仕様の確認結果**: Modifier単独および短縮UUIDを禁止する規定は見つからない。Modifierのbase必須条件は下位契約・現実装の制約であり、正式URL仕様本文の要求ではない。D19の正規化を正式URL仕様に明記するかは正式化時に確認する。
+- **catalogのデータ前提**: `card_search_catalog`の生成処理・実レコードはRepository内で確認できていない。mockの`search_support.full_text`は全482件NULLで、`archetype_text`も存在しない。D21の`kw`・`att`評価では実データに基づく確認の限界を明記する。
+
+## D21追加評価：NFKCと日本語検索
+
+調査対象は`app/utils/mockData/items/cards.json`の482カード。Databaseの実レコードに対する測定ではない。
+
+| Parameter | 評価対象 | NFKCで変化する値 | 観測 |
+|---|---|---|---|
+| `nm` | カード名482件（原文453種類） | 1件 | 「リブ＆ラブ」→「リブ&ラブ」 |
+| `rl` | 整理番号482件（482種類） | 0件 | 現データでは変化なし |
+| `etx` | 効果テキスト605件（原文403種類） | 385件（295種類） | 全角記号の変換に加え、丸数字①〜④が通常の数字へ変換される例あり |
+| `kw` / `att` | catalogの対象列 | 評価不能 | catalogの実データがRepositoryにない |
+
+英字の大小文字を区別しない部分一致にNFKCを追加したとき、`etx`の「攻撃力:+2」は0→25カード、「スペル:*」は0→16カードとなる。一方「①」は1→198カードとなり、番号付き選択肢を探す検索が通常の数字1にも一致する。全文同士の正規化後の衝突がなくても、部分一致の検索結果はこのように広がる。
+
+`nm` / `rl` / `etx`には半角カナおよびUnicodeローマ数字は観測されなかった。半角カナ入力への利便性は期待できるが、利用頻度はこのデータからは判断できない。NFKC一般の変換特性は[Unicode UAX #15](https://www.unicode.org/reports/tr15/)を参照。
+
+**評価後の決定（D22）**: 全半角の英数字・記号・カナと全角空白などに変換対象を限定し、丸数字・ローマ数字の区別を残す。`kw` / `att`にも同じ方針を採用するが、生成データの実測評価は今回できていない。
+
+## 対応表の移行
+
+整備前の対応表は、誤記の修正・数量列の補足・合意した検索規則を含めて[正式仕様の対応表](query_data_specification.md#3-parameterとdatabaseの対応)へ統合した。

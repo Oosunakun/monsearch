@@ -166,7 +166,7 @@ The following value formats are defined.
 | Collection | `key=v1,v2,v3` | `el=fire,water` |
 | Comparison | `key=operator:value` | `lv=eq:5` |
 | Pair Collection | `key=k1:v1,k2:v2` | `ss=fire:2,water:1` |
-| Modifier | `keySuffix=value` | `lvf=include`, `ssm=and` |
+| Modifier | `keySuffix=value` | `lvm=include`, `ssm=and` |
 
 ---
 
@@ -200,7 +200,7 @@ Examples:
 
 ```text
 lv=eq:5
-lvf=include
+lvm=include
 
 ss=fire:2,water:1
 ssm=and
@@ -224,7 +224,7 @@ instead of
 
 ```text
 lv=eq:5
-lvf=all
+lvm=all
 ```
 
 The absence of a modifier parameter represents the default behavior.
