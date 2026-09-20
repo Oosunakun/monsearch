@@ -1,8 +1,10 @@
 # Phase 0 Research: Card Search Query Builder
 
+> **整合注記**: 数値 Modifier の旧設計（比較がある場合のみ Modifier を出力）は Feature 010 と Query Specification 1.1.0 により superseded される。
+
 ## Canonical transport representation
 
-- **Decision**: Emit a Vue Router-compatible logical query object whose keys, formats, ordering, modifiers, and omission rules follow `docs/architecture/query_specification.md` version 1.0.0. Do not add a version parameter.
+- **Decision**: Emit a Vue Router-compatible logical query object whose keys, formats, ordering, modifiers, and omission rules follow `docs/architecture/query_specification.md` version 1.1.0. Do not add a version parameter.
 - **Rationale**: The approved repository-internal Query Specification is authoritative and explicitly assigns stable aliases such as `nm`, `cc`, and `lv`. Vue Router owns UTF-8 percent encoding when constructing the location.
 - **Alternatives considered**: A single JSON payload and raw form-state transport were rejected because they conflict with the approved compact, human-readable parameter contract. A `v=1` parameter was rejected because version 1 explicitly omits version information from the URL.
 
@@ -26,8 +28,8 @@
 
 ## Optional and compound conditions
 
-- **Decision**: Keep finite numeric values including zero. Emit comparison and pair-collection values only when complete. Emit filter/match modifiers only beside a valid base condition and only when non-default. Omit blank text, empty collections, invalid pair entries, and default `landCategory: all`.
-- **Rationale**: Explicit presence checks preserve meaningful false-like values, while atomic compound handling prevents operators or modifiers from becoming misleading standalone filters.
+- **Decision**: Keep finite numeric values including zero. Emit comparison and pair-collection values only when complete. Omit default `all` modifiers. Existing numeric `include` / `exclude` modifiers may be standalone; `exclude` suppresses its Comparison in canonical output while Parser may retain it for UI restoration. Level remains an exception.
+- **Rationale**: Explicit presence checks preserve meaningful false-like values, while the established Modifier semantics distinguish standalone existence filters from Comparison values.
 - **Alternatives considered**: Truthiness checks were rejected because they lose zero. Partial compounds and unconditional default modifiers were rejected because they violate specification omission rules.
 
 ## Category applicability

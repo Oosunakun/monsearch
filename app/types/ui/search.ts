@@ -61,7 +61,7 @@ export type SearchForm = {
   races: Race[]
   abilityItemSlots: SlotCondition
   abilitySpellSlots: SlotCondition
-  initiative: NumericCondition
+  initiative: FilteredNumericCondition
   charge: FilteredNumericCondition
   defender: FilteredNumericCondition
   resistances: Resistance[]
@@ -73,7 +73,7 @@ export type SearchForm = {
   additionalDefense: NumericCondition
   additionalAbilityItemSlots: SlotCondition
   additionalAbilitySpellSlots: SlotCondition
-  additionalInitiative: NumericCondition
+  additionalInitiative: FilteredNumericCondition
   additionalCharge: FilteredNumericCondition
   additionalDefender: FilteredNumericCondition
   additionalResistances: Resistance[]
@@ -106,9 +106,9 @@ export type SearchForm = {
 export type LogicalCardSearchQuery = Partial<Record<
   | 'nm' | 'cc' | 'el' | 'ct' | 'kw' | 'att' | 'pd' | 'fa' | 'bl'
   | 'lvm' | 'lv' | 'hem' | 'he' | 'at' | 'df' | 'mt' | 'ra'
-  | 'ism' | 'is' | 'ssm' | 'ss' | 'it' | 'chm' | 'ch' | 'dem'
+  | 'ism' | 'is' | 'ssm' | 'ss' | 'itm' | 'it' | 'chm' | 'ch' | 'dem'
   | 'de' | 're' | 'aat' | 'adf' | 'aism' | 'ais' | 'assm'
-  | 'ass' | 'ait' | 'achm' | 'ach' | 'adem' | 'ade' | 'are'
+  | 'ass' | 'aitm' | 'ait' | 'achm' | 'ach' | 'adem' | 'ade' | 'are'
   | 'lm' | 'lc' | 'cism' | 'cis' | 'cssm' | 'css' | 'coem'
   | 'coe' | 'eft' | 'eat' | 'eac' | 'etx' | 'rt' | 'il' | 'rl',
   string

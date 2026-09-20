@@ -1,5 +1,7 @@
 # Contract: 検索条件編集 UI と route 遷移
 
+> **整合注記**: 数値 Modifier の扱いは Feature 010 と Query Specification 1.1.0 を優先する。
+
 ## Authority
 
 - query alias、value format、duplicate、default、canonicalization の規則は `docs/architecture/query_specification.md` と feature 002 の [card search query contract](../../002-query-builder/contracts/card-search-query.md) に従う。
@@ -34,7 +36,7 @@
 
 1. 未知 alias は無視する。
 2. 認識済み alias の不正値はその field の既定値として扱う。
-3. 不完全な modifier/base の組は standalone condition に変換しない。
+3. 存在性対象の Modifier は base Comparison なしでも standalone condition として復元する。exclude と Comparison が併記されても Parser は Comparison を保持し、Builder が canonical URL で除外する。
 4. 一つの不正値を理由に navigation、page rendering、他 field の復元を失敗させない。
 5. query に認識できる条件がなくても既定 form を操作・submit できる。
 

@@ -23,7 +23,33 @@ describe('buildCardSearchQuery', () => {
     form.name = '  '; form.attack.value = Number.NaN; form.defense.value = 0
     form.level.filterType = 'include'; form.abilityItemSlots.match = 'and'
     form.costItemSlots.slots = { blank: 0, negative: -1, invalid: Number.POSITIVE_INFINITY }
-    expect(buildCardSearchQuery(form)).toEqual({ df: 'gte:0' })
+    expect(buildCardSearchQuery(form)).toEqual({ lvm: 'include', df: 'gte:0' })
+  })
+
+  it.each([
+    ['include without comparison', { filterType: 'include', operator: 'gte', value: null }, { itm: 'include' }],
+    ['exclude without comparison', { filterType: 'exclude', operator: 'gte', value: null }, { itm: 'exclude' }],
+    ['include with zero', { filterType: 'include', operator: 'eq', value: 0 }, { itm: 'include', it: 'eq:0' }],
+    ['exclude suppresses comparison', { filterType: 'exclude', operator: 'gte', value: 2 }, { itm: 'exclude' }],
+  ] as const)('%s', (_name, condition, expected) => {
+    const form = createFreshSearchForm()
+    form.initiative = condition
+    expect(buildCardSearchQuery(form)).toEqual(expected)
+  })
+
+  it('keeps level comparison when instant summon filter is exclude', () => {
+    const form = createFreshSearchForm()
+    form.level = { filterType: 'exclude', operator: 'gte', value: 2 }
+    expect(buildCardSearchQuery(form)).toEqual({
+      lvm: 'exclude',
+      lv: 'gte:2',
+    })
+  })
+
+  it('serializes additional initiative with its dedicated modifier alias', () => {
+    const form = createFreshSearchForm()
+    form.additionalInitiative = { filterType: 'include', operator: 'gte', value: 0 }
+    expect(buildCardSearchQuery(form)).toEqual({ aitm: 'include', ait: 'gte:0' })
   })
 
   it.each([

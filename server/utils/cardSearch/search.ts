@@ -1,8 +1,8 @@
 import type { SearchForm, NumericCondition, FilteredNumericCondition, SlotCondition } from '~~/app/types/ui/search'
 import type { Card, Ability, Effect } from '~~/types/cards/finderCards'
 
-const compare = (actual: number, condition: NumericCondition) => condition.value === null
-  || (condition.operator === 'gte' ? actual >= condition.value : condition.operator === 'lte' ? actual <= condition.value : actual === condition.value)
+const compare = (actual: number | null | undefined, condition: NumericCondition) => actual !== null && actual !== undefined && (condition.value === null
+  || (condition.operator === 'gte' ? actual >= condition.value : condition.operator === 'lte' ? actual <= condition.value : actual === condition.value))
 const includesAny = (wanted: readonly string[], actual: readonly string[]) => {
   const normalized = actual.map(value => value.toLocaleLowerCase())
   return !wanted.length || wanted.some(value => {
@@ -10,8 +10,11 @@ const includesAny = (wanted: readonly string[], actual: readonly string[]) => {
     return normalized.some(candidate => candidate === expected || candidate.endsWith(expected))
   })
 }
-const filtered = (actual: number, condition: FilteredNumericCondition) => condition.value === null
-  || (condition.filterType === 'include' ? compare(actual, condition) : condition.filterType === 'exclude' ? !compare(actual, condition) : compare(actual, condition))
+const isFilteredActive = (condition: FilteredNumericCondition) => condition.filterType !== 'all' || condition.value !== null
+const matchesFiltered = (actual: number | null | undefined, condition: FilteredNumericCondition) => {
+  if (condition.filterType === 'exclude') return actual === null || actual === undefined
+  return actual !== null && actual !== undefined && (condition.value === null || compare(actual, condition))
+}
 const slotsMatch = (ability: Ability | null | undefined, condition: SlotCondition, category: string) => {
   const entries = Object.entries(condition.slots)
   if (!entries.length) return true
@@ -37,25 +40,25 @@ export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => 
   if (!includesAny(criteria.rarities, [card.rarity_code]) || !includesAny(criteria.illustrators, [card.illustrator_id])) return false
 
   const unit = card.unit
-  if (criteria.level.value !== null && (!unit || !filtered(unit.level, criteria.level))) return false
-  if (criteria.heroPoint.value !== null && (!unit || !filtered(unit.hero_point, criteria.heroPoint))) return false
+  if (isFilteredActive(criteria.level) && (!unit || (criteria.level.filterType === 'include' && !unit.is_instant_summon) || (criteria.level.filterType === 'exclude' && unit.is_instant_summon) || !compare(unit.level, criteria.level))) return false
+  if (isFilteredActive(criteria.heroPoint) && (!unit || (criteria.heroPoint.filterType === 'include' && !unit.is_hero) || (criteria.heroPoint.filterType === 'exclude' && unit.is_hero) || (criteria.heroPoint.filterType !== 'exclude' && criteria.heroPoint.value !== null && !compare(unit.hero_point, criteria.heroPoint)))) return false
   if (criteria.attack.value !== null && (!unit || !compare(unit.attack, criteria.attack))) return false
   if (criteria.defense.value !== null && (!unit || !compare(unit.defense, criteria.defense))) return false
   if (!includesAny(criteria.moveTypes, unit ? [unit.move_type_code.toLowerCase()] : [])) return false
   if (!includesAny(criteria.races, (unit?.races ?? []).flatMap(x => [x.race_id, x.race_name]).map(x => x.toLowerCase()))) return false
   if (!slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item') || !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell')) return false
-  if (criteria.initiative.value !== null && (!unit?.ability || !compare(unit.ability.initiative, criteria.initiative))) return false
-  if (criteria.charge.value !== null && (!unit?.ability || !filtered(unit.ability.charge, criteria.charge))) return false
-  if (criteria.defender.value !== null && (!unit?.ability || !filtered(unit.ability.defender, criteria.defender))) return false
+  if (isFilteredActive(criteria.initiative) && (!matchesFiltered(unit?.ability?.initiative, criteria.initiative))) return false
+  if (isFilteredActive(criteria.charge) && (!matchesFiltered(unit?.ability?.charge, criteria.charge))) return false
+  if (isFilteredActive(criteria.defender) && (!matchesFiltered(unit?.ability?.defender, criteria.defender))) return false
   if (!resistancesMatch(unit?.ability, criteria.resistances)) return false
 
   const equip = card.item?.equip
   if (criteria.additionalAttack.value !== null && (!equip || !compare(equip.attack, criteria.additionalAttack))) return false
   if (criteria.additionalDefense.value !== null && (!equip || !compare(equip.defense, criteria.additionalDefense))) return false
   if (!slotsMatch(equip?.ability, criteria.additionalAbilityItemSlots, 'Item') || !slotsMatch(equip?.ability, criteria.additionalAbilitySpellSlots, 'Spell')) return false
-  if (criteria.additionalInitiative.value !== null && (!equip?.ability || !compare(equip.ability.initiative, criteria.additionalInitiative))) return false
-  if (criteria.additionalCharge.value !== null && (!equip?.ability || !filtered(equip.ability.charge, criteria.additionalCharge))) return false
-  if (criteria.additionalDefender.value !== null && (!equip?.ability || !filtered(equip.ability.defender, criteria.additionalDefender))) return false
+  if (isFilteredActive(criteria.additionalInitiative) && (!matchesFiltered(equip?.ability?.initiative, criteria.additionalInitiative))) return false
+  if (isFilteredActive(criteria.additionalCharge) && (!matchesFiltered(equip?.ability?.charge, criteria.additionalCharge))) return false
+  if (isFilteredActive(criteria.additionalDefender) && (!matchesFiltered(equip?.ability?.defender, criteria.additionalDefender))) return false
   if (!resistancesMatch(equip?.ability, criteria.additionalResistances)) return false
   if (criteria.limit.value !== null && (!card.land || !compare(card.land.land_limit, criteria.limit))) return false
   if (criteria.landCategory && criteria.landCategory !== 'all' && ![card.land?.land_category_code.toLowerCase(), card.land?.land_category_name.toLowerCase()].includes(criteria.landCategory)) return false

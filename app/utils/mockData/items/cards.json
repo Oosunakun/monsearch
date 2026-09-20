@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-08-02T14:56:33Z",
+  "generated_at": "2026-09-20T01:32:46Z",
   "cards": [
     {
       "card_id": "019d81a4-497a-768d-aaa6-24b742cbd519",
@@ -660,9 +660,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -770,8 +770,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -883,8 +883,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -987,9 +987,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -1101,8 +1101,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -1213,9 +1213,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": [
             {
@@ -1336,9 +1336,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -1449,9 +1449,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -1570,8 +1570,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -1695,8 +1695,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -1842,8 +1842,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -1946,9 +1946,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -2045,9 +2045,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -2193,8 +2193,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -2308,9 +2308,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -2424,9 +2424,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -2572,8 +2572,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -2696,9 +2696,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -2805,9 +2805,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -2918,9 +2918,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -3051,9 +3051,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -3156,9 +3156,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -3269,9 +3269,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -3394,9 +3394,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -3507,9 +3507,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -3612,9 +3612,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -3719,7 +3719,7 @@
         "ability": {
           "initiative": -2,
           "charge": 4,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -3857,9 +3857,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -3973,8 +3973,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 12,
           "ability_slots": [
             {
@@ -4120,8 +4120,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 10,
           "ability_slots": [
             {
@@ -4226,9 +4226,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -4373,9 +4373,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -4501,8 +4501,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -4647,9 +4647,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -4787,9 +4787,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -4896,9 +4896,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -5009,9 +5009,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -5114,9 +5114,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -5227,9 +5227,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -5340,8 +5340,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -5454,8 +5454,8 @@
         ],
         "ability": {
           "initiative": -1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -5593,9 +5593,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -5740,8 +5740,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 10,
           "ability_slots": [
             {
@@ -5888,7 +5888,7 @@
         ],
         "ability": {
           "initiative": -1,
-          "charge": 0,
+          "charge": null,
           "defender": 8,
           "ability_slots": [
             {
@@ -5986,9 +5986,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -6091,9 +6091,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -6214,8 +6214,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 12,
           "ability_slots": [
             {
@@ -6330,8 +6330,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 12,
           "ability_slots": [
             {
@@ -6474,8 +6474,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -6600,9 +6600,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -6740,8 +6740,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 16,
           "ability_slots": [
             {
@@ -6861,8 +6861,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -6961,9 +6961,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -7075,8 +7075,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -7188,8 +7188,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -7319,8 +7319,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -7449,9 +7449,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -7575,8 +7575,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": [
             {
@@ -7677,8 +7677,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -7790,8 +7790,8 @@
         ],
         "ability": {
           "initiative": 3,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": [
             {
@@ -7912,9 +7912,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -8033,8 +8033,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -8132,8 +8132,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -8292,9 +8292,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -8416,8 +8416,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -8514,9 +8514,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -8635,8 +8635,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -8775,8 +8775,8 @@
         ],
         "ability": {
           "initiative": 3,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -8895,9 +8895,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -9008,9 +9008,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -9096,9 +9096,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -9201,9 +9201,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -9314,9 +9314,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -9428,8 +9428,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -9540,9 +9540,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -9661,9 +9661,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -9754,8 +9754,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -9866,9 +9866,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -9979,7 +9979,7 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
           "defender": 6,
           "ability_slots": [
@@ -10078,9 +10078,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -10198,9 +10198,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -10343,9 +10343,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -10491,9 +10491,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -10659,9 +10659,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -10787,8 +10787,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -10913,9 +10913,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11026,9 +11026,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11140,8 +11140,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -11244,9 +11244,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11358,8 +11358,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11470,9 +11470,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11583,9 +11583,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11697,8 +11697,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11810,8 +11810,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -11929,9 +11929,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -12057,8 +12057,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -12224,9 +12224,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -12351,9 +12351,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -12478,9 +12478,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -12626,8 +12626,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -12752,9 +12752,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -12892,9 +12892,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -17777,9 +17777,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -17891,8 +17891,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -18003,9 +18003,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -18117,8 +18117,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -18236,8 +18236,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -18372,9 +18372,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -18481,8 +18481,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -18619,8 +18619,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -18760,8 +18760,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -18887,8 +18887,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19013,9 +19013,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19156,9 +19156,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19283,9 +19283,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19411,8 +19411,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19537,9 +19537,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19664,9 +19664,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19800,9 +19800,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -19937,7 +19937,7 @@
         ],
         "ability": {
           "initiative": -2,
-          "charge": 0,
+          "charge": null,
           "defender": 16,
           "ability_slots": [
             {
@@ -20049,9 +20049,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -20218,8 +20218,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -20337,9 +20337,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -20450,9 +20450,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -20583,9 +20583,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -20696,9 +20696,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -20827,9 +20827,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -20940,9 +20940,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -21053,9 +21053,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -21184,9 +21184,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -21323,8 +21323,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -21439,9 +21439,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -21560,8 +21560,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -21680,8 +21680,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -21806,9 +21806,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 4,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -21926,9 +21926,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -22074,8 +22074,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -22218,9 +22218,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -22365,9 +22365,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -22492,9 +22492,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -22630,9 +22630,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -22757,8 +22757,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 12,
           "ability_slots": [
             {
@@ -22904,9 +22904,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -23018,8 +23018,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -23126,9 +23126,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -23239,9 +23239,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 2,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -23348,9 +23348,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -23461,9 +23461,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -23574,9 +23574,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -23683,8 +23683,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -23812,9 +23812,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -23945,9 +23945,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -24058,9 +24058,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -24198,9 +24198,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -24311,9 +24311,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -24449,9 +24449,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -24565,9 +24565,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -24698,9 +24698,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -24821,9 +24821,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -24942,8 +24942,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -25086,9 +25086,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -25213,9 +25213,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -25340,9 +25340,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemBullet",
@@ -25474,8 +25474,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -25586,9 +25586,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 2,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -25692,8 +25692,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -25804,9 +25804,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -25917,9 +25917,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -26049,8 +26049,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -26169,8 +26169,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -26289,8 +26289,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -26422,8 +26422,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -26542,8 +26542,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -26682,8 +26682,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -26809,8 +26809,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -26936,8 +26936,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -27062,9 +27062,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -27189,9 +27189,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -27334,9 +27334,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -27477,9 +27477,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -27605,8 +27605,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -27732,8 +27732,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -27832,9 +27832,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -27961,9 +27961,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -28074,9 +28074,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -28187,9 +28187,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -28327,8 +28327,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -28467,9 +28467,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -28580,9 +28580,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -28707,8 +28707,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 10,
           "ability_slots": [
             {
@@ -28854,9 +28854,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -29003,7 +29003,7 @@
         "ability": {
           "initiative": 1,
           "charge": 4,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -29148,9 +29148,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -29275,9 +29275,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -29398,9 +29398,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -29542,8 +29542,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemMulti",
@@ -29677,9 +29677,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemMulti",
@@ -29817,8 +29817,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 12,
           "ability_slots": [
             {
@@ -29933,9 +29933,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemMulti",
@@ -30073,9 +30073,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -30193,9 +30193,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -30334,8 +30334,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -30454,8 +30454,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -30566,9 +30566,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -30675,9 +30675,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "ItemConsume",
@@ -30788,9 +30788,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -30921,8 +30921,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -31034,9 +31034,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -31172,9 +31172,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -31312,8 +31312,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -31448,9 +31448,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -31557,9 +31557,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -31677,9 +31677,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -31817,9 +31817,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -31944,9 +31944,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -32071,8 +32071,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 6,
           "ability_slots": [
             {
@@ -32199,8 +32199,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -32325,9 +32325,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -32472,9 +32472,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -32615,9 +32615,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -32751,9 +32751,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -32892,8 +32892,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -33956,8 +33956,8 @@
           "defense": 1,
           "ability": {
             "initiative": 1,
-            "charge": 0,
-            "defender": 0,
+            "charge": null,
+            "defender": null,
             "ability_slots": [],
             "affinities": []
           }
@@ -34053,9 +34053,9 @@
           "attack": 0,
           "defense": 2,
           "ability": {
-            "initiative": 0,
-            "charge": 0,
-            "defender": 0,
+            "initiative": null,
+            "charge": null,
+            "defender": null,
             "ability_slots": [],
             "affinities": []
           }
@@ -34151,8 +34151,8 @@
           "attack": 2,
           "defense": 2,
           "ability": {
-            "initiative": 0,
-            "charge": 0,
+            "initiative": null,
+            "charge": null,
             "defender": 2,
             "ability_slots": [],
             "affinities": []
@@ -34228,9 +34228,9 @@
           "attack": 1,
           "defense": 1,
           "ability": {
-            "initiative": 0,
-            "charge": 0,
-            "defender": 0,
+            "initiative": null,
+            "charge": null,
+            "defender": null,
             "ability_slots": [
               {
                 "ability_slot_type_code": "SpellWater",
@@ -34331,8 +34331,8 @@
           "defense": 0,
           "ability": {
             "initiative": -1,
-            "charge": 0,
-            "defender": 0,
+            "charge": null,
+            "defender": null,
             "ability_slots": [
               {
                 "ability_slot_type_code": "SpellEarth",
@@ -34450,9 +34450,9 @@
           "attack": 0,
           "defense": 2,
           "ability": {
-            "initiative": 0,
-            "charge": 0,
-            "defender": 0,
+            "initiative": null,
+            "charge": null,
+            "defender": null,
             "ability_slots": [
               {
                 "ability_slot_type_code": "SpellFire",
@@ -34553,8 +34553,8 @@
           "defense": 0,
           "ability": {
             "initiative": 1,
-            "charge": 0,
-            "defender": 0,
+            "charge": null,
+            "defender": null,
             "ability_slots": [
               {
                 "ability_slot_type_code": "SpellHoly",
@@ -34651,9 +34651,9 @@
           "attack": 2,
           "defense": 0,
           "ability": {
-            "initiative": 0,
-            "charge": 0,
-            "defender": 0,
+            "initiative": null,
+            "charge": null,
+            "defender": null,
             "ability_slots": [
               {
                 "ability_slot_type_code": "SpellCurse",
@@ -34758,8 +34758,8 @@
           "defense": 0,
           "ability": {
             "initiative": 2,
-            "charge": 0,
-            "defender": 0,
+            "charge": null,
+            "defender": null,
             "ability_slots": [
               {
                 "ability_slot_type_code": "SpellAir",
@@ -35591,8 +35591,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -35737,9 +35737,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -35884,9 +35884,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -36031,9 +36031,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -36171,9 +36171,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -36311,9 +36311,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 4,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -36668,9 +36668,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 4,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -36805,8 +36805,8 @@
         ],
         "ability": {
           "initiative": -1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -36952,8 +36952,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -37089,9 +37089,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -37255,8 +37255,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -37413,8 +37413,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -37787,9 +37787,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -37934,8 +37934,8 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
+          "initiative": null,
+          "charge": null,
           "defender": 10,
           "ability_slots": [
             {
@@ -38082,8 +38082,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -38247,8 +38247,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -38386,9 +38386,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -38511,9 +38511,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -39487,9 +39487,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -39610,9 +39610,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -39750,9 +39750,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -39888,9 +39888,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
+          "initiative": null,
           "charge": 3,
-          "defender": 0,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -40024,9 +40024,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -40171,9 +40171,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -41221,9 +41221,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -41314,8 +41314,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -41397,9 +41397,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -41498,9 +41498,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -41586,9 +41586,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -41707,8 +41707,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -41805,9 +41805,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -41926,9 +41926,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -42031,9 +42031,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -42119,9 +42119,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -42232,9 +42232,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -42348,9 +42348,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -42468,9 +42468,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -42584,9 +42584,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -42704,9 +42704,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -42817,9 +42817,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -42930,9 +42930,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -43031,9 +43031,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -43147,9 +43147,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -43263,9 +43263,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -43376,9 +43376,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -43516,9 +43516,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -43630,8 +43630,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -43722,8 +43722,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -43806,8 +43806,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -43926,8 +43926,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -44021,8 +44021,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -44141,8 +44141,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -44260,9 +44260,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -44365,9 +44365,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -44479,8 +44479,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -44591,9 +44591,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -44711,9 +44711,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -44831,9 +44831,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -44952,8 +44952,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -45065,8 +45065,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -45177,9 +45177,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -45282,9 +45282,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -45395,9 +45395,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -45515,9 +45515,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -45635,9 +45635,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -45755,9 +45755,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -47936,9 +47936,9 @@
         ],
         "races": [],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -48151,9 +48151,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -48265,8 +48265,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -48357,8 +48357,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -48477,8 +48477,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -48596,9 +48596,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -48709,9 +48709,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -48793,9 +48793,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -49243,9 +49243,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -49363,9 +49363,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -49588,9 +49588,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -49668,9 +49668,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -49781,9 +49781,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -49895,8 +49895,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -50003,9 +50003,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -50112,9 +50112,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -50225,9 +50225,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -50909,9 +50909,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -50993,9 +50993,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -51098,9 +51098,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -51218,9 +51218,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -51331,9 +51331,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -51447,9 +51447,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -51552,9 +51552,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -51977,9 +51977,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -52192,8 +52192,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -52284,8 +52284,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -52396,9 +52396,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -52516,9 +52516,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -52629,9 +52629,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -52750,8 +52750,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -52841,9 +52841,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -52981,9 +52981,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -53466,9 +53466,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -53579,9 +53579,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -53688,9 +53688,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellFire",
@@ -53787,9 +53787,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -53896,9 +53896,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellWater",
@@ -53991,9 +53991,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -54100,9 +54100,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellEarth",
@@ -54216,9 +54216,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",
@@ -54326,8 +54326,8 @@
         ],
         "ability": {
           "initiative": 1,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellAir",
@@ -54425,8 +54425,8 @@
         ],
         "ability": {
           "initiative": 2,
-          "charge": 0,
-          "defender": 0,
+          "charge": null,
+          "defender": null,
           "ability_slots": [],
           "affinities": []
         }
@@ -54529,9 +54529,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -54645,9 +54645,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellHoly",
@@ -54761,9 +54761,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellCurse",
@@ -54877,9 +54877,9 @@
           }
         ],
         "ability": {
-          "initiative": 0,
-          "charge": 0,
-          "defender": 0,
+          "initiative": null,
+          "charge": null,
+          "defender": null,
           "ability_slots": [
             {
               "ability_slot_type_code": "SpellMulti",

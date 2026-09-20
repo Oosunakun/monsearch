@@ -1,6 +1,6 @@
 # Query Data Specification
 
-**Version:** 1.0.0  
+**Version:** 1.1.0
 **Status:** Approved — Domain Semantics（下記の未決定事項・公開前提を含めて合意済み）  
 **Scope:** Repository Internal Specification
 
@@ -8,7 +8,7 @@
 
 本書は、Query Parameterとカードデータの対応、および検索条件にカードが一致する意味を定義する。対話で確認したshared understandingを正式仕様として統合したものであり、現実装の挙動を追認する文書ではない。
 
-URLのParameter名・構文・順序・重複解決・encodingは、採用済みの[URL Query Specification 1.0.0](query_specification.md)を正とする。本書はその未規定のデータ対応・検索意味論を補い、既存URL仕様を暗黙に変更しない。変更を要する事項は§10と[改訂候補一覧](query_data_specification_revision_candidates.md)に分離する。
+URLのParameter名・構文・順序・重複解決・encodingは、採用済みの[URL Query Specification 1.1.0](query_specification.md)を正とする。本書はその未規定のデータ対応・検索意味論を補う。
 
 本書の承認は、Schema変更・migration・実装・データ整備・機能公開の完了を意味しない。具体的SQL、検索の最適化、UI設計、コストの解析方式は本書の対象外である。
 
@@ -18,7 +18,7 @@ URLのParameter名・構文・順序・重複解決・encodingは、採用済み
 |---|---|
 | データ対応・一致条件・組合せ・NULL・数量 | 本書の規則で確定 |
 | 短縮UUIDの文字種・大小文字・所定長を必要とすること | 確定。具体的長さ、固定長か最低長かは未決定 |
-| 通常・追加イニシアチブの所持Modifier | 意味は確定。Alias・URL上の順序・URL仕様の改訂版は未決定 |
+| 通常・追加イニシアチブの所持Modifier | `itm` / `aitm`、順序 `itm → it` / `aitm → ait` として確定。default `all` は省略 |
 | コストの構造化・Schema・migration・解析・人手確認 | 別設計。必要な構造化・検証の完了までコスト検索を公開しない |
 | Schemaとmockの不整合、実装差分 | 本書への整合が必要。修正は別作業 |
 
@@ -89,17 +89,17 @@ Tokenは任意のカードの体裁を取り得て、欠損した情報や既存
 | heroPoint | `he` | `stat_unit.hero_point` | `hem` | `stat_unit.is_hero` |
 | attack | `at` | `stat_unit.attack` | — | — |
 | defense | `df` | `stat_unit.defense` | — | — |
-| initiative | `it` | `feature_abilities.initiative`（通常） | 未決定 | 所持 |
+| initiative | `it` | `feature_abilities.initiative`（通常） | `itm` | 所持 |
 | charge | `ch` | `feature_abilities.charge`（通常） | `chm` | 所持 |
 | defender | `de` | `feature_abilities.defender`（通常） | `dem` | 所持 |
 | additionalAttack | `aat` | `stat_item_equip.attack` | — | — |
 | additionalDefense | `adf` | `stat_item_equip.defense` | — | — |
-| additionalInitiative | `ait` | `feature_abilities.initiative`（追加） | 未決定 | 所持 |
+| additionalInitiative | `ait` | `feature_abilities.initiative`（追加） | `aitm` | 所持 |
 | additionalCharge | `ach` | `feature_abilities.charge`（追加） | `achm` | 所持 |
 | additionalDefender | `ade` | `feature_abilities.defender`（追加） | `adem` | 所持 |
 | limit | `lm` | `stat_land.land_limit` | — | — |
 
-数値はComparison、ModifierはModifier形式である。既存のfilter propertyは各数値条件の`.filterType`に対応する。initiative / additionalInitiativeへのfilter追加は改訂候補であり、未決定のAliasをURLで使用してはならない。
+数値はComparison、ModifierはModifier形式である。既存のfilter propertyは各数値条件の`.filterType`に対応する。`initiative` / `additionalInitiative` の Modifier alias はそれぞれ `itm` / `aitm` とする。
 
 ### 3.3 所持枠・耐性
 
@@ -190,21 +190,33 @@ Mapping外のNatural KeyはParserで除外する。`el=fire,unknown`は`fire`の
 
 ### 5.2 所持Modifier
 
-通常・追加のinitiative / charge / defenderに共通する。
+initiative / charge / defender / additionalInitiative / additionalCharge /
+additionalDefender に共通する。Hero Point は同じ Modifier 語彙を使用するが、
+存在性の参照先は `is_hero` である。
 
 | 値 | 条件 |
 |---|---|
-| `include` | 適用対象行に非NULL値が1つ以上ある。0も含む |
-| `exclude` | 適用対象行に非NULL値が1つもない。能力行自体がない場合も含む |
-| `all` | 能力の有無で絞り込まない（default） |
+| `include` | 対象数値が非NULL。0も含む。Comparisonがあれば追加で評価する。Comparisonなしでも条件として成立する |
+| `exclude` | 対象数値がNULLまたは値なし。Comparisonは検索評価に使用しない |
+| `all` | 値の有無で絞り込まない（default）。Comparisonがあれば評価する |
 
-Modifierは数値Comparisonなしでも意味を持つ。Comparisonを併記した場合はANDとし、矛盾する`chm=exclude&ch=gte:2`は0件とする。Builder / Parserでも片方を捨てず保持する。結果が変わらない評価省略は許容するが、`exclude`が成立しただけで矛盾条件全体を一致にしてはならない。
+Modifierは数値Comparisonなしでも意味を持つ。`include` と Comparison は AND で評価する。
+`exclude` と Comparison が併記されても、Comparisonは検索評価に使用しない。
+Parserは両方をSearchFormへ保持してよいが、Builderは`exclude` ModifierだけをCanonical URLへ出力する。
+
+Hero Pointの`exclude`は`is_hero`を参照し、Hero Point Comparisonを検索評価に使用しない。
 
 ### 5.3 boolean属性Modifier
 
-`lvm`は`is_instant_summon`、`hem`は`is_hero`を対象とする。`include`は該当、`exclude`は非該当、`all`は不問（default）。数値のNULL判定ではない。
+`lvm`は`is_instant_summon`を対象とする。`lvm`単独でも条件として有効で、
+`lv` Comparisonとは独立した条件である。したがって、
+`lv=gte:3&lvm=exclude`はレベル3以上かつ即時召喚不可を意味し、
+`lvm=exclude`でもLevel Comparisonを評価する。
 
-単独でも条件として有効で、ComparisonがあればANDで組み合わせる。`lv=gte:3&lvm=exclude`はレベル3以上かつ即時召喚不可を意味する。
+Hero Pointの`hem`は§5.2の存在性Modifier semanticsに従い、
+`is_hero`を参照する。`hem=exclude`ではHero Point Comparisonを検索評価に
+使用しない。`hem`をLevelと同じ「ComparisonがあればAND」の例外規則として
+扱ってはならない。
 
 ### 5.4 複数能力行
 
@@ -333,7 +345,7 @@ Effect自体が存在しないカードは、コストnoneだけの指定にも�
 | 同名の別cardsレコードに必要条件が分散 | 別レコードの情報を合算しない |
 | `at=eq:0`、保存値0 / NULL | 0は一致、NULLは非ヒット |
 | `chm=include`、保存値0 | 一致 |
-| `chm=exclude&ch=gte:2` | 常に非ヒット |
+| `chm=exclude&ch=gte:2` | chargeの値なしだけを評価し、Comparisonは検索評価に使用しない |
 | 適用対象カードに能力行なし、所持exclude | 一致。Comparisonには非ヒット |
 | 同種枠の数量1の行が2つ、指定個数2 | 非ヒット。合算しない |
 | 枠の数量0のみ、対象枠none | 一致 |
@@ -355,10 +367,10 @@ Effect自体が存在しないカードは、コストnoneだけの指定にも�
 | 対象 | 扱い |
 |---|---|
 | UUIDの所定長 | 生成側で別途決定。決定前に任意長を有効とみなさない |
-| initiative / additionalInitiative Modifier | URL仕様への追加改訂が必要。Alias・順序・版は未決定 |
-| Modifier単独、noneによるPair削除、Pairなしor / and省略 | Builder / Parser・下位契約を本書へ整合。URL仕様への明記が必要な箇所は別途改訂 |
+| initiative / additionalInitiative Modifier | `itm` / `aitm` と順序 `itm → it` / `aitm → ait` を正式URL仕様へ反映済み |
+| Modifier単独・exclude時Comparison | 既存Modifier語彙で正式化。`include` / `exclude` は単独成立、`exclude` はComparisonを検索評価・Canonical URL出力から除外。ParserはForm保持可 |
 | 未知UUIDを選択肢集合だけで削除するParser | 形式検証とID存在確認を分離し、D60・D63へ整合 |
-| 数値型・検索・UI | NULLと0、比較と所持の分離、単独Modifierに対応する改訂が必要 |
+| 数値型・検索・UI | NULLと0、比較と所持の分離、単独Modifierに対応する本Featureの設計・実装対象 |
 | affinityの分類軸 | mockとSchema CHECKの不整合を別途修正。ID検索へcategory条件を追加して解決しない |
 | コスト構造化・検証・公開 | §7.5を満たす別設計が必要 |
 | mockの0と実カード表記の差 | データ整備として確認。検索中に0をNULLへ変換しない |

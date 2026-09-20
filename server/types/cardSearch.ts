@@ -18,9 +18,9 @@ export interface CardSearchRequest {
 }
 
 type DisplayAbility = {
-  initiative: number
-  charge: number
-  defender: number
+  initiative: number | null
+  charge: number | null
+  defender: number | null
   ability_slots: Array<Pick<NonNullable<NonNullable<Card['unit']>['ability']>['ability_slots'][number], 'ability_slot_type_name' | 'ability_slot_category_code' | 'slot_count'>>
   affinities: Array<Pick<NonNullable<NonNullable<Card['unit']>['ability']>['affinities'][number], 'affinity' | 'affinity_value'>>
 }

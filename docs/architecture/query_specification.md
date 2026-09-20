@@ -1,6 +1,6 @@
 # Query Specification
 
-**Version:** 1.0.0  
+**Version:** 1.1.0
 **Status:** Approved  
 **Scope:** Repository Internal Specification
 
@@ -208,6 +208,16 @@ ssm=and
 
 Modifier parameters represent search behavior rather than search values.
 
+For numeric value-existence Modifiers, `all` is the default and is omitted. Explicit
+`include` and `exclude` values are retained. For these Modifiers, an
+`exclude` value suppresses the corresponding Comparison in the canonical
+output even if the Parser restored that Comparison into the internal Query
+Object. The Parser may restore both values; the next Builder pass performs the
+canonical normalization.
+
+Level is an exception: `lvm=exclude` does not suppress `lv` because Level
+Comparison and `is_instant_summon` are independent conditions.
+
 ---
 
 ## 2.4 Default Value Omission
@@ -228,6 +238,28 @@ lvm=all
 ```
 
 The absence of a modifier parameter represents the default behavior.
+
+### 2.4.1 Numeric Modifier and Comparison Canonicalization
+
+For `initiative`, `charge`, `defender`, `additionalInitiative`,
+`additionalCharge`, `additionalDefender`, and `heroPoint`, the existing
+`all | include | exclude` Modifier vocabulary is used.
+
+| Modifier | Comparison in the Query Object | Canonical Builder output |
+|---|---|---|
+| `all` | Evaluate when present | Modifier omitted; Comparison retained |
+| `include` | Evaluate when present | Modifier and Comparison (if present) |
+| `exclude` | Do not evaluate | Modifier only |
+
+`include` without a Comparison is a complete condition. `exclude` without a
+Comparison is also a complete condition. The Parser may restore a valid
+Comparison beside `exclude`; it must not delete or null it during parsing, but
+the Builder must omit that Comparison when producing the canonical query.
+
+For `heroPoint`, the Modifier checks `is_hero`; an `exclude` Modifier does not
+evaluate the Hero Point Comparison. `level` is not part of this rule: its
+`lvm` Modifier checks `is_instant_summon`, while `lv` remains an independent
+Comparison and is valid even with `lvm=exclude`.
 
 ---
 
@@ -476,6 +508,7 @@ Default Omission Rule defines the conditions under which the Query Builder shall
 |abilityItemSlots|is|Pair Collection|Pair Collection|Empty Collection|
 |abilitySpellSlots.match|ssm|Modifier|Modifier|Default Match|
 |abilitySpellSlots|ss|Pair Collection|Pair Collection|Empty Collection|
+|initiative.filterType|itm|Modifier|Modifier|Default Filter|
 |initiative|it|Comparison|Comparison|Incomplete Comparison|
 |charge.filterType|chm|Modifier|Modifier|Default Filter|
 |charge|ch|Comparison|Comparison|Incomplete Comparison|
@@ -488,6 +521,7 @@ Default Omission Rule defines the conditions under which the Query Builder shall
 |additionalAbilityItemSlots|ais|Pair Collection|Pair Collection|Empty Collection|
 |additionalAbilitySpellSlots.match|assm|Modifier|Modifier|Default Match|
 |additionalAbilitySpellSlots|ass|Pair Collection|Pair Collection|Empty Collection|
+|additionalInitiative.filterType|aitm|Modifier|Modifier|Default Filter|
 |additionalInitiative|ait|Comparison|Comparison|Incomplete Comparison|
 |additionalCharge.filterType|achm|Modifier|Modifier|Default Filter|
 |additionalCharge|ach|Comparison|Comparison|Incomplete Comparison|
@@ -826,6 +860,11 @@ The Query Builder shall guarantee the following.
 - Never generate duplicate parameters.
 - Never generate invalid parameter values.
 
+For numeric Modifiers, the Builder shall omit default `all`, retain explicit
+`include` / `exclude`, allow Modifier-only conditions, and omit the Comparison
+when the Modifier is `exclude`. The Parser may retain that Comparison in the
+internal Query Object so a UI can restore it; canonical rebuilding removes it.
+
 The Query Builder shall not perform framework-specific URL encoding.
 
 ---
@@ -840,6 +879,12 @@ The Query Parser shall guarantee the following.
 - Resolve duplicate parameters according to the Canonical Rule.
 - Ignore unknown parameters.
 - Ignore invalid parameter values while continuing to parse the remaining valid parameters.
+
+For numeric Modifiers, the Parser may restore a valid Comparison beside an
+`exclude` Modifier into the internal Query Object. It shall not delete or
+nullify that Comparison during parsing; the canonical Builder is responsible
+for omitting it on the next rebuild. This rule does not apply to Level,
+whose Comparison remains effective with `lvm=exclude`.
 
 The Query Parser shall never fail solely because non-canonical or unknown parameters are present.
 
