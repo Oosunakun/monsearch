@@ -9,6 +9,19 @@ describe('buildCardSearchQuery', () => {
     expect(form).toEqual(snapshot)
   })
 
+  it('serializes all Short UUID fields canonically, including unknown valid values', () => {
+    const form = createFreshSearchForm()
+    form.cardTypes = ['ABCDE', 'abcde', 'fffff', 'invalid']
+    form.products = ['22D7E', 'abcde']
+    form.factions = ['0000F']
+    form.races = ['1234', '12345']
+    form.illustrators = ['FFFFF']
+    form.effectActivationTypes = ['aBcDe']
+    form.resistances = ['00000']
+    form.additionalResistances = ['zzzzz']
+    expect(buildCardSearchQuery(form)).toEqual({ ct: 'abcde,fffff', pd: '22d7e,abcde', fa: '0000f', ra: '12345', il: 'fffff', eat: 'abcde', re: '00000' })
+  })
+
   it('serializes compounds, adapters, and stable mapping order', () => {
     const form = createFreshSearchForm()
     form.level = { filterType: 'include', operator: 'lte', value: 5 }

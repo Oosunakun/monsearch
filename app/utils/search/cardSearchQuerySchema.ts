@@ -5,6 +5,32 @@ import { LOGICAL_MATCH_VALUES, SEARCH_FILTER_VALUES, SEARCH_OPERATOR_VALUES } fr
 import type { CardCategory, LandCategory } from '~~/app/utils/constants/search/options'
 import type { LogicalMatch, SearchFilter, SearchOperator } from '~~/app/utils/constants/search/conditions'
 
+export const SHORT_UUID_LENGTH = 5
+export const SHORT_UUID_QUERY_FIELDS = {
+  ct: 'cardTypes',
+  pd: 'products',
+  fa: 'factions',
+  ra: 'races',
+  il: 'illustrators',
+  eat: 'effectActivationTypes',
+  re: 'resistances',
+  are: 'additionalResistances',
+} as const
+export type ShortUuidQueryAlias = keyof typeof SHORT_UUID_QUERY_FIELDS
+export type ShortUuidSearchField = typeof SHORT_UUID_QUERY_FIELDS[ShortUuidQueryAlias]
+
+const SHORT_UUID_PATTERN = new RegExp(`^[0-9a-f]{${SHORT_UUID_LENGTH}}$`, 'i')
+
+export const canonicalizeShortUuid = (value: string): string | undefined => {
+  const normalized = value.trim()
+  return SHORT_UUID_PATTERN.test(normalized) ? normalized.toLowerCase() : undefined
+}
+
+export const normalizeShortUuidCollection = (values: readonly string[], sort = false): string[] => {
+  const normalized = [...new Set(values.flatMap(value => value.split(',')).map(canonicalizeShortUuid).filter((value): value is string => value !== undefined))]
+  return sort ? normalized.sort() : normalized
+}
+
 export const CARD_SEARCH_QUERY_ALIASES = [
   'nm', 'cc', 'el', 'ct', 'kw', 'att', 'pd', 'fa', 'bl', 'lvm', 'lv', 'hem', 'he',
   'at', 'df', 'mt', 'ra', 'ism', 'is', 'ssm', 'ss', 'itm', 'it', 'chm', 'ch',

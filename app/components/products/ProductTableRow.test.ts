@@ -22,7 +22,7 @@ const NuxtLinkStub = defineComponent({
   },
 })
 
-const mountRow = (searchValue = '91122d7e') => mount(ProductTableRow, {
+const mountRow = (searchValue = '22d7e') => mount(ProductTableRow, {
   props: {
     shortName: 'M20A', searchValue, productName: '太陽の金の竜姫',
     productNote: '20th', releaseDate: '2017-03-30', zebra: false,
@@ -43,7 +43,7 @@ describe('ProductTableRow', () => {
     mobile.value = isMobile
     const wrapper = mountRow()
     const link = wrapper.findComponent(NuxtLinkStub)
-    const expected = { path: '/cards', query: { pd: '91122d7e' } }
+    const expected = { path: '/cards', query: { pd: '22d7e' } }
 
     await link.trigger('click')
     await link.trigger('keydown', { key: 'Enter' })
