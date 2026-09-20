@@ -10,7 +10,7 @@
 
 ## Rationale
 
-現在のParser/Builderは `Set` のmembershipで値を受理しているため、master dataから消えた値や未投入値を保持できない。検索本体の `includesAny` は既にcase-insensitiveかつ `endsWith` のため、5桁canonical値をSearchFormへ渡せば既存の検索意味論を保てる。桁数をParser、Builder、データ検証で個別に持つと将来変更時に不整合になるため、定数とヘルパーを共有する。
+現在のParser/Builderは `Set` のmembershipで値を受理しているため、master dataから消えた値や未投入値を保持できない。5桁canonical値をSearchFormへ渡すことで、形式処理を既存server-side searchへ最小限の変更で接続する。なお、ct / fa / ra の名称fallback、re / are のAffinity照合、Natural Key semanticsなど、Parameterごとの既存server-side検索意味論は今回の調査・設計で変更しない。桁数をParser、Builder、データ検証で個別に持つと将来変更時に不整合になるため、定数とヘルパーを共有する。
 
 ## Decision: Parserは形式上有効な未知値を保持する
 
@@ -18,7 +18,7 @@
 
 ## Rationale
 
-仕様は存在性と形式を分離し、未知だが形式上有効な値を非ヒット条件として保持することを要求する。同一Parameter内の衝突確認は生成側責務なので、Parser/Builderは追加の衝突検出・解決を行わない。
+仕様は存在性と形式を分離し、未知だが形式上有効な値をvalidation failureにせず保持し、既存のParameter固有server-side semanticsへ渡すことを要求する。ID照合を行う既存semanticsでは対応IDとの一致がない値となるが、全8 aliasで必ず0件になることは今回保証しない。同一Parameter内の衝突確認は生成側責務なので、Parser/Builderは追加の衝突検出・解決を行わない。
 
 ## Decision: Builderも対象8 aliasだけをShort UUID正規化へ切り替える
 
@@ -26,11 +26,11 @@
 
 ## Decision: Mock/ParameterデータはUUID末尾5桁へ更新する
 
-`cardTypeItems.json`、`productItems.json`、`factionItems.json`、`raceItems.json`、`effectActivationTypeItems.json`、`resistanceItems.json` と、これらの値を直接保持する既存のMock/fixtureを、対応するfull UUIDの末尾5桁へ整合させる。`illustratorItems.json` が空であることは変更せず、実カードのillustrator UUIDは検索照合元として維持する。
+`cardTypeItems.json`、`productItems.json`、`factionItems.json`、`raceItems.json`、`effectActivationTypeItems.json`、`resistanceItems.json`、`illustratorItems.json` と、これらの値を直接保持する既存のMock/fixtureを、5桁Short UUID仕様へ整合させる。illustrator dataも他のParameter dataと同じ形式検証・整合確認の対象とする。
 
 ## Alternatives considered
 
 - 選択肢Setを拡張して未知値を追加する: master dataの存在性と形式を再び結合するため不採用。
 - 任意長のhexを受理する: 現行仕様が5桁固定であり、不正形式を通すため不採用。
-- 検索本体で短縮値を5桁へ変換する: URL復元時の保持責務と検索評価責務が混ざり、既存後方一致の意味論を変更するため不採用。
+- 検索本体で短縮値を別の検索キーへ変換する: URL復元時の保持責務と検索評価責務が混ざり、今回対象外の既存server-side検索意味論を変更するため不採用。
 - Parameterごとに桁数定数を持つ: 将来変更時の不整合を生むため不採用。

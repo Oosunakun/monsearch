@@ -6,7 +6,7 @@
 
 ## Summary
 
-Short UUID対象Parameterの形式判定をmaster data／選択肢集合から分離し、UUIDv7末尾5桁のASCII hexadecimalを大文字小文字非区別で受理する。Parserは形式上有効な未知値も保持し、Builderは小文字へcanonical化する。桁数は検索アプリ内の単一定義から参照し、既存の後方一致検索と他Parameterの意味論は維持する。関連するMock/Parameterデータと往復・検索テストを新仕様へ更新する。
+Short UUID対象Parameterの形式判定をmaster data／選択肢集合から分離し、UUIDv7末尾5桁のASCII hexadecimalを大文字小文字非区別で受理する。Parserは形式上有効な未知値も保持し、Builderは小文字へcanonical化する。桁数は検索アプリ内の単一定義から参照し、既存server-side searchのParameter固有の意味論と他Parameterの意味論は維持する。関連するMock/Parameterデータと往復・検索テストを新仕様へ更新する。
 
 ## Technical Context
 
@@ -24,9 +24,9 @@ Short UUID対象Parameterの形式判定をmaster data／選択肢集合から�
 
 **Performance Goals**: Preserve linear collection normalization and existing search response behavior; no new master-data scan is required for URL parsing
 
-**Constraints**: 5 ASCII hexadecimal characters exactly; lowercase canonical output; valid-but-unknown values survive round trips and produce no matches; no collision detection/resolution; no `any`; non-Short-UUID semantics unchanged
+**Constraints**: 5 ASCII hexadecimal characters exactly; lowercase canonical output; valid-but-unknown values survive round trips and are not validation failures; pass values to existing parameter-specific server-side semantics without changing those semantics; no collision detection/resolution; no `any`; existing server-side ID mapping, Natural Key, Resistance-Affinity, and other non-Short-UUID semantics unchanged
 
-**Scale/Scope**: Eight aliases (`ct`, `pd`, `fa`, `ra`, `il`, `eat`, `re`, `are`), shared query schema/parser/builder, search evaluation, Mock/Parameter fixtures, and focused regression tests
+**Scale/Scope**: Eight aliases (`ct`, `pd`, `fa`, `ra`, `il`, `eat`, `re`, `are`), shared query schema/parser/builder, preservation of existing search evaluation, Mock/Parameter fixtures including `illustratorItems.json`, and focused regression tests
 
 ## Constitution Check
 
@@ -38,7 +38,7 @@ Short UUID対象Parameterの形式判定をmaster data／選択肢集合から�
 | II. Testability | Pure format normalization and parser/builder tests plus search behavior tests | PASS |
 | III. Incremental Change | Limit changes to query utilities, relevant data, search tests, and affected fixtures | PASS |
 | IV. Existing Architecture | Keep schema/constants in `app/utils`, form types in `app/types/ui`, search behavior in `server/utils/cardSearch` | PASS |
-| V. Human Review | Canonicalization, unknown-value semantics, and collision responsibility are explicit in the contract | PASS |
+| V. Human Review | Canonicalization, unknown-value semantics, collision responsibility, and unchanged server-side semantics are explicit in the contract | PASS |
 | Additional Constraints | Brownfield investigation and Spec Kit Core workflow used | PASS |
 
 ## Project Structure
@@ -73,10 +73,10 @@ app/utils/mockData/
 `-- indexPage.ts, restrictions.ts
 ```
 
-**Structure Decision**: 既存のNuxt単一アプリ構成を維持する。Short UUIDの正規化・対象Parameter一覧・桁数定義は検索Queryユーティリティ周辺に置き、Parser/BuilderとMock/Parameterデータが同じ定義を参照できるようにする。検索本体は既存のcase-insensitive後方一致を利用し、検索意味論の不要な変更を避ける。URL契約は `contracts/card-search-query.md` に記録する。
+**Structure Decision**: 既存のNuxt単一アプリ構成を維持する。Short UUIDの正規化・対象Parameter一覧・桁数定義は検索Queryユーティリティ周辺に置き、Parser/BuilderとMock/Parameterデータが同じ定義を参照できるようにする。検索本体は既存のParameter固有の検索意味論を維持し、今回の形式処理に不要なserver-side意味論の変更を避ける。URL契約は `contracts/card-search-query.md` に記録する。
 
 ## Complexity Tracking
 
 No constitution violations require justification.
 
-**Post-design re-check**: PASS. Research resolved the only data-format uncertainty from the feature input (fixed length = 5). The design keeps validation independent from master-data membership, centralizes the length constant, and leaves non-target query semantics unchanged.
+**Post-design re-check**: PASS. Research resolved the fixed length = 5 decision. The design keeps validation independent from master-data membership, centralizes the length constant, includes `illustratorItems.json` in data validation, and leaves existing server-side ID mapping, Natural Key, Resistance-Affinity, and other non-target query semantics unchanged.

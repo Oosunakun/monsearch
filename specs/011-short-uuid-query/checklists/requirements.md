@@ -31,6 +31,6 @@
 
 ## Notes
 
-- Short UUIDの形式有効性とmaster dataの存在性を分離し、未存在の有効値を非ヒットとして保持する要件を明記した。
+- Short UUIDの形式有効性とmaster dataの存在性を分離し、未存在の有効値をvalidation failureにせず保持して既存Parameter固有server-side semanticsへ渡す要件を明記した。
 - 既存のShort UUID対象Parameter、Mock/Parameterデータ、5桁の一元管理、既存意味論の非変更をスコープに含めた。
 - 仕様は追加確認なしで `$speckit-plan` に進められる。

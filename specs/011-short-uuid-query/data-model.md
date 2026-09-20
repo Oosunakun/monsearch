@@ -8,23 +8,23 @@
 | 入力 | 大文字小文字を区別せず受理 |
 | canonical | 英字を小文字化した5文字 |
 | 形式不正 | SearchForm/Canonical Queryへ保持しない |
-| master data不存在 | canonical値を保持し、検索時は非ヒット |
+| master data不存在 | canonical値を保持し、validation failureにせず既存のParameter固有server-side semanticsへ渡す |
 | 衝突 | 同一Parameter内の一意性は生成側保証。検索側は検出・解決しない |
 
 ## Short UUID search Parameter
 
 | Query alias | SearchForm field | 対象データ |
 |---|---|---|
-| `ct` | `cardTypes` | card type ID suffix |
-| `pd` | `products` | product ID suffix |
-| `fa` | `factions` | faction ID suffix |
-| `ra` | `races` | race ID suffix |
-| `il` | `illustrators` | illustrator ID suffix |
-| `eat` | `effectActivationTypes` | effect activation type ID suffix |
-| `re` | `resistances` | resistance/affinity ID suffix |
-| `are` | `additionalResistances` | resistance/affinity ID suffix |
+| `ct` | `cardTypes` | 既存のcard type検索意味論で参照されるデータ |
+| `pd` | `products` | 既存のproduct検索意味論で参照されるデータ |
+| `fa` | `factions` | 既存のfaction検索意味論で参照されるデータ |
+| `ra` | `races` | 既存のrace検索意味論で参照されるデータ |
+| `il` | `illustrators` | 既存のillustrator検索意味論で参照されるデータ |
+| `eat` | `effectActivationTypes` | 既存のeffect activation type検索意味論で参照されるデータ |
+| `re` | `resistances` | 既存のresistance検索意味論で参照されるデータ |
+| `are` | `additionalResistances` | 既存のadditional resistance検索意味論で参照されるデータ |
 
-CollectionはParameter内ORの既存意味論を維持する。形式上有効な未知値だけのCollectionは条件として残り、各カードの対応IDが後方一致しないため結果は0件になる。
+CollectionはParameter内ORの既存意味論を維持する。形式上有効な未知値だけのCollectionは条件として残り、validation failureにはならない。値は既存のParameter固有server-side semanticsへ渡される。ID照合を行う既存semanticsでは対応IDとの一致がない値となるが、ct / fa / ra の名称fallback、re / are のAffinity照合、Natural Key semanticsなどを含む全alias共通の0件結果まではこのFeatureで保証しない。
 
 ## Validation and transitions
 
