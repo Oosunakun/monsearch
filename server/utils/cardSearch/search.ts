@@ -40,8 +40,12 @@ const slotsMatch = (ability: Ability | null | undefined, condition: SlotConditio
   return condition.match === 'and' ? checks.every(Boolean) : checks.some(Boolean)
 }
 const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').map(x => x.affinity.affinity_id.toLowerCase()))
-const effectValues = (effects: readonly Effect[], field: keyof Effect) => effects.map(effect => String(effect[field]).toLowerCase())
 const textIncludes = (actual: string, wanted: string) => !wanted || actual.toLocaleLowerCase().includes(wanted.toLocaleLowerCase())
+const effectMatches = (effect: Effect, criteria: SearchForm) =>
+  includesAny(criteria.effectTypes, [String(effect.effect_type_code).toLowerCase()])
+  && includesAny(criteria.effectActivationTypes, [String(effect.effect_activation_type_id).toLowerCase()])
+  && includesAny(criteria.effectActivationCategories, [String(effect.effect_activation_category_code).toLowerCase()])
+  && textIncludes(effect.effect_text, criteria.effectText)
 
 export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => {
   const category = card.search_support.is_token ? 'token' : card.card_category_code.toLowerCase() === 'item' ? `item-${card.item?.item_category_code.toLowerCase()}` : card.card_category_code.toLowerCase()
@@ -83,8 +87,8 @@ export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => 
   if (criteria.limit.value !== null && (!card.land || !compare(card.land.land_limit, criteria.limit))) return false
   if (criteria.landCategory && criteria.landCategory !== 'all' && ![card.land?.land_category_code.toLowerCase(), card.land?.land_category_name.toLowerCase()].includes(criteria.landCategory)) return false
 
-  if (!includesAny(criteria.effectTypes, effectValues(card.effects, 'effect_type_code')) || !includesAny(criteria.effectActivationTypes, effectValues(card.effects, 'effect_activation_type_id')) || !includesAny(criteria.effectActivationCategories, effectValues(card.effects, 'effect_activation_category_code'))) return false
-  if (criteria.effectText && !card.effects.some(effect => textIncludes(effect.effect_text, criteria.effectText))) return false
+  if ((criteria.effectTypes.length || criteria.effectActivationTypes.length || criteria.effectActivationCategories.length || criteria.effectText)
+    && !card.effects.some(effect => effectMatches(effect, criteria))) return false
   return true
 }
 

@@ -209,4 +209,84 @@ describe('searchCards', () => {
     andCriteria.abilitySpellSlots = { match: 'and', slots: { fire: 1, water: 1 } }
     expect(searchCards([fireOnly, both], andCriteria)).toEqual([both])
   })
+
+  it('Effectの複数Parameterは同一Effectで全条件を満たす場合だけ一致する', () => {
+    const source = getSourceCards().map(item => item.card)
+    const template = source.find(card => card.effects.length >= 2)!
+    const distributed = structuredClone(template)
+    const sameEffect = structuredClone(template)
+
+    for (const card of [distributed, sameEffect]) {
+      card.effects[0]!.effect_type_code = 'ActionSkill'
+      card.effects[0]!.effect_text = '別Effectのテキスト'
+      card.effects[1]!.effect_type_code = 'DeclareSkill'
+      card.effects[1]!.effect_text = '同一Effectのテキスト'
+    }
+    sameEffect.effects[1]!.effect_type_code = 'ActionSkill'
+    sameEffect.effects[1]!.effect_text = '同一Effectのテキスト'
+
+    const criteria = parseCardSearchQuery({ eft: 'ActionSkill', etx: '同一Effectのテキスト' })
+
+    expect(searchCards([distributed], criteria)).toEqual([])
+    expect(searchCards([sameEffect], criteria)).toEqual([sameEffect])
+
+    const reportedCard = source.find(card => card.reference_label === 'M20A-016')!
+    const reportedCriteria = parseCardSearchQuery({ eft: 'ActionSkill', etx: '自軍プレイヤーは1Dする。' })
+    expect(searchCards([reportedCard], reportedCriteria)).toEqual([])
+  })
+
+  it.each([
+    ['eft + eat', { eft: 'ActionSkill', eat: 'bbbbb' }],
+    ['eft + eac', { eft: 'ActionSkill', eac: 'Battle' }],
+    ['eft + etx', { eft: 'ActionSkill', etx: '分散条件のテキスト' }],
+    ['eat + eac', { eat: 'aaaaa', eac: 'Battle' }],
+    ['eat + etx', { eat: 'aaaaa', etx: '分散条件のテキスト' }],
+    ['eac + etx', { eac: 'Field', etx: '分散条件のテキスト' }],
+  ] as const)('Effectの%sが異なるEffectに分散している場合は非ヒットにする', (_name, query) => {
+    const source = getSourceCards().map(item => item.card)
+    const card = structuredClone(source.find(value => value.effects.length >= 2)!)
+    card.effects[0]!.effect_type_code = 'ActionSkill'
+    card.effects[0]!.effect_activation_type_id = '019d81a0-7987-75eb-9d86-aaaaaaaaaaaa'
+    card.effects[0]!.effect_activation_category_code = 'Field'
+    card.effects[0]!.effect_text = '別の条件のテキスト'
+    card.effects[1]!.effect_type_code = 'DeclareSkill'
+    card.effects[1]!.effect_activation_type_id = '019d81a0-7987-75eb-9d86-bbbbbbbbbbbb'
+    card.effects[1]!.effect_activation_category_code = 'Battle'
+    card.effects[1]!.effect_text = '分散条件のテキスト'
+
+    expect(searchCards([card], parseCardSearchQuery(query))).toEqual([])
+  })
+
+  it('Effectの3条件以上は同一Effectならヒットし、分散していれば非ヒットにする', () => {
+    const source = getSourceCards().map(item => item.card)
+    const sameEffect = structuredClone(source.find(value => value.effects.length >= 2)!)
+    const distributed = structuredClone(sameEffect)
+    const configure = (card: typeof sameEffect, text0: string, text1: string) => {
+      card.effects[0]!.effect_type_code = 'ActionSkill'
+      card.effects[0]!.effect_activation_type_id = '019d81a0-7987-75eb-9d86-aaaaaaaaaaaa'
+      card.effects[0]!.effect_activation_category_code = 'Field'
+      card.effects[0]!.effect_text = text0
+      card.effects[1]!.effect_type_code = 'DeclareSkill'
+      card.effects[1]!.effect_activation_type_id = '019d81a0-7987-75eb-9d86-bbbbbbbbbbbb'
+      card.effects[1]!.effect_activation_category_code = 'Battle'
+      card.effects[1]!.effect_text = text1
+    }
+    configure(sameEffect, '同一Effectの全条件', '別Effectのテキスト')
+    configure(distributed, '別Effectのテキスト', '同一Effectの全条件')
+
+    const query = { eft: 'ActionSkill', eat: 'aaaaa', eac: 'Field', etx: '同一Effectの全条件' }
+    expect(searchCards([sameEffect], parseCardSearchQuery(query))).toEqual([sameEffect])
+    expect(searchCards([distributed], parseCardSearchQuery(query))).toEqual([])
+  })
+
+  it('同一Effect Parameter内の複数Collection値はORのまま一致する', () => {
+    const source = getSourceCards().map(item => item.card)
+    const card = structuredClone(source.find(value => value.effects.length >= 2)!)
+    card.effects[0]!.effect_type_code = 'ActionSkill'
+    card.effects[1]!.effect_type_code = 'DeclareSkill'
+
+    const criteria = parseCardSearchQuery({ eft: 'ActionSkill,DeclareSkill' })
+
+    expect(searchCards([card], criteria)).toEqual([card])
+  })
 })
