@@ -27,7 +27,7 @@ const slotsMatch = (ability: Ability | null | undefined, condition: SlotConditio
   }))
   return condition.match === 'and' ? checks.every(Boolean) : checks.some(Boolean)
 }
-const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').flatMap(x => [x.affinity.damage_source_name, x.affinity.damage_attribute_name, x.affinity.affinity_category_code]).map(x => x.toLowerCase()))
+const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').map(x => x.affinity.affinity_id.toLowerCase()))
 const effectValues = (effects: readonly Effect[], field: keyof Effect) => effects.map(effect => String(effect[field]).toLowerCase())
 const textIncludes = (actual: string, wanted: string) => !wanted || actual.toLocaleLowerCase().includes(wanted.toLocaleLowerCase())
 
