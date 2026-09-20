@@ -279,6 +279,38 @@ describe('searchCards', () => {
     expect(searchCards([distributed], parseCardSearchQuery(query))).toEqual([])
   })
 
+  it.each([
+    ['ＡＬＬ', 'M20A-010'], ['＋２', 'M20A-007'], ['１Ｄ', 'M20A-016'], ['弱点:ALL', 'M20A-010'],
+  ] as const)('QDSの幅正規化により%sは実データ%sへ一致する', (query, referenceLabel) => {
+    const cards = getSourceCards().map(item => item.card)
+
+    expect(searchCards(cards, parseCardSearchQuery({ etx: query })).some(card => card.reference_label === referenceLabel)).toBe(true)
+  })
+
+  it('QDSの半角カナ、濁点、全角空白を正規化する', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    card.effects = [{ ...card.effects[0]!, effect_text: 'ガード ＡＢＣ' }]
+
+    expect(searchCards([card], parseCardSearchQuery({ etx: 'ｶﾞｰﾄﾞ　ａｂｃ' }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ etx: 'カ\u3099ード ＡＢＣ' }))).toEqual([card])
+  })
+
+  it('QDSで指定されていないLatin文字のcanonical compositionは行わない', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    card.effects = [{ ...card.effects[0]!, effect_text: 'é' }]
+
+    expect(searchCards([card], parseCardSearchQuery({ etx: 'e\u0301' }))).toEqual([])
+  })
+
+  it('QDSが同一視しない文字は正規化で一致させない', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    card.effects = [{ ...card.effects[0]!, effect_text: '① Ⅰ ひらがな' }]
+
+    expect(searchCards([card], parseCardSearchQuery({ etx: '1' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ etx: 'I' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ etx: 'カタカナ' }))).toEqual([])
+  })
+
   it('同一Effect Parameter内の複数Collection値はORのまま一致する', () => {
     const source = getSourceCards().map(item => item.card)
     const card = structuredClone(source.find(value => value.effects.length >= 2)!)

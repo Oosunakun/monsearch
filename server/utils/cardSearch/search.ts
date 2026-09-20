@@ -27,6 +27,52 @@ const matchesFiltered = (actual: number | null | undefined, condition: FilteredN
   if (condition.filterType === 'exclude') return actual === null || actual === undefined
   return actual !== null && actual !== undefined && (condition.value === null || compare(actual, condition))
 }
+const HALF_WIDTH_TO_FULL_WIDTH: readonly string[] = [
+  '。', '「', '」', '、', '・', 'ヲ', 'ァ', 'ィ', 'ゥ', 'ェ', 'ォ', 'ャ', 'ュ', 'ョ', 'ッ', 'ー',
+  'ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ', 'サ', 'シ', 'ス', 'セ', 'ソ',
+  'タ', 'チ', 'ツ', 'テ', 'ト', 'ナ', 'ニ', 'ヌ', 'ネ', 'ノ', 'ハ', 'ヒ', 'フ', 'ヘ', 'ホ',
+  'マ', 'ミ', 'ム', 'メ', 'モ', 'ヤ', 'ユ', 'ヨ', 'ラ', 'リ', 'ル', 'レ', 'ロ', 'ワ', 'ン', '\u3099', '\u309A',
+]
+const COMPATIBILITY_WIDTH_MAP: Readonly<Record<number, string>> = {
+  0xFFE0: '¢', 0xFFE1: '£', 0xFFE2: '¬', 0xFFE3: '¯', 0xFFE4: '¦', 0xFFE5: '¥', 0xFFE6: '₩',
+  0xFFE8: '│', 0xFFE9: '←', 0xFFEA: '↑', 0xFFEB: '→', 0xFFEC: '↓', 0xFFED: '■', 0xFFEE: '○',
+}
+const isKana = (character: string) => {
+  const codePoint = character.codePointAt(0)!
+  return (codePoint >= 0x3041 && codePoint <= 0x3096)
+    || (codePoint >= 0x309D && codePoint <= 0x309F)
+    || (codePoint >= 0x30A1 && codePoint <= 0x30FA)
+    || (codePoint >= 0x30FD && codePoint <= 0x30FF)
+}
+const composeKanaMarks = (value: string) => {
+  const characters = Array.from(value)
+  const composed: string[] = []
+  for (let index = 0; index < characters.length; index += 1) {
+    const character = characters[index]!
+    const next = characters[index + 1]
+    if (isKana(character) && (next === '\u3099' || next === '\u309A')) {
+      const pair = `${character}${next}`.normalize('NFC')
+      composed.push(pair.length === 1 ? pair : character + next)
+      index += 1
+    } else {
+      composed.push(character)
+    }
+  }
+  return composed.join('')
+}
+const normalizeEffectText = (value: string) => composeKanaMarks(Array.from(value, character => {
+  const codePoint = character.codePointAt(0)!
+  const converted = codePoint === 0x3000
+    ? ' '
+    : codePoint >= 0xFF01 && codePoint <= 0xFF5E
+      ? String.fromCodePoint(codePoint - 0xFEE0)
+      : codePoint >= 0xFF61 && codePoint <= 0xFF9F
+        ? HALF_WIDTH_TO_FULL_WIDTH[codePoint - 0xFF61]!
+        : COMPATIBILITY_WIDTH_MAP[codePoint] ?? character
+  const convertedCodePoint = converted.codePointAt(0)!
+  return convertedCodePoint >= 0x41 && convertedCodePoint <= 0x5A
+    ? String.fromCodePoint(convertedCodePoint + 0x20) : converted
+}).join(''))
 const slotsMatch = (ability: Ability | null | undefined, condition: SlotCondition, category: string) => {
   const entries = Object.entries(condition.slots)
   const rows = (ability?.ability_slots ?? []).filter(slot => slot.ability_slot_category_code === category)
@@ -41,11 +87,12 @@ const slotsMatch = (ability: Ability | null | undefined, condition: SlotConditio
 }
 const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').map(x => x.affinity.affinity_id.toLowerCase()))
 const textIncludes = (actual: string, wanted: string) => !wanted || actual.toLocaleLowerCase().includes(wanted.toLocaleLowerCase())
+const effectTextIncludes = (actual: string, wanted: string) => !wanted || normalizeEffectText(actual).includes(normalizeEffectText(wanted))
 const effectMatches = (effect: Effect, criteria: SearchForm) =>
   includesAny(criteria.effectTypes, [String(effect.effect_type_code).toLowerCase()])
   && includesAny(criteria.effectActivationTypes, [String(effect.effect_activation_type_id).toLowerCase()])
   && includesAny(criteria.effectActivationCategories, [String(effect.effect_activation_category_code).toLowerCase()])
-  && textIncludes(effect.effect_text, criteria.effectText)
+  && effectTextIncludes(effect.effect_text, criteria.effectText)
 
 export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => {
   const category = card.search_support.is_token ? 'token' : card.card_category_code.toLowerCase() === 'item' ? `item-${card.item?.item_category_code.toLowerCase()}` : card.card_category_code.toLowerCase()
