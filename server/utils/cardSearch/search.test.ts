@@ -74,4 +74,59 @@ describe('searchCards', () => {
     nonHero.unit!.is_instant_summon = true
     expect(searchCards([hero, nonHero], levelCriteria)).toHaveLength(1)
   })
+
+  it('所持枠 none は対象能力の正の数量がない場合だけ一致する', () => {
+    const source = getSourceCards().map(item => item.card)
+    const template = source.find(card => card.unit?.ability)!
+    const noSlots = structuredClone(template)
+    const zeroSlot = structuredClone(template)
+    const positiveSlot = structuredClone(template)
+    noSlots.unit!.ability!.ability_slots = []
+    zeroSlot.unit!.ability!.ability_slots = [{
+      ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 0,
+    }]
+    positiveSlot.unit!.ability!.ability_slots = [{
+      ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1,
+    }]
+    const criteria = createSearchForm()
+    criteria.abilitySpellSlots = { match: 'none', slots: {} }
+    expect(searchCards([noSlots, zeroSlot, positiveSlot], criteria)).toEqual([noSlots, zeroSlot])
+  })
+
+  it('所持枠の同種複数行を合算せず、各行を個別に判定する', () => {
+    const source = getSourceCards().map(item => item.card)
+    const template = source.find(card => card.unit?.ability)!
+    const splitSlots = structuredClone(template)
+    const oneLargeRow = structuredClone(template)
+    splitSlots.unit!.ability!.ability_slots = [
+      { ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1 },
+      { ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1 },
+    ]
+    oneLargeRow.unit!.ability!.ability_slots = [
+      { ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 2 },
+    ]
+    const criteria = createSearchForm()
+    criteria.abilitySpellSlots = { match: 'or', slots: { fire: 2 } }
+    expect(searchCards([splitSlots, oneLargeRow], criteria)).toEqual([oneLargeRow])
+  })
+
+  it('所持枠の or / and は Pairごとの行判定を使う', () => {
+    const source = getSourceCards().map(item => item.card)
+    const template = source.find(card => card.unit?.ability)!
+    const fireOnly = structuredClone(template)
+    const both = structuredClone(template)
+    fireOnly.unit!.ability!.ability_slots = [{
+      ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1,
+    }]
+    both.unit!.ability!.ability_slots = [
+      { ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1 },
+      { ability_slot_type_code: 'SpellWater', ability_slot_type_name: '水', ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1 },
+    ]
+    const orCriteria = createSearchForm()
+    orCriteria.abilitySpellSlots = { match: 'or', slots: { fire: 1, water: 1 } }
+    expect(searchCards([fireOnly, both], orCriteria)).toEqual([fireOnly, both])
+    const andCriteria = createSearchForm()
+    andCriteria.abilitySpellSlots = { match: 'and', slots: { fire: 1, water: 1 } }
+    expect(searchCards([fireOnly, both], andCriteria)).toEqual([both])
+  })
 })

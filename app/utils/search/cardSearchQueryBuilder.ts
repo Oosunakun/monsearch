@@ -39,7 +39,11 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
     if (value.filterType === 'exclude' && !alwaysShowValue) return
     if (base) put(alias, base)
   }
-  const putSlots = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<SlotCondition>, allowed: ReadonlySet<string>) => {
+  const putSlots = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<SlotCondition>, allowed: ReadonlySet<string>, supportsNone = false) => {
+    if (supportsNone && value.match === 'none') {
+      put(modifier, 'none')
+      return
+    }
     const base = pairs(value, allowed)
     if (!base) return
     if (isLogicalMatch(value.match) && value.match !== 'or') put(modifier, value.match)
@@ -53,13 +57,13 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
     putFiltered('lvm', 'lv', form.level, true); putFiltered('hem', 'he', form.heroPoint)
     putComparison('at', form.attack); putComparison('df', form.defense)
     put('mt', collection(form.moveTypes, MOVE_TYPE_VALUES)); put('ra', collection(form.races, RACE_VALUES))
-    putSlots('ism', 'is', form.abilityItemSlots, ITEM_SLOT_VALUES); putSlots('ssm', 'ss', form.abilitySpellSlots, SPELL_SLOT_VALUES)
+    putSlots('ism', 'is', form.abilityItemSlots, ITEM_SLOT_VALUES, true); putSlots('ssm', 'ss', form.abilitySpellSlots, SPELL_SLOT_VALUES, true)
     putFiltered('itm', 'it', form.initiative); putFiltered('chm', 'ch', form.charge)
     putFiltered('dem', 'de', form.defender); put('re', collection(form.resistances, RESISTANCE_VALUES))
   }
   if (isEquipmentApplicable(form.cardCategory)) {
     putComparison('aat', form.additionalAttack); putComparison('adf', form.additionalDefense)
-    putSlots('aism', 'ais', form.additionalAbilityItemSlots, ITEM_SLOT_VALUES); putSlots('assm', 'ass', form.additionalAbilitySpellSlots, SPELL_SLOT_VALUES)
+    putSlots('aism', 'ais', form.additionalAbilityItemSlots, ITEM_SLOT_VALUES, true); putSlots('assm', 'ass', form.additionalAbilitySpellSlots, SPELL_SLOT_VALUES, true)
     putFiltered('aitm', 'ait', form.additionalInitiative); putFiltered('achm', 'ach', form.additionalCharge)
     putFiltered('adem', 'ade', form.additionalDefender); put('are', collection(form.additionalResistances, RESISTANCE_VALUES))
   }

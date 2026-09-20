@@ -31,6 +31,24 @@ describe('parseCardSearchQuery', () => {
     expect(buildCardSearchQuery(form)).toEqual({ itm: 'exclude', aitm: 'include' })
   })
 
+  it.each([
+    ['ism', 'is', 'abilityItemSlots'],
+    ['ssm', 'ss', 'abilitySpellSlots'],
+    ['aism', 'ais', 'additionalAbilityItemSlots'],
+    ['assm', 'ass', 'additionalAbilitySpellSlots'],
+  ] as const)('%s は Pairなしの none を復元して Pairを捨てる', (_modifier, alias, field) => {
+    const form = parseCardSearchQuery({ [_modifier]: 'none', [alias]: 'fire:2' })
+    expect(form[field]).toEqual({ match: 'none', slots: {} })
+    expect(buildCardSearchQuery(form)).toEqual({ [_modifier]: 'none' })
+  })
+
+  it('Pairなしの or / and は既定値へ戻る', () => {
+    const form = parseCardSearchQuery({ ism: 'and', ssm: 'or' })
+    expect(form.abilityItemSlots).toEqual({ match: 'or', slots: {} })
+    expect(form.abilitySpellSlots).toEqual({ match: 'or', slots: {} })
+    expect(buildCardSearchQuery(form)).toEqual({})
+  })
+
   it('recovers valid fields independently from unknown, invalid, incomplete, and duplicate input', () => {
     const form = parseCardSearchQuery({
       nm: ['discarded', '有効 🐉'],

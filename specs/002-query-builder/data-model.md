@@ -56,7 +56,7 @@ For the existing numeric presence Modifiers, `include` and `exclude` are valid w
 - `match`: recognized logical match; default is `or`
 - `slots`: record from slot identifier to numeric count
 
-The logical query retains only valid positive counts. The match modifier cannot exist without a non-empty base pair collection.
+The logical query retains only valid positive counts. `none` is a meaningful standalone match modifier and does not require a base pair collection. When `none` is selected, Pair values are ignored for canonical output. Pairless `or` / `and` are omitted as unspecified.
 
 ## SearchLocation
 

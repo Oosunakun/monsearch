@@ -29,7 +29,13 @@ const applyFiltered = (target: FilteredNumericCondition, query: LocationQuery, m
   const filter = last(query, modifier); if (filter && isSearchFilter(filter)) target.filterType = filter
   const parsed = parseComparison(last(query, alias)); if (parsed) Object.assign(target, parsed)
 }
-const applySlots = (target: SlotCondition, query: LocationQuery, modifier: string, alias: string, allowed: ReadonlySet<string>) => {
+const applySlots = (target: SlotCondition, query: LocationQuery, modifier: string, alias: string, allowed: ReadonlySet<string>, supportsNone = false) => {
+  const match = last(query, modifier)
+  if (supportsNone && match === 'none') {
+    target.match = 'none'
+    target.slots = {}
+    return
+  }
   const slots: Record<string, number> = {}
   for (const part of values(query[alias]).flatMap(value => value.split(','))) {
     const match = /^([^:,]+):(.+)$/.exec(part.trim()); if (!match) continue
@@ -37,7 +43,7 @@ const applySlots = (target: SlotCondition, query: LocationQuery, modifier: strin
   }
   if (!Object.keys(slots).length) return
   target.slots = slots
-  const match = last(query, modifier); if (match && isLogicalMatch(match)) target.match = match
+  if (match && isLogicalMatch(match)) target.match = match
 }
 
 export const parseCardSearchQuery = (query: LocationQuery): SearchForm => {
@@ -49,11 +55,11 @@ export const parseCardSearchQuery = (query: LocationQuery): SearchForm => {
   applyFiltered(form.level, query, 'lvm', 'lv'); applyFiltered(form.heroPoint, query, 'hem', 'he')
   applyComparison(form.attack, last(query, 'at')); applyComparison(form.defense, last(query, 'df'))
   form.moveTypes = merged(query, 'mt', MOVE_TYPE_VALUES); form.races = merged(query, 'ra', RACE_VALUES)
-  applySlots(form.abilityItemSlots, query, 'ism', 'is', ITEM_SLOT_VALUES); applySlots(form.abilitySpellSlots, query, 'ssm', 'ss', SPELL_SLOT_VALUES)
+  applySlots(form.abilityItemSlots, query, 'ism', 'is', ITEM_SLOT_VALUES, true); applySlots(form.abilitySpellSlots, query, 'ssm', 'ss', SPELL_SLOT_VALUES, true)
   applyFiltered(form.initiative, query, 'itm', 'it'); applyFiltered(form.charge, query, 'chm', 'ch')
   applyFiltered(form.defender, query, 'dem', 'de'); form.resistances = merged(query, 're', RESISTANCE_VALUES)
   applyComparison(form.additionalAttack, last(query, 'aat')); applyComparison(form.additionalDefense, last(query, 'adf'))
-  applySlots(form.additionalAbilityItemSlots, query, 'aism', 'ais', ITEM_SLOT_VALUES); applySlots(form.additionalAbilitySpellSlots, query, 'assm', 'ass', SPELL_SLOT_VALUES)
+  applySlots(form.additionalAbilityItemSlots, query, 'aism', 'ais', ITEM_SLOT_VALUES, true); applySlots(form.additionalAbilitySpellSlots, query, 'assm', 'ass', SPELL_SLOT_VALUES, true)
   applyFiltered(form.additionalInitiative, query, 'aitm', 'ait'); applyFiltered(form.additionalCharge, query, 'achm', 'ach')
   applyFiltered(form.additionalDefender, query, 'adem', 'ade'); form.additionalResistances = merged(query, 'are', RESISTANCE_VALUES)
   applyComparison(form.limit, last(query, 'lm')); const land = last(query, 'lc'); if (land && isLandCategory(land)) form.landCategory = land
