@@ -16,6 +16,11 @@ export const representativeCardSearchQuery: LocationQuery = {
   ss: 'water:2,fire:1',
 }
 
+export const representativeShortUuidQuery: LocationQuery = {
+  pd: '22D7E,abcde,invalid',
+  ct: '5D447,fffff',
+}
+
 export const createRepresentativeSearchForm = (): SearchForm => {
   const form = createSearchForm()
   form.name = '青い竜 🐉'

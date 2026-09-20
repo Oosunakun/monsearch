@@ -1,217 +1,217 @@
 [
   {
     "label": "アンデッド",
-    "value": "95a1db79",
+    "value": "1db79",
     "color": "#EEEEEE"
   },
   {
     "label": "アーチャー",
-    "value": "0457a41a",
+    "value": "7a41a",
     "color": "#EEEEEE"
   },
   {
     "label": "ウィザード",
-    "value": "e37a28aa",
+    "value": "a28aa",
     "color": "#EEEEEE"
   },
   {
     "label": "ウォリアー",
-    "value": "e92318d0",
+    "value": "318d0",
     "color": "#EEEEEE"
   },
   {
     "label": "ウォーロック",
-    "value": "97aca9fa",
+    "value": "ca9fa",
     "color": "#EEEEEE"
   },
   {
     "label": "エレメンタラー",
-    "value": "de84193f",
+    "value": "4193f",
     "color": "#EEEEEE"
   },
   {
     "label": "エンジェル",
-    "value": "5249166f",
+    "value": "9166f",
     "color": "#EEEEEE"
   },
   {
     "label": "サモナー",
-    "value": "6d45d447",
+    "value": "5d447",
     "color": "#EEEEEE"
   },
   {
     "label": "ジャイアント",
-    "value": "7c84f67e",
+    "value": "4f67e",
     "color": "#EEEEEE"
   },
   {
     "label": "ソードマスター",
-    "value": "fa4972aa",
+    "value": "972aa",
     "color": "#EEEEEE"
   },
   {
     "label": "ダンジョン",
-    "value": "bff43593",
+    "value": "43593",
     "color": "#EEEEEE"
   },
   {
     "label": "デュエリスト",
-    "value": "7a4614be",
+    "value": "614be",
     "color": "#EEEEEE"
   },
   {
     "label": "ナイト",
-    "value": "0c5e7011",
+    "value": "e7011",
     "color": "#EEEEEE"
   },
   {
     "label": "ネクロマンサー",
-    "value": "bde92977",
+    "value": "92977",
     "color": "#EEEEEE"
   },
   {
     "label": "ハイオーガ",
-    "value": "a7b62a2a",
+    "value": "62a2a",
     "color": "#EEEEEE"
   },
   {
     "label": "バード",
-    "value": "70b2cb56",
+    "value": "2cb56",
     "color": "#EEEEEE"
   },
   {
     "label": "ヒーラー",
-    "value": "396dd3f5",
+    "value": "dd3f5",
     "color": "#EEEEEE"
   },
   {
     "label": "ビーストマスター",
-    "value": "a3132fb2",
+    "value": "32fb2",
     "color": "#EEEEEE"
   },
   {
     "label": "ホーリーオーダー",
-    "value": "cba9ce87",
+    "value": "9ce87",
     "color": "#EEEEEE"
   },
   {
     "label": "マイオネイター",
-    "value": "ea444a7e",
+    "value": "44a7e",
     "color": "#EEEEEE"
   },
   {
     "label": "マリオネイター",
-    "value": "b2d0985b",
+    "value": "0985b",
     "color": "#EEEEEE"
   },
   {
     "label": "上級魔法",
-    "value": "8d104132",
+    "value": "04132",
     "color": "#EEEEEE"
   },
   {
     "label": "下級魔法",
-    "value": "41168057",
+    "value": "68057",
     "color": "#EEEEEE"
   },
   {
     "label": "儀式魔法",
-    "value": "7e3a2278",
+    "value": "a2278",
     "color": "#EEEEEE"
   },
   {
     "label": "呪文魔法",
-    "value": "89ea7995",
+    "value": "a7995",
     "color": "#EEEEEE"
   },
   {
     "label": "大自然",
-    "value": "f246d63d",
+    "value": "6d63d",
     "color": "#EEEEEE"
   },
   {
     "label": "建築物",
-    "value": "9652dc0e",
+    "value": "2dc0e",
     "color": "#EEEEEE"
   },
   {
     "label": "弾丸",
-    "value": "02f33ec7",
+    "value": "33ec7",
     "color": "#EEEEEE"
   },
   {
     "label": "必携七つ道具",
-    "value": "9d4923dc",
+    "value": "923dc",
     "color": "#EEEEEE"
   },
   {
     "label": "戦場",
-    "value": "f575cd82",
+    "value": "5cd82",
     "color": "#EEEEEE"
   },
   {
     "label": "時空門",
-    "value": "83de962b",
+    "value": "e962b",
     "color": "#EEEEEE"
   },
   {
     "label": "武器",
-    "value": "615d30a5",
+    "value": "d30a5",
     "color": "#EEEEEE"
   },
   {
     "label": "禁忌魔法",
-    "value": "558cdc7e",
+    "value": "cdc7e",
     "color": "#EEEEEE"
   },
   {
     "label": "秘伝魔法",
-    "value": "130ef9e3",
+    "value": "ef9e3",
     "color": "#EEEEEE"
   },
   {
     "label": "薬品",
-    "value": "a13e9c21",
+    "value": "e9c21",
     "color": "#EEEEEE"
   },
   {
     "label": "道",
-    "value": "689ff327",
+    "value": "ff327",
     "color": "#EEEEEE"
   },
   {
     "label": "防具",
-    "value": "afca1c87",
+    "value": "a1c87",
     "color": "#EEEEEE"
   },
   {
     "label": "鬼神衆",
-    "value": "75017660",
+    "value": "17660",
     "color": "#EEEEEE"
   },
   {
     "label": "魔剣",
-    "value": "db2cc33c",
+    "value": "cc33c",
     "color": "#EEEEEE"
   },
   {
     "label": "魔導器",
-    "value": "be2c621d",
+    "value": "c621d",
     "color": "#EEEEEE"
   },
   {
     "label": "魔法陣",
-    "value": "f6bbf245",
+    "value": "bf245",
     "color": "#EEEEEE"
   },
   {
     "label": "魔海",
-    "value": "e73ca9ad",
+    "value": "ca9ad",
     "color": "#EEEEEE"
   },
   {
     "label": "黄金",
-    "value": "87bb59de",
+    "value": "b59de",
     "color": "#EEEEEE"
   }
 ]

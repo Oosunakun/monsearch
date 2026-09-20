@@ -65,9 +65,15 @@ describe('parseCardSearchQuery', () => {
     expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })
   })
 
-  it('canonical pd の再読込で product 1件だけを復元し、ほかは defaults にする', () => {
+  it('Short UUIDはmaster dataにない有効値もcanonical化して復元する', () => {
     const expected = createSearchForm()
-    expected.products = ['91122d7e']
-    expect(parseCardSearchQuery({ pd: '91122d7e' })).toEqual(expected)
+    expected.products = ['22d7e', 'abcde']
+    expect(parseCardSearchQuery({ pd: '22D7E,abcde,invalid,abcd' })).toEqual({ ...expected })
+  })
+
+  it.each(['ct', 'pd', 'fa', 'ra', 'il', 'eat', 're', 'are'] as const)('%s は有効値を保持し、不正値を除外する', alias => {
+    const form = parseCardSearchQuery({ [alias]: 'ABCDE,fffff,1234,zzzzz,' })
+    const field = { ct: 'cardTypes', pd: 'products', fa: 'factions', ra: 'races', il: 'illustrators', eat: 'effectActivationTypes', re: 'resistances', are: 'additionalResistances' }[alias] as keyof typeof form
+    expect(form[field]).toEqual(['abcde', 'fffff'])
   })
 })

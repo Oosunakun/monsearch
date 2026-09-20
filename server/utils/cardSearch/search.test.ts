@@ -6,6 +6,46 @@ import { searchCards } from './search'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
 
 describe('searchCards', () => {
+  it('Short UUIDは既存IDの末尾5桁を照合し、未知の形式有効値は非ヒットにする', () => {
+    const source = getSourceCards().map(item => item.card)
+    const known = searchCards(source, parseCardSearchQuery({ pd: '22D7E' }))
+    const unknown = searchCards(source, parseCardSearchQuery({ pd: 'abcde' }))
+    const or = searchCards(source, parseCardSearchQuery({ pd: 'abcde,22d7e' }))
+
+    expect(known.length).toBeGreaterThan(0)
+    expect(unknown).toEqual([])
+    expect(or).toEqual(known)
+  })
+
+  it('ct/fa/raの名称fallbackとre/areのAffinity照合を維持する', () => {
+    const source = getSourceCards().map(item => item.card)
+    const cardTypeCard = source.find(card => card.card_types.length > 0)
+    const factionCard = source.find(card => card.factions.length > 0)
+    const raceCard = source.find(card => (card.unit?.races.length ?? 0) > 0)
+    const resistanceCard = source.find(card => card.unit?.ability?.affinities.some(x => x.affinity.affinity_category_code === 'Resistance'))
+    const additionalResistanceCard = source.find(card => card.item?.equip?.ability?.affinities.some(x => x.affinity.affinity_category_code === 'Resistance'))
+
+    expect(cardTypeCard).toBeDefined()
+    expect(factionCard).toBeDefined()
+    expect(raceCard).toBeDefined()
+    expect(resistanceCard).toBeDefined()
+    expect(additionalResistanceCard).toBeDefined()
+
+    const cardTypeCriteria = createSearchForm(); cardTypeCriteria.cardTypes = [cardTypeCard!.card_types[0]!.card_type_name]
+    const factionCriteria = createSearchForm(); factionCriteria.factions = [factionCard!.factions[0]!.faction_name]
+    const raceCriteria = createSearchForm(); raceCriteria.races = [raceCard!.unit!.races[0]!.race_name]
+    const resistance = resistanceCard!.unit!.ability!.affinities.find(x => x.affinity.affinity_category_code === 'Resistance')!
+    const resistanceCriteria = createSearchForm(); resistanceCriteria.resistances = [resistance.affinity.damage_attribute_name]
+    const additionalResistance = additionalResistanceCard!.item!.equip!.ability!.affinities.find(x => x.affinity.affinity_category_code === 'Resistance')!
+    const additionalResistanceCriteria = createSearchForm(); additionalResistanceCriteria.additionalResistances = [additionalResistance.affinity.damage_attribute_name]
+
+    expect(searchCards([cardTypeCard!], cardTypeCriteria)).toEqual([cardTypeCard])
+    expect(searchCards([factionCard!], factionCriteria)).toEqual([factionCard])
+    expect(searchCards([raceCard!], raceCriteria)).toEqual([raceCard])
+    expect(searchCards([resistanceCard!], resistanceCriteria)).toEqual([resistanceCard])
+    expect(searchCards([additionalResistanceCard!], additionalResistanceCriteria)).toEqual([additionalResistanceCard])
+  })
+
   it.each(cardSearchParityQueries)('$name を入力変更なしで評価する', ({ query }) => {
     const criteria = parseCardSearchQuery(query)
     const snapshot = structuredClone(criteria)
