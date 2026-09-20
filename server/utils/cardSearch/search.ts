@@ -17,10 +17,15 @@ const matchesFiltered = (actual: number | null | undefined, condition: FilteredN
 }
 const slotsMatch = (ability: Ability | null | undefined, condition: SlotCondition, category: string) => {
   const entries = Object.entries(condition.slots)
+  const rows = (ability?.ability_slots ?? []).filter(slot => slot.ability_slot_category_code === category)
+  if (condition.match === 'none') return !rows.some(slot => slot.slot_count > 0)
   if (!entries.length) return true
-  const available = new Map((ability?.ability_slots ?? []).filter(slot => slot.ability_slot_category_code === category).map(slot => [slot.ability_slot_type_code.toLowerCase(), slot.slot_count]))
-  const checks = entries.map(([key, count]) => (available.get(key.toLowerCase()) ?? 0) >= count)
-  return condition.match === 'and' ? checks.every(Boolean) : condition.match === 'none' ? checks.every(value => !value) : checks.some(Boolean)
+  const checks = entries.map(([key, count]) => rows.some(slot => {
+    const typeCode = slot.ability_slot_type_code.toLowerCase()
+    const expectedCode = `${category}${key}`.toLowerCase()
+    return (typeCode === key.toLowerCase() || typeCode === expectedCode) && slot.slot_count >= count
+  }))
+  return condition.match === 'and' ? checks.every(Boolean) : checks.some(Boolean)
 }
 const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').flatMap(x => [x.affinity.damage_source_name, x.affinity.damage_attribute_name, x.affinity.affinity_category_code]).map(x => x.toLowerCase()))
 const effectValues = (effects: readonly Effect[], field: keyof Effect) => effects.map(effect => String(effect[field]).toLowerCase())
@@ -46,7 +51,8 @@ export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => 
   if (criteria.defense.value !== null && (!unit || !compare(unit.defense, criteria.defense))) return false
   if (!includesAny(criteria.moveTypes, unit ? [unit.move_type_code.toLowerCase()] : [])) return false
   if (!includesAny(criteria.races, (unit?.races ?? []).flatMap(x => [x.race_id, x.race_name]).map(x => x.toLowerCase()))) return false
-  if (!slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item') || !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell')) return false
+  if ((criteria.abilityItemSlots.match === 'none' && !unit) || (criteria.abilitySpellSlots.match === 'none' && !unit)
+    || !slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item') || !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell')) return false
   if (isFilteredActive(criteria.initiative) && (!matchesFiltered(unit?.ability?.initiative, criteria.initiative))) return false
   if (isFilteredActive(criteria.charge) && (!matchesFiltered(unit?.ability?.charge, criteria.charge))) return false
   if (isFilteredActive(criteria.defender) && (!matchesFiltered(unit?.ability?.defender, criteria.defender))) return false
@@ -55,7 +61,8 @@ export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => 
   const equip = card.item?.equip
   if (criteria.additionalAttack.value !== null && (!equip || !compare(equip.attack, criteria.additionalAttack))) return false
   if (criteria.additionalDefense.value !== null && (!equip || !compare(equip.defense, criteria.additionalDefense))) return false
-  if (!slotsMatch(equip?.ability, criteria.additionalAbilityItemSlots, 'Item') || !slotsMatch(equip?.ability, criteria.additionalAbilitySpellSlots, 'Spell')) return false
+  if ((criteria.additionalAbilityItemSlots.match === 'none' && !equip) || (criteria.additionalAbilitySpellSlots.match === 'none' && !equip)
+    || !slotsMatch(equip?.ability, criteria.additionalAbilityItemSlots, 'Item') || !slotsMatch(equip?.ability, criteria.additionalAbilitySpellSlots, 'Spell')) return false
   if (isFilteredActive(criteria.additionalInitiative) && (!matchesFiltered(equip?.ability?.initiative, criteria.additionalInitiative))) return false
   if (isFilteredActive(criteria.additionalCharge) && (!matchesFiltered(equip?.ability?.charge, criteria.additionalCharge))) return false
   if (isFilteredActive(criteria.additionalDefender) && (!matchesFiltered(equip?.ability?.defender, criteria.additionalDefender))) return false

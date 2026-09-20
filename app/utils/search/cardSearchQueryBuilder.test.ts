@@ -18,6 +18,30 @@ describe('buildCardSearchQuery', () => {
     expect(buildCardSearchQuery(form)).toEqual({ lvm: 'include', lv: 'lte:5', df: 'eq:2', ssm: 'and', ss: 'fire:1,water:2', adf: 'gte:1' })
   })
 
+  it.each([
+    ['ism', 'abilityItemSlots', 'ism'],
+    ['ssm', 'abilitySpellSlots', 'ssm'],
+    ['aism', 'additionalAbilityItemSlots', 'aism'],
+    ['assm', 'additionalAbilitySpellSlots', 'assm'],
+  ] as const)('%s は Pairなしでも none を出力する', (_name, field, modifier) => {
+    const form = createFreshSearchForm()
+    form[field] = { match: 'none', slots: {} }
+    expect(buildCardSearchQuery(form)).toEqual({ [modifier]: 'none' })
+  })
+
+  it('none と Pair が併記された場合は Pair を canonical URL から除外する', () => {
+    const form = createFreshSearchForm()
+    form.abilitySpellSlots = { match: 'none', slots: { fire: 2 } }
+    expect(buildCardSearchQuery(form)).toEqual({ ssm: 'none' })
+  })
+
+  it('Pairなしの or / and は未指定として省略する', () => {
+    const form = createFreshSearchForm()
+    form.abilityItemSlots = { match: 'and', slots: {} }
+    form.abilitySpellSlots = { match: 'or', slots: {} }
+    expect(buildCardSearchQuery(form)).toEqual({})
+  })
+
   it('omits defaults, invalid and partial state while retaining zero', () => {
     const form = createFreshSearchForm()
     form.name = '  '; form.attack.value = Number.NaN; form.defense.value = 0
