@@ -1,6 +1,18 @@
 import type { SearchForm, NumericCondition, FilteredNumericCondition, SlotCondition } from '~~/app/types/ui/search'
 import type { Card, Ability, Effect } from '~~/types/cards/finderCards'
 
+const RARITY_NATURAL_KEY_TO_CODE: Readonly<Record<string, string>> = {
+  circle: 'Basic',
+  triangle: 'Common',
+  rhombus: 'Uncommon',
+  star: 'Rare',
+  club: 'SuperRare',
+  spade: 'Special',
+  heart: 'Promotion',
+  crescent: 'DragonJr',
+  hexagram: 'Summoner',
+}
+
 const compare = (actual: number | null | undefined, condition: NumericCondition) => actual !== null && actual !== undefined && (condition.value === null
   || (condition.operator === 'gte' ? actual >= condition.value : condition.operator === 'lte' ? actual <= condition.value : actual === condition.value))
 const includesAny = (wanted: readonly string[], actual: readonly string[]) => {
@@ -42,7 +54,8 @@ export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => 
   if (!includesAny(criteria.products, [card.product.product_id])) return false
   if (!includesAny(criteria.factions, card.factions.flatMap(x => [x.faction_id, x.faction_name]).map(x => x.toLowerCase()))) return false
   if (!includesAny(criteria.blocks, card.blocks.flatMap(x => [x.block_code, x.block_name]).map(x => x.toLowerCase()))) return false
-  if (!includesAny(criteria.rarities, [card.rarity_code]) || !includesAny(criteria.illustrators, [card.illustrator_id])) return false
+  const rarityCodes = criteria.rarities.map(value => RARITY_NATURAL_KEY_TO_CODE[value] ?? value)
+  if (!includesAny(rarityCodes, [card.rarity_code]) || !includesAny(criteria.illustrators, [card.illustrator_id])) return false
 
   const unit = card.unit
   if (isFilteredActive(criteria.level) && (!unit || (criteria.level.filterType === 'include' && !unit.is_instant_summon) || (criteria.level.filterType === 'exclude' && unit.is_instant_summon) || !compare(unit.level, criteria.level))) return false

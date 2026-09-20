@@ -6,6 +6,24 @@ import { searchCards } from './search'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
 
 describe('searchCards', () => {
+  it.each([
+    ['circle', 'Basic'], ['triangle', 'Common'], ['rhombus', 'Uncommon'], ['star', 'Rare'],
+    ['club', 'SuperRare'], ['spade', 'Special'], ['heart', 'Promotion'], ['crescent', 'DragonJr'], ['hexagram', 'Summoner'],
+  ] as const)('rt のNatural Key %sをDatabase code %sへMappingする', (naturalKey, rarityCode) => {
+    const source = getSourceCards().map(item => item.card)
+    const card = structuredClone(source[0]!)
+    card.rarity_code = rarityCode
+
+    expect(searchCards([card], parseCardSearchQuery({ rt: naturalKey }))).toEqual([card])
+  })
+
+  it('rt=club はfixtureのSuperRareカードを返す', () => {
+    const result = searchCards(getSourceCards().map(item => item.card), parseCardSearchQuery({ rt: 'club' }))
+
+    expect(result.length).toBeGreaterThan(0)
+    expect(result.every(card => card.rarity_code === 'SuperRare')).toBe(true)
+  })
+
   it('Short UUIDは既存IDの末尾5桁を照合し、未知の形式有効値は非ヒットにする', () => {
     const source = getSourceCards().map(item => item.card)
     const known = searchCards(source, parseCardSearchQuery({ pd: '22D7E' }))
