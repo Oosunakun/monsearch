@@ -1,1 +1,747 @@
-[]
+[
+  {
+    "label": "C-SHOW",
+    "value": "eddd6",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "C-Show",
+    "value": "cbe9a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "Element",
+    "value": "ff1eb",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "F.S",
+    "value": "4a9c6",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "Hayaken",
+    "value": "e709c",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "K2商会",
+    "value": "cd9da",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "Maruto！",
+    "value": "915f4",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "S.of.L",
+    "value": "52306",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "U-K",
+    "value": "07ee9",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "bob",
+    "value": "8dead",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "いのまたむつみ",
+    "value": "32231",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "い～どぅ～",
+    "value": "010f0",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "かしわ",
+    "value": "1cb0f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "かわく",
+    "value": "dc61d",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "かんくろう",
+    "value": "900cc",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "こいでたく",
+    "value": "06427",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "こさぎ",
+    "value": "ef36e",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "こちも",
+    "value": "f48b5",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "こゆき",
+    "value": "c5fed",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ささきむつみ",
+    "value": "30f5b",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "しろー大野",
+    "value": "92d42",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "つかぽん",
+    "value": "6d2dd",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ねじ太",
+    "value": "e3bb9",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "はるかげ",
+    "value": "e5d77",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ぴぃたぁそると",
+    "value": "b9f2b",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ぽぽるちゃ",
+    "value": "dafee",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "みずさき。",
+    "value": "def4d",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "むらかわみちお",
+    "value": "3fcc3",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ゆうくりっど",
+    "value": "d054b",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ゆめき",
+    "value": "a78e0",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "るりあ046",
+    "value": "54b51",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "アオガチョウ",
+    "value": "7a8d7",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "オカヤド",
+    "value": "7655f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "カジミヤ",
+    "value": "4cd7c",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "キヲー",
+    "value": "a082b",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ツジヤスノリ",
+    "value": "53ad6",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ナブランジャ",
+    "value": "5b86a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ニリツ",
+    "value": "4a496",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ミキタマコ",
+    "value": "e5fd5",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "ヤトアキラ",
+    "value": "0c1b4",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "リヨ",
+    "value": "23752",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "一徳",
+    "value": "1a35f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "一日郎",
+    "value": "4103c",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "七",
+    "value": "8abfc",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "七水剛多",
+    "value": "c3f16",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "三好載克",
+    "value": "86fad",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "中村亮",
+    "value": "0f67c",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "中村博文",
+    "value": "4de82",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "中村哲也",
+    "value": "a36f0",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "久坂宗次",
+    "value": "f7429",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "井上純一",
+    "value": "2a06c",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "今野隼史",
+    "value": "7c9a5",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "代官山ゑびす",
+    "value": "ce0e6",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "伊藤勢",
+    "value": "2f8ba",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "伊藤真美",
+    "value": "d0b73",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "佐々木亮",
+    "value": "7a218",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "佐嶋真実",
+    "value": "1407a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "佐藤正浩",
+    "value": "01164",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "兎塚エイジ",
+    "value": "630be",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "前河悠一",
+    "value": "3f417",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "加藤龍勇",
+    "value": "38ada",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "加藤龍勇＆後藤啓介",
+    "value": "1934d",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "加藤龍勇＋後藤啓介",
+    "value": "9ae11",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "原友和",
+    "value": "8af37",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "吉井徹",
+    "value": "29ae9",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "吉崎観音",
+    "value": "f4a48",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "吉村正人",
+    "value": "33a7e",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "和田慎二",
+    "value": "cc5da",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "四季童子",
+    "value": "ad1ad",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "夏野すいか",
+    "value": "59c71",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "奥田ひとし",
+    "value": "cdcc9",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "安達洋介",
+    "value": "6b47f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "寺田克也",
+    "value": "b4280",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "小林裕也",
+    "value": "ab436",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "山吹ショウマ",
+    "value": "d7e59",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "山鳥おふう",
+    "value": "d3e69",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "岡本喜劇",
+    "value": "5b186",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "巴ヨシヤス",
+    "value": "bdf16",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "平野耕太",
+    "value": "88d51",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "幻超ニ",
+    "value": "b4b3a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "幻超二",
+    "value": "79ed8",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "弘司",
+    "value": "0c6be",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "御崎友敬",
+    "value": "e7cdd",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "御崎智敬",
+    "value": "020c3",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "斉藤コーキ",
+    "value": "bdbfc",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "日田慶治",
+    "value": "c35ad",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "末弥純",
+    "value": "4e6ac",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "村山竜大",
+    "value": "b823e",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "松本嵩春",
+    "value": "c40ec",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "柏餅よもぎ",
+    "value": "e1c90",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "柴乃櫂人",
+    "value": "b0a71",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "柴野櫂人",
+    "value": "de2e8",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "桜瀬琥姫",
+    "value": "c5557",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "森木靖泰",
+    "value": "d7afa",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "椋本夏夜",
+    "value": "4bada",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "椎名優",
+    "value": "70b28",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "槻城ゆう子",
+    "value": "b6d68",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "橋本正枝",
+    "value": "c5810",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "狭霧光明",
+    "value": "d4704",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "猫えモン",
+    "value": "e50b1",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "獅子猿",
+    "value": "2155a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "田中としひさ",
+    "value": "90c06",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "田中久仁彦",
+    "value": "d2c97",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "田中光",
+    "value": "d3270",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "田口順子",
+    "value": "34836",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "由利真珠郎",
+    "value": "154d2",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "由羅カイリ",
+    "value": "d5188",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "相崎勝美",
+    "value": "e22db",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "相沢美良",
+    "value": "c7233",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "真嶋杏次",
+    "value": "50112",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "真時未砂",
+    "value": "56469",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "石垣環",
+    "value": "d31f4",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "石渡太輔",
+    "value": "34706",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "石田ヒロユキ",
+    "value": "5f8a0",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "石田浩之",
+    "value": "af2ed",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "碧風羽",
+    "value": "04772",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "竹本泉",
+    "value": "62f92",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "米田仁士",
+    "value": "afe58",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "紫堂恭子",
+    "value": "b0df6",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "結城信輝",
+    "value": "aa34e",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "結川カズノ",
+    "value": "79be0",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "緑川美帆",
+    "value": "ae2f1",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "若菜等＋Ki",
+    "value": "e699f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "草彅琢仁",
+    "value": "6e9fc",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "菅原健",
+    "value": "f21da",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "菊地且典",
+    "value": "4312b",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "藤井英俊",
+    "value": "34c1b",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "藤原ひさし",
+    "value": "70b64",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "藤川純一",
+    "value": "6ac5d",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "藤沢孝",
+    "value": "19d64",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "虫麻呂",
+    "value": "02de3",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "西出ケンゴロー",
+    "value": "e8152",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "西出ゲンゴロー",
+    "value": "b774e",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "西川秀明",
+    "value": "aba24",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "西村キヌ",
+    "value": "f2f8a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "西村博之",
+    "value": "53ba8",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "輝楽",
+    "value": "08ba2",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "輝竜司",
+    "value": "c0588",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "輪くすさが",
+    "value": "f544c",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "金澤尚子",
+    "value": "cf23a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "金田榮路",
+    "value": "62b98",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "鈴木理華",
+    "value": "29cf7",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "鈴木雅久",
+    "value": "0ea26",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "開田裕治",
+    "value": "d6696",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "雨宮慶太",
+    "value": "b583e",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "青木邦夫",
+    "value": "27e89",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "高梨かりた",
+    "value": "24243",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "高渡あゆみ",
+    "value": "c8a7a",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "鶴田謙二",
+    "value": "ecbf9",
+    "color": "#EEEEEE"
+  }
+]
