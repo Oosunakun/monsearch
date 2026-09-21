@@ -53,7 +53,7 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
   }
 
   put('nm', text(form.name)); put('cc', form.cardCategory || undefined)
-  put('el', collection(form.elements, ELEMENT_VALUES)); put('ct', shortUuidCollection(form[SHORT_UUID_QUERY_FIELDS.ct])); put('kw', text(form.keyword))
+  put('el', collection(form.elements, ELEMENT_VALUES)); put('ct', shortUuidCollection(form[SHORT_UUID_QUERY_FIELDS.ct])); put('kw', text(form.keyword)); put('att', text(form.archetypeText))
   put('pd', shortUuidCollection(form[SHORT_UUID_QUERY_FIELDS.pd])); put('fa', shortUuidCollection(form[SHORT_UUID_QUERY_FIELDS.fa])); put('bl', collection(form.blocks, BLOCK_VALUES))
   if (isUnitApplicable(form.cardCategory)) {
     putFiltered('lvm', 'lv', form.level, true); putFiltered('hem', 'he', form.heroPoint)

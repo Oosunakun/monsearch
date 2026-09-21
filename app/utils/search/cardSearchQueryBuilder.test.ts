@@ -9,6 +9,14 @@ describe('buildCardSearchQuery', () => {
     expect(form).toEqual(snapshot)
   })
 
+  it('serializes archetype text as att and omits blank values', () => {
+    const form = createFreshSearchForm()
+    form.archetypeText = '  ドラゴン  '
+    expect(buildCardSearchQuery(form)).toEqual({ att: 'ドラゴン' })
+    form.archetypeText = '  '
+    expect(buildCardSearchQuery(form)).toEqual({})
+  })
+
   it('serializes all Short UUID fields canonically, including unknown valid values', () => {
     const form = createFreshSearchForm()
     form.cardTypes = ['ABCDE', 'abcde', 'fffff', 'invalid']
