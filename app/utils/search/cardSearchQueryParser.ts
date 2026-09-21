@@ -50,7 +50,7 @@ export const parseCardSearchQuery = (query: LocationQuery): SearchForm => {
   const form = createSearchForm()
   form.name = last(query, 'nm')?.trim() ?? ''
   const category = last(query, 'cc'); if (category && isCardCategory(category)) form.cardCategory = category
-  form.elements = merged(query, 'el', ELEMENT_VALUES); form.cardTypes = shortUuid(query, 'ct'); form.keyword = last(query, 'kw')?.trim() ?? ''
+  form.elements = merged(query, 'el', ELEMENT_VALUES); form.cardTypes = shortUuid(query, 'ct'); form.keyword = last(query, 'kw')?.trim() ?? ''; form.archetypeText = last(query, 'att')?.trim() ?? ''
   form.products = shortUuid(query, 'pd'); form.factions = shortUuid(query, 'fa'); form.blocks = merged(query, 'bl', BLOCK_VALUES)
   applyFiltered(form.level, query, 'lvm', 'lv'); applyFiltered(form.heroPoint, query, 'hem', 'he')
   applyComparison(form.attack, last(query, 'at')); applyComparison(form.defense, last(query, 'df'))

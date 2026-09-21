@@ -42,6 +42,7 @@ export type SearchForm = {
   elements: Element[]
   cardTypes: CardType[]
   keyword: string
+  archetypeText: string
 
   // --------------------
   // カードセット・所属

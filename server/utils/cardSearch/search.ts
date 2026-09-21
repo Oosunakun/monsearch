@@ -178,11 +178,27 @@ const keywordTextIncludes = (card: Card, wanted: string) => {
   return normalizeQdsText(keywordVisibleText(card)).includes(normalizeQdsText(wanted))
 }
 
+const archetypeVisibleText = (card: Card): string => {
+  const fragments: string[] = []
+  for (const race of card.unit?.races ?? []) {
+    if (race.race_name) fragments.push(race.race_name)
+  }
+  for (const cardType of card.card_types) {
+    if (cardType.card_type_name) fragments.push(cardType.card_type_name)
+  }
+  return fragments.join(' ')
+}
+
+const archetypeTextIncludes = (card: Card, wanted: string) => {
+  return normalizeQdsText(archetypeVisibleText(card)).includes(normalizeQdsText(wanted))
+}
+
 export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => {
   const category = card.search_support.is_token ? 'token' : card.card_category_code.toLowerCase() === 'item' ? `item-${card.item?.item_category_code.toLowerCase()}` : card.card_category_code.toLowerCase()
   if (criteria.cardCategory && category !== criteria.cardCategory) return false
   if (!textIncludes(card.name, criteria.name) || !textIncludes(card.reference_label, criteria.referenceLabel)) return false
   if (criteria.keyword && !keywordTextIncludes(card, criteria.keyword)) return false
+  if (criteria.archetypeText && !archetypeTextIncludes(card, criteria.archetypeText)) return false
   const elements = [...(card.unit?.elements ?? []), ...(card.spell?.elements ?? [])].map(x => x.element_code.toLowerCase())
   if (!includesAny(criteria.elements, elements)) return false
   if (!includesAny(criteria.cardTypes, card.card_types.flatMap(x => [x.card_type_id, x.card_type_name]).map(x => x.toLowerCase()))) return false

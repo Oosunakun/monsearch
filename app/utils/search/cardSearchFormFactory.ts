@@ -53,6 +53,7 @@ export const createSearchForm = (): SearchForm => ({
   elements: [],
   cardTypes: [],
   keyword: '',
+  archetypeText: '',
 
   // --------------------
   // カードセット・所属

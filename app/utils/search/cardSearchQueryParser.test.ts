@@ -14,8 +14,9 @@ describe('parseCardSearchQuery', () => {
   })
 
   it('uses last-wins and merge rules and recovers around malformed values', () => {
-    const form = parseCardSearchQuery({ nm: ['first', 'last'], lv: ['bad', 'lte:3'], el: ['fire', 'water,fire'], ss: ['fire:1,bad', 'fire:2,water:nope'], unknown: 'ignored' })
+    const form = parseCardSearchQuery({ nm: ['first', 'last'], att: ['first archetype', 'last archetype'], lv: ['bad', 'lte:3'], el: ['fire', 'water,fire'], ss: ['fire:1,bad', 'fire:2,water:nope'], unknown: 'ignored' })
     expect(form.name).toBe('last'); expect(form.level.value).toBe(3)
+    expect(form.archetypeText).toBe('last archetype')
     expect(form.elements).toEqual(['fire', 'water']); expect(form.abilitySpellSlots.slots).toEqual({ fire: 2 })
   })
 

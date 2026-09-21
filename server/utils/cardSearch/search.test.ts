@@ -6,6 +6,7 @@ import { cardSearchParityQueries } from '~~/app/utils/search/cardSearchQueryTest
 import { getSourceCards } from './dataSource'
 import { searchCards } from './search'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
+import { buildQuickSearchQuery } from '~~/app/utils/search/quickSearchQueryBuilder'
 
 describe('searchCards', () => {
   it.each([
@@ -195,6 +196,80 @@ describe('searchCards', () => {
     card.search_support.full_text = 'catalog-only'
 
     expect(searchCards([card], parseCardSearchQuery({ kw: 'catalog-only' }))).toEqual([])
+  })
+
+  it('Archetype Textはraceとcard typeの表示名だけを検索する', () => {
+    const source = getSourceCards().map(item => item.card)
+    const raceCard = source.find(card => card.unit?.races.some(race => race.race_name === 'ドラゴン'))!
+    const typeCard = source.find(card => card.card_types.some(cardType => cardType.card_type_name === 'サモナー'))!
+
+    expect(searchCards([raceCard], parseCardSearchQuery({ att: 'ドラゴン' }))).toEqual([raceCard])
+    expect(searchCards([typeCard], parseCardSearchQuery({ att: 'サモナー' }))).toEqual([typeCard])
+  })
+
+  it('Quick Searchのrace-typeからattを経由してserver matcherへ到達する', () => {
+    const card = getSourceCards().map(item => item.card).find(value => value.unit?.races.some(race => race.race_name === 'ドラゴン'))!
+    const query = buildQuickSearchQuery({ selectedCardPool: 'open', selectedSearchType: 'race-type', searchText: 'ドラゴン' })
+
+    expect(searchCards([card], parseCardSearchQuery(query))).toEqual([card])
+  })
+
+  it('Archetype Textは複数raceのいずれも部分一致し、未知語は非ヒットになる', () => {
+    const card = getSourceCards().map(item => item.card).find(value => (value.unit?.races.length ?? 0) >= 2)!
+    const races = card.unit!.races
+
+    expect(searchCards([card], parseCardSearchQuery({ att: races[0]!.race_name }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ att: races[1]!.race_name }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ att: '存在しないarchetype' }))).toEqual([])
+  })
+
+  it('Archetype TextはQDS正規化を使うが、カード名や内部値へfallbackしない', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card).find(value => value.unit?.races.length)!)
+    card.card_types = []
+    card.unit!.races = [{ ...card.unit!.races[0]!, race_name: 'ガード ＡＢＣ １２' }]
+
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ｶﾞｰﾄﾞ　ａｂｃ 12' }))).toEqual([card])
+
+    card.unit!.races[0]!.race_name = '① Ⅰ ひらがな'
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ひらがな' }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ att: '1' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'I' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ヒラガナ' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: card.name }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: card.card_id }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'card_category_code' }))).toEqual([])
+  })
+
+  it('Archetype Textはrace_idとcard_type_idを検索対象にしない', () => {
+    const source = getSourceCards().map(item => item.card)
+    const raceCard = source.find(value => value.unit?.races.length)!
+    const typeCard = source.find(value => value.card_types.length)!
+    const raceId = raceCard.unit!.races[0]!.race_id
+    const cardTypeId = typeCard.card_types[0]!.card_type_id
+
+    expect(searchCards([raceCard], parseCardSearchQuery({ att: raceId }))).toEqual([])
+    expect(searchCards([raceCard], parseCardSearchQuery({ att: raceId.slice(-5) }))).toEqual([])
+    expect(searchCards([typeCard], parseCardSearchQuery({ att: cardTypeId }))).toEqual([])
+    expect(searchCards([typeCard], parseCardSearchQuery({ att: cardTypeId.slice(-5) }))).toEqual([])
+  })
+
+  it('Archetype Textは検索語全体をliteral substringとして扱う', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card).find(value => value.unit?.races.length)!)
+    card.card_types = []
+    card.unit!.races = [{ ...card.unit!.races[0]!, race_name: 'ドラゴン 強力 パピー' }]
+
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン 強力 パピー' }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン パピー' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン.*' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン*' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン パピー 別名' }))).toEqual([])
+  })
+
+  it('Archetype Textと既存条件はANDで評価する', () => {
+    const card = getSourceCards().map(item => item.card).find(value => value.unit?.races.some(race => race.race_name === 'ドラゴン'))!
+
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン', cc: card.card_category_code.toLowerCase() }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン', cc: 'spell' }))).toEqual([])
   })
 
   it('数値能力の include/exclude は 0 と NULL を区別する', () => {
