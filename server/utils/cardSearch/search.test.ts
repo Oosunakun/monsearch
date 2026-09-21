@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { cardSearchParityQueries } from '~~/app/utils/search/cardSearchQueryTestFixtures'
 import { getSourceCards } from './dataSource'
@@ -96,6 +98,103 @@ describe('searchCards', () => {
   it('条件なしでは全件を返す', () => {
     const source = getSourceCards()
     expect(searchCards(source.map(item => item.card), parseCardSearchQuery({}))).toHaveLength(source.length)
+  })
+
+  it('Keywordは実データのユーザー可視情報を検索する', () => {
+    const source = getSourceCards().map(item => item.card)
+    const nameCard = source.find(card => card.name === 'アーニャ')!
+    const effectCard = source.find(card => card.effects.some(effect => effect.effect_text))!
+    const elementCard = source.find(card => card.unit?.elements.length || card.spell?.elements.length)!
+    const raceCard = source.find(card => card.unit?.races.length)!
+    const cardTypeCard = source.find(card => card.card_types.length)!
+    const blockCard = source.find(card => card.blocks.length)!
+    const factionCard = source.find(card => card.factions.length)!
+    const abilitySlotCard = source.find(card => card.unit?.ability?.ability_slots.length || card.item?.equip?.ability?.ability_slots.length)!
+    const affinityCard = source.find(card => card.unit?.ability?.affinities.length || card.item?.equip?.ability?.affinities.length)!
+
+    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.name }))).toEqual([nameCard])
+    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.reference_label }))).toEqual([nameCard])
+    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.rarity_name }))).toEqual([nameCard])
+    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.illustrator_name }))).toEqual([nameCard])
+    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.product.product_name }))).toEqual([nameCard])
+    expect(searchCards([effectCard], parseCardSearchQuery({ kw: effectCard.effects.find(effect => effect.effect_text)!.effect_text }))).toEqual([effectCard])
+    const elementName = elementCard.unit?.elements[0]?.element_name ?? elementCard.spell!.elements[0]!.element_name
+    expect(searchCards([elementCard], parseCardSearchQuery({ kw: elementName }))).toEqual([elementCard])
+    expect(searchCards([raceCard], parseCardSearchQuery({ kw: raceCard.unit!.races[0]!.race_name }))).toEqual([raceCard])
+    expect(searchCards([cardTypeCard], parseCardSearchQuery({ kw: cardTypeCard.card_types[0]!.card_type_name }))).toEqual([cardTypeCard])
+    expect(searchCards([blockCard], parseCardSearchQuery({ kw: blockCard.blocks[0]!.block_name }))).toEqual([blockCard])
+    expect(searchCards([factionCard], parseCardSearchQuery({ kw: factionCard.factions[0]!.faction_name }))).toEqual([factionCard])
+    const abilitySlot = abilitySlotCard.unit?.ability?.ability_slots[0] ?? abilitySlotCard.item!.equip!.ability!.ability_slots[0]!
+    expect(searchCards([abilitySlotCard], parseCardSearchQuery({ kw: abilitySlot.ability_slot_type_name }))).toEqual([abilitySlotCard])
+    const affinity = affinityCard.unit?.ability?.affinities[0] ?? affinityCard.item!.equip!.ability!.affinities[0]!
+    expect(searchCards([affinityCard], parseCardSearchQuery({ kw: affinity.affinity.affinity_name }))).toEqual([affinityCard])
+  })
+
+  it('KeywordはUUID・内部code・JSON property名を検索しない', () => {
+    const card = getSourceCards().map(item => item.card)[0]!
+    for (const value of [card.card_id, card.card_category_code, 'card_category_code', 'search_support']) {
+      expect(searchCards([card], parseCardSearchQuery({ kw: value }))).toEqual([])
+    }
+  })
+
+  it('KeywordにJSON.stringify fallbackを持たない', () => {
+    const source = readFileSync(resolve('server/utils/cardSearch/search.ts'), 'utf8')
+    expect(source).not.toContain('JSON.stringify(card)')
+  })
+
+  it('KeywordはQDSの限定的な幅・大小・カナ・空白正規化を使う', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    card.name = 'ガード ＡＢＣ １２'
+
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'ｶﾞｰﾄﾞ　ａｂｃ 12' }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'カ\u3099ード ＡＢＣ １２' }))).toEqual([card])
+  })
+
+  it('KeywordはQDSが同一視しない文字を一致させない', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    card.reference_label = ''
+    card.name = '① Ⅰ ひらがな'
+    card.rarity_name = ''
+    card.illustrator_name = ''
+    card.product.product_name = ''
+    card.card_types = []
+    card.blocks = []
+    card.factions = []
+    card.effects = []
+    card.summoner = null
+
+    expect(searchCards([card], parseCardSearchQuery({ kw: '1' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'I' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'カタカナ' }))).toEqual([])
+  })
+
+  it('Keywordと他条件はANDで評価する', () => {
+    const card = getSourceCards().map(item => item.card).find(value => value.name === 'アーニャ')!
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'アーニャ', cc: 'summoner' }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'アーニャ', cc: 'unit' }))).toEqual([])
+  })
+
+  it.each([undefined, '', 'catalog-only', 'card_category_code'] as const)('型で表現可能なfull_text=%sでもKeyword結果へ影響しない', fullText => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    card.search_support.full_text = fullText
+    expect(searchCards([card], parseCardSearchQuery({ kw: card.name }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'search_support' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'catalog-only' }))).toEqual([])
+  })
+
+  it('実データのnull full_textでもKeyword結果へ影響しない', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    expect(card.search_support.full_text).toBeNull()
+    expect(searchCards([card], parseCardSearchQuery({ kw: card.name }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'search_support' }))).toEqual([])
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'catalog-only' }))).toEqual([])
+  })
+
+  it('Keywordはfull_textにだけ存在する語を検索しない', () => {
+    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
+    card.search_support.full_text = 'catalog-only'
+
+    expect(searchCards([card], parseCardSearchQuery({ kw: 'catalog-only' }))).toEqual([])
   })
 
   it('数値能力の include/exclude は 0 と NULL を区別する', () => {
