@@ -316,13 +316,39 @@ export interface Effect {
   effect_type_code: string;
   effect_type_name: string;
   /** コスト (effect_costs) */
-  effect_cost_id: string;
+  effect_cost_id: string | null;
   effect_cost_text: string;
+  /** Structured, reviewed search projection. Missing differs from known null. */
+  search_cost?: EffectSearchCost | null;
   /** 対象 (effect_targets) */
   effect_target_id: string;
   effect_target_name: string;
   /** 効果テキスト */
   effect_text: string;
+}
+
+export type SearchCostType = 'item' | 'spell' | 'other'
+export interface ExactSearchCostComponent {
+  type: SearchCostType;
+  value: string;
+  quantity: number;
+  min?: never;
+  max?: never;
+}
+export interface RangeSearchCostComponent {
+  type: SearchCostType;
+  value: string;
+  min: number;
+  max: number;
+  quantity?: never;
+}
+export type SearchCostComponent = ExactSearchCostComponent | RangeSearchCostComponent
+export interface SearchCostAlternative {
+  costs: SearchCostComponent[]
+}
+export interface EffectSearchCost {
+  alternatives: SearchCostAlternative[]
+  has_other_cost: boolean
 }
 
 // ---------------------------------------------------------------------------

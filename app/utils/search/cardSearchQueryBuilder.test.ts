@@ -44,6 +44,9 @@ describe('buildCardSearchQuery', () => {
     ['ssm', 'abilitySpellSlots', 'ssm'],
     ['aism', 'additionalAbilityItemSlots', 'aism'],
     ['assm', 'additionalAbilitySpellSlots', 'assm'],
+    ['cism', 'costItemSlots', 'cism'],
+    ['cssm', 'costSpellSlots', 'cssm'],
+    ['coem', 'costOtherEntities', 'coem'],
   ] as const)('%s は Pairなしでも none を出力する', (_name, field, modifier) => {
     const form = createFreshSearchForm()
     form[field] = { match: 'none', slots: {} }
@@ -54,6 +57,14 @@ describe('buildCardSearchQuery', () => {
     const form = createFreshSearchForm()
     form.abilitySpellSlots = { match: 'none', slots: { fire: 2 } }
     expect(buildCardSearchQuery(form)).toEqual({ ssm: 'none' })
+  })
+
+  it('effect cost Pair collections and modifiers use canonical URLs', () => {
+    const form = createFreshSearchForm()
+    form.costItemSlots = { match: 'and', slots: { bullet: 1, consume: 2 } }
+    form.costSpellSlots = { match: 'or', slots: { fire: 1, water: 2 } }
+    form.costOtherEntities = { match: 'none', slots: { trash: 3 } }
+    expect(buildCardSearchQuery(form)).toEqual({ cism: 'and', cis: 'bullet:1,consume:2', css: 'fire:1,water:2', coem: 'none' })
   })
 
   it('Pairなしの or / and は未指定として省略する', () => {
@@ -67,7 +78,8 @@ describe('buildCardSearchQuery', () => {
     const form = createFreshSearchForm()
     form.name = '  '; form.attack.value = Number.NaN; form.defense.value = 0
     form.level.filterType = 'include'; form.abilityItemSlots.match = 'and'
-    form.costItemSlots.slots = { blank: 0, negative: -1, invalid: Number.POSITIVE_INFINITY }
+    form.abilitySpellSlots.slots = { fire: 1.5 }
+    form.costItemSlots.slots = { blank: 0, negative: -1, invalid: Number.POSITIVE_INFINITY, consume: 1.5 }
     expect(buildCardSearchQuery(form)).toEqual({ lvm: 'include', df: 'gte:0' })
   })
 

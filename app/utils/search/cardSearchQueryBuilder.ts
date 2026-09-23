@@ -24,7 +24,7 @@ const comparison = (condition: Readonly<NumericCondition>) =>
     ? `${condition.operator}:${condition.value}` : undefined
 const pairs = (condition: Readonly<SlotCondition>, allowed: ReadonlySet<string>) => {
   const normalized = Object.entries(condition.slots)
-    .filter(([key, value]) => allowed.has(key.trim()) && typeof value === 'number' && Number.isFinite(value) && value > 0)
+    .filter(([key, value]) => allowed.has(key.trim()) && typeof value === 'number' && Number.isInteger(value) && value > 0)
     .map(([key, value]) => [key.trim(), value] as const)
     .sort(([left], [right]) => left.localeCompare(right))
   return normalized.length ? normalized.map(([key, value]) => `${key}:${value}`).join(',') : undefined
@@ -72,8 +72,8 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
   if (isLandApplicable(form.cardCategory)) {
     putComparison('lm', form.limit); if (form.landCategory !== 'all') put('lc', form.landCategory)
   }
-  putSlots('cism', 'cis', form.costItemSlots, ITEM_SLOT_VALUES); putSlots('cssm', 'css', form.costSpellSlots, SPELL_SLOT_VALUES)
-  putSlots('coem', 'coe', form.costOtherEntities, OTHER_SLOT_VALUES); put('eft', collection(form.effectTypes, EFFECT_TYPE_VALUES))
+  putSlots('cism', 'cis', form.costItemSlots, ITEM_SLOT_VALUES, true); putSlots('cssm', 'css', form.costSpellSlots, SPELL_SLOT_VALUES, true)
+  putSlots('coem', 'coe', form.costOtherEntities, OTHER_SLOT_VALUES, true); put('eft', collection(form.effectTypes, EFFECT_TYPE_VALUES))
   put('eat', shortUuidCollection(form[SHORT_UUID_QUERY_FIELDS.eat])); put('eac', collection(form.effectActivationCategories, EFFECT_ACTIVATION_CATEGORY_VALUES))
   put('etx', text(form.effectText)); put('rt', collection(form.rarities, RARITY_VALUES)); put('il', shortUuidCollection(form[SHORT_UUID_QUERY_FIELDS.il]))
   put('rl', text(form.referenceLabel))

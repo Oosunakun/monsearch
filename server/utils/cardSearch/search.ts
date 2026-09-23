@@ -1,5 +1,5 @@
 import type { SearchForm, NumericCondition, FilteredNumericCondition, SlotCondition } from '~~/app/types/ui/search'
-import type { Card, Ability, Effect } from '~~/types/cards/finderCards'
+import type { Card, Ability, Effect, SearchCostAlternative, SearchCostComponent, SearchCostType } from '~~/types/cards/finderCards'
 
 const RARITY_NATURAL_KEY_TO_CODE: Readonly<Record<string, string>> = {
   circle: 'Basic',
@@ -94,6 +94,62 @@ const effectMatches = (effect: Effect, criteria: SearchForm) =>
   && includesAny(criteria.effectActivationTypes, [String(effect.effect_activation_type_id).toLowerCase()])
   && includesAny(criteria.effectActivationCategories, [String(effect.effect_activation_category_code).toLowerCase()])
   && effectTextIncludes(effect.effect_text, criteria.effectText)
+
+const COST_CONDITIONS = [
+  { type: 'item', condition: 'costItemSlots', keys: new Set(['multi', 'consume', 'bullet']) },
+  { type: 'spell', condition: 'costSpellSlots', keys: new Set(['fire', 'water', 'earth', 'air', 'holy', 'curse', 'multi']) },
+  { type: 'other', condition: 'costOtherEntities', keys: new Set(['hand', 'deck', 'trash', 'power']) },
+] as const
+
+const componentCapacity = (component: SearchCostComponent, wanted: number) => {
+  if (typeof component.quantity === 'number') return component.quantity >= wanted ? component.quantity : 0
+  if (typeof component.max === 'number') return component.max >= wanted ? component.max : 0
+  return 0
+}
+
+const alternativeMatchesCost = (alternative: SearchCostAlternative, type: SearchCostType, slots: Record<string, number>, match: 'or' | 'and') => {
+  const entries = Object.entries(slots)
+  if (!entries.length) return true
+  const components = alternative.costs.filter(cost => cost.type === type)
+  const explicitCapacity = (key: string) => components.filter(cost => cost.value === key).reduce((capacity, cost) => capacity + componentCapacity(cost, 1), 0)
+  if (match === 'or') return entries.some(([key, amount]) => explicitCapacity(key) >= amount
+    || (type === 'spell' && components.filter(cost => cost.value === 'any').reduce((capacity, cost) => capacity + componentCapacity(cost, 1), 0) >= amount))
+  let anyCapacity = 0
+  for (const [key, amount] of entries) {
+    const explicit = explicitCapacity(key)
+    if (explicit >= amount) continue
+    if (type !== 'spell') return false
+    anyCapacity += amount - explicit
+  }
+  if (!anyCapacity) return true
+  const shared = components.filter(cost => cost.value === 'any').reduce((capacity, cost) => capacity + componentCapacity(cost, 1), 0)
+  return shared >= anyCapacity
+}
+
+const hasKnownCostData = (effect: Effect) => effect.search_cost !== undefined && effect.search_cost !== null
+const isKnownCostFree = (effect: Effect) => (effect.effect_cost_id === null || effect.effect_cost_id === '') && effect.effect_cost_text === '' && effect.search_cost === null
+const costEffectMatches = (effect: Effect, criteria: SearchForm) => {
+  const searchCost = effect.search_cost
+  const active = COST_CONDITIONS.map(({ type, condition, keys }) => ({ type, keys, value: criteria[condition] }))
+    .map(entry => ({ ...entry, slots: Object.fromEntries(Object.entries(entry.value.slots).filter(([key, amount]) => entry.keys.has(key) && amount > 0)) }))
+    .filter(({ value, slots }) => value.match === 'none' || Object.keys(slots).length > 0)
+  if (!active.length) return true
+  if (active.some(({ value }) => value.match === 'none')) {
+    const knownFree = isKnownCostFree(effect)
+    if (!knownFree && !hasKnownCostData(effect)) return false
+    for (const { type, value } of active) {
+      if (value.match !== 'none') continue
+      if (knownFree) continue
+      if (searchCost === undefined || searchCost === null) return false
+      if (type === 'other' && searchCost.has_other_cost) return false
+      if (searchCost.alternatives.some(alternative => alternative.costs.some(cost => cost.type === type))) return false
+    }
+  }
+  if (isKnownCostFree(effect)) return active.every(({ value, slots }) => value.match === 'none' || !Object.keys(slots).length)
+  if (searchCost === undefined || searchCost === null) return false
+  return searchCost.alternatives.some(alternative => active.every(({ type, value, slots }) => value.match === 'none'
+    || alternativeMatchesCost(alternative, type, slots, value.match === 'and' ? 'and' : 'or')))
+}
 
 const keywordVisibleText = (card: Card): string => {
   const fragments: string[] = []
@@ -234,8 +290,10 @@ export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => 
   if (criteria.limit.value !== null && (!card.land || !compare(card.land.land_limit, criteria.limit))) return false
   if (criteria.landCategory && criteria.landCategory !== 'all' && ![card.land?.land_category_code.toLowerCase(), card.land?.land_category_name.toLowerCase()].includes(criteria.landCategory)) return false
 
-  if ((criteria.effectTypes.length || criteria.effectActivationTypes.length || criteria.effectActivationCategories.length || criteria.effectText)
-    && !card.effects.some(effect => effectMatches(effect, criteria))) return false
+  const hasEffectCriteria = criteria.effectTypes.length || criteria.effectActivationTypes.length || criteria.effectActivationCategories.length || criteria.effectText
+  const hasCostCriteria = COST_CONDITIONS.some(({ condition }) => criteria[condition].match === 'none' || Object.values(criteria[condition].slots).some(value => value > 0))
+  if ((hasEffectCriteria || hasCostCriteria)
+    && !card.effects.some(effect => (!hasEffectCriteria || effectMatches(effect, criteria)) && costEffectMatches(effect, criteria))) return false
   return true
 }
 
