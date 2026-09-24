@@ -43,6 +43,29 @@ describe('parseCardSearchQuery', () => {
     expect(buildCardSearchQuery(form)).toEqual({ [_modifier]: 'none' })
   })
 
+  it('restores and rebuilds effect cost Pair collections and none modifiers', () => {
+    const form = parseCardSearchQuery({ cis: 'consume:2,bullet:1', cism: 'and', css: 'water:2,fire:1', cssm: 'or', coe: 'trash:3', coem: 'none' })
+    expect(form.costItemSlots).toEqual({ match: 'and', slots: { consume: 2, bullet: 1 } })
+    expect(form.costSpellSlots).toEqual({ match: 'or', slots: { water: 2, fire: 1 } })
+    expect(form.costOtherEntities).toEqual({ match: 'none', slots: {} })
+    expect(buildCardSearchQuery(form)).toEqual({ cism: 'and', cis: 'bullet:1,consume:2', css: 'fire:1,water:2', coem: 'none' })
+  })
+
+  it.each([
+    ['is', 'multi', 'abilityItemSlots'],
+    ['ss', 'fire', 'abilitySpellSlots'],
+    ['ais', 'multi', 'additionalAbilityItemSlots'],
+    ['ass', 'fire', 'additionalAbilitySpellSlots'],
+    ['cis', 'consume', 'costItemSlots'],
+    ['css', 'fire', 'costSpellSlots'],
+    ['coe', 'power', 'costOtherEntities'],
+  ] as const)('%s Pairは0・負数・小数・NaN・非数値・未知keyを除外する', (alias, key, conditionName) => {
+    const form = parseCardSearchQuery({ [alias]: `${key}:0,${key}:-1,${key}:1.5,${key}:NaN,${key}:invalid,unknown:2` })
+    const condition = form[conditionName]
+
+    expect(condition.slots).toEqual({})
+  })
+
   it('Pairなしの or / and は既定値へ戻る', () => {
     const form = parseCardSearchQuery({ ism: 'and', ssm: 'or' })
     expect(form.abilityItemSlots).toEqual({ match: 'or', slots: {} })

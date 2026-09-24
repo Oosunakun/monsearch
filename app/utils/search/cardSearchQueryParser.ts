@@ -39,7 +39,7 @@ const applySlots = (target: SlotCondition, query: LocationQuery, modifier: strin
   const slots: Record<string, number> = {}
   for (const part of values(query[alias]).flatMap(value => value.split(','))) {
     const match = /^([^:,]+):(.+)$/.exec(part.trim()); if (!match) continue
-    const key = match[1]!.trim(); const count = Number(match[2]); if (allowed.has(key) && Number.isFinite(count) && count > 0) slots[key] = count
+    const key = match[1]!.trim(); const count = Number(match[2]); if (allowed.has(key) && Number.isInteger(count) && count > 0) slots[key] = count
   }
   if (!Object.keys(slots).length) return
   target.slots = slots
@@ -63,8 +63,8 @@ export const parseCardSearchQuery = (query: LocationQuery): SearchForm => {
   applyFiltered(form.additionalInitiative, query, 'aitm', 'ait'); applyFiltered(form.additionalCharge, query, 'achm', 'ach')
   applyFiltered(form.additionalDefender, query, 'adem', 'ade'); form.additionalResistances = shortUuid(query, 'are')
   applyComparison(form.limit, last(query, 'lm')); const land = last(query, 'lc'); if (land && isLandCategory(land)) form.landCategory = land
-  applySlots(form.costItemSlots, query, 'cism', 'cis', ITEM_SLOT_VALUES); applySlots(form.costSpellSlots, query, 'cssm', 'css', SPELL_SLOT_VALUES)
-  applySlots(form.costOtherEntities, query, 'coem', 'coe', OTHER_SLOT_VALUES); form.effectTypes = merged(query, 'eft', EFFECT_TYPE_VALUES)
+  applySlots(form.costItemSlots, query, 'cism', 'cis', ITEM_SLOT_VALUES, true); applySlots(form.costSpellSlots, query, 'cssm', 'css', SPELL_SLOT_VALUES, true)
+  applySlots(form.costOtherEntities, query, 'coem', 'coe', OTHER_SLOT_VALUES, true); form.effectTypes = merged(query, 'eft', EFFECT_TYPE_VALUES)
   form.effectActivationTypes = shortUuid(query, 'eat'); form.effectActivationCategories = merged(query, 'eac', EFFECT_ACTIVATION_CATEGORY_VALUES)
   form.effectText = last(query, 'etx')?.trim() ?? ''; form.rarities = merged(query, 'rt', RARITY_VALUES)
   form.illustrators = shortUuid(query, 'il'); form.referenceLabel = last(query, 'rl')?.trim() ?? ''

@@ -7,6 +7,7 @@ import { getSourceCards } from './dataSource'
 import { searchCards } from './search'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
 import { buildQuickSearchQuery } from '~~/app/utils/search/quickSearchQueryBuilder'
+import type { SearchCostComponent } from '~~/types/cards/finderCards'
 
 describe('searchCards', () => {
   it.each([
@@ -25,6 +26,105 @@ describe('searchCards', () => {
 
     expect(result.length).toBeGreaterThan(0)
     expect(result.every(card => card.rarity_code === 'SuperRare')).toBe(true)
+  })
+
+  it('Item・Spell・Otherのsearch_costを実際に支払える数量で検索する', () => {
+    const template = structuredClone(getSourceCards()[0]!.card)
+    const make = (type: 'item' | 'spell' | 'other', value: string, quantity: number) => {
+      const card = structuredClone(template)
+      card.effects = [{ ...card.effects[0]!, search_cost: { alternatives: [{ costs: [{ type, value, quantity }] }], has_other_cost: false } }]
+      return card
+    }
+    const cases = [
+      { type: 'item' as const, value: 'consume', alias: 'cis', key: 'consume' },
+      { type: 'spell' as const, value: 'fire', alias: 'css', key: 'fire' },
+      { type: 'other' as const, value: 'trash', alias: 'coe', key: 'trash' },
+    ]
+    for (const item of cases) {
+      const payable = make(item.type, item.value, 2)
+      const insufficient = make(item.type, item.value, 1)
+      const criteria = parseCardSearchQuery({ [item.alias]: `${item.key}:2` })
+      expect(searchCards([payable, insufficient], criteria)).toEqual([payable])
+    }
+  })
+
+  it('異なるEffectに分散したItem条件とSpell条件は同時指定しても一致しない', () => {
+    const template = structuredClone(getSourceCards()[0]!.card)
+    const card = structuredClone(template)
+    const makeEffect = (name: string, costs: SearchCostComponent[]) => ({
+      ...template.effects[0]!,
+      effect_name: name,
+      effect_cost_id: 'known',
+      effect_cost_text: 'known cost',
+      search_cost: { alternatives: [{ costs }], has_other_cost: false },
+    })
+    card.effects = [
+      makeEffect('Item only', [{ type: 'item', value: 'consume', quantity: 1 }]),
+      makeEffect('Spell only', [{ type: 'spell', value: 'fire', quantity: 2 }]),
+    ]
+
+    expect(searchCards([card], parseCardSearchQuery({ cis: 'consume:1', css: 'fire:2' }))).toEqual([])
+  })
+
+  it('Item・Spell・Otherは同一Effect・同一alternativeでAND評価し、各不足を除外する', () => {
+    const template = structuredClone(getSourceCards()[0]!.card)
+    const makeCard = (name: string, costs: SearchCostComponent[]) => {
+      const card = structuredClone(template)
+      card.effects = [{
+        ...template.effects[0]!,
+        effect_name: name,
+        effect_cost_id: 'known',
+        effect_cost_text: 'known cost',
+        search_cost: { alternatives: [{ costs }], has_other_cost: false },
+      }]
+      return card
+    }
+    const complete = makeCard('Complete', [
+      { type: 'item', value: 'consume', quantity: 1 },
+      { type: 'spell', value: 'fire', quantity: 2 },
+      { type: 'other', value: 'power', quantity: 1 },
+    ])
+    const missingItem = makeCard('Missing Item', [
+      { type: 'spell', value: 'fire', quantity: 2 },
+      { type: 'other', value: 'power', quantity: 1 },
+    ])
+    const missingSpell = makeCard('Missing Spell', [
+      { type: 'item', value: 'consume', quantity: 1 },
+      { type: 'other', value: 'power', quantity: 1 },
+    ])
+    const missingOther = makeCard('Missing Other', [
+      { type: 'item', value: 'consume', quantity: 1 },
+      { type: 'spell', value: 'fire', quantity: 2 },
+    ])
+
+    expect(searchCards(
+      [complete, missingItem, missingSpell, missingOther],
+      parseCardSearchQuery({ cis: 'consume:1', css: 'fire:2', coe: 'power:1' }),
+    )).toEqual([complete])
+  })
+
+  it('同一alternativeのAND条件、共有any容量、選択肢をまたぐ数量、noneとunknownを区別する', () => {
+    const template = structuredClone(getSourceCards()[0]!.card)
+    const make = (alternatives: NonNullable<typeof template.effects[number]['search_cost']>['alternatives'], hasOther = false) => {
+      const card = structuredClone(template)
+      card.effects = [{ ...card.effects[0]!, effect_cost_id: 'known', effect_cost_text: 'cost', search_cost: { alternatives, has_other_cost: hasOther } }]
+      return card
+    }
+    const capacity = make([{ costs: [{ type: 'spell', value: 'any', min: 1, max: 3 }] }])
+    const split = make([{ costs: [{ type: 'spell', value: 'fire', quantity: 2 }] }, { costs: [{ type: 'spell', value: 'water', quantity: 1 }] }])
+    const criteria = parseCardSearchQuery({ css: 'fire:2,water:1', cssm: 'and' })
+    expect(searchCards([capacity], criteria)).toEqual([capacity])
+    expect(searchCards([make([{ costs: [{ type: 'spell', value: 'any', min: 1, max: 3 }] }])], parseCardSearchQuery({ css: 'fire:2,water:2', cssm: 'and' }))).toEqual([])
+    expect(searchCards([split], criteria)).toEqual([])
+
+    const noCost = structuredClone(template)
+    noCost.effects = [{ ...noCost.effects[0]!, effect_cost_id: '', effect_cost_text: '', search_cost: null }]
+    const unknown = structuredClone(template)
+    unknown.effects = [{ ...unknown.effects[0]!, effect_cost_id: 'unknown', effect_cost_text: 'unknown', search_cost: undefined }]
+    const absent = structuredClone(template)
+    absent.effects = []
+    const none = parseCardSearchQuery({ coe: 'trash:1', coem: 'none' })
+    expect(searchCards([noCost, unknown, make([], true), absent], none)).toEqual([noCost])
   })
 
   it('Short UUIDは既存IDの末尾5桁を照合し、未知の形式有効値は非ヒットにする', () => {
