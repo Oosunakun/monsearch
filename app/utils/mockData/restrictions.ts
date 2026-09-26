@@ -335,8 +335,8 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《ドゥーガ》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20E-055', referenceLabel: 'M20E-055', restrictionStatus: '', name: 'スリープ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
-      { id: 'M20E-067', referenceLabel: 'M20E-067', restrictionStatus: '1枚制限', name: 'アースクエイク', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
+      { id: 'M20E-049', referenceLabel: 'M20E-049', restrictionStatus: '1枚制限', name: 'ウォークライ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20E-067', referenceLabel: 'M20E-067', restrictionStatus: '1枚制限', name: 'メテオ・ストライク', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
     ]
   },
   {
@@ -353,8 +353,8 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《アラシャ》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20E-055', referenceLabel: 'M20E-055', restrictionStatus: '', name: 'スリープ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
-      { id: 'M20E-067', referenceLabel: 'M20E-067', restrictionStatus: '1枚制限', name: 'アースクエイク', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
+      { id: 'M20E-055', referenceLabel: 'M20E-055', restrictionStatus: '1枚制限', name: 'スリープ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20E-069', referenceLabel: 'M20E-069', restrictionStatus: '1枚制限', name: 'アースクエイク', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
     ]
   },
   {
@@ -362,7 +362,7 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《ガゼル》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20E-058', referenceLabel: 'M20E-058', restrictionStatus: '', name: 'サイレンス', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20E-058', referenceLabel: 'M20E-058', restrictionStatus: '1枚制限', name: 'サイレンス', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
       { id: 'M20E-070', referenceLabel: 'M20E-070', restrictionStatus: '1枚制限', name: 'ファーマシー', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
     ]
   },
@@ -371,7 +371,7 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《ロゼッタ》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20E-061', referenceLabel: 'M20E-061', restrictionStatus: '', name: 'サンクチュアリ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20E-061', referenceLabel: 'M20E-061', restrictionStatus: '1枚制限', name: 'サンクチュアリ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
       { id: 'M20E-068', referenceLabel: 'M20E-068', restrictionStatus: '1枚制限', name: 'コロッサス・ブラッド', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
     ]
   },
@@ -380,7 +380,7 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《ストレイン》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20E-065', referenceLabel: 'M20E-065', restrictionStatus: '', name: 'ブラックホール', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20E-065', referenceLabel: 'M20E-065', restrictionStatus: '1枚制限', name: 'ブラックホール', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
       { id: 'M20E-069', referenceLabel: 'M20E-069', restrictionStatus: '1枚制限', name: 'デーモン・トレード', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
       { id: 'M20E-073', referenceLabel: 'M20E-073', restrictionStatus: '2枚制限', name: 'スペクター', productName: 'モンスター・コレクションDeus', cardCategoryName: 'トークン', restrictionNote: '' },
     ]
@@ -390,7 +390,7 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《ウズメ》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20F-010', referenceLabel: 'M20F-010', restrictionStatus: '', name: '鬼神法「覇」', productName: '双星のシャンバラ', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20F-010', referenceLabel: 'M20F-010', restrictionStatus: '1枚制限', name: '鬼神法「覇」', productName: '双星のシャンバラ', cardCategoryName: '戦闘スペル', restrictionNote: '' },
       { id: 'M20F-012', referenceLabel: 'M20F-012', restrictionStatus: '1枚制限', name: '雷神掌', productName: '双星のシャンバラ', cardCategoryName: '儀式スペル', restrictionNote: '' },
       { id: 'M20F-013', referenceLabel: 'M20F-013', restrictionStatus: '1枚制限', name: '大雷の鬼姫ミヒカリ', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
       { id: 'M20F-014', referenceLabel: 'M20F-014', restrictionStatus: '1枚制限', name: '火雷の鬼姫ククリ', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
@@ -401,9 +401,9 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《リブ＆ラブ》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20F-025', referenceLabel: 'M20F-025', restrictionStatus: '', name: 'ゼロ・フィールド', productName: '双星のシャンバラ', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20F-025', referenceLabel: 'M20F-025', restrictionStatus: '1枚制限', name: 'ゼロ・フィールド', productName: '双星のシャンバラ', cardCategoryName: '戦闘スペル', restrictionNote: '' },
       { id: 'M20F-026', referenceLabel: 'M20F-026', restrictionStatus: '1枚制限', name: 'コメット', productName: '双星のシャンバラ', cardCategoryName: '儀式スペル', restrictionNote: '' },
-      { id: 'M20F-027', referenceLabel: 'M20F-027', restrictionStatus: '2枚制限', name: '時の扉', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
+      { id: 'M20F-027', referenceLabel: 'M20F-027', restrictionStatus: '1枚制限', name: '時の扉', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
     ]
   },
   {
@@ -421,7 +421,7 @@ export const mockRestrictionRelationSources = [
     sectionNote:  '次のカードは、召喚術師カードとして《エゼキエル》を採用している場合にだけ採用可能です。',
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
-      { id: 'M20F-050', referenceLabel: 'M20F-050', restrictionStatus: '', name: 'エンジェル・リング', productName: '双星のシャンバラ', cardCategoryName: '戦闘スペル', restrictionNote: '' },
+      { id: 'M20F-050', referenceLabel: 'M20F-050', restrictionStatus: '1枚制限', name: 'エンジェル・リング', productName: '双星のシャンバラ', cardCategoryName: '戦闘スペル', restrictionNote: '' },
       { id: 'M20F-053', referenceLabel: 'M20F-053', restrictionStatus: '1枚制限', name: 'セブン', productName: '双星のシャンバラ', cardCategoryName: '儀式スペル', restrictionNote: '' },
       { id: 'M20F-054', referenceLabel: 'M20F-054', restrictionStatus: '1枚制限', name: 'コロナ', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
       { id: 'M20F-055', referenceLabel: 'M20F-055', restrictionStatus: '1枚制限', name: 'ティンクルスター', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
