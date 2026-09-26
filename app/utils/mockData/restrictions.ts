@@ -40,7 +40,7 @@ export const mockRestrictionCardSources = [
     "name": "ラプラース",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "召喚術師",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "2",
@@ -49,7 +49,7 @@ export const mockRestrictionCardSources = [
     "name": "スパーク・ヘッジホッグ",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "ユニット",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "3",
@@ -58,7 +58,7 @@ export const mockRestrictionCardSources = [
     "name": "アクアマリン・ハーミット",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "ユニット",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "4",
@@ -67,7 +67,7 @@ export const mockRestrictionCardSources = [
     "name": "フォッグ",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "5",
@@ -76,7 +76,7 @@ export const mockRestrictionCardSources = [
     "name": "ムーンライト・チャージャー",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "6",
@@ -85,7 +85,7 @@ export const mockRestrictionCardSources = [
     "name": "虹の雫の精霊",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "ユニット",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "7",
@@ -94,7 +94,7 @@ export const mockRestrictionCardSources = [
     "name": "ホーリー・フェニックス",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "ユニット",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "8",
@@ -103,7 +103,7 @@ export const mockRestrictionCardSources = [
     "name": "ウォークライ",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "9",
@@ -112,7 +112,7 @@ export const mockRestrictionCardSources = [
     "name": "スリープ",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "10",
@@ -121,7 +121,7 @@ export const mockRestrictionCardSources = [
     "name": "サイレンス",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "11",
@@ -130,7 +130,7 @@ export const mockRestrictionCardSources = [
     "name": "サンクチュアリ",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "12",
@@ -139,7 +139,7 @@ export const mockRestrictionCardSources = [
     "name": "ブラックホール",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "13",
@@ -148,7 +148,7 @@ export const mockRestrictionCardSources = [
     "name": "メテオ・ストライク",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "14",
@@ -157,7 +157,7 @@ export const mockRestrictionCardSources = [
     "name": "アースクエイク",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "15",
@@ -166,7 +166,7 @@ export const mockRestrictionCardSources = [
     "name": "ファーマシー",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "16",
@@ -175,7 +175,7 @@ export const mockRestrictionCardSources = [
     "name": "コロッサス・ブラッド",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "17",
@@ -184,7 +184,7 @@ export const mockRestrictionCardSources = [
     "name": "デーモン・トレード",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "18",
@@ -193,7 +193,7 @@ export const mockRestrictionCardSources = [
     "name": "鬼神法「覇」",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "19",
@@ -202,7 +202,7 @@ export const mockRestrictionCardSources = [
     "name": "雷神掌",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "20",
@@ -211,7 +211,7 @@ export const mockRestrictionCardSources = [
     "name": "大雷の鬼姫ミヒカリ",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "トークン",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "21",
@@ -220,7 +220,7 @@ export const mockRestrictionCardSources = [
     "name": "火雷の鬼姫ククリ",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "トークン",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "22",
@@ -229,7 +229,7 @@ export const mockRestrictionCardSources = [
     "name": "ゼロ・フィールド",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "23",
@@ -238,7 +238,7 @@ export const mockRestrictionCardSources = [
     "name": "コメット",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "24",
@@ -247,7 +247,7 @@ export const mockRestrictionCardSources = [
     "name": "時の扉",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "トークン",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "25",
@@ -256,7 +256,7 @@ export const mockRestrictionCardSources = [
     "name": "インヴィンシブル",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "26",
@@ -265,7 +265,7 @@ export const mockRestrictionCardSources = [
     "name": "ジャイアント・フィーバー",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "27",
@@ -274,7 +274,7 @@ export const mockRestrictionCardSources = [
     "name": "アトラス",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "トークン",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "28",
@@ -283,7 +283,7 @@ export const mockRestrictionCardSources = [
     "name": "エンジェル・リング",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "戦闘スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "29",
@@ -292,7 +292,7 @@ export const mockRestrictionCardSources = [
     "name": "セブン",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "儀式スペル",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "30",
@@ -301,7 +301,7 @@ export const mockRestrictionCardSources = [
     "name": "コロナ",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "トークン",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "31",
@@ -310,7 +310,7 @@ export const mockRestrictionCardSources = [
     "name": "ティンクルスター",
     "productName": "双星のシャンバラ",
     "cardCategoryName": "トークン",
-    "restrictionNote": null
+    "restrictionNote": ""
   },
   {
     "id": "32",
@@ -319,7 +319,7 @@ export const mockRestrictionCardSources = [
     "name": "スペクター",
     "productName": "モンスター・コレクションDeus",
     "cardCategoryName": "トークン",
-    "restrictionNote": null
+    "restrictionNote": ""
   }
 ]
 
