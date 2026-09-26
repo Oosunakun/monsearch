@@ -39,7 +39,7 @@ const resetAll = () => {
   >
     <div class="d-flex flex-wrap item-grid">
       <SearchSlotSelector
-        v-model="model.additionalAbilityItemSlots.slots"
+        v-model:slots="model.additionalAbilityItemSlots.slots"
         v-model:match="model.additionalAbilityItemSlots.match"
         :items="ITEM_SLOT_OPTIONS"
         :max-count="4"

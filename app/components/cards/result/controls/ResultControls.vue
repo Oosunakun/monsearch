@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify'
+import type { LocationQuery } from 'vue-router'
 import type { ConditionItem } from '~~/app/types/ui/result'
 
 const { mobile } = useDisplay()
 
-defineProps<{
+const props = defineProps<{
   conditions: ConditionItem[]
+  query: LocationQuery
 }>()
 
 const handleEditConditions = () => {
-  navigateTo('/cards/search/')
+  navigateTo({ path: '/cards/search', query: props.query })
 }
 </script>
 

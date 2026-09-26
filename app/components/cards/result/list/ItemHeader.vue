@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 import ItemHeaderStat from '~~/app/components/cards/result/list/ItemHeaderStat.vue'
 import ItemHeaderName from '~~/app/components/cards/result/list/ItemHeaderName.vue'
 import ItemHeaderArchetype from '~~/app/components/cards/result/list/ItemHeaderArchetype.vue'
 
 defineProps<{
-  card: Card
+  card: CardSearchResultItem
 }>()
 </script>
 <template>

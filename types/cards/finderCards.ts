@@ -171,7 +171,7 @@ export interface StatUnit {
   /** 英雄アイコン有無 */
   is_hero: boolean;
   /** 英雄点（is_hero=false なら 0） */
-  hero_point: number;
+  hero_point: number | null;
   /** 進軍タイプ (move_types) */
   move_type_code: string;
   move_type_name: string;
@@ -254,9 +254,9 @@ export interface StatSummoner {
  * 複数セット対応が必要な場合は Ability[] に変更してください。
  */
 export interface Ability {
-  initiative: number;
-  charge: number;
-  defender: number;
+  initiative: number | null;
+  charge: number | null;
+  defender: number | null;
   /** 常備能力枠一覧 (feature_ability_slots → ability_slot_types) */
   ability_slots: AbilitySlot[];
   /** ダメージ相性一覧 (feature_affinities → affinities) */
@@ -316,13 +316,39 @@ export interface Effect {
   effect_type_code: string;
   effect_type_name: string;
   /** コスト (effect_costs) */
-  effect_cost_id: string;
+  effect_cost_id: string | null;
   effect_cost_text: string;
+  /** Structured, reviewed search projection. Missing differs from known null. */
+  search_cost?: EffectSearchCost | null;
   /** 対象 (effect_targets) */
   effect_target_id: string;
   effect_target_name: string;
   /** 効果テキスト */
   effect_text: string;
+}
+
+export type SearchCostType = 'item' | 'spell' | 'other'
+export interface ExactSearchCostComponent {
+  type: SearchCostType;
+  value: string;
+  quantity: number;
+  min?: never;
+  max?: never;
+}
+export interface RangeSearchCostComponent {
+  type: SearchCostType;
+  value: string;
+  min: number;
+  max: number;
+  quantity?: never;
+}
+export type SearchCostComponent = ExactSearchCostComponent | RangeSearchCostComponent
+export interface SearchCostAlternative {
+  costs: SearchCostComponent[]
+}
+export interface EffectSearchCost {
+  alternatives: SearchCostAlternative[]
+  has_other_cost: boolean
 }
 
 // ---------------------------------------------------------------------------

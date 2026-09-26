@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
 import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
 import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
@@ -12,13 +12,17 @@ import SearchFormLand from '~~/app/components/cards/search/layout/SearchFormLand
 import SearchFormEffect from '~~/app/components/cards/search/layout/SearchFormEffect.vue'
 import SearchFormOther from '~~/app/components/cards/search/layout/SearchFormOther.vue'
 import { useCardSearchForm } from '~~/app/composables/useCardSearchForm'
+import { buildCardSearchQuery } from '~~/app/utils/search/cardSearchQueryBuilder'
+import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 
+const route = useRoute()
 const router = useRouter()
-const { form } = useCardSearchForm()
+const { form } = useCardSearchForm(parseCardSearchQuery(route.query))
 
 // 明示的な検索実行
 const executeSearch = () => {
-  router.push('/cards')
+  const query = buildCardSearchQuery(form.value)
+  router.push(Object.keys(query).length ? { path: '/cards', query } : { path: '/cards' })
 }
 
 const shownUnitSectionCardShell = computed(() => {

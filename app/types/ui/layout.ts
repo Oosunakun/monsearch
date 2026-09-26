@@ -4,14 +4,16 @@ export type NavItem = {
   icon: string
 }
 
-export type QuickSearchOption = {
+export type QuickSearchTarget = 'name' | 'race-type' | 'keyword'
+
+export type QuickSearchOption<T extends string = string> = {
   title: string
-  value: string
+  value: T
 }
 
 export type QuickSearchState = {
   selectedCardPool: string
-  selectedSearchType: string
+  selectedSearchType: QuickSearchTarget
   searchText: string
 }
 

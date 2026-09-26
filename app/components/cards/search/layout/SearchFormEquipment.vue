@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SearchFieldDivider from '~~/app/components/cards/search/shared/SearchFieldDivider.vue'
 import SearchFieldAdditionalAttack from '~~/app/components/cards/search/equipment/SearchFieldAdditionalAttack.vue'
-import SearchFieldAdditionalDefence from '~~/app/components/cards/search/equipment/SearchFieldAdditionalDefence.vue'
+import SearchFieldAdditionalDefense from '~~/app/components/cards/search/equipment/SearchFieldAdditionalDefense.vue'
 import SearchFieldAdditionalInitiative from '~~/app/components/cards/search/equipment/SearchFieldAdditionalInitiative.vue'
 import SearchFieldAdditionalCharge from '~~/app/components/cards/search/equipment/SearchFieldAdditionalCharge.vue'
 import SearchFieldAdditionalDefender from '~~/app/components/cards/search/equipment/SearchFieldAdditionalDefender.vue'
@@ -18,7 +18,7 @@ const model = defineModel<SearchForm>({ required: true })
 <template>
   <SearchFieldAdditionalAttack v-model="model" />
   <SearchFieldDivider />
-  <SearchFieldAdditionalDefence v-model="model" />
+  <SearchFieldAdditionalDefense v-model="model" />
   <SearchFieldDivider />
   <SearchFieldAdditionalAbilitySlotItem v-model="model" />
   <SearchFieldDivider />

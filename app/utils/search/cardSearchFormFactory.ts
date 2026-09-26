@@ -53,6 +53,7 @@ export const createSearchForm = (): SearchForm => ({
   elements: [],
   cardTypes: [],
   keyword: '',
+  archetypeText: '',
 
   // --------------------
   // カードセット・所属
@@ -67,12 +68,12 @@ export const createSearchForm = (): SearchForm => ({
   level: createFilteredNumericCondition(),
   heroPoint: createFilteredNumericCondition(),
   attack: createNumericCondition(),
-  defence: createNumericCondition(),
+  defense: createNumericCondition(),
   moveTypes: [],
   races: [],
   abilityItemSlots: createSlotCondition(),
   abilitySpellSlots: createSlotCondition(),
-  initiative: createNumericCondition(),
+  initiative: createFilteredNumericCondition(),
   charge: createFilteredNumericCondition(),
   defender: createFilteredNumericCondition(),
   resistances: [],
@@ -81,10 +82,10 @@ export const createSearchForm = (): SearchForm => ({
   // 装備品
   // --------------------
   additionalAttack: createNumericCondition(),
-  additionalDefence: createNumericCondition(),
+  additionalDefense: createNumericCondition(),
   additionalAbilityItemSlots: createSlotCondition(),
   additionalAbilitySpellSlots: createSlotCondition(),
-  additionalInitiative: createNumericCondition(),
+  additionalInitiative: createFilteredNumericCondition(),
   additionalCharge: createFilteredNumericCondition(),
   additionalDefender: createFilteredNumericCondition(),
   additionalResistances: [],

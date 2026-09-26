@@ -2,6 +2,9 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   {
+    ignores: ['node_modules/**', 'dist/**', 'build/**', 'coverage/**', '*.min.js']
+  },
+  {
     rules: {
         // コンポーネント名は単一単語でも許可 (AppHeader.vue だけでなく Header.vue もOKにする)
         // 小規模・個人開発では 'off' にしておくとファイル名に悩まなくて済みます

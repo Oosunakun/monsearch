@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 import { createCardDesign } from '~~/app/utils/cardDesign'
 
 const props = defineProps<{
-  card: Card
+  card: CardSearchResultItem
 }>()
 
 const design = createCardDesign(props.card)

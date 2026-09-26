@@ -1,0 +1,300 @@
+import type { SearchForm, NumericCondition, FilteredNumericCondition, SlotCondition } from '~~/app/types/ui/search'
+import type { Card, Ability, Effect, SearchCostAlternative, SearchCostComponent, SearchCostType } from '~~/types/cards/finderCards'
+
+const RARITY_NATURAL_KEY_TO_CODE: Readonly<Record<string, string>> = {
+  circle: 'Basic',
+  triangle: 'Common',
+  rhombus: 'Uncommon',
+  star: 'Rare',
+  club: 'SuperRare',
+  spade: 'Special',
+  heart: 'Promotion',
+  crescent: 'DragonJr',
+  hexagram: 'Summoner',
+}
+
+const compare = (actual: number | null | undefined, condition: NumericCondition) => actual !== null && actual !== undefined && (condition.value === null
+  || (condition.operator === 'gte' ? actual >= condition.value : condition.operator === 'lte' ? actual <= condition.value : actual === condition.value))
+const includesAny = (wanted: readonly string[], actual: readonly string[]) => {
+  const normalized = actual.map(value => value.toLocaleLowerCase())
+  return !wanted.length || wanted.some(value => {
+    const expected = value.toLocaleLowerCase()
+    return normalized.some(candidate => candidate === expected || candidate.endsWith(expected))
+  })
+}
+const isFilteredActive = (condition: FilteredNumericCondition) => condition.filterType !== 'all' || condition.value !== null
+const matchesFiltered = (actual: number | null | undefined, condition: FilteredNumericCondition) => {
+  if (condition.filterType === 'exclude') return actual === null || actual === undefined
+  return actual !== null && actual !== undefined && (condition.value === null || compare(actual, condition))
+}
+const HALF_WIDTH_TO_FULL_WIDTH: readonly string[] = [
+  '。', '「', '」', '、', '・', 'ヲ', 'ァ', 'ィ', 'ゥ', 'ェ', 'ォ', 'ャ', 'ュ', 'ョ', 'ッ', 'ー',
+  'ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ', 'サ', 'シ', 'ス', 'セ', 'ソ',
+  'タ', 'チ', 'ツ', 'テ', 'ト', 'ナ', 'ニ', 'ヌ', 'ネ', 'ノ', 'ハ', 'ヒ', 'フ', 'ヘ', 'ホ',
+  'マ', 'ミ', 'ム', 'メ', 'モ', 'ヤ', 'ユ', 'ヨ', 'ラ', 'リ', 'ル', 'レ', 'ロ', 'ワ', 'ン', '\u3099', '\u309A',
+]
+const COMPATIBILITY_WIDTH_MAP: Readonly<Record<number, string>> = {
+  0xFFE0: '¢', 0xFFE1: '£', 0xFFE2: '¬', 0xFFE3: '¯', 0xFFE4: '¦', 0xFFE5: '¥', 0xFFE6: '₩',
+  0xFFE8: '│', 0xFFE9: '←', 0xFFEA: '↑', 0xFFEB: '→', 0xFFEC: '↓', 0xFFED: '■', 0xFFEE: '○',
+}
+const isKana = (character: string) => {
+  const codePoint = character.codePointAt(0)!
+  return (codePoint >= 0x3041 && codePoint <= 0x3096)
+    || (codePoint >= 0x309D && codePoint <= 0x309F)
+    || (codePoint >= 0x30A1 && codePoint <= 0x30FA)
+    || (codePoint >= 0x30FD && codePoint <= 0x30FF)
+}
+const composeKanaMarks = (value: string) => {
+  const characters = Array.from(value)
+  const composed: string[] = []
+  for (let index = 0; index < characters.length; index += 1) {
+    const character = characters[index]!
+    const next = characters[index + 1]
+    if (isKana(character) && (next === '\u3099' || next === '\u309A')) {
+      const pair = `${character}${next}`.normalize('NFC')
+      composed.push(pair.length === 1 ? pair : character + next)
+      index += 1
+    } else {
+      composed.push(character)
+    }
+  }
+  return composed.join('')
+}
+const normalizeQdsText = (value: string) => composeKanaMarks(Array.from(value, character => {
+  const codePoint = character.codePointAt(0)!
+  const converted = codePoint === 0x3000
+    ? ' '
+    : codePoint >= 0xFF01 && codePoint <= 0xFF5E
+      ? String.fromCodePoint(codePoint - 0xFEE0)
+      : codePoint >= 0xFF61 && codePoint <= 0xFF9F
+        ? HALF_WIDTH_TO_FULL_WIDTH[codePoint - 0xFF61]!
+        : COMPATIBILITY_WIDTH_MAP[codePoint] ?? character
+  const convertedCodePoint = converted.codePointAt(0)!
+  return convertedCodePoint >= 0x41 && convertedCodePoint <= 0x5A
+    ? String.fromCodePoint(convertedCodePoint + 0x20) : converted
+}).join(''))
+const normalizeEffectText = normalizeQdsText
+const slotsMatch = (ability: Ability | null | undefined, condition: SlotCondition, category: string) => {
+  const entries = Object.entries(condition.slots)
+  const rows = (ability?.ability_slots ?? []).filter(slot => slot.ability_slot_category_code === category)
+  if (condition.match === 'none') return !rows.some(slot => slot.slot_count > 0)
+  if (!entries.length) return true
+  const checks = entries.map(([key, count]) => rows.some(slot => {
+    const typeCode = slot.ability_slot_type_code.toLowerCase()
+    const expectedCode = `${category}${key}`.toLowerCase()
+    return (typeCode === key.toLowerCase() || typeCode === expectedCode) && slot.slot_count >= count
+  }))
+  return condition.match === 'and' ? checks.every(Boolean) : checks.some(Boolean)
+}
+const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').map(x => x.affinity.affinity_id.toLowerCase()))
+const textIncludes = (actual: string, wanted: string) => !wanted || actual.toLocaleLowerCase().includes(wanted.toLocaleLowerCase())
+const effectTextIncludes = (actual: string, wanted: string) => !wanted || normalizeEffectText(actual).includes(normalizeEffectText(wanted))
+const effectMatches = (effect: Effect, criteria: SearchForm) =>
+  includesAny(criteria.effectTypes, [String(effect.effect_type_code).toLowerCase()])
+  && includesAny(criteria.effectActivationTypes, [String(effect.effect_activation_type_id).toLowerCase()])
+  && includesAny(criteria.effectActivationCategories, [String(effect.effect_activation_category_code).toLowerCase()])
+  && effectTextIncludes(effect.effect_text, criteria.effectText)
+
+const COST_CONDITIONS = [
+  { type: 'item', condition: 'costItemSlots', keys: new Set(['multi', 'consume', 'bullet']) },
+  { type: 'spell', condition: 'costSpellSlots', keys: new Set(['fire', 'water', 'earth', 'air', 'holy', 'curse', 'multi']) },
+  { type: 'other', condition: 'costOtherEntities', keys: new Set(['hand', 'deck', 'trash', 'power']) },
+] as const
+
+const componentCapacity = (component: SearchCostComponent, wanted: number) => {
+  if (typeof component.quantity === 'number') return component.quantity >= wanted ? component.quantity : 0
+  if (typeof component.max === 'number') return component.max >= wanted ? component.max : 0
+  return 0
+}
+
+const alternativeMatchesCost = (alternative: SearchCostAlternative, type: SearchCostType, slots: Record<string, number>, match: 'or' | 'and') => {
+  const entries = Object.entries(slots)
+  if (!entries.length) return true
+  const components = alternative.costs.filter(cost => cost.type === type)
+  const explicitCapacity = (key: string) => components.filter(cost => cost.value === key).reduce((capacity, cost) => capacity + componentCapacity(cost, 1), 0)
+  if (match === 'or') return entries.some(([key, amount]) => explicitCapacity(key) >= amount
+    || (type === 'spell' && components.filter(cost => cost.value === 'any').reduce((capacity, cost) => capacity + componentCapacity(cost, 1), 0) >= amount))
+  let anyCapacity = 0
+  for (const [key, amount] of entries) {
+    const explicit = explicitCapacity(key)
+    if (explicit >= amount) continue
+    if (type !== 'spell') return false
+    anyCapacity += amount - explicit
+  }
+  if (!anyCapacity) return true
+  const shared = components.filter(cost => cost.value === 'any').reduce((capacity, cost) => capacity + componentCapacity(cost, 1), 0)
+  return shared >= anyCapacity
+}
+
+const hasKnownCostData = (effect: Effect) => effect.search_cost !== undefined && effect.search_cost !== null
+const isKnownCostFree = (effect: Effect) => (effect.effect_cost_id === null || effect.effect_cost_id === '') && effect.effect_cost_text === '' && effect.search_cost === null
+const costEffectMatches = (effect: Effect, criteria: SearchForm) => {
+  const searchCost = effect.search_cost
+  const active = COST_CONDITIONS.map(({ type, condition, keys }) => ({ type, keys, value: criteria[condition] }))
+    .map(entry => ({ ...entry, slots: Object.fromEntries(Object.entries(entry.value.slots).filter(([key, amount]) => entry.keys.has(key) && amount > 0)) }))
+    .filter(({ value, slots }) => value.match === 'none' || Object.keys(slots).length > 0)
+  if (!active.length) return true
+  if (active.some(({ value }) => value.match === 'none')) {
+    const knownFree = isKnownCostFree(effect)
+    if (!knownFree && !hasKnownCostData(effect)) return false
+    for (const { type, value } of active) {
+      if (value.match !== 'none') continue
+      if (knownFree) continue
+      if (searchCost === undefined || searchCost === null) return false
+      if (type === 'other' && searchCost.has_other_cost) return false
+      if (searchCost.alternatives.some(alternative => alternative.costs.some(cost => cost.type === type))) return false
+    }
+  }
+  if (isKnownCostFree(effect)) return active.every(({ value, slots }) => value.match === 'none' || !Object.keys(slots).length)
+  if (searchCost === undefined || searchCost === null) return false
+  return searchCost.alternatives.some(alternative => active.every(({ type, value, slots }) => value.match === 'none'
+    || alternativeMatchesCost(alternative, type, slots, value.match === 'and' ? 'and' : 'or')))
+}
+
+const keywordVisibleText = (card: Card): string => {
+  const fragments: string[] = []
+  const append = (value: string | number | null | undefined) => {
+    if (value !== null && value !== undefined && String(value) !== '') fragments.push(String(value))
+  }
+  const appendAbility = (ability: Ability | null | undefined) => {
+    if (!ability) return
+    append(ability.initiative)
+    append(ability.charge)
+    append(ability.defender)
+    for (const slot of ability.ability_slots) {
+      append(slot.ability_slot_type_name)
+      append(slot.ability_slot_category_name)
+      append(slot.slot_count)
+    }
+    for (const affinitySet of ability.affinities) {
+      append(affinitySet.affinity.affinity_name)
+      append(affinitySet.affinity.affinity_category_name)
+      append(affinitySet.affinity.damage_source_name)
+      append(affinitySet.affinity.damage_attribute_name)
+      append(affinitySet.affinity.affinity_modifier_type_name)
+      append(affinitySet.affinity_value)
+    }
+  }
+
+  append(card.reference_label)
+  append(card.name)
+  append(card.rarity_name)
+  append(card.illustrator_name)
+  append(card.product.product_name)
+  for (const element of [...(card.unit?.elements ?? []), ...(card.spell?.elements ?? [])]) append(element.element_name)
+  for (const cardType of card.card_types) append(cardType.card_type_name)
+  for (const race of card.unit?.races ?? []) append(race.race_name)
+  for (const block of card.blocks) append(block.block_name)
+  for (const faction of card.factions) append(faction.faction_name)
+
+  if (card.unit) {
+    append(card.unit.level)
+    append(card.unit.attack)
+    append(card.unit.defense)
+    if (card.unit.is_instant_summon) append('即時召喚可')
+    if (card.unit.is_hero) {
+      append('英雄点')
+      append(card.unit.hero_point)
+    }
+    append(card.unit.move_type_name)
+    appendAbility(card.unit.ability)
+  }
+  if (card.item) {
+    append(card.item.item_category_name)
+    if (card.item.equip) {
+      append(card.item.equip.attack)
+      append(card.item.equip.defense)
+      appendAbility(card.item.equip.ability)
+    }
+  }
+  if (card.land) {
+    append(card.land.land_limit)
+    if (card.land.land_category_code.toLowerCase() !== 'none') append(card.land.land_category_name)
+  }
+  if (card.summoner) {
+    append(card.summoner.arcana)
+    append(card.summoner.secondary_name)
+  }
+  for (const effect of card.effects) {
+    append(effect.effect_name)
+    append(effect.effect_activation_category_name)
+    append(effect.effect_activation_type_name)
+    append(effect.effect_activation_timing_name)
+    append(effect.effect_condition_text)
+    append(effect.effect_condition_category_name)
+    append(effect.effect_cost_text)
+    append(effect.effect_target_name)
+    append(effect.effect_type_name)
+    append(effect.effect_text)
+  }
+  return fragments.join(' ')
+}
+
+const keywordTextIncludes = (card: Card, wanted: string) => {
+  return normalizeQdsText(keywordVisibleText(card)).includes(normalizeQdsText(wanted))
+}
+
+const archetypeVisibleText = (card: Card): string => {
+  const fragments: string[] = []
+  for (const race of card.unit?.races ?? []) {
+    if (race.race_name) fragments.push(race.race_name)
+  }
+  for (const cardType of card.card_types) {
+    if (cardType.card_type_name) fragments.push(cardType.card_type_name)
+  }
+  return fragments.join(' ')
+}
+
+const archetypeTextIncludes = (card: Card, wanted: string) => {
+  return normalizeQdsText(archetypeVisibleText(card)).includes(normalizeQdsText(wanted))
+}
+
+export const matchesCardSearch = (card: Card, criteria: SearchForm): boolean => {
+  const category = card.search_support.is_token ? 'token' : card.card_category_code.toLowerCase() === 'item' ? `item-${card.item?.item_category_code.toLowerCase()}` : card.card_category_code.toLowerCase()
+  if (criteria.cardCategory && category !== criteria.cardCategory) return false
+  if (!textIncludes(card.name, criteria.name) || !textIncludes(card.reference_label, criteria.referenceLabel)) return false
+  if (criteria.keyword && !keywordTextIncludes(card, criteria.keyword)) return false
+  if (criteria.archetypeText && !archetypeTextIncludes(card, criteria.archetypeText)) return false
+  const elements = [...(card.unit?.elements ?? []), ...(card.spell?.elements ?? [])].map(x => x.element_code.toLowerCase())
+  if (!includesAny(criteria.elements, elements)) return false
+  if (!includesAny(criteria.cardTypes, card.card_types.flatMap(x => [x.card_type_id, x.card_type_name]).map(x => x.toLowerCase()))) return false
+  if (!includesAny(criteria.products, [card.product.product_id])) return false
+  if (!includesAny(criteria.factions, card.factions.flatMap(x => [x.faction_id, x.faction_name]).map(x => x.toLowerCase()))) return false
+  if (!includesAny(criteria.blocks, card.blocks.flatMap(x => [x.block_code, x.block_name]).map(x => x.toLowerCase()))) return false
+  const rarityCodes = criteria.rarities.map(value => RARITY_NATURAL_KEY_TO_CODE[value] ?? value)
+  if (!includesAny(rarityCodes, [card.rarity_code]) || !includesAny(criteria.illustrators, [card.illustrator_id])) return false
+
+  const unit = card.unit
+  if (isFilteredActive(criteria.level) && (!unit || (criteria.level.filterType === 'include' && !unit.is_instant_summon) || (criteria.level.filterType === 'exclude' && unit.is_instant_summon) || !compare(unit.level, criteria.level))) return false
+  if (isFilteredActive(criteria.heroPoint) && (!unit || (criteria.heroPoint.filterType === 'include' && !unit.is_hero) || (criteria.heroPoint.filterType === 'exclude' && unit.is_hero) || (criteria.heroPoint.filterType !== 'exclude' && criteria.heroPoint.value !== null && !compare(unit.hero_point, criteria.heroPoint)))) return false
+  if (criteria.attack.value !== null && (!unit || !compare(unit.attack, criteria.attack))) return false
+  if (criteria.defense.value !== null && (!unit || !compare(unit.defense, criteria.defense))) return false
+  if (!includesAny(criteria.moveTypes, unit ? [unit.move_type_code.toLowerCase()] : [])) return false
+  if (!includesAny(criteria.races, (unit?.races ?? []).flatMap(x => [x.race_id, x.race_name]).map(x => x.toLowerCase()))) return false
+  if ((criteria.abilityItemSlots.match === 'none' && !unit) || (criteria.abilitySpellSlots.match === 'none' && !unit)
+    || !slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item') || !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell')) return false
+  if (isFilteredActive(criteria.initiative) && (!matchesFiltered(unit?.ability?.initiative, criteria.initiative))) return false
+  if (isFilteredActive(criteria.charge) && (!matchesFiltered(unit?.ability?.charge, criteria.charge))) return false
+  if (isFilteredActive(criteria.defender) && (!matchesFiltered(unit?.ability?.defender, criteria.defender))) return false
+  if (!resistancesMatch(unit?.ability, criteria.resistances)) return false
+
+  const equip = card.item?.equip
+  if (criteria.additionalAttack.value !== null && (!equip || !compare(equip.attack, criteria.additionalAttack))) return false
+  if (criteria.additionalDefense.value !== null && (!equip || !compare(equip.defense, criteria.additionalDefense))) return false
+  if ((criteria.additionalAbilityItemSlots.match === 'none' && !equip) || (criteria.additionalAbilitySpellSlots.match === 'none' && !equip)
+    || !slotsMatch(equip?.ability, criteria.additionalAbilityItemSlots, 'Item') || !slotsMatch(equip?.ability, criteria.additionalAbilitySpellSlots, 'Spell')) return false
+  if (isFilteredActive(criteria.additionalInitiative) && (!matchesFiltered(equip?.ability?.initiative, criteria.additionalInitiative))) return false
+  if (isFilteredActive(criteria.additionalCharge) && (!matchesFiltered(equip?.ability?.charge, criteria.additionalCharge))) return false
+  if (isFilteredActive(criteria.additionalDefender) && (!matchesFiltered(equip?.ability?.defender, criteria.additionalDefender))) return false
+  if (!resistancesMatch(equip?.ability, criteria.additionalResistances)) return false
+  if (criteria.limit.value !== null && (!card.land || !compare(card.land.land_limit, criteria.limit))) return false
+  if (criteria.landCategory && criteria.landCategory !== 'all' && ![card.land?.land_category_code.toLowerCase(), card.land?.land_category_name.toLowerCase()].includes(criteria.landCategory)) return false
+
+  const hasEffectCriteria = criteria.effectTypes.length || criteria.effectActivationTypes.length || criteria.effectActivationCategories.length || criteria.effectText
+  const hasCostCriteria = COST_CONDITIONS.some(({ condition }) => criteria[condition].match === 'none' || Object.values(criteria[condition].slots).some(value => value > 0))
+  if ((hasEffectCriteria || hasCostCriteria)
+    && !card.effects.some(effect => (!hasEffectCriteria || effectMatches(effect, criteria)) && costEffectMatches(effect, criteria))) return false
+  return true
+}
+
+export const searchCards = (cards: readonly Card[], criteria: SearchForm): Card[] => cards.filter(card => matchesCardSearch(card, criteria))

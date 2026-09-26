@@ -1,4 +1,6 @@
-import type { QuickSearchOption, QuickSearchState } from '~~/app/types/ui/layout'
+import type { QuickSearchOption, QuickSearchState, QuickSearchTarget } from '~~/app/types/ui/layout'
+import { buildQuickSearchQuery } from '~~/app/utils/search/quickSearchQueryBuilder'
+import type { Router } from 'vue-router'
 
 const createInitialQuickSearchState = (): QuickSearchState => ({
   selectedCardPool: 'open',
@@ -6,8 +8,7 @@ const createInitialQuickSearchState = (): QuickSearchState => ({
   searchText: ''
 })
 
-export const useQuickSearch = () => {
-  const router = useRouter()
+export const useQuickSearch = (router: Pick<Router, 'push'> = useRouter()) => {
 
   const quickSearchState = ref<QuickSearchState>(createInitialQuickSearchState())
 
@@ -16,21 +17,17 @@ export const useQuickSearch = () => {
     { title: 'ネオスタン', value: 'neo-stand' }
   ]
 
-  const searchTypes: QuickSearchOption[] = [
+  const searchTypes: QuickSearchOption<QuickSearchTarget>[] = [
     { title: 'カード名', value: 'name' },
     { title: '種族・タイプ', value: 'race-type' },
     { title: 'キーワード', value: 'keyword' }
   ]
 
   const runQuickSearch = async () => {
-    await router.push({
-      path: '/cards',
-      query: {
-        pool: quickSearchState.value.selectedCardPool,
-        type: quickSearchState.value.selectedSearchType,
-        q: quickSearchState.value.searchText.trim()
-      }
-    })
+    const query = buildQuickSearchQuery(quickSearchState.value)
+    await router.push(Object.keys(query).length > 0
+      ? { path: '/cards', query }
+      : { path: '/cards' })
   }
 
   return {

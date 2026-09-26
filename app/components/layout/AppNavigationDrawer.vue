@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { QuickSearchOption, QuickSearchState, NavItem } from '~~/app/types/ui/layout'
+import type { QuickSearchOption, QuickSearchState, QuickSearchTarget, NavItem } from '~~/app/types/ui/layout'
 import SearchMagnifyButton from '~~/app/components/layout/SearchMagnifyButton.vue'
 import QuickSearchBar from '~~/app/components/layout/QuickSearchBar.vue'
 import NavigationList from '~~/app/components/layout/NavigationList.vue'
@@ -12,7 +12,7 @@ const { drawer, rail, isMobile, navItems, quickSearchState, searchTypes } = defi
   isMobile: boolean
   navItems: NavItem[]
   quickSearchState: QuickSearchState
-  searchTypes: QuickSearchOption[]
+  searchTypes: QuickSearchOption<QuickSearchTarget>[]
 }>()
 
 const emit = defineEmits<{

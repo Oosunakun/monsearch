@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Card } from '~~/types/cards/finderCards'
+import type { CardSearchResultItem } from '~~/server/types/cardSearch'
 
 defineProps<{
-  card: Card
+  card: CardSearchResultItem
 }>()
 </script>
 <template>
