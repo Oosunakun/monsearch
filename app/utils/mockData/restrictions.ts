@@ -29,33 +29,298 @@ export const mockRestrictionAvailableProductSources = [
 export const mockRestrictionCardHeaders = [
   { title: '制限', key: 'restrictionStatus', sortable: false },
   { title: 'カード名', key: 'name', sortable: false },
-  { title: '備考', key: 'restrictionNote', sortable: false },
+  { title: '', key: 'restrictionNote', sortable: false },
   { title: '', key: 'spacer', sortable: false }
 ]
 export const mockRestrictionCardSources = [
-  { id: 'M20E-009', referenceLabel: 'M20E-009', restrictionStatus: '禁止', name: 'スパーク・ヘッジホッグ', productName: 'モンスター・コレクションDeus', cardCategoryName: 'ユニット', restrictionNote: '' },
-  { id: 'M20E-002', referenceLabel: 'M20E-002', restrictionStatus: '禁止', name: 'ラプラース', productName: 'モンスター・コレクションDeus', cardCategoryName: '召喚術師', restrictionNote: '' },
-  { id: 'M20E-017', referenceLabel: 'M20E-017', restrictionStatus: '禁止', name: 'アクアマリン・ハーミット', productName: 'モンスター・コレクションDeus', cardCategoryName: 'ユニット', restrictionNote: '' },
-  { id: 'M20E-054', referenceLabel: 'M20E-054', restrictionStatus: '禁止', name: 'フォッグ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
-  { id: 'M20E-068', referenceLabel: 'M20E-068', restrictionStatus: '禁止', name: 'ムーンライト・チャージャー', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
-  { id: 'M20F-017', referenceLabel: 'M20F-017', restrictionStatus: '禁止', name: '虹の雫の精霊', productName: '双星のシャンバラ', cardCategoryName: 'ユニット', restrictionNote: '' },
-  { id: 'M20E-067', referenceLabel: 'M20E-067', restrictionStatus: '1枚制限', name: 'メテオ・ストライク', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20E-069', referenceLabel: 'M20E-069', restrictionStatus: '1枚制限', name: 'アースクエイク', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20E-070', referenceLabel: 'M20E-070', restrictionStatus: '1枚制限', name: 'ファーマシー', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20E-071', referenceLabel: 'M20E-071', restrictionStatus: '1枚制限', name: 'コロッサス・ブラッド', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20E-072', referenceLabel: 'M20E-072', restrictionStatus: '1枚制限', name: 'デーモン・トレード', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20F-012', referenceLabel: 'M20F-012', restrictionStatus: '1枚制限', name: '雷神掌', productName: '双星のシャンバラ', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20F-026', referenceLabel: 'M20F-026', restrictionStatus: '1枚制限', name: 'コメット', productName: '双星のシャンバラ', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20F-039', referenceLabel: 'M20F-039', restrictionStatus: '1枚制限', name: 'ジャイアント・フィーバー', productName: '双星のシャンバラ', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20F-053', referenceLabel: 'M20F-053', restrictionStatus: '1枚制限', name: 'セブン', productName: '双星のシャンバラ', cardCategoryName: '儀式スペル', restrictionNote: '1枚制限カード対象（すべての「儀式スペルカード」）' },
-  { id: 'M20F-013', referenceLabel: 'M20F-013', restrictionStatus: '1枚制限', name: '大雷の鬼姫ミヒカリ', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
-  { id: 'M20F-014', referenceLabel: 'M20F-014', restrictionStatus: '1枚制限', name: '火雷の鬼姫ククリ', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
-  { id: 'M20F-037', referenceLabel: 'M20F-037', restrictionStatus: '1枚制限', name: 'インヴィンシブル', productName: '双星のシャンバラ', cardCategoryName: '戦闘スペル', restrictionNote: '' },
-  { id: 'M20F-040', referenceLabel: 'M20F-040', restrictionStatus: '1枚制限', name: 'アトラス', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
-  { id: 'M20F-054', referenceLabel: 'M20F-054', restrictionStatus: '1枚制限', name: 'コロナ', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
-  { id: 'M20F-055', referenceLabel: 'M20F-055', restrictionStatus: '1枚制限', name: 'ティンクルスター', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
-  { id: 'M20E-073', referenceLabel: 'M20E-073', restrictionStatus: '2枚制限', name: 'スペクター', productName: 'モンスター・コレクションDeus', cardCategoryName: 'トークン', restrictionNote: '' },
-  { id: 'M20F-027', referenceLabel: 'M20F-027', restrictionStatus: '2枚制限', name: '時の扉', productName: '双星のシャンバラ', cardCategoryName: 'トークン', restrictionNote: '' },
+  {
+    "id": "1",
+    "referenceLabel": "M20E-002",
+    "restrictionStatus": "禁止",
+    "name": "ラプラース",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "召喚術師",
+    "restrictionNote": null
+  },
+  {
+    "id": "2",
+    "referenceLabel": "M20E-009",
+    "restrictionStatus": "禁止",
+    "name": "スパーク・ヘッジホッグ",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "ユニット",
+    "restrictionNote": null
+  },
+  {
+    "id": "3",
+    "referenceLabel": "M20E-017",
+    "restrictionStatus": "禁止",
+    "name": "アクアマリン・ハーミット",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "ユニット",
+    "restrictionNote": null
+  },
+  {
+    "id": "4",
+    "referenceLabel": "M20E-054",
+    "restrictionStatus": "禁止",
+    "name": "フォッグ",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "5",
+    "referenceLabel": "M20E-068",
+    "restrictionStatus": "禁止",
+    "name": "ムーンライト・チャージャー",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "6",
+    "referenceLabel": "M20F-017",
+    "restrictionStatus": "禁止",
+    "name": "虹の雫の精霊",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "ユニット",
+    "restrictionNote": null
+  },
+  {
+    "id": "7",
+    "referenceLabel": "M20E-041",
+    "restrictionStatus": "1枚制限",
+    "name": "ホーリー・フェニックス",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "ユニット",
+    "restrictionNote": null
+  },
+  {
+    "id": "8",
+    "referenceLabel": "M20E-049",
+    "restrictionStatus": "1枚制限",
+    "name": "ウォークライ",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "9",
+    "referenceLabel": "M20E-055",
+    "restrictionStatus": "1枚制限",
+    "name": "スリープ",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "10",
+    "referenceLabel": "M20E-058",
+    "restrictionStatus": "1枚制限",
+    "name": "サイレンス",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "11",
+    "referenceLabel": "M20E-061",
+    "restrictionStatus": "1枚制限",
+    "name": "サンクチュアリ",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "12",
+    "referenceLabel": "M20E-065",
+    "restrictionStatus": "1枚制限",
+    "name": "ブラックホール",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "13",
+    "referenceLabel": "M20E-067",
+    "restrictionStatus": "1枚制限",
+    "name": "メテオ・ストライク",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "14",
+    "referenceLabel": "M20E-069",
+    "restrictionStatus": "1枚制限",
+    "name": "アースクエイク",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "15",
+    "referenceLabel": "M20E-070",
+    "restrictionStatus": "1枚制限",
+    "name": "ファーマシー",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "16",
+    "referenceLabel": "M20E-071",
+    "restrictionStatus": "1枚制限",
+    "name": "コロッサス・ブラッド",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "17",
+    "referenceLabel": "M20E-072",
+    "restrictionStatus": "1枚制限",
+    "name": "デーモン・トレード",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "18",
+    "referenceLabel": "M20F-010",
+    "restrictionStatus": "1枚制限",
+    "name": "鬼神法「覇」",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "19",
+    "referenceLabel": "M20F-012",
+    "restrictionStatus": "1枚制限",
+    "name": "雷神掌",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "20",
+    "referenceLabel": "M20F-013",
+    "restrictionStatus": "1枚制限",
+    "name": "大雷の鬼姫ミヒカリ",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "トークン",
+    "restrictionNote": null
+  },
+  {
+    "id": "21",
+    "referenceLabel": "M20F-014",
+    "restrictionStatus": "1枚制限",
+    "name": "火雷の鬼姫ククリ",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "トークン",
+    "restrictionNote": null
+  },
+  {
+    "id": "22",
+    "referenceLabel": "M20F-025",
+    "restrictionStatus": "1枚制限",
+    "name": "ゼロ・フィールド",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "23",
+    "referenceLabel": "M20F-026",
+    "restrictionStatus": "1枚制限",
+    "name": "コメット",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "24",
+    "referenceLabel": "M20F-027",
+    "restrictionStatus": "1枚制限",
+    "name": "時の扉",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "トークン",
+    "restrictionNote": null
+  },
+  {
+    "id": "25",
+    "referenceLabel": "M20F-037",
+    "restrictionStatus": "1枚制限",
+    "name": "インヴィンシブル",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "26",
+    "referenceLabel": "M20F-039",
+    "restrictionStatus": "1枚制限",
+    "name": "ジャイアント・フィーバー",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "27",
+    "referenceLabel": "M20F-040",
+    "restrictionStatus": "1枚制限",
+    "name": "アトラス",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "トークン",
+    "restrictionNote": null
+  },
+  {
+    "id": "28",
+    "referenceLabel": "M20F-050",
+    "restrictionStatus": "1枚制限",
+    "name": "エンジェル・リング",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "戦闘スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "29",
+    "referenceLabel": "M20F-053",
+    "restrictionStatus": "1枚制限",
+    "name": "セブン",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "儀式スペル",
+    "restrictionNote": null
+  },
+  {
+    "id": "30",
+    "referenceLabel": "M20F-054",
+    "restrictionStatus": "1枚制限",
+    "name": "コロナ",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "トークン",
+    "restrictionNote": null
+  },
+  {
+    "id": "31",
+    "referenceLabel": "M20F-055",
+    "restrictionStatus": "1枚制限",
+    "name": "ティンクルスター",
+    "productName": "双星のシャンバラ",
+    "cardCategoryName": "トークン",
+    "restrictionNote": null
+  },
+  {
+    "id": "32",
+    "referenceLabel": "M20E-073",
+    "restrictionStatus": "2枚制限",
+    "name": "スペクター",
+    "productName": "モンスター・コレクションDeus",
+    "cardCategoryName": "トークン",
+    "restrictionNote": null
+  }
 ]
 
 export const mockRestrictionRelationHeaders = [
