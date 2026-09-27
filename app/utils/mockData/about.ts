@@ -25,7 +25,7 @@ export const mockAboutThanksItems = [
   {
     id: 'creators',
     subheading: '開発・歴代運営元',
-    text: '作品世界を生み出した開発元と、時代ごとの展開を支えてこられた歴代運営元の皆さまの歩みに感謝いたします。'
+    text: '作品を生み出し、長年にわたりその歩みを支えてこられた開発元・歴代運営元の皆さまに、心より感謝申し上げます。'
   },
   {
     id: 'monsachi',
@@ -58,7 +58,7 @@ export const mockAboutHistorySourceRows = [
 export const mockAboutContactItems = [
   {
     id: '1',
-    title: 'X (旧Twitter)',
+    title: 'X（旧Twitter）',
     subtitle: '@Oosunakun',
     icon: 'mdi-twitter',
     href: 'https://x.com/Oosunakun'
