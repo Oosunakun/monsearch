@@ -22,7 +22,7 @@ export const mockAboutLinkItems = [
   },
   {
     id: '4',
-    title: 'グループＳＮＥ',
+    title: 'グループSNE',
     subtitle: '公式サイト',
     icon: 'mdi-domain',
     href: 'https://groupsne.co.jp/'
@@ -37,7 +37,7 @@ export const mockAboutLinkItems = [
   },
   {
     id: '6',
-    title: 'モンコレD公式',
+    title: 'モンスター・コレクションDeus',
     subtitle: '公式サポートページ',
     icon: 'mdi-cards-outline',
     href: 'https://fujimi-trpg-online.jp/game/moncolle_d.html'
