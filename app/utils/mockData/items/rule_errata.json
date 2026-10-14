@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "type": "errata",
+    "post_date": "2017-04-13",
+    "cards": [
+      {
+        "card_id": "M20A-079",
+        "name": "ラブスター"
+      }
+    ],
+    "effective_date": "2017-04-13",
+    "errata_text": "[対抗]小さな幸せ\n↓\n[対抗]小さな幸せ　[Battle]",
+    "revision_reason": "有効時期が抜けていたため、修正しました。",
+    "source_name": "20th公式サイトエラッタ"
+  },
+  {
+    "id": "2",
+    "type": "errata",
+    "post_date": "2017-04-13",
+    "cards": [
+      {
+        "card_id": "M20A-132",
+        "name": "ヒュプノシス"
+      }
+    ],
+    "effective_date": "2017-04-13",
+    "errata_text": "スペル：風\n↓\nコスト：風\n\nスペル：風風\n↓\nコスト：風風",
+    "revision_reason": "誤表記を修正しました。",
+    "source_name": "20th公式サイトエラッタ"
+  },
+  {
+    "id": "3",
+    "type": "errata",
+    "post_date": "2017-04-13",
+    "cards": [
+      {
+        "card_id": "M20A-145",
+        "name": "木霊"
+      }
+    ],
+    "effective_date": "2017-04-13",
+    "errata_text": "野生の王国\n↓\n星の声、時の歌",
+    "revision_reason": "誤表記を修正しました。",
+    "source_name": "20th公式サイトエラッタ"
+  },
+  {
+    "id": "4",
+    "type": "errata",
+    "post_date": "2017-04-13",
+    "cards": [
+      {
+        "card_id": "M20B-036",
+        "name": "フォルネウス"
+      }
+    ],
+    "effective_date": "2017-04-13",
+    "errata_text": "暗黒海域\n↓\n暗黒海域の王",
+    "revision_reason": "誤表記を修正しました。",
+    "source_name": "20th公式サイトエラッタ"
+  },
+  {
+    "id": "5",
+    "type": "errata",
+    "post_date": "2017-03-30",
+    "cards": [
+      {
+        "card_id": "M20B-097",
+        "name": "太陽を睨む天使"
+      }
+    ],
+    "effective_date": "2017-03-30",
+    "errata_text": "〈対象：敵軍ユニッ1体〉\n↓\n〈対象：敵軍ユニット1体〉",
+    "revision_reason": "対象の表記に誤りがありましたので、修正致しました。",
+    "source_name": "20th公式サイトエラッタ"
+  }
+]

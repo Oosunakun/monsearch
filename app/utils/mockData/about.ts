@@ -1,3 +1,5 @@
+import finderReleaseNoteFile from '~~/app/utils/mockData/items/about_release_note.json'
+
 export const mockAboutItems = [
   {
     id: 'overview',
@@ -25,7 +27,7 @@ export const mockAboutThanksItems = [
   {
     id: 'creators',
     subheading: '開発・歴代運営元',
-    text: '作品世界を生み出した開発元と、時代ごとの展開を支えてこられた歴代運営元の皆さまの歩みに感謝いたします。'
+    text: '作品を生み出し、長年にわたりその歩みを支えてこられた開発元・歴代運営元の皆さまに、心より感謝申し上げます。'
   },
   {
     id: 'monsachi',
@@ -44,21 +46,18 @@ export const mockAboutHistoryHeaders = [
   { title: 'バージョン', key: 'version', sortable: false },
   { title: '更新内容', key: 'update', sortable: false }
 ]
-
-export const mockAboutHistorySourceRows = [
-  { id: 'h1', date: '2026-04-22', version: 'v2.0.0', update: 'Aboutページを追加、免責事項・リンク情報を整理' },
-  { id: 'h2', date: '2026-04-21', version: 'v1.2.0', update: 'ルールページを公開、テキスト置き換え例を掲載' },
-  { id: 'h3', date: '2026-04-20', version: 'v1.1.0', update: '使用制限ページを追加、禁止/制限カード一覧を更新' },
-  { id: 'h4', date: '2026-04-18', version: 'v1.0.3', update: '詳細検索フォームの属性フィルタを改善' },
-  { id: 'h5', date: '2026-04-15', version: 'v1.0.2', update: 'カードリストの表示速度を改善' },
-  { id: 'h6', date: '2026-04-10', version: 'v1.0.1', update: 'エクスパンション一覧のブロック表示を追加' },
-  { id: 'h7', date: '2026-04-01', version: 'v1.0.0', update: 'サイト公開' }
-]
+export interface FinderReleaseNote {
+  id: string,
+  date: string,
+  version: string,
+  update: string,
+}
+export const mockAboutHistorySourceRows: FinderReleaseNote[] = finderReleaseNoteFile as unknown as FinderReleaseNote[]
 
 export const mockAboutContactItems = [
   {
     id: '1',
-    title: 'X (旧Twitter)',
+    title: 'X（旧Twitter）',
     subtitle: '@Oosunakun',
     icon: 'mdi-twitter',
     href: 'https://x.com/Oosunakun'

@@ -13,6 +13,9 @@ import {
   mockAboutThanksItems,
   mockAboutContactItems
 } from '~~/app/utils/mockData'
+import type {
+   FinderReleaseNote
+} from '~~/app/utils/mockData'
 
 type AboutItem = {
   id: string
@@ -31,7 +34,7 @@ type LinkItem = {
 const aboutItems: AboutItem[] = mockAboutItems
 const thanksItems: AboutItem[] = mockAboutThanksItems
 const historyHeaders = mockAboutHistoryHeaders
-const historySourceRows = mockAboutHistorySourceRows
+const historySourceRows: FinderReleaseNote[] = mockAboutHistorySourceRows
 const contactItems: LinkItem[] = mockAboutContactItems
 
 const historyRows = computed<HistoryRow[]>(() =>
