@@ -54,7 +54,6 @@ const baseBackgroundColor = computed(() => {
   padding-left: 1px; 
   
   transition: background-color 0.15s ease;
-  cursor: pointer;
   width: 100%;
 
   overflow: hidden;

@@ -24,7 +24,7 @@ const { mobile } = useDisplay()
         <v-chip
           v-if="restrictionStatus !== ''"
           size="x-small"
-          color="error"
+          :color="restrictionStatus === '禁止' ? 'red-accent-4' : ['1枚制限', '2枚制限'].includes(restrictionStatus) ? 'yellow-darken-4' : 'error'"
           variant="flat"
           class="restriction-status-chip"
         >
@@ -63,7 +63,7 @@ const { mobile } = useDisplay()
             <v-chip
               v-if="restrictionStatus"
               size="x-small"
-              color="error"
+              :color="restrictionStatus === '禁止' ? 'red-accent-4' : ['1枚制限', '2枚制限'].includes(restrictionStatus) ? 'yellow-darken-4' : 'error'"
               variant="flat"
               class="restriction-status-chip font-weight-bold px-2 justify-center mb-1"
             >

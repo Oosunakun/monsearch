@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SquareIconBase from "~~/app/components/common/icons/SquareIconBase.vue";
-import ItemCommonGryph from "~~/app/components/common/icons/SummonerGlyph.vue";
+import ItemCommonGryph from "~~/app/components/common/icons/ItemCommonGryph.vue";
 
 withDefaults(
   defineProps<{

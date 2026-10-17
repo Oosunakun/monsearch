@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-10-14T10:06:08Z",
+  "generated_at": "2026-10-17T14:09:12Z",
   "cards": [
     {
       "card_id": "019d81a4-497a-768d-aaa6-24b742cbd519",
@@ -13871,7 +13871,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -13975,7 +13975,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -14079,7 +14079,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -14217,7 +14217,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -14321,7 +14321,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -14355,7 +14355,7 @@
           "effect_text": "対象に【火炎：3D】ダメージ。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -14459,7 +14459,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -14597,7 +14597,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -14631,7 +14631,7 @@
           "effect_text": "対象に【津波：2D】ダメージ。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -14735,7 +14735,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -14873,7 +14873,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -14977,7 +14977,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -15081,7 +15081,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -15185,7 +15185,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -15323,7 +15323,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -15357,7 +15357,7 @@
           "effect_text": "対象に「攻撃力：+2D」を付与する。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -15461,7 +15461,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -15565,7 +15565,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -15669,7 +15669,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -15807,7 +15807,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -15911,7 +15911,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -16049,7 +16049,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -16187,7 +16187,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -16221,7 +16221,7 @@
           "effect_text": "対象に「攻撃力：+2」＆「防御力：+2」を付与する。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -16325,7 +16325,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -16429,7 +16429,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-79b9-75a8-a0de-39e0795786f2",
@@ -16533,7 +16533,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -16637,7 +16637,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -16794,7 +16794,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -16898,7 +16898,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -17002,7 +17002,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -17140,7 +17140,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -17244,7 +17244,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -17382,7 +17382,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -17416,7 +17416,7 @@
           "effect_text": "対象に【閃光：2D】ダメージ。効果適用後、自軍プレイヤーは手札を1～2枚補充してもよい。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -17520,7 +17520,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -17624,7 +17624,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -17728,7 +17728,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -17762,7 +17762,7 @@
           "effect_text": "対象に【混沌：2D】ダメージ。効果適用後、敵軍プレイヤーの手札1枚をランダムに破棄する。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -17866,7 +17866,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -17970,7 +17970,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -18108,7 +18108,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -35957,7 +35957,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -36056,7 +36056,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -36155,7 +36155,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -36254,7 +36254,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -36353,7 +36353,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -36387,7 +36387,7 @@
           "effect_text": "対象が使用中の消耗品1つまたは錬金弾1つをキャンセルする。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -36486,7 +36486,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -36585,7 +36585,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -36619,7 +36619,7 @@
           "effect_text": "対象に【2D】ダメージ。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -36718,7 +36718,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -36752,7 +36752,7 @@
           "effect_text": "対象に【1D】ダメージ。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -36851,7 +36851,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -36885,7 +36885,7 @@
           "effect_text": "対象に【2D】ダメージ。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -36984,7 +36984,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -37018,7 +37018,7 @@
           "effect_text": "対象に【2D】ダメージ。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -42288,7 +42288,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -42392,7 +42392,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -42496,7 +42496,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -42600,7 +42600,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -42704,7 +42704,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -42808,7 +42808,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
@@ -44168,7 +44168,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -44267,7 +44267,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -50232,7 +50232,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -50354,7 +50354,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -50458,7 +50458,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -50562,7 +50562,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -50666,7 +50666,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -50770,7 +50770,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -50892,7 +50892,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -51014,7 +51014,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -51118,7 +51118,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -51222,7 +51222,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -51344,7 +51344,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -51448,7 +51448,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -51552,7 +51552,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -51674,7 +51674,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -51778,7 +51778,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -51882,7 +51882,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -51986,7 +51986,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -52108,7 +52108,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -52201,7 +52201,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -52298,7 +52298,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -52395,7 +52395,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -52492,7 +52492,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -52589,7 +52589,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -52686,7 +52686,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -53814,7 +53814,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -53918,7 +53918,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -54040,7 +54040,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -54133,7 +54133,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -55497,7 +55497,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -55536,7 +55536,7 @@
           "effect_text": "戦闘終了まで、「攻+1D+2」。"
         },
         {
-          "effect_name": "Effect 2",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -55645,7 +55645,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -55749,7 +55749,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -55860,7 +55860,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -56929,7 +56929,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -57033,7 +57033,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -57155,7 +57155,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-7991-70a5-b492-4f2250cd7b9f",
@@ -57248,7 +57248,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
@@ -58626,7 +58626,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -58734,7 +58734,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019d81a0-798c-724e-85d0-b7e57bbb1765",
@@ -58838,7 +58838,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Battle",
           "effect_activation_category_name": "[Battle]",
           "effect_activation_type_id": "019da177-21c0-729e-9016-7d5dc30a3bc8",
@@ -58931,7 +58931,7 @@
       ],
       "effects": [
         {
-          "effect_name": "Effect 1",
+          "effect_name": "",
           "effect_activation_category_code": "Field",
           "effect_activation_category_name": "[Field]",
           "effect_activation_type_id": "019d81a0-7987-75eb-9d86-6a1640545bd2",
