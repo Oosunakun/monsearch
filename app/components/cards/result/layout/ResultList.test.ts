@@ -32,7 +32,7 @@ describe('ResultListのカードとChipの対応', () => {
         const card = expected[index]!
         expect(item.props('card').card_id).toBe(card.card_id)
         expect(item.text()).toContain(card.name)
-        const chip = item.find('.v-chip')
+        const chip = item.find('.restriction-label-box')
         if (card.deck_restriction_count === null) expect(chip.exists()).toBe(false)
         else expect(chip.text()).toBe(card.deck_restriction_count === 0 ? '禁止' : `${card.deck_restriction_count}枚制限`)
       })

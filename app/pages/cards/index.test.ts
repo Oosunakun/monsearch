@@ -47,17 +47,17 @@ describe('cards result pageの描画', () => {
   it('結果更新で実カードとChipを更新し、0件では空表示に切り替える', async () => {
     const wrapper = mountPage()
     expect(wrapper.find('.card-search-result-item').exists()).toBe(true)
-    expect(wrapper.find('.v-chip').text()).toBe('禁止')
+    expect(wrapper.find('.restriction-label-box').text()).toBe('禁止')
     const card = searchState.result.value!.items[0]!
     searchState.result.value!.items = [{ ...card, card_id: 'next-card', name: '更新カード', deck_restriction_count: 1 }]
     await nextTick()
     expect(wrapper.text()).toContain('更新カード')
-    expect(wrapper.find('.v-chip').text()).toBe('1枚制限')
+    expect(wrapper.find('.restriction-label-box').text()).toBe('1枚制限')
     searchState.result.value = { ...searchState.result.value!, items: [], totalCount: 0, totalPages: 1 }
     await nextTick()
     expect(wrapper.text()).toContain('該当するカードはありません')
     expect(wrapper.find('.card-search-result-item').exists()).toBe(false)
-    expect(wrapper.find('.v-chip').exists()).toBe(false)
+    expect(wrapper.find('.restriction-label-box').exists()).toBe(false)
     wrapper.unmount()
   })
 
