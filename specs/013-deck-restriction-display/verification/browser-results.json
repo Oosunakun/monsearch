@@ -1,0 +1,98 @@
+[
+  {
+    "device": "pc",
+    "name": "ラプラース",
+    "chips": [
+      "禁止"
+    ],
+    "screenshot": "pc-prohibited.png"
+  },
+  {
+    "device": "pc",
+    "name": "ホーリー・フェニックス",
+    "chips": [
+      "1枚制限"
+    ],
+    "screenshot": "pc-limit-one.png"
+  },
+  {
+    "device": "pc",
+    "name": "スペクター",
+    "chips": [
+      "2枚制限"
+    ],
+    "screenshot": "pc-limit-two.png"
+  },
+  {
+    "device": "pc",
+    "name": "サラマンダー",
+    "chips": [],
+    "screenshot": "pc-no-modification.png"
+  },
+  {
+    "device": "pc",
+    "name": "アーニャ",
+    "chips": [],
+    "screenshot": "pc-empty-count.png"
+  },
+  {
+    "device": "pc",
+    "name": "ムーンライト・チャージャー",
+    "chips": [
+      "禁止"
+    ],
+    "screenshot": "pc-long-name.png"
+  },
+  {
+    "device": "pc",
+    "bookmark": "http://127.0.0.1:3013/cards?sort=id&order=desc&page=2&perPage=20"
+  },
+  {
+    "device": "mobile",
+    "name": "ラプラース",
+    "chips": [
+      "禁止"
+    ],
+    "screenshot": "mobile-prohibited.png"
+  },
+  {
+    "device": "mobile",
+    "name": "ホーリー・フェニックス",
+    "chips": [
+      "1枚制限"
+    ],
+    "screenshot": "mobile-limit-one.png"
+  },
+  {
+    "device": "mobile",
+    "name": "スペクター",
+    "chips": [
+      "2枚制限"
+    ],
+    "screenshot": "mobile-limit-two.png"
+  },
+  {
+    "device": "mobile",
+    "name": "サラマンダー",
+    "chips": [],
+    "screenshot": "mobile-no-modification.png"
+  },
+  {
+    "device": "mobile",
+    "name": "アーニャ",
+    "chips": [],
+    "screenshot": "mobile-empty-count.png"
+  },
+  {
+    "device": "mobile",
+    "name": "ムーンライト・チャージャー",
+    "chips": [
+      "禁止"
+    ],
+    "screenshot": "mobile-long-name.png"
+  },
+  {
+    "device": "mobile",
+    "bookmark": "http://127.0.0.1:3013/cards?sort=id&order=desc&page=2&perPage=20"
+  }
+]

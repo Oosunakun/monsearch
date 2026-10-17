@@ -1,0 +1,58 @@
+[
+  {
+    "device": "pc",
+    "operation": "next page",
+    "request": "http://127.0.0.1:3013/api/cards?cc=unit&lv=gte:3&page=2&perPage=20&sort=id&order=asc",
+    "page": 2
+  },
+  {
+    "device": "pc",
+    "operation": "sort",
+    "request": "http://127.0.0.1:3013/api/cards?cc=unit&lv=gte:3&page=1&perPage=20&sort=atk&order=asc"
+  },
+  {
+    "device": "pc",
+    "operation": "perPage",
+    "request": "http://127.0.0.1:3013/api/cards?cc=unit&lv=gte:3&page=1&perPage=50&sort=atk&order=asc"
+  },
+  {
+    "device": "pc",
+    "fixture": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      null
+    ],
+    "chips": [
+      "禁止",
+      "1枚制限",
+      "2枚制限"
+    ],
+    "screenshot": "pc-all-counts.png"
+  },
+  {
+    "device": "mobile",
+    "operation": "next page",
+    "request": "http://127.0.0.1:3013/api/cards?cc=unit&lv=gte:3&page=2&perPage=20&sort=id&order=asc",
+    "page": 2
+  },
+  {
+    "device": "mobile",
+    "fixture": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      null
+    ],
+    "chips": [
+      "禁止",
+      "1枚制限",
+      "2枚制限"
+    ],
+    "screenshot": "mobile-all-counts.png"
+  }
+]

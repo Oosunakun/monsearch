@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { createApp, createError, defineEventHandler, toWebHandler } from 'h3'
 import type { EventHandler } from 'h3'
 import { readFileSync } from 'node:fs'
@@ -6,6 +6,9 @@ import { resolve } from 'node:path'
 import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
 import { matchesCardSearch } from '~~/server/utils/cardSearch/search'
+import * as dataSource from '~~/server/utils/cardSearch/dataSource'
+import type { CardSearchResultPage } from '~~/server/types/cardSearch'
+import baseline from '~~/specs/013-deck-restriction-display/verification/api-baseline.json'
 
 let cardsHandler: EventHandler
 
@@ -16,6 +19,86 @@ beforeAll(async () => {
 })
 
 afterAll(() => vi.unstubAllGlobals())
+afterEach(() => vi.restoreAllMocks())
+
+const requestCards = (query = '') => toWebHandler(createApp().use('/api/cards', cardsHandler))(
+  new Request(`http://localhost/api/cards?${query}`),
+)
+
+describe('GET /api/cards 検索結果の回帰', () => {
+  it.each(baseline.cases)('$query の既存レスポンスを維持する', async ({ query, response: expected }) => {
+    const response = await requestCards(query)
+    const body: CardSearchResultPage = await response.json()
+    expect(response.status).toBe(200)
+    const withoutRestriction = {
+      ...body,
+      items: body.items.map(({ deck_restriction_count: _count, ...item }) => item),
+    }
+    expect(withoutRestriction).toEqual(expected)
+  })
+
+  it('同名カードのsortとページ変更後もIDと制限値が対応し、nullのカードも残る', async () => {
+    const original = getSourceCards()[0]!
+    const source = Array.from({ length: 21 }, (_, index) => {
+      const item = structuredClone(original)
+      item.sourceIndex = index
+      item.card.card_id = `deck-${String(index).padStart(2, '0')}`
+      item.card.reference_label = `FIXTURE-${index}`
+      item.card.name = '同名検証カード'
+      item.card.modification = { deck_restriction_count: [0, 1, 2, null][index % 4]! }
+      return item
+    })
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(source)
+    for (const query of ['sort=id&order=asc', 'sort=id&order=desc', 'page=2&perPage=20']) {
+      const response = await requestCards(query)
+      const body: CardSearchResultPage = await response.json()
+      expect(body.totalCount).toBe(21)
+      expect(body.items).toHaveLength(query.includes('page=2') ? 1 : 20)
+      for (const item of body.items) {
+        expect(item.deck_restriction_count).toBe(source.find(value => value.card.card_id === item.card_id)!.card.modification!.deck_restriction_count)
+      }
+      if (!query.includes('page=2')) expect(body.items.some(item => item.deck_restriction_count === null)).toBe(true)
+    }
+  })
+})
+
+describe('GET /api/cards 枚数制限契約', () => {
+  it.each([
+    ['ラプラース', 'M20E-002', 0],
+    ['ホーリー・フェニックス', 'M20E-041', 1],
+    ['スペクター', 'M20E-073', 2],
+    ['アーニャ', 'M20A-001', null],
+    ['サラマンダー', 'M20A-007', null],
+  ] as const)('%sの実データを返す', async (name, reference, expected) => {
+    const response = await requestCards(`nm=${encodeURIComponent(name)}`)
+    const body: CardSearchResultPage = await response.json()
+    expect(response.status).toBe(200)
+    expect(body.items.find(item => item.reference_label === reference)).toHaveProperty('deck_restriction_count', expected)
+    for (const item of body.items) {
+      expect(item).toHaveProperty('deck_restriction_count')
+      expect(item.deck_restriction_count === null || typeof item.deck_restriction_count === 'number').toBe(true)
+      expect(item).not.toHaveProperty('modification')
+    }
+  })
+
+  it.each([3, 4, null])('実データにない値 %s も実handlerから返す', async value => {
+    const source = structuredClone(getSourceCards()[0]!)
+    source.card.modification = { deck_restriction_count: value }
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue([source])
+    const response = await requestCards()
+    const body: CardSearchResultPage = await response.json()
+    expect(response.status).toBe(200)
+    expect(body.items).toHaveLength(1)
+    expect(body.items[0]).toHaveProperty('deck_restriction_count', value)
+  })
+
+  it('既存のデータソース障害はCARD_SEARCH_FAILEDの500となる', async () => {
+    vi.spyOn(dataSource, 'getSourceCards').mockImplementation(() => { throw new Error('fixture failure') })
+    const response = await requestCards()
+    expect(response.status).toBe(500)
+    expect(await response.json()).toMatchObject({ data: { code: 'CARD_SEARCH_FAILED' } })
+  })
+})
 
 describe('GET /api/cards contract', () => {
   const source = readFileSync(resolve('server/api/cards.get.ts'), 'utf8')

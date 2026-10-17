@@ -9,6 +9,7 @@ export const projectCard = (card: Card): CardSearchResultItem | undefined => {
     affinities: structuredClone(value.affinities),
   })
   return {
+    deck_restriction_count: typeof card.modification?.deck_restriction_count === 'number' ? card.modification.deck_restriction_count : null,
     card_id: card.card_id, reference_label: card.reference_label, name: card.name,
     card_category_code: card.card_category_code, card_category_name: card.card_category_name,
     unit: card.unit ? { level: card.unit.level, is_instant_summon: card.unit.is_instant_summon, is_hero: card.unit.is_hero, hero_point: card.unit.hero_point, move_type_name: card.unit.move_type_name, attack: card.unit.attack, defense: card.unit.defense, elements: structuredClone(card.unit.elements), races: structuredClone(card.unit.races), ability: card.unit.ability ? ability(card.unit.ability) : null } : null,
