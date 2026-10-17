@@ -55,6 +55,7 @@ export interface CardSearchResultItem {
   rarity_name: string
   illustrator_name: string
   product: Pick<Card['product'], 'product_name'>
+  deck_restriction_count: number | null
 }
 
 export interface CardSearchResultPage {
