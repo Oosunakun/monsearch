@@ -1,36 +1,45 @@
 # monsearch 初期版：自由入力検索の正規化・実装差異 覚書
 
-**作成日:** 2026-10-24  
-**位置づけ:** 初期版の暫定実装方針／Spec Kitへの引継ぎ資料  
-**Status:** Human Decision反映済み・覚書のHuman Review待ち。実装、データ再生成、Spec Kit起動は未実施。  
-**関連:** `docs/architecture/query_data_specification.md` v1.1.0 §3.1・§3.4・§7.1・§8・§9、`query_data_specification_note.md` D15・D21〜D24、`query_specification.md` v1.1.0、`.memo/precomputed-keyword-search-plan.md`（旧案、未承認）
+**作成日:** 2026-10-24
+
+**更新日:** 2026-10-25
+
+**位置づけ:** 初期版の入力契約・検索仕様／Spec Kitへの引継ぎ資料
+
+**Status:** Human Decision反映済みの仕様資料。両catalogの受領・事前データ検証はPASS。実装は仕様・PlanのHuman Review承認後に行う。
+
+**関連:** `query_data_specification.md` v1.1.0 §3.1・§3.4・§7.1・§8・§9、`query_data_specification_note.md` D15・D21〜D24、`query_specification.md` v1.1.0、[Search Catalog Normalization](../../specs/014-search-catalog-normalization/spec.md)
 
 ## 1. 目的・位置づけ
 
-Cloudflare Workers Freeでのキーワード検索のCPU負荷を軽減しつつ、一般的なキーボード入力に伴う英数字・全半角カナ・主要記号の表記差を吸収する。検索精度を無制限に高めることは目的としない。
+monsearchが受け取る`app/utils/mockData/items/cards.json`を入力の正本とし、検索専用catalogによる正しい対象選択と、リクエスト時の繰返し処理の削減を行う。検索精度を無制限に高めることは目的としない。
 
-本書は**正式QDSの置換・遡及改訂ではない**。承認済みQDSの理想的な意味論と、初期版で意図的に採用する暫定処理・未対応範囲を区別するための覚書である。正式仕様と異なる点を実装完了済みとして扱わず、最終的なDocs統合時には新たなDecisionによって整理する。
+本書の対象は入力契約、初期版正規化N₀、検索動作、既存QDSとの差異に限る。データ提供工程の内部構造・管理手順・実装・担当者・履歴は対象外であり、その調査・変更・実行・証跡受領をmonsearchの作業依存にしない。
+
+本書は**正式QDSの置換・遡及改訂ではない**。初期版の意図的な差異を記録し、正式仕様や過去Decisionを上書きしない。実装方式やデータ基盤の将来変更は別Featureとする。
 
 ## 2. 確定済みHuman Decision
 
+H1〜H10のIDを維持し、monsearch内の実装に必要な意味を以下に整理する。
+
 | ID | 決定事項 | 初期版方針 |
 |---|---|---|
-| H1 | カード原文 | `cards.name`、`cards.reference_label`、`effects.effect_text`、`effects.effect_name`等の原文を検索目的で書き換えない。表示も原文を使用 |
-| H2 | `nm / rl` | 既存の`textIncludes`（小文字化による部分一致）を維持し、QDSとの差を今回修正しない |
-| H3 | `etx` | 既存の効果本文検索と正規化を維持。`effect_name`を独立の新しい検索項目・DBカラムとして増やさない |
-| H4 | DB / Composer | `card_search_catalog.full_text`とmc-card-managerのComposerを変更しない。既存DBへの一括migrationを今回行わない |
-| H5 | JSON出力 | **monsearch向け`cards.json`を生成する際**、DB由来の`full_text`に初期版正規化`N₀`を適用し、`search_support.full_text`として出力する。これはDB原文とJSONの意図的な差 |
-| H6 | `kw`実行時 | UI・URLの値を変更せず、検索処理内部で検索語を`N₀`へ通す。正規化済みJSONの`full_text`へリテラル部分一致。カード側全文の毎リクエスト正規化はしない |
-| H7 | `att` | `search_support.archetype_text`をDB由来の値から追加予定。初期版の同種の出力時正規化を候補とするが、実データ受領後に確認・実装 |
-| H8 | Python | JSON変換スクリプトはmonsearchリポジトリ外。最終的なPython想定コードはChatGPTが提示し、Humanが適用する。Codexの調査・修正範囲に含めない |
-| H9 | 文字検索 | 全半角英数字・カナ、ASCII大小、主要記号は同一視。ひらがな／カタカナ、丸数字／通常数字、類似語・誤字・読み替えは自動同一視しない。結合濁点・半濁点の**合成処理**は初期版では省略 |
-| H10 | 将来 | 正規化仕様が安定した時点でDB側・SQL実装を検討。初期版でフロント検索項目別の追加正規化カラムをDBへ作らない |
+| H1 | カード原文 | name、reference_label、effect_text、effect_name等を検索目的で書き換えない。表示も原文を使う |
+| H2 | nm / rl | 既存textIncludesの小文字化による部分一致を維持し、QDSとの差を今回修正しない |
+| H3 | etx | 既存normalizeQdsText・効果本文検索・同一Effect条件を維持。effect_nameを独立した検索項目にしない |
+| H4 | 入力境界 | cards.jsonを正本とし、提供工程の内部構造やそれ以前のシステムは調査・変更・実行対象にしない |
+| H5 | full_text | 提供時点でN₀適用済みの文字列をsearch_support.full_textとして受け取る。monsearchで対象全文を再生成しない |
+| H6 | kw実行時 | UI・URLを保持し、検索語だけにN₀をカード走査前に一度適用。full_textへのリテラル部分一致とし、対象を再正規化しない |
+| H7 | att | 受領済みのN₀適用済み文字列search_support.archetype_textだけを対象とし、検索語準備・照合はkwと同じ規則 |
+| H8 | 検証範囲 | cards.json、Repository内のTypeScript検索処理、Unit Test、API Testで完結する。提供工程の作業・検証証跡は要求しない |
+| H9 | 文字検索 | 全半角英数字・カナ・主要記号の限定的な幅変換とASCII大小を同一視。ひらがな／カタカナ、丸数字／通常数字、類似語・誤字・読み替えは自動同一視しない。カナ合成は省略 |
+| H10 | 将来 | 本Featureは既存入力契約を利用し、新たな永続モデル・検索基盤を追加しない。将来の実装方式・データ基盤変更は別Featureで判断する |
 
-`full_text`は元々、カード名の読み・一部の表記変種・カード情報等を集約した**検索専用catalog値**である。検索時に他のカードフィールドを再連結して代替してはならない。Composerの登録内容を本対応の中で洗い直すことはしない。
+search_support.is_tokenおよび既存Token分類は変更対象外。full_text・archetype_textは表示原文と独立した検索専用値であり、検索時に他フィールドを連結して代用しない。
 
 ## 3. 初期版の正規化`N₀`
 
-**規則の基準:** 現行QDS §8の限定的な変換表を採用し、カナ＋結合濁点／半濁点の**正規合成工程のみ**省略する。Python・TypeScriptは同じ変換結果を生成する。NFKC一律適用、文字列全体のNFC、Unicode全般のcasefoldは行わない。
+**規則の基準:** 現行QDS §8の限定的な変換表を採用し、カナ＋結合濁点／半濁点の**正規合成工程のみ**省略する。検索語の変換と入力catalogの固定点確認は同じ規則に従う。NFKC一律適用、文字列全体のNFC、Unicode全般のcasefoldは行わない。
 
 | 分類 | 初期版の変換 |
 |---|---|
@@ -61,87 +70,68 @@ Cloudflare Workers Freeでのキーワード検索のCPU負荷を軽減しつつ
 | `～` / `〜` | `~` / `〜` | U+FF5Eのみ幅変換 |
 | `AN\nALL` | `an\nall` | 内部改行は維持（この行の`\n`は改行を表す表記） |
 
-Composerがあらかじめ収録する「＆→アンド」「読み仮名」「中黒やスペースの省略形」等の候補は、**検索データ生成側の責務**であり`N₀`には追加しない。ひらがな／カタカナの自動相互変換も`N₀`には導入しない。
+検索専用値に含まれる「＆→アンド」「読み仮名」「中黒やスペースの省略形」等の候補は受領済みcatalogの内容として扱い、`N₀`には追加しない。ひらがな／カタカナの自動相互変換も`N₀`には導入しない。
 
-## 4. データの流れと照合契約
+## 4. 入力と照合契約
+
+正常な入力catalogは次の契約を満たす。
+
+| フィールド | 契約 |
+|---|---|
+| search_support.full_text | N₀適用済みstring。kwの唯一の検索対象 |
+| search_support.archetype_text | N₀適用済みstring。attの唯一の検索対象 |
+| search_support.is_token | 既存boolean。変更しない |
+
+空文字は表現可能で、非空検索語には一致しない。欠損・nullの境界値も非ヒットとし、別項目へのfallback、String(value)による補修、検索時の再正規化をしない。正常入力の適合確認と、照合時の欠測非ヒットを区別し、追加のRuntime全件検査は導入しない。
 
 ```text
-mc-card-manager / DB: card_search_catalog.full_text（既存値・不変更）
-    │
-    └─ Repository外のPythonによるcards.json生成時: N₀(full_text)
-           ↓
-monsearch: search_support.full_text（検索専用・正規化済み）
-           ↑
-ユーザー入力（UI/URLは保持） → Parserの既存trim → 検索処理で N₀(query)
-           │
-           └─ 正規化済みfull_text.includes(正規化済みquery)
+cards.jsonの正規化済みfull_text / archetype_text
+                              ↓ 対象をそのまま使う
+UI/URL → 既存Parser（trim）→ SearchForm
+                              ↓ カード走査前に有効な各検索語へN₀を一度
+                      catalog.includes(正規化済み検索語)
+                              ↓ 他条件とのAND・既存結果処理
 ```
 
-- `kw`未指定・空値は従来どおり条件なし。指定した検索語は**全体を単一のリテラル部分文字列**として扱い、正規表現・複数語AND・ワイルドカードとして解釈しない。
-- `kw`と他の検索条件は既存のAND条件を維持。検索対象がない場合、他フィールド連結・`JSON.stringify`へのfallbackはしない。
-- `card.name`、`reference_label`、個々の`effect_text`など、表示対象の原文フィールドへ`N₀`を適用しない。
-- 新しい`archetype_text`については、QDS上の正本を使用する。受領前に生成済み・導入済みと扱わない。
-- DBのcatalog原文とJSONの検索用値は意図的に異なる。比較監査・同期チェックでは`JSON = N₀(DB)`を用い、`JSON = DB`を要求しない。
-- `cards.json`のルート`version: 1.0.0`は、現時点で独断変更しない。追加項目や公開契約に伴う変更が必要なら別途Human Reviewする。
-
-### 4.1 `effect_name`の扱い
-
-`effects.effect_name`は独立した原文フィールドであり、今回の正規化済み専用カラム作成の対象にしない。以前提示された`BaseEffectsComposer`について、現行の検索対象を決定する根拠として使用しない。正式な`etx`の検索対象は`effects.effect_text`であり、同一Effect内での条件成立も維持する。
+- kw・att未指定／Parser後の空値は条件なし。
+- 検索語全体を単一のリテラル部分文字列として扱い、正規表現・複数語AND・wildcard解釈を導入しない。
+- 内部空白・改行・タブを保持し、照合用文字変換を入力・URL・表示原文へ書き戻さない。
+- カード走査中に対象全文を生成・再正規化しない。検索語のN₀もカードごとに繰り返さない。
+- 他条件、分類、is_token、sort、pagination、集計、projection、APIレスポンス・エラー契約を維持する。
+- etxはeffects.effect_textだけを対象に、既存normalizeQdsTextとカナ合成・同一Effect条件を維持する。
 
 ## 5. 正式QDSと初期版との差異
 
-| 項目 | 正式QDS v1.1.0 | 初期版方針・差異 |
+| 項目 | 正式QDS v1.1.0 | 初期版 |
 |---|---|---|
-| `nm / rl` | 検索語・対象へ共通の限定的正規化 | **現行実装維持**：`textIncludes`で`toLocaleLowerCase()`。幅・カナの同一視は未達（今回修正しない） |
-| `etx` | `effects.effect_text`を対象に共通の限定的正規化 | 現行の両側正規化を維持。今回変更しない |
-| `kw`対象 | `card_search_catalog.full_text`のみ | 専用値をJSONへ格納して検索。旧`keywordVisibleText`を廃止する計画 |
-| `kw`正規化タイミング | 比較時に検索語・対象の双方へ適用（D23） | 対象は**JSON出力時**にN₀、検索語は検索時にN₀。DB原文は不変更。D23に対する初期版の処理配置の例外 |
-| `kw`カナ合成 | カナ＋結合濁点・半濁点を正規合成 | **初期版では省略**。この範囲は検索結果も差が生じ得る |
-| `att`対象 | `card_search_catalog.archetype_text`のみ | 現JSONに未登録。DB由来の値を`search_support`へ追加後、同種の方式の適用を検証 |
-| 原文・URL | 保持し、検索目的で書き換えない | 表示用カード原文とUI・URLは保持。JSONのcatalog検索専用値のみ派生表現になる |
-| 部分一致 | リテラル、内部空白を保持、未指定はskip | 維持 |
-| 同一視しないもの | NFKC一律化、ひらがな／カタカナ、丸数字、類似語等 | 維持 |
+| nm / rl | 検索語・対象へ共通の限定的正規化 | 既存toLocaleLowerCaseによる照合を維持。幅・カナの同一視は未達 |
+| etx | effects.effect_textへ共通の限定的正規化 | 既存の両側正規化・カナ合成を維持 |
+| kw / att対象 | 各専用catalogのみ | cards.jsonの対応する専用値のみ。表示値の連結を廃止 |
+| 対象の正規化タイミング | 比較時に双方へ適用（D23） | 提供時点でN₀済みという入力契約。検索時は検索語だけを変換する配置上の例外 |
+| kw / attカナ合成 | カナ＋結合濁点・半濁点を合成 | N₀では省略し、検索結果に差が生じ得る |
+| 原文・URL | 保持 | 維持。catalogは照合専用値として扱う |
+| 部分一致・非同一視 | リテラル、内部空白保持、丸数字等を区別 | 維持 |
 
-**管理上の注意:** これは正式QDSの全文改訂ではなく、初期版の**意図的な実装差異・例外**を記録するもの。正式規範との差異を隠さず、Specsやテストにも参照先を明記する。D22・D23等の過去Decisionは消去・書換えしない。今回の例外を恒久化する場合は追加Decisionを起こす。
+D22・D23等の過去Decisionを消去・書換えしない。初期版の例外を恒久化する場合は別のDecisionで扱う。
 
-## 6. データ調査の基準と未実施事項
+## 6. 受領状態とRepository内の検証
 
-Codexの過去の読み取り調査で確認した**変更前**`cards.json`は482件、`full_text`全件非空、version `1.0.0`、SHA-256 `6b1f38a25f0dd472639c3e82d6c6c6a276955fbf415ad38d9ccd7e95bfe895a1`。`archetype_text`は全件未存在。過去の調査では`full_text`のすべてがNにより変化し、実際のデータにはASCII大小と一部全角記号の揺れがある。この数値は新しい正規化済みJSONの検証結果ではない。
+現在のcards.jsonは482件。**Codexの事前検証で、両catalogの全件存在・文字列型・N₀固定点がPASSしている。** これは受領済み入力の確認で、検索実装・Unit Test・API Testの完了ではない。2026-10-25の資料整理では、データの再生成・再検証は実施していない。
 
-過去のP1ではキーワード検索のCPU Profileサンプルが`normalizeQdsText`付近に集中したが、HTTP約20ms超はWorkerのCPU 10ms超過を意味しない。初期版の新しい正規化済みJSON＋検索語だけの正規化について、CPU改善量・Free適合は**未測定**。
+実装時の自動確認はRepository内で完結させる。
 
-受け入れ時には、少なくとも以下を確認する。
+1. N₀の全対応文字・固定テストベクトル・冪等性をUnit Testで確認する。期待値をテスト対象関数から生成しない。
+2. cards.jsonの両専用値の状態・固定点を確認する。不適合を見つけても検索時には補修しない。
+3. 独立した固定期待カードID集合でkw・att・併用・欠測・literal・非同一視を確認する。
+4. nm / rl / etx、is_token・Token分類、他条件、sort、pagination、API契約、入力・URL・表示原文の保持を自動回帰で確認する。
+5. APIとsearchCardsで、有効な各検索語のN₀適用が走査前に一度、対象全文生成・再正規化がゼロであることを確認する。
 
-1. Repository外のPython変換結果とmonsearchのTypeScript`N₀`が共通の代表テストベクトルで一致し、可能なら全対象文字範囲でも一致する。既存データに対する`N₀(N₀(x)) = N₀(x)`も確認する。
-2. JSONの表示用原文およびDB由来の既存値を変えず、`search_support.full_text`だけに意図した変換が適用される。実際のJSONを出力した後に件数・値・hashを新規記録する。
-3. `Ｍ２０Ａ－００１`、`m20a-001`、`スペル:*`、`攻撃力:+2`、`ｱｰﾆｬ`、括弧・`＆`・`＋`・`＊`等、必須の検索例についてカードID集合を検証する。
-4. `①`と`1`、ひらがな／カタカナ、波ダッシュとチルダ、その他ハイフン類の意図しない一致を防ぐ。`ｶﾞ`のような合成省略例は初期版の既知差分として扱う。
-5. `kw`の全文正規化廃止が`etx`等の既存正規化を変えないこと。`nm / rl`、APIレスポンス、sort/pagination、他条件とのANDを回帰確認する。
-6. ローカル確認とCloudflare Workers Free実機のCPU計測を区別する。初回／通常・API／SSRのCPUを確認してから公開可否をHuman判断する。
+## 7. 完了条件とReview Gate
 
-既知Vitestの145 pass / 3 fail（別件のAPI baseline不一致）は過去の結果。今回の実装成功として報告せず、既存失敗と新規失敗を分ける。
+性能改善は、対象全文の繰返し生成・正規化の除去と検索語準備の一回化という構造要件で確認する。CPU反復測定・中央値改善、実機測定、ブラウザー表示速度、人間による実動作確認は本Featureの必須完了条件に含めない。未実施を完了済みとも、Implementation未完了の理由とも扱わない。実行環境の性能適合・公開判断をこの構造確認だけで保証するものではない。
 
-## 7. 責務分担・最短経路
+仕様・PlanのHuman Review承認前に実装しない。承認後は承認された範囲で実装・検証を進め、自動検証結果は既存失敗と新規差分を区別して報告する。
 
-| 工程 | 担当 | 完了条件／Gate |
-|---|---|---|
-| 1. 本覚書・正規化規則 | Human + ChatGPT | 代表例と例外のHuman Review |
-| 2. Python変換 | ChatGPTが想定コード提示、HumanがRepository外へ適用 | `cards.json`再生成・検証。**CodexにPythonを依頼しない** |
-| 3. 初期版のDocs整理 | Codexの調査・編集支援、Humanが承認 | 正式QDSと暫定例外の関係を明示。既存Decision履歴を保全 |
-| 4. Spec Kit Specify / Clarify / Plan / Tasks | Codex、Human Review | 最新覚書・実データを入力とする。Plan承認前に実装しない |
-| 5. monsearch実装・回帰 | Codex | `kw`の専用JSON値への切替、queryのみN₀、`att`はデータ受領状況をGateにする |
-| 6. CPU実機検証・公開判断 | Codex支援・Human最終判断 | 最小限の実測、Free制限への適合と機能回帰を確認 |
+## 8. 将来の変更
 
-**変更禁止・別課題:** DB migration、mc-card-manager Composer改修、`nm / rl`のQDS完全準拠化、`etx`の変更、検索用DBカラムの追加、ひらがな・カタカナ変換、同義語・誤字許容、ハイフン類の拡張、初回検索以外の別性能最適化を勝手に同時実施しない。
-
-## 8. 後続の検討・拡張
-
-- `att`のDB由来`archetype_text`提供と、JSON出力時N₀適用・検索対象切替の実施時期。
-- 結合濁点の合成、半角カナ濁音入力、類似ハイフン類の対応要否。実利用で価値が確認できた時点で個別判断する。
-- `nm / rl`の正式QDS未達事項を修正する時期と、通常カード原文の照合をSQLで再現する手段。
-- DBへ移行する場合、DB生catalogのままではJSON正規化済み検索と同じ結果になるとは限らない。正規化済み検索値の生成場所・SQLでの照合・索引効果を改めて設計する。
-- 正規化規則が安定した段階で、必要ならDB/Composerに恒久的な生成処理を反映し、初期版の暫定差分を解消・廃止する。
-
----
-
-**現時点の決定状態:** 「初期版のN₀とJSON出力時正規化」はHuman合意の設計方向として整理済み。実装結果・性能適合・正式Docs改訂は未確認・未実施。Python想定コードは最終レビュー後にChatGPTが別途提示する。
+未対応文字の同一視、nm / rlのQDS差分解消、実装方式・データ基盤の変更は別Featureとする。本Featureには移行計画や提供工程の作業を含めない。
