@@ -7,8 +7,13 @@ import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
 import { matchesCardSearch } from '~~/server/utils/cardSearch/search'
 import * as dataSource from '~~/server/utils/cardSearch/dataSource'
-import type { CardSearchResultPage } from '~~/server/types/cardSearch'
-import baseline from '~~/specs/013-deck-restriction-display/verification/api-baseline.json'
+import type { CardSearchResultItem, CardSearchResultPage } from '~~/server/types/cardSearch'
+import baseline from '~~/server/api/fixtures/cards-response-baseline.json'
+import catalogOracle from '~~/specs/014-search-catalog-normalization/verification/expected-catalog-results.json'
+import type { Card } from '~~/types/cards/finderCards'
+import * as catalogNormalizer from '~~/server/utils/cardSearch/normalizeCatalogText'
+import approvedBaseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
+import { createHash } from 'node:crypto'
 
 let cardsHandler: EventHandler
 
@@ -24,6 +29,198 @@ afterEach(() => vi.restoreAllMocks())
 const requestCards = (query = '') => toWebHandler(createApp().use('/api/cards', cardsHandler))(
   new Request(`http://localhost/api/cards?${query}`),
 )
+
+const parseFixtureQuery = (query: Record<string, string | undefined>) => parseCardSearchQuery(
+  Object.fromEntries(Object.entries(query).filter((entry): entry is [string, string] => entry[1] !== undefined)),
+)
+
+const makeCatalogCards = (): Card[] => catalogOracle.fixtureCards.map(fixture => {
+  const card = structuredClone(getSourceCards().find(source => source.card.unit?.races.length)!.card)
+  card.card_id = fixture.id
+  card.name = fixture.name
+  card.search_support.full_text = fixture.full_text
+  card.search_support.archetype_text = fixture.archetype_text
+  card.unit!.races = [{ ...card.unit!.races[0]!, race_name: fixture.race }]
+  const type = getSourceCards().find(source => source.card.card_types.length)!.card.card_types[0]!
+  card.card_types = [{ ...type, card_type_name: fixture.type }]
+  return card
+})
+
+const expectAllCatalogPages = async (query: Record<string, string | undefined>, ids: readonly string[]) => {
+  const allIds: string[] = []
+  for (let page = 1, totalPages = 1; page <= totalPages; page += 1) {
+    const parameters = new URLSearchParams({ perPage: '20', page: String(page), sort: 'id', order: 'asc' })
+    for (const [key, value] of Object.entries(query)) if (value !== undefined) parameters.set(key, value)
+    const response = await requestCards(parameters.toString())
+    const body: CardSearchResultPage = await response.json()
+    expect(response.status).toBe(200)
+    expect(body.totalCount).toBe(ids.length)
+    expect(body.page).toBe(page)
+    expect(body.perPage).toBe(20)
+    expect(body.totalPages).toBe(Math.max(1, Math.ceil(ids.length / 20)))
+    expect(body.sort).toEqual({ key: 'id', order: 'asc' })
+    totalPages = body.totalPages
+    allIds.push(...body.items.map(item => item.card_id))
+  }
+  expect(allIds).toEqual([...ids].sort((a, b) => a.localeCompare(b)))
+}
+
+describe('GET /api/cards kw catalog契約', () => {
+  it.each(catalogOracle.realCases.filter(example => 'kw' in example.query && !('att' in example.query)))('$idの全ページを独立oracleと比較する', async example => {
+    await expectAllCatalogPages(example.query, example.ids)
+  })
+  it.each(catalogOracle.fixtureCases.filter(example => 'kw' in example.query && !('att' in example.query)))('$idは表示値とcatalogを区別する', async example => {
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(makeCatalogCards().map((card, sourceIndex) => ({ card, sourceIndex })))
+    await expectAllCatalogPages(example.query, example.ids)
+  })
+  it.each(catalogOracle.boundaries)('$idのAPI境界', async example => {
+    const card = structuredClone(getSourceCards()[0]!.card)
+    card.card_id = 'boundary'
+    card.name = example.query?.trim() || '表示原文'
+    card.search_support.full_text = example.target
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue([{ card, sourceIndex: 0 }])
+    await expectAllCatalogPages(example.query === undefined ? {} : { kw: example.query }, example.ids)
+  })
+})
+
+describe('GET /api/cards att catalog契約', () => {
+  it.each(catalogOracle.realCases.filter(example => 'att' in example.query))('$idの全ページを独立oracleと比較する', async example => {
+    await expectAllCatalogPages(example.query, example.ids)
+  })
+  it.each(catalogOracle.fixtureCases.filter(example => 'att' in example.query))('$idは専用値と表示種族・種別を区別する', async example => {
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(makeCatalogCards().map((card, sourceIndex) => ({ card, sourceIndex })))
+    await expectAllCatalogPages(example.query, example.ids)
+  })
+  it.each(catalogOracle.boundaries)('$idのAPI境界', async example => {
+    const card = makeCatalogCards()[0]!
+    card.card_id = 'boundary'
+    card.name = example.query?.trim() || '表示原文'
+    card.unit!.races[0]!.race_name = example.query ?? '表示種族'
+    card.card_types[0]!.card_type_name = example.query ?? '表示種別'
+    card.search_support.archetype_text = example.target
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue([{ card, sourceIndex: 0 }])
+    await expectAllCatalogPages(example.query === undefined ? {} : { att: example.query }, example.ids)
+  })
+})
+
+describe('GET /api/cards prepared matcherの呼出構造', () => {
+  for (const count of [0, 1, 7, 101]) {
+    it.each([
+      { kw: 'CATALOG-ONLY' }, { att: 'ARCHETYPE-ONLY' },
+      { kw: 'CATALOG-ONLY', att: 'ARCHETYPE-ONLY' }, {}, { kw: ' \n\t ', att: '　' },
+    ])(`${count}枚でも%jをカード参照前に各一回だけ変換する`, async query => {
+      const card = makeCatalogCards()[0]!
+      const criteria = parseFixtureQuery(query)
+      const expectedArguments = [criteria.keyword, criteria.archetypeText].filter(Boolean).map(value => [value])
+      const normalize = vi.spyOn(catalogNormalizer, 'normalizeCatalogText')
+      const sources = Array.from({ length: count }, (_, sourceIndex) => {
+        const cloned = structuredClone(card)
+        cloned.card_id = `fixture-${String(sourceIndex).padStart(3, '0')}`
+        return { sourceIndex, get card() {
+          expect(normalize.mock.calls).toEqual(expectedArguments)
+          return cloned
+        } }
+      })
+      vi.spyOn(dataSource, 'getSourceCards').mockImplementation(() => {
+        expect(normalize.mock.calls).toEqual(expectedArguments)
+        return sources
+      })
+      const parameters = new URLSearchParams()
+      for (const [key, value] of Object.entries(query)) if (value !== undefined) parameters.set(key, value)
+      const response = await requestCards(parameters.toString())
+      const body: CardSearchResultPage = await response.json()
+      expect(response.status).toBe(200)
+      expect(body.totalCount).toBe(count)
+      expect(body.items.map(item => item.card_id)).toEqual(sources.slice(0, 20).map(source => source.card.card_id))
+      expect(normalize.mock.calls).toEqual(expectedArguments)
+    })
+  }
+})
+
+describe('GET /api/cards US3 承認済みT002 baseline回帰', () => {
+  const projectedItems: Record<string, unknown> = approvedBaseline.projectedItems
+  it.each(approvedBaseline.cases)('$nameの全ページ・境界・投影原文を維持する', async example => {
+    const allIds: string[] = []
+    for (const page of [...example.api.pages, ...example.api.boundaries]) {
+      const response = await requestCards(page.requestQuery)
+      const body: CardSearchResultPage = await response.json()
+      expect(response.status).toBe(page.status)
+      expect(body).toEqual({ ...page.response, items: page.response.items.map(id => projectedItems[id]) })
+      expect(body.items.every(item => !('search_support' in item) && !('full_text' in item) && !('archetype_text' in item))).toBe(true)
+      if ('responseSha256' in page && 'responseFields' in page) {
+        expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)
+        expect(Object.keys(body)).toEqual(page.responseFields)
+        allIds.push(...body.items.map(item => item.card_id))
+      }
+    }
+    expect(allIds).toEqual(example.api.allIds)
+  })
+})
+
+describe('GET /api/cards US3 catalog付き結果処理', () => {
+  const projections: Record<string, CardSearchResultItem> = approvedBaseline.projectedItems
+  const ids = catalogOracle.realCases.find(example => example.id === 'broad-keyword')!.ids
+  const indices = new Map(approvedBaseline.classifications.map(card => [card.card_id, card.sourceIndex]))
+  const rarities = ['Basic', 'Common', 'Uncommon', 'Rare', 'SuperRare', 'Special', 'DragonJr', 'Promotion', 'Summoner']
+  for (const sort of ['id', 'rarity', 'atk']) {
+    for (const order of ['asc', 'desc']) {
+      it.each([20, 50, 100])(`kw付き${sort}/${order}/%iの全ページ・集計・投影を固定ID集合と比較する`, async perPage => {
+        const sortedIds = [...ids].sort((left, right) => {
+          const a = projections[left]!
+          const b = projections[right]!
+          const difference = sort === 'id' ? left.localeCompare(right)
+            : sort === 'rarity' ? rarities.indexOf(a.rarity_code) - rarities.indexOf(b.rarity_code)
+              : (a.unit?.attack ?? 0) - (b.unit?.attack ?? 0)
+          return difference ? difference * (order === 'asc' ? 1 : -1) : indices.get(left)! - indices.get(right)!
+        })
+        const expectedCounts = new Map<string, number>()
+        for (const id of ids) {
+          const category = projections[id]!.card_category_code
+          expectedCounts.set(category, (expectedCounts.get(category) ?? 0) + 1)
+        }
+        const expectedBreakdown = [...expectedCounts].map(([categoryCode, count]) => ({ categoryCode, count }))
+        const totalPages = Math.ceil(ids.length / perPage)
+        const allIds: string[] = []
+        for (let page = 1; page <= totalPages; page += 1) {
+          const response = await requestCards(new URLSearchParams({ kw: '対象', sort, order, perPage: String(perPage), page: String(page) }).toString())
+          const body: CardSearchResultPage = await response.json()
+          expect(response.status).toBe(200)
+          expect(body.totalCount).toBe(ids.length)
+          expect(body.categoryBreakdown).toEqual(expectedBreakdown)
+          expect(body).toMatchObject({ page, perPage, totalPages, sort: { key: sort, order } })
+          const pageIds = sortedIds.slice((page - 1) * perPage, page * perPage)
+          expect(body.items).toEqual(pageIds.map(id => projections[id]))
+          allIds.push(...body.items.map(item => item.card_id))
+        }
+        expect(allIds).toEqual(sortedIds)
+      })
+    }
+  }
+
+  it('固定oracleと分類・集計・原文保持・公開DTOを同時に確認する', async () => {
+    const cards = makeCatalogCards()
+    cards[0]!.search_support.is_token = true
+    const before = JSON.stringify(cards)
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(cards.map((card, sourceIndex) => ({ card, sourceIndex })))
+    const response = await requestCards(new URLSearchParams({ kw: 'ＣＡＴＡＬＯＧ－ＯＮＬＹ', att: 'ARCHETYPE-ONLY', cc: 'token' }).toString())
+    const body: CardSearchResultPage = await response.json()
+    expect(response.status).toBe(200)
+    expect(body.items.map(item => item.card_id)).toEqual(['A'])
+    expect(body.totalCount).toBe(1)
+    expect(body.categoryBreakdown).toEqual([{ categoryCode: 'Unit', count: 1 }])
+    expect(body.items[0]!.name).toBe(catalogOracle.fixtureCards[0]!.name)
+    expect(body.items[0]).not.toHaveProperty('search_support')
+    expect(JSON.stringify(cards)).toBe(before)
+    await expectAllCatalogPages({ kw: 'catalog-only', att: 'archetype-only', cc: 'unit' }, [])
+  })
+
+  it('catalog検索にもCARD_SEARCH_FAILEDの既存契約を維持する', async () => {
+    vi.spyOn(dataSource, 'getSourceCards').mockImplementation(() => { throw new Error('catalog fixture failure') })
+    const response = await requestCards('kw=abc&att=abc')
+    expect(response.status).toBe(500)
+    expect(await response.json()).toMatchObject({ statusCode: 500, data: { statusCode: 500, code: 'CARD_SEARCH_FAILED', message: 'カード検索に失敗しました' } })
+  })
+})
 
 describe('GET /api/cards 検索結果の回帰', () => {
   it.each(baseline.cases)('$query の既存レスポンスを維持する', async ({ query, response: expected }) => {
@@ -108,7 +305,7 @@ describe('GET /api/cards contract', () => {
     expect(source).toContain("'CARD_SEARCH_FAILED'")
   })
   it('filterからprojectionまでserverで処理する', () => {
-    for (const operation of ['matchesCardSearch', 'sortSourceCards', 'paginate', 'projectCards']) expect(source).toContain(operation)
+    for (const operation of ['createCardSearchMatcher', 'sortSourceCards', 'paginate', 'projectCards']) expect(source).toContain(operation)
     expect(source).toContain('categoryBreakdown')
   })
   it('効果コストURL条件をAPIと同じcriteria/filter境界で適用する', () => {

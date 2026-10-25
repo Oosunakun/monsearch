@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "protectedFiles": 79,
+  "changedProtectedFiles": [],
+  "apiTestOnlyImportChanged": true,
+  "assertionsUnchanged": true,
+  "deckRestrictionExclusionUnchanged": true
+}

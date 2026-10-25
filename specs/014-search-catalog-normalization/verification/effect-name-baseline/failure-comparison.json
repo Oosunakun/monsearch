@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "retainedMemoFailures": [
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=id&order=desc' の既存レスポンスを維持する",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=atk&order=asc' の既存レスポンスを維持する",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'page=2&perPage=100' の既存レスポンスを維持する",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/server/api/cards.get.test.ts > GET /api/cards contract > filterからprojectionまでserverで処理する",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > restores every representative field family from the route query",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > restores defaults for an empty route query",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > navigates populated submissions with a logical query",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > rebuilds a restored form after adding, changing, and removing conditions",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > canonically round-trips an unchanged restored form",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > keeps valid fields when malformed route conditions are present",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > navigates an empty submission to bare /cards",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/app/pages/cards/search.test.ts > card search page > navigates UI-selected slots with their logical query alias",
+    "FAIL  .memo/cloudflare-pages-json-performance-spike/p1-20261021-01/workspace/server/utils/cardSearch/search.test.ts > searchCards > 実データのnull full_textでもKeyword結果へ影響しない"
+  ],
+  "resolvedMainApiFailures": [
+    "FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=id&order=desc' の既存レスポンスを維持する",
+    "FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=atk&order=asc' の既存レスポンスを維持する",
+    "FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'page=2&perPage=100' の既存レスポンスを維持する"
+  ],
+  "newFailures": [],
+  "mainFailures": 0,
+  "environmentFailures": 0
+}

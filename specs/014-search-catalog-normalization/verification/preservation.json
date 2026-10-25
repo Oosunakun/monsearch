@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "inputSha256": "a53a1730a5cc371f44752185baeb9255671da1e63b21c38e2c8b3a3ae05c70ca",
+  "protectedPaths": [
+    "app/utils/mockData/items/cards.json",
+    "package.json",
+    "package-lock.json",
+    "vitest.config.ts",
+    "nuxt.config.ts",
+    "eslint.config.mjs",
+    ".gitignore",
+    "server/utils/cardSearch/dataSource.ts",
+    "server/utils/cardSearch/sort.ts",
+    "server/utils/cardSearch/paginate.ts",
+    "server/utils/cardSearch/project.ts",
+    "app/utils/search/cardSearchQueryParser.ts",
+    "app/utils/search/cardSearchQueryBuilder.ts",
+    "docs/architecture",
+    "specs/014-search-catalog-normalization/spec.md",
+    "specs/014-search-catalog-normalization/plan.md",
+    "specs/014-search-catalog-normalization/research.md",
+    "specs/014-search-catalog-normalization/data-model.md",
+    "specs/014-search-catalog-normalization/contracts",
+    "specs/014-search-catalog-normalization/quickstart.md",
+    "specs/014-search-catalog-normalization/checklists",
+    "specs/014-search-catalog-normalization/verification/baseline.json",
+    "specs/014-search-catalog-normalization/verification/baseline-integrity.json",
+    "specs/014-search-catalog-normalization/verification/baseline-execution.txt",
+    "specs/014-search-catalog-normalization/verification/capture-baseline.mjs",
+    "specs/014-search-catalog-normalization/verification/t002-recovery.md",
+    "specs/014-search-catalog-normalization/verification/implementation-stop.md"
+  ],
+  "T001OriginalFieldsUnchanged": true,
+  "implementationVerification": {
+    "full_text": {
+      "task": "T012",
+      "checked": 482,
+      "nonFixedIds": [],
+      "test": "us1-verified.txt"
+    },
+    "archetype_text": {
+      "task": "T017",
+      "checked": 482,
+      "nonFixedIds": [],
+      "test": "us2-verified.txt"
+    }
+  },
+  "existingHelpersIncludingQdsNormalizationUnchanged": true
+}

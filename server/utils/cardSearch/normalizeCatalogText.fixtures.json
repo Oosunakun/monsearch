@@ -1,0 +1,1067 @@
+[
+  {
+    "id": "width-ascii-ff01",
+    "input": "！",
+    "expected": "!"
+  },
+  {
+    "id": "width-ascii-ff02",
+    "input": "＂",
+    "expected": "\""
+  },
+  {
+    "id": "width-ascii-ff03",
+    "input": "＃",
+    "expected": "#"
+  },
+  {
+    "id": "width-ascii-ff04",
+    "input": "＄",
+    "expected": "$"
+  },
+  {
+    "id": "width-ascii-ff05",
+    "input": "％",
+    "expected": "%"
+  },
+  {
+    "id": "width-ascii-ff06",
+    "input": "＆",
+    "expected": "&"
+  },
+  {
+    "id": "width-ascii-ff07",
+    "input": "＇",
+    "expected": "'"
+  },
+  {
+    "id": "width-ascii-ff08",
+    "input": "（",
+    "expected": "("
+  },
+  {
+    "id": "width-ascii-ff09",
+    "input": "）",
+    "expected": ")"
+  },
+  {
+    "id": "width-ascii-ff0a",
+    "input": "＊",
+    "expected": "*"
+  },
+  {
+    "id": "width-ascii-ff0b",
+    "input": "＋",
+    "expected": "+"
+  },
+  {
+    "id": "width-ascii-ff0c",
+    "input": "，",
+    "expected": ","
+  },
+  {
+    "id": "width-ascii-ff0d",
+    "input": "－",
+    "expected": "-"
+  },
+  {
+    "id": "width-ascii-ff0e",
+    "input": "．",
+    "expected": "."
+  },
+  {
+    "id": "width-ascii-ff0f",
+    "input": "／",
+    "expected": "/"
+  },
+  {
+    "id": "width-ascii-ff10",
+    "input": "０",
+    "expected": "0"
+  },
+  {
+    "id": "width-ascii-ff11",
+    "input": "１",
+    "expected": "1"
+  },
+  {
+    "id": "width-ascii-ff12",
+    "input": "２",
+    "expected": "2"
+  },
+  {
+    "id": "width-ascii-ff13",
+    "input": "３",
+    "expected": "3"
+  },
+  {
+    "id": "width-ascii-ff14",
+    "input": "４",
+    "expected": "4"
+  },
+  {
+    "id": "width-ascii-ff15",
+    "input": "５",
+    "expected": "5"
+  },
+  {
+    "id": "width-ascii-ff16",
+    "input": "６",
+    "expected": "6"
+  },
+  {
+    "id": "width-ascii-ff17",
+    "input": "７",
+    "expected": "7"
+  },
+  {
+    "id": "width-ascii-ff18",
+    "input": "８",
+    "expected": "8"
+  },
+  {
+    "id": "width-ascii-ff19",
+    "input": "９",
+    "expected": "9"
+  },
+  {
+    "id": "width-ascii-ff1a",
+    "input": "：",
+    "expected": ":"
+  },
+  {
+    "id": "width-ascii-ff1b",
+    "input": "；",
+    "expected": ";"
+  },
+  {
+    "id": "width-ascii-ff1c",
+    "input": "＜",
+    "expected": "<"
+  },
+  {
+    "id": "width-ascii-ff1d",
+    "input": "＝",
+    "expected": "="
+  },
+  {
+    "id": "width-ascii-ff1e",
+    "input": "＞",
+    "expected": ">"
+  },
+  {
+    "id": "width-ascii-ff1f",
+    "input": "？",
+    "expected": "?"
+  },
+  {
+    "id": "width-ascii-ff20",
+    "input": "＠",
+    "expected": "@"
+  },
+  {
+    "id": "width-ascii-ff21",
+    "input": "Ａ",
+    "expected": "a"
+  },
+  {
+    "id": "width-ascii-ff22",
+    "input": "Ｂ",
+    "expected": "b"
+  },
+  {
+    "id": "width-ascii-ff23",
+    "input": "Ｃ",
+    "expected": "c"
+  },
+  {
+    "id": "width-ascii-ff24",
+    "input": "Ｄ",
+    "expected": "d"
+  },
+  {
+    "id": "width-ascii-ff25",
+    "input": "Ｅ",
+    "expected": "e"
+  },
+  {
+    "id": "width-ascii-ff26",
+    "input": "Ｆ",
+    "expected": "f"
+  },
+  {
+    "id": "width-ascii-ff27",
+    "input": "Ｇ",
+    "expected": "g"
+  },
+  {
+    "id": "width-ascii-ff28",
+    "input": "Ｈ",
+    "expected": "h"
+  },
+  {
+    "id": "width-ascii-ff29",
+    "input": "Ｉ",
+    "expected": "i"
+  },
+  {
+    "id": "width-ascii-ff2a",
+    "input": "Ｊ",
+    "expected": "j"
+  },
+  {
+    "id": "width-ascii-ff2b",
+    "input": "Ｋ",
+    "expected": "k"
+  },
+  {
+    "id": "width-ascii-ff2c",
+    "input": "Ｌ",
+    "expected": "l"
+  },
+  {
+    "id": "width-ascii-ff2d",
+    "input": "Ｍ",
+    "expected": "m"
+  },
+  {
+    "id": "width-ascii-ff2e",
+    "input": "Ｎ",
+    "expected": "n"
+  },
+  {
+    "id": "width-ascii-ff2f",
+    "input": "Ｏ",
+    "expected": "o"
+  },
+  {
+    "id": "width-ascii-ff30",
+    "input": "Ｐ",
+    "expected": "p"
+  },
+  {
+    "id": "width-ascii-ff31",
+    "input": "Ｑ",
+    "expected": "q"
+  },
+  {
+    "id": "width-ascii-ff32",
+    "input": "Ｒ",
+    "expected": "r"
+  },
+  {
+    "id": "width-ascii-ff33",
+    "input": "Ｓ",
+    "expected": "s"
+  },
+  {
+    "id": "width-ascii-ff34",
+    "input": "Ｔ",
+    "expected": "t"
+  },
+  {
+    "id": "width-ascii-ff35",
+    "input": "Ｕ",
+    "expected": "u"
+  },
+  {
+    "id": "width-ascii-ff36",
+    "input": "Ｖ",
+    "expected": "v"
+  },
+  {
+    "id": "width-ascii-ff37",
+    "input": "Ｗ",
+    "expected": "w"
+  },
+  {
+    "id": "width-ascii-ff38",
+    "input": "Ｘ",
+    "expected": "x"
+  },
+  {
+    "id": "width-ascii-ff39",
+    "input": "Ｙ",
+    "expected": "y"
+  },
+  {
+    "id": "width-ascii-ff3a",
+    "input": "Ｚ",
+    "expected": "z"
+  },
+  {
+    "id": "width-ascii-ff3b",
+    "input": "［",
+    "expected": "["
+  },
+  {
+    "id": "width-ascii-ff3c",
+    "input": "＼",
+    "expected": "\\"
+  },
+  {
+    "id": "width-ascii-ff3d",
+    "input": "］",
+    "expected": "]"
+  },
+  {
+    "id": "width-ascii-ff3e",
+    "input": "＾",
+    "expected": "^"
+  },
+  {
+    "id": "width-ascii-ff3f",
+    "input": "＿",
+    "expected": "_"
+  },
+  {
+    "id": "width-ascii-ff40",
+    "input": "｀",
+    "expected": "`"
+  },
+  {
+    "id": "width-ascii-ff41",
+    "input": "ａ",
+    "expected": "a"
+  },
+  {
+    "id": "width-ascii-ff42",
+    "input": "ｂ",
+    "expected": "b"
+  },
+  {
+    "id": "width-ascii-ff43",
+    "input": "ｃ",
+    "expected": "c"
+  },
+  {
+    "id": "width-ascii-ff44",
+    "input": "ｄ",
+    "expected": "d"
+  },
+  {
+    "id": "width-ascii-ff45",
+    "input": "ｅ",
+    "expected": "e"
+  },
+  {
+    "id": "width-ascii-ff46",
+    "input": "ｆ",
+    "expected": "f"
+  },
+  {
+    "id": "width-ascii-ff47",
+    "input": "ｇ",
+    "expected": "g"
+  },
+  {
+    "id": "width-ascii-ff48",
+    "input": "ｈ",
+    "expected": "h"
+  },
+  {
+    "id": "width-ascii-ff49",
+    "input": "ｉ",
+    "expected": "i"
+  },
+  {
+    "id": "width-ascii-ff4a",
+    "input": "ｊ",
+    "expected": "j"
+  },
+  {
+    "id": "width-ascii-ff4b",
+    "input": "ｋ",
+    "expected": "k"
+  },
+  {
+    "id": "width-ascii-ff4c",
+    "input": "ｌ",
+    "expected": "l"
+  },
+  {
+    "id": "width-ascii-ff4d",
+    "input": "ｍ",
+    "expected": "m"
+  },
+  {
+    "id": "width-ascii-ff4e",
+    "input": "ｎ",
+    "expected": "n"
+  },
+  {
+    "id": "width-ascii-ff4f",
+    "input": "ｏ",
+    "expected": "o"
+  },
+  {
+    "id": "width-ascii-ff50",
+    "input": "ｐ",
+    "expected": "p"
+  },
+  {
+    "id": "width-ascii-ff51",
+    "input": "ｑ",
+    "expected": "q"
+  },
+  {
+    "id": "width-ascii-ff52",
+    "input": "ｒ",
+    "expected": "r"
+  },
+  {
+    "id": "width-ascii-ff53",
+    "input": "ｓ",
+    "expected": "s"
+  },
+  {
+    "id": "width-ascii-ff54",
+    "input": "ｔ",
+    "expected": "t"
+  },
+  {
+    "id": "width-ascii-ff55",
+    "input": "ｕ",
+    "expected": "u"
+  },
+  {
+    "id": "width-ascii-ff56",
+    "input": "ｖ",
+    "expected": "v"
+  },
+  {
+    "id": "width-ascii-ff57",
+    "input": "ｗ",
+    "expected": "w"
+  },
+  {
+    "id": "width-ascii-ff58",
+    "input": "ｘ",
+    "expected": "x"
+  },
+  {
+    "id": "width-ascii-ff59",
+    "input": "ｙ",
+    "expected": "y"
+  },
+  {
+    "id": "width-ascii-ff5a",
+    "input": "ｚ",
+    "expected": "z"
+  },
+  {
+    "id": "width-ascii-ff5b",
+    "input": "｛",
+    "expected": "{"
+  },
+  {
+    "id": "width-ascii-ff5c",
+    "input": "｜",
+    "expected": "|"
+  },
+  {
+    "id": "width-ascii-ff5d",
+    "input": "｝",
+    "expected": "}"
+  },
+  {
+    "id": "width-ascii-ff5e",
+    "input": "～",
+    "expected": "~"
+  },
+  {
+    "id": "width-kana-ff61",
+    "input": "｡",
+    "expected": "。"
+  },
+  {
+    "id": "width-kana-ff62",
+    "input": "｢",
+    "expected": "「"
+  },
+  {
+    "id": "width-kana-ff63",
+    "input": "｣",
+    "expected": "」"
+  },
+  {
+    "id": "width-kana-ff64",
+    "input": "､",
+    "expected": "、"
+  },
+  {
+    "id": "width-kana-ff65",
+    "input": "･",
+    "expected": "・"
+  },
+  {
+    "id": "width-kana-ff66",
+    "input": "ｦ",
+    "expected": "ヲ"
+  },
+  {
+    "id": "width-kana-ff67",
+    "input": "ｧ",
+    "expected": "ァ"
+  },
+  {
+    "id": "width-kana-ff68",
+    "input": "ｨ",
+    "expected": "ィ"
+  },
+  {
+    "id": "width-kana-ff69",
+    "input": "ｩ",
+    "expected": "ゥ"
+  },
+  {
+    "id": "width-kana-ff6a",
+    "input": "ｪ",
+    "expected": "ェ"
+  },
+  {
+    "id": "width-kana-ff6b",
+    "input": "ｫ",
+    "expected": "ォ"
+  },
+  {
+    "id": "width-kana-ff6c",
+    "input": "ｬ",
+    "expected": "ャ"
+  },
+  {
+    "id": "width-kana-ff6d",
+    "input": "ｭ",
+    "expected": "ュ"
+  },
+  {
+    "id": "width-kana-ff6e",
+    "input": "ｮ",
+    "expected": "ョ"
+  },
+  {
+    "id": "width-kana-ff6f",
+    "input": "ｯ",
+    "expected": "ッ"
+  },
+  {
+    "id": "width-kana-ff70",
+    "input": "ｰ",
+    "expected": "ー"
+  },
+  {
+    "id": "width-kana-ff71",
+    "input": "ｱ",
+    "expected": "ア"
+  },
+  {
+    "id": "width-kana-ff72",
+    "input": "ｲ",
+    "expected": "イ"
+  },
+  {
+    "id": "width-kana-ff73",
+    "input": "ｳ",
+    "expected": "ウ"
+  },
+  {
+    "id": "width-kana-ff74",
+    "input": "ｴ",
+    "expected": "エ"
+  },
+  {
+    "id": "width-kana-ff75",
+    "input": "ｵ",
+    "expected": "オ"
+  },
+  {
+    "id": "width-kana-ff76",
+    "input": "ｶ",
+    "expected": "カ"
+  },
+  {
+    "id": "width-kana-ff77",
+    "input": "ｷ",
+    "expected": "キ"
+  },
+  {
+    "id": "width-kana-ff78",
+    "input": "ｸ",
+    "expected": "ク"
+  },
+  {
+    "id": "width-kana-ff79",
+    "input": "ｹ",
+    "expected": "ケ"
+  },
+  {
+    "id": "width-kana-ff7a",
+    "input": "ｺ",
+    "expected": "コ"
+  },
+  {
+    "id": "width-kana-ff7b",
+    "input": "ｻ",
+    "expected": "サ"
+  },
+  {
+    "id": "width-kana-ff7c",
+    "input": "ｼ",
+    "expected": "シ"
+  },
+  {
+    "id": "width-kana-ff7d",
+    "input": "ｽ",
+    "expected": "ス"
+  },
+  {
+    "id": "width-kana-ff7e",
+    "input": "ｾ",
+    "expected": "セ"
+  },
+  {
+    "id": "width-kana-ff7f",
+    "input": "ｿ",
+    "expected": "ソ"
+  },
+  {
+    "id": "width-kana-ff80",
+    "input": "ﾀ",
+    "expected": "タ"
+  },
+  {
+    "id": "width-kana-ff81",
+    "input": "ﾁ",
+    "expected": "チ"
+  },
+  {
+    "id": "width-kana-ff82",
+    "input": "ﾂ",
+    "expected": "ツ"
+  },
+  {
+    "id": "width-kana-ff83",
+    "input": "ﾃ",
+    "expected": "テ"
+  },
+  {
+    "id": "width-kana-ff84",
+    "input": "ﾄ",
+    "expected": "ト"
+  },
+  {
+    "id": "width-kana-ff85",
+    "input": "ﾅ",
+    "expected": "ナ"
+  },
+  {
+    "id": "width-kana-ff86",
+    "input": "ﾆ",
+    "expected": "ニ"
+  },
+  {
+    "id": "width-kana-ff87",
+    "input": "ﾇ",
+    "expected": "ヌ"
+  },
+  {
+    "id": "width-kana-ff88",
+    "input": "ﾈ",
+    "expected": "ネ"
+  },
+  {
+    "id": "width-kana-ff89",
+    "input": "ﾉ",
+    "expected": "ノ"
+  },
+  {
+    "id": "width-kana-ff8a",
+    "input": "ﾊ",
+    "expected": "ハ"
+  },
+  {
+    "id": "width-kana-ff8b",
+    "input": "ﾋ",
+    "expected": "ヒ"
+  },
+  {
+    "id": "width-kana-ff8c",
+    "input": "ﾌ",
+    "expected": "フ"
+  },
+  {
+    "id": "width-kana-ff8d",
+    "input": "ﾍ",
+    "expected": "ヘ"
+  },
+  {
+    "id": "width-kana-ff8e",
+    "input": "ﾎ",
+    "expected": "ホ"
+  },
+  {
+    "id": "width-kana-ff8f",
+    "input": "ﾏ",
+    "expected": "マ"
+  },
+  {
+    "id": "width-kana-ff90",
+    "input": "ﾐ",
+    "expected": "ミ"
+  },
+  {
+    "id": "width-kana-ff91",
+    "input": "ﾑ",
+    "expected": "ム"
+  },
+  {
+    "id": "width-kana-ff92",
+    "input": "ﾒ",
+    "expected": "メ"
+  },
+  {
+    "id": "width-kana-ff93",
+    "input": "ﾓ",
+    "expected": "モ"
+  },
+  {
+    "id": "width-kana-ff94",
+    "input": "ﾔ",
+    "expected": "ヤ"
+  },
+  {
+    "id": "width-kana-ff95",
+    "input": "ﾕ",
+    "expected": "ユ"
+  },
+  {
+    "id": "width-kana-ff96",
+    "input": "ﾖ",
+    "expected": "ヨ"
+  },
+  {
+    "id": "width-kana-ff97",
+    "input": "ﾗ",
+    "expected": "ラ"
+  },
+  {
+    "id": "width-kana-ff98",
+    "input": "ﾘ",
+    "expected": "リ"
+  },
+  {
+    "id": "width-kana-ff99",
+    "input": "ﾙ",
+    "expected": "ル"
+  },
+  {
+    "id": "width-kana-ff9a",
+    "input": "ﾚ",
+    "expected": "レ"
+  },
+  {
+    "id": "width-kana-ff9b",
+    "input": "ﾛ",
+    "expected": "ロ"
+  },
+  {
+    "id": "width-kana-ff9c",
+    "input": "ﾜ",
+    "expected": "ワ"
+  },
+  {
+    "id": "width-kana-ff9d",
+    "input": "ﾝ",
+    "expected": "ン"
+  },
+  {
+    "id": "width-kana-ff9e",
+    "input": "ﾞ",
+    "expected": "\u3099"
+  },
+  {
+    "id": "width-kana-ff9f",
+    "input": "ﾟ",
+    "expected": "\u309a"
+  },
+  {
+    "id": "width-space",
+    "input": "　",
+    "expected": " "
+  },
+  {
+    "id": "width-other-ffe0",
+    "input": "￠",
+    "expected": "¢"
+  },
+  {
+    "id": "width-other-ffe1",
+    "input": "￡",
+    "expected": "£"
+  },
+  {
+    "id": "width-other-ffe2",
+    "input": "￢",
+    "expected": "¬"
+  },
+  {
+    "id": "width-other-ffe3",
+    "input": "￣",
+    "expected": "¯"
+  },
+  {
+    "id": "width-other-ffe4",
+    "input": "￤",
+    "expected": "¦"
+  },
+  {
+    "id": "width-other-ffe5",
+    "input": "￥",
+    "expected": "¥"
+  },
+  {
+    "id": "width-other-ffe6",
+    "input": "￦",
+    "expected": "₩"
+  },
+  {
+    "id": "width-other-ffe8",
+    "input": "￨",
+    "expected": "│"
+  },
+  {
+    "id": "width-other-ffe9",
+    "input": "￩",
+    "expected": "←"
+  },
+  {
+    "id": "width-other-ffea",
+    "input": "￪",
+    "expected": "↑"
+  },
+  {
+    "id": "width-other-ffeb",
+    "input": "￫",
+    "expected": "→"
+  },
+  {
+    "id": "width-other-ffec",
+    "input": "￬",
+    "expected": "↓"
+  },
+  {
+    "id": "width-other-ffed",
+    "input": "￭",
+    "expected": "■"
+  },
+  {
+    "id": "width-other-ffee",
+    "input": "￮",
+    "expected": "○"
+  },
+  {
+    "id": "ascii-case-0",
+    "input": "A",
+    "expected": "a"
+  },
+  {
+    "id": "ascii-case-1",
+    "input": "B",
+    "expected": "b"
+  },
+  {
+    "id": "ascii-case-2",
+    "input": "C",
+    "expected": "c"
+  },
+  {
+    "id": "ascii-case-3",
+    "input": "D",
+    "expected": "d"
+  },
+  {
+    "id": "ascii-case-4",
+    "input": "E",
+    "expected": "e"
+  },
+  {
+    "id": "ascii-case-5",
+    "input": "F",
+    "expected": "f"
+  },
+  {
+    "id": "ascii-case-6",
+    "input": "G",
+    "expected": "g"
+  },
+  {
+    "id": "ascii-case-7",
+    "input": "H",
+    "expected": "h"
+  },
+  {
+    "id": "ascii-case-8",
+    "input": "I",
+    "expected": "i"
+  },
+  {
+    "id": "ascii-case-9",
+    "input": "J",
+    "expected": "j"
+  },
+  {
+    "id": "ascii-case-10",
+    "input": "K",
+    "expected": "k"
+  },
+  {
+    "id": "ascii-case-11",
+    "input": "L",
+    "expected": "l"
+  },
+  {
+    "id": "ascii-case-12",
+    "input": "M",
+    "expected": "m"
+  },
+  {
+    "id": "ascii-case-13",
+    "input": "N",
+    "expected": "n"
+  },
+  {
+    "id": "ascii-case-14",
+    "input": "O",
+    "expected": "o"
+  },
+  {
+    "id": "ascii-case-15",
+    "input": "P",
+    "expected": "p"
+  },
+  {
+    "id": "ascii-case-16",
+    "input": "Q",
+    "expected": "q"
+  },
+  {
+    "id": "ascii-case-17",
+    "input": "R",
+    "expected": "r"
+  },
+  {
+    "id": "ascii-case-18",
+    "input": "S",
+    "expected": "s"
+  },
+  {
+    "id": "ascii-case-19",
+    "input": "T",
+    "expected": "t"
+  },
+  {
+    "id": "ascii-case-20",
+    "input": "U",
+    "expected": "u"
+  },
+  {
+    "id": "ascii-case-21",
+    "input": "V",
+    "expected": "v"
+  },
+  {
+    "id": "ascii-case-22",
+    "input": "W",
+    "expected": "w"
+  },
+  {
+    "id": "ascii-case-23",
+    "input": "X",
+    "expected": "x"
+  },
+  {
+    "id": "ascii-case-24",
+    "input": "Y",
+    "expected": "y"
+  },
+  {
+    "id": "ascii-case-25",
+    "input": "Z",
+    "expected": "z"
+  },
+  {
+    "id": "label",
+    "input": "Ｍ２０Ａ－００１",
+    "expected": "m20a-001"
+  },
+  {
+    "id": "mixed",
+    "input": "AＢC",
+    "expected": "abc"
+  },
+  {
+    "id": "spell",
+    "input": "スペル：＊",
+    "expected": "スペル:*"
+  },
+  {
+    "id": "attack",
+    "input": "攻撃力：＋2",
+    "expected": "攻撃力:+2"
+  },
+  {
+    "id": "ampersand",
+    "input": "リブ＆ラブ",
+    "expected": "リブ&ラブ"
+  },
+  {
+    "id": "kana",
+    "input": "ｱｰﾆｬ",
+    "expected": "アーニャ"
+  },
+  {
+    "id": "voiced",
+    "input": "ｶﾞ",
+    "expected": "カ\u3099"
+  },
+  {
+    "id": "semi-voiced",
+    "input": "ﾊﾟ",
+    "expected": "ハ\u309a"
+  },
+  {
+    "id": "macron",
+    "input": "￣",
+    "expected": "¯"
+  },
+  {
+    "id": "boundaries",
+    "input": "｠ﾠ￧￯",
+    "expected": "｠ﾠ￧￯"
+  },
+  {
+    "id": "unicode-case",
+    "input": "ÉéΣσİı𐐀𐐨🐉",
+    "expected": "ÉéΣσİı𐐀𐐨🐉"
+  },
+  {
+    "id": "spaces",
+    "input": "  AN　 ALL\nA\tB  ",
+    "expected": "  an  all\na\tb  "
+  },
+  {
+    "id": "distinct",
+    "input": "①Ⅰあア〜～ー‐−-",
+    "expected": "①Ⅰあア〜~ー‐−-"
+  },
+  {
+    "id": "not-nfc",
+    "input": "éカ\u3099",
+    "expected": "éカ\u3099"
+  },
+  {
+    "id": "empty",
+    "input": "",
+    "expected": ""
+  }
+]

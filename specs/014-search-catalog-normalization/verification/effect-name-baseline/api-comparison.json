@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "method": "ローカルjiti（fsCache:false）とh3 toWebHandlerで実handlerを直接実行。既存テストと同じdeck_restriction_count除外後に完全比較。HTTP通信なし。",
+  "cases": [
+    {
+      "query": "nm=ラプラース",
+      "status": 200,
+      "totalCount": 1,
+      "items": 1,
+      "result": "PASS"
+    },
+    {
+      "query": "nm=ホーリー・フェニックス",
+      "status": 200,
+      "totalCount": 1,
+      "items": 1,
+      "result": "PASS"
+    },
+    {
+      "query": "nm=スペクター",
+      "status": 200,
+      "totalCount": 1,
+      "items": 1,
+      "result": "PASS"
+    },
+    {
+      "query": "nm=アーニャ",
+      "status": 200,
+      "totalCount": 3,
+      "items": 3,
+      "result": "PASS"
+    },
+    {
+      "query": "nm=サラマンダー",
+      "status": 200,
+      "totalCount": 1,
+      "items": 1,
+      "result": "PASS"
+    },
+    {
+      "query": "cc=unit&lv=gte:3",
+      "status": 200,
+      "totalCount": 261,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "nm=__NO_SUCH_CARD_013__",
+      "status": 200,
+      "totalCount": 0,
+      "items": 0,
+      "result": "PASS"
+    },
+    {
+      "query": "sort=id&order=asc",
+      "status": 200,
+      "totalCount": 482,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "sort=id&order=desc",
+      "status": 200,
+      "totalCount": 482,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "sort=rarity&order=asc",
+      "status": 200,
+      "totalCount": 482,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "sort=rarity&order=desc",
+      "status": 200,
+      "totalCount": 482,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "sort=atk&order=asc",
+      "status": 200,
+      "totalCount": 482,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "sort=atk&order=desc",
+      "status": 200,
+      "totalCount": 482,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "page=2&perPage=20",
+      "status": 200,
+      "totalCount": 482,
+      "items": 20,
+      "result": "PASS"
+    },
+    {
+      "query": "page=2&perPage=50",
+      "status": 200,
+      "totalCount": 482,
+      "items": 50,
+      "result": "PASS"
+    },
+    {
+      "query": "page=2&perPage=100",
+      "status": 200,
+      "totalCount": 482,
+      "items": 100,
+      "result": "PASS"
+    }
+  ]
+}

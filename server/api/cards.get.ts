@@ -1,7 +1,7 @@
 import { getQuery } from 'h3'
 import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
-import { matchesCardSearch } from '~~/server/utils/cardSearch/search'
+import { createCardSearchMatcher } from '~~/server/utils/cardSearch/search'
 import { sortSourceCards } from '~~/server/utils/cardSearch/sort'
 import { paginate } from '~~/server/utils/cardSearch/paginate'
 import { projectCards } from '~~/server/utils/cardSearch/project'
@@ -28,7 +28,8 @@ export default defineEventHandler((event): CardSearchResultPage => {
     const perPage = member(lastString(query.perPage), CARD_SEARCH_PER_PAGE.map(String), '20')
     const sort = member(lastString(query.sort), CARD_SEARCH_SORT_KEYS, 'id') as CardSearchSortKey
     const order = member(lastString(query.order), CARD_SEARCH_SORT_ORDERS, 'asc') as CardSearchSortOrder
-    const matched = getSourceCards().filter(source => matchesCardSearch(source.card, criteria))
+    const matches = createCardSearchMatcher(criteria)
+    const matched = getSourceCards().filter(source => matches(source.card))
     const sorted = sortSourceCards(matched, sort, order)
     const pagination = paginate(sorted, page, Number(perPage))
     const categoryCounts = new Map<string, number>()
