@@ -4,8 +4,21 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare-pages',
     prerender: {
-      autoSubfolderIndex: false
+      autoSubfolderIndex: false,
+      crawlLinks: false,
+      routes: ['/', '/cards', '/about']
     }
+  },
+  routeRules: {
+    '/': { prerender: true },
+    '/cards': { prerender: true },
+    '/about': { prerender: true },
+    '/cards/search': { prerender: false },
+    '/rules': { prerender: false },
+    '/restrictions': { prerender: false },
+    '/links': { prerender: false },
+    '/tournaments': { prerender: false },
+    '/api/**': { prerender: false }
   },
   modules: [
     'vuetify-nuxt-module',
