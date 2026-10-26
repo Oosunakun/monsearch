@@ -17,8 +17,9 @@ const RARITY_NATURAL_KEY_TO_CODE: Readonly<Record<string, string>> = {
 const compare = (actual: number | null | undefined, condition: NumericCondition) => actual !== null && actual !== undefined && (condition.value === null
   || (condition.operator === 'gte' ? actual >= condition.value : condition.operator === 'lte' ? actual <= condition.value : actual === condition.value))
 const includesAny = (wanted: readonly string[], actual: readonly string[]) => {
+  if (!wanted.length) return true
   const normalized = actual.map(value => value.toLocaleLowerCase())
-  return !wanted.length || wanted.some(value => {
+  return wanted.some(value => {
     const expected = value.toLocaleLowerCase()
     return normalized.some(candidate => candidate === expected || candidate.endsWith(expected))
   })
@@ -87,13 +88,14 @@ const slotsMatch = (ability: Ability | null | undefined, condition: SlotConditio
   }))
   return condition.match === 'and' ? checks.every(Boolean) : checks.some(Boolean)
 }
-const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').map(x => x.affinity.affinity_id.toLowerCase()))
+const hasSlotCriteria = (condition: SlotCondition) => condition.match === 'none' || Object.keys(condition.slots).length > 0
+const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly string[]) => !wanted.length || includesAny(wanted, (ability?.affinities ?? []).filter(x => x.affinity.affinity_category_code === 'Resistance').map(x => x.affinity.affinity_id.toLowerCase()))
 const textIncludes = (actual: string, wanted: string) => !wanted || actual.toLocaleLowerCase().includes(wanted.toLocaleLowerCase())
 const effectTextIncludes = (actual: string, wanted: string) => !wanted || normalizeEffectText(actual).includes(normalizeEffectText(wanted))
 const effectMatches = (effect: Effect, criteria: SearchForm) =>
-  includesAny(criteria.effectTypes, [String(effect.effect_type_code).toLowerCase()])
-  && includesAny(criteria.effectActivationTypes, [String(effect.effect_activation_type_id).toLowerCase()])
-  && includesAny(criteria.effectActivationCategories, [String(effect.effect_activation_category_code).toLowerCase()])
+  (!criteria.effectTypes.length || includesAny(criteria.effectTypes, [String(effect.effect_type_code).toLowerCase()]))
+  && (!criteria.effectActivationTypes.length || includesAny(criteria.effectActivationTypes, [String(effect.effect_activation_type_id).toLowerCase()]))
+  && (!criteria.effectActivationCategories.length || includesAny(criteria.effectActivationCategories, [String(effect.effect_activation_category_code).toLowerCase()]))
   && effectTextIncludes(effect.effect_text, criteria.effectText)
 
 const COST_CONDITIONS = [
@@ -129,11 +131,11 @@ const alternativeMatchesCost = (alternative: SearchCostAlternative, type: Search
 
 const hasKnownCostData = (effect: Effect) => effect.search_cost !== undefined && effect.search_cost !== null
 const isKnownCostFree = (effect: Effect) => (effect.effect_cost_id === null || effect.effect_cost_id === '') && effect.effect_cost_text === '' && effect.search_cost === null
-const costEffectMatches = (effect: Effect, criteria: SearchForm) => {
-  const searchCost = effect.search_cost
-  const active = COST_CONDITIONS.map(({ type, condition, keys }) => ({ type, keys, value: criteria[condition] }))
+const prepareCostConditions = (criteria: SearchForm) => COST_CONDITIONS.map(({ type, condition, keys }) => ({ type, keys, value: criteria[condition] }))
     .map(entry => ({ ...entry, slots: Object.fromEntries(Object.entries(entry.value.slots).filter(([key, amount]) => entry.keys.has(key) && amount > 0)) }))
     .filter(({ value, slots }) => value.match === 'none' || Object.keys(slots).length > 0)
+const costEffectMatches = (effect: Effect, active: ReturnType<typeof prepareCostConditions>) => {
+  const searchCost = effect.search_cost
   if (!active.length) return true
   if (active.some(({ value }) => value.match === 'none')) {
     const knownFree = isKnownCostFree(effect)
@@ -155,30 +157,36 @@ const costEffectMatches = (effect: Effect, criteria: SearchForm) => {
 export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => boolean) => {
   const keyword = criteria.keyword ? normalizeCatalogText(criteria.keyword) : ''
   const archetypeText = criteria.archetypeText ? normalizeCatalogText(criteria.archetypeText) : ''
+  const rarityCodes = criteria.rarities.map(value => RARITY_NATURAL_KEY_TO_CODE[value] ?? value)
+  const hasAbilityItemSlots = hasSlotCriteria(criteria.abilityItemSlots)
+  const hasAbilitySpellSlots = hasSlotCriteria(criteria.abilitySpellSlots)
+  const hasAdditionalItemSlots = hasSlotCriteria(criteria.additionalAbilityItemSlots)
+  const hasAdditionalSpellSlots = hasSlotCriteria(criteria.additionalAbilitySpellSlots)
+  const hasEffectCriteria = criteria.effectTypes.length || criteria.effectActivationTypes.length || criteria.effectActivationCategories.length || criteria.effectText
+  const hasCostCriteria = COST_CONDITIONS.some(({ condition }) => criteria[condition].match === 'none' || Object.values(criteria[condition].slots).some(value => value > 0))
+  const costConditions = hasCostCriteria ? prepareCostConditions(criteria) : []
   return (card: Card): boolean => {
     const category = card.search_support.is_token ? 'token' : card.card_category_code.toLowerCase() === 'item' ? `item-${card.item?.item_category_code.toLowerCase()}` : card.card_category_code.toLowerCase()
     if (criteria.cardCategory && category !== criteria.cardCategory) return false
     if (!textIncludes(card.name, criteria.name) || !textIncludes(card.reference_label, criteria.referenceLabel)) return false
     if (keyword && !card.search_support.full_text?.includes(keyword)) return false
     if (archetypeText && !card.search_support.archetype_text?.includes(archetypeText)) return false
-    const elements = [...(card.unit?.elements ?? []), ...(card.spell?.elements ?? [])].map(x => x.element_code.toLowerCase())
-    if (!includesAny(criteria.elements, elements)) return false
-    if (!includesAny(criteria.cardTypes, card.card_types.flatMap(x => [x.card_type_id, x.card_type_name]).map(x => x.toLowerCase()))) return false
-    if (!includesAny(criteria.products, [card.product.product_id])) return false
-    if (!includesAny(criteria.factions, card.factions.flatMap(x => [x.faction_id, x.faction_name]).map(x => x.toLowerCase()))) return false
-    if (!includesAny(criteria.blocks, card.blocks.flatMap(x => [x.block_code, x.block_name]).map(x => x.toLowerCase()))) return false
-    const rarityCodes = criteria.rarities.map(value => RARITY_NATURAL_KEY_TO_CODE[value] ?? value)
-    if (!includesAny(rarityCodes, [card.rarity_code]) || !includesAny(criteria.illustrators, [card.illustrator_id])) return false
+    if (criteria.elements.length && !includesAny(criteria.elements, [...(card.unit?.elements ?? []), ...(card.spell?.elements ?? [])].map(x => x.element_code.toLowerCase()))) return false
+    if (criteria.cardTypes.length && !includesAny(criteria.cardTypes, card.card_types.flatMap(x => [x.card_type_id, x.card_type_name]).map(x => x.toLowerCase()))) return false
+    if (criteria.products.length && !includesAny(criteria.products, [card.product.product_id])) return false
+    if (criteria.factions.length && !includesAny(criteria.factions, card.factions.flatMap(x => [x.faction_id, x.faction_name]).map(x => x.toLowerCase()))) return false
+    if (criteria.blocks.length && !includesAny(criteria.blocks, card.blocks.flatMap(x => [x.block_code, x.block_name]).map(x => x.toLowerCase()))) return false
+    if ((rarityCodes.length && !includesAny(rarityCodes, [card.rarity_code])) || (criteria.illustrators.length && !includesAny(criteria.illustrators, [card.illustrator_id]))) return false
 
     const unit = card.unit
     if (isFilteredActive(criteria.level) && (!unit || (criteria.level.filterType === 'include' && !unit.is_instant_summon) || (criteria.level.filterType === 'exclude' && unit.is_instant_summon) || !compare(unit.level, criteria.level))) return false
     if (isFilteredActive(criteria.heroPoint) && (!unit || (criteria.heroPoint.filterType === 'include' && !unit.is_hero) || (criteria.heroPoint.filterType === 'exclude' && unit.is_hero) || (criteria.heroPoint.filterType !== 'exclude' && criteria.heroPoint.value !== null && !compare(unit.hero_point, criteria.heroPoint)))) return false
     if (criteria.attack.value !== null && (!unit || !compare(unit.attack, criteria.attack))) return false
     if (criteria.defense.value !== null && (!unit || !compare(unit.defense, criteria.defense))) return false
-    if (!includesAny(criteria.moveTypes, unit ? [unit.move_type_code.toLowerCase()] : [])) return false
-    if (!includesAny(criteria.races, (unit?.races ?? []).flatMap(x => [x.race_id, x.race_name]).map(x => x.toLowerCase()))) return false
+    if (criteria.moveTypes.length && !includesAny(criteria.moveTypes, unit ? [unit.move_type_code.toLowerCase()] : [])) return false
+    if (criteria.races.length && !includesAny(criteria.races, (unit?.races ?? []).flatMap(x => [x.race_id, x.race_name]).map(x => x.toLowerCase()))) return false
     if ((criteria.abilityItemSlots.match === 'none' && !unit) || (criteria.abilitySpellSlots.match === 'none' && !unit)
-      || !slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item') || !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell')) return false
+      || (hasAbilityItemSlots && !slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item')) || (hasAbilitySpellSlots && !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell'))) return false
     if (isFilteredActive(criteria.initiative) && (!matchesFiltered(unit?.ability?.initiative, criteria.initiative))) return false
     if (isFilteredActive(criteria.charge) && (!matchesFiltered(unit?.ability?.charge, criteria.charge))) return false
     if (isFilteredActive(criteria.defender) && (!matchesFiltered(unit?.ability?.defender, criteria.defender))) return false
@@ -188,7 +196,7 @@ export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => 
     if (criteria.additionalAttack.value !== null && (!equip || !compare(equip.attack, criteria.additionalAttack))) return false
     if (criteria.additionalDefense.value !== null && (!equip || !compare(equip.defense, criteria.additionalDefense))) return false
     if ((criteria.additionalAbilityItemSlots.match === 'none' && !equip) || (criteria.additionalAbilitySpellSlots.match === 'none' && !equip)
-      || !slotsMatch(equip?.ability, criteria.additionalAbilityItemSlots, 'Item') || !slotsMatch(equip?.ability, criteria.additionalAbilitySpellSlots, 'Spell')) return false
+      || (hasAdditionalItemSlots && !slotsMatch(equip?.ability, criteria.additionalAbilityItemSlots, 'Item')) || (hasAdditionalSpellSlots && !slotsMatch(equip?.ability, criteria.additionalAbilitySpellSlots, 'Spell'))) return false
     if (isFilteredActive(criteria.additionalInitiative) && (!matchesFiltered(equip?.ability?.initiative, criteria.additionalInitiative))) return false
     if (isFilteredActive(criteria.additionalCharge) && (!matchesFiltered(equip?.ability?.charge, criteria.additionalCharge))) return false
     if (isFilteredActive(criteria.additionalDefender) && (!matchesFiltered(equip?.ability?.defender, criteria.additionalDefender))) return false
@@ -196,10 +204,8 @@ export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => 
     if (criteria.limit.value !== null && (!card.land || !compare(card.land.land_limit, criteria.limit))) return false
     if (criteria.landCategory && criteria.landCategory !== 'all' && ![card.land?.land_category_code.toLowerCase(), card.land?.land_category_name.toLowerCase()].includes(criteria.landCategory)) return false
 
-    const hasEffectCriteria = criteria.effectTypes.length || criteria.effectActivationTypes.length || criteria.effectActivationCategories.length || criteria.effectText
-    const hasCostCriteria = COST_CONDITIONS.some(({ condition }) => criteria[condition].match === 'none' || Object.values(criteria[condition].slots).some(value => value > 0))
     if ((hasEffectCriteria || hasCostCriteria)
-      && !card.effects.some(effect => (!hasEffectCriteria || effectMatches(effect, criteria)) && costEffectMatches(effect, criteria))) return false
+      && !card.effects.some(effect => (!hasEffectCriteria || effectMatches(effect, criteria)) && (!hasCostCriteria || costEffectMatches(effect, costConditions)))) return false
     return true
   }
 }

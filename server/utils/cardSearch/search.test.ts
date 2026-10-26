@@ -31,6 +31,50 @@ const makeCatalogCards = (): Card[] => catalogOracle.fixtureCards.map(fixture =>
   return card
 })
 
+describe('未指定条件の不要処理を省く', () => {
+  it.each([{}, { kw: 'catalog-only' }, { att: 'archetype-only' }])('%jで未指定facetの配列を参照しない', query => {
+    const card = makeCatalogCards()[0]!
+    const observe = (target: object, key: string) => {
+      const value = Reflect.get(target, key)
+      const read = vi.fn(() => value)
+      Object.defineProperty(target, key, { configurable: true, enumerable: true, get: read })
+      return read
+    }
+    const reads = [
+      ...['card_types', 'factions', 'blocks', 'product', 'rarity_code', 'illustrator_id', 'effects'].map(key => observe(card, key)),
+      ...['elements', 'races'].map(key => observe(card.unit!, key)),
+      ...['ability_slots', 'affinities'].map(key => observe(card.unit!.ability!, key)),
+    ]
+    expect(createCardSearchMatcher(parseFixtureQuery(query))(card)).toBe(true)
+    for (const read of reads) expect(read).not.toHaveBeenCalled()
+  })
+
+  it('空slot条件は通し、noneは対象能力なしを許可しない', () => {
+    const card = makeCatalogCards()[0]!
+    card.unit = null
+    expect(matchesCardSearch(card, parseCardSearchQuery({}))).toBe(true)
+    expect(matchesCardSearch(card, parseCardSearchQuery({ ssm: 'none' }))).toBe(false)
+    expect(matchesCardSearch(card, parseCardSearchQuery({ assm: 'none' }))).toBe(false)
+  })
+
+  it('Cost条件をprepared matcherで準備し、カード反復でslotsを読み直さない', () => {
+    const card = makeCatalogCards()[0]!
+    card.effects = [{ ...card.effects[0]!, effect_cost_id: 'known', effect_cost_text: '既知コスト',
+      search_cost: { alternatives: [{ costs: [{ type: 'other', value: 'trash', quantity: 1 }] }], has_other_cost: false },
+    }]
+    const criteria = parseCardSearchQuery({ coe: 'trash:1' })
+    const slots = criteria.costOtherEntities.slots
+    const read = vi.fn(() => slots)
+    Object.defineProperty(criteria.costOtherEntities, 'slots', { get: read })
+    const matches = createCardSearchMatcher(criteria)
+    const preparedReads = read.mock.calls.length
+    expect(preparedReads).toBeGreaterThan(0)
+    for (let index = 0; index < 10; index++) expect(matches(card)).toBe(true)
+    expect(read).toHaveBeenCalledTimes(preparedReads)
+    expect(slots).toEqual({ trash: 1 })
+  })
+})
+
 describe('prepared matcherの呼出構造', () => {
   it.each([
     { kw: 'CATALOG-ONLY' }, { att: 'ＡＲＣＨＥＴＹＰＥ－ＯＮＬＹ' },
