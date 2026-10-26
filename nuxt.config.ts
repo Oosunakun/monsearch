@@ -1,5 +1,16 @@
+import { copyFile, mkdir } from 'node:fs/promises'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  hooks: {
+    async 'nitro:build:public-assets'(nitro) {
+      const target = join(nitro.options.output.publicDir, 'data/cards.json')
+      await mkdir(dirname(target), { recursive: true })
+      await copyFile(fileURLToPath(new URL('./app/utils/mockData/items/cards.json', import.meta.url)), target)
+    }
+  },
   compatibilityDate: '2026-04-26',
   nitro: {
     preset: 'cloudflare-pages',
@@ -10,6 +21,7 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
+    '/data/cards.json': { headers: { 'cache-control': 'no-cache' } },
     '/': { prerender: true },
     '/cards': { prerender: true },
     '/about': { prerender: true },
