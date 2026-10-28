@@ -13,23 +13,23 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2026-04-26',
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: 'static',
     prerender: {
       autoSubfolderIndex: false,
       crawlLinks: false,
-      routes: ['/', '/cards', '/about']
+      failOnError: true,
+      routes: ['/', '/cards', '/about', '/cards/search', '/rules', '/restrictions', '/links', '/tournaments']
     }
   },
   routeRules: {
-    '/data/cards.json': { headers: { 'cache-control': 'no-cache' } },
     '/': { prerender: true },
     '/cards': { prerender: true },
     '/about': { prerender: true },
-    '/cards/search': { prerender: false },
-    '/rules': { prerender: false },
-    '/restrictions': { prerender: false },
-    '/links': { prerender: false },
-    '/tournaments': { prerender: false },
+    '/cards/search': { prerender: true },
+    '/rules': { prerender: true },
+    '/restrictions': { prerender: true },
+    '/links': { prerender: true },
+    '/tournaments': { prerender: true },
     '/api/**': { prerender: false }
   },
   modules: [
