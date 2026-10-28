@@ -1,9 +1,14 @@
 import { copyFile, mkdir } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { createCardsJsonHandler } from './dev/cardsJsonHandler'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devServerHandlers: [{
+    route: '/data/cards.json',
+    handler: createCardsJsonHandler(fileURLToPath(new URL('./app/utils/mockData/items/cards.json', import.meta.url)))
+  }],
   hooks: {
     async 'nitro:build:public-assets'(nitro) {
       const target = join(nitro.options.output.publicDir, 'data/cards.json')
