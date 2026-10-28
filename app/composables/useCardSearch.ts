@@ -1,6 +1,10 @@
 import type { LocationQuery } from 'vue-router'
 import { nextTick, onScopeDispose, ref, watch } from 'vue'
 import type { CardSearchPerPage, CardSearchResultPage, CardSearchSortKey, CardSearchSortOrder } from '~~/server/types/cardSearch'
+import { loadCardSearchDataset } from '~~/app/utils/cardSearchDataset'
+import { prepareCardSearch, runCardSearch } from '~~/shared/cardSearch/runner'
+import { normalizeClientSearchQuery } from '~~/shared/cardSearch/clientQuery'
+import type { ClientSearchQuery } from '~~/shared/cardSearch/clientQuery'
 
 export const useCardSearch = (query: Readonly<Ref<LocationQuery>>) => {
   const page = ref(1)
@@ -10,13 +14,13 @@ export const useCardSearch = (query: Readonly<Ref<LocationQuery>>) => {
   const result = ref<CardSearchResultPage>()
   const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
   const error = ref<unknown>()
-  let lastRequest: Record<string, string | string[] | null | undefined> | undefined
+  let lastRequest: ClientSearchQuery | undefined
   const ready = ref(false)
   let disposed = false
   let generation = 0
   let lastRequestKey: string | undefined
 
-  type ApiQuery = Record<string, string | string[] | null | undefined>
+  type ApiQuery = ClientSearchQuery
   const makeRequest = (): ApiQuery => ({ ...query.value, page: String(page.value), perPage: String(perPage.value), sort: sort.value, order: order.value })
   const requestKey = (request: ApiQuery) => JSON.stringify(Object.keys(request).sort().map(key =>
     [key, request[key] === undefined ? ['undefined'] : ['value', request[key]]]))
@@ -30,11 +34,12 @@ export const useCardSearch = (query: Readonly<Ref<LocationQuery>>) => {
     lastRequest = { ...request }
     status.value = 'pending'; error.value = undefined
     try {
-      const response = await $fetch<CardSearchResultPage>('/api/cards', { query: request })
+      const sources = await loadCardSearchDataset()
       if (!matchesRequest()) return
+      const response = runCardSearch(sources, prepareCardSearch(normalizeClientSearchQuery(request)))
       result.value = response
       page.value = response.page; perPage.value = response.perPage; sort.value = response.sort.key; order.value = response.sort.order
-      // APIによる表示条件の補正を、新しいユーザー操作として再送しない。
+      // 検索による表示条件の補正を、新しいユーザー操作として再送しない。
       const responseKey = lastRequestKey = requestKey(makeRequest())
       await nextTick()
       if (isCurrent() && requestKey(makeRequest()) === responseKey) status.value = 'success'

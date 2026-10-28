@@ -11,9 +11,12 @@ import type { CardSearchResultItem, CardSearchResultPage } from '~~/server/types
 import baseline from '~~/server/api/fixtures/cards-response-baseline.json'
 import catalogOracle from '~~/specs/014-search-catalog-normalization/verification/expected-catalog-results.json'
 import type { Card } from '~~/types/cards/finderCards'
-import * as catalogNormalizer from '~~/server/utils/cardSearch/normalizeCatalogText'
+import * as catalogNormalizer from '~~/shared/cardSearch/normalizeCatalogText'
 import approvedBaseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
 import { createHash } from 'node:crypto'
+import { parseQuery } from 'vue-router'
+import { prepareCardSearch, runCardSearch } from '~~/shared/cardSearch/runner'
+import { normalizeClientSearchQuery } from '~~/shared/cardSearch/clientQuery'
 
 let cardsHandler: EventHandler
 
@@ -301,12 +304,13 @@ describe('GET /api/cards contract', () => {
   const source = readFileSync(resolve('server/api/cards.get.ts'), 'utf8')
   it('graceful parsingと既定制御値を適用する', () => {
     expect(parseCardSearchQuery({ unknown: 'x', lv: 'broken', cc: 'unit' }).cardCategory).toBe('unit')
-    expect(source).toContain("positiveInteger(lastString(query.page), 1)")
+    expect(readFileSync(resolve('shared/cardSearch/runner.ts'), 'utf8')).toContain("positiveInteger(lastString(query.page), 1)")
     expect(source).toContain("'CARD_SEARCH_FAILED'")
   })
   it('filterからprojectionまでserverで処理する', () => {
-    for (const operation of ['createCardSearchMatcher', 'sortSourceCards', 'paginate', 'projectCards']) expect(source).toContain(operation)
-    expect(source).toContain('categoryBreakdown')
+    expect(source).toContain('runCardSearch(getSourceCards(), prepared)')
+    const runner = readFileSync(resolve('shared/cardSearch/runner.ts'), 'utf8')
+    for (const operation of ['createCardSearchMatcher', 'sortSourceCards', 'paginate', 'projectCards', 'categoryBreakdown']) expect(runner).toContain(operation)
   })
   it('効果コストURL条件をAPIと同じcriteria/filter境界で適用する', () => {
     const query = parseCardSearchQuery({ coe: 'trash:1' })
@@ -336,5 +340,33 @@ describe('GET /api/cards contract', () => {
     expect(filteredBody.totalCount).toBeGreaterThan(0)
     expect(filteredBody.totalCount).toBeLessThan(allBody.totalCount)
     expect(filteredBody.items.map(item => item.reference_label)).toEqual(expected.slice(0, 100).map(card => card.reference_label))
+  })
+})
+
+describe('HTTP APIとCSR transport/DTO parity', () => {
+  it.each([
+    '', 'kw=ダメージ', 'cc=summoner&kw=アーニャ', 'att=ドラゴン', 'kw=存在しない検索語CSR',
+    'coe=trash:1', 'sls=none', 'etx=ダメージ&coe=trash:1', 'lv=gte:3&cc=unit',
+    'kw=literal%2B%25&att=', 'kw=&kw=ダメージ', 'kw&att=null',
+    'sort=rarity&order=desc&perPage=50&page=2', 'sort=atk&order=asc&perPage=100&page=99',
+    'sort=invalid&order=invalid&perPage=99&page=-1', 'perPage=100&perPage=20&page=1&page=2',
+  ])('%sの完全DTO/順序/集計/ページングが一致する', async query => {
+    const response = await requestCards(query)
+    expect(response.status).toBe(200)
+    const csr = runCardSearch(getSourceCards(), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query))))
+    expect(JSON.parse(JSON.stringify(csr))).toEqual(await response.json())
+  })
+  it('clientのnull/undefined/配列/記号を従来$fetchのHTTP transportと同じ値にする', async () => {
+    // H3をブラウザーへ持ち込まず、実際のHTTP parserを独立した比較元にする。
+    const { withQuery } = await import('ufo')
+    const { getQuery } = await import('h3')
+    const echo = toWebHandler(createApp().use(defineEventHandler(event => getQuery(event))))
+    for (const query of [
+      { kw: null, att: undefined }, { kw: ['ダメージ', null, '＋+%'] },
+      { kw: [], att: ['ドラゴン'] }, { kw: '', etx: 'a+b%20/全角　', constructor: 'ignore' },
+    ]) {
+      const response = await echo(new Request(withQuery('http://localhost/echo', query)))
+      expect(normalizeClientSearchQuery(query)).toEqual(await response.json())
+    }
   })
 })

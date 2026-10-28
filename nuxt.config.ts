@@ -1,23 +1,35 @@
+import { copyFile, mkdir } from 'node:fs/promises'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  hooks: {
+    async 'nitro:build:public-assets'(nitro) {
+      const target = join(nitro.options.output.publicDir, 'data/cards.json')
+      await mkdir(dirname(target), { recursive: true })
+      await copyFile(fileURLToPath(new URL('./app/utils/mockData/items/cards.json', import.meta.url)), target)
+    }
+  },
   compatibilityDate: '2026-04-26',
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: 'static',
     prerender: {
       autoSubfolderIndex: false,
       crawlLinks: false,
-      routes: ['/', '/cards', '/about']
+      failOnError: true,
+      routes: ['/', '/cards', '/about', '/cards/search', '/rules', '/restrictions', '/links', '/tournaments']
     }
   },
   routeRules: {
     '/': { prerender: true },
     '/cards': { prerender: true },
     '/about': { prerender: true },
-    '/cards/search': { prerender: false },
-    '/rules': { prerender: false },
-    '/restrictions': { prerender: false },
-    '/links': { prerender: false },
-    '/tournaments': { prerender: false },
+    '/cards/search': { prerender: true },
+    '/rules': { prerender: true },
+    '/restrictions': { prerender: true },
+    '/links': { prerender: true },
+    '/tournaments': { prerender: true },
     '/api/**': { prerender: false }
   },
   modules: [

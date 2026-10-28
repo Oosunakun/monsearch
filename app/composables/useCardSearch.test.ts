@@ -4,220 +4,193 @@ import { createSSRApp, defineComponent, h, nextTick, ref } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import type { LocationQuery } from 'vue-router'
-import type { CardSearchResultPage } from '~~/server/types/cardSearch'
+import type { SourceCard } from '~~/shared/cardSearch/types'
+import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
 import { useCardSearch } from './useCardSearch'
 
-const { readyCallbacks, fetchMock } = vi.hoisted(() => ({
-  readyCallbacks: [] as Array<() => void>, fetchMock: vi.fn(),
+const { readyCallbacks, loadMock } = vi.hoisted(() => ({
+  readyCallbacks: [] as Array<() => void>, loadMock: vi.fn(),
 }))
 mockNuxtImport('onNuxtReady', () => (callback: () => void) => { readyCallbacks.push(callback) })
-mockNuxtImport('$fetch', () => fetchMock)
-
-const response = (totalCount = 149, page = 1, perPage: 20 | 50 | 100 = 20): CardSearchResultPage => ({
-  items: [], totalCount, page, perPage, totalPages: Math.max(1, Math.ceil(totalCount / perPage)),
-  sort: { key: 'id', order: 'asc' }, categoryBreakdown: [],
-})
+vi.mock('~~/app/utils/cardSearchDataset', () => ({ loadCardSearchDataset: loadMock }))
 const deferred = () => {
-  let resolve!: (value: CardSearchResultPage) => void
+  let resolve!: (value: readonly SourceCard[]) => void
   let reject!: (cause: Error) => void
-  const promise = new Promise<CardSearchResultPage>((yes, no) => { resolve = yes; reject = no })
+  const promise = new Promise<readonly SourceCard[]>((yes, no) => { resolve = yes; reject = no })
   return { promise, resolve, reject }
 }
 const wrappers: Array<ReturnType<typeof mount>> = []
 const setupSearch = (initial: LocationQuery = {}) => {
   const query = ref<LocationQuery>(initial)
   let search!: ReturnType<typeof useCardSearch>
-  const wrapper = mount(defineComponent({
-    setup() { search = useCardSearch(query); return () => h('div') },
-  }))
+  const wrapper = mount(defineComponent({ setup() { search = useCardSearch(query); return () => h('div') } }))
   wrappers.push(wrapper)
   return { query, search, wrapper }
 }
 const becomeReady = async () => {
   for (const callback of readyCallbacks.splice(0)) callback()
-  await nextTick()
-  await flushPromises()
+  await nextTick(); await flushPromises()
 }
 
-describe('useCardSearchの取得lifecycle', () => {
+describe('useCardSearch CSR lifecycle', () => {
   beforeEach(() => {
     readyCallbacks.length = 0
-    fetchMock.mockReset().mockResolvedValue(response())
+    loadMock.mockReset().mockResolvedValue(getSourceCards())
   })
-  afterEach(() => {
-    for (const wrapper of wrappers.splice(0)) wrapper.unmount()
-  })
+  afterEach(() => { for (const wrapper of wrappers.splice(0)) wrapper.unmount() })
 
-  it('server setupではreadyを待たずHTMLを返しAPIを開始しない', async () => {
+  it('server setupではデータ取得も検索も開始しない', async () => {
     let search!: ReturnType<typeof useCardSearch>
     await renderToString(createSSRApp(defineComponent({
       setup() { search = useCardSearch(ref({ kw: 'ダメージ' })); return () => h('div', search.status.value) },
     })))
     await flushPromises()
     expect(search.status.value).toBe('idle')
-    expect(fetchMock).not.toHaveBeenCalled()
+    expect(loadMock).not.toHaveBeenCalled()
   })
-
-  it('query復元前は0件、ready後の最新queryで1件だけ取得する', async () => {
+  it('ready後の最新queryだけで検索し、同内容通知を抑止する', async () => {
     const { query, search } = setupSearch()
     query.value = { kw: 'ダメージ' }
     await nextTick()
-    expect(fetchMock).not.toHaveBeenCalled()
+    expect(loadMock).not.toHaveBeenCalled()
     await becomeReady()
-    expect(fetchMock).toHaveBeenCalledExactlyOnceWith('/api/cards', {
-      query: { kw: 'ダメージ', page: '1', perPage: '20', sort: 'id', order: 'asc' },
-    })
+    expect(loadMock).toHaveBeenCalledTimes(1)
     expect(search.result.value?.totalCount).toBe(149)
     query.value = { kw: 'ダメージ' }
     await nextTick()
-    expect(fetchMock).toHaveBeenCalledTimes(1)
+    expect(loadMock).toHaveBeenCalledTimes(1)
   })
-
-  it('同じ内容のkey順違いは抑止し、A→B→Aは再検索する', async () => {
-    const { query } = setupSearch({ kw: 'A', att: 'ドラゴン' })
+  it('同内容key順違いは抑止し、A→B→Aと履歴復元は検索する', async () => {
+    const { query, search } = setupSearch({ kw: 'ダメージ', att: '' })
     await becomeReady()
-    query.value = { att: 'ドラゴン', kw: 'A' }
+    const initial = structuredClone(JSON.parse(JSON.stringify(search.result.value)))
+    query.value = { att: '', kw: 'ダメージ' }
     await nextTick()
-    expect(fetchMock).toHaveBeenCalledTimes(1)
-    query.value = { kw: 'B', att: 'ドラゴン' }
-    await nextTick()
-    query.value = { kw: 'A', att: 'ドラゴン' }
-    await nextTick()
-    await flushPromises()
-    expect(fetchMock).toHaveBeenCalledTimes(3)
-    expect(fetchMock.mock.calls.map(call => call[1].query.kw)).toEqual(['A', 'B', 'A'])
+    expect(loadMock).toHaveBeenCalledTimes(1)
+    query.value = { kw: '存在しない検索語CSR' }
+    await nextTick(); await flushPromises()
+    expect(search.result.value?.totalCount).toBe(0)
+    query.value = { kw: 'ダメージ', att: '' }
+    await nextTick(); await flushPromises()
+    expect(search.result.value).toEqual(initial)
+    expect(loadMock).toHaveBeenCalledTimes(3)
   })
-
-  it('queryなし初回もready後に1件だけ取得する', async () => {
-    const { query } = setupSearch()
+  it('queryなしも初回1回、page/sort/order/perPage変更と補正を維持する', async () => {
+    const { search } = setupSearch()
     await becomeReady()
-    query.value = {}
-    await nextTick()
-    expect(fetchMock).toHaveBeenCalledTimes(1)
-    expect(fetchMock.mock.calls[0]![1].query).toEqual({ page: '1', perPage: '20', sort: 'id', order: 'asc' })
-  })
-
-  it('配列queryの値・順序・nullを保持する', async () => {
-    const { query } = setupSearch({ att: ['ドラゴン', '火'], kw: null })
-    await becomeReady()
-    query.value = { kw: null, att: ['ドラゴン', '火'] }
-    await nextTick()
-    expect(fetchMock).toHaveBeenCalledTimes(1)
-    query.value = { att: ['火', 'ドラゴン'], kw: null }
-    await nextTick()
-    expect(fetchMock).toHaveBeenCalledTimes(2)
-    expect(fetchMock.mock.calls[1]![1].query.att).toEqual(['火', 'ドラゴン'])
-  })
-
-  it('page変更と表示条件のpage resetを維持し、API補正では再取得しない', async () => {
-    fetchMock.mockImplementation((_url, options) => Promise.resolve({
-      ...response(149, Math.min(Number(options.query.page), Math.ceil(149 / Number(options.query.perPage))), Number(options.query.perPage) as 20 | 50 | 100),
-      sort: { key: options.query.sort, order: options.query.order },
-    }))
-    const { search } = setupSearch({ kw: 'ダメージ' })
-    await becomeReady()
+    expect(search.result.value?.totalCount).toBe(482)
     search.page.value = 2
     await nextTick(); await flushPromises()
     expect(search.page.value).toBe(2)
     search.sort.value = 'atk'; search.order.value = 'desc'; search.perPage.value = 50
     await nextTick(); await flushPromises()
-    expect(fetchMock).toHaveBeenCalledTimes(3)
-    expect(fetchMock.mock.calls[2]![1].query).toMatchObject({ page: '1', perPage: '50', sort: 'atk', order: 'desc' })
+    expect(search.page.value).toBe(1)
+    expect(search.result.value?.sort).toEqual({ key: 'atk', order: 'desc' })
+    expect(search.result.value?.items).toHaveLength(50)
     search.page.value = 99
     await nextTick(); await flushPromises()
-    expect(search.page.value).toBe(3)
+    expect(search.page.value).toBe(10)
     expect(search.status.value).toBe('success')
-    expect(fetchMock).toHaveBeenCalledTimes(4)
+    expect(loadMock).toHaveBeenCalledTimes(4)
     await search.retry()
-    expect(fetchMock).toHaveBeenCalledTimes(5)
-    expect(fetchMock.mock.calls[4]![1].query.page).toBe('99')
-    expect(search.page.value).toBe(3)
-    expect(search.status.value).toBe('success')
+    expect(search.page.value).toBe(10)
+    expect(loadMock).toHaveBeenCalledTimes(5)
   })
-
-  it.each(['success', 'error'])('古い%sが最新応答を上書きしない', async outcome => {
-    const old = deferred(), current = deferred()
-    fetchMock.mockReturnValueOnce(old.promise).mockReturnValueOnce(current.promise)
-    const { query, search } = setupSearch({ kw: 'A' })
+  it('配列query/nullをtransportと同じ意味で扱う', async () => {
+    const { query, search } = setupSearch({ kw: ['存在しない検索語CSR', 'ダメージ'], att: null })
     await becomeReady()
-    query.value = { kw: 'B' }
+    expect(search.result.value?.totalCount).toBe(149)
+    query.value = { att: null, kw: ['存在しない検索語CSR', 'ダメージ'] }
     await nextTick()
-    current.resolve(response(53))
+    expect(loadMock).toHaveBeenCalledTimes(1)
+    query.value = { kw: ['ダメージ', '存在しない検索語CSR'], att: null }
+    await nextTick(); await flushPromises()
+    expect(search.result.value?.totalCount).toBe(0)
+  })
+  it.each(['success', 'error'])('古いloadの%sが最新結果を上書きしない', async outcome => {
+    const old = deferred(), current = deferred()
+    loadMock.mockReturnValueOnce(old.promise).mockReturnValueOnce(current.promise)
+    const { query, search } = setupSearch({ kw: '存在しない検索語CSR' })
+    await becomeReady()
+    query.value = { kw: 'ダメージ' }
+    await nextTick()
+    current.resolve(getSourceCards())
     await flushPromises()
-    if (outcome === 'success') old.resolve(response(482, 2, 50))
+    if (outcome === 'success') old.resolve(getSourceCards())
     else old.reject(new Error('old failure'))
     await flushPromises()
-    expect(search.result.value?.totalCount).toBe(53)
-    expect(search.page.value).toBe(1)
-    expect(search.perPage.value).toBe(20)
+    expect(search.result.value?.totalCount).toBe(149)
     expect(search.status.value).toBe('success')
     expect(search.error.value).toBeUndefined()
   })
-
-  it('最新の失敗状態も古い成功で上書きしない', async () => {
+  it('最新errorは古い成功で上書きされない', async () => {
     const old = deferred(), current = deferred()
     const failure = new Error('latest failure')
-    fetchMock.mockReturnValueOnce(old.promise).mockReturnValueOnce(current.promise)
-    const { query, search } = setupSearch({ kw: 'A' })
+    loadMock.mockReturnValueOnce(old.promise).mockReturnValueOnce(current.promise)
+    const { query, search } = setupSearch({ kw: 'ダメージ' })
     await becomeReady()
-    query.value = { kw: 'B' }
+    query.value = { kw: 'アーニャ' }
     await nextTick()
-    current.reject(failure)
-    await flushPromises()
-    old.resolve(response(482, 2, 50))
-    await flushPromises()
+    current.reject(failure); await flushPromises()
+    old.resolve(getSourceCards()); await flushPromises()
     expect(search.result.value).toBeUndefined()
     expect(search.status.value).toBe('error')
     expect(search.error.value).toBe(failure)
-    expect(search.page.value).toBe(1)
   })
-
-  it('watch flush前にqueryが変わっても古い応答をcommitしない', async () => {
-    const old = deferred(), current = deferred()
-    fetchMock.mockReturnValueOnce(old.promise).mockReturnValueOnce(current.promise)
-    const { query, search } = setupSearch({ kw: 'A' })
+  it('共有load待機中の古いqueryは検索自体をskipする', async () => {
+    const pending = deferred()
+    loadMock.mockReturnValue(pending.promise)
+    const { query, search } = setupSearch({ kw: 'ダメージ' })
     await becomeReady()
-    old.resolve(response(482))
-    query.value = { kw: 'B' }
+    query.value = { kw: '存在しない検索語CSR' }
+    await nextTick()
+    const read = vi.fn(() => getSourceCards()[0]!.card)
+    pending.resolve([{ sourceIndex: 0, get card() { return read() } }])
+    await flushPromises()
+    expect(search.result.value?.totalCount).toBe(0)
+    expect(read).toHaveBeenCalledTimes(1)
+  })
+  it('watch flush前にqueryが変わっても古い結果を反映しない', async () => {
+    const old = deferred(), current = deferred()
+    loadMock.mockReturnValueOnce(old.promise).mockReturnValueOnce(current.promise)
+    const { query, search } = setupSearch({ kw: 'アーニャ' })
+    await becomeReady()
+    old.resolve(getSourceCards()); query.value = { kw: 'ダメージ' }
     await nextTick()
     expect(search.result.value).toBeUndefined()
-    current.resolve(response(149))
-    await flushPromises()
+    current.resolve(getSourceCards()); await flushPromises()
     expect(search.result.value?.totalCount).toBe(149)
   })
-
-  it('ready前にunmountした場合、遅延callbackから取得しない', async () => {
-    const { wrapper, search } = setupSearch({ kw: 'ダメージ' })
-    wrapper.unmount()
-    await becomeReady()
-    expect(fetchMock).not.toHaveBeenCalled()
+  it('ready前に離脱した場合取得しない', async () => {
+    const { wrapper, search } = setupSearch()
+    wrapper.unmount(); await becomeReady()
+    expect(loadMock).not.toHaveBeenCalled()
     expect(search.status.value).toBe('idle')
   })
-
-  it.each(['success', 'error'])('unmount後の%sで状態を更新しない', async outcome => {
+  it.each(['success', 'error'])('離脱後loadの%sで検索/状態更新しない', async outcome => {
     const pending = deferred()
-    fetchMock.mockReturnValueOnce(pending.promise)
+    loadMock.mockReturnValueOnce(pending.promise)
     const { wrapper, search } = setupSearch({ kw: 'ダメージ' })
-    await becomeReady()
-    wrapper.unmount()
-    if (outcome === 'success') pending.resolve(response())
+    await becomeReady(); wrapper.unmount()
+    const read = vi.fn(() => getSourceCards()[0]!.card)
+    if (outcome === 'success') pending.resolve([{ sourceIndex: 0, get card() { return read() } }])
     else pending.reject(new Error('unmounted failure'))
     await flushPromises()
+    expect(read).not.toHaveBeenCalled()
     expect(search.result.value).toBeUndefined()
     expect(search.status.value).toBe('pending')
     await search.refresh()
-    expect(fetchMock).toHaveBeenCalledTimes(1)
+    expect(loadMock).toHaveBeenCalledTimes(1)
   })
-
-  it('retryとrefreshは同条件でも明示的に再取得できる', async () => {
-    fetchMock.mockRejectedValueOnce(new Error('current failure'))
+  it('retry/refreshは同条件でも再検索し、失敗後回復する', async () => {
+    loadMock.mockRejectedValueOnce(new Error('failure'))
     const { search } = setupSearch({ kw: 'ダメージ' })
     await becomeReady()
     expect(search.status.value).toBe('error')
     await search.retry()
     expect(search.status.value).toBe('success')
+    expect(search.result.value?.totalCount).toBe(149)
     await search.refresh()
-    expect(fetchMock).toHaveBeenCalledTimes(3)
-    expect(fetchMock.mock.calls[1]![1]).toEqual(fetchMock.mock.calls[0]![1])
+    expect(loadMock).toHaveBeenCalledTimes(3)
   })
 })
