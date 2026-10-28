@@ -19,6 +19,31 @@ const route = useRoute()
 const router = useRouter()
 const { form } = useCardSearchForm(parseCardSearchQuery(route.query))
 
+if (import.meta.client && useNuxtApp().isHydrating) {
+  const initialFormKey = JSON.stringify(form.value)
+  const initialPath = route.path
+  let edited = false
+  let disposed = false
+  let settled = false
+  // 同値の初期通知は無視し、実際に編集されたフォームは遅延復元で上書きしない。
+  const stopEditingWatch = watch(form, () => {
+    if (JSON.stringify(form.value) !== initialFormKey) edited = true
+  }, { deep: true, flush: 'sync' })
+  const stopRouteWatch = watch(() => route.path, (path) => {
+    if (path !== initialPath) disposed = true
+  }, { flush: 'sync' })
+  const stopWatching = () => { stopEditingWatch(); stopRouteWatch() }
+  onScopeDispose(() => { disposed = true; stopWatching() })
+  onNuxtReady(() => {
+    if (settled) return
+    settled = true
+    stopWatching()
+    if (!disposed && !edited && route.path === initialPath) {
+      form.value = parseCardSearchQuery(route.query)
+    }
+  })
+}
+
 // 明示的な検索実行
 const executeSearch = () => {
   const query = buildCardSearchQuery(form.value)
