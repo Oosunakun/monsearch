@@ -1,12 +1,9 @@
 import finderCardFile from '~~/app/utils/mockData/items/cards.json'
-import type { Card, FinderCards } from '~~/types/cards/finderCards'
+import type { FinderCards } from '~~/types/cards/finderCards'
+import type { SourceCard } from '~~/shared/cardSearch/types'
+export type { SourceCard } from '~~/shared/cardSearch/types'
 
 const finderCards = finderCardFile as unknown as FinderCards
-
-export interface SourceCard {
-  card: Card
-  sourceIndex: number
-}
 
 export const getSourceCards = (): readonly SourceCard[] =>
   finderCards.cards.map((card, sourceIndex) => ({ card, sourceIndex }))

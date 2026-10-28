@@ -379,12 +379,14 @@ export interface CardModification {
 // ---------------------------------------------------------------------------
 
 /**
- * 検索補助データ
- * 将来的にはフルテキスト検索用の結合テキストや
- * ファセット検索用の正規化済みフラグを追加する。
+ * 照合専用catalogと既存Token判定フラグ。
+ * 正常入力のcatalogはN₀適用済みで、表示原文とは独立する。
  */
 export interface SearchSupport {
-  full_text?: string;
+  /** 正常入力はN₀適用済みstring。optional/nullableは欠測fixtureの照合境界。 */
+  full_text?: string | null;
+  /** att専用のN₀適用済みstring。正常入力契約と欠測境界は区別する。 */
+  archetype_text?: string | null;
   
   // トークンカード判定フラグ
   // card_category_code では判別不可のため tags で代替。 

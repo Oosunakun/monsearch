@@ -1,13 +1,171 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { cardSearchParityQueries } from '~~/app/utils/search/cardSearchQueryTestFixtures'
 import { getSourceCards } from './dataSource'
-import { searchCards } from './search'
+import { createCardSearchMatcher, matchesCardSearch, searchCards } from './search'
+import * as catalogNormalizer from '~~/shared/cardSearch/normalizeCatalogText'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
 import { buildQuickSearchQuery } from '~~/app/utils/search/quickSearchQueryBuilder'
-import type { SearchCostComponent } from '~~/types/cards/finderCards'
+import catalogOracle from '~~/specs/014-search-catalog-normalization/verification/expected-catalog-results.json'
+import approvedBaseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
+import type { Card, SearchCostComponent } from '~~/types/cards/finderCards'
+
+afterEach(() => vi.restoreAllMocks())
+
+// JSON/表形式fixtureの省略値を除いて、実際のURL Queryと同じ形でParserへ渡す。
+const parseFixtureQuery = (query: Record<string, string | string[] | undefined>) => parseCardSearchQuery(
+  Object.fromEntries(Object.entries(query).filter((entry): entry is [string, string | string[]] => entry[1] !== undefined)),
+)
+
+const makeCatalogCards = (): Card[] => catalogOracle.fixtureCards.map(fixture => {
+  const card = structuredClone(getSourceCards().find(source => source.card.unit?.races.length)!.card)
+  card.card_id = fixture.id
+  card.name = fixture.name
+  card.search_support.full_text = fixture.full_text
+  card.search_support.archetype_text = fixture.archetype_text
+  card.unit!.races = [{ ...card.unit!.races[0]!, race_name: fixture.race }]
+  const type = getSourceCards().find(source => source.card.card_types.length)!.card.card_types[0]!
+  card.card_types = [{ ...type, card_type_name: fixture.type }]
+  return card
+})
+
+describe('未指定条件の不要処理を省く', () => {
+  it.each([{}, { kw: 'catalog-only' }, { att: 'archetype-only' }])('%jで未指定facetの配列を参照しない', query => {
+    const card = makeCatalogCards()[0]!
+    const observe = (target: object, key: string) => {
+      const value = Reflect.get(target, key)
+      const read = vi.fn(() => value)
+      Object.defineProperty(target, key, { configurable: true, enumerable: true, get: read })
+      return read
+    }
+    const reads = [
+      ...['card_types', 'factions', 'blocks', 'product', 'rarity_code', 'illustrator_id', 'effects'].map(key => observe(card, key)),
+      ...['elements', 'races'].map(key => observe(card.unit!, key)),
+      ...['ability_slots', 'affinities'].map(key => observe(card.unit!.ability!, key)),
+    ]
+    expect(createCardSearchMatcher(parseFixtureQuery(query))(card)).toBe(true)
+    for (const read of reads) expect(read).not.toHaveBeenCalled()
+  })
+
+  it('空slot条件は通し、noneは対象能力なしを許可しない', () => {
+    const card = makeCatalogCards()[0]!
+    card.unit = null
+    expect(matchesCardSearch(card, parseCardSearchQuery({}))).toBe(true)
+    expect(matchesCardSearch(card, parseCardSearchQuery({ ssm: 'none' }))).toBe(false)
+    expect(matchesCardSearch(card, parseCardSearchQuery({ assm: 'none' }))).toBe(false)
+  })
+
+  it('Cost条件をprepared matcherで準備し、カード反復でslotsを読み直さない', () => {
+    const card = makeCatalogCards()[0]!
+    card.effects = [{ ...card.effects[0]!, effect_cost_id: 'known', effect_cost_text: '既知コスト',
+      search_cost: { alternatives: [{ costs: [{ type: 'other', value: 'trash', quantity: 1 }] }], has_other_cost: false },
+    }]
+    const criteria = parseCardSearchQuery({ coe: 'trash:1' })
+    const slots = criteria.costOtherEntities.slots
+    const read = vi.fn(() => slots)
+    Object.defineProperty(criteria.costOtherEntities, 'slots', { get: read })
+    const matches = createCardSearchMatcher(criteria)
+    const preparedReads = read.mock.calls.length
+    expect(preparedReads).toBeGreaterThan(0)
+    for (let index = 0; index < 10; index++) expect(matches(card)).toBe(true)
+    expect(read).toHaveBeenCalledTimes(preparedReads)
+    expect(slots).toEqual({ trash: 1 })
+  })
+})
+
+describe('prepared matcherの呼出構造', () => {
+  it.each([
+    { kw: 'CATALOG-ONLY' }, { att: 'ＡＲＣＨＥＴＹＰＥ－ＯＮＬＹ' },
+    { kw: 'CATALOG-ONLY', att: 'ＡＲＣＨＥＴＹＰＥ－ＯＮＬＹ' }, {}, { kw: ' \t\n ', att: '　' },
+  ])('%jを準備時だけ変換し、predicate反復では変換しない', query => {
+    const criteria = parseFixtureQuery(query)
+    const argumentsBeforeScan = [criteria.keyword, criteria.archetypeText].filter(Boolean)
+    const normalize = vi.spyOn(catalogNormalizer, 'normalizeCatalogText')
+    const card = makeCatalogCards()[0]!
+    const support = card.search_support
+    Object.defineProperty(card, 'search_support', { get: () => {
+      expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))
+      return support
+    } })
+    const matches = createCardSearchMatcher(criteria)
+    expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))
+    for (let index = 0; index < 100; index += 1) expect(matches(card)).toBe(true)
+    expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))
+  })
+
+  it.each([0, 1, 7, 101])('%i枚のsearchCardsでも走査前に各query一回だけ変換する', count => {
+    const normalize = vi.spyOn(catalogNormalizer, 'normalizeCatalogText')
+    const criteria = parseCardSearchQuery({ kw: 'CATALOG-ONLY', att: 'ARCHETYPE-ONLY' })
+    const card = makeCatalogCards()[0]!
+    const cards = Array.from({ length: count }, () => card)
+    Object.defineProperty(cards, 'filter', { value: (predicate: (card: Card) => boolean) => {
+      expect(normalize.mock.calls).toEqual([['CATALOG-ONLY'], ['ARCHETYPE-ONLY']])
+      return Array.prototype.filter.call(cards, predicate)
+    } })
+    expect(searchCards(cards, criteria)).toHaveLength(count)
+    expect(normalize.mock.calls).toEqual([['CATALOG-ONLY'], ['ARCHETYPE-ONLY']])
+  })
+
+  it('単一カードwrapperの互換動作と別requestの独立性を維持する', () => {
+    const cards = makeCatalogCards()
+    const first = parseCardSearchQuery({ kw: 'catalog-only', att: 'archetype-only' })
+    const second = parseCardSearchQuery({ kw: 'other', att: 'other' })
+    const matchesFirst = createCardSearchMatcher(first)
+    const matchesSecond = createCardSearchMatcher(second)
+    expect(cards.map(matchesFirst)).toEqual([true, false])
+    expect(cards.map(matchesSecond)).toEqual([false, true])
+    expect(cards.map(matchesFirst)).toEqual(cards.map(card => matchesCardSearch(card, first)))
+    expect(searchCards(cards, second).map(card => card.card_id)).toEqual(['B'])
+  })
+})
+
+describe('US3 既存検索と原文の保持', () => {
+  it.each(approvedBaseline.cases)('$nameの全ID・入力順を承認済みT002 baselineと比較する', example => {
+    const cards = getSourceCards().map(source => source.card)
+    const criteria = parseFixtureQuery(example.locationQuery)
+    const before = JSON.stringify({ cards, criteria })
+    expect(searchCards(cards, criteria).map(card => card.card_id)).toEqual(example.unit.ids)
+    expect(JSON.stringify({ cards, criteria })).toBe(before)
+  })
+
+  it('catalog検索後もcriteriaとカード原文を保持し、同名別カードを独立判定する', () => {
+    const cards = makeCatalogCards()
+    cards[0]!.name = cards[1]!.name = '同名 ＡＢＣ ｶﾞ'
+    const criteria = parseCardSearchQuery({ kw: 'ＣＡＴＡＬＯＧ－ＯＮＬＹ', att: 'ＡＲＣＨＥＴＹＰＥ－ＯＮＬＹ' })
+    const before = JSON.stringify({ cards, criteria })
+    expect(searchCards(cards, criteria).map(card => card.card_id)).toEqual(['A'])
+    expect(JSON.stringify({ cards, criteria })).toBe(before)
+  })
+
+  it('nm/rlの既存小文字化と幅を同一視しない挙動を維持する', () => {
+    const card = makeCatalogCards()[0]!
+    card.name = 'Name É Ａ'
+    card.reference_label = 'ABC-01'
+    expect(searchCards([card], parseCardSearchQuery({ nm: 'NAME é', rl: 'abc-01' }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ nm: 'Name É a' }))).toEqual([])
+  })
+
+  it('etxは効果本文のみを既存のカナ合成で照合し、効果名を代用しない', () => {
+    const card = makeCatalogCards()[0]!
+    card.effects = [{ ...card.effects[0]!, effect_name: 'name-only', effect_text: 'ガード ＡＢＣ' }]
+    expect(searchCards([card], parseCardSearchQuery({ etx: 'ｶﾞｰﾄﾞ abc' }))).toEqual([card])
+    expect(searchCards([card], parseCardSearchQuery({ etx: 'name-only' }))).toEqual([])
+  })
+
+  it('is_tokenを元categoryより優先し、catalog有無によらず分類を維持する', () => {
+    const normal = makeCatalogCards()[0]!
+    normal.card_id = 'normal'
+    const token = structuredClone(normal)
+    token.card_id = 'token'
+    token.search_support.is_token = true
+    for (const query of [{}, { kw: 'catalog-only', att: 'archetype-only' }]) {
+      expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'unit' })).map(card => card.card_id)).toEqual(['normal'])
+      expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'token' })).map(card => card.card_id)).toEqual(['token'])
+    }
+  })
+})
 
 describe('searchCards', () => {
   it.each([
@@ -201,175 +359,61 @@ describe('searchCards', () => {
     expect(searchCards(source.map(item => item.card), parseCardSearchQuery({}))).toHaveLength(source.length)
   })
 
-  it('Keywordは実データのユーザー可視情報を検索する', () => {
-    const source = getSourceCards().map(item => item.card)
-    const nameCard = source.find(card => card.name === 'アーニャ')!
-    const effectCard = source.find(card => card.effects.some(effect => effect.effect_text))!
-    const elementCard = source.find(card => card.unit?.elements.length || card.spell?.elements.length)!
-    const raceCard = source.find(card => card.unit?.races.length)!
-    const cardTypeCard = source.find(card => card.card_types.length)!
-    const blockCard = source.find(card => card.blocks.length)!
-    const factionCard = source.find(card => card.factions.length)!
-    const abilitySlotCard = source.find(card => card.unit?.ability?.ability_slots.length || card.item?.equip?.ability?.ability_slots.length)!
-    const affinityCard = source.find(card => card.unit?.ability?.affinities.length || card.item?.equip?.ability?.affinities.length)!
-
-    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.name }))).toEqual([nameCard])
-    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.reference_label }))).toEqual([nameCard])
-    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.rarity_name }))).toEqual([nameCard])
-    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.illustrator_name }))).toEqual([nameCard])
-    expect(searchCards([nameCard], parseCardSearchQuery({ kw: nameCard.product.product_name }))).toEqual([nameCard])
-    expect(searchCards([effectCard], parseCardSearchQuery({ kw: effectCard.effects.find(effect => effect.effect_text)!.effect_text }))).toEqual([effectCard])
-    const elementName = elementCard.unit?.elements[0]?.element_name ?? elementCard.spell!.elements[0]!.element_name
-    expect(searchCards([elementCard], parseCardSearchQuery({ kw: elementName }))).toEqual([elementCard])
-    expect(searchCards([raceCard], parseCardSearchQuery({ kw: raceCard.unit!.races[0]!.race_name }))).toEqual([raceCard])
-    expect(searchCards([cardTypeCard], parseCardSearchQuery({ kw: cardTypeCard.card_types[0]!.card_type_name }))).toEqual([cardTypeCard])
-    expect(searchCards([blockCard], parseCardSearchQuery({ kw: blockCard.blocks[0]!.block_name }))).toEqual([blockCard])
-    expect(searchCards([factionCard], parseCardSearchQuery({ kw: factionCard.factions[0]!.faction_name }))).toEqual([factionCard])
-    const abilitySlot = abilitySlotCard.unit?.ability?.ability_slots[0] ?? abilitySlotCard.item!.equip!.ability!.ability_slots[0]!
-    expect(searchCards([abilitySlotCard], parseCardSearchQuery({ kw: abilitySlot.ability_slot_type_name }))).toEqual([abilitySlotCard])
-    const affinity = affinityCard.unit?.ability?.affinities[0] ?? affinityCard.item!.equip!.ability!.affinities[0]!
-    expect(searchCards([affinityCard], parseCardSearchQuery({ kw: affinity.affinity.affinity_name }))).toEqual([affinityCard])
+  describe('kw catalog契約', () => {
+    it.each(catalogOracle.realCases.filter(example => 'kw' in example.query && !('att' in example.query)))('$idの実データ全IDを固定oracleと比較する', example => {
+      expect(searchCards(getSourceCards().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
+    })
+    it.each(catalogOracle.fixtureCases.filter(example => 'kw' in example.query && !('att' in example.query)))('$idはcatalogだけを検索する', example => {
+      expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
+    })
+    it.each(catalogOracle.boundaries)('$idの欠測・literal・N₀境界', example => {
+      const card = structuredClone(getSourceCards()[0]!.card)
+      card.card_id = 'boundary'
+      card.name = example.query ?? '表示原文'
+      card.search_support.full_text = example.target
+      expect(searchCards([card], parseCardSearchQuery(example.query === undefined ? {} : { kw: example.query })).map(card => card.card_id)).toEqual(example.ids)
+    })
+    it('JSON全文や表示情報を検索対象として代用しない', () => {
+      const card = makeCatalogCards()[0]!
+      card.card_id = '00000000-0000-0000-0000-000000000000'
+      for (const kw of [card.name, card.card_id, 'search_support', '表示種族Ａ', '表示種別Ａ']) {
+        expect(searchCards([card], parseCardSearchQuery({ kw }))).toEqual([])
+      }
+      expect(readFileSync(resolve('server/utils/cardSearch/search.ts'), 'utf8')).not.toContain('JSON.stringify(card)')
+    })
   })
 
-  it('KeywordはUUID・内部code・JSON property名を検索しない', () => {
-    const card = getSourceCards().map(item => item.card)[0]!
-    for (const value of [card.card_id, card.card_category_code, 'card_category_code', 'search_support']) {
-      expect(searchCards([card], parseCardSearchQuery({ kw: value }))).toEqual([])
-    }
-  })
-
-  it('KeywordにJSON.stringify fallbackを持たない', () => {
-    const source = readFileSync(resolve('server/utils/cardSearch/search.ts'), 'utf8')
-    expect(source).not.toContain('JSON.stringify(card)')
-  })
-
-  it('KeywordはQDSの限定的な幅・大小・カナ・空白正規化を使う', () => {
-    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
-    card.name = 'ガード ＡＢＣ １２'
-
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'ｶﾞｰﾄﾞ　ａｂｃ 12' }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'カ\u3099ード ＡＢＣ １２' }))).toEqual([card])
-  })
-
-  it('KeywordはQDSが同一視しない文字を一致させない', () => {
-    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
-    card.reference_label = ''
-    card.name = '① Ⅰ ひらがな'
-    card.rarity_name = ''
-    card.illustrator_name = ''
-    card.product.product_name = ''
-    card.card_types = []
-    card.blocks = []
-    card.factions = []
-    card.effects = []
-    card.summoner = null
-
-    expect(searchCards([card], parseCardSearchQuery({ kw: '1' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'I' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'カタカナ' }))).toEqual([])
-  })
-
-  it('Keywordと他条件はANDで評価する', () => {
-    const card = getSourceCards().map(item => item.card).find(value => value.name === 'アーニャ')!
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'アーニャ', cc: 'summoner' }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'アーニャ', cc: 'unit' }))).toEqual([])
-  })
-
-  it.each([undefined, '', 'catalog-only', 'card_category_code'] as const)('型で表現可能なfull_text=%sでもKeyword結果へ影響しない', fullText => {
-    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
-    card.search_support.full_text = fullText
-    expect(searchCards([card], parseCardSearchQuery({ kw: card.name }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'search_support' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'catalog-only' }))).toEqual([])
-  })
-
-  it('実データのnull full_textでもKeyword結果へ影響しない', () => {
-    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
-    expect(card.search_support.full_text).toBeNull()
-    expect(searchCards([card], parseCardSearchQuery({ kw: card.name }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'search_support' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'catalog-only' }))).toEqual([])
-  })
-
-  it('Keywordはfull_textにだけ存在する語を検索しない', () => {
-    const card = structuredClone(getSourceCards().map(item => item.card)[0]!)
-    card.search_support.full_text = 'catalog-only'
-
-    expect(searchCards([card], parseCardSearchQuery({ kw: 'catalog-only' }))).toEqual([])
-  })
-
-  it('Archetype Textはraceとcard typeの表示名だけを検索する', () => {
-    const source = getSourceCards().map(item => item.card)
-    const raceCard = source.find(card => card.unit?.races.some(race => race.race_name === 'ドラゴン'))!
-    const typeCard = source.find(card => card.card_types.some(cardType => cardType.card_type_name === 'サモナー'))!
-
-    expect(searchCards([raceCard], parseCardSearchQuery({ att: 'ドラゴン' }))).toEqual([raceCard])
-    expect(searchCards([typeCard], parseCardSearchQuery({ att: 'サモナー' }))).toEqual([typeCard])
-  })
-
-  it('Quick Searchのrace-typeからattを経由してserver matcherへ到達する', () => {
-    const card = getSourceCards().map(item => item.card).find(value => value.unit?.races.some(race => race.race_name === 'ドラゴン'))!
-    const query = buildQuickSearchQuery({ selectedCardPool: 'open', selectedSearchType: 'race-type', searchText: 'ドラゴン' })
-
-    expect(searchCards([card], parseCardSearchQuery(query))).toEqual([card])
-  })
-
-  it('Archetype Textは複数raceのいずれも部分一致し、未知語は非ヒットになる', () => {
-    const card = getSourceCards().map(item => item.card).find(value => (value.unit?.races.length ?? 0) >= 2)!
-    const races = card.unit!.races
-
-    expect(searchCards([card], parseCardSearchQuery({ att: races[0]!.race_name }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ att: races[1]!.race_name }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ att: '存在しないarchetype' }))).toEqual([])
-  })
-
-  it('Archetype TextはQDS正規化を使うが、カード名や内部値へfallbackしない', () => {
-    const card = structuredClone(getSourceCards().map(item => item.card).find(value => value.unit?.races.length)!)
-    card.card_types = []
-    card.unit!.races = [{ ...card.unit!.races[0]!, race_name: 'ガード ＡＢＣ １２' }]
-
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ｶﾞｰﾄﾞ　ａｂｃ 12' }))).toEqual([card])
-
-    card.unit!.races[0]!.race_name = '① Ⅰ ひらがな'
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ひらがな' }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ att: '1' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'I' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ヒラガナ' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: card.name }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: card.card_id }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'card_category_code' }))).toEqual([])
-  })
-
-  it('Archetype Textはrace_idとcard_type_idを検索対象にしない', () => {
-    const source = getSourceCards().map(item => item.card)
-    const raceCard = source.find(value => value.unit?.races.length)!
-    const typeCard = source.find(value => value.card_types.length)!
-    const raceId = raceCard.unit!.races[0]!.race_id
-    const cardTypeId = typeCard.card_types[0]!.card_type_id
-
-    expect(searchCards([raceCard], parseCardSearchQuery({ att: raceId }))).toEqual([])
-    expect(searchCards([raceCard], parseCardSearchQuery({ att: raceId.slice(-5) }))).toEqual([])
-    expect(searchCards([typeCard], parseCardSearchQuery({ att: cardTypeId }))).toEqual([])
-    expect(searchCards([typeCard], parseCardSearchQuery({ att: cardTypeId.slice(-5) }))).toEqual([])
-  })
-
-  it('Archetype Textは検索語全体をliteral substringとして扱う', () => {
-    const card = structuredClone(getSourceCards().map(item => item.card).find(value => value.unit?.races.length)!)
-    card.card_types = []
-    card.unit!.races = [{ ...card.unit!.races[0]!, race_name: 'ドラゴン 強力 パピー' }]
-
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン 強力 パピー' }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン パピー' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン.*' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン*' }))).toEqual([])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン パピー 別名' }))).toEqual([])
-  })
-
-  it('Archetype Textと既存条件はANDで評価する', () => {
-    const card = getSourceCards().map(item => item.card).find(value => value.unit?.races.some(race => race.race_name === 'ドラゴン'))!
-
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン', cc: card.card_category_code.toLowerCase() }))).toEqual([card])
-    expect(searchCards([card], parseCardSearchQuery({ att: 'ドラゴン', cc: 'spell' }))).toEqual([])
+  describe('att catalog契約', () => {
+    it.each(catalogOracle.realCases.filter(example => 'att' in example.query))('$idの実データ全IDを固定oracleと比較する', example => {
+      expect(searchCards(getSourceCards().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
+    })
+    it.each(catalogOracle.fixtureCases.filter(example => 'att' in example.query))('$idは専用値と表示値を区別する', example => {
+      expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
+    })
+    it.each(catalogOracle.boundaries)('$idの欠測・literal・N₀境界', example => {
+      const card = makeCatalogCards()[0]!
+      card.card_id = 'boundary'
+      card.name = example.query ?? '表示原文'
+      card.unit!.races[0]!.race_name = example.query ?? '表示種族'
+      card.card_types[0]!.card_type_name = example.query ?? '表示種別'
+      card.search_support.archetype_text = example.target
+      expect(searchCards([card], parseCardSearchQuery(example.query === undefined ? {} : { att: example.query })).map(card => card.card_id)).toEqual(example.ids)
+    })
+    it('Quick Searchのrace-typeからattを経由して専用catalogに到達する', () => {
+      const query = buildQuickSearchQuery({ selectedCardPool: 'open', selectedSearchType: 'race-type', searchText: 'archetype-only' })
+      expect(searchCards(makeCatalogCards(), parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(['A'])
+    })
+    it('kw/attと数値・枠・コストをカード単位でANDする', () => {
+      const card = makeCatalogCards()[0]!
+      card.unit!.attack = 2
+      card.unit!.ability!.ability_slots = [{ ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火', ability_slot_category_code: 'Spell', ability_slot_category_name: 'スペル', slot_count: 1 }]
+      card.effects = [{ ...card.effects[0]!, effect_cost_id: 'known', effect_cost_text: '既知コスト', search_cost: { alternatives: [{ costs: [{ type: 'other', value: 'trash', quantity: 1 }] }], has_other_cost: false } }]
+      const query = { kw: 'catalog-only', att: 'archetype-only', cc: 'unit', at: 'gte:2', ss: 'fire:1', coe: 'trash:1' }
+      expect(searchCards([card], parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(['A'])
+      for (const extra of [{ cc: 'spell' }, { at: 'gte:3' }, { ss: 'water:1' }, { coe: 'trash:2' }]) {
+        expect(searchCards([card], parseCardSearchQuery({ ...query, ...extra }))).toEqual([])
+      }
+    })
   })
 
   it('数値能力の include/exclude は 0 と NULL を区別する', () => {

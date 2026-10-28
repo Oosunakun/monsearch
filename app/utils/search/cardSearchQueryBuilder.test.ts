@@ -1,8 +1,23 @@
 import { describe, expect, it } from 'vitest'
 import { buildCardSearchQuery } from './cardSearchQueryBuilder'
+import { parseCardSearchQuery } from './cardSearchQueryParser'
 import { cloneSearchForm, createFreshSearchForm, createPopulatedSearchForm } from './cardSearchQueryTestFixtures'
 
 describe('buildCardSearchQuery', () => {
+  it('kw/attの原表現・内部空白・改行・タブをURL round tripで維持する', () => {
+    const form = createFreshSearchForm()
+    const value = 'Ｍ２０Ａ－００１ AＢC ｶﾞ　ｱｰﾆｬ  AN\nALL\tEND'
+    form.keyword = `  ${value}  `
+    form.archetypeText = `\t${value}\n`
+    const snapshot = cloneSearchForm(form)
+    const query = buildCardSearchQuery(form)
+    expect(query).toEqual({ kw: value, att: value })
+    const encoded = new URLSearchParams(query).toString()
+    const restored = parseCardSearchQuery(Object.fromEntries(new URLSearchParams(encoded)))
+    expect(restored).toMatchObject({ keyword: value, archetypeText: value })
+    expect(buildCardSearchQuery(restored)).toEqual(query)
+    expect(form).toEqual(snapshot)
+  })
   it('builds canonical values without mutating the form', () => {
     const form = createPopulatedSearchForm(); const snapshot = cloneSearchForm(form)
     expect(buildCardSearchQuery(form)).toEqual({ nm: 'Blue Dragon', cc: 'unit', el: 'fire,water', at: 'gte:0' })

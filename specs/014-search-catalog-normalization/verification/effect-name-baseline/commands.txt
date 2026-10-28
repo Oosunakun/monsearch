@@ -1,0 +1,14 @@
+node node_modules/vitest/vitest.mjs --run server/api/cards.get.test.ts --exclude '**/.memo/**'
+exit code: 0
+
+node node_modules/vitest/vitest.mjs --run server/utils/cardSearch server/api/cards.get.test.ts app/utils/search app/composables/useCardSearchForm.test.ts app/pages/cards/search.test.ts
+exit code: 1
+
+npm run lint
+exit code: 0
+
+npx --no-install nuxt typecheck
+exit code: 0
+
+npm run build
+exit code: 0

@@ -1,0 +1,66 @@
+{
+  "status": "completed",
+  "commands": [
+    {
+      "command": "node node_modules/vitest/vitest.mjs --run server/api/cards.get.test.ts --exclude '**/.memo/**'",
+      "exitCode": 0,
+      "tests": {
+        "passed": 204,
+        "failed": 0
+      },
+      "output": "api-tests.txt"
+    },
+    {
+      "command": "node node_modules/vitest/vitest.mjs --run server/utils/cardSearch server/api/cards.get.test.ts app/utils/search app/composables/useCardSearchForm.test.ts app/pages/cards/search.test.ts",
+      "exitCode": 1,
+      "tests": {
+        "passed": 935,
+        "failed": 13,
+        "total": 948
+      },
+      "output": "regression.txt"
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "output": "lint.txt"
+    },
+    {
+      "command": "npx --no-install nuxt typecheck",
+      "exitCode": 0,
+      "output": "typecheck.txt"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "output": "build.txt"
+    }
+  ],
+  "fixture": {
+    "cases": 16,
+    "changedOccurrences": 60,
+    "uniqueEffects": 46,
+    "uniqueCards": 40,
+    "groups": [
+      [
+        "sort=id&order=desc",
+        4
+      ],
+      [
+        "sort=atk&order=asc",
+        14
+      ],
+      [
+        "page=2&perPage=100",
+        42
+      ]
+    ],
+    "oldValues": {
+      "Effect 1": 52,
+      "Effect 2": 8
+    },
+    "all16ResponsesMatch": true
+  },
+  "humanReview": "pending",
+  "acceptanceRecordChanged": false
+}

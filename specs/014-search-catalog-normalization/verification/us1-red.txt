@@ -1,0 +1,1506 @@
+node node_modules/vitest/vitest.mjs --run server/utils/cardSearch/normalizeCatalogText.test.ts server/utils/cardSearch/search.test.ts server/api/cards.get.test.ts --exclude **/.memo/**
+exit code: 1
+
+ RUN  v4.1.10 F:/Projects/monsearch
+
+ ❯ server/utils/cardSearch/normalizeCatalogText.test.ts (0 test)
+stdout | server/utils/cardSearch/search.test.ts
+<Suspense> is an experimental feature and its API will likely change.
+
+ ❯ server/utils/cardSearch/search.test.ts (104 tests | 27 failed) 7684ms
+       × 'spell-symbol'の実データ全IDを固定oracleと比較する 39ms
+       × 'broad-keyword'の実データ全IDを固定oracleと比較する 31ms
+       × 'catalog-reading'の実データ全IDを固定oracleと比較する 20ms
+       × 'catalog-only'はcatalogだけを検索する 2ms
+       × 'visible-only'はcatalogだけを検索する 1ms
+       × 'missing'の欠測・literal・N₀境界 1ms
+       × 'null'の欠測・literal・N₀境界 1ms
+       × 'empty'の欠測・literal・N₀境界 1ms
+       × 'no-wildcard'の欠測・literal・N₀境界 1ms
+       × 'no-regex'の欠測・literal・N₀境界 1ms
+       × 'spaces-distinct'の欠測・literal・N₀境界 1ms
+       × 'newline-distinct'の欠測・literal・N₀境界 1ms
+       × 'tab-distinct'の欠測・literal・N₀境界 1ms
+       × 'circled'の欠測・literal・N₀境界 1ms
+       × 'roman'の欠測・literal・N₀境界 1ms
+       × 'hiragana'の欠測・literal・N₀境界 1ms
+       × 'wave'の欠測・literal・N₀境界 1ms
+       × 'long-mark'の欠測・literal・N₀境界 1ms
+       × 'hyphen'の欠測・literal・N₀境界 1ms
+       × 'minus'の欠測・literal・N₀境界 1ms
+       × 'non-ascii-case'の欠測・literal・N₀境界 1ms
+       × 'unrepaired'の欠測・literal・N₀境界 1ms
+       × 'voiced-composed'の欠測・literal・N₀境界 1ms
+       × 'semi-composed'の欠測・literal・N₀境界 1ms
+       × 'no-synonym'の欠測・literal・N₀境界 1ms
+       × 'literal-whole'の欠測・literal・N₀境界 1ms
+       × JSON全文や表示情報を検索対象として代用しない 3ms
+stdout | server/api/cards.get.test.ts
+<Suspense> is an experimental feature and its API will likely change.
+
+ ❯ server/api/cards.get.test.ts (79 tests | 29 failed) 8117ms
+     × 'spell-symbol'の全ページを独立oracleと比較する 55ms
+     × 'broad-keyword'の全ページを独立oracleと比較する 37ms
+     × 'catalog-reading'の全ページを独立oracleと比較する 36ms
+     × 'catalog-only'は表示値とcatalogを区別する 24ms
+     × 'visible-only'は表示値とcatalogを区別する 4ms
+     × 'missing'のAPI境界 5ms
+     × 'null'のAPI境界 3ms
+     × 'empty'のAPI境界 2ms
+     × 'no-wildcard'のAPI境界 2ms
+     × 'no-regex'のAPI境界 2ms
+     × 'spaces-distinct'のAPI境界 1ms
+     × 'newline-distinct'のAPI境界 1ms
+     × 'tab-distinct'のAPI境界 2ms
+     × 'circled'のAPI境界 3ms
+     × 'roman'のAPI境界 2ms
+     × 'hiragana'のAPI境界 2ms
+     × 'wave'のAPI境界 2ms
+     × 'long-mark'のAPI境界 2ms
+     × 'hyphen'のAPI境界 2ms
+     × 'minus'のAPI境界 1ms
+     × 'non-ascii-case'のAPI境界 1ms
+     × 'unrepaired'のAPI境界 1ms
+     × 'voiced-composed'のAPI境界 2ms
+     × 'semi-composed'のAPI境界 2ms
+     × 'no-synonym'のAPI境界 2ms
+     × 'literal-whole'のAPI境界 2ms
+     × 'sort=id&order=desc' の既存レスポンスを維持する 35ms
+     × 'sort=atk&order=asc' の既存レスポンスを維持する 31ms
+     × 'page=2&perPage=100' の既存レスポンスを維持する 128ms
+
+ Test Files  3 failed (3)
+      Tests  56 failed | 127 passed (183)
+   Start at  09:14:36
+   Duration  12.04s (transform 10.99s, setup 804ms, import 4.54s, tests 15.80s, environment 2.73s)
+
+
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/utils/cardSearch/normalizeCatalogText.test.ts [ server/utils/cardSearch/normalizeCatalogText.test.ts ]
+Error: Failed to resolve import "./normalizeCatalogText" from "server/utils/cardSearch/normalizeCatalogText.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: F:/Projects/monsearch/server/utils/cardSearch/normalizeCatalogText.test.ts:3:37
+  1  |  import { describe, expect, it } from "vitest";
+  2  |  import vectors from "./normalizeCatalogText.fixtures.json";
+  3  |  import { normalizeCatalogText } from "./normalizeCatalogText";
+     |                                        ^
+  4  |  describe("N₀固定vector", () => {
+  5  |  	it.each(vectors)("$idの固定期待変換と冪等性", ({ input, expected }) => {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/node.js:30416:39
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/node.js:30413:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/node.js:27438:18
+ ❯ node_modules/vite/dist/node/chunks/node.js:27506:30
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/node.js:27474:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/node.js:30201:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/node.js:20124:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/57]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 56 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'spell-symbol'の全ページを独立oracleと比較する
+AssertionError: expected 16 to be 51 // Object.is equality
+
+- Expected
++ Received
+
+- 51
++ 16
+
+ ❯ expectAllCatalogPages server/api/cards.get.test.ts:48:29
+     46|     const body: CardSearchResultPage = await response.json()
+     47|     expect(response.status).toBe(200)
+     48|     expect(body.totalCount).toBe(ids.length)
+       |                             ^
+     49|     expect(body.page).toBe(page)
+     50|     expect(body.perPage).toBe(20)
+ ❯ server/api/cards.get.test.ts:61:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'broad-keyword'の全ページを独立oracleと比較する
+AssertionError: expected 326 to be 399 // Object.is equality
+
+- Expected
++ Received
+
+- 399
++ 326
+
+ ❯ expectAllCatalogPages server/api/cards.get.test.ts:48:29
+     46|     const body: CardSearchResultPage = await response.json()
+     47|     expect(response.status).toBe(200)
+     48|     expect(body.totalCount).toBe(ids.length)
+       |                             ^
+     49|     expect(body.page).toBe(page)
+     50|     expect(body.perPage).toBe(20)
+ ❯ server/api/cards.get.test.ts:61:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'catalog-reading'の全ページを独立oracleと比較する
+AssertionError: expected +0 to be 3 // Object.is equality
+
+- Expected
++ Received
+
+- 3
++ 0
+
+ ❯ expectAllCatalogPages server/api/cards.get.test.ts:48:29
+     46|     const body: CardSearchResultPage = await response.json()
+     47|     expect(response.status).toBe(200)
+     48|     expect(body.totalCount).toBe(ids.length)
+       |                             ^
+     49|     expect(body.page).toBe(page)
+     50|     expect(body.perPage).toBe(20)
+ ❯ server/api/cards.get.test.ts:61:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'catalog-only'は表示値とcatalogを区別する
+AssertionError: expected [ 'B' ] to deeply equal [ 'A' ]
+
+- Expected
++ Received
+
+  [
+-   "A",
++   "B",
+  ]
+
+ ❯ expectAllCatalogPages server/api/cards.get.test.ts:56:18
+     54|     allIds.push(...body.items.map(item => item.card_id))
+     55|   }
+     56|   expect(allIds).toEqual([...ids].sort((a, b) => a.localeCompare(b)))
+       |                  ^
+     57| }
+     58|
+ ❯ server/api/cards.get.test.ts:65:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'visible-only'は表示値とcatalogを区別する
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ expectAllCatalogPages server/api/cards.get.test.ts:48:29
+     46|     const body: CardSearchResultPage = await response.json()
+     47|     expect(response.status).toBe(200)
+     48|     expect(body.totalCount).toBe(ids.length)
+       |                             ^
+     49|     expect(body.page).toBe(page)
+     50|     expect(body.perPage).toBe(20)
+ ❯ server/api/cards.get.test.ts:65:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'missing'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'null'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'empty'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'no-wildcard'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'no-regex'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'spaces-distinct'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'newline-distinct'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'tab-distinct'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'circled'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'roman'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'hiragana'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'wave'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'long-mark'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'hyphen'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'minus'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'non-ascii-case'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'unrepaired'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'voiced-composed'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'semi-composed'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'no-synonym'のAPI境界
+ FAIL  server/api/cards.get.test.ts > GET /api/cards kw catalog契約 > 'literal-whole'のAPI境界
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ expectAllCatalogPages server/api/cards.get.test.ts:48:29
+     46|     const body: CardSearchResultPage = await response.json()
+     47|     expect(response.status).toBe(200)
+     48|     expect(body.totalCount).toBe(ids.length)
+       |                             ^
+     49|     expect(body.page).toBe(page)
+     50|     expect(body.perPage).toBe(20)
+ ❯ server/api/cards.get.test.ts:73:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=id&order=desc' の既存レスポンスを維持する
+AssertionError: expected { items: [ { …(19) }, …(19) ], …(6) } to deeply equal { items: [ { …(19) }, …(19) ], …(6) }
+
+- Expected
++ Received
+
+@@ -1119,11 +1119,11 @@
+          {
+            "effect_activation_category_code": "Field",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[儀式]",
+            "effect_cost_text": "▼",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "",
+            "effect_text": "ターン終了まで、戦闘が発生するごとに、自軍の即時召喚タイミング開始時に自軍手札が7枚になるまで補充しても良い。",
+            "effect_type_name": "",
+          },
+        ],
+@@ -1170,11 +1170,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "イニシアチブ決定タイミング開始時",
+            "effect_activation_type_name": "[速攻]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニットすべて",
+            "effect_text": "この効果使用時、自軍手札1枚補充。
+  戦闘終了まで、「攻+1」＆「防+1」。",
+            "effect_type_name": "",
+          },
+@@ -1229,11 +1229,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニットすべて",
+            "effect_text": "戦闘終了まで、「防-2」。
+
+  (「防0以下」になると破棄)",
+            "effect_type_name": "",
+@@ -1289,11 +1289,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "イニシアチブ決定タイミング開始時",
+            "effect_activation_type_name": "[速攻]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "",
+            "effect_text": "戦闘終了まで、「自軍が使用した戦闘スペルカード」と「死亡した自軍ユニット(トークンカードを除く)」は、戦闘終了タイミングに自軍手札へ移る。
+  「エンジェル・リング」は、このカードの効果で手札に移らない。",
+            "effect_type_name": "",
+          },
+
+ ❯ server/api/cards.get.test.ts:86:32
+     84|       items: body.items.map(({ deck_restriction_count: _count, ...item…
+     85|     }
+     86|     expect(withoutRestriction).toEqual(expected)
+       |                                ^
+     87|   })
+     88|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=atk&order=asc' の既存レスポンスを維持する
+AssertionError: expected { items: [ { …(19) }, …(19) ], …(6) } to deeply equal { items: [ { …(19) }, …(19) ], …(6) }
+
+- Expected
++ Received
+
+@@ -669,11 +669,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【火炎：2D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -727,11 +727,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -785,11 +785,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：1D】ダメージ。対象が「アイテム：x」を持つ場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -853,11 +853,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+3」または「防御力：+3」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -911,21 +911,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：火」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -979,11 +979,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【10】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1047,21 +1047,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：水」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1115,11 +1115,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1183,11 +1183,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：20】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1241,11 +1241,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「防御力：+4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1299,11 +1299,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1357,11 +1357,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "戦闘スペルを使用中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+
+ ❯ server/api/cards.get.test.ts:86:32
+     84|       items: body.items.map(({ deck_restriction_count: _count, ...item…
+     85|     }
+     86|     expect(withoutRestriction).toEqual(expected)
+       |                                ^
+     87|   })
+     88|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/57]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'page=2&perPage=100' の既存レスポンスを維持する
+AssertionError: expected { items: [ { …(19) }, …(99) ], …(6) } to deeply equal { items: [ { …(19) }, …(99) ], …(6) }
+
+- Expected
++ Received
+
+@@ -816,11 +816,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【火炎：2D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -874,11 +874,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -932,11 +932,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：1D】ダメージ。対象が「アイテム：x」を持つ場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1000,11 +1000,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+3」または「防御力：+3」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1058,21 +1058,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：火」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1126,11 +1126,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【10】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1194,21 +1194,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：水」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1262,11 +1262,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1330,11 +1330,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：20】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1388,11 +1388,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「防御力：+4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1446,11 +1446,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1504,11 +1504,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "戦闘スペルを使用中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1572,21 +1572,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+2D」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：土」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1640,11 +1640,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニットすべて",
+            "effect_text": "対象に「攻撃力：+2」または「防御力：+2」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1698,11 +1698,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に「攻撃力：-6」を付与する。または対象が装備中のアイテム1つを破棄する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1756,11 +1756,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「防御力：+1D」または「ディフェンダー：+4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1824,11 +1824,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+6」＆「防御力：+6」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1882,11 +1882,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【地震：1D】ダメージ。対象が「進軍タイプ：歩行」の場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1950,11 +1950,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【竜巻：1D】ダメージ。対象が「進軍タイプ：飛行」の場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2018,21 +2018,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+2」＆「防御力：+2」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：風」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2086,11 +2086,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【竜巻：3D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2144,11 +2144,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通｜対抗不可]",
+            "effect_cost_text": "風風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+2D」＆「耐性：ALL(10減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2202,11 +2202,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【電撃：1D】ダメージ。対象が「スペル：x」を持つ場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2260,11 +2260,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "「レベル：即時召喚可能」の対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2328,11 +2328,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【閃光：1D】ダメージ。対象が「レベル：即時召喚可能]」の場合、このダメージを「+3」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2386,11 +2386,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "ユニット1体",
+            "effect_text": "対象自軍ユニットに「攻撃力：+4」＆「耐性：ALL(2減)を付与する。または対象敵軍ユニットが装備中のアイテム1つを破棄する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2444,11 +2444,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "戦闘スペルを使用中の敵軍ユニット1体",
+            "effect_text": "「レベル：即時召喚可能」の対象が使用中の戦闘スペル1つをキャンセルする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2512,11 +2512,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+4」を付与する。効果適用後。対抗連鎖終了まで、対象はダメージを適用されても死亡しない。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2570,11 +2570,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "[普通or対抗]で特殊能力を使用中の対象に【閃光：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2638,21 +2638,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【閃光：2D】ダメージ。効果適用後、自軍プレイヤーは手札を1～2枚補充してもよい。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：聖」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2706,11 +2706,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【精神：2D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2764,11 +2764,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に「弱点：ALL(6増)」を付与する。または対象に【混沌：2】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2822,21 +2822,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【混沌：2D】ダメージ。効果適用後、敵軍プレイヤーの手札1枚をランダムに破棄する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：魔」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2890,11 +2890,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "ユニット1体",
+            "effect_text": "対象自軍ユニットに「攻撃力：+4」を付与する。または対象敵軍ユニットに「攻撃力：-4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2948,11 +2948,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "[普通／対抗]で特殊能力を使用中の対象に【精神：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -3016,11 +3016,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "ユニット1体",
+            "effect_text": "対象自軍ユニットに「防御力：+2」を付与する。または対象敵軍ユニットに「防御力：-2」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+
+ ❯ server/api/cards.get.test.ts:86:32
+     84|       items: body.items.map(({ deck_restriction_count: _count, ...item…
+     85|     }
+     86|     expect(withoutRestriction).toEqual(expected)
+       |                                ^
+     87|   })
+     88|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/57]⎯
+
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'spell-symbol'の実データ全IDを固定oracleと比較する
+AssertionError: expected [ …(16) ] to deeply equal [ …(51) ]
+
+- Expected
++ Received
+
+  [
+    "019d81a4-497a-768d-aaa6-24b742cbd519",
+    "019d81bf-13b2-70bb-a63b-051581258d5a",
+-   "019d81c1-d9a0-74ce-b6b2-f0b8bcafdb12",
+-   "019d8219-35d2-706c-98f3-a5f6473430f0",
+-   "019d8219-e44b-7171-9e2f-39dc93651b11",
+    "019d8220-99fa-707b-b501-e00c84f9567e",
+-   "019d8220-df94-74fb-8903-a7986ac917ba",
+    "019d872d-20b6-7337-a4ce-1e9a951a6545",
+-   "019d8733-482b-72af-9a19-3a578e6a3374",
+    "019d8734-179b-773a-8c10-066c5f38873a",
+    "019d8734-6e01-73b8-b31c-437f2bbec16f",
+-   "019d8735-6807-721f-8d00-5bb3b14b4a75",
+    "019d873f-8252-72e3-a98e-d558592983a8",
+-   "019d8740-5908-75c9-9166-84cdb235d569",
+    "019d874c-f619-757c-9d28-f49dc5072700",
+-   "019d8bcc-8b8b-7152-b487-28dfc2cc233c",
+-   "019d8bcd-006f-72d3-b309-1ef31a265133",
+    "019d8bd2-d41b-765b-adaa-a3ccfece4b41",
+-   "019d8bd5-ec84-7559-b63c-321e3ca058e9",
+-   "019d8bf1-1620-752a-ae7c-5264e1f378b4",
+-   "019d8bf1-df56-7662-acfe-6a045b98c0e5",
+-   "019d8bf3-0e7a-776c-b33b-55d255461877",
+-   "019d8bf3-72b1-734a-ba6e-000a6e289f5f",
+-   "019d8bfb-a2d2-7554-82eb-632bb72d2a05",
+-   "019d8bfd-5ffd-75ad-945f-0bd6d5e8f920",
+-   "019d8bfd-ab76-71fd-a0fa-cf6ed616d140",
+    "019d8c01-e7cf-7508-b972-5ac44a7bff36",
+    "019d8c0f-3dc0-7298-a97d-19af985f51ac",
+-   "019d8c10-28a0-720d-adb9-c6ff6721feed",
+-   "019d8c10-9917-767b-bbc2-e7514e6a621f",
+-   "019d8c70-f280-75ed-8180-9d32760e1863",
+-   "019d8c76-e6ad-764e-baa4-6f48e75c3bcc",
+    "019d8c7e-1860-749d-aa72-bdf5085912dd",
+    "019d9181-bf9e-713f-b69f-42150c72d1a9",
+    "019d918e-0f37-7268-9f02-f68509db78dd",
+    "019d9190-9c4e-76ba-ae05-ccde34b08442",
+    "019d9197-94f5-737b-9d10-a02b1630f744",
+-   "019da181-8d66-71b6-b12a-ae91c81c5808",
+-   "019db069-5b2d-7239-98fa-68ffeff253ae",
+-   "019db069-cc8c-714a-b241-04db36e93406",
+-   "019db06c-5a44-773b-beff-981967eb1304",
+-   "019db06c-79b0-74fa-a4e9-56868476ada6",
+-   "019db06c-af58-76cc-b4b5-ae697db8316f",
+-   "019db06c-eb64-74d8-9908-848b7f045cae",
+-   "019db06e-fa39-769d-826f-2fe3c258955e",
+-   "019db06f-d156-71a0-8450-d8edc2765dc8",
+-   "019db070-6d34-70fa-a6c8-fe02b0680d02",
+-   "019db072-22ea-7766-b646-61711dc93776",
+-   "019db072-5b2a-736a-a11c-a5eccad3e832",
+-   "019db072-88a6-70b4-9784-e751eec327e5",
+-   "019db073-dd04-7081-a8d1-1248252c3628",
+  ]
+
+ ❯ server/utils/cardSearch/search.test.ts:221:135
+    219|   describe('kw catalog契約', () => {
+    220|     it.each(catalogOracle.realCases.filter(example => 'kw' in example.…
+    221|       expect(searchCards(getSourceCards().map(source => source.card), …
+       |                                                                                                                                       ^
+    222|     })
+    223|     it.each(catalogOracle.fixtureCases.filter(example => 'kw' in examp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/57]⎯
+
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'broad-keyword'の実データ全IDを固定oracleと比較する
+AssertionError: expected [ …(326) ] to deeply equal [ …(399) ]
+
+- Expected
++ Received
+
+@@ -77,11 +77,10 @@
+    "019d8229-aefc-738a-bbee-1e37493f48ab",
+    "019d822a-0c59-747d-b1f8-c83d7a4bb2c8",
+    "019d822a-90f7-740b-8192-be30019c540a",
+    "019d822b-0bd5-728b-ba8d-fac04c6e8274",
+    "019d822b-c359-77cf-b4fb-bdfddd13b824",
+-   "019d822d-0aff-7694-8eb5-53ae607525bd",
+    "019d822d-8248-7270-bde7-b866e3ac5555",
+    "019d822d-ef55-765d-8e7d-b0bbeaa920d4",
+    "019d822e-790d-7417-8fae-eea5a55696a0",
+    "019d822f-1e4f-75df-91c7-b2f092f429ed",
+    "019d822f-9b11-773b-a009-333b5b6f72d7",
+@@ -305,97 +304,25 @@
+    "019da17c-c89e-7407-a4cd-1326427370c9",
+    "019da17d-05c0-7630-8a5c-7b9d97ee3f3b",
+    "019da17d-7e8c-72bf-bad6-780f4b95d685",
+    "019da17d-b12b-75c1-bb29-a4327597eeaf",
+    "019da17e-e56f-7459-ab7d-2c687fe2cac0",
+-   "019da17f-4dbb-756c-82aa-12dc96f6058c",
+-   "019da17f-9551-71fc-8978-5c74b2747911",
+-   "019da17f-bd45-73d9-8e35-621237cfb40c",
+-   "019da17f-db67-754e-8a57-2d0ad984c753",
+-   "019da17f-ecb9-736d-8b34-ec1dcf34ecaf",
+-   "019da180-000f-7290-a6f9-3afe4499f7bf",
+-   "019da180-1141-7778-8775-665afbf720cb",
+-   "019da180-2ec9-7706-9690-108b262c05f8",
+-   "019da180-3cc3-72b9-a776-e37656b02286",
+-   "019da180-4b94-700f-acd7-e23e564785a9",
+-   "019da180-5fd0-7679-a14d-eb1978681d4c",
+-   "019da180-7096-744c-91a1-1427d4d46202",
+-   "019da180-80c7-7478-b11c-da95953a3664",
+-   "019da180-ae54-762a-bf81-56978353161b",
+-   "019da180-de44-7276-93b5-f335f3298e7c",
+-   "019da181-079b-77b1-ad6c-bcdde38737ae",
+-   "019da181-16f4-710f-bffd-8ed06ee2619b",
+-   "019da181-26af-71e9-8dd2-3de2422fb963",
+-   "019da181-4882-705e-8ab5-ed58a62e63d1",
+-   "019da181-5a7b-722d-a5e8-5c4ecf78cda4",
+-   "019da181-7eaf-768f-aede-cc2938b2f3e3",
+-   "019da181-8d66-71b6-b12a-ae91c81c5808",
+    "019da181-9dab-710b-840d-08f05729a00a",
+-   "019da181-ad27-7689-95cd-ef32710c2468",
+-   "019da181-d04c-700c-9938-07c6d483ea29",
+-   "019da181-df9f-77ab-9630-49573a5ead89",
+-   "019da181-fc98-7073-9147-c2adf4c64f1a",
+-   "019da182-58b5-7672-a0bb-10d097fdf00a",
+-   "019da182-6cb8-758e-b321-730da942f150",
+    "019da182-7c66-71ed-b717-7668c46937b5",
+-   "019da182-8b99-7728-88f1-b554a44b6229",
+    "019da182-9bee-73ad-9c3c-874c72408f97",
+-   "019da182-ba92-72bf-8f58-4cd4445565a6",
+-   "019da182-d075-71ee-825b-67d22c4235d4",
+-   "019da182-e3c2-7072-b7fc-6889e69cc45f",
+-   "019da182-f95b-748c-bc1e-7f4ba2f33ede",
+-   "019da183-0b8c-7437-93ee-b4675fd28e42",
+-   "019da183-29b2-720e-862c-3de10d83e0ae",
+-   "019da183-4cc8-76de-a31b-c295b7884779",
+-   "019da183-759e-7549-b7b9-a581b3de10a7",
+    "019da184-7c50-753d-8d01-d683ebdc8d61",
+    "019da187-1439-7552-a384-a7e43b213919",
+    "019da187-6fdc-76b9-9a52-3cecfaaee5d8",
+    "019db068-b1fb-760d-80f1-7c2c0540517e",
+-   "019db068-eb61-754d-a3ac-d74b8f6337d1",
+-   "019db069-89b8-7639-b464-8faacd757414",
+-   "019db069-b1a4-70f9-94e4-bd26599c51b3",
+-   "019db06a-232b-717a-8ede-84c35d4114f0",
+-   "019db06a-50f1-70bf-9f4b-c658068528f7",
+-   "019db06a-7a99-72fb-8c06-5bbb1e31987e",
+    "019db06a-a50f-7310-8ff8-7037719a68a2",
+-   "019db06b-4626-762b-99c8-c1595b4d30d0",
+-   "019db06b-80f7-7210-8362-b59d5b226f99",
+    "019db06b-ca32-76ab-ab7f-47e8e7f35cc9",
+-   "019db06c-314d-7253-8942-9f2def1d17c6",
+-   "019db06c-5a44-773b-beff-981967eb1304",
+-   "019db06c-79b0-74fa-a4e9-56868476ada6",
+-   "019db06c-af58-76cc-b4b5-ae697db8316f",
+-   "019db06c-eb64-74d8-9908-848b7f045cae",
+-   "019db06d-11c2-7557-9e08-c0f5a91ed252",
+-   "019db06d-31c7-754c-a602-df4026c43a8a",
+-   "019db06d-540d-713b-a9ab-d249aff30649",
+    "019db06d-94aa-77ad-a630-f76eb9e5dc72",
+    "019db06d-eb77-73e9-a620-1b40ccba21b9",
+    "019db06e-56dd-70fe-a543-43a486edb700",
+    "019db06e-bd97-741b-8334-286149442e82",
+-   "019db06e-e180-74bc-8d2f-90195f829b08",
+-   "019db06e-fa39-769d-826f-2fe3c258955e",
+-   "019db06f-17b4-72a3-8900-f9815946e791",
+-   "019db06f-383f-71ab-9efd-62f911caf25d",
+-   "019db06f-7574-7794-a8b3-08ec3c147a0f",
+    "019db06f-8f73-73da-af45-5c07c15036ec",
+    "019db06f-a588-75ba-a6a3-f8bee0b132d4",
+-   "019db06f-bb62-70cb-b77e-5fa9246bb006",
+    "019db06f-f0c6-7324-aef8-1b6148079127",
+    "019db070-29b6-759d-ae81-0652c9aa06a6",
+-   "019db070-48e5-70a1-b172-083d2471ff03",
+    "019db070-6d34-70fa-a6c8-fe02b0680d02",
+-   "019db070-957b-727a-87bc-7230b91b2940",
+-   "019db070-eded-7639-9142-7b6506081f07",
+-   "019db071-1432-7275-a9da-be2a7a645fb9",
+-   "019db071-4a54-75d1-9d8c-8f46e37c2506",
+-   "019db071-62d2-77cb-a73d-84afd3282872",
+-   "019db071-e94a-76a9-ac81-39ef3485b90a",
+-   "019db072-22ea-7766-b646-61711dc93776",
+    "019db072-5b2a-736a-a11c-a5eccad3e832",
+-   "019db072-7172-7535-a591-bbea961a9f18",
+-   "019db072-88a6-70b4-9784-e751eec327e5",
+-   "019db072-e126-7199-b3c5-beaff9aff0c6",
+-   "019db073-9054-72ff-af77-f5f0d9203d25",
+-   "019db073-dd04-7081-a8d1-1248252c3628",
+  ]
+
+ ❯ server/utils/cardSearch/search.test.ts:221:135
+    219|   describe('kw catalog契約', () => {
+    220|     it.each(catalogOracle.realCases.filter(example => 'kw' in example.…
+    221|       expect(searchCards(getSourceCards().map(source => source.card), …
+       |                                                                                                                                       ^
+    222|     })
+    223|     it.each(catalogOracle.fixtureCases.filter(example => 'kw' in examp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/57]⎯
+
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'catalog-reading'の実データ全IDを固定oracleと比較する
+AssertionError: expected [] to deeply equal [ …(3) ]
+
+- Expected
++ Received
+
+- [
+-   "019d81a4-497a-768d-aaa6-24b742cbd519",
+-   "019d9181-bf9e-713f-b69f-42150c72d1a9",
+-   "019d9190-9c4e-76ba-ae05-ccde34b08442",
+- ]
++ []
+
+ ❯ server/utils/cardSearch/search.test.ts:221:135
+    219|   describe('kw catalog契約', () => {
+    220|     it.each(catalogOracle.realCases.filter(example => 'kw' in example.…
+    221|       expect(searchCards(getSourceCards().map(source => source.card), …
+       |                                                                                                                                       ^
+    222|     })
+    223|     it.each(catalogOracle.fixtureCases.filter(example => 'kw' in examp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/57]⎯
+
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'catalog-only'はcatalogだけを検索する
+AssertionError: expected [ 'B' ] to deeply equal [ 'A' ]
+
+- Expected
++ Received
+
+  [
+-   "A",
++   "B",
+  ]
+
+ ❯ server/utils/cardSearch/search.test.ts:224:110
+    222|     })
+    223|     it.each(catalogOracle.fixtureCases.filter(example => 'kw' in examp…
+    224|       expect(searchCards(makeCatalogCards(), parseCardSearchQuery(exam…
+       |                                                                                                              ^
+    225|     })
+    226|     it.each(catalogOracle.boundaries)('$idの欠測・literal・N₀境界', example =…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/57]⎯
+
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'visible-only'はcatalogだけを検索する
+AssertionError: expected [ 'B' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "B",
++ ]
+
+ ❯ server/utils/cardSearch/search.test.ts:224:110
+    222|     })
+    223|     it.each(catalogOracle.fixtureCases.filter(example => 'kw' in examp…
+    224|       expect(searchCards(makeCatalogCards(), parseCardSearchQuery(exam…
+       |                                                                                                              ^
+    225|     })
+    226|     it.each(catalogOracle.boundaries)('$idの欠測・literal・N₀境界', example =…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/57]⎯
+
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'missing'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'null'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'empty'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'no-wildcard'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'no-regex'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'spaces-distinct'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'newline-distinct'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'tab-distinct'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'circled'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'roman'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'hiragana'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'wave'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'long-mark'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'hyphen'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'minus'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'non-ascii-case'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'unrepaired'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'voiced-composed'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'semi-composed'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'no-synonym'の欠測・literal・N₀境界
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > 'literal-whole'の欠測・literal・N₀境界
+AssertionError: expected [ 'boundary' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "boundary",
++ ]
+
+ ❯ server/utils/cardSearch/search.test.ts:231:141
+    229|       card.name = example.query ?? '表示原文'
+    230|       card.search_support.full_text = example.target
+    231|       expect(searchCards([card], parseCardSearchQuery(example.query ==…
+       |                                                                                                                                             ^
+    232|     })
+    233|     it('JSON全文や表示情報を検索対象として代用しない', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/57]⎯
+
+ FAIL  server/utils/cardSearch/search.test.ts > searchCards > kw catalog契約 > JSON全文や表示情報を検索対象として代用しない
+AssertionError: expected [ { card_id: 'A', …(24) } ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   {
++     "blocks": [
++       {
++         "block_code": "Anniversary",
++         "block_name": "AN",
++       },
++     ],
++     "card_category_code": "Unit",
++     "card_category_name": "ユニット",
++     "card_id": "A",
++     "card_types": [
++       {
++         "card_type_id": "019d81a0-797d-74d9-8a05-39bc6d45d447",
++         "card_type_name": "表示種別Ａ",
++       },
++     ],
++     "effects": [
++       {
++         "effect_activation_category_code": "Battle",
++         "effect_activation_category_name": "[Battle]",
++         "effect_activation_timing_id": "",
++         "effect_activation_timing_name": "",
++         "effect_activation_type_id": "019d81a0-798c-724e-85d0-93e4fcf4559a",
++         "effect_activation_type_name": "[普通／対抗]",
++         "effect_condition_category_code": "",
++         "effect_condition_category_name": "",
++         "effect_condition_id": "",
++         "effect_condition_text": "",
++         "effect_cost_id": "",
++         "effect_cost_text": "",
++         "effect_name": "精霊の洗礼",
++         "effect_target_id": "019d81a0-7988-729c-8744-1b020d94f631",
++         "effect_target_name": "自軍ユニット1体",
++         "effect_text": "「レベル：即時召喚不可」の対象に「攻撃力：+2」＆「防御力：+2」を付与する。",
++         "effect_type_code": "ActionSkill",
++         "effect_type_name": "□完了型特殊能力",
++         "search_cost": null,
++       },
++     ],
++     "errata": [],
++     "factions": [
++       {
++         "faction_id": "019d81a0-7986-732e-9833-1256fb1636ce",
++         "faction_name": "ALL",
++       },
++     ],
++     "flavor_text": "",
++     "illustrator_id": "019fc1ce-7b47-7003-a74d-9b1204cdafee",
++     "illustrator_name": "ぽぽるちゃ",
++     "item": null,
++     "land": null,
++     "modification": null,
++     "name": "原文Ａ",
++     "product": {
++       "official_short_name": "",
++       "product_category_code": "Booster",
++       "product_category_name": "ブースター",
++       "product_id": "019d81a0-7987-75eb-9d86-65a291122d7e",
++       "product_name": "太陽の金の竜姫",
++       "product_note": "",
++       "provider_category_code": "Official",
++       "provider_category_name": "公式",
++       "provider_code": "Kadokawa",
++       "provider_name": "KADOKAWA",
++       "release_date": null,
++       "short_name": "",
++     },
++     "rarity_code": "Uncommon",
++     "rarity_name": "並",
++     "reference_label": "M20A-007",
++     "ritual": null,
++     "search_support": {
++       "archetype_text": "archetype-only abc ドラゴン",
++       "full_text": "catalog-only m20a-001 スペル:* 攻撃力:+2 リブ&ラブ アーニャ",
++       "is_token": false,
++     },
++     "spell": null,
++     "summoner": null,
++     "tags": [],
++     "unit": {
++       "ability": {
++         "ability_slots": [
++           {
++             "ability_slot_category_code": "Spell",
++             "ability_slot_category_name": "スペル",
++             "ability_slot_type_code": "SpellFire",
++             "ability_slot_type_name": "火",
++             "slot_count": 1,
++           },
++         ],
++         "affinities": [],
++         "charge": null,
++         "defender": null,
++         "initiative": null,
++       },
++       "attack": 2,
++       "defense": 2,
++       "elements": [
++         {
++           "element_code": "Fire",
++           "element_name": "火",
++         },
++       ],
++       "hero_point": 0,
++       "is_hero": false,
++       "is_instant_summon": true,
++       "level": 2,
++       "move_type_code": "Walk",
++       "move_type_name": "歩行",
++       "races": [
++         {
++           "race_id": "019d81a0-798b-748c-97a8-06c7f408fdc9",
++           "race_name": "表示種族Ａ",
++         },
++       ],
++     },
++   },
++ ]
+
+ ❯ server/utils/cardSearch/search.test.ts:236:67
+    234|       const card = makeCatalogCards()[0]!
+    235|       for (const kw of [card.name, card.card_id, 'search_support', '表示…
+    236|         expect(searchCards([card], parseCardSearchQuery({ kw }))).toEq…
+       |                                                                   ^
+    237|       }
+    238|       expect(readFileSync(resolve('server/utils/cardSearch/search.ts')…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/57]⎯
+

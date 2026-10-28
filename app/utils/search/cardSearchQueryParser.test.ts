@@ -4,6 +4,13 @@ import { parseCardSearchQuery } from './cardSearchQueryParser'
 import { createSearchForm } from './cardSearchFormFactory'
 
 describe('parseCardSearchQuery', () => {
+  it('kw/attは末尾値の前後trimだけを行い、照合用N₀を入力へ反映しない', () => {
+    const value = 'Ｍ２０Ａ－００１ AＢC ｶﾞ　ｱｰﾆｬ  AN\nALL\tEND'
+    const form = parseCardSearchQuery({ kw: ['ignored', `  ${value}  `], att: ['ignored', `\t${value}\n`] })
+    expect(form.keyword).toBe(value)
+    expect(form.archetypeText).toBe(value)
+    expect(parseCardSearchQuery({ kw: ['有効', '　 '], att: ['有効', '\t\n'] })).toMatchObject({ keyword: '', archetypeText: '' })
+  })
   it('restores defaults and all value families', () => {
     const form = parseCardSearchQuery({ nm: ' dragon ', cc: 'unit', el: ['water,fire', 'fire'], lvm: 'include', lv: 'eq:0', df: 'lte:4', adf: 'gte:2', ssm: 'and', ss: 'water:2,fire:1' })
     expect(form.name).toBe('dragon'); expect(form.cardCategory).toBe('unit')

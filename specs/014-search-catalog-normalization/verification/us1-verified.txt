@@ -1,0 +1,843 @@
+node node_modules/vitest/vitest.mjs --run server/utils/cardSearch/normalizeCatalogText.test.ts server/utils/cardSearch/search.test.ts server/api/cards.get.test.ts --exclude **/.memo/**
+exit code: 1
+
+ RUN  v4.1.10 F:/Projects/monsearch
+
+stdout | server/api/cards.get.test.ts
+<Suspense> is an experimental feature and its API will likely change.
+
+ ❯ server/api/cards.get.test.ts (79 tests | 3 failed) 7409ms
+     × 'sort=id&order=desc' の既存レスポンスを維持する 56ms
+     × 'sort=atk&order=asc' の既存レスポンスを維持する 32ms
+     × 'page=2&perPage=100' の既存レスポンスを維持する 153ms
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  3 failed | 395 passed (398)
+   Start at  09:16:10
+   Duration  11.56s (transform 13.89s, setup 775ms, import 6.09s, tests 22.11s, environment 3.19s)
+
+
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=id&order=desc' の既存レスポンスを維持する
+AssertionError: expected { items: [ { …(19) }, …(19) ], …(6) } to deeply equal { items: [ { …(19) }, …(19) ], …(6) }
+
+- Expected
++ Received
+
+@@ -1119,11 +1119,11 @@
+          {
+            "effect_activation_category_code": "Field",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[儀式]",
+            "effect_cost_text": "▼",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "",
+            "effect_text": "ターン終了まで、戦闘が発生するごとに、自軍の即時召喚タイミング開始時に自軍手札が7枚になるまで補充しても良い。",
+            "effect_type_name": "",
+          },
+        ],
+@@ -1170,11 +1170,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "イニシアチブ決定タイミング開始時",
+            "effect_activation_type_name": "[速攻]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニットすべて",
+            "effect_text": "この効果使用時、自軍手札1枚補充。
+  戦闘終了まで、「攻+1」＆「防+1」。",
+            "effect_type_name": "",
+          },
+@@ -1229,11 +1229,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニットすべて",
+            "effect_text": "戦闘終了まで、「防-2」。
+
+  (「防0以下」になると破棄)",
+            "effect_type_name": "",
+@@ -1289,11 +1289,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "イニシアチブ決定タイミング開始時",
+            "effect_activation_type_name": "[速攻]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "",
+            "effect_text": "戦闘終了まで、「自軍が使用した戦闘スペルカード」と「死亡した自軍ユニット(トークンカードを除く)」は、戦闘終了タイミングに自軍手札へ移る。
+  「エンジェル・リング」は、このカードの効果で手札に移らない。",
+            "effect_type_name": "",
+          },
+
+ ❯ server/api/cards.get.test.ts:88:32
+     86|       items: body.items.map(({ deck_restriction_count: _count, ...item…
+     87|     }
+     88|     expect(withoutRestriction).toEqual(expected)
+       |                                ^
+     89|   })
+     90|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'sort=atk&order=asc' の既存レスポンスを維持する
+AssertionError: expected { items: [ { …(19) }, …(19) ], …(6) } to deeply equal { items: [ { …(19) }, …(19) ], …(6) }
+
+- Expected
++ Received
+
+@@ -669,11 +669,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【火炎：2D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -727,11 +727,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -785,11 +785,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：1D】ダメージ。対象が「アイテム：x」を持つ場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -853,11 +853,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+3」または「防御力：+3」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -911,21 +911,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：火」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -979,11 +979,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【10】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1047,21 +1047,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：水」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1115,11 +1115,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1183,11 +1183,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：20】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1241,11 +1241,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「防御力：+4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1299,11 +1299,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1357,11 +1357,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "戦闘スペルを使用中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+
+ ❯ server/api/cards.get.test.ts:88:32
+     86|       items: body.items.map(({ deck_restriction_count: _count, ...item…
+     87|     }
+     88|     expect(withoutRestriction).toEqual(expected)
+       |                                ^
+     89|   })
+     90|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  server/api/cards.get.test.ts > GET /api/cards 検索結果の回帰 > 'page=2&perPage=100' の既存レスポンスを維持する
+AssertionError: expected { items: [ { …(19) }, …(99) ], …(6) } to deeply equal { items: [ { …(19) }, …(99) ], …(6) }
+
+- Expected
++ Received
+
+@@ -816,11 +816,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【火炎：2D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -874,11 +874,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -932,11 +932,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：1D】ダメージ。対象が「アイテム：x」を持つ場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1000,11 +1000,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+3」または「防御力：+3」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1058,21 +1058,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【火炎：3D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：火」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1126,11 +1126,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "火",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【10】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1194,21 +1194,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：水」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1262,11 +1262,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1330,11 +1330,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：20】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1388,11 +1388,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「防御力：+4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1446,11 +1446,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "攻撃中の敵軍ユニットすべて",
+            "effect_text": "対象に【津波：1D】ダメージ。効果適用後、対象が「レベル：即時召喚可能」の場合、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1504,11 +1504,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "水",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "戦闘スペルを使用中の敵軍ユニット1体",
+            "effect_text": "対象に【津波：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1572,21 +1572,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+2D」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：土」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1640,11 +1640,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニットすべて",
+            "effect_text": "対象に「攻撃力：+2」または「防御力：+2」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1698,11 +1698,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に「攻撃力：-6」を付与する。または対象が装備中のアイテム1つを破棄する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1756,11 +1756,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「防御力：+1D」または「ディフェンダー：+4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1824,11 +1824,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+6」＆「防御力：+6」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -1882,11 +1882,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "土",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【地震：1D】ダメージ。対象が「進軍タイプ：歩行」の場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -1950,11 +1950,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【竜巻：1D】ダメージ。対象が「進軍タイプ：飛行」の場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2018,21 +2018,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+2」＆「防御力：+2」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：風」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2086,11 +2086,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【竜巻：3D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2144,11 +2144,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通｜対抗不可]",
+            "effect_cost_text": "風風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+2D」＆「耐性：ALL(10減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2202,11 +2202,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【電撃：1D】ダメージ。対象が「スペル：x」を持つ場合、このダメージを「+2」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2260,11 +2260,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "風",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "「レベル：即時召喚可能」の対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2328,11 +2328,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【閃光：1D】ダメージ。対象が「レベル：即時召喚可能]」の場合、このダメージを「+3」する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2386,11 +2386,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "ユニット1体",
+            "effect_text": "対象自軍ユニットに「攻撃力：+4」＆「耐性：ALL(2減)を付与する。または対象敵軍ユニットが装備中のアイテム1つを破棄する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2444,11 +2444,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "戦闘スペルを使用中の敵軍ユニット1体",
+            "effect_text": "「レベル：即時召喚可能」の対象が使用中の戦闘スペル1つをキャンセルする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2512,11 +2512,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "対象に「攻撃力：+4」を付与する。効果適用後。対抗連鎖終了まで、対象はダメージを適用されても死亡しない。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2570,11 +2570,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "[普通or対抗]で特殊能力を使用中の対象に【閃光：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -2638,21 +2638,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【閃光：2D】ダメージ。効果適用後、自軍プレイヤーは手札を1～2枚補充してもよい。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "聖",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：聖」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2706,11 +2706,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【精神：2D】ダメージ。効果適用後、対象を行動完了にする。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2764,11 +2764,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に「弱点：ALL(6増)」を付与する。または対象に【混沌：2】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2822,21 +2822,21 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "対象に【混沌：2D】ダメージ。効果適用後、敵軍プレイヤーの手札1枚をランダムに破棄する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 2",
++           "effect_name": "",
+            "effect_target_name": "自軍ユニット1体",
+            "effect_text": "この戦闘スペルを使用中のユニットが「属性：魔」の場合、対象に「耐性：ALL(4減)」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2890,11 +2890,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "ユニット1体",
+            "effect_text": "対象自軍ユニットに「攻撃力：+4」を付与する。または対象敵軍ユニットに「攻撃力：-4」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+        ],
+@@ -2948,11 +2948,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "敵軍ユニット1体",
+            "effect_text": "[普通／対抗]で特殊能力を使用中の対象に【精神：2D】ダメージ。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+@@ -3016,11 +3016,11 @@
+          {
+            "effect_activation_category_code": "Battle",
+            "effect_activation_timing_name": "",
+            "effect_activation_type_name": "[普通／対抗]",
+            "effect_cost_text": "魔",
+-           "effect_name": "Effect 1",
++           "effect_name": "",
+            "effect_target_name": "ユニット1体",
+            "effect_text": "対象自軍ユニットに「防御力：+2」を付与する。または対象敵軍ユニットに「防御力：-2」を付与する。",
+            "effect_type_name": "◇手札型特殊能力",
+          },
+          {
+
+ ❯ server/api/cards.get.test.ts:88:32
+     86|       items: body.items.map(({ deck_restriction_count: _count, ...item…
+     87|     }
+     88|     expect(withoutRestriction).toEqual(expected)
+       |                                ^
+     89|   })
+     90|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
