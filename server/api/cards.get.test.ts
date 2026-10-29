@@ -17,6 +17,9 @@ import { createHash } from 'node:crypto'
 import { parseQuery } from 'vue-router'
 import { prepareCardSearch, runCardSearch } from '~~/shared/cardSearch/runner'
 import { normalizeClientSearchQuery } from '~~/shared/cardSearch/clientQuery'
+import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS, CARD_SEARCH_PER_PAGE } from '~~/shared/cardSearch/types'
+import { expectedIds, revisedAtkPageIds } from '~~/specs/015-search-result-sorting/verification/sort-expectations'
+import { fixtureOrders, makeSortFixtures } from '~~/specs/015-search-result-sorting/verification/sort-fixtures'
 
 let cardsHandler: EventHandler
 
@@ -32,6 +35,48 @@ afterEach(() => vi.restoreAllMocks())
 const requestCards = (query = '') => toWebHandler(createApp().use('/api/cards', cardsHandler))(
   new Request(`http://localhost/api/cards?${query}`),
 )
+
+describe('015 APIの6キー・固定順・全ページとCSR parity', () => {
+  for (const key of CARD_SEARCH_SORT_KEYS) for (const order of CARD_SEARCH_SORT_ORDERS) {
+    it(`${key}/${order}は手書き合成契約と一致`, async () => {
+      const sources = makeSortFixtures(getSourceCards()[0]!.card).reverse()
+      vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(sources)
+      const response = await requestCards(`sort=${key}&order=${order}`)
+      const body: CardSearchResultPage = await response.json()
+      expect(response.status).toBe(200)
+      expect(body.sort).toEqual({ key, order })
+      expect(body.items.map(card => card.card_id)).toEqual(fixtureOrders[key][order])
+      expect(body).toEqual(runCardSearch(sources, prepareCardSearch({ sort: key, order })))
+    })
+    it.each(CARD_SEARCH_PER_PAGE)(`${key}/${order}/%iの全ページと境界`, async perPage => {
+      const ids = expectedIds(key, order)
+      const projections: Record<string, CardSearchResultItem> = approvedBaseline.projectedItems
+      const totalPages = Math.ceil(ids.length / perPage)
+      const reference: CardSearchResultPage = await (await requestCards(`perPage=${perPage}`)).json()
+      const all: string[] = []
+      for (const page of [...Array.from({ length: totalPages }, (_, i) => i + 1), 999]) {
+        const query = `sort=${key}&order=${order}&perPage=${perPage}&page=${page}`
+        const response = await requestCards(query)
+        const body: CardSearchResultPage = await response.json()
+        const effective = Math.min(page, totalPages)
+        expect(response.status).toBe(200)
+        expect(body).toEqual({ ...reference, page: effective, sort: { key, order }, items: ids.slice((effective - 1) * perPage, effective * perPage).map(id => projections[id]) })
+        expect(body).toEqual(runCardSearch(getSourceCards(), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query)))))
+        if (page !== 999) all.push(...body.items.map(card => card.card_id))
+      }
+      expect(all).toEqual(ids)
+      expect(new Set(all).size).toBe(ids.length)
+      const source = getSourceCards()
+      for (const count of [0, 1]) {
+        vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(source.slice(0, count))
+        const query = `sort=${key}&order=${order}&perPage=${perPage}&page=999`
+        const body: CardSearchResultPage = await (await requestCards(query)).json()
+        expect(body).toMatchObject({ page: 1, totalPages: 1, totalCount: count })
+        expect(body).toEqual(runCardSearch(source.slice(0, count), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query)))))
+      }
+    })
+  }
+})
 
 const parseFixtureQuery = (query: Record<string, string | undefined>) => parseCardSearchQuery(
   Object.fromEntries(Object.entries(query).filter((entry): entry is [string, string] => entry[1] !== undefined)),
@@ -148,34 +193,28 @@ describe('GET /api/cards US3 承認済みT002 baseline回帰', () => {
       const response = await requestCards(page.requestQuery)
       const body: CardSearchResultPage = await response.json()
       expect(response.status).toBe(page.status)
-      expect(body).toEqual({ ...page.response, items: page.response.items.map(id => projectedItems[id]) })
+      const changed = new URLSearchParams(page.requestQuery).get('sort') === 'atk'
+      const ids = changed ? revisedAtkPageIds(page.requestQuery, example.api.allIds) : page.response.items
+      expect(body).toEqual({ ...page.response, items: ids.map(id => projectedItems[id]) })
       expect(body.items.every(item => !('search_support' in item) && !('full_text' in item) && !('archetype_text' in item))).toBe(true)
       if ('responseSha256' in page && 'responseFields' in page) {
-        expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)
+        if (!changed) expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)
         expect(Object.keys(body)).toEqual(page.responseFields)
         allIds.push(...body.items.map(item => item.card_id))
       }
     }
-    expect(allIds).toEqual(example.api.allIds)
+    expect(allIds).toEqual(new URLSearchParams(example.api.pages[0]!.requestQuery).get('sort') === 'atk'
+      ? expectedIds('atk', new URLSearchParams(example.api.pages[0]!.requestQuery).get('order') === 'desc' ? 'desc' : 'asc', example.api.allIds) : example.api.allIds)
   })
 })
 
 describe('GET /api/cards US3 catalog付き結果処理', () => {
   const projections: Record<string, CardSearchResultItem> = approvedBaseline.projectedItems
   const ids = catalogOracle.realCases.find(example => example.id === 'broad-keyword')!.ids
-  const indices = new Map(approvedBaseline.classifications.map(card => [card.card_id, card.sourceIndex]))
-  const rarities = ['Basic', 'Common', 'Uncommon', 'Rare', 'SuperRare', 'Special', 'DragonJr', 'Promotion', 'Summoner']
-  for (const sort of ['id', 'rarity', 'atk']) {
-    for (const order of ['asc', 'desc']) {
+  for (const sort of CARD_SEARCH_SORT_KEYS) {
+    for (const order of CARD_SEARCH_SORT_ORDERS) {
       it.each([20, 50, 100])(`kw付き${sort}/${order}/%iの全ページ・集計・投影を固定ID集合と比較する`, async perPage => {
-        const sortedIds = [...ids].sort((left, right) => {
-          const a = projections[left]!
-          const b = projections[right]!
-          const difference = sort === 'id' ? left.localeCompare(right)
-            : sort === 'rarity' ? rarities.indexOf(a.rarity_code) - rarities.indexOf(b.rarity_code)
-              : (a.unit?.attack ?? 0) - (b.unit?.attack ?? 0)
-          return difference ? difference * (order === 'asc' ? 1 : -1) : indices.get(left)! - indices.get(right)!
-        })
+        const sortedIds = expectedIds(sort, order, ids)
         const expectedCounts = new Map<string, number>()
         for (const id of ids) {
           const category = projections[id]!.card_category_code
@@ -234,7 +273,15 @@ describe('GET /api/cards 検索結果の回帰', () => {
       ...body,
       items: body.items.map(({ deck_restriction_count: _count, ...item }) => item),
     }
-    expect(withoutRestriction).toEqual(expected)
+    const changed = new URLSearchParams(query).get('sort') === 'atk'
+    const projections: Record<string, CardSearchResultItem> = approvedBaseline.projectedItems
+    expect(withoutRestriction).toEqual(changed ? {
+      ...expected,
+      items: revisedAtkPageIds(query, approvedBaseline.classifications.map(row => row.card_id)).map(id => {
+        const { deck_restriction_count: _count, ...item } = projections[id]!
+        return item
+      }),
+    } : expected)
   })
 
   it('同名カードのsortとページ変更後もIDと制限値が対応し、nullのカードも残る', async () => {
