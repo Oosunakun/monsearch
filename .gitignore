@@ -43,3 +43,6 @@ reference/
 
 # Memo files
 .memo/
+
+# Codex files
+.codex/
