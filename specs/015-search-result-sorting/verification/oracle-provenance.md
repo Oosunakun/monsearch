@@ -1,0 +1,5 @@
+# 独立期待値の来歴
+
+正本SHA-256: a53a1730a5cc371f44752185baeb9255671da1e63b21c38e2c8b3a3ae05c70ca
+
+capture-sort-oracle.mjsは本体をimportせず、正本の対象フィールドをgroup別・数値別bucketに格納し、bucketキーだけを数値順に列挙する。bucket内は収録順。oracle-buckets.jsonで全参照値とgroupの所属IDを確認できる。合成例の期待順は契約表から手書き。旧atk6ケースには全件期待順を旧ID集合で絞って使用する。id/rarityは旧oracleのまま。

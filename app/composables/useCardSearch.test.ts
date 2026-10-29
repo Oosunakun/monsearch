@@ -4,9 +4,10 @@ import { createSSRApp, defineComponent, h, nextTick, ref } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import type { LocationQuery } from 'vue-router'
-import type { SourceCard } from '~~/shared/cardSearch/types'
 import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
 import { useCardSearch } from './useCardSearch'
+import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS, CARD_SEARCH_PER_PAGE, type SourceCard, type CardSearchSortKey, type CardSearchSortOrder } from '~~/shared/cardSearch/types'
+import { expectedIds } from '~~/specs/015-search-result-sorting/verification/sort-expectations'
 
 const { readyCallbacks, loadMock } = vi.hoisted(() => ({
   readyCallbacks: [] as Array<() => void>, loadMock: vi.fn(),
@@ -38,6 +39,56 @@ describe('useCardSearch CSR lifecycle', () => {
     loadMock.mockReset().mockResolvedValue(getSourceCards())
   })
   afterEach(() => { for (const wrapper of wrappers.splice(0)) wrapper.unmount() })
+
+  it('6キー×2方向、ページ復帰・件数保持・JSON追加取得0・API fallbackなし', async () => {
+    const actual = await vi.importActual<typeof import('~~/app/utils/cardSearchDataset')>('~~/app/utils/cardSearchDataset')
+    loadMock.mockImplementation(actual.loadCardSearchDataset)
+    const fetch = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(JSON.stringify({ version: 'test', generated_at: 'test', cards: getSourceCards().map(row => row.card) })))
+    const api = vi.spyOn(globalThis, '$fetch')
+    try {
+      const { search } = setupSearch({ sort: 'atk', order: 'desc' })
+      await becomeReady()
+      expect(search.result.value?.sort).toEqual({ key: 'id', order: 'asc' })
+      const settle = async () => { await nextTick(); await flushPromises() }
+      for (const key of CARD_SEARCH_SORT_KEYS) for (const order of CARD_SEARCH_SORT_ORDERS) {
+        search.sort.value = key; search.order.value = order
+        await settle()
+        expect(search.result.value?.sort).toEqual({ key, order })
+        for (const perPage of CARD_SEARCH_PER_PAGE) {
+          search.page.value = 2; await settle()
+          search.perPage.value = perPage; await settle()
+          // 同じ件数の再選択ではwatchが起動しない。
+          if (search.page.value !== 1) { search.perPage.value = perPage === 20 ? 50 : 20; await settle(); search.perPage.value = perPage; await settle() }
+          expect(search.page.value).toBe(1)
+          expect(search.sort.value).toBe(key); expect(search.order.value).toBe(order)
+          expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice(0, perPage))
+          search.page.value = 2; await settle()
+          expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice(perPage, perPage * 2))
+          search.order.value = order === 'asc' ? 'desc' : 'asc'; await settle()
+          expect(search.page.value).toBe(1); expect(search.perPage.value).toBe(perPage)
+          search.page.value = 2; await settle()
+          search.sort.value = key === 'id' ? 'level' : 'id'; await settle()
+          expect(search.page.value).toBe(1); expect(search.perPage.value).toBe(perPage)
+          search.sort.value = key; search.order.value = order; await settle()
+        }
+      }
+      expect(fetch).toHaveBeenCalledExactlyOnceWith('/data/cards.json', { cache: 'no-cache' })
+      expect(api).not.toHaveBeenCalled()
+    } finally { fetch.mockRestore(); api.mockRestore() }
+  })
+
+  it('無効key/orderは有効な他方を維持して個別補正し、結果をstateへ反映する', async () => {
+    const { search } = setupSearch()
+    await becomeReady()
+    search.sort.value = 'invalid' as CardSearchSortKey; search.order.value = 'desc'
+    await nextTick(); await flushPromises()
+    expect(search.result.value?.sort).toEqual({ key: 'id', order: 'desc' })
+    expect(search.sort.value).toBe('id'); expect(search.order.value).toBe('desc')
+    search.sort.value = 'defense'; search.order.value = 'invalid' as CardSearchSortOrder
+    await nextTick(); await flushPromises()
+    expect(search.result.value?.sort).toEqual({ key: 'defense', order: 'asc' })
+    expect(search.sort.value).toBe('defense'); expect(search.order.value).toBe('asc')
+  })
 
   it('server setupではデータ取得も検索も開始しない', async () => {
     let search!: ReturnType<typeof useCardSearch>

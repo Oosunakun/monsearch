@@ -2,7 +2,7 @@ import type { SearchForm } from '~~/app/types/ui/search'
 import type { Card } from '~~/types/cards/finderCards'
 
 export const CARD_SEARCH_PER_PAGE = [20, 50, 100] as const
-export const CARD_SEARCH_SORT_KEYS = ['id', 'rarity', 'atk'] as const
+export const CARD_SEARCH_SORT_KEYS = ['id', 'level', 'atk', 'defense', 'initiative', 'rarity'] as const
 export const CARD_SEARCH_SORT_ORDERS = ['asc', 'desc'] as const
 
 export type CardSearchPerPage = typeof CARD_SEARCH_PER_PAGE[number]

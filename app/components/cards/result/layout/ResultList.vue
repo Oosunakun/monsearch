@@ -38,12 +38,14 @@ defineExpose({
   },
 })
 
-// ダミー用選択肢（必要に応じてProps化してください）
 // 表示設定用のマスタ定義
 const sortOptions = [
-  { title: 'ID順', value: 'id' },
-  { title: 'レアリティ順', value: 'rarity' },
-  { title: '攻撃力順', value: 'atk' },
+  { title: 'カードNo', value: 'id' },
+  { title: 'レベル', value: 'level' },
+  { title: '攻撃力', value: 'atk' },
+  { title: '防御力', value: 'defense' },
+  { title: 'イニシアチブ', value: 'initiative' },
+  { title: '出現頻度', value: 'rarity' },
 ]
 const sortOrders = [
   { title: '昇順', value: 'asc', icon: 'mdi-sort-ascending' },
