@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { createHash } from 'node:crypto'
 import { parseQuery } from 'vue-router'
-import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
+import { historicalSources } from '~~/tests/fixtures/cardSearch/sources'
+import { makeCard } from '~~/tests/fixtures/cardSearch/cards'
 import baseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
 import catalogOracle from '~~/specs/014-search-catalog-normalization/verification/expected-catalog-results.json'
 import { prepareCardSearch, runCardSearch } from './runner'
@@ -9,6 +10,16 @@ import { normalizeClientSearchQuery } from './clientQuery'
 import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS, CARD_SEARCH_PER_PAGE } from './types'
 import { expectedIds, revisedAtkPageIds, projected } from '~~/specs/015-search-result-sorting/verification/sort-expectations'
 import { fixtureOrders, makeSortFixtures } from '~~/specs/015-search-result-sorting/verification/sort-fixtures'
+let fixedSources = historicalSources()
+beforeEach(() => { fixedSources = historicalSources() })
+const getSourceCards = () => fixedSources
+
+
+
+
+
+
+
 
 const search = (query: string) => runCardSearch(getSourceCards(), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query))))
 
@@ -50,7 +61,7 @@ describe('CSR runnerの独立した固定oracle', () => {
 describe('015 全件ソートからページを決定する契約', () => {
   for (const key of CARD_SEARCH_SORT_KEYS) for (const order of CARD_SEARCH_SORT_ORDERS) {
     it(`${key}/${order} 合成契約・入力非破壊`, () => {
-      const source = makeSortFixtures(getSourceCards()[0]!.card).reverse()
+      const source = makeSortFixtures(makeCard()).reverse()
       const query = { sort: key, order }
       const sourceBefore = JSON.stringify(source)
       const queryBefore = JSON.stringify(query)

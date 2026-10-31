@@ -1,0 +1,8 @@
+{
+  "recordedAt": "2026-10-31T11:31:44.091Z",
+  "file": "app/pages/cards/search.test.ts",
+  "originalSha256": "531b4eea8bc07c2cf59b51cb2f6e27fddf4e1c6fd52aecde270b9f3c43cd395e",
+  "instrumentedSha256": "d1c22635cd7ff66458dcc5758e32fbe31bf0d38e8e926452e8ca7dadb1ffc718",
+  "originalSnapshot": "logs/timing-original-search-test.txt",
+  "instrumentedSnapshot": "logs/timing-instrumented-search-test.txt"
+}

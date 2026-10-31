@@ -1,0 +1,27 @@
+
+F:\Projects\monsearch\server\utils\cardSearch\search.test.ts
+  16:1  error  Import in body of module; reorder to top  import/first
+  17:1  error  Import in body of module; reorder to top  import/first
+  18:1  error  Import in body of module; reorder to top  import/first
+  19:1  error  Import in body of module; reorder to top  import/first
+  20:1  error  Import in body of module; reorder to top  import/first
+  21:1  error  Import in body of module; reorder to top  import/first
+  22:1  error  Import in body of module; reorder to top  import/first
+
+F:\Projects\monsearch\server\utils\cardSearch\sort.test.ts
+  5:1  error  Import in body of module; reorder to top  import/first
+  6:1  error  Import in body of module; reorder to top  import/first
+  7:1  error  Import in body of module; reorder to top  import/first
+
+F:\Projects\monsearch\shared\cardSearch\runner.test.ts
+   9:1  error  Import in body of module; reorder to top  import/first
+  10:1  error  Import in body of module; reorder to top  import/first
+  11:1  error  Import in body of module; reorder to top  import/first
+  12:1  error  Import in body of module; reorder to top  import/first
+  13:1  error  Import in body of module; reorder to top  import/first
+  14:1  error  Import in body of module; reorder to top  import/first
+  15:1  error  Import in body of module; reorder to top  import/first
+
+✖ 17 problems (17 errors, 0 warnings)
+  17 errors and 0 warnings potentially fixable with the `--fix` option.
+

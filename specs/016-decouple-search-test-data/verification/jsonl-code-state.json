@@ -1,0 +1,22 @@
+{
+  "recordedAt": "2026-10-31T11:42:30.123Z",
+  "file": "app/pages/cards/search.test.ts",
+  "originalSha256": "531b4eea8bc07c2cf59b51cb2f6e27fddf4e1c6fd52aecde270b9f3c43cd395e",
+  "instrumentedSha256": "9c464d4452cf08f9ea6bb903d1b8eccd1f6ac9135652f47c754dd0f78b75c914",
+  "preflightReadback": true,
+  "writer": "function writeTimingRecord(path, record) { appendFileSync(path, JSON.stringify(record) + '\\n', 'utf8') }",
+  "probe": {
+    "runId": "preflight",
+    "testCase": "Node保存読戻し",
+    "phase": "probe",
+    "timestamp": "2026-10-31T11:42:29.909Z",
+    "elapsedMs": 0,
+    "performanceMs": 136.1379,
+    "pid": 43832,
+    "workerId": "node-preflight",
+    "poolId": null,
+    "threadId": 0
+  },
+  "originalSnapshot": "logs/jsonl-original-search-test.txt",
+  "instrumentedSnapshot": "logs/jsonl-instrumented-search-test.txt"
+}

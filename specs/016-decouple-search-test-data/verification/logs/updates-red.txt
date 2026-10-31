@@ -1,0 +1,39 @@
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+
+ RUN  v4.1.10 F:/Projects/monsearch
+
+ ❯ tests/integration/masterDataUpdates.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/masterDataUpdates.test.ts [ tests/integration/masterDataUpdates.test.ts ]
+Error: Failed to resolve import "../helpers/masterDataScenarios" from "tests/integration/masterDataUpdates.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: F:/Projects/monsearch/tests/integration/masterDataUpdates.test.ts:11:0
+  8  |  const __vi_import_7__ = await import("../fixtures/searchOptions/products");
+  9  |  const __vi_import_8__ = await import("~~/specs/014-search-catalog-normalization/verification/baseline.json");
+  10 |  const __vi_import_9__ = await import("../helpers/masterDataScenarios");
+     |                                       ^
+  11 |  const __vi_import_10__ = await import("../helpers/masterDataValidation");
+  12 |  const __vi_import_11__ = await import("vue");
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/node.js:30416:39
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/node.js:30413:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/node.js:27438:18
+ ❯ node_modules/vite/dist/node/chunks/node.js:27506:30
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/node.js:27474:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/node.js:30201:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/node.js:20124:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  19:15:58
+   Duration  1.58s (transform 90ms, setup 202ms, import 0ms, tests 0ms, environment 889ms)
+

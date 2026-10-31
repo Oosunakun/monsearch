@@ -1,0 +1,35 @@
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+
+ RUN  v4.1.10 F:/Projects/monsearch
+
+stdout | tests/fixtures/cardSearch/fixtureIntegrity.test.ts
+<Suspense> is an experimental feature and its API will likely change.
+
+ ❯ tests/fixtures/cardSearch/fixtureIntegrity.test.ts (2 tests | 1 failed) 9803ms
+     × 元bytes/hash/件数と全Oracleの参照集合を保全する 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/fixtures/cardSearch/fixtureIntegrity.test.ts > 歴史入力と既存Oracleの対応・隔離 > 元bytes/hash/件数と全Oracleの参照集合を保全する
+TypeError: The URL must be of scheme file
+ ❯ tests/fixtures/cardSearch/fixtureIntegrity.test.ts:13:19
+     11| describe('歴史入力と既存Oracleの対応・隔離', () => {
+     12|   it('元bytes/hash/件数と全Oracleの参照集合を保全する', () => {
+     13|     const bytes = readFileSync(new URL('./historical/014-015/cards.jso…
+       |                   ^
+     14|     expect(createHash('sha256').update(bytes).digest('hex')).toBe(mani…
+     15|     expect(bytes.length).toBe(2283572)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  18:57:01
+   Duration  14.35s (transform 7.67s, setup 227ms, import 2.94s, tests 9.80s, environment 977ms)
+

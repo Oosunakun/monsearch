@@ -1,0 +1,1149 @@
+{
+  "recordedAt": "2026-10-31T20:12:47.8018003+09:00",
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "branch": "refactor/decouple-search-test-data",
+  "worktree": "M  app/components/cards/result/layout/ResultList.test.ts\r\nM  app/components/cards/result/list/ItemEffect.test.ts\r\nM  app/components/cards/result/list/ItemHeaderName.test.ts\r\nM  app/components/products/ProductTableRow.test.ts\r\nM  app/composables/useCardSearch.test.ts\r\nM  app/pages/cards/index.test.ts\r\nM  app/pages/cards/search.test.ts\r\nM  app/pages/product-set-navigation.test.ts\r\nM  app/utils/cardSearchDataset.test.ts\r\nM  app/utils/search/cardSearchQueryRouter.test.ts\r\nM  app/utils/search/productSearchLocation.test.ts\r\nM  server/api/cards.get.test.ts\r\nM  server/utils/cardSearch/normalizeCatalogText.test.ts\r\nM  server/utils/cardSearch/project.test.ts\r\nM  server/utils/cardSearch/search.test.ts\r\nM  server/utils/cardSearch/sort.test.ts\r\nM  shared/cardSearch/runner.test.ts\r\nM  specs/016-decouple-search-test-data/quickstart.md\r\nM  specs/016-decouple-search-test-data/tasks.md\r\nM  specs/016-decouple-search-test-data/test-inventory.md\r\nM  specs/016-decouple-search-test-data/verification/assertion-map.md\r\nA  specs/016-decouple-search-test-data/verification/assertion-preservation.json\r\nA  specs/016-decouple-search-test-data/verification/assertion-review-before.json\r\nA  specs/016-decouple-search-test-data/verification/final-gate-audit.json\r\nA  specs/016-decouple-search-test-data/verification/logs/diagnostics-complete.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185005-test.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185005-test.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185137-lint.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185137-lint.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185147-typecheck.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185147-typecheck.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185233-generate.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185233-generate.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-test.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-ui-timeout-diagnostic.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-generate.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-generate.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-lint.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-lint.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-test.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-test.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-typecheck.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v2-typecheck.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v3-test.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v3-test.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v4-test.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v4-test.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v5-test.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-v5-test.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-generate.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-generate.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-lint.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-lint.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-test.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-test.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-typecheck.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/final-verified-typecheck.txt.json\r\nA  specs/016-decouple-search-test-data/verification/logs/fixture-complete.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/fixture-green-2.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/fixture-green.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/fixture-red.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/master-green-2.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/master-green.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/master-red.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/migration-full-first.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/migration-lint-2.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/migration-lint.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/migration-typecheck.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/new-test-lint.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/node-suites.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/scenario-boundary.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/search-migrated.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/updates-complete.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/updates-empty-safe.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/updates-green.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/updates-lint.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/updates-no-effect-safe.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/updates-red.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/updates-typecheck.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/us3-complete.txt\r\nA  specs/016-decouple-search-test-data/verification/logs/us3-focused.txt\r\nA  specs/016-decouple-search-test-data/verification/protected-files-after.json\r\nA  specs/016-decouple-search-test-data/verification/public-assets-audit.json\r\nM  specs/016-decouple-search-test-data/verification/results.md\r\nA  specs/016-decouple-search-test-data/verification/update-matrix.json\r\nA  specs/016-decouple-search-test-data/verification/validation-state-final.json\r\nA  specs/016-decouple-search-test-data/verification/validation-state-v5.json\r\nA  specs/016-decouple-search-test-data/verification/validation-state.json\r\nA  tests/fixtures/cardSearch/cards.ts\r\nA  tests/fixtures/cardSearch/fixtureIntegrity.test.ts\r\nA  tests/fixtures/cardSearch/historical/014-015/cards.json\r\nA  tests/fixtures/cardSearch/historical/014-015/manifest.json\r\nA  tests/fixtures/cardSearch/projection-expected.json\r\nA  tests/fixtures/cardSearch/sources.ts\r\nA  tests/fixtures/searchOptions/products.ts\r\nA  tests/helpers/masterDataScenarios.ts\r\nA  tests/helpers/masterDataValidation.ts\r\nA  tests/integration/cardSearchMaster.test.ts\r\nA  tests/integration/cardSearchRealData.test.ts\r\nA  tests/integration/masterDataUpdates.test.ts\r\nA  tests/integration/searchOptionsMaster.test.ts\r\n",
+  "command": "npm.cmd run test -- --run --maxWorkers=2",
+  "files": [
+    {
+      "path": "app/app.vue",
+      "sha256": "63c1fb3634b5ab76dca3c9935629cda7582f157b4638da766f73b8f690864f7e"
+    },
+    {
+      "path": "app/components/about/ExternalLinkCard.vue",
+      "sha256": "be727877f34ab7215e7d606fe93439c4350c8a02274cb3b4ff7b11e71659ae11"
+    },
+    {
+      "path": "app/components/about/HistoryTable.vue",
+      "sha256": "5efbecd7ef264cf8dad9601267e66ac37127e2896151fab615a442eef15b0a08"
+    },
+    {
+      "path": "app/components/about/HistoryTableRow.vue",
+      "sha256": "ae030cd181b22df40f29c66cd50c3fda96d5d36b5b3895872fcdabcf2c9234f0"
+    },
+    {
+      "path": "app/components/cards/result/controls/ResultConditionViewer.vue",
+      "sha256": "24760d7577a8229c1f3a9b30e2fa8d4d5013b4a20cd13e828869cd5b2ad2af12"
+    },
+    {
+      "path": "app/components/cards/result/controls/ResultControls.vue",
+      "sha256": "1c8d091c7aacc6cac5ed901902a5cbd650b62fc1a3c02c055a15c147d4ebc7f5"
+    },
+    {
+      "path": "app/components/cards/result/controls/ResultDisplaySettings.vue",
+      "sha256": "02a1c9309d09630b4dcadb4ff50818b3342fde98dcb348f687405f123cdb0c11"
+    },
+    {
+      "path": "app/components/cards/result/controls/ResultDisplaySettingsDesktop.vue",
+      "sha256": "744bec489177cca3a0e382573fbe694b480391cfc02438fad2a39e37b97784ee"
+    },
+    {
+      "path": "app/components/cards/result/controls/ResultDisplaySettingsMobile.vue",
+      "sha256": "016eaa203b7bfcb525db412a47db722cee4a151b665385b3ca3f0204b2b14525"
+    },
+    {
+      "path": "app/components/cards/result/layout/ResultItem.vue",
+      "sha256": "f18ace6134c2c4e2e0610203fccd134e9de90dee6b893c973a32663e5e036479"
+    },
+    {
+      "path": "app/components/cards/result/layout/ResultList.test.ts",
+      "sha256": "9e833a407f07a4561d793e8e9e86978a89fa76b35b7d169d451698a231a71c22"
+    },
+    {
+      "path": "app/components/cards/result/layout/ResultList.vue",
+      "sha256": "ed3b4502295b3c382382937ec0dbefc855547f8bd6231e971cae732ed07357f3"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemBody.vue",
+      "sha256": "94f9bedca4fe6e263e709f1ff2754e15774afd519458c0f10c2e57e403eea4e7"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemEffect.test.ts",
+      "sha256": "49271d89dde22f82f2b8268954e746d49be3ece72c0541fb3a1948883ca7d492"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemEffect.vue",
+      "sha256": "bff90bf124de1590819d8b0a5f3b88e530c63c49d11b8ec3293b886cb7c25435"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemHeader.vue",
+      "sha256": "47fcfd8ef679c606d2b7c10cfe7bad043e0668b1ac4d81daa3e33e2828ef2b8b"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemHeaderArchetype.vue",
+      "sha256": "ea71461cb1f2bf1fade44d0233184f215044f83d344da609c1242486831a0a5a"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "sha256": "be51d1f64e55a899cc63cf5fdbec3ee5518c721f0425aa8ba8657ff7efe052f5"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemHeaderName.vue",
+      "sha256": "a422b7799862639a4261cd3b20e8f6719da29eaba27a6b28f1e5406b00b8c51d"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemHeaderStat.vue",
+      "sha256": "2792695df7fc05042f728249273d6284119cfe0c8cdff806b014b4065c74abfa"
+    },
+    {
+      "path": "app/components/cards/result/list/ItemMeta.vue",
+      "sha256": "d67919734ae06c199035699aa3881b22d5483bcba9130814939da416ed88b7ad"
+    },
+    {
+      "path": "app/components/cards/result/shared/.gitkeep",
+      "sha256": "3cb4e0d6a94d3553e4b955bc9577ab29e025e3131895bedb90bb7374782fcdde"
+    },
+    {
+      "path": "app/components/cards/result/summary/ResultSummary.vue",
+      "sha256": "2f6aa573c3fdc19555b9d7d25fcd3deaf230fbca2f6c8bba9c6f34e3e90a16a9"
+    },
+    {
+      "path": "app/components/cards/search/basic/SearchFieldCardCategory.vue",
+      "sha256": "a788fcccf2d8e821ce78eba844766696fd5888a1bd289db7b5ea958a779ab321"
+    },
+    {
+      "path": "app/components/cards/search/basic/SearchFieldCardType.vue",
+      "sha256": "ac249bae2e5a2c0e8ec466f4c2cced3616e30d17f1681a1cc88c2e46c7894056"
+    },
+    {
+      "path": "app/components/cards/search/basic/SearchFieldElement.vue",
+      "sha256": "a66df89481f2aa1dd29c1a2a27667692584dc6285ce21851dbe66b8639851d7f"
+    },
+    {
+      "path": "app/components/cards/search/basic/SearchFieldKeyword.vue",
+      "sha256": "5ebe25efa51535e257df553ced088419f0910bb4ed7a14244e5ebdeb57f0e5c7"
+    },
+    {
+      "path": "app/components/cards/search/basic/SearchFieldName.vue",
+      "sha256": "19b7ce09ee874bdfa1731d71d39f212379babd4cb4fca9d8e300ee00c3edd379"
+    },
+    {
+      "path": "app/components/cards/search/effect/SearchFieldCostOther.vue",
+      "sha256": "3a2eb97324224edd7199f2b9590724e766b0d2e27fd208ff73d4997b2bedd418"
+    },
+    {
+      "path": "app/components/cards/search/effect/SearchFieldCostSlotItem.vue",
+      "sha256": "f37e4e59df541d92dc5d1aa0ffc75247c63ffae3488227efc9caf52baab5edd5"
+    },
+    {
+      "path": "app/components/cards/search/effect/SearchFieldCostSlotSpell.vue",
+      "sha256": "545f3afa636e537e72b0b1f43f0a525dc22b3dd83b5c6fdea927c3c975e80e03"
+    },
+    {
+      "path": "app/components/cards/search/effect/SearchFieldEffectActivationCategory.vue",
+      "sha256": "c0d1fecfcbc9696df4c05ee563053a1aea2011dec9f7a5051369235d7ada9567"
+    },
+    {
+      "path": "app/components/cards/search/effect/SearchFieldEffectActivationType.vue",
+      "sha256": "ea9959c57728230a8372784b9aabc24e6f956efe54675c51b74c8e91912fecd5"
+    },
+    {
+      "path": "app/components/cards/search/effect/SearchFieldEffectText.vue",
+      "sha256": "33d01cd803ec3eef6a6471855b100cbc947df2978e3fb53ef4adaf0afb5cd67a"
+    },
+    {
+      "path": "app/components/cards/search/effect/SearchFieldEffectType.vue",
+      "sha256": "75f26c83bf1c2c9c529ca1a81c3781f2c6a76275b5a3414bc7031c9d34e372b9"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalAbilitySlotItem.vue",
+      "sha256": "72d6f03c1187eec38fb4abd75cc35e0766e7f17e1255d805546c90532de1704f"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalAbilitySlotSpell.vue",
+      "sha256": "45a76a36220812dbedbe6700f196bd071aa3fbf96ac2cf665daecf3d3d6ee606"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalAttack.vue",
+      "sha256": "8c6ad9e509e9f3d9f95dc1cda9e8bb585247681c9926df089dcfb98d4f13492a"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalCharge.vue",
+      "sha256": "8ebc5724c85a0a1adfcbf04f28482a6697131f630a919352f104b41d351e6815"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalDefender.vue",
+      "sha256": "3762caa0c1f94bcf8c9df0872aa2c4821d144572089e7b3f2cf72467fb15f7f2"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalDefense.vue",
+      "sha256": "f7fe6af31f3ead109d4ded2c48097a702a7210b32c2f9071c7fd8af87d8774cb"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalInitiative.vue",
+      "sha256": "b9e5963202262f860c00dd295e8f9932ac703fa8f32e02f3a08df1e3edb7568f"
+    },
+    {
+      "path": "app/components/cards/search/equipment/SearchFieldAdditionalResistance.vue",
+      "sha256": "0f7614e3512444933ba9b047dcc864fbb79d25eaba4f3c621dc8d78656c0127b"
+    },
+    {
+      "path": "app/components/cards/search/land/SearchFieldLandCategory.vue",
+      "sha256": "4b3746cc2c3a484986f2e8de9ce0cd69ec1276a3a3ae9a5856e3970fcb584452"
+    },
+    {
+      "path": "app/components/cards/search/land/SearchFieldLimit.vue",
+      "sha256": "ca8bb5881e4c52041670303a999320dda8d8fd6a4c15bdee6b725a11337fa9d6"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchActions.vue",
+      "sha256": "bc932de2b02901e1b228ebac7d00852c849dedc7cd092bc19259a44cc5cf35d5"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchFormBasic.vue",
+      "sha256": "eedf6c9b76bb91622bd5273949d4ad848230bde72ccc2dc2dd5c010a2d93605f"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchFormEffect.vue",
+      "sha256": "b418beae4b48b9228e7d6c5c72f683324025b940905134d7c3f2d0fcb24a381a"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchFormEquipment.vue",
+      "sha256": "eb1d8602d375c13a45bd74fde0acfa239308b2933b5b72acc588a5c6cedd883a"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchFormLand.vue",
+      "sha256": "a73e22f7c24a7ea28cb34784d9d882822c53ba55b8f53f8f8997b48e41ac617a"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchFormOrigin.vue",
+      "sha256": "3e8c8412f3205dc480cc5ed7ff0352b59210a2703fe3f4ac3e693ea674e67569"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchFormOther.vue",
+      "sha256": "607b1bba29e7b5e4367a86122a524b112cdacfe1a29060efb5a4d566d8e11a62"
+    },
+    {
+      "path": "app/components/cards/search/layout/SearchFormUnit.vue",
+      "sha256": "fadcfd805e2e454fc3e0491485ead5eee3176eaed2a03d51a36b7ae2cd130d4e"
+    },
+    {
+      "path": "app/components/cards/search/origin/SearchFieldBlock.vue",
+      "sha256": "c31360aa95ceef03e1f96bd55459b10f440c63b6fef282d44445b234b4fad5b8"
+    },
+    {
+      "path": "app/components/cards/search/origin/SearchFieldFaction.vue",
+      "sha256": "11c6cf203e794086fa3063ca75cd5363e767d78b9b06361ac487a7b19c179af1"
+    },
+    {
+      "path": "app/components/cards/search/origin/SearchFieldProduct.vue",
+      "sha256": "1c12641ddec0561728ac08ec24055805b9a78ecc35b2306e789293afcd755f54"
+    },
+    {
+      "path": "app/components/cards/search/other/SearchFieldIllustrator.vue",
+      "sha256": "26d5c8b62d132be867cd9fa12e59e2384a380729d216834905ee94109c4df3e0"
+    },
+    {
+      "path": "app/components/cards/search/other/SearchFieldRarity.vue",
+      "sha256": "0cbfc661c363e0c0680ac8555003a91bb9ecf530a9042b0f11e4f79fa6cf3e62"
+    },
+    {
+      "path": "app/components/cards/search/other/SearchFieldReferenceLabel.vue",
+      "sha256": "c386510bd4df44819587e723c08583891b750542b842cae76cfaa27b60db474e"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchCheckboxSelector.vue",
+      "sha256": "463926c2b0ead859e0a92754bfc441ac2900f69fc92f6a7b81865f32cd21934f"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchFieldDivider.vue",
+      "sha256": "4abbcd3ceab159071ed28f0d2aab4d32e424bfe10453e786bd4796049497afc0"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchFilterWithOperator.vue",
+      "sha256": "64fbd82a03eb54ec215c0f7af248af7e4b494bf48be6dc416a1203fcc9800dd3"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchRow.vue",
+      "sha256": "40b95abc6cc111f45a57e22cae37cfaacbcaa0395c2c0d834d9d112077c396ec"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchSlotSelector.test.ts",
+      "sha256": "eadbc2018f7e319391627f2b5f1616ecf10c3c28223c6e0568d79fc7a64045b8"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchSlotSelector.vue",
+      "sha256": "6e4a8c5643f74f191ea3c05c935ba522630dbb26e4582233f83099175a02da52"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchTypeSelect.vue",
+      "sha256": "b7a7e24a97dd5c2504fae463810000acb8d2b8695137063c7ea59026a708068f"
+    },
+    {
+      "path": "app/components/cards/search/shared/SearchValueWithOperator.vue",
+      "sha256": "df3452c2fd55bec067b33d3c35944b701b62529aa8f058c24e2117c255ee8dc5"
+    },
+    {
+      "path": "app/components/cards/search/unit/CardSearchFieldAbilitySlotItem.vue",
+      "sha256": "9e3665204de21d1df5275bdd68604994d77877a65536a573b62b77523d9b6ab6"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldAbilitySlotItem.vue",
+      "sha256": "9e3665204de21d1df5275bdd68604994d77877a65536a573b62b77523d9b6ab6"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldAbilitySlotSpell.vue",
+      "sha256": "a006be0b64aee139a410764d703087c813921a0397930754d3a2226883ea14c6"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldAttack.vue",
+      "sha256": "33204b7bd98b81a7b2de6c9f3c8cf46407143b955ab4d56d0946c5241f501ee1"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldCharge.vue",
+      "sha256": "5336adaeb1cf68e11609a8fc7216aaa2228db79955b5d7060a3f95c77e6a1ac7"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldDefender.vue",
+      "sha256": "32db2048fd454e9b58e68445f89b70c774affa91dd6ea9f5eb4a4634f38ac4b4"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldDefense.vue",
+      "sha256": "9ebeae9d2313daa32f35a54d4454cdec427b462bf5b90e96ebb78e2af4c40eab"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldHero.vue",
+      "sha256": "9ccf7bcf1e7585ad920e7c08ecdec7868a349fd65ecff8d4028bbf6eabc6b9ff"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldInitiative.vue",
+      "sha256": "1ad73847d34be85fc33bf4ed9b961234b396996e921ebd6e5cc9c763eb551bd9"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldLevel.vue",
+      "sha256": "abf212a21a5177842b64c885a8b4074d4ab5fd819ef62cc792da03b2265415c6"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldMoveType.vue",
+      "sha256": "2733503f1488f9a8eaae023899afd2b960548893748f13beea440d038b277bf7"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldRace.vue",
+      "sha256": "1808ad8d183fcaff4889190b5ccb83643fa16c82b4a724dc18f0592f5e954ab2"
+    },
+    {
+      "path": "app/components/cards/search/unit/SearchFieldResistance.vue",
+      "sha256": "c0bef28384f6e4d60b3573c02ff84d80c5dd3531beee32dc28bcebc71c6bf6ec"
+    },
+    {
+      "path": "app/components/cards/shared/CardTextureBackground.vue",
+      "sha256": "75e332643ca7c1eeaebf5c36028d037946f1979e3ba61f11bc9467764aa9cf35"
+    },
+    {
+      "path": "app/components/cards/shared/CategoryLabel.vue",
+      "sha256": "4b9ffa01d3ebfd222e947b912c414eb4149ec283a00069eba769095bf590ee1d"
+    },
+    {
+      "path": "app/components/common/app/EmptyState.vue",
+      "sha256": "e16e868cdd8979b7908db6b40e9e8fa5caad957620093498a6245af923133581"
+    },
+    {
+      "path": "app/components/common/app/ErrorState.vue",
+      "sha256": "578f3166daab1ffa11ef7779b03e382ad0cff9c07c0225793f770419f890f9bd"
+    },
+    {
+      "path": "app/components/common/app/SkeletonLoader.vue",
+      "sha256": "7971dcc8e4013395595d6aa3fa782a57c9b092a7a3413f75663bd3437e270365"
+    },
+    {
+      "path": "app/components/common/icons/CircleIconBase.vue",
+      "sha256": "cdda3eb907191a394bbca91ef484da896221e4b7f6d8613c6d101a7d2c1d6a40"
+    },
+    {
+      "path": "app/components/common/icons/CrescentIcon.vue",
+      "sha256": "21df1bf2f144bf53910bf7d90c631daeb9f131304a7a8ec4329cd4d5c3c09724"
+    },
+    {
+      "path": "app/components/common/icons/ElementIcon.vue",
+      "sha256": "77bb18e4151fe1388679db5d50655723893b0153755d9425db3bd578787b0f71"
+    },
+    {
+      "path": "app/components/common/icons/HexagramIcon.vue",
+      "sha256": "104ec6401bdacabfdb7ac67da1c362a21eff4f1c7232bcc41df4168da5cfb505"
+    },
+    {
+      "path": "app/components/common/icons/ItemBulletGryph.vue",
+      "sha256": "dfc9cd6a28bf305449424afa082c564d5d55c01aac1907fe7f0ff76b3a83557c"
+    },
+    {
+      "path": "app/components/common/icons/ItemBulletIcon.vue",
+      "sha256": "c85dbc2b1b2f8b98a7f1184ad76eca470e82f7ccf374ea4a7aea4cdab932ece2"
+    },
+    {
+      "path": "app/components/common/icons/ItemCommonGryph.vue",
+      "sha256": "7e2fc4e468a65ed77dd951092b29dea808f5d44019a7c6ec16a72913ac159128"
+    },
+    {
+      "path": "app/components/common/icons/ItemConsumeIcon.vue",
+      "sha256": "4ac33f741dda117d7f59eab595da62aedaedbdeca8030331e1cf7ff73b51ff38"
+    },
+    {
+      "path": "app/components/common/icons/ItemEquipIcon.vue",
+      "sha256": "56dad0219b001b9c388dbe26acbc1ec18fb52709dbf90587a89d326321acfa62"
+    },
+    {
+      "path": "app/components/common/icons/SquareIconBase.vue",
+      "sha256": "95ca0bdc154075ce49840e340d116f701dbc5f858f14be7bca9b7d93a1e95383"
+    },
+    {
+      "path": "app/components/common/icons/SummonerGlyph.vue",
+      "sha256": "cf2e6a4084771b328e00dcb495454fee9c8920c78014a9cca291428159bf0126"
+    },
+    {
+      "path": "app/components/common/icons/SummonerIcon.vue",
+      "sha256": "fa31dc50d6965f7a7c55649e6a75a743d20d39766530e8aa8bb98ba92a8b1785"
+    },
+    {
+      "path": "app/components/common/layout/ContentMaxWidthContainer.vue",
+      "sha256": "55f9824c5a551377fbfe55eac1f1de2b8ea339b93bfe3dcb4164873d3b9799ef"
+    },
+    {
+      "path": "app/components/common/layout/SectionCardShell.vue",
+      "sha256": "65a8f0b2405d15ec9683387421834b4b9ba1b1262ba4a574272c44b768c37100"
+    },
+    {
+      "path": "app/components/common/layout/SectionHeader.vue",
+      "sha256": "b952216252d98bb0dc2b297322e9bde9c80ab32b88b2779809780db9f92465d1"
+    },
+    {
+      "path": "app/components/common/layout/StickyTableHeaderRow.vue",
+      "sha256": "feeddd29995de7dd21b51438a761cace3110d21bb3ad679ab8404219ecddd238"
+    },
+    {
+      "path": "app/components/common/layout/ZebraTableRow.vue",
+      "sha256": "5d5b13002071df5a513938da18c72c863561336a8a10c9c4d6220fb64fb4d2e7"
+    },
+    {
+      "path": "app/components/layout/AppHeader.vue",
+      "sha256": "7af5efa262e123c53de715b57abd19d5095276506f9a64da866099e959af116f"
+    },
+    {
+      "path": "app/components/layout/AppNavigationDrawer.vue",
+      "sha256": "f11b5236d08aa7a3ce5334e40a3dd096fd0fba50e1805aa038614d04bf20ae78"
+    },
+    {
+      "path": "app/components/layout/HeaderTitle.vue",
+      "sha256": "0836d49b8c93fc6804a49864a4e49be763253044e247549c3bdf55060a9bd89b"
+    },
+    {
+      "path": "app/components/layout/NavigationFooter.vue",
+      "sha256": "301bb2b484e53ac71c6f405edf861b61a535c827ade1a94f19eea433edab49c3"
+    },
+    {
+      "path": "app/components/layout/NavigationList.vue",
+      "sha256": "08f564e1a9f82f5112518659d584a04de9eed974ca85acf0d964510e9faae818"
+    },
+    {
+      "path": "app/components/layout/QuickSearchBar.vue",
+      "sha256": "8021011b3adfc163d893285ca5019fb590384b12badca6e0075d4d450ff5a133"
+    },
+    {
+      "path": "app/components/layout/SearchMagnifyButton.vue",
+      "sha256": "8e9a9a00e239a6f235b16f32f6aef38e905d3e0edd1a41ed7be271610834cd6c"
+    },
+    {
+      "path": "app/components/products/ProductTable.vue",
+      "sha256": "20a5e9e4c261e244697cccacec2c1590b4dbe1377c6c3e45df5d0f83b9c4932f"
+    },
+    {
+      "path": "app/components/products/ProductTableRow.test.ts",
+      "sha256": "66b8d4811222cf2b5d0fe322eed4cd79c34878b9658243d89231f28f8972dcf3"
+    },
+    {
+      "path": "app/components/products/ProductTableRow.vue",
+      "sha256": "a442d258d80dd508db21f14582c469cda1fadbc9ef69fced4b2f12da6f41b85b"
+    },
+    {
+      "path": "app/components/restrictions/RestrictionRelationTable.vue",
+      "sha256": "496a92302a5162853cceace619a0c01f94d63fad4ce72236151fc2101b2c7109"
+    },
+    {
+      "path": "app/components/restrictions/RestrictionRelationTableRow.vue",
+      "sha256": "ac50f41dbb5c8b6e07fabf88535925cbc5176a1b0895a23b1573e2e3356b1f3a"
+    },
+    {
+      "path": "app/components/restrictions/RestrictionTable.vue",
+      "sha256": "9e20ba159034f1b956a42a7a5c13e24b6e957bf6a2afe9117fd025a164059909"
+    },
+    {
+      "path": "app/components/restrictions/RestrictionTableRow.vue",
+      "sha256": "95def020d25733e1af8a68f102230f7c003d1edf083c278fda685f6e15488995"
+    },
+    {
+      "path": "app/components/rules/CardRulingExpansionItem.vue",
+      "sha256": "b1eaa97fbae852fd85ade33ecb972fcb9bfda2d7c4688cf142662e964a5a8fef"
+    },
+    {
+      "path": "app/components/rules/CardRulingList.vue",
+      "sha256": "34e3827a75b29105cbfed8026bf775bb0f42cc0f797d986f8a3e2b9011571852"
+    },
+    {
+      "path": "app/components/rules/QuestionAnswerExpansionItem.vue",
+      "sha256": "1d520715c02d88b6fa7e6b084134d41cede44ff67cf2062e94a6d6e791b6aa1d"
+    },
+    {
+      "path": "app/components/rules/QuestionAnswerList.vue",
+      "sha256": "cc8fc1853396d6d599b62a46f2e9a0f216c1c8e0a00b069f7150479be054a81c"
+    },
+    {
+      "path": "app/components/rules/RuleSupplementExpansionItem.vue",
+      "sha256": "c11661581dd4d90d6d0b61966977327040f37e070a5eb36f061bc15b62a1e6bf"
+    },
+    {
+      "path": "app/components/rules/RuleSupplementList.vue",
+      "sha256": "b6853623d53633673b6f9966e07b971854bd160d3a9cebf9c9d54e14b371e432"
+    },
+    {
+      "path": "app/composables/useCardSearch.test.ts",
+      "sha256": "3ddf3d00fd739da6b71580ee0ec0ba68fd836249b2665fcce7883865f34f4334"
+    },
+    {
+      "path": "app/composables/useCardSearch.ts",
+      "sha256": "7e5fabac987552f668836dfd647004f949517e10970c7e910a0a993bfc5dbbbc"
+    },
+    {
+      "path": "app/composables/useCardSearchForm.test.ts",
+      "sha256": "fc36035c516c878d776a5db6698fde2d2843577a5d36e27aed0f3b5909b3d669"
+    },
+    {
+      "path": "app/composables/useCardSearchForm.ts",
+      "sha256": "ca0a131f4c0ede34031b126030a5583be53ba618fcfeb97fc518fcd8bb24fc70"
+    },
+    {
+      "path": "app/composables/useHeaderAwareScroll.ts",
+      "sha256": "4fe0d8299f3cda6353e1fd83ce7002ae514ea16f46698a83eea52b8b3f918b1b"
+    },
+    {
+      "path": "app/composables/useHydrated.ts",
+      "sha256": "79b1664b7399c68d2eeb629b94d40b3a3598119e31e76b3604d11e19b4e8bc7a"
+    },
+    {
+      "path": "app/composables/useQuickSearch.test.ts",
+      "sha256": "351e1ff930f57992e9935a2c094c8a9cab483b2da4e31cf1eff4f5d1af4d0b89"
+    },
+    {
+      "path": "app/composables/useQuickSearch.ts",
+      "sha256": "ee2cef3e4103ef27a4b906b2a49f23a973fae087cd292917bad6e5bc45ff424e"
+    },
+    {
+      "path": "app/layouts/default.vue",
+      "sha256": "c9d6c12dc0c2c6ef7d90eea31831d530d95bd7f722d22625b5cc8d515a35b281"
+    },
+    {
+      "path": "app/pages/index.vue",
+      "sha256": "b34c82bc1c9abb3f5e22d2d9ca159ba2d69a8886daaa17f93ef6cf90c2f39e81"
+    },
+    {
+      "path": "app/pages/product-set-navigation.test.ts",
+      "sha256": "8711e14a233694e0d08987a49117033ad67101f19202fea8b38872b14ef4be32"
+    },
+    {
+      "path": "app/pages/about/index.vue",
+      "sha256": "00496df3a02cb30a345e9e407085750cec9f797bf6c5b7ff5ec91ecbdcae31d8"
+    },
+    {
+      "path": "app/pages/cards/index.test.ts",
+      "sha256": "cfb998321ce6f5ca7569e2fe6f709447a927d4c6a69be03de061dee91dd4580e"
+    },
+    {
+      "path": "app/pages/cards/index.vue",
+      "sha256": "7c6c4a36891484665206b6a5d7b432bc44f826c41c50d5872425a480d1931cf7"
+    },
+    {
+      "path": "app/pages/cards/search.test.ts",
+      "sha256": "531b4eea8bc07c2cf59b51cb2f6e27fddf4e1c6fd52aecde270b9f3c43cd395e"
+    },
+    {
+      "path": "app/pages/cards/search.vue",
+      "sha256": "d2fafdb45a37a130df56d3087bb341b2b1609cdfa351522ea3f1080849691c47"
+    },
+    {
+      "path": "app/pages/links/index.vue",
+      "sha256": "3646ab2542536d0cbbc65eb03247a4cefbb975adf1a296e0ae474b5ab132397c"
+    },
+    {
+      "path": "app/pages/restrictions/index.vue",
+      "sha256": "e54fb0f92ac9227fb801ae9b5a286cc2475d37d113d0b1f60b89ad8477ace750"
+    },
+    {
+      "path": "app/pages/rules/index.vue",
+      "sha256": "62a342d8cc45837e0bc2df1407f52047e63911c98f99f3cb573c467546a8a38b"
+    },
+    {
+      "path": "app/pages/tournaments/index.vue",
+      "sha256": "62003ec510f113eeafd0a6c519f0a721f532704f4eb201a30ba76e67f6e4edf2"
+    },
+    {
+      "path": "app/types/ui/cards.ts",
+      "sha256": "80c7b28dbd3cb103c05586132fbcf8e403905b81fb23bcad47760300a82ce340"
+    },
+    {
+      "path": "app/types/ui/layout.ts",
+      "sha256": "8c166582c3fe96729a2f0d1df2626391f91977707b604e3ac0561d8b41d4b573"
+    },
+    {
+      "path": "app/types/ui/result.ts",
+      "sha256": "b9df0d3e9636973ddee5c2053023570fe1b16b0e1d4f050943862990d736ed92"
+    },
+    {
+      "path": "app/types/ui/rules.ts",
+      "sha256": "fa8293ca58dd6d5d0e7de39d0c6a8fd62c702f12d6cfbca25ab8f6013a0cc57e"
+    },
+    {
+      "path": "app/types/ui/search.ts",
+      "sha256": "9acb9b7f3cdcefe1ba912584245a679cff80b038f4320e9be0007a3013b69a82"
+    },
+    {
+      "path": "app/types/ui/searchOption.ts",
+      "sha256": "393ce076f8df3c3adcce49b23ae11afc406258f033df9effc83128c10ec1b4c8"
+    },
+    {
+      "path": "app/utils/cardDesign.ts",
+      "sha256": "b22bea1ae11596b5d55896600172e07c570ef877412f8324decca581baf37af2"
+    },
+    {
+      "path": "app/utils/cardSearchDataset.test.ts",
+      "sha256": "00c5ddf9a8973416d524b0cfd68cfa544232adb54326ad23791e2058816ba5b3"
+    },
+    {
+      "path": "app/utils/cardSearchDataset.ts",
+      "sha256": "64f315af2c8ca627aa62501fc42afe850717877f32779e2856693859339b72f1"
+    },
+    {
+      "path": "app/utils/circleIcon.ts",
+      "sha256": "c3ecff472cb727a34575592188e99376f503d874410ffd653579a899e9b25c6a"
+    },
+    {
+      "path": "app/utils/hexColor.ts",
+      "sha256": "be5e1d036945e8ae77b083e4747a105a394e44edbb6f4755b011ae1522fc1e44"
+    },
+    {
+      "path": "app/utils/ruling.ts",
+      "sha256": "cfdf69e5a279b75aedecec3f455157f577c76dd9b2b8129899332f3b9db6652c"
+    },
+    {
+      "path": "app/utils/sample.test.ts",
+      "sha256": "2120a0701a3cd0bd61950079a73b2aa690f5a956aa7243a6580135d18c4aea83"
+    },
+    {
+      "path": "app/utils/constants/colors.ts",
+      "sha256": "17c93a17cd99500babaa5915756b781729375ebb5fc45236eb531f58547ae7d5"
+    },
+    {
+      "path": "app/utils/constants/ruling.ts",
+      "sha256": "493b0951836ff11c6b0734108e329bb3b23ad95f13bd3d57d2161a1eba8e2901"
+    },
+    {
+      "path": "app/utils/constants/search/conditions/index.ts",
+      "sha256": "23bbc30bc5ff014d8e8ea67fe9ecf60eb1693344c8961becb1926f225e8cbb2d"
+    },
+    {
+      "path": "app/utils/constants/search/conditions/logicalMatch.ts",
+      "sha256": "6e7f4b2623928c6add8fcc5241c4aa54ebc146a6d308a385962eff57a3f3fef7"
+    },
+    {
+      "path": "app/utils/constants/search/conditions/numericOptions.ts",
+      "sha256": "11e32e124b333c4958a98c7294a3c7f1ae3385e7616dad8b21b647124c41522c"
+    },
+    {
+      "path": "app/utils/constants/search/conditions/searchFilter.ts",
+      "sha256": "17492d51e66b0d0017ad9c029fb32bc8f975d2b05ec150c97ddb1380f810f865"
+    },
+    {
+      "path": "app/utils/constants/search/conditions/searchOperator.ts",
+      "sha256": "ad609459c9554e4c9065e60f851286cc5dfc0a03b38dd56e45e024fa1332f35a"
+    },
+    {
+      "path": "app/utils/constants/search/items/additionalCombatItems.json",
+      "sha256": "87e6ade08258c3a8ad80c74a102f77d5fa051708751358227785a84aa7c96beb"
+    },
+    {
+      "path": "app/utils/constants/search/items/blockItems.json",
+      "sha256": "4a3d4e8d469e50fcab40001aefb6e811eb04e3fbf98784f4c5b6cb88c959d61f"
+    },
+    {
+      "path": "app/utils/constants/search/items/cardTypeItems.json",
+      "sha256": "ea756c1a1d3b488ffada10509025dfcfe8618d9133b1bee9552df4843b59e262"
+    },
+    {
+      "path": "app/utils/constants/search/items/chargeItems.json",
+      "sha256": "21057480d7f9cbe6026cd21fd75c7c4bd6f553dfcdcbcf7212714336653df4f3"
+    },
+    {
+      "path": "app/utils/constants/search/items/combatItems.json",
+      "sha256": "2afccee4ded8782fb63b40f5e0c9bc7a974419fd582c1c1fc3dc8898e6880b48"
+    },
+    {
+      "path": "app/utils/constants/search/items/defenderItems.json",
+      "sha256": "431967b0625eb9b1bff3415d83d7b08c163e490a4c7fc7b13d0b58ae685efff6"
+    },
+    {
+      "path": "app/utils/constants/search/items/effectActivationCategoryItems.json",
+      "sha256": "87b92d8b1384d242d7e4fbd7918184b73754a1b12a0fba5cdc7a383bed0cf850"
+    },
+    {
+      "path": "app/utils/constants/search/items/effectActivationTypeItems.json",
+      "sha256": "ae1926b12a90cb0d65e2886c5e831df60f7ee80dfbd832f709b6878fa7bf73f4"
+    },
+    {
+      "path": "app/utils/constants/search/items/effectTypeItems.json",
+      "sha256": "4e94698cd4ffe3b9a425a02b9d06a3eac6fc0633b842e5317777ffe775ad7a9b"
+    },
+    {
+      "path": "app/utils/constants/search/items/elementItems.json",
+      "sha256": "a01e7694ce7f729aa3dbe0573de377ff51befadf612f14e16a51a146ec108d2a"
+    },
+    {
+      "path": "app/utils/constants/search/items/factionItems.json",
+      "sha256": "a070f14060330aa26a0eb6108ffc4a72fe1fd8e195bfb4fa8229a117a938442e"
+    },
+    {
+      "path": "app/utils/constants/search/items/heroPointItems.json",
+      "sha256": "85ac5669704fbb098d7e322676980b396117d46379fdc010c95c67fd6d0d8f3d"
+    },
+    {
+      "path": "app/utils/constants/search/items/illustratorItems.json",
+      "sha256": "0cf687ba5648be741bd178cacb3485c39a311f472d392c34b195e5305d2e55ea"
+    },
+    {
+      "path": "app/utils/constants/search/items/index.ts",
+      "sha256": "4d5eca32f635267e2d9544edce8ba31babd3eab0af02fe828c366d6cc76fb419"
+    },
+    {
+      "path": "app/utils/constants/search/items/initiativeItems.json",
+      "sha256": "ac63728c3fcd5e92a4a926bb153a6941e1d3a13a09e066a8462fe67b181b2706"
+    },
+    {
+      "path": "app/utils/constants/search/items/itemSlotItems.json",
+      "sha256": "dd0d5d8c44c61ee4e8bf996525408fe20eb21b9cfb645611141181a169d8d9c5"
+    },
+    {
+      "path": "app/utils/constants/search/items/levelItems.json",
+      "sha256": "3f3b640f6971fe3444a212868e51d5dbd18ffc46f5d8cf0e67d0d66116414cde"
+    },
+    {
+      "path": "app/utils/constants/search/items/limitItems.json",
+      "sha256": "2afccee4ded8782fb63b40f5e0c9bc7a974419fd582c1c1fc3dc8898e6880b48"
+    },
+    {
+      "path": "app/utils/constants/search/items/moveTypeItems.json",
+      "sha256": "9e5bd64be3b5df19aff23292e68a36fde741050be18cd1d3dda4f573e8a4f99c"
+    },
+    {
+      "path": "app/utils/constants/search/items/otherSlotItems.json",
+      "sha256": "d245bb86400796491995e12591adc067db141d27c1aacd6b92e353481ba47dcf"
+    },
+    {
+      "path": "app/utils/constants/search/items/productItems.json",
+      "sha256": "df35348308e1b98be9c393e381cc52b5498052d233bc40d0267cbf303e884a97"
+    },
+    {
+      "path": "app/utils/constants/search/items/raceItems.json",
+      "sha256": "f9e66c2f951f4b7671bdbedb0cbab65585d01a6db5f2cb00dbcafa313b760e15"
+    },
+    {
+      "path": "app/utils/constants/search/items/rarityItems.json",
+      "sha256": "fff826cab93a36176465c4a00c1a002de32f009aaa17db3e2be06be7088058c5"
+    },
+    {
+      "path": "app/utils/constants/search/items/resistanceItems.json",
+      "sha256": "6a599f1de17df3fc3d1e86f3f09662c2a07d178f5898beb21790027c8f673ce7"
+    },
+    {
+      "path": "app/utils/constants/search/items/spellSlotItems.json",
+      "sha256": "56397c39a16154af66753139e7d80e435852df58515ff2e1e4b69f29000612b6"
+    },
+    {
+      "path": "app/utils/constants/search/options/additionalCombat.ts",
+      "sha256": "7834425d18ae1c40a90bc6fa84d538748925e60a24b3298101e832e1b1b083cb"
+    },
+    {
+      "path": "app/utils/constants/search/options/block.ts",
+      "sha256": "24795b92220ad0e1cb61365594c55c9dd14c83111764399cdf19e525188b613a"
+    },
+    {
+      "path": "app/utils/constants/search/options/cardCategory.ts",
+      "sha256": "ac398972d534a56b3379782a45fc3f452c50984a5900cef56a1b2e505d35fc03"
+    },
+    {
+      "path": "app/utils/constants/search/options/cardType.ts",
+      "sha256": "7ab9f8094779923bd44ced993398061594d50c9a14200a9b9c445da6341515f0"
+    },
+    {
+      "path": "app/utils/constants/search/options/charge.ts",
+      "sha256": "ced3ba2a19e2d60abd9312d8deb1538c6036c9252f0804d7d70935e48563aa08"
+    },
+    {
+      "path": "app/utils/constants/search/options/combat.ts",
+      "sha256": "b80710e154370c5054358194b700c3e33db5105d78942ffed3f30add82080cec"
+    },
+    {
+      "path": "app/utils/constants/search/options/defender.ts",
+      "sha256": "2825d2f9413b96c69d0013b26867e4d9b156bcf1d29080ea40c1b155d7a6b51c"
+    },
+    {
+      "path": "app/utils/constants/search/options/effectActivationCategory.ts",
+      "sha256": "4923d42a38822b15a593bafe235a021470a5d330557f4a4460c81c0f8f8ebe3a"
+    },
+    {
+      "path": "app/utils/constants/search/options/effectActivationType.ts",
+      "sha256": "5a08f59fd31f6a6baed0ef1c4c587bc517771c53c2e4005aa6be4cb67c27413b"
+    },
+    {
+      "path": "app/utils/constants/search/options/effectType.ts",
+      "sha256": "d05cebccecca3a96acf4866dd851c1733cd216ad2185628d4130490e5057969b"
+    },
+    {
+      "path": "app/utils/constants/search/options/element.ts",
+      "sha256": "6a210783a6e990da9550e5e5e5f1d19d04592de828dc79714c2e9baeed9fb21e"
+    },
+    {
+      "path": "app/utils/constants/search/options/faction.ts",
+      "sha256": "7df699352e452015068d25470a2d05ead500be4d6b2aa0e5fcee186d000940cb"
+    },
+    {
+      "path": "app/utils/constants/search/options/heroPoint.ts",
+      "sha256": "7426d8d260af6005a479a7a52a977b85c9394149fde1b9adbbdbe984e0a30511"
+    },
+    {
+      "path": "app/utils/constants/search/options/illustrator.ts",
+      "sha256": "ab4acaf08e0a12cff9331d5d250d644fb9fec098fb0514e47ef33059ca741b9d"
+    },
+    {
+      "path": "app/utils/constants/search/options/index.ts",
+      "sha256": "edb60da0263f9e14921932548d3a0e2fc2795e5931d47e9393d898c3a8f1c28d"
+    },
+    {
+      "path": "app/utils/constants/search/options/initiative.ts",
+      "sha256": "8548597c6b8b3bb836c77a6630eded0557c03875e107e4f79e27773f670ef3dc"
+    },
+    {
+      "path": "app/utils/constants/search/options/itemSlot.ts",
+      "sha256": "5807795ae2be49f61078d83a06551cba4dffd87bd22443c1d6519c7ffb44066e"
+    },
+    {
+      "path": "app/utils/constants/search/options/landCategory.ts",
+      "sha256": "103599483ff2dd1e2aedf9b1db3dda468ae3b8561bddbcd99f4343fb66263b55"
+    },
+    {
+      "path": "app/utils/constants/search/options/level.ts",
+      "sha256": "4338d13471ea112e0fdbd9fad63952299445b80af707c3702e22f9bf3948d7f1"
+    },
+    {
+      "path": "app/utils/constants/search/options/limit.ts",
+      "sha256": "d5ed48f03c7f65ff9db9f969e971c7cf84f8cc153111ab3914318d4a34d1c2f6"
+    },
+    {
+      "path": "app/utils/constants/search/options/moveType.ts",
+      "sha256": "e7a897ad3453e511f92aac62eb49c31545d73eba0402037abf5d3dd19e4334f9"
+    },
+    {
+      "path": "app/utils/constants/search/options/otherSlot.ts",
+      "sha256": "9630e195a88bf7ad9b960999c2b1963985c8c62b97a9e850367380187efd11a8"
+    },
+    {
+      "path": "app/utils/constants/search/options/product.ts",
+      "sha256": "75f8e4c5faa4afb41d65335ede0b70029f8c03334f1958e5ffc99c33f865105b"
+    },
+    {
+      "path": "app/utils/constants/search/options/race.ts",
+      "sha256": "e4de7057dfb1cd6652d0744577ff38f39e49b7dda2fe6a7cae63690fb678deea"
+    },
+    {
+      "path": "app/utils/constants/search/options/rarity.ts",
+      "sha256": "265cbe160411f4be0241467163924470b01798bb851621315f9240a1152f1714"
+    },
+    {
+      "path": "app/utils/constants/search/options/resistance.ts",
+      "sha256": "626141146cec31ded20b18525d12d05852a7b15ef5230308947633e1853547eb"
+    },
+    {
+      "path": "app/utils/constants/search/options/spellSlot.ts",
+      "sha256": "3d9cc3f160d6abf52490694a2c5ebb61829fd6765e4e0037ab82a19d83750f0c"
+    },
+    {
+      "path": "app/utils/mockData/about.ts",
+      "sha256": "76bf53275174207d1573909312cee95d9c315008904efec925a1eb74c5519f1b"
+    },
+    {
+      "path": "app/utils/mockData/cards.ts",
+      "sha256": "f00f39a4281ed5d0fdada53769927e75336580aa6957fb8e2fb5c9afc037cf65"
+    },
+    {
+      "path": "app/utils/mockData/index.ts",
+      "sha256": "6a30d14ab8e49a6590ab07f2f6fe9155f38a406060fc82ce622c07443b42b4bc"
+    },
+    {
+      "path": "app/utils/mockData/indexPage.ts",
+      "sha256": "f9f0d28a31ddad62a2f9d541aa188d896468197d464e5820db7cee713e62a587"
+    },
+    {
+      "path": "app/utils/mockData/links.ts",
+      "sha256": "9048f9703d6bfea1747b7b300e9224cec9548663aba86bbdcd537ae49682b58c"
+    },
+    {
+      "path": "app/utils/mockData/restrictions.ts",
+      "sha256": "fab9fe5e1a48c0f440ee2858a2a3fd37d888aa0240a66967ff65912757b3f0fc"
+    },
+    {
+      "path": "app/utils/mockData/rules.ts",
+      "sha256": "aef6f211211cd8bbab955ec7fd99a1b1a8fc53cdb4f1bb7c19945d4d321f3be6"
+    },
+    {
+      "path": "app/utils/mockData/items/about_release_note.json",
+      "sha256": "0bc8e0e83709441921fd5486fed3f8ad9d134ec8afd1364a9ab3269384674fc1"
+    },
+    {
+      "path": "app/utils/mockData/items/cards.json",
+      "sha256": "c61fb45cf49b009a5e0628b66aa0617a6de0ead0e532b8e5aab9a5d5196e194c"
+    },
+    {
+      "path": "app/utils/mockData/items/rule_errata.json",
+      "sha256": "feadbc2da035060eb0acf5110f6d1b5636c394e31434bf93ee0157e0951e836a"
+    },
+    {
+      "path": "app/utils/mockData/items/rule_question_answer.json",
+      "sha256": "282cbd1296bb8e30316a261a24ba134bf8cfe05d24dbfbd3ba3b21229c599e40"
+    },
+    {
+      "path": "app/utils/mockData/items/rule_restriction.json",
+      "sha256": "d69a255bfdbc2b43cbb5120c81caccfd062ff99534320bcbb03995676f3daedc"
+    },
+    {
+      "path": "app/utils/mockData/items/rule_supplement.json",
+      "sha256": "43e9a6b8123b8f12a37009b1dcc4ef705abe326d0193b3fdef2817a0d72d31b6"
+    },
+    {
+      "path": "app/utils/mockData/items/rule_text_change.json",
+      "sha256": "33e79329748c6e3133ef8b63bb885b3a28975a908c885bd7d49652b2e0e682c3"
+    },
+    {
+      "path": "app/utils/mockData/items/rule_text_individual.json",
+      "sha256": "34fb4e02b21bbe408f371d9b3fc2d6271970ccb6a2c587a81b3bf71b8ec2b8d1"
+    },
+    {
+      "path": "app/utils/search/cardSearchChanged.ts",
+      "sha256": "c197a733d939c969aef23ee26ba3de565d2f0e88bc524b0ac555379e1b3eeda6"
+    },
+    {
+      "path": "app/utils/search/cardSearchFormFactory.test.ts",
+      "sha256": "9fcb50ed577398d851d549001ab5ae39da66ca05e53ef5bc62edd8b49e1bb21b"
+    },
+    {
+      "path": "app/utils/search/cardSearchFormFactory.ts",
+      "sha256": "fc5d9377b5d19fd37b31c50805e4698faf248f00510aea01108a04f0d75aed23"
+    },
+    {
+      "path": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "sha256": "10f1712c79749a15118ab8f7c29e799451c40ded523f90cd83e4276a399cb572"
+    },
+    {
+      "path": "app/utils/search/cardSearchQueryBuilder.ts",
+      "sha256": "aa1e0a8ce869120d27938e72627265a50d6288502a9fa4cbb1931d7572937962"
+    },
+    {
+      "path": "app/utils/search/cardSearchQueryParser.test.ts",
+      "sha256": "1cc29e60a151f8d146900cc29b35d04cd3e461588f0f6b5e58fe92cc9de8f38d"
+    },
+    {
+      "path": "app/utils/search/cardSearchQueryParser.ts",
+      "sha256": "d454ced1a93772971afb191a061108fa098b59d04776bf56362f92b76f476495"
+    },
+    {
+      "path": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "sha256": "b6231879634fcbdc3a7258e91b3843fbfd853321369f182516fb0a101b8ac798"
+    },
+    {
+      "path": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "sha256": "9fc1a474f19ba7cb6ab5879a78a555a36b4e204e54be2aa4ac3a2430adbc305a"
+    },
+    {
+      "path": "app/utils/search/cardSearchQuerySchema.ts",
+      "sha256": "a1740c0d1b59033651e7826e246c7a44aa506075c8495108e2bfbe578ad6db97"
+    },
+    {
+      "path": "app/utils/search/cardSearchQueryTestFixtures.ts",
+      "sha256": "ef40354d2097be01d533e167e82f583379bb7bf04ee7522cdb1c19d8b563cb0b"
+    },
+    {
+      "path": "app/utils/search/productSearchLocation.test.ts",
+      "sha256": "c8801fb885ba6edd0b4326f2379219a56016a45a994e89ee3a697288c6ca92e4"
+    },
+    {
+      "path": "app/utils/search/productSearchLocation.ts",
+      "sha256": "2c9ab2404d30606572f3cfc7803b031a33dd071bea0a08f7a892a9aec2dfd31a"
+    },
+    {
+      "path": "app/utils/search/quickSearchQueryBuilder.test.ts",
+      "sha256": "7b6083c16524ebe3578dcce6d5a4a7b83ba78252c3c6f2e758945a89d7f6ac59"
+    },
+    {
+      "path": "app/utils/search/quickSearchQueryBuilder.ts",
+      "sha256": "f41dc8e558f67c4681ccc609fde4bf4a660020f12038b9a4296e88bee388d973"
+    },
+    {
+      "path": "app/utils/search/quickSearchQueryRouter.test.ts",
+      "sha256": "e04ba045adbc98e6d13923907c7a006ae554026eb1c270d62b2202b20672d689"
+    },
+    {
+      "path": "server/api/cards.get.test.ts",
+      "sha256": "af34704b5d42e61065d6a30c6846b51639de130db469b3892b67cde91192a917"
+    },
+    {
+      "path": "server/api/cards.get.ts",
+      "sha256": "ac50c043f10158f6552ecd85b33a390fd609ebc417c455a13b2f1bf38456bfcd"
+    },
+    {
+      "path": "server/api/fixtures/cards-response-baseline.json",
+      "sha256": "319621f20b23d6e8cc68d1944119e367ce542093191ae7894ab2d7b65be04c53"
+    },
+    {
+      "path": "server/types/cardSearch.ts",
+      "sha256": "3b04c824c1f858518bd3aa864e1fc815a679dca41f8f67e3fab27aa9f64c1472"
+    },
+    {
+      "path": "server/utils/cardSearch/dataSource.ts",
+      "sha256": "bcaa08d98c89d1276706550e74ade140cce9d7dfef53dbcb18837a4db40799ec"
+    },
+    {
+      "path": "server/utils/cardSearch/normalizeCatalogText.fixtures.json",
+      "sha256": "c6242ca495ecdd5c896f8a6a1c39f0939ebdad1d5b74f625de4943bd914781b1"
+    },
+    {
+      "path": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "sha256": "cd40d219446ee62b3da95fc172c1f99c43f9ad895ac4ef2cddc085003e66a6a5"
+    },
+    {
+      "path": "server/utils/cardSearch/normalizeCatalogText.ts",
+      "sha256": "4660eab3c0e5d1596c1488be6ff3e43a7040c2abd5dc0d4eba71ad284a383de7"
+    },
+    {
+      "path": "server/utils/cardSearch/paginate.test.ts",
+      "sha256": "5d17d8e4fe8314c8ea4375d70f21801bcc5d746d63468ac589dd4cd9563d278f"
+    },
+    {
+      "path": "server/utils/cardSearch/paginate.ts",
+      "sha256": "14c09276fbbaa99babb58e80d3c2f0839f284c0970041619547020ec7d653e9e"
+    },
+    {
+      "path": "server/utils/cardSearch/project.test.ts",
+      "sha256": "2018f2aacc99efb977d4938f9262d8d292bb9ccff2938754d82c1743ba807ae2"
+    },
+    {
+      "path": "server/utils/cardSearch/project.ts",
+      "sha256": "9f3f30ff6c9e4dd86468d8b5ef2422c7680ccfa858e911e866fa3edb768e3fae"
+    },
+    {
+      "path": "server/utils/cardSearch/search.test.ts",
+      "sha256": "96cd2144759f15ce1ae739210ccf836c35e8743bd67488bc02675873a7fcb6cf"
+    },
+    {
+      "path": "server/utils/cardSearch/search.ts",
+      "sha256": "3193b68da902a54d565398773eae722bfe587169eceaf8fc2bc82cf59a50e0be"
+    },
+    {
+      "path": "server/utils/cardSearch/sort.test.ts",
+      "sha256": "e7a370b96e155053ad597e9f579ab5466b93744fedbe12489307977c7a1bdd6e"
+    },
+    {
+      "path": "server/utils/cardSearch/sort.ts",
+      "sha256": "eccdb5eba3bb3bf4ba0ead9a385304ac5418cb24768ec42f1150e72e3c8304ee"
+    },
+    {
+      "path": "shared/cardSearch/clientQuery.ts",
+      "sha256": "1e7ea1c8b717209a75dbcfead4f2d9ff39f65f608a000f54c1c9ecf822e3ca0a"
+    },
+    {
+      "path": "shared/cardSearch/normalizeCatalogText.ts",
+      "sha256": "1a666b2700d60c87730850be94a15d1c99b1587015103ac8a43971f8fb52a92a"
+    },
+    {
+      "path": "shared/cardSearch/paginate.ts",
+      "sha256": "647e3c2aae278e6fe5591aa8032cf1d53eef0e1d4f0b926763162f89a2f3081c"
+    },
+    {
+      "path": "shared/cardSearch/project.ts",
+      "sha256": "dbe29a3de6cb7eb91a2bceb3dfdd4bc02cc29170c28338df5732e2134100ba20"
+    },
+    {
+      "path": "shared/cardSearch/runner.test.ts",
+      "sha256": "4f6ed53fe993891374558e264d7c2fe8efb6560a8b5529887e02f0e2feabb522"
+    },
+    {
+      "path": "shared/cardSearch/runner.ts",
+      "sha256": "1ec1360e70eca1a5558b97abc5541f79cd424c2d7ce164e064ee08ec0d254b71"
+    },
+    {
+      "path": "shared/cardSearch/search.ts",
+      "sha256": "4dd5b09112cb5897c3c03f0dc483185b2812e23db723302d6ffa16282a5e3b7e"
+    },
+    {
+      "path": "shared/cardSearch/sort.ts",
+      "sha256": "b387a1833e07e3cbeb372c72240684b0896424a3c4a56c902be6ac6f1a1d1432"
+    },
+    {
+      "path": "shared/cardSearch/types.ts",
+      "sha256": "4453129bd6f0a6cce25fa0a4c1097addc71f4a8723eeb4384206cdba1f66cda0"
+    },
+    {
+      "path": "dev/cardsJsonHandler.test.ts",
+      "sha256": "71cca2e341a1b4dc5f1b579218c8c06fc903d0530392a6912e10ff5053862191"
+    },
+    {
+      "path": "dev/cardsJsonHandler.ts",
+      "sha256": "54562ae7e73d1b30f4ae6f88628b0c8f36156495102e6bc14c71ddbb252d6181"
+    },
+    {
+      "path": "tests/fixtures/cardSearch/cards.ts",
+      "sha256": "8a624521e7ae30f23d7d9482f8a0feea4962acb8dc31ef4dd98c93a019d4fea8"
+    },
+    {
+      "path": "tests/fixtures/cardSearch/fixtureIntegrity.test.ts",
+      "sha256": "508df2d2afa11bbc67d0d181fb6ddacf83a33267f8d0bc16395cb8ee9c898689"
+    },
+    {
+      "path": "tests/fixtures/cardSearch/projection-expected.json",
+      "sha256": "23fc0fe8e4fb8e38b625063ffde3073fd2afc02bebfcab17d9ee4d47cf79d5e4"
+    },
+    {
+      "path": "tests/fixtures/cardSearch/sources.ts",
+      "sha256": "f3abf5b88e7ce64f0fe070aa979401ff108bc2dfe4421e8c8bf1d5f35b10bf3b"
+    },
+    {
+      "path": "tests/fixtures/cardSearch/historical/014-015/cards.json",
+      "sha256": "a53a1730a5cc371f44752185baeb9255671da1e63b21c38e2c8b3a3ae05c70ca"
+    },
+    {
+      "path": "tests/fixtures/cardSearch/historical/014-015/manifest.json",
+      "sha256": "0acf03f4b1fe4dfbfd03a816e3e891cabbadf05e35f1af6ec3346081fec2fae4"
+    },
+    {
+      "path": "tests/fixtures/searchOptions/products.ts",
+      "sha256": "1c9b4ea6bb39e3a26b4497d846dfc4a21010c44e74bdcc38d1d3751928ab5841"
+    },
+    {
+      "path": "tests/helpers/masterDataScenarios.ts",
+      "sha256": "7d5542c4959e82e85911b0d5ae0aa83f8f101ee94ae556df1ea4e8751c2aeda6"
+    },
+    {
+      "path": "tests/helpers/masterDataValidation.ts",
+      "sha256": "929c893018791b05d6faa0d62c5be807c615634cea5154c6147aa59f16a6fa5d"
+    },
+    {
+      "path": "tests/integration/cardSearchMaster.test.ts",
+      "sha256": "5f4ca56d1c5cc5522a910122bd83af45c07f2a8bae39570d1c66129e2c4499bf"
+    },
+    {
+      "path": "tests/integration/cardSearchRealData.test.ts",
+      "sha256": "9d27f164fdf7acb514ac3d57c23c505c31abf806f0cecdd9a37389de06e35bae"
+    },
+    {
+      "path": "tests/integration/masterDataUpdates.test.ts",
+      "sha256": "4fd7339d8f900c9a865b38dc50adb7e8682160b0b9cbc98055ddd17f8131d1d7"
+    },
+    {
+      "path": "tests/integration/searchOptionsMaster.test.ts",
+      "sha256": "b25c61488537fb27c2881518674c8d7c9e4aa5d97dce164e91c8dadee8c16cf7"
+    }
+  ]
+}

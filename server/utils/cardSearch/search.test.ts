@@ -1,9 +1,10 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { cardSearchParityQueries } from '~~/app/utils/search/cardSearchQueryTestFixtures'
-import { getSourceCards } from './dataSource'
+import { makeSearchCard, makeSearchEquipmentCard, textEffect, ordinaryEffect } from '~~/tests/fixtures/cardSearch/cards'
+import { historicalSources, sourcesFor } from '~~/tests/fixtures/cardSearch/sources'
 import { createCardSearchMatcher, matchesCardSearch, searchCards } from './search'
 import * as catalogNormalizer from '~~/shared/cardSearch/normalizeCatalogText'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
@@ -11,6 +12,21 @@ import { buildQuickSearchQuery } from '~~/app/utils/search/quickSearchQueryBuild
 import catalogOracle from '~~/specs/014-search-catalog-normalization/verification/expected-catalog-results.json'
 import approvedBaseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
 import type { Card, SearchCostComponent } from '~~/types/cards/finderCards'
+let fixedSources = sourcesFor([makeSearchCard()])
+beforeEach(() => {
+  const reported = makeSearchCard()
+  reported.reference_label = 'M20A-016'
+  reported.effects = [{ ...ordinaryEffect, effect_text: '別の効果' }, { ...textEffect, effect_type_code: 'DeclareSkill', effect_text: '自軍プレイヤーは1Dする。' }]
+  fixedSources = sourcesFor([makeSearchCard(), makeSearchEquipmentCard(), reported])
+})
+const getSourceCards = () => fixedSources
+
+
+
+
+
+
+
 
 afterEach(() => vi.restoreAllMocks())
 
@@ -20,13 +36,13 @@ const parseFixtureQuery = (query: Record<string, string | string[] | undefined>)
 )
 
 const makeCatalogCards = (): Card[] => catalogOracle.fixtureCards.map(fixture => {
-  const card = structuredClone(getSourceCards().find(source => source.card.unit?.races.length)!.card)
+  const card = makeSearchCard()
   card.card_id = fixture.id
   card.name = fixture.name
   card.search_support.full_text = fixture.full_text
   card.search_support.archetype_text = fixture.archetype_text
   card.unit!.races = [{ ...card.unit!.races[0]!, race_name: fixture.race }]
-  const type = getSourceCards().find(source => source.card.card_types.length)!.card.card_types[0]!
+  const type = makeSearchCard().card_types[0]!
   card.card_types = [{ ...type, card_type_name: fixture.type }]
   return card
 })
@@ -123,7 +139,7 @@ describe('prepared matcherの呼出構造', () => {
 
 describe('US3 既存検索と原文の保持', () => {
   it.each(approvedBaseline.cases)('$nameの全ID・入力順を承認済みT002 baselineと比較する', example => {
-    const cards = getSourceCards().map(source => source.card)
+    const cards = historicalSources().map(source => source.card)
     const criteria = parseFixtureQuery(example.locationQuery)
     const before = JSON.stringify({ cards, criteria })
     expect(searchCards(cards, criteria).map(card => card.card_id)).toEqual(example.unit.ids)
@@ -361,7 +377,7 @@ describe('searchCards', () => {
 
   describe('kw catalog契約', () => {
     it.each(catalogOracle.realCases.filter(example => 'kw' in example.query && !('att' in example.query)))('$idの実データ全IDを固定oracleと比較する', example => {
-      expect(searchCards(getSourceCards().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
+      expect(searchCards(historicalSources().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
     })
     it.each(catalogOracle.fixtureCases.filter(example => 'kw' in example.query && !('att' in example.query)))('$idはcatalogだけを検索する', example => {
       expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
@@ -385,7 +401,7 @@ describe('searchCards', () => {
 
   describe('att catalog契約', () => {
     it.each(catalogOracle.realCases.filter(example => 'att' in example.query))('$idの実データ全IDを固定oracleと比較する', example => {
-      expect(searchCards(getSourceCards().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
+      expect(searchCards(historicalSources().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
     })
     it.each(catalogOracle.fixtureCases.filter(example => 'att' in example.query))('$idは専用値と表示値を区別する', example => {
       expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)
@@ -600,7 +616,7 @@ describe('searchCards', () => {
   it.each([
     ['ＡＬＬ', 'M20A-010'], ['＋２', 'M20A-007'], ['１Ｄ', 'M20A-016'], ['弱点:ALL', 'M20A-010'],
   ] as const)('QDSの幅正規化により%sは実データ%sへ一致する', (query, referenceLabel) => {
-    const cards = getSourceCards().map(item => item.card)
+    const cards = historicalSources().map(item => item.card)
 
     expect(searchCards(cards, parseCardSearchQuery({ etx: query })).some(card => card.reference_label === referenceLabel)).toBe(true)
   })

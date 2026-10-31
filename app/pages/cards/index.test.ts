@@ -5,8 +5,7 @@ import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import CardsPage from './index.vue'
-import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
-import { projectCard } from '~~/server/utils/cardSearch/project'
+import { displayCard } from '~~/tests/fixtures/cardSearch/cards'
 import type { CardSearchResultPage } from '~~/server/types/cardSearch'
 
 const searchState = {
@@ -36,7 +35,7 @@ const mountPage = () => mount(CardsPage, { global: { stubs: {
 describe('cards result pageの描画', () => {
   beforeEach(() => {
     searchState.status.value = 'success'
-    const card = projectCard(getSourceCards()[0]!.card)!
+    const card = displayCard()
     searchState.result.value = {
       items: [{ ...card, deck_restriction_count: 0 }], totalCount: 1, page: 1,
       perPage: 20, totalPages: 1, sort: { key: 'id', order: 'asc' }, categoryBreakdown: [],

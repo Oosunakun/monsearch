@@ -221,3 +221,5 @@ describe('card search page', () => {
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { is: 'multi:1' } })
   })
 })
+
+vi.mock('~~/app/utils/constants/search/options/itemSlot', async importOriginal => ({ ...(await importOriginal<Record<string, unknown>>()), ITEM_SLOT_OPTIONS: [{ label: 'アイテム', value: 'multi', color: '#fff' }] }))

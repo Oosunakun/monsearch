@@ -1,0 +1,101 @@
+{
+  "recordedAt": "2026-10-31T11:19:48.611Z",
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "branch": "refactor/decouple-search-test-data",
+  "state": "worker2-diagnostic-state.json",
+  "runs": [
+    {
+      "name": "final-v3-test",
+      "command": "npm.cmd run test -- --run",
+      "exitCode": 1,
+      "startedAt": "2026-10-31T19:49:26.7101127+09:00",
+      "finishedAt": "2026-10-31T19:51:33.8147676+09:00",
+      "wallSeconds": 127.104,
+      "vitestSeconds": 117.06,
+      "files": "1 failed | 33 passed (34)",
+      "tests": "1 failed | 1166 passed (1167)",
+      "timeouts": [
+        {
+          "case": "restores deferred query { cc: 'summoner', kw: 'アーニャ' } after ready with real child components",
+          "displayMilliseconds": 5289
+        }
+      ],
+      "log": "logs/final-v3-test.txt"
+    },
+    {
+      "name": "final-v4-test",
+      "command": "npm.cmd run test -- --run",
+      "exitCode": 1,
+      "startedAt": "2026-10-31T19:54:45.8259302+09:00",
+      "finishedAt": "2026-10-31T19:56:46.2701677+09:00",
+      "wallSeconds": 120.445,
+      "vitestSeconds": 112.38,
+      "files": "1 failed | 33 passed (34)",
+      "tests": "1 failed | 1166 passed (1167)",
+      "timeouts": [
+        {
+          "case": "restores deferred query { cc: 'summoner', kw: 'アーニャ' } after ready with real child components",
+          "displayMilliseconds": 7692
+        }
+      ],
+      "log": "logs/final-v4-test.txt"
+    },
+    {
+      "name": "final-v5-test",
+      "command": "npm.cmd run test -- --run",
+      "exitCode": 1,
+      "startedAt": "2026-10-31T20:00:21.1171231+09:00",
+      "finishedAt": "2026-10-31T20:02:25.7987450+09:00",
+      "wallSeconds": 124.681,
+      "vitestSeconds": 114.15,
+      "files": "1 failed | 33 passed (34)",
+      "tests": "1 failed | 1166 passed (1167)",
+      "timeouts": [
+        {
+          "case": "restores deferred query { cc: 'summoner', kw: 'アーニャ' } after ready with real child components",
+          "displayMilliseconds": 7187
+        }
+      ],
+      "log": "logs/final-v5-test.txt"
+    },
+    {
+      "name": "worker2-diagnostic-1",
+      "command": "npm.cmd run test -- --run --maxWorkers=2",
+      "exitCode": 0,
+      "startedAt": "2026-10-31T20:12:48.6770825+09:00",
+      "finishedAt": "2026-10-31T20:15:36.5116381+09:00",
+      "wallSeconds": 167.8345556,
+      "vitestSeconds": 157.89,
+      "files": "34 passed (34)",
+      "tests": "1167 passed (1167)",
+      "timeouts": [],
+      "log": "logs/worker2-diagnostic-1.txt"
+    },
+    {
+      "name": "worker2-diagnostic-2",
+      "command": "npm.cmd run test -- --run --maxWorkers=2",
+      "exitCode": 0,
+      "startedAt": "2026-10-31T20:15:36.5391473+09:00",
+      "finishedAt": "2026-10-31T20:18:30.7257531+09:00",
+      "wallSeconds": 174.1866058,
+      "vitestSeconds": 166.14,
+      "files": "34 passed (34)",
+      "tests": "1167 passed (1167)",
+      "timeouts": [],
+      "log": "logs/worker2-diagnostic-2.txt"
+    }
+  ],
+  "changedFromV5": [],
+  "changedDuringDiagnostic": [],
+  "sourcePathSetEqual": true,
+  "incompleteFinalTasks": [
+    "T041",
+    "T042",
+    "T043",
+    "T044",
+    "T045",
+    "T046"
+  ],
+  "standardGate": "未達を維持。診断PASSで更新しない",
+  "cause": "並行負荷/実行順/初回準備・cache等の仮説。因果未確定"
+}

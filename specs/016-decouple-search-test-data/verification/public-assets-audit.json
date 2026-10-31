@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-31T10:32:50.933Z",
+  "output": ".output/public",
+  "publicFiles": 90,
+  "publicData": {
+    "sha256": "c61fb45cf49b009a5e0628b66aa0617a6de0ead0e532b8e5aab9a5d5196e194c",
+    "byteLength": 2342095,
+    "identicalToLatest": true
+  },
+  "protected": {
+    "count": 180,
+    "differences": 0,
+    "pathSetEqual": true
+  },
+  "originalMarkersChecked": [
+    "ターン終了まで、「攻+2」または「防-2」。",
+    "「スペクター(トークンカード)」1枚を、「自軍領土のエリア1つ」または「自軍支配エリア1つ」に未行動のユニットとして召喚する。",
+    "戦闘終了まで、「自軍が使用した戦闘スペルカード」と「死亡した自軍ユニット(トークンカードを除く)」は、戦闘終了タイミングに自軍手札へ移る。\n「エンジェル・リング」は、このカードの効果で手札に移らない。"
+  ],
+  "sentinels": [
+    "historical-014-015",
+    "R24-001",
+    "00000000-0000-7000-8000-000000000001",
+    "tests/fixtures/"
+  ],
+  "forbiddenRawHashes": 6,
+  "findings": [],
+  "productionImportFiles": 208,
+  "badImports": [],
+  "changedSinceFinalValidation": []
+}

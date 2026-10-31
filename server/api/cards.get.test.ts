@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import { createApp, createError, defineEventHandler, toWebHandler } from 'h3'
 import type { EventHandler } from 'h3'
 import { readFileSync } from 'node:fs'
@@ -21,6 +21,10 @@ import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS, CARD_SEARCH_PER_PAGE } 
 import { expectedIds, revisedAtkPageIds } from '~~/specs/015-search-result-sorting/verification/sort-expectations'
 import { fixtureOrders, makeSortFixtures } from '~~/specs/015-search-result-sorting/verification/sort-fixtures'
 
+import { historicalSources } from '~~/tests/fixtures/cardSearch/sources'
+import { makeSearchCard, makeCard } from '~~/tests/fixtures/cardSearch/cards'
+beforeEach(() => { vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(historicalSources()) })
+
 let cardsHandler: EventHandler
 
 beforeAll(async () => {
@@ -39,7 +43,7 @@ const requestCards = (query = '') => toWebHandler(createApp().use('/api/cards', 
 describe('015 APIの6キー・固定順・全ページとCSR parity', () => {
   for (const key of CARD_SEARCH_SORT_KEYS) for (const order of CARD_SEARCH_SORT_ORDERS) {
     it(`${key}/${order}は手書き合成契約と一致`, async () => {
-      const sources = makeSortFixtures(getSourceCards()[0]!.card).reverse()
+      const sources = makeSortFixtures(makeCard()).reverse()
       vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(sources)
       const response = await requestCards(`sort=${key}&order=${order}`)
       const body: CardSearchResultPage = await response.json()
@@ -83,13 +87,13 @@ const parseFixtureQuery = (query: Record<string, string | undefined>) => parseCa
 )
 
 const makeCatalogCards = (): Card[] => catalogOracle.fixtureCards.map(fixture => {
-  const card = structuredClone(getSourceCards().find(source => source.card.unit?.races.length)!.card)
+  const card = makeSearchCard()
   card.card_id = fixture.id
   card.name = fixture.name
   card.search_support.full_text = fixture.full_text
   card.search_support.archetype_text = fixture.archetype_text
   card.unit!.races = [{ ...card.unit!.races[0]!, race_name: fixture.race }]
-  const type = getSourceCards().find(source => source.card.card_types.length)!.card.card_types[0]!
+  const type = makeSearchCard().card_types[0]!
   card.card_types = [{ ...type, card_type_name: fixture.type }]
   return card
 })
@@ -122,7 +126,7 @@ describe('GET /api/cards kw catalog契約', () => {
     await expectAllCatalogPages(example.query, example.ids)
   })
   it.each(catalogOracle.boundaries)('$idのAPI境界', async example => {
-    const card = structuredClone(getSourceCards()[0]!.card)
+    const card = makeSearchCard()
     card.card_id = 'boundary'
     card.name = example.query?.trim() || '表示原文'
     card.search_support.full_text = example.target
@@ -285,7 +289,7 @@ describe('GET /api/cards 検索結果の回帰', () => {
   })
 
   it('同名カードのsortとページ変更後もIDと制限値が対応し、nullのカードも残る', async () => {
-    const original = getSourceCards()[0]!
+    const original = { card: makeSearchCard(), sourceIndex: 0 }
     const source = Array.from({ length: 21 }, (_, index) => {
       const item = structuredClone(original)
       item.sourceIndex = index
@@ -329,7 +333,7 @@ describe('GET /api/cards 枚数制限契約', () => {
   })
 
   it.each([3, 4, null])('実データにない値 %s も実handlerから返す', async value => {
-    const source = structuredClone(getSourceCards()[0]!)
+    const source = { card: makeSearchCard(), sourceIndex: 0 }
     source.card.modification = { deck_restriction_count: value }
     vi.spyOn(dataSource, 'getSourceCards').mockReturnValue([source])
     const response = await requestCards()
@@ -391,6 +395,7 @@ describe('GET /api/cards contract', () => {
 })
 
 describe('HTTP APIとCSR transport/DTO parity', () => {
+  beforeEach(() => vi.restoreAllMocks())
   it.each([
     '', 'kw=ダメージ', 'cc=summoner&kw=アーニャ', 'att=ドラゴン', 'kw=存在しない検索語CSR',
     'coe=trash:1', 'sls=none', 'etx=ダメージ&coe=trash:1', 'lv=gte:3&cc=unit',
