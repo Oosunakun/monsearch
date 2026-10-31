@@ -14,6 +14,16 @@ node_modules
 logs
 *.log
 
+# verification の記録可能なファイルは保持し、ログ・画像はローカルに置く
+!specs/**/verification/**/logs/
+!specs/**/verification/**/logs/**/
+specs/**/verification/**/*.log
+specs/**/verification/**/*.txt
+specs/**/verification/**/*.jsonl
+specs/**/verification/**/*.png
+specs/**/verification/**/*.jpg
+specs/**/verification/**/*.webp
+
 # Misc
 .DS_Store
 Thumbs.db

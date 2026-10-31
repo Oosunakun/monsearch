@@ -1,3 +1,0 @@
-# 実行証跡をRepository全体のlogs除外から復帰する
-!logs/
-!logs/**
