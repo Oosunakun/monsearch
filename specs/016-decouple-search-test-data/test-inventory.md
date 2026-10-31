@@ -1,5 +1,7 @@
 # テスト棚卸しとAssertion移行方針
 
+**実装開始時の再確認（2026-10-31）**: tracked/未追跡を含むテスト列挙は29ファイルで、この一覧と一致した。開始時の各ファイルhashとAssertion位置は [assertion-index-before.json](verification/assertion-index-before.json)、個別レビューの未完了範囲は [assertion-map.md](verification/assertion-map.md)、npm起動時の環境失敗は [results.md](verification/results.md) を参照する。以下の「全行は静的確認済み」は前工程の記録であり、今回のT001の全Assertion・全間接依存レビュー完了を示さない。今回の実装移行は未着手。
+
 **調査日**: 2026-10-31。`git ls-files '*.test.ts'`の全29ファイルとapp/server/shared/dev配下の実ファイルを照合した。追加AGENTSなし。既存Vitest設定は`**/*.test.ts`を収集し、`.memo`等を除外する。全行は静的確認済み、実行結果は未検証。
 
 A＝固定入力の振る舞い、B＝固定入力と独立した完全DTO、C＝最新整合性、D＝最新統合。以下の番号は計画上の追跡IDであり、実装時に各describe/it/パラメータ条件/Assertionへ展開する。29は将来の上限ではない。

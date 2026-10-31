@@ -1,0 +1,15 @@
+{
+  "revision": "c0d63bd27c407da81a5c7a5dea55f7bb68b24765",
+  "branch": "refactor/decouple-search-test-data",
+  "recordedAt": "2026-10-31T16:34:57.7965348+09:00",
+  "initialWorktree": [
+    "?? specs/016-decouple-search-test-data/tasks.md"
+  ],
+  "nodeVersion": "v22.20.0",
+  "nodePath": "C:\\Program Files\\nodejs\\node.exe",
+  "npmPath": "C:\\Program Files\\nodejs\\npm.ps1",
+  "npmVersion": "取得不能: npm --versionはEPERM lstat C:\\で起動失敗",
+  "protectedFiles": 180,
+  "testFiles": 29,
+  "assertionSites": 528.0
+}
