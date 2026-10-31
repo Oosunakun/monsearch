@@ -1,8 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import type { CardSearchResultItem } from '~~/server/types/cardSearch'
-import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
-import { projectCard } from '~~/server/utils/cardSearch/project'
+import { displayCard } from '~~/tests/fixtures/cardSearch/cards'
 import ItemEffect from './ItemEffect.vue'
 import itemEffectSource from './ItemEffect.vue?raw'
 
@@ -31,7 +30,7 @@ const normalEffect: Effect = {
 }
 
 const render = (effects: Effect[]) => mount(ItemEffect, {
-  props: { card: { ...projectCard(getSourceCards()[0]!.card)!, effects } },
+  props: { card: { ...displayCard(), effects } },
 })
 
 describe('ItemEffectの本文のみの効果表示', () => {

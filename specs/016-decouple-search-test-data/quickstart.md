@@ -1,10 +1,12 @@
+**最終状態（HD-R24-ACCEPTANCE）**: 機能ACCEPTED・例外付き受入れ。SC-006は未達、T041は未完了。T045/T046はHuman例外に基づく文書整理完了であり、全Gate PASSではない。性能課題は別管理。詳細は[final-review.md](final-review.md)。
+
 # 検証ガイド: R24
 
-この手順は仕様・Planレビュー後の実装を検証するためのもの。以下のtests配下の新規ファイル・検証記録は実装時に追加する。今回のPlan作成ではテスト・品質検査を実行していない。
+**例外承認前の状態（履歴）**: この手順はR24の実装内容を再検証するためのもの。当時は最終全体テストのタイムアウトによりR24未完了・Human判断待ち。変更前Baseline・最新結果・保全/公開検査は [verification/results.md](verification/results.md) を参照する。承認済みSpec/Planの状態表記は設計承認時点の記録として保全している。
 
 ## 前提と実行場所
 
-- [human-decisions.md](human-decisions.md)に記録されたQ1〜Q4・HD-C08 Bの承認方針を確認する。US1〜US4は全てP1・完了必須である。今回は設計更新のみで、このガイドの実行・Tasks生成・Implementationへは進まない。Git管理外の作業メモを前提にせず、入力来歴は[research.md](research.md)、manifest設計は[data-model.md](data-model.md)を参照する。
+- [human-decisions.md](human-decisions.md)に記録されたQ1〜Q4・HD-C08 Bの承認方針を確認する。US1〜US4は全てP1・完了必須である。実装後の再検証では以下のコマンドを使用する。実装結果はverification/results.mdに記録する。Git管理外の作業メモを前提にせず、入力来歴は[research.md](research.md)、manifest設計は[data-model.md](data-model.md)を参照する。
 - C08では両画面の公開全商品行を検査し、参照先だけを削除した場合の失敗と、参照元も対応更新・削除した場合の成功を確認する。membershipによる事前除外・例外機構は使わない。固定異常FixtureのUI fail closedも確認する。名称と有効IDの取り違えを自動検出できるとは記録しない。
 
 - Repository root `F:\Projects\monsearch`で実行する。既存package-lockに対応するNode/npmと依存導入済み環境を使う。R24は依存upgradeを要求しない。
@@ -27,7 +29,7 @@ Vitest設定が実際に収集する範囲を確認し、node_modules・生成�
 ## 1. 固定資産と元入力の完全性
 
 ```powershell
-npx vitest run tests/fixtures/cardSearch/fixtureIntegrity.test.ts
+npx.cmd vitest run tests/fixtures/cardSearch/fixtureIntegrity.test.ts
 ```
 
 期待結果は、元bytes SHA-256/長さ、version、482件、入力全ID順と既存Oracleの対応が一致し、毎回fresh cloneが得られること。詳細は[data-model.md](data-model.md)のmanifest定義に従う。通常テストで`git show`やOracle生成スクリプトを動かさない。
@@ -35,10 +37,10 @@ npx vitest run tests/fixtures/cardSearch/fixtureIntegrity.test.ts
 ## 2. 固定入力の全件回帰・境界・画面
 
 ```powershell
-npx vitest run shared/cardSearch/runner.test.ts server/api/cards.get.test.ts
-npx vitest run server/utils/cardSearch
-npx vitest run app/composables/useCardSearch.test.ts app/utils/cardSearchDataset.test.ts app/components/cards/result app/pages/cards/index.test.ts
-npx vitest run app/components/products/ProductTableRow.test.ts app/utils/search/productSearchLocation.test.ts app/utils/search/cardSearchQueryRouter.test.ts app/pages/product-set-navigation.test.ts app/pages/cards/search.test.ts
+npx.cmd vitest run shared/cardSearch/runner.test.ts server/api/cards.get.test.ts
+npx.cmd vitest run server/utils/cardSearch
+npx.cmd vitest run app/composables/useCardSearch.test.ts app/utils/cardSearchDataset.test.ts app/components/cards/result app/pages/cards/index.test.ts
+npx.cmd vitest run app/components/products/ProductTableRow.test.ts app/utils/search/productSearchLocation.test.ts app/utils/search/cardSearchQueryRouter.test.ts app/pages/product-set-navigation.test.ts app/pages/cards/search.test.ts
 ```
 
 014の全38ケース・catalog固定ID、015の6項目×2方向×20/50/100・全ページと0/1件/範囲外、旧APIレスポンスを独立期待値と比較する。完全DTO・適用hash・分類集計・入力非破壊を保持し、015承認済み旧atk補正を継続する。
@@ -48,8 +50,8 @@ UI/loaderは元の表示・desktop/mobile操作・page reset・設定保持・SS
 ## 3. 最新入力の全件検査と統合
 
 ```powershell
-npx vitest run tests/integration/cardSearchMaster.test.ts tests/integration/searchOptionsMaster.test.ts app/utils/search/cardSearchQuerySchema.test.ts
-npx vitest run tests/integration/cardSearchRealData.test.ts dev/cardsJsonHandler.test.ts
+npx.cmd vitest run tests/integration/cardSearchMaster.test.ts tests/integration/searchOptionsMaster.test.ts app/utils/search/cardSearchQuerySchema.test.ts
+npx.cmd vitest run tests/integration/cardSearchRealData.test.ts dev/cardsJsonHandler.test.ts
 ```
 
 期待結果は最新入力全件がCの既存契約を満たし、Dで読込・全ページの集合/件数/分類集計・公開DTO・API/CSR parity・配信bytesが整合すること。現在の482件、特定カードの存在、本文全体を期待値にしない。最新の陽性例が消えても0件契約を確認し、固定側の陽性例は維持する。
@@ -59,9 +61,9 @@ npx vitest run tests/integration/cardSearchRealData.test.ts dev/cardsJsonHandler
 `masterDataUpdates.test.ts`では次のdescribe名を用い、結果を分類して実行可能にする。
 
 ```powershell
-npx vitest run tests/integration/masterDataUpdates.test.ts -t '正常更新'
-npx vitest run tests/integration/masterDataUpdates.test.ts -t '不正入力'
-npx vitest run tests/integration/masterDataUpdates.test.ts -t '回帰検出'
+npx.cmd vitest run tests/integration/masterDataUpdates.test.ts -t '正常更新'
+npx.cmd vitest run tests/integration/masterDataUpdates.test.ts -t '不正入力'
+npx.cmd vitest run tests/integration/masterDataUpdates.test.ts -t '回帰検出'
 ```
 
 | 群 | 実施と期待結果 |
@@ -74,13 +76,15 @@ npx vitest run tests/integration/masterDataUpdates.test.ts -t '回帰検出'
 
 固定語彙のvalue追加削除は仕様変更として対象外と記録する。未使用選択肢・許容空/null・収録カードなし商品を不正扱いしない。単に変更したcloneを検査しただけ、fixtureのhashが変わらないだけ、2経路が同じだけの結果を更新耐性・正解の証拠にしない。
 
+正常更新は64シナリオ。別の境界ケースで空集合・効果なし/非unit・追加ID衝突も確認する。対象集合が空の変更/削除では操作用seedを明示し、準備と操作前集合を記録する。今回追加した5テストファイルはDOM/Nuxtアプリを使わないため、`@vitest-environment node`で実行する。既存画面テストのNuxt環境とタイムアウトは変更していない。
+
 ## 5. 全体品質・公開成果物・保全
 
 ```powershell
-npm run test -- --run
-npm run lint
-npx nuxt typecheck
-npm run generate
+npm.cmd run test -- --run
+npm.cmd run lint
+npx.cmd nuxt typecheck
+npm.cmd run generate
 ```
 
 全体テストの状態と品質検査の状態を対応付ける。変更や未解決失敗がなければ同じ検査を理由なく繰り返さない。

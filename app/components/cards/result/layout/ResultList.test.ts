@@ -6,8 +6,8 @@ import * as components from 'vuetify/components'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import ResultList from './ResultList.vue'
 import ResultItem from './ResultItem.vue'
-import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
-import { projectCard } from '~~/server/utils/cardSearch/project'
+import { historicalSources as getSourceCards } from '~~/tests/fixtures/cardSearch/sources'
+import { displayCard } from '~~/tests/fixtures/cardSearch/cards'
 import { useCardSearch } from '~~/app/composables/useCardSearch'
 import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS } from '~~/shared/cardSearch/types'
 import type { CardSearchSortKey, CardSearchSortOrder } from '~~/shared/cardSearch/types'
@@ -147,7 +147,7 @@ describe('015 PC/モバイル実controlsとCSR結果の統合', () => {
 describe('ResultListのカードとChipの対応', () => {
   it.each([false, true])('PC/モバイル=%sで順序・ページ相当の差替えに追従する', async isMobile => {
     mobile.value = isMobile
-    const source = projectCard(getSourceCards()[0]!.card)!
+    const source = displayCard()
     const cards = [0, 1, 2, null].map((count, index) => ({
       ...source, card_id: `card-${index}`, name: '同名検証カード', deck_restriction_count: count,
     }))

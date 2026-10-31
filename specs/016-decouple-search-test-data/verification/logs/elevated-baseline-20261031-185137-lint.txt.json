@@ -1,0 +1,9 @@
+{
+  "command": "npm.cmd run lint",
+  "startedAt": "2026-10-31T18:51:37.8833633+09:00",
+  "finishedAt": "2026-10-31T18:51:47.9561031+09:00",
+  "exitCode": 0,
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "worktree": "?? specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185005-test.txt\r\n?? specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185005-test.txt.json\r\n",
+  "log": "F:\\Projects\\monsearch\\specs\\016-decouple-search-test-data\\verification\\logs\\elevated-baseline-20261031-185137-lint.txt"
+}

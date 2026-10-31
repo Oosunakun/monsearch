@@ -1,6 +1,8 @@
+**最終状態（HD-R24-ACCEPTANCE）**: 機能ACCEPTED・例外付き受入れ。SC-006は未達、T041は未完了。T045/T046はHuman例外に基づく文書整理完了であり、全Gate PASSではない。性能課題は別管理。詳細は[final-review.md](final-review.md)。
+
 # テスト棚卸しとAssertion移行方針
 
-**実装開始時の再確認（2026-10-31）**: tracked/未追跡を含むテスト列挙は29ファイルで、この一覧と一致した。開始時の各ファイルhashとAssertion位置は [assertion-index-before.json](verification/assertion-index-before.json)、個別レビューの未完了範囲は [assertion-map.md](verification/assertion-map.md)、npm起動時の環境失敗は [results.md](verification/results.md) を参照する。以下の「全行は静的確認済み」は前工程の記録であり、今回のT001の全Assertion・全間接依存レビュー完了を示さない。今回の実装移行は未着手。
+**実装開始時の再確認（2026-10-31、以下は履歴）**: tracked/未追跡を含むテスト列挙は29ファイルで、この一覧と一致した。開始時の各ファイルhashとAssertion位置は [assertion-index-before.json](verification/assertion-index-before.json)、個別レビューの未完了範囲は [assertion-map.md](verification/assertion-map.md)、npm起動時の環境失敗は [results.md](verification/results.md) を参照する。以下の「全行は静的確認済み」は前工程の記録であり、今回のT001の全Assertion・全間接依存レビュー完了を示さない。今回の実装移行は未着手。
 
 **調査日**: 2026-10-31。`git ls-files '*.test.ts'`の全29ファイルとapp/server/shared/dev配下の実ファイルを照合した。追加AGENTSなし。既存Vitest設定は`**/*.test.ts`を収集し、`.memo`等を除外する。全行は静的確認済み、実行結果は未検証。
 
@@ -73,3 +75,11 @@ I01〜I12は従来の直接依存群、I13〜I17は今回の追加発見。実�
 | 結果 | 対応する実行log、成功/Assertion失敗/環境失敗/未実行 |
 
 完全DTO/hash/固定ID/境界を単に削除して動的件数・parityに置換した行は不適合。テスト件数の一致だけでは移行完了と判定しない。
+
+## Elevated環境での再開確認
+
+29ファイル528静的位置の意味レビューを完了した（T001）。開始時indexは保全し、既存122位置の規則と追加406位置のcase/loop/仕様/依存/移行先をverification/assertion-map.mdおよびassertion-review-before.jsonで追跡する。変更候補17件・変更不要12件を維持。実収集は変更前Vitestで29ファイル、176失敗・854成功。これは移行前Baselineであり実装完了ではない。
+
+## 実装後の全テスト集合
+
+元29＋新規5＝34ファイル。新規はtests/fixtures/cardSearch/fixtureIntegrity.test.ts（歴史入力対応/clone/独立DTO）、tests/integration/cardSearchMaster.test.ts（C01〜06正負）、searchOptionsMaster.test.ts（C07/08と最新商品/選択肢）、cardSearchRealData.test.ts（最新loader/全ページ/集計/DTO/API）、masterDataUpdates.test.ts（正常更新64＋境界1＋不正入力1＋回帰2）。元の変更候補17件だけを変更し、変更不要12件はそのまま全体実行する。全テストは1167件、変更前1030件。追加5ファイルはDOMを使わないNode環境、既存29ファイルの実行環境は維持。件数増だけで完了判定せず542個の元expect呼出を位置対応で確認する。最終実行証跡は[results.md](verification/results.md)と[validation-state-v5.json](verification/validation-state-v5.json)。

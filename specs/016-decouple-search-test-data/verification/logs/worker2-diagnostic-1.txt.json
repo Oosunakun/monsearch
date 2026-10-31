@@ -1,0 +1,11 @@
+{
+  "command": "npm.cmd run test -- --run --maxWorkers=2",
+  "attempt": 1,
+  "startedAt": "2026-10-31T20:12:48.6770825+09:00",
+  "finishedAt": "2026-10-31T20:15:36.5116381+09:00",
+  "wallSeconds": 167.8345556,
+  "exitCode": 0,
+  "state": "verification/worker2-diagnostic-state.json",
+  "log": "specs/016-decouple-search-test-data/verification/logs/worker2-diagnostic-1.txt",
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1"
+}

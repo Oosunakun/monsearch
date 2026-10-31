@@ -1,0 +1,907 @@
+{
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "recordedAt": "2026-10-31T11:56:22.744Z",
+  "scope": "014/015全既存ファイル、API baseline、N₀ vector、mockData全体、search定数全体（既知依存より広く保全）",
+  "files": [
+    {
+      "path": "app/utils/constants/search/conditions/index.ts",
+      "sha256": "23bbc30bc5ff014d8e8ea67fe9ecf60eb1693344c8961becb1926f225e8cbb2d",
+      "byteLength": 132
+    },
+    {
+      "path": "app/utils/constants/search/conditions/logicalMatch.ts",
+      "sha256": "6e7f4b2623928c6add8fcc5241c4aa54ebc146a6d308a385962eff57a3f3fef7",
+      "byteLength": 521
+    },
+    {
+      "path": "app/utils/constants/search/conditions/numericOptions.ts",
+      "sha256": "11e32e124b333c4958a98c7294a3c7f1ae3385e7616dad8b21b647124c41522c",
+      "byteLength": 306
+    },
+    {
+      "path": "app/utils/constants/search/conditions/searchFilter.ts",
+      "sha256": "17492d51e66b0d0017ad9c029fb32bc8f975d2b05ec150c97ddb1380f810f865",
+      "byteLength": 822
+    },
+    {
+      "path": "app/utils/constants/search/conditions/searchOperator.ts",
+      "sha256": "ad609459c9554e4c9065e60f851286cc5dfc0a03b38dd56e45e024fa1332f35a",
+      "byteLength": 544
+    },
+    {
+      "path": "app/utils/constants/search/items/additionalCombatItems.json",
+      "sha256": "87e6ade08258c3a8ad80c74a102f77d5fa051708751358227785a84aa7c96beb",
+      "byteLength": 537
+    },
+    {
+      "path": "app/utils/constants/search/items/blockItems.json",
+      "sha256": "4a3d4e8d469e50fcab40001aefb6e811eb04e3fbf98784f4c5b6cb88c959d61f",
+      "byteLength": 1062
+    },
+    {
+      "path": "app/utils/constants/search/items/cardTypeItems.json",
+      "sha256": "ea756c1a1d3b488ffada10509025dfcfe8618d9133b1bee9552df4843b59e262",
+      "byteLength": 3820
+    },
+    {
+      "path": "app/utils/constants/search/items/chargeItems.json",
+      "sha256": "21057480d7f9cbe6026cd21fd75c7c4bd6f553dfcdcbcf7212714336653df4f3",
+      "byteLength": 296
+    },
+    {
+      "path": "app/utils/constants/search/items/combatItems.json",
+      "sha256": "2afccee4ded8782fb63b40f5e0c9bc7a974419fd582c1c1fc3dc8898e6880b48",
+      "byteLength": 1075
+    },
+    {
+      "path": "app/utils/constants/search/items/defenderItems.json",
+      "sha256": "431967b0625eb9b1bff3415d83d7b08c163e490a4c7fc7b13d0b58ae685efff6",
+      "byteLength": 298
+    },
+    {
+      "path": "app/utils/constants/search/items/effectActivationCategoryItems.json",
+      "sha256": "87b92d8b1384d242d7e4fbd7918184b73754a1b12a0fba5cdc7a383bed0cf850",
+      "byteLength": 252
+    },
+    {
+      "path": "app/utils/constants/search/items/effectActivationTypeItems.json",
+      "sha256": "ae1926b12a90cb0d65e2886c5e831df60f7ee80dfbd832f709b6878fa7bf73f4",
+      "byteLength": 883
+    },
+    {
+      "path": "app/utils/constants/search/items/effectTypeItems.json",
+      "sha256": "4e94698cd4ffe3b9a425a02b9d06a3eac6fc0633b842e5317777ffe775ad7a9b",
+      "byteLength": 746
+    },
+    {
+      "path": "app/utils/constants/search/items/elementItems.json",
+      "sha256": "a01e7694ce7f729aa3dbe0573de377ff51befadf612f14e16a51a146ec108d2a",
+      "byteLength": 556
+    },
+    {
+      "path": "app/utils/constants/search/items/factionItems.json",
+      "sha256": "a070f14060330aa26a0eb6108ffc4a72fe1fd8e195bfb4fa8229a117a938442e",
+      "byteLength": 3372
+    },
+    {
+      "path": "app/utils/constants/search/items/heroPointItems.json",
+      "sha256": "85ac5669704fbb098d7e322676980b396117d46379fdc010c95c67fd6d0d8f3d",
+      "byteLength": 177
+    },
+    {
+      "path": "app/utils/constants/search/items/illustratorItems.json",
+      "sha256": "0cf687ba5648be741bd178cacb3485c39a311f472d392c34b195e5305d2e55ea",
+      "byteLength": 12790
+    },
+    {
+      "path": "app/utils/constants/search/items/index.ts",
+      "sha256": "4d5eca32f635267e2d9544edce8ba31babd3eab0af02fe828c366d6cc76fb419",
+      "byteLength": 1612
+    },
+    {
+      "path": "app/utils/constants/search/items/initiativeItems.json",
+      "sha256": "ac63728c3fcd5e92a4a926bb153a6941e1d3a13a09e066a8462fe67b181b2706",
+      "byteLength": 892
+    },
+    {
+      "path": "app/utils/constants/search/items/itemSlotItems.json",
+      "sha256": "dd0d5d8c44c61ee4e8bf996525408fe20eb21b9cfb645611141181a169d8d9c5",
+      "byteLength": 333
+    },
+    {
+      "path": "app/utils/constants/search/items/levelItems.json",
+      "sha256": "3f3b640f6971fe3444a212868e51d5dbd18ffc46f5d8cf0e67d0d66116414cde",
+      "byteLength": 893
+    },
+    {
+      "path": "app/utils/constants/search/items/limitItems.json",
+      "sha256": "2afccee4ded8782fb63b40f5e0c9bc7a974419fd582c1c1fc3dc8898e6880b48",
+      "byteLength": 1075
+    },
+    {
+      "path": "app/utils/constants/search/items/moveTypeItems.json",
+      "sha256": "9e5bd64be3b5df19aff23292e68a36fde741050be18cd1d3dda4f573e8a4f99c",
+      "byteLength": 257
+    },
+    {
+      "path": "app/utils/constants/search/items/otherSlotItems.json",
+      "sha256": "d245bb86400796491995e12591adc067db141d27c1aacd6b92e353481ba47dcf",
+      "byteLength": 384
+    },
+    {
+      "path": "app/utils/constants/search/items/productItems.json",
+      "sha256": "df35348308e1b98be9c393e381cc52b5498052d233bc40d0267cbf303e884a97",
+      "byteLength": 812
+    },
+    {
+      "path": "app/utils/constants/search/items/raceItems.json",
+      "sha256": "f9e66c2f951f4b7671bdbedb0cbab65585d01a6db5f2cb00dbcafa313b760e15",
+      "byteLength": 3301
+    },
+    {
+      "path": "app/utils/constants/search/items/rarityItems.json",
+      "sha256": "fff826cab93a36176465c4a00c1a002de32f009aaa17db3e2be06be7088058c5",
+      "byteLength": 675
+    },
+    {
+      "path": "app/utils/constants/search/items/resistanceItems.json",
+      "sha256": "6a599f1de17df3fc3d1e86f3f09662c2a07d178f5898beb21790027c8f673ce7",
+      "byteLength": 97
+    },
+    {
+      "path": "app/utils/constants/search/items/spellSlotItems.json",
+      "sha256": "56397c39a16154af66753139e7d80e435852df58515ff2e1e4b69f29000612b6",
+      "byteLength": 648
+    },
+    {
+      "path": "app/utils/constants/search/options/additionalCombat.ts",
+      "sha256": "7834425d18ae1c40a90bc6fa84d538748925e60a24b3298101e832e1b1b083cb",
+      "byteLength": 360
+    },
+    {
+      "path": "app/utils/constants/search/options/block.ts",
+      "sha256": "24795b92220ad0e1cb61365594c55c9dd14c83111764399cdf19e525188b613a",
+      "byteLength": 289
+    },
+    {
+      "path": "app/utils/constants/search/options/cardCategory.ts",
+      "sha256": "ac398972d534a56b3379782a45fc3f452c50984a5900cef56a1b2e505d35fc03",
+      "byteLength": 1115
+    },
+    {
+      "path": "app/utils/constants/search/options/cardType.ts",
+      "sha256": "7ab9f8094779923bd44ced993398061594d50c9a14200a9b9c445da6341515f0",
+      "byteLength": 312
+    },
+    {
+      "path": "app/utils/constants/search/options/charge.ts",
+      "sha256": "ced3ba2a19e2d60abd9312d8deb1538c6036c9252f0804d7d70935e48563aa08",
+      "byteLength": 299
+    },
+    {
+      "path": "app/utils/constants/search/options/combat.ts",
+      "sha256": "b80710e154370c5054358194b700c3e33db5105d78942ffed3f30add82080cec",
+      "byteLength": 297
+    },
+    {
+      "path": "app/utils/constants/search/options/defender.ts",
+      "sha256": "2825d2f9413b96c69d0013b26867e4d9b156bcf1d29080ea40c1b155d7a6b51c",
+      "byteLength": 309
+    },
+    {
+      "path": "app/utils/constants/search/options/effectActivationCategory.ts",
+      "sha256": "4923d42a38822b15a593bafe235a021470a5d330557f4a4460c81c0f8f8ebe3a",
+      "byteLength": 409
+    },
+    {
+      "path": "app/utils/constants/search/options/effectActivationType.ts",
+      "sha256": "5a08f59fd31f6a6baed0ef1c4c587bc517771c53c2e4005aa6be4cb67c27413b",
+      "byteLength": 385
+    },
+    {
+      "path": "app/utils/constants/search/options/effectType.ts",
+      "sha256": "d05cebccecca3a96acf4866dd851c1733cd216ad2185628d4130490e5057969b",
+      "byteLength": 322
+    },
+    {
+      "path": "app/utils/constants/search/options/element.ts",
+      "sha256": "6a210783a6e990da9550e5e5e5f1d19d04592de828dc79714c2e9baeed9fb21e",
+      "byteLength": 301
+    },
+    {
+      "path": "app/utils/constants/search/options/faction.ts",
+      "sha256": "7df699352e452015068d25470a2d05ead500be4d6b2aa0e5fcee186d000940cb",
+      "byteLength": 301
+    },
+    {
+      "path": "app/utils/constants/search/options/heroPoint.ts",
+      "sha256": "7426d8d260af6005a479a7a52a977b85c9394149fde1b9adbbdbe984e0a30511",
+      "byteLength": 318
+    },
+    {
+      "path": "app/utils/constants/search/options/illustrator.ts",
+      "sha256": "ab4acaf08e0a12cff9331d5d250d644fb9fec098fb0514e47ef33059ca741b9d",
+      "byteLength": 325
+    },
+    {
+      "path": "app/utils/constants/search/options/index.ts",
+      "sha256": "edb60da0263f9e14921932548d3a0e2fc2795e5931d47e9393d898c3a8f1c28d",
+      "byteLength": 787
+    },
+    {
+      "path": "app/utils/constants/search/options/initiative.ts",
+      "sha256": "8548597c6b8b3bb836c77a6630eded0557c03875e107e4f79e27773f670ef3dc",
+      "byteLength": 321
+    },
+    {
+      "path": "app/utils/constants/search/options/itemSlot.ts",
+      "sha256": "5807795ae2be49f61078d83a06551cba4dffd87bd22443c1d6519c7ffb44066e",
+      "byteLength": 310
+    },
+    {
+      "path": "app/utils/constants/search/options/landCategory.ts",
+      "sha256": "103599483ff2dd1e2aedf9b1db3dda468ae3b8561bddbcd99f4343fb66263b55",
+      "byteLength": 511
+    },
+    {
+      "path": "app/utils/constants/search/options/level.ts",
+      "sha256": "4338d13471ea112e0fdbd9fad63952299445b80af707c3702e22f9bf3948d7f1",
+      "byteLength": 291
+    },
+    {
+      "path": "app/utils/constants/search/options/limit.ts",
+      "sha256": "d5ed48f03c7f65ff9db9f969e971c7cf84f8cc153111ab3914318d4a34d1c2f6",
+      "byteLength": 291
+    },
+    {
+      "path": "app/utils/constants/search/options/moveType.ts",
+      "sha256": "e7a897ad3453e511f92aac62eb49c31545d73eba0402037abf5d3dd19e4334f9",
+      "byteLength": 310
+    },
+    {
+      "path": "app/utils/constants/search/options/otherSlot.ts",
+      "sha256": "9630e195a88bf7ad9b960999c2b1963985c8c62b97a9e850367380187efd11a8",
+      "byteLength": 316
+    },
+    {
+      "path": "app/utils/constants/search/options/product.ts",
+      "sha256": "75f8e4c5faa4afb41d65335ede0b70029f8c03334f1958e5ffc99c33f865105b",
+      "byteLength": 301
+    },
+    {
+      "path": "app/utils/constants/search/options/race.ts",
+      "sha256": "e4de7057dfb1cd6652d0744577ff38f39e49b7dda2fe6a7cae63690fb678deea",
+      "byteLength": 283
+    },
+    {
+      "path": "app/utils/constants/search/options/rarity.ts",
+      "sha256": "265cbe160411f4be0241467163924470b01798bb851621315f9240a1152f1714",
+      "byteLength": 295
+    },
+    {
+      "path": "app/utils/constants/search/options/resistance.ts",
+      "sha256": "626141146cec31ded20b18525d12d05852a7b15ef5230308947633e1853547eb",
+      "byteLength": 319
+    },
+    {
+      "path": "app/utils/constants/search/options/spellSlot.ts",
+      "sha256": "3d9cc3f160d6abf52490694a2c5ebb61829fd6765e4e0037ab82a19d83750f0c",
+      "byteLength": 316
+    },
+    {
+      "path": "app/utils/mockData/about.ts",
+      "sha256": "76bf53275174207d1573909312cee95d9c315008904efec925a1eb74c5519f1b",
+      "byteLength": 2536
+    },
+    {
+      "path": "app/utils/mockData/cards.ts",
+      "sha256": "f00f39a4281ed5d0fdada53769927e75336580aa6957fb8e2fb5c9afc037cf65",
+      "byteLength": 215
+    },
+    {
+      "path": "app/utils/mockData/index.ts",
+      "sha256": "6a30d14ab8e49a6590ab07f2f6fe9155f38a406060fc82ce622c07443b42b4bc",
+      "byteLength": 155
+    },
+    {
+      "path": "app/utils/mockData/indexPage.ts",
+      "sha256": "f9f0d28a31ddad62a2f9d541aa188d896468197d464e5820db7cee713e62a587",
+      "byteLength": 1262
+    },
+    {
+      "path": "app/utils/mockData/items/about_release_note.json",
+      "sha256": "0bc8e0e83709441921fd5486fed3f8ad9d134ec8afd1364a9ab3269384674fc1",
+      "byteLength": 1061
+    },
+    {
+      "path": "app/utils/mockData/items/cards.json",
+      "sha256": "c61fb45cf49b009a5e0628b66aa0617a6de0ead0e532b8e5aab9a5d5196e194c",
+      "byteLength": 2342095
+    },
+    {
+      "path": "app/utils/mockData/items/rule_errata.json",
+      "sha256": "feadbc2da035060eb0acf5110f6d1b5636c394e31434bf93ee0157e0951e836a",
+      "byteLength": 2216
+    },
+    {
+      "path": "app/utils/mockData/items/rule_question_answer.json",
+      "sha256": "282cbd1296bb8e30316a261a24ba134bf8cfe05d24dbfbd3ba3b21229c599e40",
+      "byteLength": 77900
+    },
+    {
+      "path": "app/utils/mockData/items/rule_restriction.json",
+      "sha256": "d69a255bfdbc2b43cbb5120c81caccfd062ff99534320bcbb03995676f3daedc",
+      "byteLength": 8529
+    },
+    {
+      "path": "app/utils/mockData/items/rule_supplement.json",
+      "sha256": "43e9a6b8123b8f12a37009b1dcc4ef705abe326d0193b3fdef2817a0d72d31b6",
+      "byteLength": 8274
+    },
+    {
+      "path": "app/utils/mockData/items/rule_text_change.json",
+      "sha256": "33e79329748c6e3133ef8b63bb885b3a28975a908c885bd7d49652b2e0e682c3",
+      "byteLength": 13340
+    },
+    {
+      "path": "app/utils/mockData/items/rule_text_individual.json",
+      "sha256": "34fb4e02b21bbe408f371d9b3fc2d6271970ccb6a2c587a81b3bf71b8ec2b8d1",
+      "byteLength": 43725
+    },
+    {
+      "path": "app/utils/mockData/links.ts",
+      "sha256": "9048f9703d6bfea1747b7b300e9224cec9548663aba86bbdcd537ae49682b58c",
+      "byteLength": 2119
+    },
+    {
+      "path": "app/utils/mockData/restrictions.ts",
+      "sha256": "fab9fe5e1a48c0f440ee2858a2a3fd37d888aa0240a66967ff65912757b3f0fc",
+      "byteLength": 11340
+    },
+    {
+      "path": "app/utils/mockData/rules.ts",
+      "sha256": "aef6f211211cd8bbab955ec7fd99a1b1a8fc53cdb4f1bb7c19945d4d321f3be6",
+      "byteLength": 2424
+    },
+    {
+      "path": "server/api/fixtures/cards-response-baseline.json",
+      "sha256": "319621f20b23d6e8cc68d1944119e367ce542093191ae7894ab2d7b65be04c53",
+      "byteLength": 899357
+    },
+    {
+      "path": "server/utils/cardSearch/normalizeCatalogText.fixtures.json",
+      "sha256": "c6242ca495ecdd5c896f8a6a1c39f0939ebdad1d5b74f625de4943bd914781b1",
+      "byteLength": 16950
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/checklists/requirements.md",
+      "sha256": "9888291e129e3437f2fe9b2f9fbf3b77be1f23b7b03cbd1a96792b762bbb0311",
+      "byteLength": 3099
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/contracts/acceptance-evidence.md",
+      "sha256": "a06fd1d2511999904324236af1b0fc8e2725951177f3bd98e2506a839d254249",
+      "byteLength": 5030
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/contracts/catalog-search.md",
+      "sha256": "fcec6ebe1e5e1a57a0386a3c9d0a53427a7a9ad4e479a157338052c4f23642c2",
+      "byteLength": 4226
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/data-model.md",
+      "sha256": "74dbd5f700e51b84309782b4cd558eb83ff79281dd19285b52ad522fd1d7155a",
+      "byteLength": 4586
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/plan.md",
+      "sha256": "63beb8f73e846e15851d5cbdb886d4b67c63bda44d8d7294d407f3a26882d4b7",
+      "byteLength": 7912
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/quickstart.md",
+      "sha256": "71c06a28a2e7cf4edc2810c39387a57751ed4a6662342a2a8a76c65c34c76893",
+      "byteLength": 6497
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/research.md",
+      "sha256": "68edfab7e257831f6e0e253c2aaa433cbca31785747a30e70ca308a66f189a32",
+      "byteLength": 5650
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/spec.md",
+      "sha256": "bc48ab4ae2fbe82f2e5da81218c277edb8055a0a4f4d4a62d3aa607ab3871068",
+      "byteLength": 9440
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/tasks.md",
+      "sha256": "ae45e6357cd30ad083714d9f0d4f0b66ff4ab6c1a747165c251f5317954742aa",
+      "byteLength": 24571
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/acceptance.md",
+      "sha256": "642af16715a8340e214c5396ca98ab71ca1fd64dcb5ff114da0d490b4b8620e9",
+      "byteLength": 13997
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline-capture-output.log",
+      "sha256": "196b79c27160cfade71e0d5b421b1121792e6b4ac6bd90754ce7bf95bdaf5134",
+      "byteLength": 165
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline-execution.txt",
+      "sha256": "3f3ead8d26501678e640e6dc5d05c7c316f91aeddb48b074459ab907f7d8871e",
+      "byteLength": 86513
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline-integrity.json",
+      "sha256": "bd876f047d97604af8cc6469bd2c42ef92966125c0084ffca7a8349dd2dbd5c5",
+      "byteLength": 3246
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline-local-output.log",
+      "sha256": "bb0c7e216849ec6a818f4e07b17999ca31d087fe9fab342919959821c73b63bf",
+      "byteLength": 85307
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline-output.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline.json",
+      "sha256": "7697423998a3aba4a8ed5d7992557b00ac26828f76600518e59135dd97ffa5ca",
+      "byteLength": 3812922
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline.log",
+      "sha256": "0b2978634de9d6464119c71514fc15094b6a52151581ddc3f9d12ee339d8d32b",
+      "byteLength": 936
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/capture-baseline.mjs",
+      "sha256": "30e836f6ca6b11a0474ec934914752217db0864705b9e6bb66d63b3555c66b26",
+      "byteLength": 7930
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/check-results.json",
+      "sha256": "6313d4c4b7fb966dfc06b4b3bd128a113d7a6d3653bf0db04e2d6b262a8cee43",
+      "byteLength": 3618
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/data-audit.json",
+      "sha256": "ad0a4158a238a2e4a08cfadcd63fd62d9858d006452f2fde9e306ee4181b6938",
+      "byteLength": 154622
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/api-comparison.json",
+      "sha256": "67af5881bd3d96632c8f4890398d27cdc582d8258a8a39fdec0fab2aaaeee839",
+      "byteLength": 2449
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/api-tests.txt",
+      "sha256": "6f19eeeb880a8c3c03b6cf9625e169bb8098fccf64b785cdcb0ac2622211d293",
+      "byteLength": 885
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/build.txt",
+      "sha256": "c14d01744a23bcf38b9a9e7a40b6edcd3e3a2001b1f1bdf519bbbb23057ef7ca",
+      "byteLength": 68400
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/commands.txt",
+      "sha256": "2214d73e31d415fa901a7546f6c0cc86164b6f0dc9edf7224c5a5f8b09869f75",
+      "byteLength": 413
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/failure-comparison.json",
+      "sha256": "cbc7ca99e5033bd233e2667a783c14700e4f0a46d687117c2ae3e400174d0935",
+      "byteLength": 3173
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/fixture-diff.json",
+      "sha256": "8a9f32e777ac40dec7ee4197d30fa00b460f348193e3a23326e58604caf664b6",
+      "byteLength": 23049
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/lint.txt",
+      "sha256": "9e26cc9ff4b569e5db90454732fd10fd7539c03822105285e1736826ed26fc0f",
+      "byteLength": 24
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/preservation.json",
+      "sha256": "bd28694a9a15bade8e3b9ac20efe64215565a9b96511a4de96d07715d770993b",
+      "byteLength": 190
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/protected-files-before.json",
+      "sha256": "a22cf3816f1b23d2188643316e963379f6fd7fc03efc4408695575304951fbd2",
+      "byteLength": 10405
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/regression.txt",
+      "sha256": "e2578267b681b49589fd7fd80b670ffb477cf081943308187f154fc4c8d92383",
+      "byteLength": 49578
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/results.json",
+      "sha256": "535ac5c3c243a04bc010382d34c1fef4297f32ba9fa0a864699cb1e409c15732",
+      "byteLength": 1444
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/review.md",
+      "sha256": "b1feccdc8d315e9fc6ba1d5b8198f7e9033626d8d700e055190e37fbbd7834db",
+      "byteLength": 5375
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/effect-name-baseline/typecheck.txt",
+      "sha256": "266e29279ee47296e383145ee47775d08b4ba01cba211f37f55ef2a4568bdd17",
+      "byteLength": 692
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/expected-catalog-results.json",
+      "sha256": "cf8532e057fd79a5d7464a039a7fefe17a074266160a12bae708b967894b8495",
+      "byteLength": 37351
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/files-changed.md",
+      "sha256": "2b9539f03c7d03334dde7e535e8801a986420e4069b48b59ba76fffe2e21ca94",
+      "byteLength": 8945
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/final-failures.json",
+      "sha256": "fdb72b0a8603570d7aaa945bf59bf8ee38d8e1bae111bdbd3dac8b8015b57d9a",
+      "byteLength": 3557
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/implementation-stop.md",
+      "sha256": "78ca66901d89501c43c0794ff7e0e99d547af9cf3368e242be7ee078d70e5265",
+      "byteLength": 2088
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/preservation.json",
+      "sha256": "a950f8202520c0f47737173f447ed8eed32389aa3b2564d74a052766f3b0a386",
+      "byteLength": 1878
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/qds-differences.md",
+      "sha256": "b65a1786b4662190cad75c97603e84f0f6b15f6e825919e7cad842c77e8ca022",
+      "byteLength": 2262
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality-build.txt",
+      "sha256": "f806d36fef1f32f412ac8bfcb7f896c897322d8b3e644266809d41125a705e50",
+      "byteLength": 68402
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality-lint-final.txt",
+      "sha256": "9e26cc9ff4b569e5db90454732fd10fd7539c03822105285e1736826ed26fc0f",
+      "byteLength": 24
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality-lint-verified.txt",
+      "sha256": "9e26cc9ff4b569e5db90454732fd10fd7539c03822105285e1736826ed26fc0f",
+      "byteLength": 24
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality-lint.txt",
+      "sha256": "a5fb79acfdfef48a822da8beee8ae95129d900e736f03f7f59185bec20a683e4",
+      "byteLength": 386
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality-typecheck-final.txt",
+      "sha256": "266e29279ee47296e383145ee47775d08b4ba01cba211f37f55ef2a4568bdd17",
+      "byteLength": 692
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality-typecheck.txt",
+      "sha256": "d60b5fe30f81ea41993758d29692dd107a8bfbfa881112b43ac657d4debf1f2f",
+      "byteLength": 6108
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality.log",
+      "sha256": "9fa756695a05ec1a78bfac3be8aa3cbd7c37a08befa5c4967f99d5c796e126fd",
+      "byteLength": 162421
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/quality.txt",
+      "sha256": "9fa756695a05ec1a78bfac3be8aa3cbd7c37a08befa5c4967f99d5c796e126fd",
+      "byteLength": 162421
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/regression-full.log",
+      "sha256": "b53ab408027f117f2c4ffd99a8182a243f7396fc022c1c4507bb4a45e2ef931c",
+      "byteLength": 86151
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/regression-full.txt",
+      "sha256": "b53ab408027f117f2c4ffd99a8182a243f7396fc022c1c4507bb4a45e2ef931c",
+      "byteLength": 86151
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/regression-verified.log",
+      "sha256": "46a09115841d591f7b84274a860e6ce66bdf1bddf792a9f3a4fb80c1328d2724",
+      "byteLength": 86152
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/regression-verified.txt",
+      "sha256": "46a09115841d591f7b84274a860e6ce66bdf1bddf792a9f3a4fb80c1328d2724",
+      "byteLength": 86152
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/run-check.mjs",
+      "sha256": "324a1f2c109caed3d1cfb872ecf1552aa237d4afc318dabeea56183e137808b4",
+      "byteLength": 1742
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/structure.md",
+      "sha256": "c07e7ce73ba73723c5520bfbab2b5c5d5deca7f50195beada905026c76c08bd4",
+      "byteLength": 3526
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/t002-recovery.md",
+      "sha256": "f561d3ea834b7ddb7043ec8a3bab5036518050e21edccbb0c899f38d79209ad4",
+      "byteLength": 8740
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us1-green.log",
+      "sha256": "184a2dfdb773ec9ffce1ebd0ad4ad20b1870e89c6cb3cd398af139f78789365a",
+      "byteLength": 43345
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us1-green.txt",
+      "sha256": "184a2dfdb773ec9ffce1ebd0ad4ad20b1870e89c6cb3cd398af139f78789365a",
+      "byteLength": 43345
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us1-red.log",
+      "sha256": "b010d4ff3df987d8989c19dad75ca798d5a543e9ea09dbf41f3844555597b2ed",
+      "byteLength": 68088
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us1-red.txt",
+      "sha256": "b010d4ff3df987d8989c19dad75ca798d5a543e9ea09dbf41f3844555597b2ed",
+      "byteLength": 68088
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us1-verified.log",
+      "sha256": "27a769731d8df39c14383367d543e99df0312b22c7a6e28a0aab686fa331d2ef",
+      "byteLength": 38500
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us1-verified.txt",
+      "sha256": "27a769731d8df39c14383367d543e99df0312b22c7a6e28a0aab686fa331d2ef",
+      "byteLength": 38500
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us1.md",
+      "sha256": "0d6e566871042d1deb9551b34726ebcd8b84953bb0b20a487e503f20b1277041",
+      "byteLength": 2382
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us2-red.log",
+      "sha256": "74f15d5222426deb1b7010ab60397117ed2bea04bd1c491ad8e91208980eb7b8",
+      "byteLength": 54363
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us2-red.txt",
+      "sha256": "74f15d5222426deb1b7010ab60397117ed2bea04bd1c491ad8e91208980eb7b8",
+      "byteLength": 54363
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us2-verified.log",
+      "sha256": "baf62b1afbb8951a8e8a5a907c84a1013083099a12e71f2ae41fe4899e8cec14",
+      "byteLength": 38504
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us2-verified.txt",
+      "sha256": "baf62b1afbb8951a8e8a5a907c84a1013083099a12e71f2ae41fe4899e8cec14",
+      "byteLength": 38504
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us2.md",
+      "sha256": "40f52685a56ae9c71f8623c9a0a7e31c0be9b9b1d1642ceb6ecc59770063d307",
+      "byteLength": 1650
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us3-final.log",
+      "sha256": "4c8cf3b1248a4d3bf1bee1ee6ef04c443f2e91752dae924d471dfa4680cc7764",
+      "byteLength": 38533
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us3-final.txt",
+      "sha256": "4c8cf3b1248a4d3bf1bee1ee6ef04c443f2e91752dae924d471dfa4680cc7764",
+      "byteLength": 38533
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us3-targeted.log",
+      "sha256": "107a043f15ff27a364ca67ab2935e26db9e5367fa983da5be012e8129ef98549",
+      "byteLength": 38532
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us3-targeted.txt",
+      "sha256": "107a043f15ff27a364ca67ab2935e26db9e5367fa983da5be012e8129ef98549",
+      "byteLength": 38532
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/us3.md",
+      "sha256": "f3f75b4064c9e2b7a0d70ffb2f84f201a0932a36648141fc57356f6650b28df0",
+      "byteLength": 3303
+    },
+    {
+      "path": "specs/015-search-result-sorting/checklists/requirements.md",
+      "sha256": "99d4311cbecd7d6719a9b785729343d77dad0011c5c8a7f88c807882a5771d2f",
+      "byteLength": 5455
+    },
+    {
+      "path": "specs/015-search-result-sorting/contracts/search-result-sorting.md",
+      "sha256": "e90a83526f6149e21478d8355463218d66faccdbd63edbb3c1205d9d2904ca3c",
+      "byteLength": 4931
+    },
+    {
+      "path": "specs/015-search-result-sorting/data-model.md",
+      "sha256": "2671e4de38c4443c93d72391647e4701b0357475be33e730970a87f4bd354af1",
+      "byteLength": 3618
+    },
+    {
+      "path": "specs/015-search-result-sorting/plan.md",
+      "sha256": "0ed397944d9908b81dd812db3b505f833b583a49c1b5087b20ffab146dbfbc3e",
+      "byteLength": 11680
+    },
+    {
+      "path": "specs/015-search-result-sorting/quickstart.md",
+      "sha256": "534218cc03b381891e535da544067aa72defb279ecb5911719702f4b28d093aa",
+      "byteLength": 5048
+    },
+    {
+      "path": "specs/015-search-result-sorting/research.md",
+      "sha256": "2a1a4b8687168a07228665fa92dc58c673905ad422f417140a670c8145e578ec",
+      "byteLength": 8938
+    },
+    {
+      "path": "specs/015-search-result-sorting/spec.md",
+      "sha256": "6216eabd614185aab3e212220e5300e9c458520dab1eb136ceeafc8d1c46d21c",
+      "byteLength": 9997
+    },
+    {
+      "path": "specs/015-search-result-sorting/tasks.md",
+      "sha256": "d3e5b2097f01760df5924edab0239ebf994a73e0e8be5eea690b584110e49a98",
+      "byteLength": 16516
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/audit-static.mjs",
+      "sha256": "befb81295aaeddb66ecc18ed9271f2a2d9f3a3f86b9caf1e743475d45d36101c",
+      "byteLength": 2793
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/automated.md",
+      "sha256": "b257425087ea53b3711fe16e74b641ecc620c728a27ac3b45f69c3d9c2d69eb7",
+      "byteLength": 2779
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/capture-sort-oracle.mjs",
+      "sha256": "04544f0cf4652d06fadc814723e7d8f41ca7cadc6349ca631754f463a224262c",
+      "byteLength": 2348
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/expected-sort-results.json",
+      "sha256": "fe37e3bb27849e335f5077b93da70c893f1824a05cc28a8af10e89d7397f7e71",
+      "byteLength": 177608
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/focused.log",
+      "sha256": "6bd657ce39d49f1e9dbc8f24d2e6eab1a279c1e390386b67228b10559ddb2f68",
+      "byteLength": 1106
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/full-test.log",
+      "sha256": "aa68eadb0d6d406acf7c74eb05fe172deafdba706b9f520c8ca318033762495e",
+      "byteLength": 922
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/generate-isolated.mjs",
+      "sha256": "e5ee733817f8b50e4efd77cbc8643a66e068cb0862f3a49bf2f3ee31715c1387",
+      "byteLength": 476
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/generate.log",
+      "sha256": "a38593e613da71cd07ee492ce385ab2e71d419db8a283c38c0e154cd5793c2d2",
+      "byteLength": 36451
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/human-ui.md",
+      "sha256": "8e20bf305920bfff323a58982cc9ddb18c9e47db0adbc87e0be243e5f43b6662",
+      "byteLength": 5977
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/implementation-baseline.md",
+      "sha256": "94418020d5e884646bb90091278f2d85eaf027f2ac913aea6850c6b9898acac8",
+      "byteLength": 1382
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/lint.log",
+      "sha256": "9e26cc9ff4b569e5db90454732fd10fd7539c03822105285e1736826ed26fc0f",
+      "byteLength": 24
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/oracle-buckets.json",
+      "sha256": "4ba67e18f527102a8b7a80d8f2a1175e45da53c7d00f6b04b354bd4eea315d48",
+      "byteLength": 99531
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/oracle-provenance.md",
+      "sha256": "72f6f103e51be98f4eb1308ad3771dbc00241c287961c2e5ac7a811a6402ca01",
+      "byteLength": 542
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/protected-files-after.json",
+      "sha256": "247c92de8b2f29e01205b8aeee3d0cb861d3f90f144449618c415590ad2ef238",
+      "byteLength": 21790
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/protected-files-before.json",
+      "sha256": "bb296065269d9d90205ac993d4453e7636bd2132fad28cdfdd69d82f547111de",
+      "byteLength": 13628
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/scope-audit.md",
+      "sha256": "2a94b525825eed63adb4c89ded854c9d1668b6407a7fb86e6fd004d67448ca91",
+      "byteLength": 1023
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/serve-static.mjs",
+      "sha256": "8a2d2ab6ab4bcf785f88606b0787219a4ac58ae13359c147ee7e3cc4a77ba6ff",
+      "byteLength": 1335
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/sort-expectations.ts",
+      "sha256": "206d7d76f1f1da842618681c069ecdde2903f7369a0866bee80c63d88be58d9e",
+      "byteLength": 1688
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/sort-fixtures.ts",
+      "sha256": "2a59c052ca772a05d7c52e91e0b4b92846cfa23d7eeae8aa9a17973bb71d2baf",
+      "byteLength": 2286
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/static-audit.json",
+      "sha256": "8e2852444358cea159536f8ec247fd5e2603f9751af59ac8935488fab51d9e0c",
+      "byteLength": 977
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/static-generation.md",
+      "sha256": "bfb110058d93ef5eaead790000177a366d1d62037f8ff4119a8eda4773d85c35",
+      "byteLength": 1249
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/summary.md",
+      "sha256": "5c22ef2dfeb01bad95dbcc0eb6e31f7fead2c2ce6c44a17c01399078eadcd7c9",
+      "byteLength": 4187
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/typecheck.log",
+      "sha256": "266e29279ee47296e383145ee47775d08b4ba01cba211f37f55ef2a4568bdd17",
+      "byteLength": 692
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/ui-final.log",
+      "sha256": "536f90b7734f2a67784094b8dd44e8cb51b50ee777f838e8caa9e2bade669177",
+      "byteLength": 964
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/ui.log",
+      "sha256": "ca258374d517cd56d807365ecb5e1b72a76faa150df981d58afa53a6ac65abd4",
+      "byteLength": 2169
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/us1-green.log",
+      "sha256": "1eb62084cfa020c8f36315886b224dddab613adcf35684e41e47d1037af0abf0",
+      "byteLength": 1014
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/us1-red.log",
+      "sha256": "eb424728cb456135aa62c86fdfc5d95b50b2c5717c24248fac757e6857028755",
+      "byteLength": 11616211
+    }
+  ]
+}

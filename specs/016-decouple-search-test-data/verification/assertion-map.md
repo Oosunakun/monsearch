@@ -1,3 +1,5 @@
+> 現在の状態: T001/T039/T040の静的照合完了。元542 expect呼出の未対応0。以下の「作業中」「未完了」は再開前の履歴であり、末尾の移行結果を優先する。最終品質・保全の実行結果はresults.md参照。
+
 # Assertion対応表（開始時の草稿）
 
 状態: T001作業中。29ファイルの列挙と開始時の構文抽出まで完了。移行は未実施、実行結果はnpm起動時の環境失敗。下記I番号は [棚卸し](../test-inventory.md) を継承する。
@@ -218,3 +220,62 @@
 | `shared/cardSearch/runner.test.ts` | 78 | R05 | 確認済み／未実行 |
 | `shared/cardSearch/runner.test.ts` | 81 | R05 | 確認済み／未実行 |
 | `shared/cardSearch/runner.test.ts` | 82 | R05 | 確認済み／未実行 |
+
+## 残り25ファイルの静的意味レビュー（Elevated再開）
+
+以下は入力注入・Assertion移行前の追跡。既存の122位置と併せ528位置をカバーする。パラメータ化表とループは各ケースのソース式を保持し、外部固定表は既存Oracle/fixtureを参照する。実行結果は変更前Baselineをresults.mdで別記する。
+
+| I番号 | 仕様根拠 | 責務・移行先/変更不要理由・維持する正解 | データ経路・正常3操作の影響 |
+|---|---|---|---|
+| I03 | 014 G2/G4・QDS・012 cost | A:歴史全件ID/正規化既知例と、明示的境界Cardへ。fulltext/att realCasesは歴史入力、他のfirst/findは小規模入力へ。全query・同一Effect・cost・欠測・入力非破壊を保持。 | cards→dataSource、catalog Oracle。追加/変更/削除で既知hit・find素材・件数が変化。 |
+| I04 | 015 sort契約 | A:明示固定baseと手書きfixtureOrdersへ。group/0/NULL/正負/sourceIndex/同ID、30/3件の合成slice条件と非破壊を保持。 | cardsをbase/sliceに使用。3操作で素材・集合が変化。 |
+| I07 | 015 sort契約・R24契約§2/4 | A/B:歴史sourcesを既存loader/fetch Mockへ。149/482/10pagesも固定入力で保持。SSR・ready・retry・離脱・世代・同内容抑止・通信回数は固定契約。 | loader/fetch→cards、expectedIds。追加/変更/削除でhit・ページ・固定順が変化。 |
+| I08 | 015 UI契約・013制限 | A/B:controlsは歴史sources＋015 expectedIds、表示は明示DTO。desktop/mobile・全6キー両方向・20/50/100・page reset・props差替え・chipを保持。 | loader Mock→cards、projectCard(first)。追加/変更/削除で482件・ID順・素材変化。 |
+| I09 | R24 US2・既存ItemEffect表示契約 | B:完成済み固定DTOへ。本文のみ/通常/空/null/混在順・区切り4パターン・改行2種類・CSS定義は保持。 | 土台だけprojectCard(first cards)。3操作で素材/背景等が変化、手書きeffectsの期待値自体は固定。 |
+| I10 | 013制限表示契約 | B:完成済みDTOへ。0/1/2、3/4/null非表示、props更新、背景色・名称の各既存期待値を保持。 | projectCard(first cards)。3操作で土台DTO・名称が変化。 |
+| I11 | R24 US2/3・既存ページ状態契約 | B:完成済みDTOへ。loading/empty/error/successの排他・retry・更新・通常API非依存の構造を保持。 | cards投影→mock state。3操作で素材が変化。 |
+| I12 | R24契約§2/4・loader実装 | A:固定FinderCardsへ。並行共有・sourceIndex/全ID順・cache/no-cache・network/http/html/schema/cardの5失敗とretry保持。D:最新受理を別途同時追加。 | fetch Mock bodyがcards、482固定。追加/変更/削除で件数・順・素材変化。 |
+| I13 | 008 UI/navigation契約 | A:固定商品option Mockへ。desktop/mobile×pointer/key、無効/空値、名称のみリンク、備考等非リンクを保持。C/D:最新参照検査追加。 | component→builder→PRODUCT_VALUES→productItems。使用値の変更/削除で陽性リンク消失。追加でも固定期待値は変えない。 |
+| I14 | 008 navigation契約 | A:固定product optionsへ。3商品例・独立ID・pdだけ・入力不変・5無効値を保持。 | builder→PRODUCT_VALUES→productItems。使用値変更/削除で不一致、追加を許容。 |
+| I15 | 008 navigation・Query Specification | A:商品navigationの固定options Mockへ。3経路/Unicode/再読込/大小文字のURL期待値は変更しない。 | 商品builder経路だけproductItems membership依存。使用値変更/削除で失敗、通常Parser/Builderは形式ベース。 |
+| I16 | 008 US1/FR011/012・HD-C08 B | A:共通行を持つ固定二画面fixtureへ。D:最新両画面全行を個別検査し共通行だけlocation比較。home全行の包含は要求せず独立陽性は残す。 | indexPage/restrictions商品行→productItems。片側追加/削除/変更で包含仮定が崩れる。rule_restrictionの内容は未使用。 |
+| I17 | 002/007フォーム復元・QDS slot Mapping | A:先頭increment操作のケースだけ固定slot optionsへ。multi:1の陽性操作、ready/SPA/離脱/編集保護・query全復元・pushを保持。 | 実子component→ITEM_SLOT_OPTIONS→itemSlotItems。追加/変更/削除や順変更で先頭multi仮定が崩れる。他ケースは手書きquery。 |
+| I18 | 既存dev配信契約・R24 D | D:変更不要。最新元bytesと応答比較、GET/405/path/500/retry/cacheなしは動的な同一入力比較であり古いsnapshotではない。 | 最新cardsファイルを意図的に使用。追加/変更/削除の内容が応答にも反映されるべき。 |
+| I19 | 011 Short UUID schema・R24 C07 | A/C:変更不要。5hexの形式/大小文字/無効6例/collection固定正解と最新7群全value形式を維持。 | items barrel→UUID7群。追加/変更/削除は形式適合なら許容。データの個数/名前は固定しない。 |
+| I20 | 既存slot selector操作契約 | A:変更不要。手書きitems propsでslots増分・match通知、VBtn存在とemitを保持。 | 本番データ依存なし。3操作の影響なし。 |
+| I21 | 002 form factory契約 | A:変更不要。手書きinitial状態の独立コピーとreset defaults。 | factoryのbarrel経由importはあるが観測配列にはAssertionしない。3操作影響なし。 |
+| I22 | QuickSearch既存alias契約 | A:変更不要。手書きstate/router Mock、3種aliasと空queryを保持。 | 本番データ依存なし。3操作影響なし。 |
+| I23 | 算術恒等式 | A:変更不要。1+1=2。 | データ依存なし。3操作影響なし。 |
+| I24 | 002 defaults契約 | A:変更不要。独立したdefense/initiative条件とall既定値。 | barrel importはあるが観測値固定なし。3操作影響なし。 |
+| I25 | Query Specification・QDS・011/012 | A:変更不要。canonical alias/order、Short UUID未知有効値、Pair/none/数値0・不完全・カテゴリ適用範囲・原文非破壊を保持。 | Natural Keyは固定仕様で選択肢観測値ではない。形式有効UUIDを使いmembership参照なし。正常3操作影響なし。 |
+| I26 | Query Specification・QDS・011/012 | A:変更不要。last-wins/merge、trimのみ、未知UUID、invalid Pair・none・数値/正負/NaN、独立復元を保持。 | schemaはUUID形式照合、固定Mappingと観測集合を区別。正常3操作影響なし。 |
+| I27 | QuickSearch alias/trim契約 | A:変更不要。3alias・Unicode/記号・100回決定性・5不正入力・pool無視・非破壊。 | データ依存なし。3操作影響なし。 |
+| I28 | QuickSearch Router契約 | A:変更不要。3検索種別、Unicode/予約文字のquery/fullPath roundtrip。 | データ依存なし。3操作影響なし。 |
+| I29 | 既存pagination契約 | A:変更不要。121合成値×20/50/100、page clamp/0件。 | データ依存なし。3操作影響なし。 |
+
+詳細406位置のcase/it.each/ancestor loop/元code/仕様/依存/移行先は[assertion-review-before.json](assertion-review-before.json)に展開した。元の122位置は本書上表を保持する。履歴の未完了注記は以前の状態を示し、この追記が最新の静的棚卸し。移行後の位置・実行結果の照合はT039/T040で更新する。
+
+
+T001静的棚卸し完了: 29ファイル528位置を確認。元の122位置と追加406位置の規則・ケース式・依存・移行先を照合した。変更候補17件/不要12件を維持。実収集も変更前Vitestの29ファイルと一致。移行実績と最終検証結果は後続のT039/T040で更新する。
+
+## 移行結果・Assertion保持照合
+
+T016〜T038を実装。元542個のexpect呼出（528行位置。同一行複数をASTで展開）を現在の対応位置へすべて接続した。詳細は[assertion-preservation.json](assertion-preservation.json)。537個はトークン列が同一の比較式、3個はloaderの固定入力482→3に伴う件数差替え、2個はcatalog realCasesの入力だけhistoricalSourcesに差替え。元Assertion未対応0。元パラメータ表・既存Oracleを削除/緩和していない。
+
+I01/I02の歴史比較は同名ファイルで完全DTO/hash/順序を保持、I03は歴史固定例と明示検索Cardを分離、I04/I05は明示base/独立DTO、I06は歴史非空と最新C04を分離。I07/I08は固定sources、I09〜I11は完成DTO、I12は3カードの固定FinderCards。I13〜I16は対象option moduleの固定Mockと二画面fixture、I17は固定slot操作。I18〜I29の変更不要根拠は維持。最新側はtests/integrationのC/Dへ対応。
+
+移行初回全体は1096成功/2失敗で、失敗は新しい検索baseの追加能力混入とlevel=0に起因。unit用とequip用を分離しlevel=2を明示して元の期待条件を復元。search-migrated.txtは203件成功。updates-complete.txtは67件成功（正常更新64、回帰2、不正入力1）。各scenarioのtarget/basis/linkedUpdates/invariantsはtests/helpers/masterDataScenarios.ts、ケース宣言と各入力消費・固定比較はtests/integration/masterDataUpdates.test.tsに対応。UUID7群と数値群は個別3操作、商品行は片側3操作、cardsは3操作と最後の一致例削除。固定語彙はlabel/順変更のみでvalue追加削除は仕様変更として対象外。
+
+US1-A〜D→正常更新64ケース、US2-A〜E→元完全比較＋独立DTO＋回帰2ケース、US3-A〜E→C01〜C08と最新D＋既存schema/dev配信、US4-A〜C→本対応表とresults/保全/全体log。FR-001/002/011→T001と本AST対応、FR-003/006/007→歴史fixture/独立期待値/保全、FR-004/012→更新matrix/結果、FR-005→元542Assertion、FR-008/009→C/D、FR-010→clone/Mock/cache/原本不変。SC-001〜006の最終判定はresults.mdへ記録する。最終全体検証はこの時点では未実行。
+
+### T039/T040最終レビュー
+
+元29と新規5の34テストを収集範囲へ照合した。新規5はtest-inventory.md末尾に責務を列挙。元のexpectはトークン列で対応（比較式同一537、loaderの固定入力482→3に伴う3式、catalog入力をhistoryへ変更した2式）、計542呼出で未対応0。基礎の528行位置と複数行/同一行複数呼出の違いを区別する。元パラメータ化の条件表は変更0、元skip/only/todoの追加0、既存DTO/hash比較項目の削減0。移行後コード位置と理由はassertion-preservation.jsonに全件保存。
+
+更新matrixはupdate-matrix.jsonの64シナリオ。さらに最新集合が空でも誤失敗しないよう、空の可変集合には操作対象をテスト側で準備しpreparation/beforeTargetへ記録、追加/変更/削除が実際に行われたことも検査した。固定語彙valueの追加削除は対象外。slotはmultiが先頭でない順を通す。最後の陽性例は明示的な1件→0件と固定側陽性/陰性を維持。updates-empty-safe.txtは68件成功。
+
+### 最終実行との接続
+
+最終状態は[validation-state-v5.json](validation-state-v5.json)。追加5ファイルはNode環境で136/136成功、最終全体は1166成功/1失敗（画面の最初の実子mountを含む既存ケースの5秒タイムアウト）。画面単独20/20成功。元の比較条件の不一致は出ていないが、最終全体成功とは扱わない。T001〜T040完了、T041〜T046は未完了でHuman判断待ち。[results.md](results.md)末尾にコマンド/log・既知差分との区別・正常/異常/回帰・保全状況・次の判断を記録した。
+
+最終受入れ: 機能ACCEPTED、SC-006未達。T041未完了、T045/T046はHD-R24-ACCEPTANCEに基づく文書整理完了。[最終レビュー](../final-review.md)を参照。過去の未完了注記は時点履歴として保持する。

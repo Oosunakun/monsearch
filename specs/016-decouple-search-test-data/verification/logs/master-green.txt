@@ -1,0 +1,42 @@
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+
+ RUN  v4.1.10 F:/Projects/monsearch
+
+stdout | tests/integration/cardSearchMaster.test.ts
+<Suspense> is an experimental feature and its API will likely change.
+
+ ❯ tests/integration/cardSearchMaster.test.ts (16 tests | 1 failed) 7089ms
+     × C01違反を対象fieldとともに診断する 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/integration/cardSearchMaster.test.ts > 最新カードマスターと検査器の正負例 > C01違反を対象fieldとともに診断する
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/integration/cardSearchMaster.test.ts:24:100
+     22|     const issues = validateCards(input()).issues
+     23|     expect(issues.some(issue => issue.ruleId === rule)).toBe(true)
+     24|     expect(issues.every(issue => issue.dataset && issue.fieldPath && i…
+       |                                                                                                    ^
+     25|   })
+     26|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 20 passed (21)
+   Start at  19:00:01
+   Duration  9.67s (transform 8.42s, setup 458ms, import 1.89s, tests 14.44s, environment 1.79s)
+

@@ -1,0 +1,39 @@
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+[NUXT_B6002] `useLayout` is already auto-imported by Nuxt as a built-in, and overriding it will likely cause issues.
+╰▶ fix: Rename `useLayout` in `vuetify` so it no longer collides with the built-in auto-import.
+Duplicated imports "useLayout", the one from "#app/composables/layout" has been ignored and "vuetify" is used
+
+ RUN  v4.1.10 F:/Projects/monsearch
+
+ ❯ tests/fixtures/cardSearch/fixtureIntegrity.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/fixtures/cardSearch/fixtureIntegrity.test.ts [ tests/fixtures/cardSearch/fixtureIntegrity.test.ts ]
+Error: Failed to resolve import "./sources" from "tests/fixtures/cardSearch/fixtureIntegrity.test.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: F:/Projects/monsearch/tests/fixtures/cardSearch/fixtureIntegrity.test.ts:9:65
+  7  |  import api from "~~/server/api/fixtures/cards-response-baseline.json";
+  8  |  import manifest from "./historical/014-015/manifest.json";
+  9  |  import { historicalCards, historicalSources, smallSources } from "./sources";
+     |                                                                    ^
+  10 |  describe("歴史入力と既存Oracleの対応・隔離", () => {
+  11 |  	it("元bytes/hash/件数と全Oracleの参照集合を保全する", () => {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/node.js:30416:39
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/node.js:30413:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/node.js:27438:18
+ ❯ node_modules/vite/dist/node/chunks/node.js:27506:30
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/node.js:27474:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/node.js:30201:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/node.js:20124:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  18:56:04
+   Duration  1.61s (transform 106ms, setup 199ms, import 0ms, tests 0ms, environment 944ms)
+

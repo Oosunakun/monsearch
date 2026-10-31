@@ -1,0 +1,10 @@
+{
+  "command": "npm.cmd run test -- --run --maxWorkers=2",
+  "runId": "jsonl-worker2-17d86fe846db47a99845e75c3c972b42",
+  "startedAt": "2026-10-31T20:44:35.8395031+09:00",
+  "finishedAt": "2026-10-31T20:47:36.5219666+09:00",
+  "wallSeconds": 180.6824635,
+  "exitCode": 1,
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "instrumentedSha256": "9c464d4452cf08f9ea6bb903d1b8eccd1f6ac9135652f47c754dd0f78b75c914"
+}

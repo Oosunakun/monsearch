@@ -1,0 +1,1029 @@
+{
+  "recordedAt": "2026-10-31T10:29:46.950Z",
+  "normalScenarios": 64,
+  "groups": {
+    "cards": [
+      "add",
+      "change",
+      "delete",
+      "delete/last-positive"
+    ],
+    "cardTypeItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "productItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "factionItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "raceItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "illustratorItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "effectActivationTypeItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "resistanceItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "additionalCombatItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "chargeItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "combatItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "defenderItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "heroPointItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "initiativeItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "levelItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "limitItems": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "homeRows": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "restrictionsRows": [
+      "add",
+      "change",
+      "delete"
+    ],
+    "blockItems": [
+      "change"
+    ],
+    "effectActivationCategoryItems": [
+      "change"
+    ],
+    "effectTypeItems": [
+      "change"
+    ],
+    "elementItems": [
+      "change"
+    ],
+    "itemSlotItems": [
+      "change"
+    ],
+    "moveTypeItems": [
+      "change"
+    ],
+    "otherSlotItems": [
+      "change"
+    ],
+    "rarityItems": [
+      "change"
+    ],
+    "spellSlotItems": [
+      "change"
+    ]
+  },
+  "excluded": "固定語彙のvalue追加・削除は仕様変更。label/color/順序変更のみ対象。",
+  "scenarios": [
+    {
+      "scenarioId": "cards/add",
+      "targetDataset": "cards",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 482
+    },
+    {
+      "scenarioId": "cards/change",
+      "targetDataset": "cards",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 482
+    },
+    {
+      "scenarioId": "cards/delete",
+      "targetDataset": "cards",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 482
+    },
+    {
+      "scenarioId": "cards/delete/last-positive",
+      "targetDataset": "cards",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 482
+    },
+    {
+      "scenarioId": "cardTypeItems/add",
+      "targetDataset": "cardTypeItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 43
+    },
+    {
+      "scenarioId": "cardTypeItems/change",
+      "targetDataset": "cardTypeItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 43
+    },
+    {
+      "scenarioId": "cardTypeItems/delete",
+      "targetDataset": "cardTypeItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 43
+    },
+    {
+      "scenarioId": "productItems/add",
+      "targetDataset": "productItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [
+        "公開商品行の対応更新/削除"
+      ],
+      "preparation": [],
+      "beforeCount": 7
+    },
+    {
+      "scenarioId": "productItems/change",
+      "targetDataset": "productItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [
+        "公開商品行の対応更新/削除"
+      ],
+      "preparation": [],
+      "beforeCount": 7
+    },
+    {
+      "scenarioId": "productItems/delete",
+      "targetDataset": "productItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [
+        "公開商品行の対応更新/削除"
+      ],
+      "preparation": [],
+      "beforeCount": 7
+    },
+    {
+      "scenarioId": "factionItems/add",
+      "targetDataset": "factionItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 36
+    },
+    {
+      "scenarioId": "factionItems/change",
+      "targetDataset": "factionItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 36
+    },
+    {
+      "scenarioId": "factionItems/delete",
+      "targetDataset": "factionItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 36
+    },
+    {
+      "scenarioId": "raceItems/add",
+      "targetDataset": "raceItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 37
+    },
+    {
+      "scenarioId": "raceItems/change",
+      "targetDataset": "raceItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 37
+    },
+    {
+      "scenarioId": "raceItems/delete",
+      "targetDataset": "raceItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 37
+    },
+    {
+      "scenarioId": "illustratorItems/add",
+      "targetDataset": "illustratorItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 145
+    },
+    {
+      "scenarioId": "illustratorItems/change",
+      "targetDataset": "illustratorItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 145
+    },
+    {
+      "scenarioId": "illustratorItems/delete",
+      "targetDataset": "illustratorItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 145
+    },
+    {
+      "scenarioId": "effectActivationTypeItems/add",
+      "targetDataset": "effectActivationTypeItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 10
+    },
+    {
+      "scenarioId": "effectActivationTypeItems/change",
+      "targetDataset": "effectActivationTypeItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 10
+    },
+    {
+      "scenarioId": "effectActivationTypeItems/delete",
+      "targetDataset": "effectActivationTypeItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 10
+    },
+    {
+      "scenarioId": "resistanceItems/add",
+      "targetDataset": "resistanceItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 1
+    },
+    {
+      "scenarioId": "resistanceItems/change",
+      "targetDataset": "resistanceItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 1
+    },
+    {
+      "scenarioId": "resistanceItems/delete",
+      "targetDataset": "resistanceItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 1
+    },
+    {
+      "scenarioId": "additionalCombatItems/add",
+      "targetDataset": "additionalCombatItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "additionalCombatItems/change",
+      "targetDataset": "additionalCombatItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "additionalCombatItems/delete",
+      "targetDataset": "additionalCombatItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "chargeItems/add",
+      "targetDataset": "chargeItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 5
+    },
+    {
+      "scenarioId": "chargeItems/change",
+      "targetDataset": "chargeItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 5
+    },
+    {
+      "scenarioId": "chargeItems/delete",
+      "targetDataset": "chargeItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 5
+    },
+    {
+      "scenarioId": "combatItems/add",
+      "targetDataset": "combatItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 12
+    },
+    {
+      "scenarioId": "combatItems/change",
+      "targetDataset": "combatItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 12
+    },
+    {
+      "scenarioId": "combatItems/delete",
+      "targetDataset": "combatItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 12
+    },
+    {
+      "scenarioId": "defenderItems/add",
+      "targetDataset": "defenderItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 5
+    },
+    {
+      "scenarioId": "defenderItems/change",
+      "targetDataset": "defenderItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 5
+    },
+    {
+      "scenarioId": "defenderItems/delete",
+      "targetDataset": "defenderItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 5
+    },
+    {
+      "scenarioId": "heroPointItems/add",
+      "targetDataset": "heroPointItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 3
+    },
+    {
+      "scenarioId": "heroPointItems/change",
+      "targetDataset": "heroPointItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 3
+    },
+    {
+      "scenarioId": "heroPointItems/delete",
+      "targetDataset": "heroPointItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 3
+    },
+    {
+      "scenarioId": "initiativeItems/add",
+      "targetDataset": "initiativeItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 9
+    },
+    {
+      "scenarioId": "initiativeItems/change",
+      "targetDataset": "initiativeItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 9
+    },
+    {
+      "scenarioId": "initiativeItems/delete",
+      "targetDataset": "initiativeItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 9
+    },
+    {
+      "scenarioId": "levelItems/add",
+      "targetDataset": "levelItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 10
+    },
+    {
+      "scenarioId": "levelItems/change",
+      "targetDataset": "levelItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 10
+    },
+    {
+      "scenarioId": "levelItems/delete",
+      "targetDataset": "levelItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 10
+    },
+    {
+      "scenarioId": "limitItems/add",
+      "targetDataset": "limitItems",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 12
+    },
+    {
+      "scenarioId": "limitItems/change",
+      "targetDataset": "limitItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 12
+    },
+    {
+      "scenarioId": "limitItems/delete",
+      "targetDataset": "limitItems",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 12
+    },
+    {
+      "scenarioId": "homeRows/add",
+      "targetDataset": "homeRows",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "homeRows/change",
+      "targetDataset": "homeRows",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "homeRows/delete",
+      "targetDataset": "homeRows",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "restrictionsRows/add",
+      "targetDataset": "restrictionsRows",
+      "operation": "add",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "restrictionsRows/change",
+      "targetDataset": "restrictionsRows",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "restrictionsRows/delete",
+      "targetDataset": "restrictionsRows",
+      "operation": "delete",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "blockItems/change",
+      "targetDataset": "blockItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 13
+    },
+    {
+      "scenarioId": "effectActivationCategoryItems/change",
+      "targetDataset": "effectActivationCategoryItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 3
+    },
+    {
+      "scenarioId": "effectTypeItems/change",
+      "targetDataset": "effectTypeItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 7
+    },
+    {
+      "scenarioId": "elementItems/change",
+      "targetDataset": "elementItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 6
+    },
+    {
+      "scenarioId": "itemSlotItems/change",
+      "targetDataset": "itemSlotItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 3
+    },
+    {
+      "scenarioId": "moveTypeItems/change",
+      "targetDataset": "moveTypeItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 3
+    },
+    {
+      "scenarioId": "otherSlotItems/change",
+      "targetDataset": "otherSlotItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 4
+    },
+    {
+      "scenarioId": "rarityItems/change",
+      "targetDataset": "rarityItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 9
+    },
+    {
+      "scenarioId": "spellSlotItems/change",
+      "targetDataset": "spellSlotItems",
+      "operation": "change",
+      "basis": "specs/016-decouple-search-test-data/contracts/search-test-data.md §5 / HD-C08 B",
+      "invariants": [
+        "固定DTO/Oracle不変",
+        "最新入力が更新を反映",
+        "元入力非破壊"
+      ],
+      "linkedUpdates": [],
+      "preparation": [],
+      "beforeCount": 7
+    }
+  ]
+}

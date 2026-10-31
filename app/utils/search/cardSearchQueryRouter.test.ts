@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import { buildCardSearchQuery } from './cardSearchQueryBuilder'
 import { parseCardSearchQuery } from './cardSearchQueryParser'
@@ -44,3 +44,5 @@ describe('card search router round trip', () => {
     expect(buildCardSearchQuery(parseCardSearchQuery(freshRouter.currentRoute.value.query))).toEqual({ pd: '22d7e' })
   })
 })
+
+vi.mock('~~/app/utils/constants/search/options/product', async () => { const { productOptions } = await import('~~/tests/fixtures/searchOptions/products'); return { PRODUCT_OPTIONS: productOptions, PRODUCT_VALUES: new Set(productOptions.map(row => row.value)) } })

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import vectors from './normalizeCatalogText.fixtures.json'
 import { normalizeCatalogText } from './normalizeCatalogText'
-import { getSourceCards } from './dataSource'
+import { historicalSources as getSourceCards } from '~~/tests/fixtures/cardSearch/sources'
 
 describe('N₀固定vector', () => {
   it.each(vectors)('$idの固定期待変換と冪等性', ({ input, expected }) => {

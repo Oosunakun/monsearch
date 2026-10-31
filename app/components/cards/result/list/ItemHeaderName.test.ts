@@ -1,10 +1,9 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import ItemHeaderName from './ItemHeaderName.vue'
-import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
-import { projectCard } from '~~/server/utils/cardSearch/project'
+import { displayCard } from '~~/tests/fixtures/cardSearch/cards'
 
-const card = () => projectCard(getSourceCards()[0]!.card)!
+const card = () => displayCard()
 
 describe('ItemHeaderNameの枚数制限ラベル', () => {
   it.each([[0, '禁止'], [1, '1枚制限'], [2, '2枚制限']] as const)('%sを%sで表示する', (count, label) => {
