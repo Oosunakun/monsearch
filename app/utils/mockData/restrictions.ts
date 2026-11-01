@@ -8,7 +8,7 @@ export const mockRestrictionNoticeItems = [
   },
   {
     id: 'description2',
-    text: '正確な内容は必ず公式情報をご確認ください。'
+    text: '全日本選手権 2026 向け情報を含みます。正確な内容は必ず公式情報をご確認ください。'
   }
 ]
 
@@ -66,7 +66,7 @@ export const mockRestrictionRelationSources = [
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
       { id: 'M20E-054', referenceLabel: 'M20E-054', restrictionStatus: '禁止', name: 'フォッグ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
-      { id: 'M20E-071', referenceLabel: 'M20E-071', restrictionStatus: '禁止', name: 'ムーンライト・チャージャー', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
+      { id: 'M20E-068', referenceLabel: 'M20E-068', restrictionStatus: '禁止', name: 'ムーンライト・チャージャー', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
     ]
   },
   {
@@ -93,7 +93,7 @@ export const mockRestrictionRelationSources = [
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
       { id: 'M20E-061', referenceLabel: 'M20E-061', restrictionStatus: '1枚制限', name: 'サンクチュアリ', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
-      { id: 'M20E-068', referenceLabel: 'M20E-068', restrictionStatus: '1枚制限', name: 'コロッサス・ブラッド', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
+      { id: 'M20E-071', referenceLabel: 'M20E-071', restrictionStatus: '1枚制限', name: 'コロッサス・ブラッド', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
     ]
   },
   {
@@ -102,7 +102,7 @@ export const mockRestrictionRelationSources = [
     sectionNoteColor: UI_COLORS.WHITE,
     rows: [
       { id: 'M20E-065', referenceLabel: 'M20E-065', restrictionStatus: '1枚制限', name: 'ブラックホール', productName: 'モンスター・コレクションDeus', cardCategoryName: '戦闘スペル', restrictionNote: '' },
-      { id: 'M20E-069', referenceLabel: 'M20E-069', restrictionStatus: '1枚制限', name: 'デーモン・トレード', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
+      { id: 'M20E-072', referenceLabel: 'M20E-072', restrictionStatus: '1枚制限', name: 'デーモン・トレード', productName: 'モンスター・コレクションDeus', cardCategoryName: '儀式スペル', restrictionNote: '' },
       { id: 'M20E-073', referenceLabel: 'M20E-073', restrictionStatus: '2枚制限', name: 'スペクター', productName: 'モンスター・コレクションDeus', cardCategoryName: 'トークン', restrictionNote: '' },
     ]
   },
