@@ -39,7 +39,7 @@
     "eslint": "^9.39.4",
     "happy-dom": "^21.0.4",
     "playwright-core": "^1.62.0",
-    "vitest": "^4.1.10",
+    "vitest": "^4.1.12",
     "vue-tsc": "^3.3.8",
     "vuetify-nuxt-module": "^0.19.5"
   }
