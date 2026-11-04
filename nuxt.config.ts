@@ -84,6 +84,9 @@ export default defineNuxtConfig({
       display: {
         mobileBreakpoint: 'md',
       },
+    },
+    moduleOptions: {
+      prefixComposables: true,
     }
   },
   vite: {

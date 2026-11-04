@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify'
 import { computed, ref, watch } from 'vue'
 import type { CardRulingItem, RulingType } from '~~/app/types/ui/rules'
 import CardRulingExpansionItem from '~~/app/components/rules/CardRulingExpansionItem.vue'

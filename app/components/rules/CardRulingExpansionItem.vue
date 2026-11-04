@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify'
 import { computed, onBeforeUnmount } from 'vue'
 import { UI_COLORS } from '~~/app/utils/constants/colors'
 import { useHeaderAwareExpandScroll  } from '~~/app/composables/useHeaderAwareScroll'
