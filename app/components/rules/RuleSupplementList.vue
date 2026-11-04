@@ -42,7 +42,7 @@ const { isMounted } = useHydrated()
   <template v-else>
    <!-- フィルターバー -->
    <v-sheet class="pa-3 mb-3" rounded border>
-    <v-row dense align="center">
+    <v-row density="comfortable" align="center">
       <v-col cols="12" sm="5">
         <v-text-field
           v-model="cardNameFilter"
