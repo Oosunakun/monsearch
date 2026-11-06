@@ -261,10 +261,15 @@ describe('GET /api/cards US3 catalog付き結果処理', () => {
   })
 
   it('catalog検索にもCARD_SEARCH_FAILEDの既存契約を維持する', async () => {
+    const warn = vi.spyOn(console, 'warn')
     vi.spyOn(dataSource, 'getSourceCards').mockImplementation(() => { throw new Error('catalog fixture failure') })
     const response = await requestCards('kw=abc&att=abc')
     expect(response.status).toBe(500)
-    expect(await response.json()).toMatchObject({ statusCode: 500, data: { statusCode: 500, code: 'CARD_SEARCH_FAILED', message: 'カード検索に失敗しました' } })
+    const body = await response.json()
+    expect(body).toMatchObject({ statusCode: 500, data: { statusCode: 500, code: 'CARD_SEARCH_FAILED', message: 'カード検索に失敗しました' } })
+    expect(JSON.stringify(body)).not.toContain('catalog fixture failure')
+    expect(warn.mock.calls.flat().join(' ')).not.toContain('[h3] Please prefer using `message` for longer error messages instead of `statusMessage`')
+    expect(body).not.toHaveProperty('statusMessage')
   })
 })
 
@@ -344,10 +349,14 @@ describe('GET /api/cards 枚数制限契約', () => {
   })
 
   it('既存のデータソース障害はCARD_SEARCH_FAILEDの500となる', async () => {
+    const warn = vi.spyOn(console, 'warn')
     vi.spyOn(dataSource, 'getSourceCards').mockImplementation(() => { throw new Error('fixture failure') })
     const response = await requestCards()
     expect(response.status).toBe(500)
-    expect(await response.json()).toMatchObject({ data: { code: 'CARD_SEARCH_FAILED' } })
+    const body = await response.json()
+    expect(body).toMatchObject({ statusCode: 500, data: { statusCode: 500, code: 'CARD_SEARCH_FAILED', message: 'カード検索に失敗しました' } })
+    expect(JSON.stringify(body)).not.toContain('fixture failure')
+    expect(warn.mock.calls.flat().join(' ')).not.toContain('[h3] Please prefer using `message` for longer error messages instead of `statusMessage`')
   })
 })
 

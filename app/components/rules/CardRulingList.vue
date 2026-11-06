@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify'
 import { computed, ref, watch } from 'vue'
 import type { CardRulingItem, RulingType } from '~~/app/types/ui/rules'
 import CardRulingExpansionItem from '~~/app/components/rules/CardRulingExpansionItem.vue'
@@ -23,7 +24,7 @@ const typeFilter = ref<RulingType | 'all'>('all')
 const openedPanelId = ref<string | number | null>(null)
 
 const filterText = computed(() =>
-  cardNameFilter.value.trim(),
+  (cardNameFilter.value ?? '').trim(),
 )
 
 const filteredItems = computed(() => {
@@ -118,7 +119,7 @@ const getScrollBadgeTitle = (
   </template>
   <template v-else>
     <v-sheet class="pa-3 mb-3" rounded border>
-      <v-row dense align="center">
+      <v-row density="comfortable" align="center">
         <v-col cols="12" sm="5">
           <v-text-field
             v-model="cardNameFilter"
@@ -207,7 +208,7 @@ const getScrollBadgeTitle = (
     <v-expansion-panels v-else v-model="openedPanelId" variant="accordion" flat class="border rounded-md overflow-hidden">
       <CardRulingExpansionItem
         v-for="(item, index) in filteredItems"
-        :key="item.id"
+        :key="`${item.type}:${item.id}`"
         :item="item"
         :opened-panel-id="openedPanelId"
         :class="{

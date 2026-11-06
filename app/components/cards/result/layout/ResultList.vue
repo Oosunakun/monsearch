@@ -103,7 +103,6 @@ watch(totalPages, page => {
           :sort-options="sortOptions"
           :sort-orders="sortOrders"
           :limit-options="limitOptions"
-          class="border overflow-hidden"
         />
       </div>
     </div>
