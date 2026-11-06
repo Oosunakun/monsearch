@@ -24,7 +24,7 @@ const typeFilter = ref<RulingType | 'all'>('all')
 const openedPanelId = ref<string | number | null>(null)
 
 const filterText = computed(() =>
-  cardNameFilter.value.trim(),
+  (cardNameFilter.value ?? '').trim(),
 )
 
 const filteredItems = computed(() => {
@@ -208,7 +208,7 @@ const getScrollBadgeTitle = (
     <v-expansion-panels v-else v-model="openedPanelId" variant="accordion" flat class="border rounded-md overflow-hidden">
       <CardRulingExpansionItem
         v-for="(item, index) in filteredItems"
-        :key="item.id"
+        :key="`${item.type}:${item.id}`"
         :item="item"
         :opened-panel-id="openedPanelId"
         :class="{
