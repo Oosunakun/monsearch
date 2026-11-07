@@ -47,6 +47,18 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'モンさーち！｜モンコレカード検索サイト',
+      htmlAttrs: {
+        lang: 'ja'
+      },
+      meta: [
+        { name: 'description', content: '「モンスター・コレクション」のカード情報や関連情報をまとめた、非公式ファンサイトです。' },
+        { property: 'og:title', content: 'モンさーち！｜モンコレカード検索サイト' },
+        { property: 'og:description', content: '「モンスター・コレクション」のカード情報や関連情報をまとめた、非公式ファンサイトです。' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'ja_JP' },
+        { property: 'og:site_name', content: 'モンさーち！' }
+      ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
