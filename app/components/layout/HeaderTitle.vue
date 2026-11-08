@@ -16,7 +16,7 @@ defineProps<{
       ■ モンさーち！ ■
     </h1>
     <span class="header-site-subtitle text-medium-emphasis text-center">
-      ― モンコレTCG検索支援サイト ―
+      ― モンコレカード検索サイト ―
     </span>
   </NuxtLink>
 </template>
