@@ -3,8 +3,29 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createCardsJsonHandler } from './dev/cardsJsonHandler'
 
+const siteUrlInput = process.env.NUXT_PUBLIC_SITE_URL
+let siteUrl = ''
+if (siteUrlInput !== undefined && siteUrlInput !== '') {
+  let parsed: URL
+  try {
+    parsed = new URL(siteUrlInput)
+  } catch {
+    throw new Error('NUXT_PUBLIC_SITE_URL must be an HTTPS origin')
+  }
+  if (!/^https:\/\/[^/]+\/?$/i.test(siteUrlInput) || siteUrlInput !== siteUrlInput.trim() || parsed.protocol !== 'https:'
+    || parsed.username || parsed.password || parsed.pathname !== '/'
+    || parsed.search || parsed.hash || siteUrlInput.includes('?') || siteUrlInput.includes('#')
+    || siteUrlInput.includes('\\')) {
+    throw new Error('NUXT_PUBLIC_SITE_URL must be an HTTPS origin without credentials, path, query or hash')
+  }
+  siteUrl = parsed.origin
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: { siteUrl }
+  },
   devServerHandlers: [{
     route: '/data/cards.json',
     handler: createCardsJsonHandler(fileURLToPath(new URL('./app/utils/mockData/items/cards.json', import.meta.url)))
@@ -57,7 +78,15 @@ export default defineNuxtConfig({
         { property: 'og:description', content: '「モンスター・コレクション」のカード情報や関連情報をまとめた、非公式ファンサイトです。' },
         { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'ja_JP' },
-        { property: 'og:site_name', content: 'モンさーち！' }
+        { property: 'og:site_name', content: 'モンさーち！' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        ...(siteUrl ? [
+          { property: 'og:image', content: `${siteUrl}/images/meta/ogp.png` },
+          { property: 'og:image:alt', content: 'モンさーち！｜モンコレカード検索サイト' },
+          { property: 'og:image:type', content: 'image/png' },
+          { property: 'og:image:width', content: '1200' },
+          { property: 'og:image:height', content: '630' }
+        ] : [])
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
