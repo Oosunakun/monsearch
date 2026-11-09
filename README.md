@@ -138,6 +138,14 @@ npm run generate
 - Noto Sans JP：Google Fontsから外部参照。フォントにはSIL OFL 1.1が適用されます（[OFL原文](https://raw.githubusercontent.com/google/fonts/main/ofl/notosansjp/OFL.txt)）。
 - X・GitHubの公式SVG：各社のブランド利用条件に従います（[X](https://about.x.com/en/who-we-are/brand-toolkit)、[GitHub](https://brand.github.com/foundations/logo)）。
 
+### faviconの著作権
+
+- 対象：`public/favicon.ico`
+- 著作権表示：© Kakeru Mizuno
+- ライセンス：MIT License対象外
+
+本画像は、権利者の許諾に基づき、本サイトでの表示および本Repositoryでの公開・配布を行っています。MIT Licenseによる第三者への再利用許諾は付与しません。
+
 ## 関連ドキュメント
 
 - [検索URLの仕様](docs/architecture/query_specification.md)
