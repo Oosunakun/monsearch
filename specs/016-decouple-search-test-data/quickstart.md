@@ -9,7 +9,7 @@
 - [human-decisions.md](human-decisions.md)に記録されたQ1〜Q4・HD-C08 Bの承認方針を確認する。US1〜US4は全てP1・完了必須である。実装後の再検証では以下のコマンドを使用する。実装結果はverification/results.mdに記録する。Git管理外の作業メモを前提にせず、入力来歴は[research.md](research.md)、manifest設計は[data-model.md](data-model.md)を参照する。
 - C08では両画面の公開全商品行を検査し、参照先だけを削除した場合の失敗と、参照元も対応更新・削除した場合の成功を確認する。membershipによる事前除外・例外機構は使わない。固定異常FixtureのUI fail closedも確認する。名称と有効IDの取り違えを自動検出できるとは記録しない。
 
-- Repository root `F:\Projects\monsearch`で実行する。既存package-lockに対応するNode/npmと依存導入済み環境を使う。R24は依存upgradeを要求しない。
+- Clone先のRepository rootで実行する。以下の`<Clone先のRepository root>`は実際の配置先へ置き換える。既存package-lockに対応するNode/npmと依存導入済み環境を使う。R24は依存upgradeを要求しない。
 - [test-inventory.md](test-inventory.md)を開始時点の全テストへ更新し、Assertion対応表へ展開済みであること。
 - 歴史入力・manifestと小規模fixture、C/D suite、正常更新・異常・回帰のシナリオが実装済みであること。
 - 最新マスターに検証目的の変更を加えない。Mockとmodule cacheの隔離は[契約](contracts/search-test-data.md)に従う。
@@ -17,7 +17,7 @@
 作業状態を識別し、tracked/未追跡テストを再列挙する。
 
 ```powershell
-Set-Location -LiteralPath 'F:\Projects\monsearch'
+Set-Location -LiteralPath '<Clone先のRepository root>'
 git branch --show-current
 git rev-parse HEAD
 git status --short

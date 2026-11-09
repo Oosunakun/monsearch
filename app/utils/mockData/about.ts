@@ -64,14 +64,16 @@ export const mockAboutContactItems = [
     id: '1',
     title: 'X（旧Twitter）',
     subtitle: '@Oosunakun',
-    icon: 'mdi-twitter',
+    iconSrc: '/images/brands/x/logo-black.png',
+    iconSize: 16,
     href: 'https://x.com/Oosunakun'
   },
   {
     id: '2',
     title: 'GitHub',
     subtitle: 'Oosunakun/monsearch',
-    icon: 'mdi-github',
+    iconSrc: '/images/brands/github/GitHub_Invertocat_Black.svg',
+    iconSize: 20,
     href: 'https://github.com/Oosunakun/monsearch'
   },
 ]
