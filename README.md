@@ -136,7 +136,7 @@ npm run generate
 
 - 通常のMDIフォント/アイコン：Apache-2.0等の条件。Brand/Logosは一般MDIライセンスと区別します（[Pictogrammers](https://pictogrammers.com/docs/general/license/)）。
 - Noto Sans JP：Google Fontsから外部参照。フォントにはSIL OFL 1.1が適用されます（[OFL原文](https://raw.githubusercontent.com/google/fonts/main/ofl/notosansjp/OFL.txt)）。
-- X・GitHubの公式SVG：各社のブランド利用条件に従います（[X](https://about.x.com/en/who-we-are/brand-toolkit)、[GitHub](https://brand.github.com/foundations/logo)）。
+- X・GitHubの公式ロゴ画像：各社のブランド利用条件に従います（[X](https://about.x.com/en/who-we-are/brand-toolkit)、[GitHub](https://brand.github.com/foundations/logo)）。
 
 ### faviconの著作権
 

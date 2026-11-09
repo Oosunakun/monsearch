@@ -6,7 +6,7 @@ favicon、公式ブランドロゴ、第三者素材もmonsearchのMIT対象外�
 第三者の権利表示と条件は以下のとおりです。
 
 X / GitHub
-公式SVGは各社のブランド利用条件に従います。これらのロゴを
+X・GitHubの公式ロゴ画像は各社のブランド利用条件に従います。これらのロゴを
 monsearchがMITや通常MDIのApache-2.0で再許諾するものではありません。
 X: https://about.x.com/en/who-we-are/brand-toolkit
 GitHub: https://brand.github.com/foundations/logo
@@ -17,6 +17,16 @@ Noto Sans JPの上流OFL表示と、通常MDIの一般条件Apache-2.0全文を�
 Brand/Logosは通常MDIの一般ライセンスの対象外です。
 https://pictogrammers.com/docs/general/license/
 外部配信ファイル固有の権利表示・利用条件も適用されます。
+
+MDI配布版の確認情報
+パッケージ：@mdi/font
+確認した配布版：5.9.55
+配布元：Pictogrammers / MaterialDesign-Webfont
+パッケージのライセンス：Apache-2.0（package.jsonに記載）
+配布元のライセンス説明：https://github.com/Templarian/MaterialDesign-Webfont/blob/v5.9.55/LICENSE
+バージョン5.9.55の公開ソース（Gitタグ）：https://github.com/Templarian/MaterialDesign-Webfont/tree/v5.9.55
+現行のCDN指定は@mdi/font@5.xです。5.9.55は確認された配布版の記録であり、
+常に同じ版が配信されることや、バージョン固定を示すものではありません。
 
 ============================================================
 monsearch
