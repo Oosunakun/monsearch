@@ -2,7 +2,7 @@
 import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
 import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
 import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
-import ExternalLinkCard from '~~/app/components/about/ExternalLinkCard.vue'
+import ExternalLinkCard from '~~/app/components/common/links/ExternalLinkCard.vue'
 import HistoryTable from '~~/app/components/about/HistoryTable.vue'
 import type { HistoryRow } from '~~/app/components/about/HistoryTable.vue'
 
@@ -27,7 +27,8 @@ type LinkItem = {
   id: string
   title: string
   subtitle: string
-  icon: string
+  iconSrc: string
+  iconSize?: number
   href: string
 }
 
@@ -103,7 +104,8 @@ const historyRows = computed<HistoryRow[]>(() =>
             :title="item.title"
             :subtitle="item.subtitle"
             :href="item.href"
-            :icon="item.icon"
+            :icon-src="item.iconSrc"
+            :icon-size="item.iconSize"
           />
         </v-col>
       </v-row>
