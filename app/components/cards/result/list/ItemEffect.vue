@@ -37,14 +37,14 @@ const effectBackgroundColor = computed(() => {
       }"
     >
       <div v-if="!isTextOnlyEffect(eff)" class="effect-line d-flex align-center w-100 bg-white pa-1">
-        <div class="effect-title-group d-flex align-center text-truncate">
+        <div class="effect-title-group d-flex align-center">
           <span v-if="eff.effect_type_name" class="effect-type-prefix flex-shrink-0 text-grey-darken-4">
             {{ eff.effect_type_name.charAt(0) }}
           </span>
           <span v-if="eff.effect_activation_type_name" class="effect-activation-type flex-shrink-0 mr-1 font-weight-bold text-grey-darken-4">
             {{ eff.effect_activation_type_name }}
           </span>
-          <strong v-if="eff.effect_name" class="effect-name text-truncate font-weight-bold text-grey-darken-4">
+          <strong v-if="eff.effect_name" class="effect-name font-weight-bold text-grey-darken-4">
             {{ eff.effect_name }}
           </strong>
         </div>
@@ -58,17 +58,17 @@ const effectBackgroundColor = computed(() => {
 
       <div v-if="eff.effect_activation_timing_name" class="effect-line d-flex align-center w-100">
         <span class="meta-label flex-shrink-0 font-weight-bold">発揮：</span>
-        <span class="square-chip timing-chip text-truncate">{{ eff.effect_activation_timing_name }}</span>
+        <span class="square-chip timing-chip">{{ eff.effect_activation_timing_name }}</span>
       </div>
 
       <div v-if="eff.effect_cost_text" class="effect-line d-flex align-center w-100">
         <span class="meta-label flex-shrink-0 font-weight-bold">コスト：</span>
-        <span class="square-chip cost-chip text-truncate">{{ eff.effect_cost_text }}</span>
+        <span class="square-chip cost-chip">{{ eff.effect_cost_text }}</span>
       </div>
 
       <div v-if="eff.effect_target_name" class="effect-line d-flex align-center w-100">
         <span class="meta-label flex-shrink-0 font-weight-bold">対象：</span>
-        <span class="square-chip target-chip text-truncate">{{ eff.effect_target_name }}</span>
+        <span class="square-chip target-chip">{{ eff.effect_target_name }}</span>
       </div>
 
       <div v-if="eff.effect_text" class="effect-body-line text-grey-darken-3 text-caption w-100">
@@ -143,10 +143,12 @@ const effectBackgroundColor = computed(() => {
 /* 共通：シャープな四角形デザインのChip */
 .square-chip {
   display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
   max-width: 100%;
+  min-width: 0;
   vertical-align: middle;
   text-align: left;
 
