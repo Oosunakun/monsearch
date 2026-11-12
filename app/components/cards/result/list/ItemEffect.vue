@@ -24,7 +24,6 @@ const effectBackgroundColor = computed(() => {
 <template>
   <div
     class="card-item-effects pa-1 mt-0 mb-1 ml-1 mr-1"
-    style="backdrop-filter:blur(3px);"
     :style="{ backgroundColor: effectBackgroundColor }"
   >
     <div 
