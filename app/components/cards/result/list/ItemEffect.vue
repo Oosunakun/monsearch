@@ -56,6 +56,11 @@ const effectBackgroundColor = computed(() => {
         </span>
       </div>
 
+      <div v-if="eff.effect_condition_text" class="effect-line d-flex align-center w-100">
+        <span class="meta-label flex-shrink-0 font-weight-bold">使用条件：</span>
+        <span class="square-chip condition-chip">{{ eff.effect_condition_text }}</span>
+      </div>
+
       <div v-if="eff.effect_activation_timing_name" class="effect-line d-flex align-center w-100">
         <span class="meta-label flex-shrink-0 font-weight-bold">発揮：</span>
         <span class="square-chip timing-chip">{{ eff.effect_activation_timing_name }}</span>
@@ -194,6 +199,13 @@ const effectBackgroundColor = computed(() => {
   background-color: #EC2C2C;
   color: #ffffff;
   border-color: #e0e0e0;
+}
+
+.condition-chip {
+  background-color: #e2e8f0;
+  color: #334155;
+  border-color: #94a3b8;
+  box-shadow: 0 1px 2px rgba(119, 116, 116, 0.2);
 }
 
 .timing-chip {

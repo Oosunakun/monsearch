@@ -5,6 +5,13 @@ import type { CardModification } from '~~/types/cards/finderCards'
 
 describe('projectCard', () => {
   it('手書き独立期待値と完全DTOを比較する', () => { expect(projectCard(makeCard())).toEqual(displayCard()) })
+  it.each(['', '  自軍ユニットが存在する場合。\n〔追加の使用条件〕  '])('使用条件の原文を変更せず投影する (%j)', condition => {
+    const source = makeCard()
+    source.effects[0]!.effect_condition_text = condition
+    const before = structuredClone(source)
+    expect(projectCard(source)?.effects[0]?.effect_condition_text).toBe(condition)
+    expect(source).toEqual(before)
+  })
   const cases: Array<[CardModification | null, number | null]> = [
     ...[0, 1, 2, 3, 4].map(value => [{ deck_restriction_count: value }, value] as [CardModification, number]),
     [{ deck_restriction_count: null }, null],

@@ -7,7 +7,9 @@ import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
 import { matchesCardSearch } from '~~/server/utils/cardSearch/search'
 import * as dataSource from '~~/server/utils/cardSearch/dataSource'
-import type { CardSearchResultItem, CardSearchResultPage } from '~~/server/types/cardSearch'
+import type { CardSearchResultPage } from '~~/server/types/cardSearch'
+import { withoutEffectConditions } from '~~/tests/helpers/historicalCardSearchResult'
+import type { HistoricalCardSearchResultItem } from '~~/tests/helpers/historicalCardSearchResult'
 import baseline from '~~/server/api/fixtures/cards-response-baseline.json'
 import catalogOracle from '~~/specs/014-search-catalog-normalization/verification/expected-catalog-results.json'
 import type { Card } from '~~/types/cards/finderCards'
@@ -54,7 +56,7 @@ describe('015 APIの6キー・固定順・全ページとCSR parity', () => {
     })
     it.each(CARD_SEARCH_PER_PAGE)(`${key}/${order}/%iの全ページと境界`, async perPage => {
       const ids = expectedIds(key, order)
-      const projections: Record<string, CardSearchResultItem> = approvedBaseline.projectedItems
+      const projections: Record<string, HistoricalCardSearchResultItem> = approvedBaseline.projectedItems
       const totalPages = Math.ceil(ids.length / perPage)
       const reference: CardSearchResultPage = await (await requestCards(`perPage=${perPage}`)).json()
       const all: string[] = []
@@ -64,7 +66,7 @@ describe('015 APIの6キー・固定順・全ページとCSR parity', () => {
         const body: CardSearchResultPage = await response.json()
         const effective = Math.min(page, totalPages)
         expect(response.status).toBe(200)
-        expect(body).toEqual({ ...reference, page: effective, sort: { key, order }, items: ids.slice((effective - 1) * perPage, effective * perPage).map(id => projections[id]) })
+        expect(withoutEffectConditions(body)).toEqual({ ...reference, page: effective, sort: { key, order }, items: ids.slice((effective - 1) * perPage, effective * perPage).map(id => projections[id]) })
         expect(body).toEqual(runCardSearch(getSourceCards(), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query)))))
         if (page !== 999) all.push(...body.items.map(card => card.card_id))
       }
@@ -199,10 +201,10 @@ describe('GET /api/cards US3 承認済みT002 baseline回帰', () => {
       expect(response.status).toBe(page.status)
       const changed = new URLSearchParams(page.requestQuery).get('sort') === 'atk'
       const ids = changed ? revisedAtkPageIds(page.requestQuery, example.api.allIds) : page.response.items
-      expect(body).toEqual({ ...page.response, items: ids.map(id => projectedItems[id]) })
+      expect(withoutEffectConditions(body)).toEqual({ ...page.response, items: ids.map(id => projectedItems[id]) })
       expect(body.items.every(item => !('search_support' in item) && !('full_text' in item) && !('archetype_text' in item))).toBe(true)
       if ('responseSha256' in page && 'responseFields' in page) {
-        if (!changed) expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)
+        if (!changed) expect(createHash('sha256').update(JSON.stringify(withoutEffectConditions(body))).digest('hex')).toBe(page.responseSha256)
         expect(Object.keys(body)).toEqual(page.responseFields)
         allIds.push(...body.items.map(item => item.card_id))
       }
@@ -213,7 +215,7 @@ describe('GET /api/cards US3 承認済みT002 baseline回帰', () => {
 })
 
 describe('GET /api/cards US3 catalog付き結果処理', () => {
-  const projections: Record<string, CardSearchResultItem> = approvedBaseline.projectedItems
+  const projections: Record<string, HistoricalCardSearchResultItem> = approvedBaseline.projectedItems
   const ids = catalogOracle.realCases.find(example => example.id === 'broad-keyword')!.ids
   for (const sort of CARD_SEARCH_SORT_KEYS) {
     for (const order of CARD_SEARCH_SORT_ORDERS) {
@@ -235,7 +237,7 @@ describe('GET /api/cards US3 catalog付き結果処理', () => {
           expect(body.categoryBreakdown).toEqual(expectedBreakdown)
           expect(body).toMatchObject({ page, perPage, totalPages, sort: { key: sort, order } })
           const pageIds = sortedIds.slice((page - 1) * perPage, page * perPage)
-          expect(body.items).toEqual(pageIds.map(id => projections[id]))
+          expect(withoutEffectConditions(body).items).toEqual(pageIds.map(id => projections[id]))
           allIds.push(...body.items.map(item => item.card_id))
         }
         expect(allIds).toEqual(sortedIds)
@@ -280,10 +282,10 @@ describe('GET /api/cards 検索結果の回帰', () => {
     expect(response.status).toBe(200)
     const withoutRestriction = {
       ...body,
-      items: body.items.map(({ deck_restriction_count: _count, ...item }) => item),
+      items: withoutEffectConditions(body).items.map(({ deck_restriction_count: _count, ...item }) => item),
     }
     const changed = new URLSearchParams(query).get('sort') === 'atk'
-    const projections: Record<string, CardSearchResultItem> = approvedBaseline.projectedItems
+    const projections: Record<string, HistoricalCardSearchResultItem> = approvedBaseline.projectedItems
     expect(withoutRestriction).toEqual(changed ? {
       ...expected,
       items: revisedAtkPageIds(query, approvedBaseline.classifications.map(row => row.card_id)).map(id => {
