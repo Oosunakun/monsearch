@@ -57,10 +57,10 @@ const { isMounted } = useHydrated()
       </v-col>
       <v-col cols="12" sm="2">
         <v-btn
-          variant="tonal"
-          color="grey"
+          variant="flat"
           density="compact"
           block
+          class="reset-btn font-weight-medium"
           @click="resetFilter"
         >
           リセット
@@ -87,3 +87,14 @@ const { isMounted } = useHydrated()
   </v-expansion-panels>
   </template>
 </template>
+<style scoped>
+/* =========================================
+ * reset button
+ * ======================================= */
+.reset-btn {
+  height: 40px;
+  background-color: #f2f7fb;
+  color: #386b8a;
+  border: 1px solid #b6cddc;
+}
+</style>

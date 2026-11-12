@@ -145,11 +145,10 @@ const getScrollBadgeTitle = (
 
         <v-col cols="12" sm="2">
           <v-btn
-            variant="tonal"
-            color="grey"
+            variant="flat"
             density="compact"
             block
-            style="height: 40px;"
+            class="reset-btn font-weight-medium"
             @click="resetFilter"
           >
             リセット
@@ -242,5 +241,15 @@ const getScrollBadgeTitle = (
 
 .anchor-btn :deep(.v-btn__prepend) {
   margin-inline-end: 4px;
+}
+
+/* =========================================
+ * reset button
+ * ======================================= */
+.reset-btn {
+  height: 40px;
+  background-color: #f2f7fb;
+  color: #386b8a;
+  border: 1px solid #b6cddc;
 }
 </style>
