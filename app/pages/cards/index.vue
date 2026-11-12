@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, nextTick, watch } from 'vue'
+import { computed, ref, shallowRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
 import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
@@ -30,7 +30,33 @@ const categoryBreakdown = computed(() => (result.value?.categoryBreakdown ?? [])
   color: categoryLabels[item.categoryCode]?.color ?? 'grey', count: item.count,
 })))
 const resultListRef = ref<InstanceType<typeof ResultList>>()
-watch(currentPage, async () => { await nextTick(); resultListRef.value?.scrollToTop() })
+const pendingScroll = shallowRef<{ page: number, previousResult: typeof result.value }>()
+const requestPageScroll = (page: number) => {
+  pendingScroll.value = { page, previousResult: result.value }
+}
+
+// 履歴復帰や表示条件の変更へ、ページ送りの要求を持ち越さない。
+watch([routeQuery, itemsPerPage, sortItem, sortOrder], () => {
+  pendingScroll.value = undefined
+}, { deep: true, flush: 'sync' })
+watch(currentPage, page => {
+  if (pendingScroll.value?.page !== page) pendingScroll.value = undefined
+}, { flush: 'sync' })
+watch(status, value => {
+  if (value === 'error') pendingScroll.value = undefined
+}, { flush: 'sync' })
+
+watch([status, result, resultListRef, pendingScroll], () => {
+  const request = pendingScroll.value
+  if (!request || status.value !== 'success') return
+  if (!result.value || result.value.totalCount === 0) {
+    pendingScroll.value = undefined
+    return
+  }
+  if (result.value === request.previousResult || result.value.page !== request.page || !resultListRef.value) return
+  pendingScroll.value = undefined
+  resultListRef.value.scrollToTop()
+}, { flush: 'post' })
 </script>
 
 <template>
@@ -48,7 +74,8 @@ watch(currentPage, async () => { await nextTick(); resultListRef.value?.scrollTo
         <ResultList
           ref="resultListRef" v-model:current-page="currentPage" v-model:total-pages="result.totalPages"
           v-model:limit-per-page="itemsPerPage" v-model:sort-item="sortItem" v-model:sort-order="sortOrder"
-          :cards="result.items" :total-count="result.totalCount" />
+          :cards="result.items" :total-count="result.totalCount"
+          @page-scroll-request="requestPageScroll" />
       </template>
     </SectionCardShell>
   </ContentMaxWidthContainer>
