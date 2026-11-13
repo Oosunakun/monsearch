@@ -19,7 +19,7 @@ Nuxt、Vue、TypeScript（strict）、Vuetifyを使用しています。検証�
 
 ## 開発環境・セットアップ
 
-- Node.js **22.23.4**
+- Node.js **22.23.5**
 - npm **12.2.1**
 
 `packageManager`と`devEngines`でexact版を指定しています。Node/npmの導入やPATHの切替は自動では行いません。以下の`npm`は指定版を選択済みであることを前提とし、Repository rootで実行します。
