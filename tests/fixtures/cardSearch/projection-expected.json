@@ -12,9 +12,9 @@
   "card_types": [], "blocks": [], "factions": [],
   "effects": [
     { "effect_name": "固定能力", "effect_type_name": "□完了型特殊能力", "effect_activation_type_name": "",
-      "effect_activation_category_code": "Battle", "effect_activation_timing_name": "", "effect_cost_text": "", "effect_target_name": "", "effect_text": "対象に効果を与える。" },
+      "effect_activation_category_code": "Battle", "effect_condition_text": "", "effect_activation_timing_name": "", "effect_cost_text": "", "effect_target_name": "", "effect_text": "対象に効果を与える。" },
     { "effect_name": "", "effect_type_name": "", "effect_activation_type_name": "", "effect_activation_category_code": "",
-      "effect_activation_timing_name": "", "effect_cost_text": "", "effect_target_name": "", "effect_text": "補足。\n次の行。" }
+      "effect_condition_text": "", "effect_activation_timing_name": "", "effect_cost_text": "", "effect_target_name": "", "effect_text": "補足。\n次の行。" }
   ],
   "rarity_code": "Unknown", "rarity_name": "未定義", "illustrator_name": "固定作者",
   "product": { "product_name": "固定商品" }

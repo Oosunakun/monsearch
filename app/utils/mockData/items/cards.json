@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-01T04:15:34Z",
+  "generated_at": "2026-11-11T12:12:42Z",
   "cards": [
     {
       "card_id": "019d81a4-497a-768d-aaa6-24b742cbd519",
@@ -3768,7 +3768,7 @@
           "effect_cost_text": "",
           "search_cost": null,
           "effect_target_id": "019d81a0-7998-752e-9798-ce25b4a8e0d7",
-          "effect_target_name": "自軍ユニット1～4枚",
+          "effect_target_name": "自軍ユニット1～4体",
           "effect_text": "「種族：ダーナorネイチャー」の対象を手札にする。"
         }
       ],
@@ -4568,7 +4568,7 @@
           },
           "effect_target_id": "019d81a0-7990-7338-9878-83818b113283",
           "effect_target_name": "このユニット",
-          "effect_text": "戦闘中の地景が「代理地形」の場合、対象に「イニシアチブ：+2」を付与する。"
+          "effect_text": "戦闘中の地形が「代理地形」の場合、対象に「イニシアチブ：+2」を付与する。"
         },
         {
           "effect_name": "毒霧",
@@ -4628,7 +4628,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20a-037 毒沼の大蛇ニーズホッグ ドクヌマノダイジャニーズホッグ どくぬまのだいじゃにーずほっぐ 極稀 獅子猿 太陽の金の竜姫 水 ドラゴン アクアリウム an ゴルドーの大密林 6/6/7 英雄点:(1) 歩行 スペル:水土* [条件] 沼の中から [battle] 〈発揮:イニシアチブ決定タイミング開始時/コスト:捨札1枚除外/対象:このユニット〉 戦闘中の地景が「代理地形」の場合、対象に「イニシアチブ:+2」を付与する。 ◎ [普通] 毒霧 [battle] 〈コスト:このユニットの任意のスペル枠1つ消費/対象:敵軍ユニットすべて〉 対象に「防御力:-1」を付与する。",
+        "full_text": "m20a-037 毒沼の大蛇ニーズホッグ ドクヌマノダイジャニーズホッグ どくぬまのだいじゃにーずほっぐ 極稀 獅子猿 太陽の金の竜姫 水 ドラゴン アクアリウム an ゴルドーの大密林 6/6/7 英雄点:(1) 歩行 スペル:水土* [条件] 沼の中から [battle] 〈発揮:イニシアチブ決定タイミング開始時/コスト:捨札1枚除外/対象:このユニット〉 戦闘中の地形が「代理地形」の場合、対象に「イニシアチブ:+2」を付与する。 ◎ [普通] 毒霧 [battle] 〈コスト:このユニットの任意のスペル枠1つ消費/対象:敵軍ユニットすべて〉 対象に「防御力:-1」を付与する。",
         "archetype_text": "ドラゴン アクアリウム",
         "is_token": false
       }
@@ -8474,7 +8474,7 @@
           "search_cost": null,
           "effect_target_id": "019d81a0-798c-724e-85d0-ba09db7a3c47",
           "effect_target_name": "敵軍ユニット1体",
-          "effect_text": "対象に【電撃：1D】ダメージ。対象が「進軍タイプ：飛行」の場合、このダメージ「+3」する。"
+          "effect_text": "対象に【電撃：1D】ダメージ。対象が「進軍タイプ：飛行」の場合、このダメージを「+3」する。"
         }
       ],
       "tags": [],
@@ -8500,7 +8500,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20a-067 ジン じん 稀 伊藤勢 太陽の金の竜姫 風 デーモン スピリット an 蜃気楼の彼方に 5/5/4 飛行 スペル:風風* □ [普通/対抗] 電迅波動 [battle] 〈対象:敵軍ユニット1体〉 対象に【電撃:1d】ダメージ。対象が「進軍タイプ:飛行」の場合、このダメージ「+3」する。",
+        "full_text": "m20a-067 ジン じん 稀 伊藤勢 太陽の金の竜姫 風 デーモン スピリット an 蜃気楼の彼方に 5/5/4 飛行 スペル:風風* □ [普通/対抗] 電迅波動 [battle] 〈対象:敵軍ユニット1体〉 対象に【電撃:1d】ダメージ。対象が「進軍タイプ:飛行」の場合、このダメージを「+3」する。",
         "archetype_text": "デーモン スピリット",
         "is_token": false
       }
@@ -16240,7 +16240,7 @@
           },
           "effect_target_id": "019d81a0-798c-724e-85d0-ba09db7a3c47",
           "effect_target_name": "敵軍ユニット1体",
-          "effect_text": "「進軍タイプ：飛行」の対象に「竜巻：2D+5】ダメージ。"
+          "effect_text": "「進軍タイプ：飛行」の対象に【竜巻：2D+5】ダメージ。"
         }
       ],
       "tags": [],
@@ -16266,7 +16266,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20a-127 ウィンド・カッター ウィンドカッター うぃんど・かったー うぃんどかったー 頻繁 開田裕治 太陽の金の竜姫 風 上級魔法 呪文魔法 an all ◇ [普通/対抗]  [battle] 〈コスト:風/対象:敵軍ユニット1体〉 対象に【竜巻:1d】ダメージ。対象が「進軍タイプ:飛行」の場合、このダメージを「+2」する。 ◇ [普通/対抗] dual [battle] 〈コスト:風風/対象:敵軍ユニット1体〉 「進軍タイプ:飛行」の対象に「竜巻:2d+5】ダメージ。",
+        "full_text": "m20a-127 ウィンド・カッター ウィンドカッター うぃんど・かったー うぃんどかったー 頻繁 開田裕治 太陽の金の竜姫 風 上級魔法 呪文魔法 an all ◇ [普通/対抗]  [battle] 〈コスト:風/対象:敵軍ユニット1体〉 対象に【竜巻:1d】ダメージ。対象が「進軍タイプ:飛行」の場合、このダメージを「+2」する。 ◇ [普通/対抗] dual [battle] 〈コスト:風風/対象:敵軍ユニット1体〉 「進軍タイプ:飛行」の対象に【竜巻:2d+5】ダメージ。",
         "archetype_text": "上級魔法 呪文魔法",
         "is_token": false
       }
@@ -16957,7 +16957,7 @@
           },
           "effect_target_id": "019d81a0-798c-724e-85d0-ba09db7a3c47",
           "effect_target_name": "敵軍ユニット1体",
-          "effect_text": "対象に【閃光：1D】ダメージ。対象が「レベル：即時召喚可能]」の場合、このダメージを「+3」する。"
+          "effect_text": "対象に【閃光：1D】ダメージ。対象が「レベル：即時召喚可能」の場合、このダメージを「+3」する。"
         }
       ],
       "tags": [],
@@ -16983,7 +16983,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20a-133 ジャスティス じゃすてぃす 頻繁 石垣環 太陽の金の竜姫 聖 下級魔法 呪文魔法 an all ◇ [普通/対抗]  [battle] 〈コスト:聖/対象:敵軍ユニット1体〉 対象に【閃光:1d】ダメージ。対象が「レベル:即時召喚可能]」の場合、このダメージを「+3」する。",
+        "full_text": "m20a-133 ジャスティス じゃすてぃす 頻繁 石垣環 太陽の金の竜姫 聖 下級魔法 呪文魔法 an all ◇ [普通/対抗]  [battle] 〈コスト:聖/対象:敵軍ユニット1体〉 対象に【閃光:1d】ダメージ。対象が「レベル:即時召喚可能」の場合、このダメージを「+3」する。",
         "archetype_text": "下級魔法 呪文魔法",
         "is_token": false
       }
@@ -18729,7 +18729,7 @@
           "search_cost": null,
           "effect_target_id": "019d81a0-798a-75c8-88db-91ce53342315",
           "effect_target_name": "自軍ユニットすべて",
-          "effect_text": "ターん終了まで、対象に「進軍範囲：この地形」を付与する。"
+          "effect_text": "ターン終了まで、対象に「進軍範囲：この地形」を付与する。"
         }
       ],
       "tags": [],
@@ -18755,7 +18755,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20a-148 星を掴める距離 ホシヲツカメルキョリ ほしをつかめるきょり 頻繁 佐藤正浩 太陽の金の竜姫 大自然 an all リミット:8 [条件] 予兆 [battle] 〈発揮:イニシアチブ決定タイミング開始時/対象:自軍プレイヤー〉 対象が進軍側の場合、対象は手札を1枚補充する。 [条件(強制)] 星を掴める距離 [battle] 〈発揮:この地形配置時/対象:自軍ユニットすべて〉 ターん終了まで、対象に「進軍範囲:この地形」を付与する。",
+        "full_text": "m20a-148 星を掴める距離 ホシヲツカメルキョリ ほしをつかめるきょり 頻繁 佐藤正浩 太陽の金の竜姫 大自然 an all リミット:8 [条件] 予兆 [battle] 〈発揮:イニシアチブ決定タイミング開始時/対象:自軍プレイヤー〉 対象が進軍側の場合、対象は手札を1枚補充する。 [条件(強制)] 星を掴める距離 [battle] 〈発揮:この地形配置時/対象:自軍ユニットすべて〉 ターン終了まで、対象に「進軍範囲:この地形」を付与する。",
         "archetype_text": "大自然",
         "is_token": false
       }
@@ -24794,8 +24794,8 @@
           "effect_condition_text": "",
           "effect_condition_category_code": "",
           "effect_condition_category_name": "",
-          "effect_type_code": "DeclareSkill",
-          "effect_type_name": "◎宣言型特殊能力",
+          "effect_type_code": "ActionSkill",
+          "effect_type_name": "□完了型特殊能力",
           "effect_cost_id": "",
           "effect_cost_text": "",
           "search_cost": null,
@@ -24827,7 +24827,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20b-044 マリッド まりっど 稀 むらかわみちお 月の銀の魔狼 水 スピリット アクアリウム an 氷結晶のプリズン 5/5/4 飛行 スペル:水水* 耐性:all(1減) ◎ [対抗] 激流のしぶき [battle] 〈対象:攻撃中の敵軍ユニット1体〉 対象に【津波:2d】ダメージ。",
+        "full_text": "m20b-044 マリッド まりっど 稀 むらかわみちお 月の銀の魔狼 水 スピリット アクアリウム an 氷結晶のプリズン 5/5/4 飛行 スペル:水水* 耐性:all(1減) □ [対抗] 激流のしぶき [battle] 〈対象:攻撃中の敵軍ユニット1体〉 対象に【津波:2d】ダメージ。",
         "archetype_text": "スピリット アクアリウム",
         "is_token": false
       }
@@ -38954,7 +38954,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -39067,7 +39067,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -39218,7 +39218,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -39395,7 +39395,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -39559,7 +39559,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -39729,7 +39729,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -39900,7 +39900,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -40064,7 +40064,7 @@
         "product_id": "019d8c69-c974-73dc-8ef2-e238073ce193",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 召喚士",
+        "product_name": "召喚士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -40177,7 +40177,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -40290,7 +40290,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -40460,7 +40460,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -40633,7 +40633,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -40774,7 +40774,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -40969,7 +40969,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -41129,7 +41129,7 @@
           "search_cost": null,
           "effect_target_id": "019d81a0-7990-7338-9878-83818b113283",
           "effect_target_name": "このユニット",
-          "effect_text": "対象と同じ地形に存在する、対象を除く「種族：ビースト」のユニット1体手札にする。効果適用後、ターン終了まで、対象に「進軍タイプ：飛行」＆「レベル：+4」＆「攻撃力：+4」＆「防御力：+4」＆「スペル：風」を付与する。"
+          "effect_text": "対象と同じ地形に存在する、対象を除く「種族：ビースト」のユニット1体を手札にする。効果適用後、ターン終了まで、対象に「進軍タイプ：飛行」＆「レベル：+4」＆「攻撃力：+4」＆「防御力：+4」＆「スペル：風」を付与する。"
         }
       ],
       "tags": [],
@@ -41144,7 +41144,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -41155,7 +41155,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20d-p07 銀狐のエレイン ギンコノエレイン ぎんこのえれいん 極稀 かわく 20th anniversary スペシャルサプライセット 竜騎士 魔 フォクシア ビースト an 妖狐忍法帖 4/4/4 英雄点:(1) 歩行 イニシアチブ:+2 スペル:魔* 耐性:all(1減) ◎ [普通] 金輪眼 [battle] 〈コスト:このユニットの*消費/対象:敵軍ユニット1体〉 対象に【精神:2d】ダメージ。 ◎ [儀式] 八尾の解放 [field] 〈対象:このユニット〉 対象と同じ地形に存在する、対象を除く「種族:ビースト」のユニット1体手札にする。効果適用後、ターン終了まで、対象に「進軍タイプ:飛行」&「レベル:+4」&「攻撃力:+4」&「防御力:+4」&「スペル:風」を付与する。",
+        "full_text": "m20d-p07 銀狐のエレイン ギンコノエレイン ぎんこのえれいん 極稀 かわく 20th anniversary スペシャルサプライセット 竜騎士 魔 フォクシア ビースト an 妖狐忍法帖 4/4/4 英雄点:(1) 歩行 イニシアチブ:+2 スペル:魔* 耐性:all(1減) ◎ [普通] 金輪眼 [battle] 〈コスト:このユニットの*消費/対象:敵軍ユニット1体〉 対象に【精神:2d】ダメージ。 ◎ [儀式] 八尾の解放 [field] 〈対象:このユニット〉 対象と同じ地形に存在する、対象を除く「種族:ビースト」のユニット1体を手札にする。効果適用後、ターン終了まで、対象に「進軍タイプ:飛行」&「レベル:+4」&「攻撃力:+4」&「防御力:+4」&「スペル:風」を付与する。",
         "archetype_text": "フォクシア ビースト",
         "is_token": false
       }
@@ -41326,7 +41326,7 @@
         "product_id": "019d8c72-8716-76c8-bab1-e864a859f77f",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "20th Anniversary スペシャルサプライセット 竜騎士",
+        "product_name": "竜騎士",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -41439,7 +41439,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -41565,7 +41565,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -41693,7 +41693,7 @@
           },
           "effect_target_id": "019d81a0-7990-7338-9878-83818b113283",
           "effect_target_name": "このユニット",
-          "effect_text": "戦闘中の地景が「代理地形」の場合、対象に「イニシアチブ：+2」を付与する。"
+          "effect_text": "戦闘中の地形が「代理地形」の場合、対象に「イニシアチブ：+2」を付与する。"
         },
         {
           "effect_name": "毒霧",
@@ -41742,7 +41742,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -41753,7 +41753,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20a-p03 毒沼の大蛇ニーズホッグ ドクヌマノダイジャニーズホッグ どくぬまのだいじゃにーずほっぐ 極稀 伊藤勢 プロモーションカード(20th anniversary) 水 ドラゴン アクアリウム an ゴルドーの大密林 6/6/7 英雄点:(1) 歩行 スペル:水土* [条件] 沼の中から [battle] 〈発揮:イニシアチブ決定タイミング開始時/コスト:捨札1枚除外/対象:このユニット〉 戦闘中の地景が「代理地形」の場合、対象に「イニシアチブ:+2」を付与する。 ◎ [普通] 毒霧 [battle] 〈コスト:このユニットの任意のスペル枠1つ消費/対象:敵軍ユニットすべて〉 対象に「防御力:-1」を付与する。",
+        "full_text": "m20a-p03 毒沼の大蛇ニーズホッグ ドクヌマノダイジャニーズホッグ どくぬまのだいじゃにーずほっぐ 極稀 伊藤勢 プロモーションカード(20th anniversary) 水 ドラゴン アクアリウム an ゴルドーの大密林 6/6/7 英雄点:(1) 歩行 スペル:水土* [条件] 沼の中から [battle] 〈発揮:イニシアチブ決定タイミング開始時/コスト:捨札1枚除外/対象:このユニット〉 戦闘中の地形が「代理地形」の場合、対象に「イニシアチブ:+2」を付与する。 ◎ [普通] 毒霧 [battle] 〈コスト:このユニットの任意のスペル枠1つ消費/対象:敵軍ユニットすべて〉 対象に「防御力:-1」を付与する。",
         "archetype_text": "ドラゴン アクアリウム",
         "is_token": false
       }
@@ -41906,7 +41906,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42102,7 +42102,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42259,7 +42259,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42401,7 +42401,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42553,7 +42553,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42658,7 +42658,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42763,7 +42763,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42868,7 +42868,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -42973,7 +42973,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43078,7 +43078,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43183,7 +43183,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43296,7 +43296,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43409,7 +43409,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43522,7 +43522,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43652,7 +43652,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43805,7 +43805,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -43959,7 +43959,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -44103,7 +44103,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -44276,7 +44276,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -44453,7 +44453,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -44553,7 +44553,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -44653,7 +44653,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -44766,7 +44766,7 @@
         "product_id": "019d917f-6bbc-77ea-a25f-c5d0952b12b0",
         "product_category_code": "Booster",
         "product_category_name": "ブースター",
-        "product_name": "プロモーションカード(20th Anniversary)",
+        "product_name": "プロモーションカード",
         "short_name": "",
         "official_short_name": "",
         "provider_category_code": "Official",
@@ -50818,7 +50818,7 @@
           },
           "effect_target_id": "019d81a0-79c8-7669-b8f0-df333b9e9a60",
           "effect_target_name": "ユニット1体",
-          "effect_text": "【火炎：10」ダメージ。"
+          "effect_text": "【火炎：10】ダメージ。"
         }
       ],
       "tags": [],
@@ -50844,7 +50844,7 @@
         "product_note": ""
       },
       "search_support": {
-        "full_text": "m20e-050 ファイア・ジャベリン ファイアジャベリン ふぁいあ・じゃべりん ふぁいあじゃべりん 基本 鈴木理華 モンスター・コレクションdeus 火 下級魔法 呪文魔法 de ドゥーガ [普通]  [battle] 自軍の攻撃前に使用可能 コスト:火 対象:ユニット1体 【火炎:10」ダメージ。",
+        "full_text": "m20e-050 ファイア・ジャベリン ファイアジャベリン ふぁいあ・じゃべりん ふぁいあじゃべりん 基本 鈴木理華 モンスター・コレクションdeus 火 下級魔法 呪文魔法 de ドゥーガ [普通]  [battle] 自軍の攻撃前に使用可能 コスト:火 対象:ユニット1体 【火炎:10】ダメージ。",
         "archetype_text": "下級魔法 呪文魔法",
         "is_token": false
       }

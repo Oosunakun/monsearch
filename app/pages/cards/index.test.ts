@@ -1,10 +1,12 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, reactive } from 'vue'
+import type { LocationQuery } from 'vue-router'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import CardsPage from './index.vue'
+import ResultList from '~~/app/components/cards/result/layout/ResultList.vue'
 import { displayCard } from '~~/tests/fixtures/cardSearch/cards'
 import type { CardSearchResultPage } from '~~/server/types/cardSearch'
 
@@ -12,9 +14,10 @@ const searchState = {
   page: ref(1), perPage: ref(20), sort: ref('id'), order: ref('asc'),
   result: ref<CardSearchResultPage>(), status: ref('success'), retry: vi.fn(),
 }
+const routeState = reactive({ query: { nm: '同名検証カード' } as LocationQuery })
 vi.mock('vue-router', async importOriginal => ({
   ...await importOriginal<typeof import('vue-router')>(),
-  useRoute: () => ({ query: { nm: '同名検証カード' } }),
+  useRoute: () => routeState,
 }))
 mockNuxtImport('useCardSearch', () => () => searchState)
 vi.mock('vuetify', () => ({ useDisplay: () => ({ mobile: ref(false) }) }))
@@ -72,6 +75,108 @@ describe('cards result pageの描画', () => {
     await wrapper.find('button').trigger('click')
     expect(searchState.retry).toHaveBeenCalledOnce()
     wrapper.unmount()
+  })
+})
+
+describe('P4-08 ページ送り後のスクロール', () => {
+  beforeEach(() => {
+    searchState.page.value = 1
+    searchState.perPage.value = 20
+    searchState.sort.value = 'id'
+    searchState.order.value = 'asc'
+    searchState.status.value = 'success'
+    routeState.query = { nm: '同名検証カード' }
+    searchState.result.value = {
+      items: [{ ...displayCard(), deck_restriction_count: null }], totalCount: 60,
+      page: 1, perPage: 20, totalPages: 3, sort: { key: 'id', order: 'asc' }, categoryBreakdown: [],
+    }
+    vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
+  })
+  afterEach(() => vi.restoreAllMocks())
+
+  const request = (wrapper: ReturnType<typeof mountPage>, page: number) => {
+    const list = wrapper.getComponent(ResultList)
+    list.vm.$emit('update:currentPage', page)
+    list.vm.$emit('pageScrollRequest', page)
+  }
+  const complete = async (page: number) => {
+    searchState.result.value = { ...searchState.result.value!, page }
+    await nextTick()
+    expect(window.scrollTo).not.toHaveBeenCalled()
+    searchState.status.value = 'success'
+    await nextTick()
+  }
+
+  it('pending中は移動せず、successで一覧が戻ってから1回移動する', async () => {
+    const wrapper = mountPage()
+    try {
+      expect(window.scrollTo).not.toHaveBeenCalled()
+      request(wrapper, 2)
+      searchState.status.value = 'pending'
+      await nextTick()
+      expect(wrapper.findComponent(ResultList).exists()).toBe(false)
+      expect(window.scrollTo).not.toHaveBeenCalled()
+      await complete(2)
+      expect(wrapper.findComponent(ResultList).exists()).toBe(true)
+      expect(window.scrollTo).toHaveBeenCalledOnce()
+      searchState.result.value = { ...searchState.result.value! }
+      await nextTick()
+      expect(window.scrollTo).toHaveBeenCalledOnce()
+    } finally { wrapper.unmount() }
+  })
+
+  it('連続操作は最新の要求だけを処理する', async () => {
+    const wrapper = mountPage()
+    try {
+      request(wrapper, 2)
+      request(wrapper, 3)
+      searchState.status.value = 'pending'
+      await nextTick()
+      await complete(2)
+      expect(window.scrollTo).not.toHaveBeenCalled()
+      searchState.result.value = { ...searchState.result.value!, page: 3 }
+      await nextTick()
+      expect(window.scrollTo).toHaveBeenCalledOnce()
+    } finally { wrapper.unmount() }
+  })
+
+  it.each(['query', 'sort', 'order', 'perPage', 'directPage', 'error', 'empty', 'unmount'])('%sで古い要求を破棄する', async change => {
+    const wrapper = mountPage()
+    try {
+      request(wrapper, 2)
+      searchState.status.value = 'pending'
+      await nextTick()
+      if (change === 'query') routeState.query = { kw: '変更条件' }
+      if (change === 'sort') searchState.sort.value = 'atk'
+      if (change === 'order') searchState.order.value = 'desc'
+      if (change === 'perPage') searchState.perPage.value = 50
+      if (change === 'directPage') { searchState.page.value = 3; searchState.page.value = 2 }
+      if (change === 'error') searchState.status.value = 'error'
+      if (change === 'unmount') wrapper.unmount()
+      if (change === 'empty') {
+        searchState.result.value = { ...searchState.result.value!, items: [], totalCount: 0, page: 2 }
+        searchState.status.value = 'success'
+        await nextTick()
+      }
+      await complete(2)
+      expect(window.scrollTo).not.toHaveBeenCalled()
+    } finally { if (change !== 'unmount') wrapper.unmount() }
+  })
+
+  it('スクロール要求のないページ更新や条件変更では移動しない', async () => {
+    const wrapper = mountPage()
+    try {
+      wrapper.getComponent(ResultList).vm.$emit('update:currentPage', 2)
+      searchState.status.value = 'pending'
+      await nextTick()
+      await complete(2)
+      searchState.sort.value = 'atk'
+      searchState.page.value = 1
+      searchState.status.value = 'pending'
+      await nextTick()
+      await complete(1)
+      expect(window.scrollTo).not.toHaveBeenCalled()
+    } finally { wrapper.unmount() }
   })
 })
 

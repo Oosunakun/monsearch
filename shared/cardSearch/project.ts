@@ -21,7 +21,7 @@ export const projectCard = (card: Card): CardSearchResultItem | undefined => {
     card_types: card.card_types.map(value => ({ card_type_id: value.card_type_id, card_type_name: value.card_type_name })),
     blocks: card.blocks.map(value => ({ block_name: value.block_name })),
     factions: card.factions.map(value => ({ faction_name: value.faction_name })),
-    effects: card.effects.map(value => ({ effect_name: value.effect_name, effect_type_name: value.effect_type_name, effect_activation_type_name: value.effect_activation_type_name, effect_activation_category_code: value.effect_activation_category_code, effect_activation_timing_name: value.effect_activation_timing_name, effect_cost_text: value.effect_cost_text, effect_target_name: value.effect_target_name, effect_text: value.effect_text })),
+    effects: card.effects.map(value => ({ effect_name: value.effect_name, effect_type_name: value.effect_type_name, effect_activation_type_name: value.effect_activation_type_name, effect_activation_category_code: value.effect_activation_category_code, effect_condition_text: value.effect_condition_text, effect_activation_timing_name: value.effect_activation_timing_name, effect_cost_text: value.effect_cost_text, effect_target_name: value.effect_target_name, effect_text: value.effect_text })),
     rarity_code: card.rarity_code, rarity_name: card.rarity_name, illustrator_name: card.illustrator_name,
     product: { product_name: card.product.product_name },
   }

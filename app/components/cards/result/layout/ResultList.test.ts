@@ -12,6 +12,7 @@ import { useCardSearch } from '~~/app/composables/useCardSearch'
 import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS } from '~~/shared/cardSearch/types'
 import type { CardSearchSortKey, CardSearchSortOrder } from '~~/shared/cardSearch/types'
 import { expectedIds } from '~~/specs/015-search-result-sorting/verification/sort-expectations'
+import { LAYOUT_HEADER } from '~~/app/types/ui/layout'
 
 const mobile = ref(false)
 vi.mock('vuetify', async importOriginal => ({ ...await importOriginal<typeof import('vuetify')>(), useDisplay: () => ({ mobile }) }))
@@ -28,6 +29,75 @@ const clickText = async (selector: string, text: string) => {
   node!.click()
   await settle()
 }
+
+describe('P4-08 ページ送りのスクロール要求', () => {
+  const mountList = () => mount(ResultList, {
+    props: { cards: [], totalCount: 60, currentPage: 1, totalPages: 3 },
+    global: { plugins: [createVuetify({ components })], stubs: { ResultDisplaySettings: true } },
+  })
+
+  it.each([false, true])('mobile=%sで前後操作・PCの番号選択は各1回通知し、端の操作は無効になる', async isMobile => {
+    mobile.value = isMobile
+    const wrapper = mountList()
+    const button = (direction: 'prev' | 'next') => isMobile
+      ? wrapper.findAll('button').find(node => node.text() === (direction === 'prev' ? '前へ' : '次へ'))!
+      : wrapper.get(`.v-pagination__${direction} button`)
+    try {
+      expect(button('prev').attributes('disabled')).toBeDefined()
+      await button('prev').trigger('click')
+      expect(wrapper.emitted('pageScrollRequest')).toBeUndefined()
+      await button('next').trigger('click')
+      expect(wrapper.emitted('update:currentPage')?.at(-1)).toEqual([2])
+      expect(wrapper.emitted('pageScrollRequest')).toEqual([[2]])
+      await wrapper.setProps({ currentPage: 2 })
+      await button('prev').trigger('click')
+      expect(wrapper.emitted('pageScrollRequest')).toEqual([[2], [1]])
+      await wrapper.setProps({ currentPage: 3 })
+      expect(button('next').attributes('disabled')).toBeDefined()
+      await button('next').trigger('click')
+      expect(wrapper.emitted('pageScrollRequest')).toHaveLength(2)
+      if (!isMobile) {
+        await wrapper.get('button[aria-label="Go to page 2"]').trigger('click')
+        expect(wrapper.emitted('update:currentPage')?.at(-1)).toEqual([2])
+        expect(wrapper.emitted('pageScrollRequest')).toEqual([[2], [1], [2]])
+        await wrapper.setProps({ currentPage: 2 })
+        await wrapper.get('.v-pagination__item--is-active button').trigger('click')
+        expect(wrapper.emitted('pageScrollRequest')).toHaveLength(3)
+      }
+    } finally { wrapper.unmount() }
+  })
+
+  it('同じページ・範囲外・整数以外のページでは更新も要求も通知しない', async () => {
+    mobile.value = false
+    const wrapper = mountList()
+    try {
+      const pagination = wrapper.getComponent(components.VPagination)
+      for (const page of [1, 0, -1, 4, 1.5, NaN, Infinity]) {
+        pagination.vm.$emit('update:modelValue', page)
+        await nextTick()
+      }
+      expect(wrapper.emitted('update:currentPage')).toBeUndefined()
+      expect(wrapper.emitted('pageScrollRequest')).toBeUndefined()
+    } finally { wrapper.unmount() }
+  })
+
+  it('既存のヘッダー補正・余白・負座標補正を維持する', () => {
+    mobile.value = false
+    const wrapper = mountList()
+    const scroll = vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
+    const position = vi.spyOn(window, 'scrollY', 'get').mockReturnValue(500)
+    const rect = vi.spyOn(wrapper.get('.result-list-panel').element, 'getBoundingClientRect')
+      .mockReturnValue({ top: 120 } as DOMRect)
+    try {
+      wrapper.vm.scrollToTop()
+      expect(scroll).toHaveBeenLastCalledWith({ top: 120 + 500 - LAYOUT_HEADER.HEIGHT - 10, behavior: 'smooth' })
+      position.mockReturnValue(0)
+      rect.mockReturnValue({ top: 0 } as DOMRect)
+      wrapper.vm.scrollToTop()
+      expect(scroll).toHaveBeenLastCalledWith({ top: 0, behavior: 'smooth' })
+    } finally { wrapper.unmount(); scroll.mockRestore(); position.mockRestore(); rect.mockRestore() }
+  })
+})
 
 describe('015 PC/モバイル実controlsとCSR結果の統合', () => {
   // happy-domにないブラウザーAPIを補い、Vuetifyのoverlay自体は実物を使う。

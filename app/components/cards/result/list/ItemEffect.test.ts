@@ -12,6 +12,7 @@ const textOnlyEffect = (): Effect => ({
   effect_type_name: '',
   effect_activation_type_name: '',
   effect_activation_category_code: '',
+  effect_condition_text: '',
   effect_activation_timing_name: '',
   effect_cost_text: '',
   effect_target_name: '',
@@ -23,6 +24,7 @@ const normalEffect: Effect = {
   effect_type_name: '□完了型特殊能力',
   effect_activation_type_name: '[普通]',
   effect_activation_category_code: 'Battle',
+  effect_condition_text: '',
   effect_activation_timing_name: '戦闘中',
   effect_cost_text: '手札1枚',
   effect_target_name: '自軍ユニット1体',
@@ -31,6 +33,36 @@ const normalEffect: Effect = {
 
 const render = (effects: Effect[]) => mount(ItemEffect, {
   props: { card: { ...displayCard(), effects } },
+})
+
+describe('ItemEffectの使用条件表示', () => {
+  it('見出し直下に使用条件の全文を表示し、既存の属性・本文の順序を維持する', () => {
+    const condition = '自軍のユニットが次の条件を満たす場合にのみ使用できる。'.repeat(8)
+    const wrapper = render([{ ...normalEffect, effect_condition_text: condition }])
+    expect(wrapper.find('.condition-chip').text()).toBe(condition)
+    expect(wrapper.find('.condition-chip').classes()).toContain('square-chip')
+    const rows = wrapper.findAll('.effect-block > div')
+    expect(rows[0]!.find('.effect-name').text()).toBe(normalEffect.effect_name)
+    expect(rows.slice(1).map(node => node.text())).toEqual([
+      `使用条件：${condition}`,
+      '発揮：戦闘中',
+      'コスト：手札1枚',
+      '対象：自軍ユニット1体',
+      normalEffect.effect_text,
+    ])
+    expect(wrapper.findAll('.text-truncate')).toHaveLength(0)
+    wrapper.unmount()
+  })
+
+  it.each([
+    '',
+    null as unknown as string,
+  ])('使用条件が空の場合は行を表示しない (%j)', condition => {
+    const wrapper = render([{ ...normalEffect, effect_condition_text: condition }])
+    expect(wrapper.find('.condition-chip').exists()).toBe(false)
+    expect(wrapper.findAll('.meta-label').map(node => node.text())).toEqual(['発揮：', 'コスト：', '対象：'])
+    wrapper.unmount()
+  })
 })
 
 describe('ItemEffectの本文のみの効果表示', () => {

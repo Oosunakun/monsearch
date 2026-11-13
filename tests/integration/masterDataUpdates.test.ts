@@ -11,6 +11,7 @@ import { productOptions, homeRows } from '../fixtures/searchOptions/products'
 import baseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
 import { makeScenarios, originalBundle } from '../helpers/masterDataScenarios'
 import { validateCards, validateOptions, validateProductRows } from '../helpers/masterDataValidation'
+import { withoutEffectConditions } from '../helpers/historicalCardSearchResult'
 
 const masterPath = '~~/app/utils/mockData/items/cards.json'
 const productModule = '~~/app/utils/constants/search/options/product'
@@ -137,7 +138,7 @@ describe('正常更新', () => {
     // 固定A/Bの元の比較条件を同じまま再実行。変更後本番データから正解を作らない。
     const first = baseline.cases[0]!.api.pages[0]!
     const fixed = runCardSearch(historicalSources(), prepareCardSearch({}))
-    expect(fixed).toEqual({ ...first.response, items: first.response.items.map(id => baseline.projectedItems[id as keyof typeof baseline.projectedItems]) })
+    expect(withoutEffectConditions(fixed)).toEqual({ ...first.response, items: first.response.items.map(id => baseline.projectedItems[id as keyof typeof baseline.projectedItems]) })
     const { projectCard } = await import('~~/shared/cardSearch/project')
     expect(projectCard(makeCard())).toEqual(displayCard())
     const { createSearchForm } = await import('~~/app/utils/search/cardSearchFormFactory')
