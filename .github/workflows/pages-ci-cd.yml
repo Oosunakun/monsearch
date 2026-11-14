@@ -1,0 +1,70 @@
+name: Cloudflare Pages CI/CD
+
+on:
+  pull_request:
+    branches: [main, develop, chore/release-preparation]
+  push:
+    branches: [chore/release-ci-cd, chore/release-preparation]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: monsearch-quality
+    runs-on: ubuntu-24.04
+    steps:
+      # Human補完必須：公式Repository/版と照合した40桁commit SHAへ置換する。
+      # 未検証SHAや可変tagで代用しない。補完前は実行可能なWorkflowではない。
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22.23.5'
+          package-manager-cache: false
+
+      - name: Install exact npm on the isolated runner
+        working-directory: ${{ runner.temp }}
+        run: npm install --global npm@12.2.1 --no-audit --no-fund
+
+      - name: Verify toolchain
+        run: |
+          test "$(node --version)" = 'v22.23.5'
+          test "$(npm --version)" = '12.2.1'
+          node -p 'process.execPath'
+          git rev-parse HEAD
+
+      - name: Clean install
+        run: npm ci --include=dev --no-audit --no-fund
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: ./node_modules/.bin/nuxt typecheck
+
+      - name: Vitest
+        run: npm run test -- --run
+
+      - name: Generate static site
+        env:
+          NUXT_PUBLIC_SITE_URL: ''
+        run: npm run generate
+
+      - name: Audit static artifact
+        env:
+          NUXT_PUBLIC_SITE_URL: ''
+        run: node scripts/verify-pages-artifact.mjs
+
+      - name: Verify tracked inputs are unchanged
+        run: |
+          git diff --exit-code
+          git diff --cached --exit-code
