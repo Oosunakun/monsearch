@@ -4,22 +4,21 @@ on:
   pull_request:
     branches: [main, develop, chore/release-preparation]
   push:
-    branches: [chore/release-ci-cd, chore/release-preparation]
+    branches: [chore/release-ci-cd, chore/release-pages-cd, chore/release-preparation, develop, main]
 
 permissions:
   contents: read
-
-concurrency:
-  group: pages-ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
 
 jobs:
   quality:
     name: monsearch-quality
     runs-on: ubuntu-24.04
+    concurrency:
+      group: pages-ci-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    outputs:
+      artifact-id: ${{ steps.artifact.outputs.artifact-id }}
     steps:
-      # Human補完必須：公式Repository/版と照合した40桁commit SHAへ置換する。
-      # 未検証SHAや可変tagで代用しない。補完前は実行可能なWorkflowではない。
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -56,15 +55,92 @@ jobs:
 
       - name: Generate static site
         env:
-          NUXT_PUBLIC_SITE_URL: ''
+          NUXT_PUBLIC_SITE_URL: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'https://monsearch.gifumoko.net' || '' }}
         run: npm run generate
 
       - name: Audit static artifact
         env:
-          NUXT_PUBLIC_SITE_URL: ''
+          NUXT_PUBLIC_SITE_URL: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'https://monsearch.gifumoko.net' || '' }}
         run: node scripts/verify-pages-artifact.mjs
 
       - name: Verify tracked inputs are unchanged
         run: |
           git diff --exit-code
           git diff --cached --exit-code
+
+      - name: Upload verified Pages artifact
+        id: artifact
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') && github.run_attempt == 1 && !github.event.deleted
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: pages-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .output/public/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: quality
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') && github.run_attempt == 1 && !github.event.deleted && needs.quality.result == 'success'
+    runs-on: ubuntu-24.04
+    concurrency:
+      group: pages-deploy-monsearch
+      cancel-in-progress: false
+      queue: max
+    steps:
+      - name: Checkout deployment source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22.23.5'
+          package-manager-cache: false
+      - name: Install npm
+        working-directory: ${{ runner.temp }}
+        run: npm install --global npm@12.2.1 --no-audit --no-fund
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --include=dev --no-audit --no-fund
+      - name: Validate artifact ID
+        env:
+          ARTIFACT_ID: ${{ needs.quality.outputs.artifact-id }}
+        run: '[[ "$ARTIFACT_ID" =~ ^[0-9]+$ ]]'
+      - name: Download verified Pages artifact
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          artifact-ids: ${{ needs.quality.outputs.artifact-id }}
+          path: .output/public
+          merge-multiple: true
+          digest-mismatch: error
+      - name: Verify deployment identity and branch tip
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_SHA: ${{ github.sha }}
+          EVENT_REF: ${{ github.ref }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          [[ "$EVENT_NAME" == push && "$EVENT_ATTEMPT" == 1 ]]
+          [[ "$EVENT_SHA" =~ ^[0-9a-f]{40}$ && "$EVENT_SHA" != 0000000000000000000000000000000000000000 ]]
+          case "$EVENT_REF" in refs/heads/main) branch=main ;; refs/heads/develop) branch=develop ;; *) exit 1 ;; esac
+          [[ "$(git rev-parse HEAD)" == "$EVENT_SHA" ]]
+          test -f .output/public/index.html
+          tip=$(gh api "repos/$REPOSITORY/branches/$branch" --jq .commit.sha)
+          [[ "$tip" == "$EVENT_SHA" ]]
+          printf 'Deployment: branch=%s sha=%s run=%s attempt=%s artifact=%s\n' "$branch" "$EVENT_SHA" "$GITHUB_RUN_ID" "$EVENT_ATTEMPT" '${{ needs.quality.outputs.artifact-id }}' >> "$GITHUB_STEP_SUMMARY"
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          EVENT_REF: ${{ github.ref }}
+          EVENT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          [[ -n "${CLOUDFLARE_API_TOKEN:-}" ]]
+          [[ -n "${CLOUDFLARE_ACCOUNT_ID:-}" ]]
+          case "$EVENT_REF" in refs/heads/main) branch=main ;; refs/heads/develop) branch=develop ;; *) exit 1 ;; esac
+          ./node_modules/.bin/wrangler pages deploy .output/public --project-name=monsearch --branch="$branch" --commit-hash="$EVENT_SHA"
