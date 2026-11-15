@@ -28,16 +28,30 @@ GitHub Actionsでは元Repository `Oosunakun/monsearch`の`main` pushだけが�
 
 Variablesの登録・Google側設定・公開作業は運用担当者が行う。品質GateとDirect Upload方式は維持する。無効artifactにはIDなし、有効artifactには本番origin・正しい設定があることを監査する。Direct Upload後の環境変数変更では静的artifactは変わらず、停止にも無効設定で再生成・再配信が必要。
 
-## 公開前に必要なGoogle側設定
+## Google側設定・Variablesの確認状況
 
-1. GA4 property／web streamの所有者・設定担当・本番確認担当を確定し、測定IDを照合する。これらはGoogle管理画面で設定する。
-2. **拡張計測をOFF**にする（履歴変更PV・site search・form・outbound等の自動送信を停止）。コードの`send_page_view:false`だけでは履歴PVは止まらない。`view_search_results`は不採用。[Google公式PV仕様](https://developers.google.com/analytics/devguides/collection/ga4/views)
-3. web streamの標準email data redactionを有効確認する。query parameter redactionは分析不要キー（例：email/phone/name/address）の一覧をReviewし設定する。分析対象の`nm/kw/att/etx/rt/rl`等を丸ごと除去する設定にはしない。管理画面の合成入力テストで確認する。[標準データ除去仕様](https://support.google.com/analytics/answer/13544947?hl=en)
-4. Ads連携・Google signals・広告パーソナライズをOFFとし、Google側の実設定を確認する。コードもsignals／広告パーソナライズを無効にしている。
-5. ユーザー単位・イベント単位データの保持期間を**14か月**に設定する。ユーザーデータ保持期間のリセット（新しいアクティビティのたびにリセット）は**OFFを推奨**し、設定時に実値を確認する。リセットの対象はユーザーデータであり、この保持期間は標準の集計レポートやCookieの期間とは別である。[Google公式のデータ保持仕様](https://support.google.com/analytics/answer/7667196?hl=ja)
-6. event scope custom dimensionに`search_mode`、`zero_results`、`query_truncated`、custom metricに`result_count`を登録する。全文URLの独自dimension複製は不要。
+以下は運用担当者（Human）による管理画面での実施・確認報告を記録したもの。Codexが外部API等で独立検証した結果ではない。測定IDの実値は記載しない。
 
-**保持期間14か月の設定・確認、およびリセット設定の確認は未実施。** 文書の更新はGoogle管理画面での設定完了を意味しない。公開前に正しいpropertyの実設定を確認し、Aboutの「14か月に設定しています」という掲載文と一致することを照合する。リセットOFFは推奨値であり、設定済みとは扱わない。照合が完了するまで、この掲載文を実設定の証拠にしない。
+| 項目 | Human確認済みの設定・結果 |
+|---|---|
+| GA4アカウント／property・Web stream | `gifumoko`／`monsearch` |
+| 拡張計測 | OFF（`view_search_results`は不採用） |
+| ユーザー単位・イベント単位データ保持 | 14か月、新しいユーザーアクティビティによる保持期間リセットOFF |
+| メールアドレスの除去 | ON |
+| URLパラメーター除去 | ON、対象キーは`email`・`phone`・`name`・`address` |
+| データ除去プレビュー | 対象4キーが`(redacted)`となり、検索条件`nm`・`kw`等は維持されることを確認済み |
+| Googleシグナル／ユーザー提供データの収集 | ともにOFF |
+| 地域・デバイスの詳細データ収集 | ON |
+| 広告パーソナライズ | 全307地域OFF |
+| event scope custom dimension | `search_mode`・`zero_results`・`query_truncated`登録済み |
+| custom metric | `result_count`登録済み |
+| GitHub Repository Variables | `GA4_ENABLED=true`・`GA4_MEASUREMENT_ID`登録済み |
+
+保持期間14か月・リセットOFFはHuman確認済みで、About掲載文と一致する。ただし、この保持期間は標準の集計レポートやCookieの期間とは別である。公開前にも正しいpropertyの設定とAbout掲載文を照合する。[Google公式のデータ保持仕様](https://support.google.com/analytics/answer/7667196?hl=ja)
+
+データ除去プレビューは管理画面の合成入力による確認であり、実イベントでの除去・Google側受信の検証ではない。実イベント送信・本番計測・自動イベントを含む標準データ除去の実挙動・Cloudflareの実効設定確認は未完了。公開後の確認は後述の手順で行う。文書更新自体を外部設定の実施証拠とは扱わない。
+
+拡張計測OFFの設定は、コードの`send_page_view:false`とは別に必要である。分析対象の検索キーを丸ごと除去しない。コードもsignals／広告パーソナライズを無効にしている。[Google公式PV仕様](https://developers.google.com/analytics/devguides/collection/ga4/views)／[標準データ除去仕様](https://support.google.com/analytics/answer/13544947?hl=en)
 
 Aboutの「アクセス解析について」は、利用目的・収集情報・データ保持・個人情報・詳細情報・停止方法の6項目とする。リンク3件は同一タブで開き、ポリシーの最終更新日は掲載しない。
 

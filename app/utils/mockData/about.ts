@@ -73,7 +73,7 @@ export const mockAboutAnalyticsItems: AboutAnalyticsItem[] = [
   {
     'id': 'collection',
     'subheading': '収集情報',
-    'text': 'Cookie等を利用し、閲覧ページ、検索条件を含むURL、検索方法、検索結果件数、端末・ブラウザー情報等をGoogleへ送信します。'
+    'text': 'Cookie等を利用し、閲覧ページや検索条件を含むURL、検索機能の利用状況、アクセス環境（地域・ブラウザーなど）に関する情報をGoogleへ送信します。'
   },
   {
     'id': 'retention',
