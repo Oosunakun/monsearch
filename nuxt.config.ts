@@ -24,7 +24,15 @@ if (siteUrlInput !== undefined && siteUrlInput !== '') {
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
-    public: { siteUrl }
+    public: {
+      siteUrl,
+      analytics: {
+        enabled: false,
+        measurementId: '',
+        allowedOrigin: '',
+        environment: '',
+      },
+    }
   },
   devServerHandlers: [{
     route: '/data/cards.json',

@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, lstatSync, readdirSync, readFileSync } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { verifyAnalyticsArtifact } from './verify-analytics-artifact.mjs'
 
 const productionOrigin = 'https://monsearch.gifumoko.net'
 const indexableRoutes = ['/', '/about', '/rules', '/restrictions', '/links', '/cards/search']
@@ -103,6 +104,7 @@ export function verifyPagesArtifact({ sourceDir = process.cwd(), outputDir = res
     assert(existsSync(resolve(output, file)), `Nuxt fallback欠落: ${file}`)
   }
   for (const file of files.filter(file => file.path.endsWith('.html'))) checkAssets(read(file.path).toString(), file.path)
+  for (const file of pages) verifyAnalyticsArtifact(read(file).toString())
   for (const file of files.filter(file => file.path.endsWith('/_payload.json') || file.path === '_payload.json')) JSON.parse(read(file.path).toString())
   const locs = [...read('sitemap.xml').toString().matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc)
   assert.deepEqual(locs.sort(), indexableRoutes.map(route => productionOrigin + route).sort(), 'sitemap URL集合')

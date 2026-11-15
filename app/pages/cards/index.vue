@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAnalytics } from '~~/app/composables/useAnalytics'
 import { computed, ref, shallowRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
@@ -17,6 +18,15 @@ const route = useRoute()
 const routeQuery = computed(() => route.query)
 const searchForm = computed(() => parseCardSearchQuery(route.query))
 const { page: currentPage, perPage: itemsPerPage, sort: sortItem, order: sortOrder, result, status, retry } = useCardSearch(routeQuery)
+const analytics = useAnalytics()
+// pending時のURLを保持し、成功確定前の残存resultを新条件の結果として送らない。
+let resultPath: string | undefined
+watch(status, value => {
+  if (value === 'pending') resultPath = route.fullPath
+  if (value === 'success' && result.value && resultPath === route.fullPath) {
+    analytics.results(resultPath, result.value.totalCount)
+  }
+}, { flush: 'sync', immediate: true })
 const conditionItems = computed(() => [searchForm.value.name, searchForm.value.keyword, searchForm.value.effectText, searchForm.value.referenceLabel]
   .filter(Boolean).map(value => ({ label: value, value })))
 const categoryLabels: Record<string, { label: string, color: string }> = {

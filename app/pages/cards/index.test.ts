@@ -10,11 +10,14 @@ import ResultList from '~~/app/components/cards/result/layout/ResultList.vue'
 import { displayCard } from '~~/tests/fixtures/cardSearch/cards'
 import type { CardSearchResultPage } from '~~/server/types/cardSearch'
 
+const analytics = vi.hoisted(() => ({ submit: vi.fn(), finishSubmit: vi.fn(), results: vi.fn() }))
+vi.mock('~~/app/composables/useAnalytics', () => ({ useAnalytics: () => analytics }))
+
 const searchState = {
   page: ref(1), perPage: ref(20), sort: ref('id'), order: ref('asc'),
   result: ref<CardSearchResultPage>(), status: ref('success'), retry: vi.fn(),
 }
-const routeState = reactive({ query: { nm: '同名検証カード' } as LocationQuery })
+const routeState = reactive({ fullPath: '/cards?nm=initial', query: { nm: '同名検証カード' } as LocationQuery })
 vi.mock('vue-router', async importOriginal => ({
   ...await importOriginal<typeof import('vue-router')>(),
   useRoute: () => routeState,
@@ -193,5 +196,40 @@ describe('cards result page', () => {
     expect(source).toContain("status === 'error'")
     expect(source).toContain('result.totalCount === 0')
     expect(source).toContain('@click="retry"')
+  })
+})
+
+
+describe('結果確定とAnalyticsの接点', () => {
+  beforeEach(() => {
+    analytics.results.mockClear()
+    routeState.fullPath = '/cards?nm=A'
+    routeState.query = { nm: 'A' }
+    searchState.status.value = 'pending'
+    searchState.result.value = {
+      items: [], totalCount: 0, page: 1, perPage: 20, totalPages: 1,
+      sort: { key: 'id', order: 'asc' }, categoryBreakdown: [],
+    }
+  })
+  it('残存result・errorを送らず、retry成功で現在条件と全件数を通知する', async () => {
+    const wrapper = mountPage()
+    expect(analytics.results).not.toHaveBeenCalled()
+    searchState.status.value = 'error'; await nextTick()
+    expect(analytics.results).not.toHaveBeenCalled()
+    routeState.fullPath = '/cards?nm=B'; routeState.query = { nm: 'B' }
+    searchState.status.value = 'pending'; await nextTick()
+    searchState.result.value = { ...searchState.result.value!, totalCount: 42 }
+    await nextTick()
+    expect(analytics.results).not.toHaveBeenCalled()
+    searchState.status.value = 'success'; await nextTick()
+    expect(analytics.results).toHaveBeenCalledExactlyOnceWith('/cards?nm=B', 42)
+    wrapper.unmount()
+  })
+  it('条件が変わった古いpendingのsuccessは送らない', async () => {
+    const wrapper = mountPage()
+    routeState.fullPath = '/cards?nm=B'; routeState.query = { nm: 'B' }
+    searchState.status.value = 'success'; await nextTick()
+    expect(analytics.results).not.toHaveBeenCalled()
+    wrapper.unmount()
   })
 })

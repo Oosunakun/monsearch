@@ -61,6 +61,32 @@ const historyRows = computed<HistoryRow[]>(() =>
 
     <SectionCardShell>
       <template #header>
+        <SectionHeader title="アクセス解析について" color="primary" text-class="text-white" />
+      </template>
+      <p>
+        当サイトの正式公開環境では、検索機能の使いやすさの改善と開発の優先順位の検討のため、Google Analytics 4を利用します。
+        閲覧ページ、検索条件を含むURL、簡易・詳細検索の操作、検索結果件数、端末・ブラウザー等の利用情報をGoogleへ送信します。
+        広告・リマーケティングを目的とした利用は行いません。
+      </p>
+      <p>
+        Cookie（_ga、_ga_から始まるCookie）を使用します。Cookieの有効期間は通常、最終利用から最長2年です。
+        イベント・ユーザーデータの保持期間は2か月とし、Cookieの期間とは異なります。
+        Google Analyticsの標準データ除去機能を利用する方針ですが、個人情報の送信を完全に防ぐものではありません。
+        検索欄にメールアドレス・電話番号・氏名・住所等の個人情報を入力しないでください。
+      </p>
+      <p>
+        情報の取扱いは
+        <a href="https://policies.google.com/privacy">Googleのプライバシーポリシー</a>と
+        <a href="https://policies.google.com/technologies/partner-sites">Googleによる情報の利用方法</a>をご確認ください。
+        計測を停止する方法は
+        <a href="https://support.google.com/analytics/answer/181881?hl=ja">Google公式のオプトアウト案内</a>をご参照ください。
+        オプトアウト用の拡張機能は対応ブラウザーでのみ利用でき、モバイル等では利用できない場合があります。
+        ご質問は本ページの「お問い合わせ」からご連絡ください。
+      </p>
+    </SectionCardShell>
+
+    <SectionCardShell>
+      <template #header>
         <SectionHeader title="謝辞" color="primary" text-class="text-white" />
       </template>
       <ul class="about-notice-list">

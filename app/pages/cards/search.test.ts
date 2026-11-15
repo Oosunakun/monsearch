@@ -10,6 +10,8 @@ import { createRepresentativeSearchForm, representativeCardSearchQuery } from '~
 
 const { readyCallbacks } = vi.hoisted(() => ({ readyCallbacks: [] as Array<() => void> }))
 mockNuxtImport('onNuxtReady', () => (callback: () => void) => { readyCallbacks.push(callback) })
+const analytics = vi.hoisted(() => ({ submit: vi.fn(() => 1), finishSubmit: vi.fn(), results: vi.fn() }))
+vi.mock('~~/app/composables/useAnalytics', () => ({ useAnalytics: () => analytics }))
 const push = vi.fn()
 const routeQuery = ref<LocationQuery>({})
 const routePath = ref('/cards/search')
@@ -39,6 +41,7 @@ describe('card search page', () => {
     await nextTick()
   }
   beforeEach(() => {
+    analytics.submit.mockClear(); analytics.finishSubmit.mockClear()
     push.mockReset(); routeQuery.value = {}; routePath.value = '/cards/search'; form.value = createSearchForm()
     readyCallbacks.length = 0
     useNuxtApp().isHydrating = false
@@ -167,6 +170,8 @@ describe('card search page', () => {
     form.value.name = ' Dragon '
     await wrapper.findAll('button').at(-1)!.trigger('click')
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: 'Dragon' } })
+    expect(analytics.submit).toHaveBeenCalledWith('advanced', { nm: 'Dragon' })
+    expect(analytics.finishSubmit).toHaveBeenCalledWith(1)
   })
 
   it('rebuilds a restored form after adding, changing, and removing conditions', async () => {
