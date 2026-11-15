@@ -28,6 +28,27 @@ export const mockAboutItems = [
   }
 ]
 
+export interface AboutAnalyticsItem {
+  id: string
+  text: string
+}
+
+// 段落前後・文間の空白も、既存の表示テキストと同じに保つ。
+export const mockAboutAnalyticsItems: AboutAnalyticsItem[] = [
+  {
+    id: 'purpose',
+    text: ' 当サイトの正式公開環境では、検索機能の使いやすさの改善と開発の優先順位の検討のため、Google Analytics 4を利用します。 閲覧ページ、検索条件を含むURL、簡易・詳細検索の操作、検索結果件数、端末・ブラウザー等の利用情報をGoogleへ送信します。 広告・リマーケティングを目的とした利用は行いません。 '
+  },
+  {
+    id: 'cookies',
+    text: ' Cookie（_ga、_ga_から始まるCookie）を使用します。Cookieの有効期間は通常、最終利用から最長2年です。 イベント・ユーザーデータの保持期間は2か月とし、Cookieの期間とは異なります。 Google Analyticsの標準データ除去機能を利用する方針ですが、個人情報の送信を完全に防ぐものではありません。 検索欄にメールアドレス・電話番号・氏名・住所等の個人情報を入力しないでください。 '
+  },
+  {
+    id: 'privacy',
+    text: ' 情報の取扱いは [Googleのプライバシーポリシー](https://policies.google.com/privacy)と [Googleによる情報の利用方法](https://policies.google.com/technologies/partner-sites)をご確認ください。 計測を停止する方法は [Google公式のオプトアウト案内](https://support.google.com/analytics/answer/181881?hl=ja)をご参照ください。 オプトアウト用の拡張機能は対応ブラウザーでのみ利用でき、モバイル等では利用できない場合があります。 ご質問は本ページの「お問い合わせ」からご連絡ください。 '
+  }
+]
+
 export const mockAboutThanksItems = [
   {
     id: 'creators',
