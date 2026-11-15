@@ -53,7 +53,7 @@ Variablesの登録・Google側設定・公開作業は運用担当者が行う�
 
 拡張計測OFFの設定は、コードの`send_page_view:false`とは別に必要である。分析対象の検索キーを丸ごと除去しない。コードもsignals／広告パーソナライズを無効にしている。[Google公式PV仕様](https://developers.google.com/analytics/devguides/collection/ga4/views)／[標準データ除去仕様](https://support.google.com/analytics/answer/13544947?hl=en)
 
-Aboutの「アクセス解析について」は、利用目的・収集情報・データ保持・個人情報・詳細情報・停止方法の6項目とする。リンク3件は同一タブで開き、ポリシーの最終更新日は掲載しない。
+Aboutの「アクセス解析とプライバシー」は、利用目的・収集情報・データ保持・個人情報・詳細情報・停止方法の6項目とする。リンク3件は同一タブで開き、ポリシーの最終更新日は掲載しない。
 
 ## URL・PIIの扱いと残存リスク
 

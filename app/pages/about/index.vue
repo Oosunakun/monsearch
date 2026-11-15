@@ -90,7 +90,7 @@ const historyRows = computed<HistoryRow[]>(() =>
 
     <SectionCardShell>
       <template #header>
-        <SectionHeader title="アクセス解析について" color="primary" text-class="text-white" />
+        <SectionHeader title="アクセス解析とプライバシー" color="primary" text-class="text-white" />
       </template>
       <ul class="about-notice-list">
         <li v-for="item in analyticsItems" :key="item.id">

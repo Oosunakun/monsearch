@@ -70,7 +70,7 @@ describe('Aboutのアクセス解析説明', () => {
     const wrapper = mountPage()
     try {
       expect(wrapper.findAll('main > section > header > h2').map(header => header.text())).toEqual([
-        '当サイトについて', '謝辞', '更新履歴', 'アクセス解析について', 'お問い合わせ',
+        '当サイトについて', '謝辞', '更新履歴', 'アクセス解析とプライバシー', 'お問い合わせ',
       ])
     } finally { wrapper.unmount() }
   })
