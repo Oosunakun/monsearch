@@ -34,8 +34,12 @@ Variablesの登録・Google側設定・公開作業は運用担当者が行う�
 2. **拡張計測をOFF**にする（履歴変更PV・site search・form・outbound等の自動送信を停止）。コードの`send_page_view:false`だけでは履歴PVは止まらない。`view_search_results`は不採用。[Google公式PV仕様](https://developers.google.com/analytics/devguides/collection/ga4/views)
 3. web streamの標準email data redactionを有効確認する。query parameter redactionは分析不要キー（例：email/phone/name/address）の一覧をReviewし設定する。分析対象の`nm/kw/att/etx/rt/rl`等を丸ごと除去する設定にはしない。管理画面の合成入力テストで確認する。[標準データ除去仕様](https://support.google.com/analytics/answer/13544947?hl=en)
 4. Ads連携・Google signals・広告パーソナライズをOFFとし、Google側の実設定を確認する。コードもsignals／広告パーソナライズを無効にしている。
-5. イベント・ユーザーデータ保持を2か月に設定する。Cookie（通常最大2年）とは別設定。Aboutと実Cookie設定を照合する。
+5. ユーザー単位・イベント単位データの保持期間を**14か月**に設定する。ユーザーデータ保持期間のリセット（新しいアクティビティのたびにリセット）は**OFFを推奨**し、設定時に実値を確認する。リセットの対象はユーザーデータであり、この保持期間は標準の集計レポートやCookieの期間とは別である。[Google公式のデータ保持仕様](https://support.google.com/analytics/answer/7667196?hl=ja)
 6. event scope custom dimensionに`search_mode`、`zero_results`、`query_truncated`、custom metricに`result_count`を登録する。全文URLの独自dimension複製は不要。
+
+**保持期間14か月の設定・確認、およびリセット設定の確認は未実施。** 文書の更新はGoogle管理画面での設定完了を意味しない。公開前に正しいpropertyの実設定を確認し、Aboutの「14か月に設定しています」という掲載文と一致することを照合する。リセットOFFは推奨値であり、設定済みとは扱わない。照合が完了するまで、この掲載文を実設定の証拠にしない。
+
+Aboutの「アクセス解析について」は、利用目的・収集情報・データ保持・個人情報・詳細情報・停止方法の6項目とする。リンク3件は同一タブで開き、ポリシーの最終更新日は掲載しない。
 
 ## URL・PIIの扱いと残存リスク
 

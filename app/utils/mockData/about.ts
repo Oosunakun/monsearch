@@ -66,29 +66,34 @@ export interface AboutAnalyticsItem {
 }
 export const mockAboutAnalyticsItems: AboutAnalyticsItem[] = [
   {
-    id: 'purpose',
-    subheading: '利用目的',
-    text: '当サイトでは、検索機能の改善とサイト運営の参考とするため、Google Analytics 4（GA4）を利用します。'
+    'id': 'purpose',
+    'subheading': '利用目的',
+    'text': '当サイトでは、検索機能の改善とサイト運営の参考とするため、Google Analytics 4（GA4）を利用します。'
   },
   {
-    id: 'collection',
-    subheading: '収集情報',
-    text: 'Cookie等を利用し、閲覧ページ、検索条件を含むURL、検索方法、検索結果件数、端末・ブラウザー情報等をGoogleへ送信します。'
+    'id': 'collection',
+    'subheading': '収集情報',
+    'text': 'Cookie等を利用し、閲覧ページ、検索条件を含むURL、検索方法、検索結果件数、端末・ブラウザー情報等をGoogleへ送信します。'
   },
   {
-    id: 'retention',
-    subheading: 'データ保持',
-    text: 'GA4のユーザー単位・イベント単位データの保持期間は2か月とする方針です。集計レポートやCookieの保持期間とは異なります。'
+    'id': 'retention',
+    'subheading': 'データ保持',
+    'text': 'GA4のユーザー単位・イベント単位データの保持期間は14か月に設定しています。この設定は標準の集計レポートやCookieには適用されません。'
   },
   {
-    id: 'personal-information',
-    subheading: '個人情報',
-    text: 'GA4の標準データ除去機能を利用する方針ですが、個人情報の送信を完全に防ぐものではありません。検索欄に個人情報を入力しないでください。'
+    'id': 'personal-information',
+    'subheading': '個人情報',
+    'text': 'GA4の標準データ除去機能を利用しますが、個人情報の送信を完全に防ぐものではありません。検索欄に個人情報を入力しないでください。'
   },
   {
-    id: 'details',
-    subheading: '詳細・停止方法',
-    text: '[Googleによる情報の利用](https://policies.google.com/technologies/partner-sites)、[Googleのプライバシーポリシー](https://policies.google.com/privacy)をご確認ください。計測の停止方法は[公式オプトアウト案内](https://support.google.com/analytics/answer/181881?hl=ja)をご参照ください。利用できるブラウザーには制限があります。'
+    'id': 'details',
+    'subheading': '詳細情報',
+    'text': '[Googleによる情報の利用](https://policies.google.com/technologies/partner-sites)および[Googleのプライバシーポリシー](https://policies.google.com/privacy)をご確認ください。'
+  },
+  {
+    'id': 'opt-out',
+    'subheading': '停止方法',
+    'text': '[Google公式のオプトアウト案内](https://support.google.com/analytics/answer/181881?hl=ja)をご参照ください。利用できるブラウザーには制限があります。'
   }
 ]
 
