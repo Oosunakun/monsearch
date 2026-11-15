@@ -56,11 +56,19 @@ jobs:
       - name: Generate static site
         env:
           NUXT_PUBLIC_SITE_URL: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'https://monsearch.gifumoko.net' || '' }}
+          NUXT_PUBLIC_ANALYTICS_ENABLED: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.GA4_ENABLED || 'false' }}
+          NUXT_PUBLIC_ANALYTICS_MEASUREMENT_ID: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.GA4_ENABLED == 'true' && vars.GA4_MEASUREMENT_ID || '' }}
+          NUXT_PUBLIC_ANALYTICS_ALLOWED_ORIGIN: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && 'https://monsearch.gifumoko.net' || '' }}
+          NUXT_PUBLIC_ANALYTICS_ENVIRONMENT: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && 'production' || '' }}
         run: npm run generate
 
       - name: Audit static artifact
         env:
           NUXT_PUBLIC_SITE_URL: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'https://monsearch.gifumoko.net' || '' }}
+          NUXT_PUBLIC_ANALYTICS_ENABLED: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.GA4_ENABLED || 'false' }}
+          NUXT_PUBLIC_ANALYTICS_MEASUREMENT_ID: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.GA4_ENABLED == 'true' && vars.GA4_MEASUREMENT_ID || '' }}
+          NUXT_PUBLIC_ANALYTICS_ALLOWED_ORIGIN: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && 'https://monsearch.gifumoko.net' || '' }}
+          NUXT_PUBLIC_ANALYTICS_ENVIRONMENT: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && 'production' || '' }}
         run: node scripts/verify-pages-artifact.mjs
 
       - name: Verify tracked inputs are unchanged

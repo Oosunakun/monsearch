@@ -59,6 +59,44 @@ export interface FinderReleaseNote {
 }
 export const mockAboutHistorySourceRows: FinderReleaseNote[] = finderReleaseNoteFile as unknown as FinderReleaseNote[]
 
+export interface AboutAnalyticsItem {
+  id: string
+  subheading: string
+  text: string
+}
+export const mockAboutAnalyticsItems: AboutAnalyticsItem[] = [
+  {
+    'id': 'purpose',
+    'subheading': '利用目的',
+    'text': '当サイトでは、検索機能の改善とサイト運営の参考とするため、Google Analytics 4（GA4）を利用します。'
+  },
+  {
+    'id': 'collection',
+    'subheading': '収集情報',
+    'text': 'Cookie等を利用し、閲覧ページや検索条件を含むURL、検索機能の利用状況、アクセス環境（地域・ブラウザーなど）に関する情報をGoogleへ送信します。'
+  },
+  {
+    'id': 'retention',
+    'subheading': 'データ保持',
+    'text': 'GA4のユーザー単位・イベント単位データの保持期間は14か月に設定しています。この設定は標準の集計レポートやCookieには適用されません。'
+  },
+  {
+    'id': 'personal-information',
+    'subheading': '個人情報',
+    'text': 'GA4の標準データ除去機能を利用しますが、個人情報の送信を完全に防ぐものではありません。検索欄に個人情報を入力しないでください。'
+  },
+  {
+    'id': 'details',
+    'subheading': '詳細情報',
+    'text': '[Googleによる情報の利用](https://policies.google.com/technologies/partner-sites)および[Googleのプライバシーポリシー](https://policies.google.com/privacy)をご確認ください。'
+  },
+  {
+    'id': 'opt-out',
+    'subheading': '停止方法',
+    'text': '[Google公式のオプトアウト案内](https://support.google.com/analytics/answer/181881?hl=ja)をご参照ください。利用できるブラウザーには制限があります。'
+  }
+]
+
 export const mockAboutContactItems = [
   {
     id: '1',
