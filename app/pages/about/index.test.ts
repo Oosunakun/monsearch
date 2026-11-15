@@ -3,16 +3,19 @@ import { describe, expect, it } from 'vitest'
 import AboutPage from './index.vue'
 import { mockAboutAnalyticsItems } from '~~/app/utils/mockData/about'
 
-// データ定義から生成せず、外部化前の表示を固定値として保持する。
-const paragraphs = [
-  ' 当サイトの正式公開環境では、検索機能の使いやすさの改善と開発の優先順位の検討のため、Google Analytics 4を利用します。 閲覧ページ、検索条件を含むURL、簡易・詳細検索の操作、検索結果件数、端末・ブラウザー等の利用情報をGoogleへ送信します。 広告・リマーケティングを目的とした利用は行いません。 ',
-  ' Cookie（_ga、_ga_から始まるCookie）を使用します。Cookieの有効期間は通常、最終利用から最長2年です。 イベント・ユーザーデータの保持期間は2か月とし、Cookieの期間とは異なります。 Google Analyticsの標準データ除去機能を利用する方針ですが、個人情報の送信を完全に防ぐものではありません。 検索欄にメールアドレス・電話番号・氏名・住所等の個人情報を入力しないでください。 ',
-  ' 情報の取扱いは Googleのプライバシーポリシーと Googleによる情報の利用方法をご確認ください。 計測を停止する方法は Google公式のオプトアウト案内をご参照ください。 オプトアウト用の拡張機能は対応ブラウザーでのみ利用でき、モバイル等では利用できない場合があります。 ご質問は本ページの「お問い合わせ」からご連絡ください。 ',
+// 実装データから生成せず、確定した項目名・表示本文を独立した固定値で保持する。
+const subheadings = ['利用目的', '収集情報', 'データ保持', '個人情報', '詳細・停止方法']
+const bodies = [
+  '当サイトでは、検索機能の改善とサイト運営の参考とするため、Google Analytics 4（GA4）を利用します。',
+  'Cookie等を利用し、閲覧ページ、検索条件を含むURL、検索方法、検索結果件数、端末・ブラウザー情報等をGoogleへ送信します。',
+  'GA4のユーザー単位・イベント単位データの保持期間は2か月とする方針です。集計レポートやCookieの保持期間とは異なります。',
+  'GA4の標準データ除去機能を利用する方針ですが、個人情報の送信を完全に防ぐものではありません。検索欄に個人情報を入力しないでください。',
+  'Googleによる情報の利用、Googleのプライバシーポリシーをご確認ください。計測の停止方法は公式オプトアウト案内をご参照ください。利用できるブラウザーには制限があります。',
 ]
 const links = [
+  ['Googleによる情報の利用', 'https://policies.google.com/technologies/partner-sites'],
   ['Googleのプライバシーポリシー', 'https://policies.google.com/privacy'],
-  ['Googleによる情報の利用方法', 'https://policies.google.com/technologies/partner-sites'],
-  ['Google公式のオプトアウト案内', 'https://support.google.com/analytics/answer/181881?hl=ja'],
+  ['公式オプトアウト案内', 'https://support.google.com/analytics/answer/181881?hl=ja'],
 ]
 const mountPage = () => mount(AboutPage, { global: { stubs: {
   ContentMaxWidthContainer: { template: '<main><slot /></main>' },
@@ -23,24 +26,32 @@ const mountPage = () => mount(AboutPage, { global: { stubs: {
 } } })
 
 describe('Aboutのアクセス解析説明', () => {
-  it('全文・空白・3リンクの属性と順序・段落の要素構造を保持する', () => {
+  it('5項目の本文・順序と3リンクの属性・空白・句読点を保持する', () => {
     const wrapper = mountPage()
     try {
-      const content = wrapper.findAll('section')[1]!.get('.content')
-      const actual = content.findAll(':scope > p')
-      expect(actual.map(p => p.element.textContent)).toEqual(paragraphs)
-      expect(Array.from(content.element.children, child => child.tagName)).toEqual(['P', 'P', 'P'])
-      expect(actual.map(p => Array.from(p.element.children, child => child.tagName))).toEqual([[], [], ['A', 'A', 'A']])
+      const content = wrapper.findAll('section')[3]!.get('.content')
+      const list = content.get(':scope > ul.about-notice-list')
+      const actual = list.findAll(':scope > li')
+      expect(actual).toHaveLength(5)
+      expect(actual.map(item => item.get(':scope > span.font-weight-bold').element.textContent))
+        .toEqual(subheadings.map(text => text + '：'))
+      expect(actual.map(item => Array.from(item.element.childNodes)
+        .filter(node => node.nodeType !== 8 && node !== item.get(':scope > span').element)
+        .map(node => node.textContent).join(''))).toEqual(bodies)
+      expect(Array.from(content.element.children, child => child.tagName)).toEqual(['UL'])
+      expect(actual.map(item => Array.from(item.element.children, child => child.tagName)))
+        .toEqual([['SPAN'], ['SPAN'], ['SPAN'], ['SPAN'], ['SPAN', 'A', 'A', 'A']])
       expect(content.findAll('a').map(a => [a.text(), a.attributes('href')])).toEqual(links)
       expect(content.findAll('a').map(a => Object.fromEntries(Object.entries(a.attributes())
         .filter(([name]) => !name.startsWith('data-v-'))))).toEqual(links.map(([, href]) => ({ href })))
       // Vueのfragment用コメント・空テキストを除き、実際の本文とリンク境界を比較する。
-      expect(Array.from(actual[2]!.element.childNodes)
-        .filter(node => node.nodeType !== 8 && !(node.nodeType === 3 && node.textContent === ''))
+      expect(Array.from(actual[4]!.element.childNodes)
+        .filter(node => node.nodeType !== 8 && node !== actual[4]!.get(':scope > span').element
+          && !(node.nodeType === 3 && node.textContent === ''))
         .map(node => node.textContent)).toEqual([
-        ' 情報の取扱いは ', 'Googleのプライバシーポリシー', 'と ', 'Googleによる情報の利用方法',
-        'をご確認ください。 計測を停止する方法は ', 'Google公式のオプトアウト案内',
-        'をご参照ください。 オプトアウト用の拡張機能は対応ブラウザーでのみ利用でき、モバイル等では利用できない場合があります。 ご質問は本ページの「お問い合わせ」からご連絡ください。 ',
+        'Googleによる情報の利用', '、', 'Googleのプライバシーポリシー',
+        'をご確認ください。計測の停止方法は', '公式オプトアウト案内',
+        'をご参照ください。利用できるブラウザーには制限があります。',
       ])
     } finally { wrapper.unmount() }
   })
@@ -48,25 +59,26 @@ describe('Aboutのアクセス解析説明', () => {
     const wrapper = mountPage()
     try {
       expect(wrapper.findAll('main > section > header > h2').map(header => header.text())).toEqual([
-        '当サイトについて', 'アクセス解析について', '謝辞', '更新履歴', 'お問い合わせ',
+        '当サイトについて', '謝辞', '更新履歴', 'アクセス解析について', 'お問い合わせ',
       ])
     } finally { wrapper.unmount() }
   })
   it('HTML風の本文・表示名と不許可URLを安全なテキストとして描画する', () => {
     const original = mockAboutAnalyticsItems[0]!.text
     mockAboutAnalyticsItems[0]!.text = '<img src=x> [<script>alert(1)</script>](https://example.com) [不可](javascript:alert(1))'
-    const wrapper = mountPage()
+    let wrapper: ReturnType<typeof mountPage> | undefined
     try {
-      const paragraph = wrapper.findAll('section')[1]!.get('p')
-      expect(paragraph.element.textContent).toBe('<img src=x> <script>alert(1)</script> [不可](javascript:alert(1))')
-      expect(paragraph.find('img').exists()).toBe(false)
-      expect(paragraph.find('script').exists()).toBe(false)
-      expect(paragraph.findAll('a').map(a => [a.text(), a.attributes('href')])).toEqual([
+      wrapper = mountPage()
+      const item = wrapper.findAll('section')[3]!.get('ul.about-notice-list > li')
+      expect(item.element.textContent).toBe('利用目的：<img src=x> <script>alert(1)</script> [不可](javascript:alert(1))')
+      expect(item.find('img').exists()).toBe(false)
+      expect(item.find('script').exists()).toBe(false)
+      expect(item.findAll('a').map(a => [a.text(), a.attributes('href')])).toEqual([
         ['<script>alert(1)</script>', 'https://example.com'],
       ])
     } finally {
       mockAboutAnalyticsItems[0]!.text = original
-      wrapper.unmount()
+      wrapper?.unmount()
     }
   })
 })
