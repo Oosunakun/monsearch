@@ -50,7 +50,7 @@ export interface CardSearchResultItem {
   card_types: Array<Pick<Card['card_types'][number], 'card_type_id' | 'card_type_name'>>
   blocks: Array<Pick<Card['blocks'][number], 'block_name'>>
   factions: Array<Pick<Card['factions'][number], 'faction_name'>>
-  effects: Array<Pick<Card['effects'][number], 'effect_name' | 'effect_type_name' | 'effect_activation_type_name' | 'effect_activation_category_code' | 'effect_activation_timing_name' | 'effect_cost_text' | 'effect_target_name' | 'effect_text'>>
+  effects: Array<Pick<Card['effects'][number], 'effect_name' | 'effect_type_name' | 'effect_activation_type_name' | 'effect_activation_category_code' | 'effect_condition_text' | 'effect_activation_timing_name' | 'effect_cost_text' | 'effect_target_name' | 'effect_text'>>
   rarity_code: string
   rarity_name: string
   illustrator_name: string

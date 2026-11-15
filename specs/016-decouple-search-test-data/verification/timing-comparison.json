@@ -1,0 +1,52 @@
+{
+  "recordedAt": "2026-10-31T11:38:24.181Z",
+  "runs": [
+    {
+      "command": "npm.cmd run test -- --run",
+      "startedAt": "2026-10-31T20:31:44.1147585+09:00",
+      "finishedAt": "2026-10-31T20:33:51.9843344+09:00",
+      "wallSeconds": 127.8695759,
+      "exitCode": 1,
+      "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+      "instrumentedSha256": "d1c22635cd7ff66458dcc5758e32fbe31bf0d38e8e926452e8ca7dadb1ffc718",
+      "mode": "standard",
+      "log": "logs/timing-standard.txt",
+      "vitestSeconds": 119.58,
+      "files": "2 failed | 32 passed (34)",
+      "tests": "1143 passed | 24 skipped (1167)",
+      "checkpointLines": [],
+      "targetFirstTwo": "PASS（失敗一覧に含まれず、対象suite実行完了）"
+    },
+    {
+      "command": "npm.cmd run test -- --run --maxWorkers=2",
+      "startedAt": "2026-10-31T20:33:52.2992775+09:00",
+      "finishedAt": "2026-10-31T20:37:25.0723189+09:00",
+      "wallSeconds": 212.7730414,
+      "exitCode": 1,
+      "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+      "instrumentedSha256": "d1c22635cd7ff66458dcc5758e32fbe31bf0d38e8e926452e8ca7dadb1ffc718",
+      "mode": "worker2",
+      "log": "logs/timing-worker2.txt",
+      "vitestSeconds": 204.5,
+      "files": "1 failed | 33 passed (34)",
+      "tests": "1 failed | 1166 passed (1167)",
+      "checkpointLines": [],
+      "targetFirstTwo": "PASS（失敗一覧に含まれず、対象suite実行完了）"
+    }
+  ],
+  "identicalInstrumentation": true,
+  "restoredExactBytes": true,
+  "restoredSha256": "531b4eea8bc07c2cf59b51cb2f6e27fddf4e1c6fd52aecde270b9f3c43cd395e",
+  "sourceDifferencesFromV5": [],
+  "incompleteFinalTasks": [
+    "T041",
+    "T042",
+    "T043",
+    "T044",
+    "T045",
+    "T046"
+  ],
+  "phaseTimes": "未取得。成功ケースのconsole checkpointをAgentReporterが表示しないため。計測目的未達。",
+  "lastCheckpoint": "ログに残らず未確認。先頭2ケース自体は両条件で成功。",
+  "standardGate": "未達を維持"
+}

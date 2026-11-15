@@ -1,0 +1,9 @@
+{
+  "command": "npm.cmd run test -- --run --maxWorkers=2",
+  "startedAt": "2026-10-31T20:33:52.2992775+09:00",
+  "finishedAt": "2026-10-31T20:37:25.0723189+09:00",
+  "wallSeconds": 212.7730414,
+  "exitCode": 1,
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "instrumentedSha256": "d1c22635cd7ff66458dcc5758e32fbe31bf0d38e8e926452e8ca7dadb1ffc718"
+}

@@ -18,21 +18,5 @@
     {
         "label": "mdi-cards-club",
         "value": "club"
-    },
-    {
-        "label": "mdi-cards-spade",
-        "value": "spade"
-    },
-    {
-        "label": "mdi-heart",
-        "value": "heart"
-    },
-    {
-        "label": "crescent",
-        "value": "crescent"
-    },
-    {
-        "label": "hexagram",
-        "value": "hexagram"
     }
 ]

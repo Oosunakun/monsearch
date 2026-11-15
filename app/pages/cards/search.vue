@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAnalytics } from '~~/app/composables/useAnalytics'
 import { useRoute, useRouter } from 'vue-router'
 import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
 import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
@@ -17,6 +18,7 @@ import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 
 const route = useRoute()
 const router = useRouter()
+const analytics = useAnalytics()
 const { form } = useCardSearchForm(parseCardSearchQuery(route.query))
 
 if (import.meta.client && useNuxtApp().isHydrating) {
@@ -45,9 +47,12 @@ if (import.meta.client && useNuxtApp().isHydrating) {
 }
 
 // 明示的な検索実行
-const executeSearch = () => {
+const executeSearch = async () => {
   const query = buildCardSearchQuery(form.value)
-  router.push(Object.keys(query).length ? { path: '/cards', query } : { path: '/cards' })
+  const token = analytics.submit('advanced', query)
+  try {
+    await router.push(Object.keys(query).length ? { path: '/cards', query } : { path: '/cards' })
+  } finally { analytics.finishSubmit(token) }
 }
 
 const shownUnitSectionCardShell = computed(() => {

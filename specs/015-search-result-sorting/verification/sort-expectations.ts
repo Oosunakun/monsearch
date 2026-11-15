@@ -2,7 +2,7 @@ import expected from './expected-sort-results.json'
 import baseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
 import type { CardSearchSortKey, CardSearchSortOrder, CardSearchResultItem } from '~~/shared/cardSearch/types'
 
-export const projected: Record<string, CardSearchResultItem> = baseline.projectedItems
+export const projected: Record<string, Pick<CardSearchResultItem, 'rarity_code'>> = baseline.projectedItems
 const rarity = ['Unknown', 'Basic', 'Common', 'Uncommon', 'Rare', 'SuperRare', 'Special', 'DragonJr', 'Promotion', 'Summoner']
 const sourceIds = baseline.classifications.map(row => row.card_id)
 export const expectedIds = (key: CardSearchSortKey, order: CardSearchSortOrder, ids: readonly string[] = sourceIds): string[] => {

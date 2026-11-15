@@ -43,7 +43,7 @@ const { isMounted } = useHydrated()
   <template v-else>
    <!-- フィルターバー -->
    <v-sheet class="pa-3 mb-3" rounded border>
-    <v-row dense align="center">
+    <v-row density="comfortable" align="center">
       <v-col cols="12" sm="5">
         <v-text-field
           v-model="cardNameFilter"
@@ -57,10 +57,10 @@ const { isMounted } = useHydrated()
       </v-col>
       <v-col cols="12" sm="2">
         <v-btn
-          variant="tonal"
-          color="grey"
+          variant="flat"
           density="compact"
           block
+          class="reset-btn font-weight-medium"
           @click="resetFilter"
         >
           リセット
@@ -87,3 +87,14 @@ const { isMounted } = useHydrated()
   </v-expansion-panels>
   </template>
 </template>
+<style scoped>
+/* =========================================
+ * reset button
+ * ======================================= */
+.reset-btn {
+  height: 40px;
+  background-color: #f2f7fb;
+  color: #386b8a;
+  border: 1px solid #b6cddc;
+}
+</style>

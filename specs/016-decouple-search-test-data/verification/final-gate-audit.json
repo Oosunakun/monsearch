@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-31T11:05:51.895Z",
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "state": "validation-state-v5.json",
+  "protectedFiles": 180,
+  "protectedDifferences": [],
+  "protectedPathSetEqual": true,
+  "sourceFiles": 285,
+  "changedSinceValidation": [],
+  "checkedLinks": 139,
+  "brokenLinks": [],
+  "finalGate": "blocked: whole-suite UI test timeout; standalone 20/20 PASS; no execution-condition changes",
+  "productionChanges": [],
+  "approvedDesignChanges": [],
+  "changedOriginalTests": 17,
+  "newTestAssetFiles": 13
+}

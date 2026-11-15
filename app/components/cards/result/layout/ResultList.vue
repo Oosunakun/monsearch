@@ -15,6 +15,13 @@ const props = defineProps<{
 
 const currentPage = defineModel<number>('currentPage', { required: true })
 const totalPages = defineModel<number>('totalPages', { required: true })
+const emit = defineEmits<{ pageScrollRequest: [page: number] }>()
+
+const changePage = (page: number) => {
+  if (!Number.isInteger(page) || page < 1 || page > totalPages.value || page === currentPage.value) return
+  currentPage.value = page
+  emit('pageScrollRequest', page)
+}
 
 // 💡 親コンポーネントで定義している並び順と件数のステートと同期を取るため、defineModel化しておくと安全です
 const sortItem = defineModel<string>('sortItem',{ default: 'id' })
@@ -103,7 +110,6 @@ watch(totalPages, page => {
           :sort-options="sortOptions"
           :sort-orders="sortOrders"
           :limit-options="limitOptions"
-          class="border overflow-hidden"
         />
       </div>
     </div>
@@ -119,13 +125,14 @@ watch(totalPages, page => {
   <div class="result-footer d-flex justify-center mt-0 pt-2">
     <v-pagination
       v-if="!mobile"
-      v-model="currentPage"
+      :model-value="currentPage"
       :length="totalPages"
       density="compact"
       active-color="primary"
       variant="flat"
       class="zone-center-pagination"
       :total-visible="9"
+      @update:model-value="changePage"
     />
     
     <div v-else class="d-flex align-center justify-space-between w-100 px-2" style="max-width: 300px;">
@@ -138,7 +145,7 @@ watch(totalPages, page => {
         color="grey-darken-2"
         prepend-icon="mdi-chevron-left"
         class="font-weight-bold border-thin align-center pagenation-button"
-        @click="currentPage--"
+        @click="changePage(currentPage - 1)"
       >
         前へ
       </v-btn>
@@ -156,7 +163,7 @@ watch(totalPages, page => {
         color="grey-darken-2"
         append-icon="mdi-chevron-right"
         class="font-weight-bold border-thin align-center pagenation-button"
-        @click="currentPage++"
+        @click="changePage(currentPage + 1)"
       >
         次へ
       </v-btn>

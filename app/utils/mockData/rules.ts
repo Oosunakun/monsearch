@@ -11,9 +11,10 @@ export const mockRuleNoticeItems = [
   },
   {
     id: 'description2',
-    text: '正確な内容は必ず公式情報をご確認ください。'
+    text: '全日本選手権 2026 向け情報を含みます。正確な内容は必ず公式情報をご確認ください。'
   }
 ]
+
 export interface FinderQuestionAnswer {
   id: string,
   question_no: string,

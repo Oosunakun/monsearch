@@ -2,14 +2,16 @@
 import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
 import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
 import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
-import ExternalLinkCard from '~~/app/components/about/ExternalLinkCard.vue'
+import ExternalLinkCard from '~~/app/components/common/links/ExternalLinkCard.vue'
 import HistoryTable from '~~/app/components/about/HistoryTable.vue'
 import type { HistoryRow } from '~~/app/components/about/HistoryTable.vue'
+import { parseInlineLinks } from '~~/app/utils/parseInlineLinks'
 
 import {
   mockAboutHistoryHeaders,
   mockAboutHistorySourceRows,
   mockAboutItems,
+  mockAboutAnalyticsItems,
   mockAboutThanksItems,
   mockAboutContactItems
 } from '~~/app/utils/mockData'
@@ -27,11 +29,17 @@ type LinkItem = {
   id: string
   title: string
   subtitle: string
-  icon: string
+  iconSrc: string
+  iconSize?: number
   href: string
 }
 
 const aboutItems: AboutItem[] = mockAboutItems
+const analyticsItems = mockAboutAnalyticsItems.map(item => ({
+  id: item.id,
+  subheading: item.subheading,
+  parts: parseInlineLinks(item.text)
+}))
 const thanksItems: AboutItem[] = mockAboutThanksItems
 const historyHeaders = mockAboutHistoryHeaders
 const historySourceRows: FinderReleaseNote[] = mockAboutHistorySourceRows
@@ -80,6 +88,25 @@ const historyRows = computed<HistoryRow[]>(() =>
       />
     </SectionCardShell>
 
+    <SectionCardShell>
+      <template #header>
+        <SectionHeader title="アクセス解析とプライバシー" color="primary" text-class="text-white" />
+      </template>
+      <ul class="about-notice-list">
+        <li v-for="item in analyticsItems" :key="item.id">
+          <span class="font-weight-bold">{{ item.subheading }}：</span>
+          <template v-for="(part, index) in item.parts" :key="index">
+            <a v-if="part.type === 'link'" :href="part.href">
+              {{ part.text }}
+            </a>
+            <template v-else>
+              {{ part.text }}
+            </template>
+          </template>
+        </li>
+      </ul>
+    </SectionCardShell>
+
     <SectionCardShell :margin-bottom="false">
       <template #header>
         <SectionHeader title="お問い合わせ" color="primary" text-class="text-white" />
@@ -103,7 +130,8 @@ const historyRows = computed<HistoryRow[]>(() =>
             :title="item.title"
             :subtitle="item.subtitle"
             :href="item.href"
-            :icon="item.icon"
+            :icon-src="item.iconSrc"
+            :icon-size="item.iconSize"
           />
         </v-col>
       </v-row>

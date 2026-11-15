@@ -1,16 +1,6 @@
 [
   {
-    "label": "20th Anniversary スペシャルサプライセット 召喚士",
-    "value": "ce193",
-    "color": "#EEEEEE"
-  },
-  {
-    "label": "20th Anniversary スペシャルサプライセット 竜騎士",
-    "value": "9f77f",
-    "color": "#EEEEEE"
-  },
-  {
-    "label": "プロモーションカード(20th Anniversary)",
+    "label": "プロモーションカード",
     "value": "b12b0",
     "color": "#EEEEEE"
   },
@@ -25,6 +15,11 @@
     "color": "#EEEEEE"
   },
   {
+    "label": "召喚士",
+    "value": "ce193",
+    "color": "#EEEEEE"
+  },
+  {
     "label": "太陽の金の竜姫",
     "value": "22d7e",
     "color": "#EEEEEE"
@@ -32,6 +27,11 @@
   {
     "label": "月の銀の魔狼",
     "value": "cc8cc",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "竜騎士",
+    "value": "9f77f",
     "color": "#EEEEEE"
   }
 ]

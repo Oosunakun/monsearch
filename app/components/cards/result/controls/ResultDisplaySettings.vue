@@ -34,5 +34,6 @@ const limitPerPage = defineModel<number>('limitPerPage',{ required: true })
       :sort-options="sortOptions"
       :sort-orders="sortOrders"
       :limit-options="limitOptions"
+      class="border overflow-hidden"
   />
 </template>

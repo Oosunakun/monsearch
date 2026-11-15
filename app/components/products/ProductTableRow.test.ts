@@ -67,3 +67,5 @@ describe('ProductTableRow', () => {
     expect(link.text()).not.toContain('M20A')
   })
 })
+
+vi.mock('~~/app/utils/constants/search/options/product', async () => { const { productOptions } = await import('~~/tests/fixtures/searchOptions/products'); return { PRODUCT_OPTIONS: productOptions, PRODUCT_VALUES: new Set(productOptions.map(row => row.value)) } })

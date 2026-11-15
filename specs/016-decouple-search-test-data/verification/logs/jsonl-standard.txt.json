@@ -1,0 +1,10 @@
+{
+  "command": "npm.cmd run test -- --run",
+  "runId": "jsonl-standard-f1321461b9b04cddb0168b2f9ba64fdb",
+  "startedAt": "2026-10-31T20:42:30.5734399+09:00",
+  "finishedAt": "2026-10-31T20:44:35.6267001+09:00",
+  "wallSeconds": 125.0532602,
+  "exitCode": 1,
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "instrumentedSha256": "9c464d4452cf08f9ea6bb903d1b8eccd1f6ac9135652f47c754dd0f78b75c914"
+}

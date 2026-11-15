@@ -1,17 +1,7 @@
 [
   {
-    "label": "×自爆型特殊能力",
-    "value": "SacrificeSkill",
-    "color": "#EEEEEE"
-  },
-  {
     "label": "□完了型特殊能力",
     "value": "ActionSkill",
-    "color": "#EEEEEE"
-  },
-  {
-    "label": "▽反転型特殊能力",
-    "value": "FlipSkill",
     "color": "#EEEEEE"
   },
   {
@@ -20,18 +10,8 @@
     "color": "#EEEEEE"
   },
   {
-    "label": "○常動型特殊能力",
-    "value": "PassiveSkill",
-    "color": "#EEEEEE"
-  },
-  {
     "label": "◎宣言型特殊能力",
     "value": "DeclareSkill",
-    "color": "#EEEEEE"
-  },
-  {
-    "label": "●自動型特殊能力",
-    "value": "TriggerSkill",
     "color": "#EEEEEE"
   }
 ]

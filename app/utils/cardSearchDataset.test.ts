@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
+import { smallFile } from '~~/tests/fixtures/cardSearch/cards'
+import { sourcesFor } from '~~/tests/fixtures/cardSearch/sources'
+const getSourceCards = () => sourcesFor(smallFile().cards)
 
 const file = () => ({ version: 'test', generated_at: '2026-10-26', cards: getSourceCards().map(source => source.card) })
 let load: typeof import('./cardSearchDataset').loadCardSearchDataset
@@ -20,8 +22,8 @@ describe('document内の静的JSON loader', () => {
     expect(second).toBe(first)
     const sources = await first
     expect(await load()).toBe(sources)
-    expect(sources).toHaveLength(482)
-    expect(sources.map(source => source.sourceIndex)).toEqual(Array.from({ length: 482 }, (_, i) => i))
+    expect(sources).toHaveLength(3)
+    expect(sources.map(source => source.sourceIndex)).toEqual(Array.from({ length: 3 }, (_, i) => i))
     expect(sources.map(source => source.card.card_id)).toEqual(getSourceCards().map(source => source.card.card_id))
     expect(fetchMock).toHaveBeenCalledExactlyOnceWith('/data/cards.json', { cache: 'no-cache' })
   })
@@ -33,7 +35,7 @@ describe('document内の静的JSON loader', () => {
     else fetchMock.mockResolvedValueOnce(new Response(JSON.stringify({ ...file(), cards: [{}] })))
     fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(file())))
     await expect(load()).rejects.toBeDefined()
-    expect(await load()).toHaveLength(482)
+    expect(await load()).toHaveLength(3)
     expect(fetchMock).toHaveBeenCalledTimes(2)
     expect(fetchMock.mock.calls.every(call => call[0] === '/data/cards.json')).toBe(true)
   })
