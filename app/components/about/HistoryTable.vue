@@ -26,8 +26,7 @@ const { isMounted } = useHydrated()
 <template>
   <template v-if="!isMounted">
     <SkeletonLoader 
-      height="360"
-      preset="table-rows"
+      type="table-tbody@1"
       :loading="true"
     />
   </template>
@@ -41,7 +40,6 @@ const { isMounted } = useHydrated()
         :items="rows"
         item-value="id"
         fixed-header
-        height="360"
         density="comfortable"
         hide-default-footer
         items-per-page="-1"
@@ -60,3 +58,8 @@ const { isMounted } = useHydrated()
     </StickyTableHeaderRow>
   </template>
 </template>
+<style scoped>
+:deep(.v-table__wrapper) {
+  max-height: 360px;
+}
+</style>

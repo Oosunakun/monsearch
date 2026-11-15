@@ -1,0 +1,8 @@
+{
+  "command": "npm.cmd run lint",
+  "startedAt": "2026-10-31T19:42:50.9033507+09:00",
+  "finishedAt": "2026-10-31T19:43:10.3076511+09:00",
+  "exitCode": 0,
+  "state": "verification/validation-state.json",
+  "log": "F:\\Projects\\monsearch\\specs\\016-decouple-search-test-data\\verification\\logs\\final-v2-lint.txt"
+}

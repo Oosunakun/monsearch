@@ -1,11 +1,15 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { useQuickSearch } from './useQuickSearch'
 
+const analytics = vi.hoisted(() => ({ submit: vi.fn(() => 1), finishSubmit: vi.fn(), results: vi.fn() }))
+vi.mock('./useAnalytics', () => ({ useAnalytics: () => analytics }))
+
 const push = vi.fn()
 const router = { push }
 
 describe('useQuickSearch', () => {
   beforeEach(() => {
+    vi.clearAllMocks()
     push.mockReset()
     push.mockResolvedValue(undefined)
   })
@@ -20,6 +24,8 @@ describe('useQuickSearch', () => {
     quickSearchState.value.searchText = '  Dragon  '
     await runQuickSearch()
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { [alias]: 'Dragon' } })
+    expect(analytics.submit).toHaveBeenCalledWith('quick', { [alias]: 'Dragon' })
+    expect(analytics.finishSubmit).toHaveBeenCalledWith(1)
   })
 
   it('navigates to bare /cards for an empty condition', async () => {

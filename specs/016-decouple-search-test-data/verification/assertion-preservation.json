@@ -1,0 +1,4345 @@
+{
+  "sourceRevision": "c0d63bd27c407da81a5c7a5dea55f7bb68b24765",
+  "checkedAt": "2026-10-31T10:21:31.545Z",
+  "mapped": 542,
+  "unmatched": 0,
+  "entries": [
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 26,
+      "afterLine": 26,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(find(), `${selector}: ${text}; candidates=${[...document.querySelectorAll(selector)].map(node => node.textContent?.trim()).join('|')}`).toBeDefined()",
+      "afterCode": "expect(find(), `${selector}: ${text}; candidates=${[...document.querySelectorAll(selector)].map(node => node.textContent?.trim()).join('|')}`).toBeDefined()"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 66,
+      "afterLine": 66,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(selections).toContain(titles[CARD_SEARCH_SORT_KEYS.indexOf(search.sort.value)])",
+      "afterCode": "expect(selections).toContain(titles[CARD_SEARCH_SORT_KEYS.indexOf(search.sort.value)])"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 67,
+      "afterLine": 67,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(selections).toContain(search.order.value === 'asc' ? '昇順' : '降順')",
+      "afterCode": "expect(selections).toContain(search.order.value === 'asc' ? '昇順' : '降順')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 70,
+      "afterLine": 70,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(selections).toContain(titles[CARD_SEARCH_SORT_KEYS.indexOf(search.sort.value)])",
+      "afterCode": "expect(selections).toContain(titles[CARD_SEARCH_SORT_KEYS.indexOf(search.sort.value)])"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 71,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(selections).toContain(search.order.value === 'asc' ? '昇順' : '降順')",
+      "afterCode": "expect(selections).toContain(search.order.value === 'asc' ? '昇順' : '降順')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 78,
+      "afterLine": 78,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(selects.length).toBe(3)",
+      "afterCode": "expect(selects.length).toBe(3)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 88,
+      "afterLine": 88,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(button.exists()).toBe(true)",
+      "afterCode": "expect(button.exists()).toBe(true)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 91,
+      "afterLine": 91,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(2)",
+      "afterCode": "expect(search.page.value).toBe(2)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 95,
+      "afterLine": 95,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice((page - 1) * perPage, page * perPage))",
+      "afterCode": "expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice((page - 1) * perPage, page * perPage))"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 96,
+      "afterLine": 96,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).toContain(`${(page - 1) * perPage + 1} ～ ${Math.min(page * perPage, 482)} 件を表示`)",
+      "afterCode": "expect(wrapper.text()).toContain(`${(page - 1) * perPage + 1} ～ ${Math.min(page * perPage, 482)} 件を表示`)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 101,
+      "afterLine": 101,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.sort).toEqual({ key: 'id', order: 'asc' })",
+      "afterCode": "expect(search.result.value?.sort).toEqual({ key: 'id', order: 'asc' })"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 108,
+      "afterLine": 108,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(options).toEqual(titles)",
+      "afterCode": "expect(options).toEqual(titles)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 111,
+      "afterLine": 111,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.sort.value).toBe(key)",
+      "afterCode": "expect(search.sort.value).toBe(key)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 112,
+      "afterLine": 112,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(1)",
+      "afterCode": "expect(search.page.value).toBe(1)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 115,
+      "afterLine": 115,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.order.value).toBe(order)",
+      "afterCode": "expect(search.order.value).toBe(order)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 119,
+      "afterLine": 119,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(1)",
+      "afterCode": "expect(search.page.value).toBe(1)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 119,
+      "afterLine": 119,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.perPage.value).toBe(20)",
+      "afterCode": "expect(search.perPage.value).toBe(20)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 129,
+      "afterLine": 129,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(1)",
+      "afterCode": "expect(search.page.value).toBe(1)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 130,
+      "afterLine": 130,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.sort.value).toBe('rarity')",
+      "afterCode": "expect(search.sort.value).toBe('rarity')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 130,
+      "afterLine": 130,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.order.value).toBe('asc')",
+      "afterCode": "expect(search.order.value).toBe('asc')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 134,
+      "afterLine": 134,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.sort.value).toBe('id')",
+      "afterCode": "expect(search.sort.value).toBe('id')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 134,
+      "afterLine": 134,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.order.value).toBe('desc')",
+      "afterCode": "expect(search.order.value).toBe('desc')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 136,
+      "afterLine": 136,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(document.querySelector('.v-bottom-sheet .v-select')?.textContent).toContain('カードNo')",
+      "afterCode": "expect(document.querySelector('.v-bottom-sheet .v-select')?.textContent).toContain('カードNo')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 137,
+      "afterLine": 137,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(document.querySelector('.v-overlay--active .selected-item')?.textContent).toContain('カードNo')",
+      "afterCode": "expect(document.querySelector('.v-overlay--active .selected-item')?.textContent).toContain('カードNo')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 141,
+      "afterLine": 141,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.sort.value).toBe('defense')",
+      "afterCode": "expect(search.sort.value).toBe('defense')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 141,
+      "afterLine": 141,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.order.value).toBe('asc')",
+      "afterCode": "expect(search.order.value).toBe('asc')"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 165,
+      "afterLine": 165,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(items).toHaveLength(expected.length)",
+      "afterCode": "expect(items).toHaveLength(expected.length)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 168,
+      "afterLine": 168,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(item.props('card').card_id).toBe(card.card_id)",
+      "afterCode": "expect(item.props('card').card_id).toBe(card.card_id)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 169,
+      "afterLine": 169,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(item.text()).toContain(card.name)",
+      "afterCode": "expect(item.text()).toContain(card.name)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 171,
+      "afterLine": 171,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(chip.exists()).toBe(false)",
+      "afterCode": "expect(chip.exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/cards/result/layout/ResultList.test.ts",
+      "beforeLine": 172,
+      "afterLine": 172,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(chip.text()).toBe(card.deck_restriction_count === 0 ? '禁止' : `${card.deck_restriction_count}枚制限`)",
+      "afterCode": "expect(chip.text()).toBe(card.deck_restriction_count === 0 ? '禁止' : `${card.deck_restriction_count}枚制限`)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 44,
+      "afterLine": 43,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).toBe(effect.effect_text)",
+      "afterCode": "expect(wrapper.text()).toBe(effect.effect_text)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 45,
+      "afterLine": 44,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-body-line').text()).toBe(effect.effect_text)",
+      "afterCode": "expect(wrapper.find('.effect-body-line').text()).toBe(effect.effect_text)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 46,
+      "afterLine": 45,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-line').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.effect-line').exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 47,
+      "afterLine": 46,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-title-group').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.effect-title-group').exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 48,
+      "afterLine": 47,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.meta-label').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.meta-label').exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 49,
+      "afterLine": 48,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.activation-category-chip').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.activation-category-chip').exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 55,
+      "afterLine": 54,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-type-prefix').text()).toBe('□')",
+      "afterCode": "expect(wrapper.find('.effect-type-prefix').text()).toBe('□')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 56,
+      "afterLine": 55,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-activation-type').text()).toBe('[普通]')",
+      "afterCode": "expect(wrapper.find('.effect-activation-type').text()).toBe('[普通]')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 57,
+      "afterLine": 56,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-name').text()).toBe('通常効果')",
+      "afterCode": "expect(wrapper.find('.effect-name').text()).toBe('通常効果')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 58,
+      "afterLine": 57,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.activation-category-chip').text()).toBe('Battle')",
+      "afterCode": "expect(wrapper.find('.activation-category-chip').text()).toBe('Battle')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 59,
+      "afterLine": 58,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.findAll('.meta-label').map(node => node.text())).toEqual(['発揮：', 'コスト：', '対象：'])",
+      "afterCode": "expect(wrapper.findAll('.meta-label').map(node => node.text())).toEqual(['発揮：', 'コスト：', '対象：'])"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 60,
+      "afterLine": 59,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.timing-chip').text()).toBe('戦闘中')",
+      "afterCode": "expect(wrapper.find('.timing-chip').text()).toBe('戦闘中')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 61,
+      "afterLine": 60,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.cost-chip').text()).toBe('手札1枚')",
+      "afterCode": "expect(wrapper.find('.cost-chip').text()).toBe('手札1枚')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 62,
+      "afterLine": 61,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.target-chip').text()).toBe('自軍ユニット1体')",
+      "afterCode": "expect(wrapper.find('.target-chip').text()).toBe('自軍ユニット1体')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 63,
+      "afterLine": 62,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-body-line').text()).toBe(normalEffect.effect_text)",
+      "afterCode": "expect(wrapper.find('.effect-body-line').text()).toBe(normalEffect.effect_text)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 71,
+      "afterLine": 70,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(blocks.map(block => block.find('.effect-body-line').text())).toEqual(effects.map(effect => effect.effect_text))",
+      "afterCode": "expect(blocks.map(block => block.find('.effect-body-line').text())).toEqual(effects.map(effect => effect.effect_text))"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 72,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(blocks.map(block => block.find('.effect-line').exists())).toEqual([false, true, false])",
+      "afterCode": "expect(blocks.map(block => block.find('.effect-line').exists())).toEqual([false, true, false])"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 83,
+      "afterLine": 82,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.findAll('.effect-block').map(block => block.classes().includes('effect-kind-boundary'))).toEqual(boundaries)",
+      "afterCode": "expect(wrapper.findAll('.effect-block').map(block => block.classes().includes('effect-kind-boundary'))).toEqual(boundaries)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 90,
+      "afterLine": 89,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.effect-body-line').element.textContent?.trim()).toBe(effectText)",
+      "afterCode": "expect(wrapper.find('.effect-body-line').element.textContent?.trim()).toBe(effectText)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemEffect.test.ts",
+      "beforeLine": 96,
+      "afterLine": 95,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(itemEffectSource).toMatch(/\\.effect-body-line\\s*\\{[^}]*white-space:\\s*pre-line;/)",
+      "afterCode": "expect(itemEffectSource).toMatch(/\\.effect-body-line\\s*\\{[^}]*white-space:\\s*pre-line;/)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 13,
+      "afterLine": 12,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').text()).toBe(label)",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').text()).toBe(label)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 14,
+      "afterLine": 13,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).toContain(source.name)",
+      "afterCode": "expect(wrapper.text()).toContain(source.name)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 21,
+      "afterLine": 20,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 22,
+      "afterLine": 21,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).toContain(source.name)",
+      "afterCode": "expect(wrapper.text()).toContain(source.name)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 23,
+      "afterLine": 22,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).not.toMatch(/禁止|枚制限|不明|無制限/)",
+      "afterCode": "expect(wrapper.text()).not.toMatch(/禁止|枚制限|不明|無制限/)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 30,
+      "afterLine": 29,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('禁止')",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('禁止')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 32,
+      "afterLine": 31,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('2枚制限')",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('2枚制限')"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 34,
+      "afterLine": 33,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "beforeLine": 45,
+      "afterLine": 44,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').classes()).toContain(bgClass)",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').classes()).toContain(bgClass)"
+    },
+    {
+      "file": "app/components/cards/search/shared/SearchSlotSelector.test.ts",
+      "beforeLine": 29,
+      "afterLine": 29,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(incrementButton).toBeDefined()",
+      "afterCode": "expect(incrementButton).toBeDefined()"
+    },
+    {
+      "file": "app/components/cards/search/shared/SearchSlotSelector.test.ts",
+      "beforeLine": 32,
+      "afterLine": 32,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(updateSlots).toHaveBeenCalledWith({ fire: 1 })",
+      "afterCode": "expect(updateSlots).toHaveBeenCalledWith({ fire: 1 })"
+    },
+    {
+      "file": "app/components/cards/search/shared/SearchSlotSelector.test.ts",
+      "beforeLine": 50,
+      "afterLine": 50,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(andButton).toBeDefined()",
+      "afterCode": "expect(andButton).toBeDefined()"
+    },
+    {
+      "file": "app/components/cards/search/shared/SearchSlotSelector.test.ts",
+      "beforeLine": 53,
+      "afterLine": 53,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(updateMatch).toHaveBeenCalledWith('and')",
+      "afterCode": "expect(updateMatch).toHaveBeenCalledWith('and')"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 50,
+      "afterLine": 50,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(link.props('to')).toEqual(expected)",
+      "afterCode": "expect(link.props('to')).toEqual(expected)"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 51,
+      "afterLine": 51,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(link.emitted('navigate')).toEqual([[expected], [expected]])",
+      "afterCode": "expect(link.emitted('navigate')).toEqual([[expected], [expected]])"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 57,
+      "afterLine": 57,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).toContain('太陽の金の竜姫')",
+      "afterCode": "expect(wrapper.text()).toContain('太陽の金の竜姫')"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 58,
+      "afterLine": 58,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.findComponent(NuxtLinkStub).exists()).toBe(false)",
+      "afterCode": "expect(wrapper.findComponent(NuxtLinkStub).exists()).toBe(false)"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 64,
+      "afterLine": 64,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(link.text()).toBe('太陽の金の竜姫')",
+      "afterCode": "expect(link.text()).toBe('太陽の金の竜姫')"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 65,
+      "afterLine": 65,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(link.text()).not.toContain('20th')",
+      "afterCode": "expect(link.text()).not.toContain('20th')"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 66,
+      "afterLine": 66,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(link.text()).not.toContain('2017-03-30')",
+      "afterCode": "expect(link.text()).not.toContain('2017-03-30')"
+    },
+    {
+      "file": "app/components/products/ProductTableRow.test.ts",
+      "beforeLine": 67,
+      "afterLine": 67,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(link.text()).not.toContain('M20A')",
+      "afterCode": "expect(link.text()).not.toContain('M20A')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 51,
+      "afterLine": 51,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.sort).toEqual({ key: 'id', order: 'asc' })",
+      "afterCode": "expect(search.result.value?.sort).toEqual({ key: 'id', order: 'asc' })"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 56,
+      "afterLine": 56,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.sort).toEqual({ key, order })",
+      "afterCode": "expect(search.result.value?.sort).toEqual({ key, order })"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 62,
+      "afterLine": 62,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(1)",
+      "afterCode": "expect(search.page.value).toBe(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 63,
+      "afterLine": 63,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.sort.value).toBe(key)",
+      "afterCode": "expect(search.sort.value).toBe(key)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 63,
+      "afterLine": 63,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.order.value).toBe(order)",
+      "afterCode": "expect(search.order.value).toBe(order)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 64,
+      "afterLine": 64,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice(0, perPage))",
+      "afterCode": "expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice(0, perPage))"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 66,
+      "afterLine": 66,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice(perPage, perPage * 2))",
+      "afterCode": "expect(search.result.value?.items.map(card => card.card_id)).toEqual(expectedIds(key, order).slice(perPage, perPage * 2))"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 68,
+      "afterLine": 68,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(1)",
+      "afterCode": "expect(search.page.value).toBe(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 68,
+      "afterLine": 68,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.perPage.value).toBe(perPage)",
+      "afterCode": "expect(search.perPage.value).toBe(perPage)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 71,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(1)",
+      "afterCode": "expect(search.page.value).toBe(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 71,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.perPage.value).toBe(perPage)",
+      "afterCode": "expect(search.perPage.value).toBe(perPage)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 75,
+      "afterLine": 75,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(fetch).toHaveBeenCalledExactlyOnceWith('/data/cards.json', { cache: 'no-cache' })",
+      "afterCode": "expect(fetch).toHaveBeenCalledExactlyOnceWith('/data/cards.json', { cache: 'no-cache' })"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 76,
+      "afterLine": 76,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(api).not.toHaveBeenCalled()",
+      "afterCode": "expect(api).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 85,
+      "afterLine": 85,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.sort).toEqual({ key: 'id', order: 'desc' })",
+      "afterCode": "expect(search.result.value?.sort).toEqual({ key: 'id', order: 'desc' })"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 86,
+      "afterLine": 86,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.sort.value).toBe('id')",
+      "afterCode": "expect(search.sort.value).toBe('id')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 86,
+      "afterLine": 86,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.order.value).toBe('desc')",
+      "afterCode": "expect(search.order.value).toBe('desc')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 89,
+      "afterLine": 89,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.sort).toEqual({ key: 'defense', order: 'asc' })",
+      "afterCode": "expect(search.result.value?.sort).toEqual({ key: 'defense', order: 'asc' })"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 90,
+      "afterLine": 90,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.sort.value).toBe('defense')",
+      "afterCode": "expect(search.sort.value).toBe('defense')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 90,
+      "afterLine": 90,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.order.value).toBe('asc')",
+      "afterCode": "expect(search.order.value).toBe('asc')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 99,
+      "afterLine": 99,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('idle')",
+      "afterCode": "expect(search.status.value).toBe('idle')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 100,
+      "afterLine": 100,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).not.toHaveBeenCalled()",
+      "afterCode": "expect(loadMock).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 106,
+      "afterLine": 106,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).not.toHaveBeenCalled()",
+      "afterCode": "expect(loadMock).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 108,
+      "afterLine": 108,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 109,
+      "afterLine": 109,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(149)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(149)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 112,
+      "afterLine": 112,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 120,
+      "afterLine": 120,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 123,
+      "afterLine": 123,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(0)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(0)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 126,
+      "afterLine": 126,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value).toEqual(initial)",
+      "afterCode": "expect(search.result.value).toEqual(initial)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 127,
+      "afterLine": 127,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(3)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(3)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 132,
+      "afterLine": 132,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(482)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(482)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 135,
+      "afterLine": 135,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(2)",
+      "afterCode": "expect(search.page.value).toBe(2)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 138,
+      "afterLine": 138,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(1)",
+      "afterCode": "expect(search.page.value).toBe(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 139,
+      "afterLine": 139,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.sort).toEqual({ key: 'atk', order: 'desc' })",
+      "afterCode": "expect(search.result.value?.sort).toEqual({ key: 'atk', order: 'desc' })"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 140,
+      "afterLine": 140,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.items).toHaveLength(50)",
+      "afterCode": "expect(search.result.value?.items).toHaveLength(50)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 143,
+      "afterLine": 143,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(10)",
+      "afterCode": "expect(search.page.value).toBe(10)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 144,
+      "afterLine": 144,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('success')",
+      "afterCode": "expect(search.status.value).toBe('success')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 145,
+      "afterLine": 145,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(4)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(4)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 147,
+      "afterLine": 147,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.page.value).toBe(10)",
+      "afterCode": "expect(search.page.value).toBe(10)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 148,
+      "afterLine": 148,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(5)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(5)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 153,
+      "afterLine": 153,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(149)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(149)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 156,
+      "afterLine": 156,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 159,
+      "afterLine": 159,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(0)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(0)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 173,
+      "afterLine": 173,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(149)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(149)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 174,
+      "afterLine": 174,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('success')",
+      "afterCode": "expect(search.status.value).toBe('success')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 175,
+      "afterLine": 175,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.error.value).toBeUndefined()",
+      "afterCode": "expect(search.error.value).toBeUndefined()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 187,
+      "afterLine": 187,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value).toBeUndefined()",
+      "afterCode": "expect(search.result.value).toBeUndefined()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 188,
+      "afterLine": 188,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('error')",
+      "afterCode": "expect(search.status.value).toBe('error')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 189,
+      "afterLine": 189,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.error.value).toBe(failure)",
+      "afterCode": "expect(search.error.value).toBe(failure)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 201,
+      "afterLine": 201,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(0)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(0)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 202,
+      "afterLine": 202,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(read).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(read).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 211,
+      "afterLine": 211,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value).toBeUndefined()",
+      "afterCode": "expect(search.result.value).toBeUndefined()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 213,
+      "afterLine": 213,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(149)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(149)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 218,
+      "afterLine": 218,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).not.toHaveBeenCalled()",
+      "afterCode": "expect(loadMock).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 219,
+      "afterLine": 219,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('idle')",
+      "afterCode": "expect(search.status.value).toBe('idle')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 230,
+      "afterLine": 230,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(read).not.toHaveBeenCalled()",
+      "afterCode": "expect(read).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 231,
+      "afterLine": 231,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value).toBeUndefined()",
+      "afterCode": "expect(search.result.value).toBeUndefined()"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 232,
+      "afterLine": 232,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('pending')",
+      "afterCode": "expect(search.status.value).toBe('pending')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 234,
+      "afterLine": 234,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 240,
+      "afterLine": 240,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('error')",
+      "afterCode": "expect(search.status.value).toBe('error')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 242,
+      "afterLine": 242,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.status.value).toBe('success')",
+      "afterCode": "expect(search.status.value).toBe('success')"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 243,
+      "afterLine": 243,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search.result.value?.totalCount).toBe(149)",
+      "afterCode": "expect(search.result.value?.totalCount).toBe(149)"
+    },
+    {
+      "file": "app/composables/useCardSearch.test.ts",
+      "beforeLine": 245,
+      "afterLine": 245,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(loadMock).toHaveBeenCalledTimes(3)",
+      "afterCode": "expect(loadMock).toHaveBeenCalledTimes(3)"
+    },
+    {
+      "file": "app/composables/useCardSearchForm.test.ts",
+      "beforeLine": 12,
+      "afterLine": 12,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(initialForm.name).toBe('青い竜 🐉')",
+      "afterCode": "expect(initialForm.name).toBe('青い竜 🐉')"
+    },
+    {
+      "file": "app/composables/useCardSearchForm.test.ts",
+      "beforeLine": 15,
+      "afterLine": 15,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(createSearchForm())",
+      "afterCode": "expect(form.value).toEqual(createSearchForm())"
+    },
+    {
+      "file": "app/composables/useQuickSearch.test.ts",
+      "beforeLine": 22,
+      "afterLine": 22,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { [alias]: 'Dragon' } })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { [alias]: 'Dragon' } })"
+    },
+    {
+      "file": "app/composables/useQuickSearch.test.ts",
+      "beforeLine": 29,
+      "afterLine": 29,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards' })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards' })"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 49,
+      "afterLine": 48,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.card-search-result-item').exists()).toBe(true)",
+      "afterCode": "expect(wrapper.find('.card-search-result-item').exists()).toBe(true)"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 50,
+      "afterLine": 49,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('禁止')",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('禁止')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 54,
+      "afterLine": 53,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).toContain('更新カード')",
+      "afterCode": "expect(wrapper.text()).toContain('更新カード')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 55,
+      "afterLine": 54,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('1枚制限')",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').text()).toBe('1枚制限')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 58,
+      "afterLine": 57,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.text()).toContain('該当するカードはありません')",
+      "afterCode": "expect(wrapper.text()).toContain('該当するカードはありません')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 59,
+      "afterLine": 58,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.card-search-result-item').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.card-search-result-item').exists()).toBe(false)"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 60,
+      "afterLine": 59,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.restriction-label-box').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.restriction-label-box').exists()).toBe(false)"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 67,
+      "afterLine": 66,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.loading').exists()).toBe(true)",
+      "afterCode": "expect(wrapper.find('.loading').exists()).toBe(true)"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 68,
+      "afterLine": 67,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.card-search-result-item').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.card-search-result-item').exists()).toBe(false)"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 71,
+      "afterLine": 70,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.error').exists()).toBe(true)",
+      "afterCode": "expect(wrapper.find('.error').exists()).toBe(true)"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 72,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(wrapper.find('.loading').exists()).toBe(false)",
+      "afterCode": "expect(wrapper.find('.loading').exists()).toBe(false)"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 74,
+      "afterLine": 73,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchState.retry).toHaveBeenCalledOnce()",
+      "afterCode": "expect(searchState.retry).toHaveBeenCalledOnce()"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 82,
+      "afterLine": 81,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain('useCardSearch(routeQuery)')",
+      "afterCode": "expect(source).toContain('useCardSearch(routeQuery)')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 83,
+      "afterLine": 82,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain(':cards=\"result.items\"')",
+      "afterCode": "expect(source).toContain(':cards=\"result.items\"')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 84,
+      "afterLine": 83,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).not.toContain('mockFinderCards')",
+      "afterCode": "expect(source).not.toContain('mockFinderCards')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 85,
+      "afterLine": 84,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).not.toContain('cards.json')",
+      "afterCode": "expect(source).not.toContain('cards.json')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 88,
+      "afterLine": 87,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain(\"status === 'idle' || status === 'pending'\")",
+      "afterCode": "expect(source).toContain(\"status === 'idle' || status === 'pending'\")"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 89,
+      "afterLine": 88,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain(\"status === 'error'\")",
+      "afterCode": "expect(source).toContain(\"status === 'error'\")"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 90,
+      "afterLine": 89,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain('result.totalCount === 0')",
+      "afterCode": "expect(source).toContain('result.totalCount === 0')"
+    },
+    {
+      "file": "app/pages/cards/index.test.ts",
+      "beforeLine": 91,
+      "afterLine": 90,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain('@click=\"retry\"')",
+      "afterCode": "expect(source).toContain('@click=\"retry\"')"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 56,
+      "afterLine": 56,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(createSearchForm())",
+      "afterCode": "expect(form.value).toEqual(createSearchForm())"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 57,
+      "afterLine": 57,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readyCallbacks).toHaveLength(1)",
+      "afterCode": "expect(readyCallbacks).toHaveLength(1)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 60,
+      "afterLine": 60,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(createSearchForm())",
+      "afterCode": "expect(form.value).toEqual(createSearchForm())"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 62,
+      "afterLine": 62,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toMatchObject(expected)",
+      "afterCode": "expect(form.value).toMatchObject(expected)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 63,
+      "afterLine": 63,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(routeQuery.value).toEqual(query)",
+      "afterCode": "expect(routeQuery.value).toEqual(query)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 74,
+      "afterLine": 74,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(createRepresentativeSearchForm())",
+      "afterCode": "expect(form.value).toEqual(createRepresentativeSearchForm())"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 75,
+      "afterLine": 75,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(changes).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(changes).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 80,
+      "afterLine": 80,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value.keyword).toBe('edited after ready')",
+      "afterCode": "expect(form.value.keyword).toBe('edited after ready')"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 81,
+      "afterLine": 81,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(changes).toHaveBeenCalledTimes(1)",
+      "afterCode": "expect(changes).toHaveBeenCalledTimes(1)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 88,
+      "afterLine": 88,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(createSearchForm())",
+      "afterCode": "expect(form.value).toEqual(createSearchForm())"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 97,
+      "afterLine": 97,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value.cardCategory).toBe('unit')",
+      "afterCode": "expect(form.value.cardCategory).toBe('unit')"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 110,
+      "afterLine": 110,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(edited)",
+      "afterCode": "expect(form.value).toEqual(edited)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 120,
+      "afterLine": 120,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toBe(original)",
+      "afterCode": "expect(form.value).toBe(original)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 130,
+      "afterLine": 130,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toBe(original)",
+      "afterCode": "expect(form.value).toBe(original)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 136,
+      "afterLine": 136,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toMatchObject({ cardCategory: 'summoner', keyword: 'アーニャ' })",
+      "afterCode": "expect(form.value).toMatchObject({ cardCategory: 'summoner', keyword: 'アーニャ' })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 137,
+      "afterLine": 137,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readyCallbacks).toHaveLength(0)",
+      "afterCode": "expect(readyCallbacks).toHaveLength(0)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 141,
+      "afterLine": 141,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value.keyword).toBe('user edit')",
+      "afterCode": "expect(form.value.keyword).toBe('user edit')"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 150,
+      "afterLine": 150,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { cc: 'summoner', kw: 'ダメージ' } })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { cc: 'summoner', kw: 'ダメージ' } })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 156,
+      "afterLine": 156,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(createRepresentativeSearchForm())",
+      "afterCode": "expect(form.value).toEqual(createRepresentativeSearchForm())"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 157,
+      "afterLine": 157,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(routeQuery.value).toEqual(representativeCardSearchQuery)",
+      "afterCode": "expect(routeQuery.value).toEqual(representativeCardSearchQuery)"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 162,
+      "afterLine": 162,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value).toEqual(createSearchForm())",
+      "afterCode": "expect(form.value).toEqual(createSearchForm())"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 169,
+      "afterLine": 169,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: 'Dragon' } })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: 'Dragon' } })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 180,
+      "afterLine": 180,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { el: 'water', at: 'gte:0' } })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { el: 'water', at: 'gte:0' } })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 187,
+      "afterLine": 187,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: 'Dragon', el: 'fire,water' } })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: 'Dragon', el: 'fire,water' } })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 193,
+      "afterLine": 193,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value.name).toBe('有効')",
+      "afterCode": "expect(form.value.name).toBe('有効')"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 194,
+      "afterLine": 194,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.value.attack).toEqual({ operator: 'gte', value: null })",
+      "afterCode": "expect(form.value.attack).toEqual({ operator: 'gte', value: null })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 196,
+      "afterLine": 196,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: '有効', lvm: 'include', lv: 'lte:3' } })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: '有効', lvm: 'include', lv: 'lte:3' } })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 202,
+      "afterLine": 202,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards' })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards' })"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 217,
+      "afterLine": 217,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(incrementButton).toBeDefined()",
+      "afterCode": "expect(incrementButton).toBeDefined()"
+    },
+    {
+      "file": "app/pages/cards/search.test.ts",
+      "beforeLine": 221,
+      "afterLine": 221,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { is: 'multi:1' } })",
+      "afterCode": "expect(push).toHaveBeenCalledWith({ path: '/cards', query: { is: 'multi:1' } })"
+    },
+    {
+      "file": "app/pages/product-set-navigation.test.ts",
+      "beforeLine": 10,
+      "afterLine": 10,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(restrictionSource).toBeDefined()",
+      "afterCode": "expect(restrictionSource).toBeDefined()"
+    },
+    {
+      "file": "app/pages/product-set-navigation.test.ts",
+      "beforeLine": 11,
+      "afterLine": 11,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildProductSearchLocation(source.searchValue)).toEqual(\n        buildProductSearchLocation(restrictionSource!.searchValue),\n      )",
+      "afterCode": "expect(buildProductSearchLocation(source.searchValue)).toEqual(\n        buildProductSearchLocation(restrictionSource!.searchValue),\n      )"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 20,
+      "afterLine": 22,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(second).toBe(first)",
+      "afterCode": "expect(second).toBe(first)"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 22,
+      "afterLine": 24,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(await load()).toBe(sources)",
+      "afterCode": "expect(await load()).toBe(sources)"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 23,
+      "afterLine": 25,
+      "reason": "固定入力を3カードへ差替え、件数/sourceIndexの期待値も3へ対応。順序/共有/retryは維持",
+      "beforeCode": "expect(sources).toHaveLength(482)",
+      "afterCode": "expect(sources).toHaveLength(3)"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 24,
+      "afterLine": 26,
+      "reason": "固定入力を3カードへ差替え、件数/sourceIndexの期待値も3へ対応。順序/共有/retryは維持",
+      "beforeCode": "expect(sources.map(source => source.sourceIndex)).toEqual(Array.from({ length: 482 }, (_, i) => i))",
+      "afterCode": "expect(sources.map(source => source.sourceIndex)).toEqual(Array.from({ length: 3 }, (_, i) => i))"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 25,
+      "afterLine": 27,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sources.map(source => source.card.card_id)).toEqual(getSourceCards().map(source => source.card.card_id))",
+      "afterCode": "expect(sources.map(source => source.card.card_id)).toEqual(getSourceCards().map(source => source.card.card_id))"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 26,
+      "afterLine": 28,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(fetchMock).toHaveBeenCalledExactlyOnceWith('/data/cards.json', { cache: 'no-cache' })",
+      "afterCode": "expect(fetchMock).toHaveBeenCalledExactlyOnceWith('/data/cards.json', { cache: 'no-cache' })"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 35,
+      "afterLine": 37,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(load()).rejects.toBeDefined()",
+      "afterCode": "expect(load()).rejects.toBeDefined()"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 36,
+      "afterLine": 38,
+      "reason": "固定入力を3カードへ差替え、件数/sourceIndexの期待値も3へ対応。順序/共有/retryは維持",
+      "beforeCode": "expect(await load()).toHaveLength(482)",
+      "afterCode": "expect(await load()).toHaveLength(3)"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 37,
+      "afterLine": 39,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(fetchMock).toHaveBeenCalledTimes(2)",
+      "afterCode": "expect(fetchMock).toHaveBeenCalledTimes(2)"
+    },
+    {
+      "file": "app/utils/cardSearchDataset.test.ts",
+      "beforeLine": 38,
+      "afterLine": 40,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(fetchMock.mock.calls.every(call => call[0] === '/data/cards.json')).toBe(true)",
+      "afterCode": "expect(fetchMock.mock.calls.every(call => call[0] === '/data/cards.json')).toBe(true)"
+    },
+    {
+      "file": "app/utils/sample.test.ts",
+      "beforeLine": 5,
+      "afterLine": 5,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(1 + 1).toBe(2)",
+      "afterCode": "expect(1 + 1).toBe(2)"
+    },
+    {
+      "file": "app/utils/search/cardSearchFormFactory.test.ts",
+      "beforeLine": 8,
+      "afterLine": 8,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.defense).toEqual(defaultNumericCondition)",
+      "afterCode": "expect(form.defense).toEqual(defaultNumericCondition)"
+    },
+    {
+      "file": "app/utils/search/cardSearchFormFactory.test.ts",
+      "beforeLine": 9,
+      "afterLine": 9,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.additionalDefense).toEqual(defaultNumericCondition)",
+      "afterCode": "expect(form.additionalDefense).toEqual(defaultNumericCondition)"
+    },
+    {
+      "file": "app/utils/search/cardSearchFormFactory.test.ts",
+      "beforeLine": 10,
+      "afterLine": 10,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.defense).not.toBe(form.additionalDefense)",
+      "afterCode": "expect(form.defense).not.toBe(form.additionalDefense)"
+    },
+    {
+      "file": "app/utils/search/cardSearchFormFactory.test.ts",
+      "beforeLine": 15,
+      "afterLine": 15,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.initiative).toEqual(defaultFilteredNumericCondition)",
+      "afterCode": "expect(form.initiative).toEqual(defaultFilteredNumericCondition)"
+    },
+    {
+      "file": "app/utils/search/cardSearchFormFactory.test.ts",
+      "beforeLine": 16,
+      "afterLine": 16,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.additionalInitiative).toEqual(defaultFilteredNumericCondition)",
+      "afterCode": "expect(form.additionalInitiative).toEqual(defaultFilteredNumericCondition)"
+    },
+    {
+      "file": "app/utils/search/cardSearchFormFactory.test.ts",
+      "beforeLine": 17,
+      "afterLine": 17,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.initiative).not.toBe(form.additionalInitiative)",
+      "afterCode": "expect(form.initiative).not.toBe(form.additionalInitiative)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 14,
+      "afterLine": 14,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(query).toEqual({ kw: value, att: value })",
+      "afterCode": "expect(query).toEqual({ kw: value, att: value })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 17,
+      "afterLine": 17,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(restored).toMatchObject({ keyword: value, archetypeText: value })",
+      "afterCode": "expect(restored).toMatchObject({ keyword: value, archetypeText: value })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 18,
+      "afterLine": 18,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(restored)).toEqual(query)",
+      "afterCode": "expect(buildCardSearchQuery(restored)).toEqual(query)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 19,
+      "afterLine": 19,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form).toEqual(snapshot)",
+      "afterCode": "expect(form).toEqual(snapshot)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 23,
+      "afterLine": 23,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ nm: 'Blue Dragon', cc: 'unit', el: 'fire,water', at: 'gte:0' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ nm: 'Blue Dragon', cc: 'unit', el: 'fire,water', at: 'gte:0' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 24,
+      "afterLine": 24,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form).toEqual(snapshot)",
+      "afterCode": "expect(form).toEqual(snapshot)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 30,
+      "afterLine": 30,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ att: 'ドラゴン' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ att: 'ドラゴン' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 32,
+      "afterLine": 32,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({})",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({})"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 45,
+      "afterLine": 45,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ ct: 'abcde,fffff', pd: '22d7e,abcde', fa: '0000f', ra: '12345', il: 'fffff', eat: 'abcde', re: '00000' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ ct: 'abcde,fffff', pd: '22d7e,abcde', fa: '0000f', ra: '12345', il: 'fffff', eat: 'abcde', re: '00000' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 54,
+      "afterLine": 54,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ lvm: 'include', lv: 'lte:5', df: 'eq:2', ssm: 'and', ss: 'fire:1,water:2', adf: 'gte:1' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ lvm: 'include', lv: 'lte:5', df: 'eq:2', ssm: 'and', ss: 'fire:1,water:2', adf: 'gte:1' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 68,
+      "afterLine": 68,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ [modifier]: 'none' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ [modifier]: 'none' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 74,
+      "afterLine": 74,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ ssm: 'none' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ ssm: 'none' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 82,
+      "afterLine": 82,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ cism: 'and', cis: 'bullet:1,consume:2', css: 'fire:1,water:2', coem: 'none' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ cism: 'and', cis: 'bullet:1,consume:2', css: 'fire:1,water:2', coem: 'none' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 89,
+      "afterLine": 89,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({})",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({})"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 98,
+      "afterLine": 98,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ lvm: 'include', df: 'gte:0' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ lvm: 'include', df: 'gte:0' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 109,
+      "afterLine": 109,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual(expected)",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual(expected)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 115,
+      "afterLine": 115,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({\n      lvm: 'exclude',\n      lv: 'gte:2',\n    })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({\n      lvm: 'exclude',\n      lv: 'gte:2',\n    })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 124,
+      "afterLine": 124,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ aitm: 'include', ait: 'gte:0' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ aitm: 'include', ait: 'gte:0' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryBuilder.test.ts",
+      "beforeLine": 133,
+      "afterLine": 133,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ cc: category })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ cc: category })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 10,
+      "afterLine": 10,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.keyword).toBe(value)",
+      "afterCode": "expect(form.keyword).toBe(value)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 11,
+      "afterLine": 11,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.archetypeText).toBe(value)",
+      "afterCode": "expect(form.archetypeText).toBe(value)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 12,
+      "afterLine": 12,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(parseCardSearchQuery({ kw: ['有効', '　 '], att: ['有効', '\\t\\n'] })).toMatchObject({ keyword: '', archetypeText: '' })",
+      "afterCode": "expect(parseCardSearchQuery({ kw: ['有効', '　 '], att: ['有効', '\\t\\n'] })).toMatchObject({ keyword: '', archetypeText: '' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 16,
+      "afterLine": 16,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.name).toBe('dragon')",
+      "afterCode": "expect(form.name).toBe('dragon')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 16,
+      "afterLine": 16,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.cardCategory).toBe('unit')",
+      "afterCode": "expect(form.cardCategory).toBe('unit')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 17,
+      "afterLine": 17,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.elements).toEqual(['water', 'fire'])",
+      "afterCode": "expect(form.elements).toEqual(['water', 'fire'])"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 17,
+      "afterLine": 17,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.level).toEqual({ filterType: 'include', operator: 'eq', value: 0 })",
+      "afterCode": "expect(form.level).toEqual({ filterType: 'include', operator: 'eq', value: 0 })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 18,
+      "afterLine": 18,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.defense).toEqual({ operator: 'lte', value: 4 })",
+      "afterCode": "expect(form.defense).toEqual({ operator: 'lte', value: 4 })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 18,
+      "afterLine": 18,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.additionalDefense).toEqual({ operator: 'gte', value: 2 })",
+      "afterCode": "expect(form.additionalDefense).toEqual({ operator: 'gte', value: 2 })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 19,
+      "afterLine": 19,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.abilitySpellSlots).toEqual({ match: 'and', slots: { water: 2, fire: 1 } })",
+      "afterCode": "expect(form.abilitySpellSlots).toEqual({ match: 'and', slots: { water: 2, fire: 1 } })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 20,
+      "afterLine": 20,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.landCategory).toBe('all')",
+      "afterCode": "expect(form.landCategory).toBe('all')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 25,
+      "afterLine": 25,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.name).toBe('last')",
+      "afterCode": "expect(form.name).toBe('last')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 25,
+      "afterLine": 25,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.level.value).toBe(3)",
+      "afterCode": "expect(form.level.value).toBe(3)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 26,
+      "afterLine": 26,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.archetypeText).toBe('last archetype')",
+      "afterCode": "expect(form.archetypeText).toBe('last archetype')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 27,
+      "afterLine": 27,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.elements).toEqual(['fire', 'water'])",
+      "afterCode": "expect(form.elements).toEqual(['fire', 'water'])"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 27,
+      "afterLine": 27,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.abilitySpellSlots.slots).toEqual({ fire: 2 })",
+      "afterCode": "expect(form.abilitySpellSlots.slots).toEqual({ fire: 2 })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 31,
+      "afterLine": 31,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(parseCardSearchQuery({ el: ['water', 'fire,water'], lv: 'eq:0', lvm: 'all' })))\n      .toEqual({ el: 'fire,water', lv: 'eq:0' })",
+      "afterCode": "expect(buildCardSearchQuery(parseCardSearchQuery({ el: ['water', 'fire,water'], lv: 'eq:0', lvm: 'all' })))\n      .toEqual({ el: 'fire,water', lv: 'eq:0' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 37,
+      "afterLine": 37,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.initiative).toEqual({ filterType: 'exclude', operator: 'gte', value: 2 })",
+      "afterCode": "expect(form.initiative).toEqual({ filterType: 'exclude', operator: 'gte', value: 2 })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 38,
+      "afterLine": 38,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.additionalInitiative.filterType).toBe('include')",
+      "afterCode": "expect(form.additionalInitiative.filterType).toBe('include')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 39,
+      "afterLine": 39,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ itm: 'exclude', aitm: 'include' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ itm: 'exclude', aitm: 'include' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 49,
+      "afterLine": 49,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form[field]).toEqual({ match: 'none', slots: {} })",
+      "afterCode": "expect(form[field]).toEqual({ match: 'none', slots: {} })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 50,
+      "afterLine": 50,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ [_modifier]: 'none' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ [_modifier]: 'none' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 55,
+      "afterLine": 55,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.costItemSlots).toEqual({ match: 'and', slots: { consume: 2, bullet: 1 } })",
+      "afterCode": "expect(form.costItemSlots).toEqual({ match: 'and', slots: { consume: 2, bullet: 1 } })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 56,
+      "afterLine": 56,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.costSpellSlots).toEqual({ match: 'or', slots: { water: 2, fire: 1 } })",
+      "afterCode": "expect(form.costSpellSlots).toEqual({ match: 'or', slots: { water: 2, fire: 1 } })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 57,
+      "afterLine": 57,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.costOtherEntities).toEqual({ match: 'none', slots: {} })",
+      "afterCode": "expect(form.costOtherEntities).toEqual({ match: 'none', slots: {} })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 58,
+      "afterLine": 58,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({ cism: 'and', cis: 'bullet:1,consume:2', css: 'fire:1,water:2', coem: 'none' })",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({ cism: 'and', cis: 'bullet:1,consume:2', css: 'fire:1,water:2', coem: 'none' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 73,
+      "afterLine": 73,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(condition.slots).toEqual({})",
+      "afterCode": "expect(condition.slots).toEqual({})"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 78,
+      "afterLine": 78,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.abilityItemSlots).toEqual({ match: 'or', slots: {} })",
+      "afterCode": "expect(form.abilityItemSlots).toEqual({ match: 'or', slots: {} })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 79,
+      "afterLine": 79,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.abilitySpellSlots).toEqual({ match: 'or', slots: {} })",
+      "afterCode": "expect(form.abilitySpellSlots).toEqual({ match: 'or', slots: {} })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 80,
+      "afterLine": 80,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(form)).toEqual({})",
+      "afterCode": "expect(buildCardSearchQuery(form)).toEqual({})"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 93,
+      "afterLine": 93,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.name).toBe('有効 🐉')",
+      "afterCode": "expect(form.name).toBe('有効 🐉')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 94,
+      "afterLine": 94,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.attack).toEqual({ operator: 'gte', value: null })",
+      "afterCode": "expect(form.attack).toEqual({ operator: 'gte', value: null })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 95,
+      "afterLine": 95,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.level).toEqual({ filterType: 'include', operator: 'gte', value: null })",
+      "afterCode": "expect(form.level).toEqual({ filterType: 'include', operator: 'gte', value: null })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 96,
+      "afterLine": 96,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })",
+      "afterCode": "expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 102,
+      "afterLine": 102,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(parseCardSearchQuery({ pd: '22D7E,abcde,invalid,abcd' })).toEqual({ ...expected })",
+      "afterCode": "expect(parseCardSearchQuery({ pd: '22D7E,abcde,invalid,abcd' })).toEqual({ ...expected })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryParser.test.ts",
+      "beforeLine": 108,
+      "afterLine": 108,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(form[field]).toEqual(['abcde', 'fffff'])",
+      "afterCode": "expect(form[field]).toEqual(['abcde', 'fffff'])"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 13,
+      "afterLine": 13,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(parseCardSearchQuery(router.currentRoute.value.query))).toEqual(query)",
+      "afterCode": "expect(buildCardSearchQuery(parseCardSearchQuery(router.currentRoute.value.query))).toEqual(query)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 15,
+      "afterLine": 15,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(router.currentRoute.value.fullPath).toBe(first)",
+      "afterCode": "expect(router.currentRoute.value.fullPath).toBe(first)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 24,
+      "afterLine": 24,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(logicalUrl).toBe('/cards?pd=22d7e')",
+      "afterCode": "expect(logicalUrl).toBe('/cards?pd=22d7e')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 25,
+      "afterLine": 25,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(parseCardSearchQuery(router.currentRoute.value.query).products).toEqual(['22d7e'])",
+      "afterCode": "expect(parseCardSearchQuery(router.currentRoute.value.query).products).toEqual(['22d7e'])"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 29,
+      "afterLine": 29,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(freshRouter.currentRoute.value.fullPath).toBe(logicalUrl)",
+      "afterCode": "expect(freshRouter.currentRoute.value.fullPath).toBe(logicalUrl)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 30,
+      "afterLine": 30,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(parseCardSearchQuery(freshRouter.currentRoute.value.query).products).toEqual(['22d7e'])",
+      "afterCode": "expect(parseCardSearchQuery(freshRouter.currentRoute.value.query).products).toEqual(['22d7e'])"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 38,
+      "afterLine": 38,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(router.currentRoute.value.fullPath).toBe('/cards?pd=22d7e')",
+      "afterCode": "expect(router.currentRoute.value.fullPath).toBe('/cards?pd=22d7e')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 39,
+      "afterLine": 39,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(parseCardSearchQuery(router.currentRoute.value.query))).toEqual({ pd: '22d7e' })",
+      "afterCode": "expect(buildCardSearchQuery(parseCardSearchQuery(router.currentRoute.value.query))).toEqual({ pd: '22d7e' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 43,
+      "afterLine": 43,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(freshRouter.currentRoute.value.fullPath).toBe('/cards?pd=22d7e')",
+      "afterCode": "expect(freshRouter.currentRoute.value.fullPath).toBe('/cards?pd=22d7e')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "beforeLine": 44,
+      "afterLine": 44,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildCardSearchQuery(parseCardSearchQuery(freshRouter.currentRoute.value.query))).toEqual({ pd: '22d7e' })",
+      "afterCode": "expect(buildCardSearchQuery(parseCardSearchQuery(freshRouter.currentRoute.value.query))).toEqual({ pd: '22d7e' })"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 9,
+      "afterLine": 9,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(SHORT_UUID_LENGTH).toBe(5)",
+      "afterCode": "expect(SHORT_UUID_LENGTH).toBe(5)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 10,
+      "afterLine": 10,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(canonicalizeShortUuid(' 22D7E ')).toBe('22d7e')",
+      "afterCode": "expect(canonicalizeShortUuid(' 22D7E ')).toBe('22d7e')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 11,
+      "afterLine": 11,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(canonicalizeShortUuid('abcde')).toBe('abcde')",
+      "afterCode": "expect(canonicalizeShortUuid('abcde')).toBe('abcde')"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 15,
+      "afterLine": 15,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(canonicalizeShortUuid(value)).toBeUndefined()",
+      "afterCode": "expect(canonicalizeShortUuid(value)).toBeUndefined()"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 19,
+      "afterLine": 19,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalizeShortUuidCollection(['22D7E,abcde', '22d7e', 'fffff'])).toEqual(['22d7e', 'abcde', 'fffff'])",
+      "afterCode": "expect(normalizeShortUuidCollection(['22D7E,abcde', '22d7e', 'fffff'])).toEqual(['22d7e', 'abcde', 'fffff'])"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 20,
+      "afterLine": 20,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalizeShortUuidCollection(['22D7E,abcde', '22d7e', 'fffff'], true)).toEqual(['22d7e', 'abcde', 'fffff'])",
+      "afterCode": "expect(normalizeShortUuidCollection(['22D7E,abcde', '22d7e', 'fffff'], true)).toEqual(['22d7e', 'abcde', 'fffff'])"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 26,
+      "afterLine": 26,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(values.every(value => value.length === SHORT_UUID_LENGTH)).toBe(true)",
+      "afterCode": "expect(values.every(value => value.length === SHORT_UUID_LENGTH)).toBe(true)"
+    },
+    {
+      "file": "app/utils/search/cardSearchQuerySchema.test.ts",
+      "beforeLine": 27,
+      "afterLine": 27,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(values.every(value => canonicalizeShortUuid(value) !== undefined)).toBe(true)",
+      "afterCode": "expect(values.every(value => canonicalizeShortUuid(value) !== undefined)).toBe(true)"
+    },
+    {
+      "file": "app/utils/search/productSearchLocation.test.ts",
+      "beforeLine": 10,
+      "afterLine": 10,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildProductSearchLocation(value)).toEqual({ path: '/cards', query: { pd: value } })",
+      "afterCode": "expect(buildProductSearchLocation(value)).toEqual({ path: '/cards', query: { pd: value } })"
+    },
+    {
+      "file": "app/utils/search/productSearchLocation.test.ts",
+      "beforeLine": 16,
+      "afterLine": 16,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(value).toBe('22d7e')",
+      "afterCode": "expect(value).toBe('22d7e')"
+    },
+    {
+      "file": "app/utils/search/productSearchLocation.test.ts",
+      "beforeLine": 20,
+      "afterLine": 20,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildProductSearchLocation(value)).toBeUndefined()",
+      "afterCode": "expect(buildProductSearchLocation(value)).toBeUndefined()"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryBuilder.test.ts",
+      "beforeLine": 18,
+      "afterLine": 18,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildQuickSearchQuery(createState({ selectedSearchType, searchText: '  青い 竜 🐉  ' })))\n      .toEqual({ [alias]: '青い 竜 🐉' })",
+      "afterCode": "expect(buildQuickSearchQuery(createState({ selectedSearchType, searchText: '  青い 竜 🐉  ' })))\n      .toEqual({ [alias]: '青い 竜 🐉' })"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryBuilder.test.ts",
+      "beforeLine": 25,
+      "afterLine": 25,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(results.every(result => JSON.stringify(result) === JSON.stringify(results[0]))).toBe(true)",
+      "afterCode": "expect(results.every(result => JSON.stringify(result) === JSON.stringify(results[0]))).toBe(true)"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryBuilder.test.ts",
+      "beforeLine": 26,
+      "afterLine": 26,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(results[0]).toEqual({ kw: 'a,b:c=1 & ? 🐉' })",
+      "afterCode": "expect(results[0]).toEqual({ kw: 'a,b:c=1 & ? 🐉' })"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryBuilder.test.ts",
+      "beforeLine": 37,
+      "afterLine": 37,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildQuickSearchQuery(state)).toEqual({})",
+      "afterCode": "expect(buildQuickSearchQuery(state)).toEqual({})"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryBuilder.test.ts",
+      "beforeLine": 43,
+      "afterLine": 43,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(buildQuickSearchQuery(state)).toEqual({ nm: 'Dragon' })",
+      "afterCode": "expect(buildQuickSearchQuery(state)).toEqual({ nm: 'Dragon' })"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryBuilder.test.ts",
+      "beforeLine": 44,
+      "afterLine": 44,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(state).toEqual(snapshot)",
+      "afterCode": "expect(state).toEqual(snapshot)"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryRouter.test.ts",
+      "beforeLine": 15,
+      "afterLine": 15,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(router.currentRoute.value.query).toEqual(query)",
+      "afterCode": "expect(router.currentRoute.value.query).toEqual(query)"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryRouter.test.ts",
+      "beforeLine": 17,
+      "afterLine": 17,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(router.currentRoute.value.query).toEqual(query)",
+      "afterCode": "expect(router.currentRoute.value.query).toEqual(query)"
+    },
+    {
+      "file": "app/utils/search/quickSearchQueryRouter.test.ts",
+      "beforeLine": 18,
+      "afterLine": 18,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(router.currentRoute.value.fullPath).toBe(firstPath)",
+      "afterCode": "expect(router.currentRoute.value.fullPath).toBe(firstPath)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 24,
+      "afterLine": 24,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 25,
+      "afterLine": 25,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.headers.get('content-type')).toBe('application/json; charset=utf-8')",
+      "afterCode": "expect(response.headers.get('content-type')).toBe('application/json; charset=utf-8')"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 26,
+      "afterLine": 26,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.headers.get('cache-control')).toBe('no-cache')",
+      "afterCode": "expect(response.headers.get('cache-control')).toBe('no-cache')"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 28,
+      "afterLine": 28,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.equals(expected)).toBe(true)",
+      "afterCode": "expect(body.equals(expected)).toBe(true)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 29,
+      "afterLine": 29,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sha(body)).toBe(sha(expected))",
+      "afterCode": "expect(sha(body)).toBe(sha(expected))"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 30,
+      "afterLine": 30,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readFileMock).toHaveBeenCalledExactlyOnceWith(sourcePath)",
+      "afterCode": "expect(readFileMock).toHaveBeenCalledExactlyOnceWith(sourcePath)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 35,
+      "afterLine": 35,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(405)",
+      "afterCode": "expect(response.status).toBe(405)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 36,
+      "afterLine": 36,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.headers.get('allow')).toBe('GET')",
+      "afterCode": "expect(response.headers.get('allow')).toBe('GET')"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 37,
+      "afterLine": 37,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(await response.text()).not.toContain('card_id')",
+      "afterCode": "expect(await response.text()).not.toContain('card_id')"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 38,
+      "afterLine": 38,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readFileMock).not.toHaveBeenCalled()",
+      "afterCode": "expect(readFileMock).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 43,
+      "afterLine": 43,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(await response.text()).toBe('next handler')",
+      "afterCode": "expect(await response.text()).toBe('next handler')"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 44,
+      "afterLine": 44,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readFileMock).not.toHaveBeenCalled()",
+      "afterCode": "expect(readFileMock).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 51,
+      "afterLine": 51,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(failed.status).toBe(500)",
+      "afterCode": "expect(failed.status).toBe(500)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 52,
+      "afterLine": 52,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(await failed.text()).not.toContain('card_id')",
+      "afterCode": "expect(await failed.text()).not.toContain('card_id')"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 54,
+      "afterLine": 54,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(recovered.status).toBe(200)",
+      "afterCode": "expect(recovered.status).toBe(200)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 55,
+      "afterLine": 55,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(Buffer.from(await recovered.arrayBuffer()).equals(await fs.readFile(sourcePath))).toBe(true)",
+      "afterCode": "expect(Buffer.from(await recovered.arrayBuffer()).equals(await fs.readFile(sourcePath))).toBe(true)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 62,
+      "afterLine": 62,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readFileMock).toHaveBeenCalledTimes(2)",
+      "afterCode": "expect(readFileMock).toHaveBeenCalledTimes(2)"
+    },
+    {
+      "file": "dev/cardsJsonHandler.test.ts",
+      "beforeLine": 63,
+      "afterLine": 63,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readFileMock.mock.calls.every(([path]) => path === sourcePath)).toBe(true)",
+      "afterCode": "expect(readFileMock.mock.calls.every(([path]) => path === sourcePath)).toBe(true)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 46,
+      "afterLine": 50,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 47,
+      "afterLine": 51,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.sort).toEqual({ key, order })",
+      "afterCode": "expect(body.sort).toEqual({ key, order })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 48,
+      "afterLine": 52,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items.map(card => card.card_id)).toEqual(fixtureOrders[key][order])",
+      "afterCode": "expect(body.items.map(card => card.card_id)).toEqual(fixtureOrders[key][order])"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 49,
+      "afterLine": 53,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body).toEqual(runCardSearch(sources, prepareCardSearch({ sort: key, order })))",
+      "afterCode": "expect(body).toEqual(runCardSearch(sources, prepareCardSearch({ sort: key, order })))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 62,
+      "afterLine": 66,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 63,
+      "afterLine": 67,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body).toEqual({ ...reference, page: effective, sort: { key, order }, items: ids.slice((effective - 1) * perPage, effective * perPage).map(id => projections[id]) })",
+      "afterCode": "expect(body).toEqual({ ...reference, page: effective, sort: { key, order }, items: ids.slice((effective - 1) * perPage, effective * perPage).map(id => projections[id]) })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 64,
+      "afterLine": 68,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body).toEqual(runCardSearch(getSourceCards(), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query)))))",
+      "afterCode": "expect(body).toEqual(runCardSearch(getSourceCards(), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query)))))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 67,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(all).toEqual(ids)",
+      "afterCode": "expect(all).toEqual(ids)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 68,
+      "afterLine": 72,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(new Set(all).size).toBe(ids.length)",
+      "afterCode": "expect(new Set(all).size).toBe(ids.length)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 74,
+      "afterLine": 78,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body).toMatchObject({ page: 1, totalPages: 1, totalCount: count })",
+      "afterCode": "expect(body).toMatchObject({ page: 1, totalPages: 1, totalCount: count })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 75,
+      "afterLine": 79,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body).toEqual(runCardSearch(source.slice(0, count), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query)))))",
+      "afterCode": "expect(body).toEqual(runCardSearch(source.slice(0, count), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query)))))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 104,
+      "afterLine": 108,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 105,
+      "afterLine": 109,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.totalCount).toBe(ids.length)",
+      "afterCode": "expect(body.totalCount).toBe(ids.length)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 106,
+      "afterLine": 110,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.page).toBe(page)",
+      "afterCode": "expect(body.page).toBe(page)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 107,
+      "afterLine": 111,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.perPage).toBe(20)",
+      "afterCode": "expect(body.perPage).toBe(20)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 108,
+      "afterLine": 112,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.totalPages).toBe(Math.max(1, Math.ceil(ids.length / 20)))",
+      "afterCode": "expect(body.totalPages).toBe(Math.max(1, Math.ceil(ids.length / 20)))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 109,
+      "afterLine": 113,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.sort).toEqual({ key: 'id', order: 'asc' })",
+      "afterCode": "expect(body.sort).toEqual({ key: 'id', order: 'asc' })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 113,
+      "afterLine": 117,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(allIds).toEqual([...ids].sort((a, b) => a.localeCompare(b)))",
+      "afterCode": "expect(allIds).toEqual([...ids].sort((a, b) => a.localeCompare(b)))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 168,
+      "afterLine": 172,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual(expectedArguments)",
+      "afterCode": "expect(normalize.mock.calls).toEqual(expectedArguments)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 173,
+      "afterLine": 177,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual(expectedArguments)",
+      "afterCode": "expect(normalize.mock.calls).toEqual(expectedArguments)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 180,
+      "afterLine": 184,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 181,
+      "afterLine": 185,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.totalCount).toBe(count)",
+      "afterCode": "expect(body.totalCount).toBe(count)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 182,
+      "afterLine": 186,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items.map(item => item.card_id)).toEqual(sources.slice(0, 20).map(source => source.card.card_id))",
+      "afterCode": "expect(body.items.map(item => item.card_id)).toEqual(sources.slice(0, 20).map(source => source.card.card_id))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 183,
+      "afterLine": 187,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual(expectedArguments)",
+      "afterCode": "expect(normalize.mock.calls).toEqual(expectedArguments)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 195,
+      "afterLine": 199,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(page.status)",
+      "afterCode": "expect(response.status).toBe(page.status)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 198,
+      "afterLine": 202,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body).toEqual({ ...page.response, items: ids.map(id => projectedItems[id]) })",
+      "afterCode": "expect(body).toEqual({ ...page.response, items: ids.map(id => projectedItems[id]) })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 199,
+      "afterLine": 203,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items.every(item => !('search_support' in item) && !('full_text' in item) && !('archetype_text' in item))).toBe(true)",
+      "afterCode": "expect(body.items.every(item => !('search_support' in item) && !('full_text' in item) && !('archetype_text' in item))).toBe(true)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 201,
+      "afterLine": 205,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)",
+      "afterCode": "expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 202,
+      "afterLine": 206,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(Object.keys(body)).toEqual(page.responseFields)",
+      "afterCode": "expect(Object.keys(body)).toEqual(page.responseFields)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 206,
+      "afterLine": 210,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(allIds).toEqual(new URLSearchParams(example.api.pages[0]!.requestQuery).get('sort') === 'atk'\n      ? expectedIds('atk', new URLSearchParams(example.api.pages[0]!.requestQuery).get('order') === 'desc' ? 'desc' : 'asc', example.api.allIds) : example.api.allIds)",
+      "afterCode": "expect(allIds).toEqual(new URLSearchParams(example.api.pages[0]!.requestQuery).get('sort') === 'atk'\n      ? expectedIds('atk', new URLSearchParams(example.api.pages[0]!.requestQuery).get('order') === 'desc' ? 'desc' : 'asc', example.api.allIds) : example.api.allIds)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 229,
+      "afterLine": 233,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 230,
+      "afterLine": 234,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.totalCount).toBe(ids.length)",
+      "afterCode": "expect(body.totalCount).toBe(ids.length)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 231,
+      "afterLine": 235,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.categoryBreakdown).toEqual(expectedBreakdown)",
+      "afterCode": "expect(body.categoryBreakdown).toEqual(expectedBreakdown)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 232,
+      "afterLine": 236,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body).toMatchObject({ page, perPage, totalPages, sort: { key: sort, order } })",
+      "afterCode": "expect(body).toMatchObject({ page, perPage, totalPages, sort: { key: sort, order } })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 234,
+      "afterLine": 238,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items).toEqual(pageIds.map(id => projections[id]))",
+      "afterCode": "expect(body.items).toEqual(pageIds.map(id => projections[id]))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 237,
+      "afterLine": 241,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(allIds).toEqual(sortedIds)",
+      "afterCode": "expect(allIds).toEqual(sortedIds)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 249,
+      "afterLine": 253,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 250,
+      "afterLine": 254,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items.map(item => item.card_id)).toEqual(['A'])",
+      "afterCode": "expect(body.items.map(item => item.card_id)).toEqual(['A'])"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 251,
+      "afterLine": 255,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.totalCount).toBe(1)",
+      "afterCode": "expect(body.totalCount).toBe(1)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 252,
+      "afterLine": 256,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.categoryBreakdown).toEqual([{ categoryCode: 'Unit', count: 1 }])",
+      "afterCode": "expect(body.categoryBreakdown).toEqual([{ categoryCode: 'Unit', count: 1 }])"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 253,
+      "afterLine": 257,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items[0]!.name).toBe(catalogOracle.fixtureCards[0]!.name)",
+      "afterCode": "expect(body.items[0]!.name).toBe(catalogOracle.fixtureCards[0]!.name)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 254,
+      "afterLine": 258,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items[0]).not.toHaveProperty('search_support')",
+      "afterCode": "expect(body.items[0]).not.toHaveProperty('search_support')"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 255,
+      "afterLine": 259,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify(cards)).toBe(before)",
+      "afterCode": "expect(JSON.stringify(cards)).toBe(before)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 262,
+      "afterLine": 266,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(500)",
+      "afterCode": "expect(response.status).toBe(500)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 263,
+      "afterLine": 267,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(await response.json()).toMatchObject({ statusCode: 500, data: { statusCode: 500, code: 'CARD_SEARCH_FAILED', message: 'カード検索に失敗しました' } })",
+      "afterCode": "expect(await response.json()).toMatchObject({ statusCode: 500, data: { statusCode: 500, code: 'CARD_SEARCH_FAILED', message: 'カード検索に失敗しました' } })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 271,
+      "afterLine": 275,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 278,
+      "afterLine": 282,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(withoutRestriction).toEqual(changed ? {\n      ...expected,\n      items: revisedAtkPageIds(query, approvedBaseline.classifications.map(row => row.card_id)).map(id => {\n        const { deck_restriction_count: _count, ...item } = projections[id]!\n        return item\n      }),\n    } : expected)",
+      "afterCode": "expect(withoutRestriction).toEqual(changed ? {\n      ...expected,\n      items: revisedAtkPageIds(query, approvedBaseline.classifications.map(row => row.card_id)).map(id => {\n        const { deck_restriction_count: _count, ...item } = projections[id]!\n        return item\n      }),\n    } : expected)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 302,
+      "afterLine": 306,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.totalCount).toBe(21)",
+      "afterCode": "expect(body.totalCount).toBe(21)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 303,
+      "afterLine": 307,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items).toHaveLength(query.includes('page=2') ? 1 : 20)",
+      "afterCode": "expect(body.items).toHaveLength(query.includes('page=2') ? 1 : 20)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 305,
+      "afterLine": 309,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(item.deck_restriction_count).toBe(source.find(value => value.card.card_id === item.card_id)!.card.modification!.deck_restriction_count)",
+      "afterCode": "expect(item.deck_restriction_count).toBe(source.find(value => value.card.card_id === item.card_id)!.card.modification!.deck_restriction_count)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 307,
+      "afterLine": 311,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items.some(item => item.deck_restriction_count === null)).toBe(true)",
+      "afterCode": "expect(body.items.some(item => item.deck_restriction_count === null)).toBe(true)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 322,
+      "afterLine": 326,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 323,
+      "afterLine": 327,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items.find(item => item.reference_label === reference)).toHaveProperty('deck_restriction_count', expected)",
+      "afterCode": "expect(body.items.find(item => item.reference_label === reference)).toHaveProperty('deck_restriction_count', expected)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 325,
+      "afterLine": 329,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(item).toHaveProperty('deck_restriction_count')",
+      "afterCode": "expect(item).toHaveProperty('deck_restriction_count')"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 326,
+      "afterLine": 330,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(item.deck_restriction_count === null || typeof item.deck_restriction_count === 'number').toBe(true)",
+      "afterCode": "expect(item.deck_restriction_count === null || typeof item.deck_restriction_count === 'number').toBe(true)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 327,
+      "afterLine": 331,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(item).not.toHaveProperty('modification')",
+      "afterCode": "expect(item).not.toHaveProperty('modification')"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 337,
+      "afterLine": 341,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 338,
+      "afterLine": 342,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items).toHaveLength(1)",
+      "afterCode": "expect(body.items).toHaveLength(1)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 339,
+      "afterLine": 343,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(body.items[0]).toHaveProperty('deck_restriction_count', value)",
+      "afterCode": "expect(body.items[0]).toHaveProperty('deck_restriction_count', value)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 345,
+      "afterLine": 349,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(500)",
+      "afterCode": "expect(response.status).toBe(500)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 346,
+      "afterLine": 350,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(await response.json()).toMatchObject({ data: { code: 'CARD_SEARCH_FAILED' } })",
+      "afterCode": "expect(await response.json()).toMatchObject({ data: { code: 'CARD_SEARCH_FAILED' } })"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 353,
+      "afterLine": 357,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(parseCardSearchQuery({ unknown: 'x', lv: 'broken', cc: 'unit' }).cardCategory).toBe('unit')",
+      "afterCode": "expect(parseCardSearchQuery({ unknown: 'x', lv: 'broken', cc: 'unit' }).cardCategory).toBe('unit')"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 354,
+      "afterLine": 358,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readFileSync(resolve('shared/cardSearch/runner.ts'), 'utf8')).toContain(\"positiveInteger(lastString(query.page), 1)\")",
+      "afterCode": "expect(readFileSync(resolve('shared/cardSearch/runner.ts'), 'utf8')).toContain(\"positiveInteger(lastString(query.page), 1)\")"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 355,
+      "afterLine": 359,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain(\"'CARD_SEARCH_FAILED'\")",
+      "afterCode": "expect(source).toContain(\"'CARD_SEARCH_FAILED'\")"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 358,
+      "afterLine": 362,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toContain('runCardSearch(getSourceCards(), prepared)')",
+      "afterCode": "expect(source).toContain('runCardSearch(getSourceCards(), prepared)')"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 360,
+      "afterLine": 364,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(runner).toContain(operation)",
+      "afterCode": "expect(runner).toContain(operation)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 366,
+      "afterLine": 370,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(matched.length).toBeGreaterThan(0)",
+      "afterCode": "expect(matched.length).toBeGreaterThan(0)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 367,
+      "afterLine": 371,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(matched.every(card => card.effects.some(effect => effect.search_cost?.alternatives.some(alternative => alternative.costs.some(cost => {\n      const quantity = cost.quantity ?? cost.max\n      return cost.type === 'other' && cost.value === 'trash' && typeof quantity === 'number' && quantity >= 1\n    }))))).toBe(true)",
+      "afterCode": "expect(matched.every(card => card.effects.some(effect => effect.search_cost?.alternatives.some(alternative => alternative.costs.some(cost => {\n      const quantity = cost.quantity ?? cost.max\n      return cost.type === 'other' && cost.value === 'trash' && typeof quantity === 'number' && quantity >= 1\n    }))))).toBe(true)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 384,
+      "afterLine": 388,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(unfiltered.status).toBe(200)",
+      "afterCode": "expect(unfiltered.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 385,
+      "afterLine": 389,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(filtered.status).toBe(200)",
+      "afterCode": "expect(filtered.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 386,
+      "afterLine": 390,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(filteredBody.totalCount).toBe(expected.length)",
+      "afterCode": "expect(filteredBody.totalCount).toBe(expected.length)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 387,
+      "afterLine": 391,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(filteredBody.totalCount).toBeGreaterThan(0)",
+      "afterCode": "expect(filteredBody.totalCount).toBeGreaterThan(0)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 388,
+      "afterLine": 392,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(filteredBody.totalCount).toBeLessThan(allBody.totalCount)",
+      "afterCode": "expect(filteredBody.totalCount).toBeLessThan(allBody.totalCount)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 389,
+      "afterLine": 393,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(filteredBody.items.map(item => item.reference_label)).toEqual(expected.slice(0, 100).map(card => card.reference_label))",
+      "afterCode": "expect(filteredBody.items.map(item => item.reference_label)).toEqual(expected.slice(0, 100).map(card => card.reference_label))"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 402,
+      "afterLine": 407,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(response.status).toBe(200)",
+      "afterCode": "expect(response.status).toBe(200)"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 404,
+      "afterLine": 409,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.parse(JSON.stringify(csr))).toEqual(await response.json())",
+      "afterCode": "expect(JSON.parse(JSON.stringify(csr))).toEqual(await response.json())"
+    },
+    {
+      "file": "server/api/cards.get.test.ts",
+      "beforeLine": 416,
+      "afterLine": 421,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalizeClientSearchQuery(query)).toEqual(await response.json())",
+      "afterCode": "expect(normalizeClientSearchQuery(query)).toEqual(await response.json())"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 8,
+      "afterLine": 8,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalizeCatalogText(input)).toBe(expected)",
+      "afterCode": "expect(normalizeCatalogText(input)).toBe(expected)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 9,
+      "afterLine": 9,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalizeCatalogText(normalizeCatalogText(input))).toBe(expected)",
+      "afterCode": "expect(normalizeCatalogText(normalizeCatalogText(input))).toBe(expected)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 15,
+      "afterLine": 15,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(codePoints).toHaveLength(172)",
+      "afterCode": "expect(codePoints).toHaveLength(172)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 16,
+      "afterLine": 16,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(vectors.filter(vector => vector.id.startsWith('width-'))).toHaveLength(172)",
+      "afterCode": "expect(vectors.filter(vector => vector.id.startsWith('width-'))).toHaveLength(172)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 17,
+      "afterLine": 17,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(vectors.some(vector => vector.input === String.fromCodePoint(point))).toBe(true)",
+      "afterCode": "expect(vectors.some(vector => vector.input === String.fromCodePoint(point))).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 18,
+      "afterLine": 18,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(vectors.filter(vector => vector.id.startsWith('ascii-case-'))).toHaveLength(26)",
+      "afterCode": "expect(vectors.filter(vector => vector.id.startsWith('ascii-case-'))).toHaveLength(26)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 19,
+      "afterLine": 19,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(vectors.some(vector => vector.input === String.fromCodePoint(point))).toBe(true)",
+      "afterCode": "expect(vectors.some(vector => vector.input === String.fromCodePoint(point))).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 26,
+      "afterLine": 26,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(cards).toHaveLength(482)",
+      "afterCode": "expect(cards).toHaveLength(482)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 28,
+      "afterLine": 28,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(Object.hasOwn(card.search_support, 'full_text'), card.card_id).toBe(true)",
+      "afterCode": "expect(Object.hasOwn(card.search_support, 'full_text'), card.card_id).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 30,
+      "afterLine": 30,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(typeof value, card.card_id).toBe('string')",
+      "afterCode": "expect(typeof value, card.card_id).toBe('string')"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 31,
+      "afterLine": 31,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(value, card.card_id).not.toBe('')",
+      "afterCode": "expect(value, card.card_id).not.toBe('')"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 32,
+      "afterLine": 32,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalizeCatalogText(value!), card.card_id).toBe(value)",
+      "afterCode": "expect(normalizeCatalogText(value!), card.card_id).toBe(value)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 37,
+      "afterLine": 37,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(cards).toHaveLength(482)",
+      "afterCode": "expect(cards).toHaveLength(482)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 39,
+      "afterLine": 39,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(Object.hasOwn(card.search_support, 'archetype_text'), card.card_id).toBe(true)",
+      "afterCode": "expect(Object.hasOwn(card.search_support, 'archetype_text'), card.card_id).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 41,
+      "afterLine": 41,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(typeof value, card.card_id).toBe('string')",
+      "afterCode": "expect(typeof value, card.card_id).toBe('string')"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 42,
+      "afterLine": 42,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(value, card.card_id).not.toBe('')",
+      "afterCode": "expect(value, card.card_id).not.toBe('')"
+    },
+    {
+      "file": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "beforeLine": 43,
+      "afterLine": 43,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalizeCatalogText(value!), card.card_id).toBe(value)",
+      "afterCode": "expect(normalizeCatalogText(value!), card.card_id).toBe(value)"
+    },
+    {
+      "file": "server/utils/cardSearch/paginate.test.ts",
+      "beforeLine": 7,
+      "afterLine": 7,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.items[0]).toBe(perPage)",
+      "afterCode": "expect(result.items[0]).toBe(perPage)"
+    },
+    {
+      "file": "server/utils/cardSearch/paginate.test.ts",
+      "beforeLine": 8,
+      "afterLine": 8,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.totalPages).toBe(Math.ceil(121 / perPage))",
+      "afterCode": "expect(result.totalPages).toBe(Math.ceil(121 / perPage))"
+    },
+    {
+      "file": "server/utils/cardSearch/paginate.test.ts",
+      "beforeLine": 11,
+      "afterLine": 11,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(paginate([1, 2, 3], 99, 2)).toMatchObject({ page: 2, totalPages: 2, items: [3] })",
+      "afterCode": "expect(paginate([1, 2, 3], 99, 2)).toMatchObject({ page: 2, totalPages: 2, items: [3] })"
+    },
+    {
+      "file": "server/utils/cardSearch/paginate.test.ts",
+      "beforeLine": 12,
+      "afterLine": 12,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(paginate([], 99, 20)).toEqual({ page: 1, totalPages: 1, items: [] })",
+      "afterCode": "expect(paginate([], 99, 20)).toEqual({ page: 1, totalPages: 1, items: [] })"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 18,
+      "afterLine": 19,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).toBeDefined()",
+      "afterCode": "expect(projected).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 19,
+      "afterLine": 20,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).toHaveProperty('deck_restriction_count', expected)",
+      "afterCode": "expect(projected).toHaveProperty('deck_restriction_count', expected)"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 20,
+      "afterLine": 21,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).not.toHaveProperty('modification')",
+      "afterCode": "expect(projected).not.toHaveProperty('modification')"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 21,
+      "afterLine": 22,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(source).toEqual(before)",
+      "afterCode": "expect(source).toEqual(before)"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 26,
+      "afterLine": 27,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).not.toBe(source)",
+      "afterCode": "expect(projected).not.toBe(source)"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 27,
+      "afterLine": 28,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).not.toHaveProperty('search_support')",
+      "afterCode": "expect(projected).not.toHaveProperty('search_support')"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 28,
+      "afterLine": 29,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).not.toHaveProperty('tags')",
+      "afterCode": "expect(projected).not.toHaveProperty('tags')"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 29,
+      "afterLine": 30,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).not.toHaveProperty('errata')",
+      "afterCode": "expect(projected).not.toHaveProperty('errata')"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 30,
+      "afterLine": 31,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected).not.toHaveProperty('flavor_text')",
+      "afterCode": "expect(projected).not.toHaveProperty('flavor_text')"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 31,
+      "afterLine": 32,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projected.product).toEqual({ product_name: source.product.product_name })",
+      "afterCode": "expect(projected.product).toEqual({ product_name: source.product.product_name })"
+    },
+    {
+      "file": "server/utils/cardSearch/project.test.ts",
+      "beforeLine": 36,
+      "afterLine": 37,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(projectCard(source)).toBeUndefined()",
+      "afterCode": "expect(projectCard(source)).toBeUndefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 48,
+      "afterLine": 64,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(createCardSearchMatcher(parseFixtureQuery(query))(card)).toBe(true)",
+      "afterCode": "expect(createCardSearchMatcher(parseFixtureQuery(query))(card)).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 49,
+      "afterLine": 65,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(read).not.toHaveBeenCalled()",
+      "afterCode": "expect(read).not.toHaveBeenCalled()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 55,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(matchesCardSearch(card, parseCardSearchQuery({}))).toBe(true)",
+      "afterCode": "expect(matchesCardSearch(card, parseCardSearchQuery({}))).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 56,
+      "afterLine": 72,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(matchesCardSearch(card, parseCardSearchQuery({ ssm: 'none' }))).toBe(false)",
+      "afterCode": "expect(matchesCardSearch(card, parseCardSearchQuery({ ssm: 'none' }))).toBe(false)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 57,
+      "afterLine": 73,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(matchesCardSearch(card, parseCardSearchQuery({ assm: 'none' }))).toBe(false)",
+      "afterCode": "expect(matchesCardSearch(card, parseCardSearchQuery({ assm: 'none' }))).toBe(false)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 71,
+      "afterLine": 87,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(preparedReads).toBeGreaterThan(0)",
+      "afterCode": "expect(preparedReads).toBeGreaterThan(0)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 72,
+      "afterLine": 88,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(matches(card)).toBe(true)",
+      "afterCode": "expect(matches(card)).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 73,
+      "afterLine": 89,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(read).toHaveBeenCalledTimes(preparedReads)",
+      "afterCode": "expect(read).toHaveBeenCalledTimes(preparedReads)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 74,
+      "afterLine": 90,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(slots).toEqual({ trash: 1 })",
+      "afterCode": "expect(slots).toEqual({ trash: 1 })"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 89,
+      "afterLine": 105,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))",
+      "afterCode": "expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 93,
+      "afterLine": 109,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))",
+      "afterCode": "expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 94,
+      "afterLine": 110,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(matches(card)).toBe(true)",
+      "afterCode": "expect(matches(card)).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 95,
+      "afterLine": 111,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))",
+      "afterCode": "expect(normalize.mock.calls).toEqual(argumentsBeforeScan.map(value => [value]))"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 104,
+      "afterLine": 120,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual([['CATALOG-ONLY'], ['ARCHETYPE-ONLY']])",
+      "afterCode": "expect(normalize.mock.calls).toEqual([['CATALOG-ONLY'], ['ARCHETYPE-ONLY']])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 107,
+      "afterLine": 123,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(cards, criteria)).toHaveLength(count)",
+      "afterCode": "expect(searchCards(cards, criteria)).toHaveLength(count)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 108,
+      "afterLine": 124,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(normalize.mock.calls).toEqual([['CATALOG-ONLY'], ['ARCHETYPE-ONLY']])",
+      "afterCode": "expect(normalize.mock.calls).toEqual([['CATALOG-ONLY'], ['ARCHETYPE-ONLY']])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 117,
+      "afterLine": 133,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(cards.map(matchesFirst)).toEqual([true, false])",
+      "afterCode": "expect(cards.map(matchesFirst)).toEqual([true, false])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 118,
+      "afterLine": 134,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(cards.map(matchesSecond)).toEqual([false, true])",
+      "afterCode": "expect(cards.map(matchesSecond)).toEqual([false, true])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 119,
+      "afterLine": 135,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(cards.map(matchesFirst)).toEqual(cards.map(card => matchesCardSearch(card, first)))",
+      "afterCode": "expect(cards.map(matchesFirst)).toEqual(cards.map(card => matchesCardSearch(card, first)))"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 120,
+      "afterLine": 136,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(cards, second).map(card => card.card_id)).toEqual(['B'])",
+      "afterCode": "expect(searchCards(cards, second).map(card => card.card_id)).toEqual(['B'])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 129,
+      "afterLine": 145,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(cards, criteria).map(card => card.card_id)).toEqual(example.unit.ids)",
+      "afterCode": "expect(searchCards(cards, criteria).map(card => card.card_id)).toEqual(example.unit.ids)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 130,
+      "afterLine": 146,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify({ cards, criteria })).toBe(before)",
+      "afterCode": "expect(JSON.stringify({ cards, criteria })).toBe(before)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 138,
+      "afterLine": 154,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(cards, criteria).map(card => card.card_id)).toEqual(['A'])",
+      "afterCode": "expect(searchCards(cards, criteria).map(card => card.card_id)).toEqual(['A'])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 139,
+      "afterLine": 155,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify({ cards, criteria })).toBe(before)",
+      "afterCode": "expect(JSON.stringify({ cards, criteria })).toBe(before)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 146,
+      "afterLine": 162,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ nm: 'NAME é', rl: 'abc-01' }))).toEqual([card])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ nm: 'NAME é', rl: 'abc-01' }))).toEqual([card])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 147,
+      "afterLine": 163,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ nm: 'Name É a' }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ nm: 'Name É a' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 153,
+      "afterLine": 169,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'ｶﾞｰﾄﾞ abc' }))).toEqual([card])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'ｶﾞｰﾄﾞ abc' }))).toEqual([card])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 154,
+      "afterLine": 170,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'name-only' }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'name-only' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 164,
+      "afterLine": 180,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'unit' })).map(card => card.card_id)).toEqual(['normal'])",
+      "afterCode": "expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'unit' })).map(card => card.card_id)).toEqual(['normal'])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 165,
+      "afterLine": 181,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'token' })).map(card => card.card_id)).toEqual(['token'])",
+      "afterCode": "expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'token' })).map(card => card.card_id)).toEqual(['token'])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 179,
+      "afterLine": 195,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ rt: naturalKey }))).toEqual([card])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ rt: naturalKey }))).toEqual([card])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 185,
+      "afterLine": 201,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.length).toBeGreaterThan(0)",
+      "afterCode": "expect(result.length).toBeGreaterThan(0)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 186,
+      "afterLine": 202,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.every(card => card.rarity_code === 'SuperRare')).toBe(true)",
+      "afterCode": "expect(result.every(card => card.rarity_code === 'SuperRare')).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 205,
+      "afterLine": 221,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([payable, insufficient], criteria)).toEqual([payable])",
+      "afterCode": "expect(searchCards([payable, insufficient], criteria)).toEqual([payable])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 224,
+      "afterLine": 240,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ cis: 'consume:1', css: 'fire:2' }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ cis: 'consume:1', css: 'fire:2' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 258,
+      "afterLine": 274,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(\n      [complete, missingItem, missingSpell, missingOther],\n      parseCardSearchQuery({ cis: 'consume:1', css: 'fire:2', coe: 'power:1' }),\n    )).toEqual([complete])",
+      "afterCode": "expect(searchCards(\n      [complete, missingItem, missingSpell, missingOther],\n      parseCardSearchQuery({ cis: 'consume:1', css: 'fire:2', coe: 'power:1' }),\n    )).toEqual([complete])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 274,
+      "afterLine": 290,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([capacity], criteria)).toEqual([capacity])",
+      "afterCode": "expect(searchCards([capacity], criteria)).toEqual([capacity])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 275,
+      "afterLine": 291,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([make([{ costs: [{ type: 'spell', value: 'any', min: 1, max: 3 }] }])], parseCardSearchQuery({ css: 'fire:2,water:2', cssm: 'and' }))).toEqual([])",
+      "afterCode": "expect(searchCards([make([{ costs: [{ type: 'spell', value: 'any', min: 1, max: 3 }] }])], parseCardSearchQuery({ css: 'fire:2,water:2', cssm: 'and' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 276,
+      "afterLine": 292,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([split], criteria)).toEqual([])",
+      "afterCode": "expect(searchCards([split], criteria)).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 285,
+      "afterLine": 301,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([noCost, unknown, make([], true), absent], none)).toEqual([noCost])",
+      "afterCode": "expect(searchCards([noCost, unknown, make([], true), absent], none)).toEqual([noCost])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 294,
+      "afterLine": 310,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(known.length).toBeGreaterThan(0)",
+      "afterCode": "expect(known.length).toBeGreaterThan(0)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 295,
+      "afterLine": 311,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(unknown).toEqual([])",
+      "afterCode": "expect(unknown).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 296,
+      "afterLine": 312,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(or).toEqual(known)",
+      "afterCode": "expect(or).toEqual(known)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 307,
+      "afterLine": 323,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(cardTypeCard).toBeDefined()",
+      "afterCode": "expect(cardTypeCard).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 308,
+      "afterLine": 324,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(factionCard).toBeDefined()",
+      "afterCode": "expect(factionCard).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 309,
+      "afterLine": 325,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(raceCard).toBeDefined()",
+      "afterCode": "expect(raceCard).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 310,
+      "afterLine": 326,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(resistanceCard).toBeDefined()",
+      "afterCode": "expect(resistanceCard).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 311,
+      "afterLine": 327,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(additionalResistanceCard).toBeDefined()",
+      "afterCode": "expect(additionalResistanceCard).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 321,
+      "afterLine": 337,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([cardTypeCard!], cardTypeCriteria)).toEqual([cardTypeCard])",
+      "afterCode": "expect(searchCards([cardTypeCard!], cardTypeCriteria)).toEqual([cardTypeCard])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 322,
+      "afterLine": 338,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([factionCard!], factionCriteria)).toEqual([factionCard])",
+      "afterCode": "expect(searchCards([factionCard!], factionCriteria)).toEqual([factionCard])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 323,
+      "afterLine": 339,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([raceCard!], raceCriteria)).toEqual([raceCard])",
+      "afterCode": "expect(searchCards([raceCard!], raceCriteria)).toEqual([raceCard])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 324,
+      "afterLine": 340,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([resistanceCard!], resistanceCriteria)).toEqual([resistanceCard])",
+      "afterCode": "expect(searchCards([resistanceCard!], resistanceCriteria)).toEqual([resistanceCard])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 325,
+      "afterLine": 341,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([additionalResistanceCard!], additionalResistanceCriteria)).toEqual([additionalResistanceCard])",
+      "afterCode": "expect(searchCards([additionalResistanceCard!], additionalResistanceCriteria)).toEqual([additionalResistanceCard])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 332,
+      "afterLine": 348,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(resistanceCard).toBeDefined()",
+      "afterCode": "expect(resistanceCard).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 333,
+      "afterLine": 349,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(additionalResistanceCard).toBeDefined()",
+      "afterCode": "expect(additionalResistanceCard).toBeDefined()"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 342,
+      "afterLine": 358,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([resistanceCard!], criteria)).toEqual([])",
+      "afterCode": "expect(searchCards([resistanceCard!], criteria)).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 346,
+      "afterLine": 362,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([additionalResistanceCard!], criteria)).toEqual([])",
+      "afterCode": "expect(searchCards([additionalResistanceCard!], criteria)).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 354,
+      "afterLine": 370,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.every(card => typeof card.card_id === 'string')).toBe(true)",
+      "afterCode": "expect(result.every(card => typeof card.card_id === 'string')).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 355,
+      "afterLine": 371,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(criteria).toEqual(snapshot)",
+      "afterCode": "expect(criteria).toEqual(snapshot)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 359,
+      "afterLine": 375,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(source.map(item => item.card), parseCardSearchQuery({}))).toHaveLength(source.length)",
+      "afterCode": "expect(searchCards(source.map(item => item.card), parseCardSearchQuery({}))).toHaveLength(source.length)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 367,
+      "afterLine": 383,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)",
+      "afterCode": "expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 374,
+      "afterLine": 390,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery(example.query === undefined ? {} : { kw: example.query })).map(card => card.card_id)).toEqual(example.ids)",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery(example.query === undefined ? {} : { kw: example.query })).map(card => card.card_id)).toEqual(example.ids)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 380,
+      "afterLine": 396,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ kw }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ kw }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 382,
+      "afterLine": 398,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(readFileSync(resolve('server/utils/cardSearch/search.ts'), 'utf8')).not.toContain('JSON.stringify(card)')",
+      "afterCode": "expect(readFileSync(resolve('server/utils/cardSearch/search.ts'), 'utf8')).not.toContain('JSON.stringify(card)')"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 391,
+      "afterLine": 407,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)",
+      "afterCode": "expect(searchCards(makeCatalogCards(), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 400,
+      "afterLine": 416,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery(example.query === undefined ? {} : { att: example.query })).map(card => card.card_id)).toEqual(example.ids)",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery(example.query === undefined ? {} : { att: example.query })).map(card => card.card_id)).toEqual(example.ids)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 404,
+      "afterLine": 420,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(makeCatalogCards(), parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(['A'])",
+      "afterCode": "expect(searchCards(makeCatalogCards(), parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(['A'])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 412,
+      "afterLine": 428,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(['A'])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(['A'])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 414,
+      "afterLine": 430,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ ...query, ...extra }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ ...query, ...extra }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 431,
+      "afterLine": 447,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([present, zero, absent], include)).toHaveLength(2)",
+      "afterCode": "expect(searchCards([present, zero, absent], include)).toHaveLength(2)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 435,
+      "afterLine": 451,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([present, zero, absent], exclude)).toHaveLength(1)",
+      "afterCode": "expect(searchCards([present, zero, absent], exclude)).toHaveLength(1)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 436,
+      "afterLine": 452,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([present, zero, absent], { ...exclude, initiative: { ...exclude.initiative, value: null } })).toHaveLength(1)",
+      "afterCode": "expect(searchCards([present, zero, absent], { ...exclude, initiative: { ...exclude.initiative, value: null } })).toHaveLength(1)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 449,
+      "afterLine": 465,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([zero, two], criteria)).toHaveLength(2)",
+      "afterCode": "expect(searchCards([zero, two], criteria)).toHaveLength(2)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 452,
+      "afterLine": 468,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([zero, two], criteria)).toHaveLength(0)",
+      "afterCode": "expect(searchCards([zero, two], criteria)).toHaveLength(0)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 467,
+      "afterLine": 483,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([hero, nonHero], heroCriteria)).toHaveLength(1)",
+      "afterCode": "expect(searchCards([hero, nonHero], heroCriteria)).toHaveLength(1)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 473,
+      "afterLine": 489,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([hero, nonHero], levelCriteria)).toHaveLength(1)",
+      "afterCode": "expect(searchCards([hero, nonHero], levelCriteria)).toHaveLength(1)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 491,
+      "afterLine": 507,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([noSlots, zeroSlot, positiveSlot], criteria)).toEqual([noSlots, zeroSlot])",
+      "afterCode": "expect(searchCards([noSlots, zeroSlot, positiveSlot], criteria)).toEqual([noSlots, zeroSlot])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 508,
+      "afterLine": 524,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([splitSlots, oneLargeRow], criteria)).toEqual([oneLargeRow])",
+      "afterCode": "expect(searchCards([splitSlots, oneLargeRow], criteria)).toEqual([oneLargeRow])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 525,
+      "afterLine": 541,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([fireOnly, both], orCriteria)).toEqual([fireOnly, both])",
+      "afterCode": "expect(searchCards([fireOnly, both], orCriteria)).toEqual([fireOnly, both])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 528,
+      "afterLine": 544,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([fireOnly, both], andCriteria)).toEqual([both])",
+      "afterCode": "expect(searchCards([fireOnly, both], andCriteria)).toEqual([both])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 548,
+      "afterLine": 564,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([distributed], criteria)).toEqual([])",
+      "afterCode": "expect(searchCards([distributed], criteria)).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 549,
+      "afterLine": 565,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([sameEffect], criteria)).toEqual([sameEffect])",
+      "afterCode": "expect(searchCards([sameEffect], criteria)).toEqual([sameEffect])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 553,
+      "afterLine": 569,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([reportedCard], reportedCriteria)).toEqual([])",
+      "afterCode": "expect(searchCards([reportedCard], reportedCriteria)).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 575,
+      "afterLine": 591,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery(query))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery(query))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 596,
+      "afterLine": 612,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([sameEffect], parseCardSearchQuery(query))).toEqual([sameEffect])",
+      "afterCode": "expect(searchCards([sameEffect], parseCardSearchQuery(query))).toEqual([sameEffect])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 597,
+      "afterLine": 613,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([distributed], parseCardSearchQuery(query))).toEqual([])",
+      "afterCode": "expect(searchCards([distributed], parseCardSearchQuery(query))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 605,
+      "afterLine": 621,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards(cards, parseCardSearchQuery({ etx: query })).some(card => card.reference_label === referenceLabel)).toBe(true)",
+      "afterCode": "expect(searchCards(cards, parseCardSearchQuery({ etx: query })).some(card => card.reference_label === referenceLabel)).toBe(true)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 612,
+      "afterLine": 628,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'ｶﾞｰﾄﾞ　ａｂｃ' }))).toEqual([card])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'ｶﾞｰﾄﾞ　ａｂｃ' }))).toEqual([card])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 613,
+      "afterLine": 629,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'カ\\u3099ード ＡＢＣ' }))).toEqual([card])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'カ\\u3099ード ＡＢＣ' }))).toEqual([card])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 620,
+      "afterLine": 636,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'e\\u0301' }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'e\\u0301' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 627,
+      "afterLine": 643,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: '1' }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: '1' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 628,
+      "afterLine": 644,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'I' }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'I' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 629,
+      "afterLine": 645,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'カタカナ' }))).toEqual([])",
+      "afterCode": "expect(searchCards([card], parseCardSearchQuery({ etx: 'カタカナ' }))).toEqual([])"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 640,
+      "afterLine": 656,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(searchCards([card], criteria)).toEqual([card])",
+      "afterCode": "expect(searchCards([card], criteria)).toEqual([card])"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 12,
+      "afterLine": 17,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards(source, key, order).map(row => row.card.card_id)).toEqual(fixtureOrders[key][order])",
+      "afterCode": "expect(sortSourceCards(source, key, order).map(row => row.card.card_id)).toEqual(fixtureOrders[key][order])"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 13,
+      "afterLine": 18,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify(source)).toBe(before)",
+      "afterCode": "expect(JSON.stringify(source)).toBe(before)"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 30,
+      "afterLine": 35,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards([absent, sources[0]!, missing, both], 'initiative', order).map(row => row.card.card_id)).toEqual(['U0a', 'fallback', 'N1', 'absent'])",
+      "afterCode": "expect(sortSourceCards([absent, sources[0]!, missing, both], 'initiative', order).map(row => row.card.card_id)).toEqual(['U0a', 'fallback', 'N1', 'absent'])"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 31,
+      "afterLine": 36,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards([sources[8]!, sources[0]!], 'initiative', order)).toEqual([sources[0], sources[8]])",
+      "afterCode": "expect(sortSourceCards([sources[8]!, sources[0]!], 'initiative', order)).toEqual([sources[0], sources[8]])"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 34,
+      "afterLine": 39,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards([duplicate, both], 'id', order).map(row => row.sourceIndex)).toEqual([1, 12])",
+      "afterCode": "expect(sortSourceCards([duplicate, both], 'id', order).map(row => row.sourceIndex)).toEqual([1, 12])"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 44,
+      "afterLine": 49,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards(missing, key, order).map(row => row.card.card_id)).toEqual(['N1', 'N2'])",
+      "afterCode": "expect(sortSourceCards(missing, key, order).map(row => row.card.card_id)).toEqual(['N1', 'N2'])"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 45,
+      "afterLine": 50,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards([duplicate, sources[4]!], key, order).map(row => row.card.card_id)).toEqual(['E0', 'E0b'])",
+      "afterCode": "expect(sortSourceCards([duplicate, sources[4]!], key, order).map(row => row.card.card_id)).toEqual(['E0', 'E0b'])"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 50,
+      "afterLine": 55,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards(source, key, 'asc')).toEqual(sortSourceCards(source, key, 'asc'))",
+      "afterCode": "expect(sortSourceCards(source, key, 'asc')).toEqual(sortSourceCards(source, key, 'asc'))"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 51,
+      "afterLine": 56,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards(source, key, 'desc')).toHaveLength(source.length)",
+      "afterCode": "expect(sortSourceCards(source, key, 'desc')).toHaveLength(source.length)"
+    },
+    {
+      "file": "server/utils/cardSearch/sort.test.ts",
+      "beforeLine": 55,
+      "afterLine": 60,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(sortSourceCards(source, 'rarity', 'desc').map(item => item.sourceIndex)).toEqual([0, 1, 2])",
+      "afterCode": "expect(sortSourceCards(source, 'rarity', 'desc').map(item => item.sourceIndex)).toEqual([0, 1, 2])"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 21,
+      "afterLine": 32,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result).toEqual({ ...page.response, items: ids.map(id => projected[id]) })",
+      "afterCode": "expect(result).toEqual({ ...page.response, items: ids.map(id => projected[id]) })"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 25,
+      "afterLine": 36,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)",
+      "afterCode": "expect(createHash('sha256').update(JSON.stringify(body)).digest('hex')).toBe(page.responseSha256)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 36,
+      "afterLine": 47,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.totalCount).toBe(example.ids.length)",
+      "afterCode": "expect(result.totalCount).toBe(example.ids.length)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 40,
+      "afterLine": 51,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(ids).toEqual([...example.ids].sort((a, b) => a.localeCompare(b)))",
+      "afterCode": "expect(ids).toEqual([...example.ids].sort((a, b) => a.localeCompare(b)))"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 44,
+      "afterLine": 55,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search('kw=ダメージ').totalCount).toBe(149)",
+      "afterCode": "expect(search('kw=ダメージ').totalCount).toBe(149)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 46,
+      "afterLine": 57,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify(getSourceCards())).toBe(before)",
+      "afterCode": "expect(JSON.stringify(getSourceCards())).toBe(before)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 60,
+      "afterLine": 71,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.sort).toEqual({ key, order })",
+      "afterCode": "expect(result.sort).toEqual({ key, order })"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 61,
+      "afterLine": 72,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.items.map(card => card.card_id)).toEqual(fixtureOrders[key][order])",
+      "afterCode": "expect(result.items.map(card => card.card_id)).toEqual(fixtureOrders[key][order])"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 62,
+      "afterLine": 73,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify(prepared)).toBe(before)",
+      "afterCode": "expect(JSON.stringify(prepared)).toBe(before)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 63,
+      "afterLine": 74,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify(query)).toBe(queryBefore)",
+      "afterCode": "expect(JSON.stringify(query)).toBe(queryBefore)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 64,
+      "afterLine": 75,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(JSON.stringify(source)).toBe(sourceBefore)",
+      "afterCode": "expect(JSON.stringify(source)).toBe(sourceBefore)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 73,
+      "afterLine": 84,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result).toEqual({ ...reference, page, sort: { key, order }, items: ids.slice((page - 1) * perPage, page * perPage).map(id => projected[id]) })",
+      "afterCode": "expect(result).toEqual({ ...reference, page, sort: { key, order }, items: ids.slice((page - 1) * perPage, page * perPage).map(id => projected[id]) })"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 76,
+      "afterLine": 87,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(actual).toEqual(ids)",
+      "afterCode": "expect(actual).toEqual(ids)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 77,
+      "afterLine": 88,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(new Set(actual).size).toBe(ids.length)",
+      "afterCode": "expect(new Set(actual).size).toBe(ids.length)"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 78,
+      "afterLine": 89,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(search(`sort=${key}&order=${order}&perPage=${perPage}&page=999`)).toEqual(search(`sort=${key}&order=${order}&perPage=${perPage}&page=${totalPages}`))",
+      "afterCode": "expect(search(`sort=${key}&order=${order}&perPage=${perPage}&page=999`)).toEqual(search(`sort=${key}&order=${order}&perPage=${perPage}&page=${totalPages}`))"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 81,
+      "afterLine": 92,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result).toMatchObject({ page: 1, totalPages: 1, totalCount: count })",
+      "afterCode": "expect(result).toMatchObject({ page: 1, totalPages: 1, totalCount: count })"
+    },
+    {
+      "file": "shared/cardSearch/runner.test.ts",
+      "beforeLine": 82,
+      "afterLine": 93,
+      "reason": "元Assertion式を維持",
+      "beforeCode": "expect(result.items).toEqual(getSourceCards().slice(0, count).map(row => projected[row.card.card_id]))",
+      "afterCode": "expect(result.items).toEqual(getSourceCards().slice(0, count).map(row => projected[row.card.card_id]))"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 364,
+      "afterLine": 380,
+      "reason": "catalog realCasesの入力だけ歴史sourcesへ変更、固定期待ID/全比較を保持",
+      "beforeCode": "expect(searchCards(getSourceCards().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)",
+      "afterCode": "expect(searchCards(historicalSources().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)"
+    },
+    {
+      "file": "server/utils/cardSearch/search.test.ts",
+      "beforeLine": 388,
+      "afterLine": 404,
+      "reason": "catalog realCasesの入力だけ歴史sourcesへ変更、固定期待ID/全比較を保持",
+      "beforeCode": "expect(searchCards(getSourceCards().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)",
+      "afterCode": "expect(searchCards(historicalSources().map(source => source.card), parseFixtureQuery(example.query)).map(card => card.card_id)).toEqual(example.ids)"
+    }
+  ],
+  "unmatchedAssertions": []
+}

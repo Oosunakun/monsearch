@@ -1,0 +1,37 @@
+{
+  "fixtureId": "historical-014-015",
+  "sourceRevision": "27209dfd0d5fb35cf0900aaa1d0cbcd8391e05e5",
+  "sourcePath": "app/utils/mockData/items/cards.json",
+  "sourceBlob": "8fc90b208e4a2fefe9577fb54d234e934cdd405d",
+  "sha256": "a53a1730a5cc371f44752185baeb9255671da1e63b21c38e2c8b3a3ae05c70ca",
+  "byteLength": 2283572,
+  "version": "1.0.0",
+  "cardCount": 482,
+  "oracles": [
+    {
+      "path": "specs/014-search-catalog-normalization/verification/baseline.json",
+      "metadata": "input.sha256",
+      "comparison": "38 cases / classifications / projectedItems / non-atk response hash"
+    },
+    {
+      "path": "specs/014-search-catalog-normalization/verification/expected-catalog-results.json",
+      "metadata": "input.sha256",
+      "comparison": "catalog fixed IDs"
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/expected-sort-results.json",
+      "metadata": "oracle-provenance.md",
+      "comparison": "015 numeric order; old atk uses revisedAtkPageIds with 014 DTO"
+    },
+    {
+      "path": "specs/015-search-result-sorting/verification/oracle-buckets.json",
+      "metadata": "oracle-provenance.md",
+      "comparison": "groups and numeric values"
+    },
+    {
+      "path": "server/api/fixtures/cards-response-baseline.json",
+      "metadata": "currentInput.cardsSha256",
+      "comparison": "corrected 16 responses; sourceBaseline is historical provenance only"
+    }
+  ]
+}

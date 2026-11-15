@@ -1,3 +1,4 @@
+import { useAnalytics } from './useAnalytics'
 import type { QuickSearchOption, QuickSearchState, QuickSearchTarget } from '~~/app/types/ui/layout'
 import { buildQuickSearchQuery } from '~~/app/utils/search/quickSearchQueryBuilder'
 import type { Router } from 'vue-router'
@@ -10,6 +11,7 @@ const createInitialQuickSearchState = (): QuickSearchState => ({
 
 export const useQuickSearch = (router: Pick<Router, 'push'> = useRouter()) => {
 
+  const analytics = useAnalytics()
   const quickSearchState = ref<QuickSearchState>(createInitialQuickSearchState())
 
   const cardPools: QuickSearchOption[] = [
@@ -25,9 +27,12 @@ export const useQuickSearch = (router: Pick<Router, 'push'> = useRouter()) => {
 
   const runQuickSearch = async () => {
     const query = buildQuickSearchQuery(quickSearchState.value)
-    await router.push(Object.keys(query).length > 0
-      ? { path: '/cards', query }
-      : { path: '/cards' })
+    const token = analytics.submit('quick', query)
+    try {
+      await router.push(Object.keys(query).length > 0
+        ? { path: '/cards', query }
+        : { path: '/cards' })
+    } finally { analytics.finishSubmit(token) }
   }
 
   return {

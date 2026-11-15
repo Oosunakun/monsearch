@@ -1,0 +1,806 @@
+{
+  "recordedAt": "2026-10-31T12:18:50.892Z",
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "deleted": "specs/016-decouple-search-test-data/verification/logs/jsonl-active-run.json",
+  "deletedRunId": "jsonl-worker2-17d86fe846db47a99845e75c3c972b42",
+  "runMetadata": "specs/016-decouple-search-test-data/verification/logs/jsonl-worker2.txt.json",
+  "rawEvidence": [
+    "specs/016-decouple-search-test-data/verification/logs/jsonl-timing-jsonl-worker2-17d86fe846db47a99845e75c3c972b42-21496-0-0.jsonl"
+  ],
+  "activeSourceReferences": [],
+  "markdownFileLinks": 366,
+  "brokenMarkdown": [],
+  "jsonFileReferences": 2516,
+  "brokenJson": [],
+  "unexpectedChanges": [],
+  "indexUnchanged": true,
+  "states": {
+    "M ": 17,
+    "clean": 14,
+    "??": 38,
+    " M": 1,
+    "MM": 5,
+    "A ": 78,
+    "AM": 1
+  },
+  "files": [
+    {
+      "path": "app/components/cards/result/layout/ResultList.test.ts",
+      "state": "M ",
+      "bytes": 10625
+    },
+    {
+      "path": "app/components/cards/result/list/ItemEffect.test.ts",
+      "state": "M ",
+      "bytes": 4730
+    },
+    {
+      "path": "app/components/cards/result/list/ItemHeaderName.test.ts",
+      "state": "M ",
+      "bytes": 2186
+    },
+    {
+      "path": "app/components/products/ProductTableRow.test.ts",
+      "state": "M ",
+      "bytes": 2729
+    },
+    {
+      "path": "app/composables/useCardSearch.test.ts",
+      "state": "M ",
+      "bytes": 12654
+    },
+    {
+      "path": "app/pages/cards/index.test.ts",
+      "state": "M ",
+      "bytes": 4409
+    },
+    {
+      "path": "app/pages/cards/search.test.ts",
+      "state": "M ",
+      "bytes": 9974
+    },
+    {
+      "path": "app/pages/product-set-navigation.test.ts",
+      "state": "M ",
+      "bytes": 1430
+    },
+    {
+      "path": "app/utils/cardSearchDataset.test.ts",
+      "state": "M ",
+      "bytes": 2341
+    },
+    {
+      "path": "app/utils/search/cardSearchQueryRouter.test.ts",
+      "state": "M ",
+      "bytes": 3250
+    },
+    {
+      "path": "app/utils/search/productSearchLocation.test.ts",
+      "state": "M ",
+      "bytes": 1111
+    },
+    {
+      "path": "server/api/cards.get.test.ts",
+      "state": "M ",
+      "bytes": 24205
+    },
+    {
+      "path": "server/utils/cardSearch/normalizeCatalogText.test.ts",
+      "state": "M ",
+      "bytes": 2527
+    },
+    {
+      "path": "server/utils/cardSearch/project.test.ts",
+      "state": "M ",
+      "bytes": 1820
+    },
+    {
+      "path": "server/utils/cardSearch/search.test.ts",
+      "state": "M ",
+      "bytes": 37094
+    },
+    {
+      "path": "server/utils/cardSearch/sort.test.ts",
+      "state": "M ",
+      "bytes": 3432
+    },
+    {
+      "path": "shared/cardSearch/runner.test.ts",
+      "state": "M ",
+      "bytes": 5343
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/checklists/requirements.md",
+      "state": "clean",
+      "bytes": 5166
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/commit-file-inventory.md",
+      "state": "??",
+      "bytes": 29100
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/contracts/search-test-data.md",
+      "state": "clean",
+      "bytes": 12020
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/data-model.md",
+      "state": "clean",
+      "bytes": 7292
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/final-review.md",
+      "state": "??",
+      "bytes": 7383
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/human-decisions.md",
+      "state": " M",
+      "bytes": 11088
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/performance-followup-plan.md",
+      "state": "??",
+      "bytes": 6635
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/plan.md",
+      "state": "clean",
+      "bytes": 10436
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/quickstart.md",
+      "state": "MM",
+      "bytes": 9669
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/research.md",
+      "state": "clean",
+      "bytes": 15470
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/spec.md",
+      "state": "clean",
+      "bytes": 20458
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/tasks.md",
+      "state": "MM",
+      "bytes": 34857
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/test-inventory.md",
+      "state": "MM",
+      "bytes": 11725
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/.gitignore",
+      "state": "clean",
+      "bytes": 81
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/accepted-final-audit.json",
+      "state": "??",
+      "bytes": 10621
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/assertion-index-before.json",
+      "state": "clean",
+      "bytes": 268199
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/assertion-map.md",
+      "state": "MM",
+      "bytes": 41557
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/assertion-preservation.json",
+      "state": "A ",
+      "bytes": 184162
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/assertion-review-before.json",
+      "state": "A ",
+      "bytes": 486164
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/cleanup-reference-audit.json",
+      "state": "??",
+      "bytes": 23087
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/final-gate-audit.json",
+      "state": "A ",
+      "bytes": 554
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/final-review-audit.json",
+      "state": "??",
+      "bytes": 12286
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/jsonl-code-state.json",
+      "state": "??",
+      "bytes": 842
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/jsonl-timing-analysis.json",
+      "state": "??",
+      "bytes": 90429
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/accepted-final-generate.txt",
+      "state": "??",
+      "bytes": 35963
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/accepted-final-generate.txt.json",
+      "state": "??",
+      "bytes": 213
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/accepted-final-lint.txt",
+      "state": "??",
+      "bytes": 24
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/accepted-final-lint.txt.json",
+      "state": "??",
+      "bytes": 209
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/accepted-final-typecheck.txt",
+      "state": "??",
+      "bytes": 692
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/accepted-final-typecheck.txt.json",
+      "state": "??",
+      "bytes": 214
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/before-test-run.json",
+      "state": "clean",
+      "bytes": 169
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/before-test.txt",
+      "state": "clean",
+      "bytes": 698
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/diagnostics-complete.txt",
+      "state": "A ",
+      "bytes": 884
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185005-test.txt",
+      "state": "A ",
+      "bytes": 1354186
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185005-test.txt.json",
+      "state": "A ",
+      "bytes": 390
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185137-lint.txt",
+      "state": "A ",
+      "bytes": 24
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185137-lint.txt.json",
+      "state": "A ",
+      "bytes": 592
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185147-typecheck.txt",
+      "state": "A ",
+      "bytes": 692
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185147-typecheck.txt.json",
+      "state": "A ",
+      "bytes": 814
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185233-generate.txt",
+      "state": "A ",
+      "bytes": 35913
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/elevated-baseline-20261031-185233-generate.txt.json",
+      "state": "A ",
+      "bytes": 1032
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-test.txt",
+      "state": "A ",
+      "bytes": 923
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-ui-timeout-diagnostic.txt",
+      "state": "A ",
+      "bytes": 885
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-generate.txt",
+      "state": "A ",
+      "bytes": 35942
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-generate.txt.json",
+      "state": "A ",
+      "bytes": 336
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-lint.txt",
+      "state": "A ",
+      "bytes": 24
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-lint.txt.json",
+      "state": "A ",
+      "bytes": 328
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-test.txt",
+      "state": "A ",
+      "bytes": 926
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-test.txt.json",
+      "state": "A ",
+      "bytes": 337
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-typecheck.txt",
+      "state": "A ",
+      "bytes": 692
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v2-typecheck.txt.json",
+      "state": "A ",
+      "bytes": 339
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v3-test.txt",
+      "state": "A ",
+      "bytes": 2011
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v3-test.txt.json",
+      "state": "A ",
+      "bytes": 337
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v4-test.txt",
+      "state": "A ",
+      "bytes": 2011
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v4-test.txt.json",
+      "state": "A ",
+      "bytes": 373
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v5-test.txt",
+      "state": "A ",
+      "bytes": 2011
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-v5-test.txt.json",
+      "state": "A ",
+      "bytes": 370
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-generate.txt",
+      "state": "A ",
+      "bytes": 35936
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-generate.txt.json",
+      "state": "A ",
+      "bytes": 342
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-lint.txt",
+      "state": "A ",
+      "bytes": 24
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-lint.txt.json",
+      "state": "A ",
+      "bytes": 334
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-test.txt",
+      "state": "A ",
+      "bytes": 923
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-test.txt.json",
+      "state": "A ",
+      "bytes": 343
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-typecheck.txt",
+      "state": "A ",
+      "bytes": 692
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/final-verified-typecheck.txt.json",
+      "state": "A ",
+      "bytes": 345
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/fixture-complete.txt",
+      "state": "A ",
+      "bytes": 880
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/fixture-green-2.txt",
+      "state": "A ",
+      "bytes": 881
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/fixture-green.txt",
+      "state": "A ",
+      "bytes": 2026
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/fixture-red.txt",
+      "state": "A ",
+      "bytes": 2485
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-instrumented-search-test.txt",
+      "state": "??",
+      "bytes": 12838
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-original-search-test.txt",
+      "state": "??",
+      "bytes": 9974
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-preflight.jsonl",
+      "state": "??",
+      "bytes": 216
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-standard.txt",
+      "state": "??",
+      "bytes": 1983
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-standard.txt.json",
+      "state": "??",
+      "bytes": 419
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-timing-jsonl-standard-f1321461b9b04cddb0168b2f9ba64fdb-42064-0-4.jsonl",
+      "state": "??",
+      "bytes": 18666
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-timing-jsonl-standard-f1321461b9b04cddb0168b2f9ba64fdb-44232-0-0.jsonl",
+      "state": "??",
+      "bytes": 18653
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-timing-jsonl-worker2-17d86fe846db47a99845e75c3c972b42-21496-0-0.jsonl",
+      "state": "??",
+      "bytes": 18642
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-worker2.txt",
+      "state": "??",
+      "bytes": 1684
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/jsonl-worker2.txt.json",
+      "state": "??",
+      "bytes": 433
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/master-green-2.txt",
+      "state": "A ",
+      "bytes": 884
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/master-green.txt",
+      "state": "A ",
+      "bytes": 1999
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/master-red.txt",
+      "state": "A ",
+      "bytes": 4008
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/migration-full-first.txt",
+      "state": "A ",
+      "bytes": 2826
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/migration-lint-2.txt",
+      "state": "A ",
+      "bytes": 24
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/migration-lint.txt",
+      "state": "A ",
+      "bytes": 1506
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/migration-typecheck.txt",
+      "state": "A ",
+      "bytes": 692
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/new-test-lint.txt",
+      "state": "A ",
+      "bytes": 249
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/node-suites.txt",
+      "state": "A ",
+      "bytes": 885
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/resume-20261031-164522-environment.json",
+      "state": "clean",
+      "bytes": 794
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/resume-20261031-164522-environment.txt",
+      "state": "clean",
+      "bytes": 691
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/scenario-boundary.txt",
+      "state": "A ",
+      "bytes": 896
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/search-migrated.txt",
+      "state": "A ",
+      "bytes": 886
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/timing-instrumented-search-test.txt",
+      "state": "??",
+      "bytes": 11348
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/timing-original-search-test.txt",
+      "state": "??",
+      "bytes": 9974
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/timing-standard.txt",
+      "state": "??",
+      "bytes": 1911
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/timing-standard.txt.json",
+      "state": "??",
+      "bytes": 356
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/timing-worker2.txt",
+      "state": "??",
+      "bytes": 1685
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/timing-worker2.txt.json",
+      "state": "??",
+      "bytes": 371
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/updates-complete.txt",
+      "state": "A ",
+      "bytes": 883
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/updates-empty-safe.txt",
+      "state": "A ",
+      "bytes": 883
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/updates-green.txt",
+      "state": "A ",
+      "bytes": 883
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/updates-lint.txt",
+      "state": "A ",
+      "bytes": 24
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/updates-no-effect-safe.txt",
+      "state": "A ",
+      "bytes": 1978
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/updates-red.txt",
+      "state": "A ",
+      "bytes": 2467
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/updates-typecheck.txt",
+      "state": "A ",
+      "bytes": 692
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/us3-complete.txt",
+      "state": "A ",
+      "bytes": 886
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/us3-focused.txt",
+      "state": "A ",
+      "bytes": 884
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/worker2-diagnostic-1.txt",
+      "state": "??",
+      "bytes": 937
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/worker2-diagnostic-1.txt.json",
+      "state": "??",
+      "bytes": 445
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/worker2-diagnostic-2.txt",
+      "state": "??",
+      "bytes": 938
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/logs/worker2-diagnostic-2.txt.json",
+      "state": "??",
+      "bytes": 445
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/protected-files-after.json",
+      "state": "AM",
+      "bytes": 35972
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/protected-files-before.json",
+      "state": "clean",
+      "bytes": 36888
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/public-assets-audit.json",
+      "state": "A ",
+      "bytes": 1199
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/results.md",
+      "state": "MM",
+      "bytes": 43484
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/start-state.json",
+      "state": "clean",
+      "bytes": 546
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/timing-code-state.json",
+      "state": "??",
+      "bytes": 403
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/timing-comparison.json",
+      "state": "??",
+      "bytes": 2025
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/update-matrix.json",
+      "state": "A ",
+      "bytes": 30039
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/validation-state-final.json",
+      "state": "A ",
+      "bytes": 52880
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/validation-state-v5.json",
+      "state": "A ",
+      "bytes": 53292
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/validation-state.json",
+      "state": "A ",
+      "bytes": 51548
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/worker2-diagnostic-comparison.json",
+      "state": "??",
+      "bytes": 3332
+    },
+    {
+      "path": "specs/016-decouple-search-test-data/verification/worker2-diagnostic-state.json",
+      "state": "??",
+      "bytes": 54316
+    },
+    {
+      "path": "tests/fixtures/cardSearch/cards.ts",
+      "state": "A ",
+      "bytes": 5940
+    },
+    {
+      "path": "tests/fixtures/cardSearch/fixtureIntegrity.test.ts",
+      "state": "A ",
+      "bytes": 2532
+    },
+    {
+      "path": "tests/fixtures/cardSearch/historical/014-015/cards.json",
+      "state": "A ",
+      "bytes": 2283572
+    },
+    {
+      "path": "tests/fixtures/cardSearch/historical/014-015/manifest.json",
+      "state": "A ",
+      "bytes": 1458
+    },
+    {
+      "path": "tests/fixtures/cardSearch/projection-expected.json",
+      "state": "A ",
+      "bytes": 1370
+    },
+    {
+      "path": "tests/fixtures/cardSearch/sources.ts",
+      "state": "A ",
+      "bytes": 622
+    },
+    {
+      "path": "tests/fixtures/searchOptions/products.ts",
+      "state": "A ",
+      "bytes": 797
+    },
+    {
+      "path": "tests/helpers/masterDataScenarios.ts",
+      "state": "A ",
+      "bytes": 7981
+    },
+    {
+      "path": "tests/helpers/masterDataValidation.ts",
+      "state": "A ",
+      "bytes": 10128
+    },
+    {
+      "path": "tests/integration/cardSearchMaster.test.ts",
+      "state": "A ",
+      "bytes": 2724
+    },
+    {
+      "path": "tests/integration/cardSearchRealData.test.ts",
+      "state": "A ",
+      "bytes": 7651
+    },
+    {
+      "path": "tests/integration/masterDataUpdates.test.ts",
+      "state": "A ",
+      "bytes": 12634
+    },
+    {
+      "path": "tests/integration/searchOptionsMaster.test.ts",
+      "state": "A ",
+      "bytes": 3667
+    }
+  ],
+  "limitations": [
+    "Markdown anchorの検査ではなくfileリンクの存在検査",
+    "Git状態文字列/計測snapshot内の削除済みパスは履歴として保持",
+    "一覧はstage操作を行わないため将来のcommit包含を保証しない",
+    "JSON参照監査は新規監査JSON自体を除く。生成後サイズは最終更新時に確定"
+  ],
+  "sourceDifferences": [],
+  "protectedDifferences": []
+}

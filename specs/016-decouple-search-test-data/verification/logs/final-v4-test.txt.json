@@ -1,0 +1,9 @@
+{
+  "command": "npm.cmd run test -- --run",
+  "startedAt": "2026-10-31T19:54:45.8259302+09:00",
+  "finishedAt": "2026-10-31T19:56:46.2701677+09:00",
+  "revision": "645693042746ae45a752ee3e22b341761ef897f1",
+  "exitCode": 1,
+  "state": "verification/validation-state-final.json",
+  "log": "specs/016-decouple-search-test-data/verification/logs/final-v4-test.txt"
+}

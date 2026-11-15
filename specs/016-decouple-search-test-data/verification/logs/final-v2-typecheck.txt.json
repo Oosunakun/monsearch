@@ -1,0 +1,8 @@
+{
+  "command": "npx.cmd nuxt typecheck",
+  "startedAt": "2026-10-31T19:43:10.3133411+09:00",
+  "finishedAt": "2026-10-31T19:44:26.1242037+09:00",
+  "exitCode": 0,
+  "state": "verification/validation-state.json",
+  "log": "F:\\Projects\\monsearch\\specs\\016-decouple-search-test-data\\verification\\logs\\final-v2-typecheck.txt"
+}

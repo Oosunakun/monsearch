@@ -1,0 +1,8 @@
+{
+  "command": "npm.cmd run test -- --run",
+  "startedAt": "2026-10-31T19:40:59.6362037+09:00",
+  "finishedAt": "2026-10-31T19:42:50.8282905+09:00",
+  "exitCode": 0,
+  "state": "verification/validation-state.json",
+  "log": "F:\\Projects\\monsearch\\specs\\016-decouple-search-test-data\\verification\\logs\\final-v2-test.txt"
+}

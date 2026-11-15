@@ -1,0 +1,6 @@
+{
+  "startedAt": "2026-10-31T16:34:31.5867065+09:00",
+  "finishedAt": "2026-10-31T16:34:31.7796641+09:00",
+  "command": "npm run test -- --run",
+  "exitCode": 1
+}

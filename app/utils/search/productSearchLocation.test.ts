@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { buildProductSearchLocation } from './productSearchLocation'
 
 describe('buildProductSearchLocation', () => {
@@ -20,3 +20,5 @@ describe('buildProductSearchLocation', () => {
     expect(buildProductSearchLocation(value)).toBeUndefined()
   })
 })
+
+vi.mock('~~/app/utils/constants/search/options/product', async () => { const { productOptions } = await import('~~/tests/fixtures/searchOptions/products'); return { PRODUCT_OPTIONS: productOptions, PRODUCT_VALUES: new Set(productOptions.map(row => row.value)) } })

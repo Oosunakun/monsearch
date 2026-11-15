@@ -2,7 +2,7 @@
 import ContentMaxWidthContainer from '~~/app/components/common/layout/ContentMaxWidthContainer.vue'
 import SectionHeader from '~~/app/components/common/layout/SectionHeader.vue'
 import SectionCardShell from '~~/app/components/common/layout/SectionCardShell.vue'
-import ExternalLinkCard from '~~/app/components/about/ExternalLinkCard.vue'
+import ExternalLinkCard from '~~/app/components/common/links/ExternalLinkCard.vue'
 
 import {
   mockAboutLinkItems,

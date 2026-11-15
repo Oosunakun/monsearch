@@ -4,13 +4,7 @@ defineProps<{
 }>()
 
 </script>
-
 <template>
-  <div 
-    class="pa-4 text-caption text-medium-emphasis transition-swing"
-    :class="{ 'opacity-0': rail }"
-    style="white-space: nowrap; overflow: hidden; transition: opacity 0.2s; font-size: 0.75em;"
-  >
-      &copy; 2026 Monsearch Archive
-  </div>
+  <!-- 将来のフッター表示用にコンポーネントを維持する。現時点では何も描画しない。 -->
+  <span v-if="false"></span>
 </template>

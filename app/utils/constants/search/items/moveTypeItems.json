@@ -5,11 +5,6 @@
     "color": "#EEEEEE"
   },
   {
-    "label": "長距離飛行",
-    "value": "LongFly",
-    "color": "#EEEEEE"
-  },
-  {
     "label": "飛行",
     "value": "Fly",
     "color": "#EEEEEE"
