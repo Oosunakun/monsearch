@@ -2,6 +2,9 @@ import { copyFile, mkdir } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createCardsJsonHandler } from './dev/cardsJsonHandler'
+import { createBuildInfo, requireDistributionSha } from './dev/buildInfo'
+
+const buildInfo = createBuildInfo(fileURLToPath(new URL('.', import.meta.url)))
 
 const siteUrlInput = process.env.NUXT_PUBLIC_SITE_URL
 let siteUrl = ''
@@ -25,6 +28,7 @@ if (siteUrlInput !== undefined && siteUrlInput !== '') {
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
+      buildInfo,
       siteUrl,
       analytics: {
         enabled: false,
@@ -39,6 +43,9 @@ export default defineNuxtConfig({
     handler: createCardsJsonHandler(fileURLToPath(new URL('./app/utils/mockData/items/cards.json', import.meta.url)))
   }],
   hooks: {
+    ready(nuxt) {
+      nuxt.hook('build:before', () => requireDistributionSha(buildInfo.commitSha, nuxt.options))
+    },
     async 'nitro:build:public-assets'(nitro) {
       const target = join(nitro.options.output.publicDir, 'data/cards.json')
       await mkdir(dirname(target), { recursive: true })

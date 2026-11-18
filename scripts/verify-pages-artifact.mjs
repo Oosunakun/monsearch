@@ -4,6 +4,7 @@ import { existsSync, lstatSync, readdirSync, readFileSync } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { verifyAnalyticsArtifact } from './verify-analytics-artifact.mjs'
+import { verifyBuildInfoArtifact } from './verify-build-info-artifact.mjs'
 
 const productionOrigin = 'https://monsearch.gifumoko.net'
 const indexableRoutes = ['/', '/about', '/rules', '/restrictions', '/links', '/cards/search', '/tournaments']
@@ -110,7 +111,8 @@ export function verifyPagesArtifact({ sourceDir = process.cwd(), outputDir = res
   assert.deepEqual(locs.sort(), indexableRoutes.map(route => productionOrigin + route).sort(), 'sitemap URL集合')
   assert(read('robots.txt').toString().includes(`Sitemap: ${productionOrigin}/sitemap.xml`), 'robots sitemap')
   assert.match(read('_headers').toString(), /\/data\/cards\.json\s+Cache-Control:\s*no-cache/i, 'JSON cache header')
-  return { siteUrl: siteUrl || null, pages, cardCount: data.cards.length, copyChecks, files }
+  const buildInfo = verifyBuildInfoArtifact(output, [...pages, '200.html', '404.html'])
+  return { siteUrl: siteUrl || null, buildInfo, pages, cardCount: data.cards.length, copyChecks, files }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
