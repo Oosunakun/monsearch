@@ -7,6 +7,7 @@
 - 詳細検索（`/cards/search`）：カード名・キーワード・分類・属性・カードセット・数値・能力や効果等の条件を指定できます。
 - 検索結果（`/cards`）：並べ替え、表示件数・ページ切替、条件の編集に対応しています。
 - 検索条件はURLで共有・復元できます。例えば`/cards?nm=アーニャ`はカード名による検索です。
+- 大会情報（`/tournaments`）：ページ表示時にGoogleカレンダーのスケジュールを表示します。同じカレンダーを別タブで開くリンクも利用できます。
 - ルール、使用制限、関連リンク、Aboutを掲載しています。
 
 詳細検索で条件を入力して検索すると、結果画面へ移動します。「条件を編集」で検索フォームへ戻れます。検索にはJavaScriptが必要です。
@@ -15,7 +16,7 @@
 
 Nuxt、Vue、TypeScript（strict）、Vuetifyを使用しています。検証にはESLint、Vitest、Nuxt Test Utilsを使用します。依存バージョンは[package.json](package.json)と[package-lock.json](package-lock.json)を参照してください。
 
-配信構成は**SSG＋CSR**です。Nuxtの`static` presetで7ページのHTMLを生成し、カードデータはブラウザーが`/data/cards.json`から取得して検索します。`ssr: true`は生成時の描画にも使われる設定で、公開時にSSRサーバーや検索API・データベースを動かす構成ではありません。
+配信構成は**SSG＋CSR**です。Nuxtの`static` presetで8ページのHTMLを生成し、カードデータはブラウザーが`/data/cards.json`から取得して検索します。`ssr: true`は生成時の描画にも使われる設定で、公開時にSSRサーバーや検索API・データベースを動かす構成ではありません。
 
 ## 開発環境・セットアップ
 
