@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { verifyAnalyticsArtifact } from './verify-analytics-artifact.mjs'
 
 const productionOrigin = 'https://monsearch.gifumoko.net'
-const indexableRoutes = ['/', '/about', '/rules', '/restrictions', '/links', '/cards/search']
+const indexableRoutes = ['/', '/about', '/rules', '/restrictions', '/links', '/cards/search', '/tournaments']
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 
 // Nuxtが生成するheadタグだけを検査する。HTML全体をDOMとして実行しない。
@@ -65,7 +65,7 @@ export function verifyPagesArtifact({ sourceDir = process.cwd(), outputDir = res
   const routeBlock = config.match(/routes:\s*\[([^\]]+)\]/)?.[1]
   assert(routeBlock, '明示prerender routesがない')
   const routes = [...routeBlock.matchAll(/['"]([^'"]+)['"]/g)].map(([, route]) => route)
-  assert.deepEqual([...routes].sort(), [...indexableRoutes, '/cards'].sort(), '現行7ページと監査契約の差異はReviewが必要')
+  assert.deepEqual([...routes].sort(), [...indexableRoutes, '/cards'].sort(), '現行8ページと監査契約の差異はReviewが必要')
 
   const checkAssets = (html, file) => {
     const refs = [...tags(html, 'script').map(tag => tag.src), ...tags(html, 'link').map(tag => tag.href), ...tags(html, 'img').map(tag => tag.src)].filter(Boolean)

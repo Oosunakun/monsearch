@@ -52,7 +52,7 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false,
       crawlLinks: false,
       failOnError: true,
-      routes: ['/', '/cards', '/about', '/cards/search', '/rules', '/restrictions', '/links']
+      routes: ['/', '/cards', '/about', '/cards/search', '/rules', '/restrictions', '/links', '/tournaments']
     }
   },
   routeRules: {
@@ -63,6 +63,7 @@ export default defineNuxtConfig({
     '/rules': { prerender: true },
     '/restrictions': { prerender: true },
     '/links': { prerender: true },
+    '/tournaments': { prerender: true },
     '/api/**': { prerender: false }
   },
   modules: [

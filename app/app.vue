@@ -3,7 +3,7 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const error = useError()
 const pagePath = computed(() => route.path === '/' ? '/' : route.path.replace(/\/+$/, ''))
-const indexablePaths = new Set(['/', '/about', '/rules', '/restrictions', '/links', '/cards/search'])
+const indexablePaths = new Set(['/', '/about', '/rules', '/restrictions', '/links', '/cards/search', '/tournaments'])
 const publicPage = computed(() => !error.value && (indexablePaths.has(pagePath.value) || pagePath.value === '/cards'))
 
 useHead(() => ({

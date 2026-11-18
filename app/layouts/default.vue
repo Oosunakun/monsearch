@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
   { label: '詳細検索', to: '/cards/search', icon: 'mdi-magnify' },
   { label: '使用制限', to: '/restrictions', icon: 'mdi-alert-octagon' },
   { label: 'ルール', to: '/rules', icon: 'mdi-book-open-variant' },
+  { label: '大会情報', to: '/tournaments', icon: 'mdi-calendar-month-outline' },
   { label: 'リンク', to: '/links', icon: 'mdi-link-variant' },
   { label: 'About', to: '/about', icon: 'mdi-information' }
 ]
