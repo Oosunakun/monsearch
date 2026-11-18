@@ -77,7 +77,7 @@ const { isMounted } = useHydrated()
 
       <template #append>
         <NavigationFooter 
-          :rail = "rail"
+          :rail="!isMobile && rail"
         />
       </template>
     </v-navigation-drawer>
