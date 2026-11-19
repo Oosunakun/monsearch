@@ -10,6 +10,8 @@
 - 大会情報（`/tournaments`）：ページ表示時にGoogleカレンダーのスケジュールを表示します。同じカレンダーを別タブで開くリンクも利用できます。
 - ルール、使用制限、関連リンク、Aboutを掲載しています。
 
+カード検索・各種情報・About更新履歴はv1.0.0で本番公開済みです。v1.1.0では大会情報ページと、ナビゲーション下部のアプリバージョン・GitコミットID（先頭7桁）・ビルド日時（JST）の表示に対応しています。
+
 詳細検索で条件を入力して検索すると、結果画面へ移動します。「条件を編集」で検索フォームへ戻れます。検索にはJavaScriptが必要です。
 
 ## 技術構成
@@ -89,6 +91,8 @@ npm run generate
 
 未設定でも生成できますが、関連するcanonical・OGPのURLタグは省略されます。生成後に配信環境の値だけを変えてもHTMLは更新されません。robots/sitemapの固定URLが自動で環境別に書き換わるわけではありません。
 
+表示バージョンは[About更新履歴](app/utils/mockData/items/about_release_note.json)の最大IDの履歴から取得し、GitコミットID・ビルド日時とともに生成時に固定します。Productionリリースタグのバージョン判定も同じ履歴を使用するため、リリース時は既存履歴を残して追加し、再generateしてください。
+
 ## 静的成果物のローカル確認
 
 `npm run generate`の後、インストール済みWranglerでPagesのローカル配信を起動します。
@@ -105,7 +109,9 @@ npm run generate
 
 `http://127.0.0.1:8788`で検索・直接アクセス・再読み込み、`/data/cards.json`、画像、[第三者表示](public/third-party-notices.txt)（配信時は`/third-party-notices.txt`）を確認し、`Ctrl+C`で停止します。`nuxt preview`や一般のstatic serverではPagesのheader・routingを同じ条件で検証できるとは限りません。
 
-本番Cloudflare Pages/DNS、Preview/Access、GitHub Actions・CI/CDの整備・本番検証は未完了です。上のorigin指定とローカル配信は本番公開を行いません。
+Cloudflare Pagesで独自ドメイン・HTTPSのProductionと、Cloudflare Accessで閲覧を制限するPreviewを配信します。[GitHub ActionsのCI/CD](.github/workflows/pages-ci-cd.yml)は品質検査とWrangler Direct Uploadを実装し、品質検査に成功したmainへのpushでProduction、developへのpushでPreviewへ配信します。デプロイは初回実行に限定し、再実行では配信しません。PRの品質検査はmain・develop・chore/release-preparation宛てが対象です。pushの品質検査はこれら3ブランチとchore/release-ci-cd・chore/release-pages-cdが対象で、integration/next-releaseへのpushは対象外です。上のorigin指定とローカル配信は本番公開を行いません。
+
+自動タグ生成は、`PRODUCTION_RELEASE_TAG_ENABLED`が`true`の場合に、mainへのpushの初回実行で品質検査とProductionデプロイが成功すると、リリースバージョンのAnnotated Tagを作成・Pushする仕組みです。Productionの配信結果とタグ処理の結果はActionsのSummaryで区別します。この仕組みの説明は、本番でのGit認証・タグPushの成功や運用検証の完了を示すものではありません。
 
 ## カードデータの配置・更新・配信
 

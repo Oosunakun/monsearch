@@ -1,3 +1,6 @@
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { createBuildInfo, requireDistributionSha, resolveCommitSha, selectReleaseVersion } from './buildInfo'
 
@@ -48,13 +51,23 @@ describe('ビルド情報の取得', () => {
     expect(() => createBuildInfo('.', { NUXT_PUBLIC_BUILD_INFO_VERSION: 'other' })).toThrow('overrides')
   })
   it('同じ時計入力をUTC ISOとして一度だけ取得する', () => {
-    let calls = 0
-    const result = createBuildInfo(process.cwd(), {}, () => {
-      calls++
-      return new Date('2026-11-18T14:41:04.123Z')
-    })
-    expect(result.builtAtUtc).toBe('2026-11-18T14:41:04.123Z')
-    expect(result.version).toBe('v1.0.0')
-    expect(calls).toBe(1)
+    const root = mkdtempSync(join(tmpdir(), 'monsearch-build-info-'))
+    try {
+      const items = join(root, 'app/utils/mockData/items')
+      mkdirSync(items, { recursive: true })
+      writeFileSync(join(items, 'about_release_note.json'), JSON.stringify([
+        { id: '1', version: 'v1.0.0' },
+      ]))
+      let calls = 0
+      const result = createBuildInfo(root, {}, () => {
+        calls++
+        return new Date('2026-11-18T14:41:04.123Z')
+      })
+      expect(result.builtAtUtc).toBe('2026-11-18T14:41:04.123Z')
+      expect(result.version).toBe('v1.0.0')
+      expect(calls).toBe(1)
+    } finally {
+      rmSync(root, { recursive: true, force: true })
+    }
   })
 })

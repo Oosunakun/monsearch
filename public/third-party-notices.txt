@@ -114,10 +114,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ============================================================
-@vue/reactivity 3.5.44 (MIT)
-@vue/runtime-core 3.5.44 (MIT)
-@vue/runtime-dom 3.5.44 (MIT)
-@vue/shared 3.5.44 (MIT)
+@vue/reactivity 3.5.45 (MIT)
+@vue/runtime-core 3.5.45 (MIT)
+@vue/runtime-dom 3.5.45 (MIT)
+@vue/shared 3.5.45 (MIT)
 
 --- LICENSE ---
 The MIT License (MIT)
@@ -263,7 +263,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ============================================================
-vite 8.3.5 (MIT)
+vite 8.3.8 (MIT)
 
 --- LICENSE.md ---
 # Vite core license
@@ -643,7 +643,7 @@ Apache License
    limitations under the License.
 
 ============================================================
-Rolldown runtime helper 1.2.16
+Rolldown runtime helper 1.2.19
 対象：静的生成時に挿入されるmodulepreload polyfill等。bundler本体の配布を意味しません。
 配布元：https://github.com/rolldown/rolldown
 --- LICENSE ---
