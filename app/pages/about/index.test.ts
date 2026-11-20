@@ -4,7 +4,7 @@ import AboutPage from './index.vue'
 import { mockAboutAnalyticsItems } from '~~/app/utils/mockData/about'
 
 // 実装データから生成せず、確定した項目名・表示本文を独立した固定値で保持する。
-const subheadings = ['利用目的', '収集情報', 'データ保持', '個人情報', '詳細情報', '停止方法']
+const subheadings = ['利用目的', '収集情報', 'データ保持', '個人情報', '詳細情報', '停止方法', 'Googleカレンダー']
 const bodies = [
   '当サイトでは、検索機能の改善とサイト運営の参考とするため、Google Analytics 4（GA4）を利用します。',
   'Cookie等を利用し、閲覧ページや検索条件を含むURL、検索機能の利用状況、アクセス環境（地域・ブラウザーなど）に関する情報をGoogleへ送信します。',
@@ -12,11 +12,13 @@ const bodies = [
   'GA4の標準データ除去機能を利用しますが、個人情報の送信を完全に防ぐものではありません。検索欄に個人情報を入力しないでください。',
   'Googleによる情報の利用およびGoogleのプライバシーポリシーをご確認ください。',
   'Google公式のオプトアウト案内をご参照ください。利用できるブラウザーには制限があります。',
+  '大会情報ページでは、Googleカレンダーの読み込みに伴い、IPアドレス等の情報がGoogleへ送信されます。詳しくはGoogleのプライバシーポリシーをご確認ください。',
 ]
 const links = [
   ['Googleによる情報の利用', 'https://policies.google.com/technologies/partner-sites'],
   ['Googleのプライバシーポリシー', 'https://policies.google.com/privacy'],
   ['Google公式のオプトアウト案内', 'https://support.google.com/analytics/answer/181881?hl=ja'],
+  ['Googleのプライバシーポリシー', 'https://policies.google.com/privacy'],
 ]
 const mountPage = () => mount(AboutPage, { global: { stubs: {
   ContentMaxWidthContainer: { template: '<main><slot /></main>' },
@@ -27,15 +29,15 @@ const mountPage = () => mount(AboutPage, { global: { stubs: {
 } } })
 
 describe('Aboutのアクセス解析説明', () => {
-  it('6項目の本文・順序と同一タブの3リンク・空白・句読点を保持する', () => {
+  it('GA4の6項目を維持しカレンダー説明を末尾に追加した本文・順序と同一タブの4リンク・空白・句読点を保持する', () => {
     const wrapper = mountPage()
     try {
-      const content = wrapper.findAll('section')[3]!.get('.content')
+      const content = wrapper.findAll('section').find(section => section.find('header').text() === 'アクセス解析とプライバシー')!.get('.content')
       const list = content.get(':scope > ul.about-notice-list')
       const actual = list.findAll(':scope > li')
-      expect(actual).toHaveLength(6)
+      expect(actual).toHaveLength(7)
       expect(mockAboutAnalyticsItems.map(item => item.id)).toEqual([
-        'purpose', 'collection', 'retention', 'personal-information', 'details', 'opt-out',
+        'purpose', 'collection', 'retention', 'personal-information', 'details', 'opt-out', 'google-calendar',
       ])
       expect(actual.map(item => item.get(':scope > span.font-weight-bold').element.textContent))
         .toEqual(subheadings.map(text => text + '：'))
@@ -44,9 +46,9 @@ describe('Aboutのアクセス解析説明', () => {
         .map(node => node.textContent).join(''))).toEqual(bodies)
       expect(Array.from(content.element.children, child => child.tagName)).toEqual(['UL'])
       expect(actual.map(item => Array.from(item.element.children, child => child.tagName)))
-        .toEqual([['SPAN'], ['SPAN'], ['SPAN'], ['SPAN'], ['SPAN', 'A', 'A'], ['SPAN', 'A']])
+        .toEqual([['SPAN'], ['SPAN'], ['SPAN'], ['SPAN'], ['SPAN', 'A', 'A'], ['SPAN', 'A'], ['SPAN', 'A']])
       expect(content.findAll('a').map(a => [a.text(), a.attributes('href')])).toEqual(links)
-      expect(content.findAll('a').map(a => a.attributes('target'))).toEqual([undefined, undefined, undefined])
+      expect(content.findAll('a').map(a => a.attributes('target'))).toEqual([undefined, undefined, undefined, undefined])
       expect(content.text()).not.toContain('最終更新日')
       expect(content.findAll('a').map(a => Object.fromEntries(Object.entries(a.attributes())
         .filter(([name]) => !name.startsWith('data-v-'))))).toEqual(links.map(([, href]) => ({ href })))

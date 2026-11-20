@@ -18,6 +18,7 @@ jobs:
       cancel-in-progress: true
     outputs:
       artifact-id: ${{ steps.artifact.outputs.artifact-id }}
+      build-info: ${{ steps.release-artifact.outputs.build-info }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -71,6 +72,10 @@ jobs:
           NUXT_PUBLIC_ANALYTICS_ENVIRONMENT: ${{ github.repository == 'Oosunakun/monsearch' && github.event_name == 'push' && github.ref == 'refs/heads/main' && 'production' || '' }}
         run: node scripts/verify-pages-artifact.mjs
 
+      - name: Verify release artifact identity
+        id: release-artifact
+        run: node --experimental-strip-types dev/verifyReleaseArtifact.ts
+
       - name: Verify tracked inputs are unchanged
         run: |
           git diff --exit-code
@@ -122,6 +127,11 @@ jobs:
           path: .output/public
           merge-multiple: true
           digest-mismatch: error
+      - name: Verify downloaded release artifact identity
+        id: release-artifact
+        env:
+          EXPECTED_BUILD_INFO: ${{ needs.quality.outputs.build-info }}
+        run: node --experimental-strip-types dev/verifyReleaseArtifact.ts
       - name: Verify deployment identity and branch tip
         env:
           GH_TOKEN: ${{ github.token }}
@@ -141,14 +151,51 @@ jobs:
           [[ "$tip" == "$EVENT_SHA" ]]
           printf 'Deployment: branch=%s sha=%s run=%s attempt=%s artifact=%s\n' "$branch" "$EVENT_SHA" "$GITHUB_RUN_ID" "$EVENT_ATTEMPT" '${{ needs.quality.outputs.artifact-id }}' >> "$GITHUB_STEP_SUMMARY"
       - name: Deploy to Cloudflare Pages
+        id: deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           EVENT_REF: ${{ github.ref }}
           EVENT_SHA: ${{ github.sha }}
+          BUILD_INFO: ${{ steps.release-artifact.outputs.build-info }}
+          ARTIFACT_ID: ${{ needs.quality.outputs.artifact-id }}
+          RELEASE_TAG_ENABLED: ${{ vars.PRODUCTION_RELEASE_TAG_ENABLED }}
         run: |
           set -euo pipefail
           [[ -n "${CLOUDFLARE_API_TOKEN:-}" ]]
           [[ -n "${CLOUDFLARE_ACCOUNT_ID:-}" ]]
           case "$EVENT_REF" in refs/heads/main) branch=main ;; refs/heads/develop) branch=develop ;; *) exit 1 ;; esac
           ./node_modules/.bin/wrangler pages deploy .output/public --project-name=monsearch --branch="$branch" --commit-hash="$EVENT_SHA"
+          if [[ "$branch" == main ]]; then
+            node scripts/production-release-tag.mjs deployment
+          fi
+
+  release-tag:
+    needs: [quality, deploy]
+    # Tag Rulesets are optional; enable separately after Human review.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.run_attempt == 1 && !github.event.deleted && needs.quality.result == 'success' && needs.deploy.result == 'success' && vars.PRODUCTION_RELEASE_TAG_ENABLED == 'true'
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    concurrency:
+      group: pages-release-tag-monsearch
+      cancel-in-progress: false
+      queue: max
+    steps:
+      - name: Checkout release tag source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: true
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22.23.5'
+          package-manager-cache: false
+      - name: Create immutable annotated release tag
+        id: tag
+        env:
+          RELEASE_TAG_ENABLED: ${{ vars.PRODUCTION_RELEASE_TAG_ENABLED }}
+          BUILD_INFO: ${{ needs.quality.outputs.build-info }}
+          ARTIFACT_ID: ${{ needs.quality.outputs.artifact-id }}
+        run: node scripts/production-release-tag.mjs tag
