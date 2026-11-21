@@ -10,10 +10,11 @@ import type { SearchForm } from '~~/app/types/ui/search'
 
 // 親から渡されたモデルを各フィールドに分配する
 const model = defineModel<SearchForm>({ required: true })
+const emit = defineEmits<{ submit: [] }>()
 </script>
 
 <template>
-  <SearchFieldName v-model="model" />
+  <SearchFieldName v-model="model" @submit="emit('submit')" />
   <SearchFieldDivider />
   <SearchFieldCardCategory v-model="model" />
   <SearchFieldDivider />
@@ -21,6 +22,6 @@ const model = defineModel<SearchForm>({ required: true })
   <SearchFieldDivider />
   <SearchFieldCardType v-model="model" />
   <SearchFieldDivider />
-  <SearchFieldKeyword v-model="model" />
+  <SearchFieldKeyword v-model="model" @submit="emit('submit')" />
 </template>
 
