@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <v-list nav density="compact">
+  <v-list nav density="compact" :prepend-gap="20">
     <v-list-item
       v-for="item in items"
       :key="item.to"
