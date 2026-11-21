@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { QuickSearchOption, QuickSearchState, QuickSearchTarget } from '~~/app/types/ui/layout'
 import SearchTypeSelect from '~~/app/components/cards/search/shared/SearchTypeSelect.vue'
+import { handleSearchEnter } from '~~/app/utils/search/handleSearchEnter'
 
 const props = defineProps<{
   modelValue: QuickSearchState
@@ -15,6 +16,13 @@ const emit = defineEmits<{
 }>()
 
 const isVertical = computed(() => props.layout === 'vertical')
+const searchInputId = useId()
+
+const onSearchEnter = (event: KeyboardEvent) => {
+  // VTextField のルートにはスロット内のセレクトやボタンのイベントも届く。
+  if (!(event.target instanceof HTMLInputElement) || event.target.id !== searchInputId) return
+  handleSearchEnter(event, () => emit('submit'))
+}
 
 const updateField = <K extends keyof QuickSearchState>(key: K, value: QuickSearchState[K]) => {
   emit('update:modelValue', {
@@ -49,6 +57,7 @@ const updateSearchType = (value: unknown) => {
       />
 
       <v-text-field
+        :id="searchInputId"
         :model-value="modelValue.searchText"
         placeholder="簡易検索..."
         prepend-inner-icon="mdi-magnify"
@@ -59,7 +68,7 @@ const updateSearchType = (value: unknown) => {
         persistent-clear
         style="height: 38px;"
         @update:model-value="updateField('searchText', String($event ?? ''))"
-        @keydown.enter="emit('submit')"
+        @keydown.enter="onSearchEnter"
       />
     </div>
   </template>
@@ -67,6 +76,7 @@ const updateSearchType = (value: unknown) => {
   <!-- horizontal: PCヘッダー用・横並び -->
   <template v-else>
     <v-text-field
+      :id="searchInputId"
       :model-value="modelValue.searchText"
       placeholder="簡易検索..."
       variant="outlined"
@@ -74,7 +84,7 @@ const updateSearchType = (value: unknown) => {
       hide-details
       class="unified-search-field"
       @update:model-value="updateField('searchText', String($event ?? ''))"
-      @keydown.enter="emit('submit')"
+      @keydown.enter="onSearchEnter"
     >
       <!-- 左側: 検索種別セレクト -->
       <template #prepend-inner>

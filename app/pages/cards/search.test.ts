@@ -5,6 +5,9 @@ import type { LocationQuery } from 'vue-router'
 import SearchPage from './search.vue'
 import SearchSlotSelector from '~~/app/components/cards/search/shared/SearchSlotSelector.vue'
 import SearchFormBasic from '~~/app/components/cards/search/layout/SearchFormBasic.vue'
+import SearchFieldName from '~~/app/components/cards/search/basic/SearchFieldName.vue'
+import SearchFieldKeyword from '~~/app/components/cards/search/basic/SearchFieldKeyword.vue'
+import SearchFieldReferenceLabel from '~~/app/components/cards/search/other/SearchFieldReferenceLabel.vue'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
 import { createRepresentativeSearchForm, representativeCardSearchQuery } from '~~/app/utils/search/cardSearchQueryTestFixtures'
 
@@ -151,6 +154,61 @@ describe('card search page', () => {
     form.value.keyword = 'ダメージ'
     await wrapper.findAll('button').at(-1)!.trigger('click')
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { cc: 'summoner', kw: 'ダメージ' } })
+  })
+
+  it.each([
+    ['nm', SearchFieldName],
+    ['kw', SearchFieldKeyword],
+    ['rl', SearchFieldReferenceLabel],
+  ] as const)('submits the latest input as %s with existing conditions once', async (alias, field) => {
+    routeQuery.value = { cc: 'unit', el: 'fire' }
+    const wrapper = await mountSearch(false)
+    const input = wrapper.getComponent(field).get('input')
+    const ancestorKeydown = vi.fn()
+    wrapper.element.addEventListener('keydown', ancestorKeydown)
+    await input.setValue('  確定済み  ')
+
+    const enter = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true })
+    input.element.dispatchEvent(enter)
+    await nextTick()
+
+    const query = { cc: 'unit', el: 'fire', [alias]: '確定済み' }
+    expect(enter.defaultPrevented).toBe(true)
+    expect(ancestorKeydown).not.toHaveBeenCalled()
+    expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query })
+    expect(analytics.submit).toHaveBeenCalledExactlyOnceWith('advanced', query)
+    expect(analytics.finishSubmit).toHaveBeenCalledExactlyOnceWith(1)
+  })
+
+  it.each([
+    ['IME composition', SearchFieldName, { key: 'Enter', isComposing: true }],
+    ['legacy IME code', SearchFieldKeyword, { key: 'Enter', isComposing: false }, 229],
+    ['a repeated Enter', SearchFieldReferenceLabel, { key: 'Enter', repeat: true }],
+    ['Space', SearchFieldReferenceLabel, { key: ' ' }],
+  ] as const)('leaves %s available for its original behavior', async (_case, field, init, keyCode?: number) => {
+    const wrapper = await mountSearch(false)
+    const input = wrapper.getComponent(field).get('input')
+    const ancestorKeydown = vi.fn()
+    wrapper.element.addEventListener('keydown', ancestorKeydown)
+    const event = new KeyboardEvent('keydown', { ...init, bubbles: true, cancelable: true })
+    if (keyCode !== undefined) Object.defineProperty(event, 'keyCode', { value: keyCode })
+
+    input.element.dispatchEvent(event)
+    await nextTick()
+
+    expect(event.defaultPrevented).toBe(false)
+    expect(ancestorKeydown).toHaveBeenCalledExactlyOnceWith(event)
+    expect(push).not.toHaveBeenCalled()
+    expect(analytics.submit).not.toHaveBeenCalled()
+  })
+
+  it('does not submit Enter from a card text field or a category chip', async () => {
+    const wrapper = await mountSearch(false)
+    await wrapper.get('input[placeholder="カードテキストを入力..."]').trigger('keydown', { key: 'Enter' })
+    await wrapper.get('.v-chip').trigger('keydown', { key: 'Enter' })
+
+    expect(push).not.toHaveBeenCalled()
+    expect(analytics.submit).not.toHaveBeenCalled()
   })
 
   it('restores every representative field family from the route query', async () => {
