@@ -1,25 +1,5 @@
 [
   {
-    "label": "[儀式]",
-    "value": "45bd2",
-    "color": "#EEEEEE"
-  },
-  {
-    "label": "[対抗]",
-    "value": "d7b9f",
-    "color": "#EEEEEE"
-  },
-  {
-    "label": "[常時(強制)]",
-    "value": "f9e55",
-    "color": "#EEEEEE"
-  },
-  {
-    "label": "[常時]",
-    "value": "25959",
-    "color": "#EEEEEE"
-  },
-  {
     "label": "[普通]",
     "value": "b1765",
     "color": "#EEEEEE"
@@ -35,13 +15,33 @@
     "color": "#EEEEEE"
   },
   {
-    "label": "[条件(強制)]",
-    "value": "f66f8",
+    "label": "[対抗]",
+    "value": "d7b9f",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[儀式]",
+    "value": "45bd2",
     "color": "#EEEEEE"
   },
   {
     "label": "[条件]",
     "value": "9f3b3",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[条件(強制)]",
+    "value": "f66f8",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[常時]",
+    "value": "25959",
+    "color": "#EEEEEE"
+  },
+  {
+    "label": "[常時(強制)]",
+    "value": "f9e55",
     "color": "#EEEEEE"
   },
   {

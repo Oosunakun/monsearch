@@ -18,19 +18,19 @@ Brand/Logosは通常MDIの一般ライセンスの対象外です。
 https://pictogrammers.com/docs/general/license/
 外部配信ファイル固有の権利表示・利用条件も適用されます。
 
-MDI配布版の確認情報
+MDIのCDN設定と上流資料
 パッケージ：@mdi/font
-確認した配布版：5.9.55
 配布元：Pictogrammers / MaterialDesign-Webfont
-パッケージのライセンス：Apache-2.0（package.jsonに記載）
-配布元のライセンス説明：https://github.com/Templarian/MaterialDesign-Webfont/blob/v5.9.55/LICENSE
-バージョン5.9.55の公開ソース（Gitタグ）：https://github.com/Templarian/MaterialDesign-Webfont/tree/v5.9.55
-現行のCDN指定は@mdi/font@5.xです。5.9.55は確認された配布版の記録であり、
-常に同じ版が配信されることや、バージョン固定を示すものではありません。
+CDN指定：https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css
+7.xはメジャーバージョンの範囲指定です。実際の配信版はCDNの応答で確認してください。
+確認した7.xの上流資料：v7.4.47（CDNの実配信版を示すものではありません）
+パッケージのライセンス：Apache-2.0（v7.4.47のpackage.jsonに記載）
+配布元のライセンス説明：https://github.com/Templarian/MaterialDesign-Webfont/blob/v7.4.47/LICENSE
+上流の公開ソース（Gitタグ）：https://github.com/Templarian/MaterialDesign-Webfont/tree/v7.4.47
 
 MDIファイル区分の補足
 Material Design Icons (@mdi/font)
-Upstream v5.9.55 LICENSE distinguishes font/icon files (Apache-2.0,
+Upstream v7.4.47 LICENSE distinguishes font/icon files (Apache-2.0,
 subject to individual exceptions) from other code (MIT).
 Brand/Logos and individual icon conditions must be distinguished from
 these general terms. This does not grant rights to third-party brands.
