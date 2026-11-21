@@ -85,7 +85,7 @@ const shownLandSectionCardShell = computed(() => {
         <SectionHeader title="基本情報" color="accent" text-class="text-white" />
       </template>
       
-      <SearchFormBasic v-model="form" />
+      <SearchFormBasic v-model="form" @submit="executeSearch" />
     </SectionCardShell>
     
     <SectionCardShell
@@ -154,7 +154,7 @@ const shownLandSectionCardShell = computed(() => {
         <SectionHeader title="その他" color="accent" text-class="text-white" />
       </template>
       
-      <SearchFormOther v-model="form" />
+      <SearchFormOther v-model="form" @submit="executeSearch" />
     </SectionCardShell>
 
     <SearchActions :on-execute="executeSearch" />
