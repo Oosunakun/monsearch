@@ -1,12 +1,12 @@
 [
   {
-    "label": "[Battle]",
-    "value": "Battle",
+    "label": "[Deck]",
+    "value": "Deck",
     "color": "#EEEEEE"
   },
   {
-    "label": "[Deck]",
-    "value": "Deck",
+    "label": "[Battle]",
+    "value": "Battle",
     "color": "#EEEEEE"
   },
   {
