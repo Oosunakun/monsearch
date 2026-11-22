@@ -8,8 +8,8 @@ export const mockAboutLinkItems = [
   },
   {
     id: '2',
-    title: 'モンコレLCG クラファン',
-    subtitle: 'CAMPFIRE',
+    title: 'モンコレLCG 支援プロジェクト',
+    subtitle: 'クラウドファンディング',
     icon: 'mdi-hand-coin-outline',
     href: 'https://camp-fire.jp/projects/963507/idea'
   },
