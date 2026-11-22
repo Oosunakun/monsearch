@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import SearchRow from '~~/app/components/cards/search/shared/SearchRow.vue'
+import { handleSearchEnter } from '~~/app/utils/search/handleSearchEnter'
 import { useDisplay } from 'vuetify'
 import type { SearchForm } from '~~/app/types/ui/search'
 const { mobile } = useDisplay()
 
 const model = defineModel<SearchForm>({ required: true })
+const emit = defineEmits<{ submit: [] }>()
 
 const enableReset = computed(() => {
   return model.value.keyword.length > 0
@@ -31,6 +33,7 @@ const resetAll = () => {
       flat
       class="rounded mb-3"
       placeholder="カード名を入力..."
+      @keydown.enter="handleSearchEnter($event, () => emit('submit'))"
     />
   </SearchRow>
 </template>

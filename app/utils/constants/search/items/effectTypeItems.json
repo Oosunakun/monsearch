@@ -5,13 +5,13 @@
     "color": "#EEEEEE"
   },
   {
-    "label": "◇手札型特殊能力",
-    "value": "HandSkill",
+    "label": "◎宣言型特殊能力",
+    "value": "DeclareSkill",
     "color": "#EEEEEE"
   },
   {
-    "label": "◎宣言型特殊能力",
-    "value": "DeclareSkill",
+    "label": "◇手札型特殊能力",
+    "value": "HandSkill",
     "color": "#EEEEEE"
   }
 ]

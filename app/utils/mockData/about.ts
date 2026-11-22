@@ -91,14 +91,14 @@ export const mockAboutAnalyticsItems: AboutAnalyticsItem[] = [
     'text': '[Googleによる情報の利用](https://policies.google.com/technologies/partner-sites)および[Googleのプライバシーポリシー](https://policies.google.com/privacy)をご確認ください。'
   },
   {
-    'id': 'opt-out',
-    'subheading': '停止方法',
-    'text': '[Google公式のオプトアウト案内](https://support.google.com/analytics/answer/181881?hl=ja)をご参照ください。利用できるブラウザーには制限があります。'
-  },
-  {
     'id': 'google-calendar',
     'subheading': 'Googleカレンダー',
     'text': '大会情報ページでは、Googleカレンダーの読み込みに伴い、IPアドレス等の情報がGoogleへ送信されます。詳しくは[Googleのプライバシーポリシー](https://policies.google.com/privacy)をご確認ください。'
+  },
+  {
+    'id': 'opt-out',
+    'subheading': '停止方法',
+    'text': '[Google公式のオプトアウト案内](https://support.google.com/analytics/answer/181881?hl=ja)をご参照ください。利用できるブラウザーには制限があります。'
   }
 ]
 
