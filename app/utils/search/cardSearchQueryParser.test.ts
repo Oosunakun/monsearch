@@ -96,6 +96,16 @@ describe('parseCardSearchQuery', () => {
     expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })
   })
 
+  it('QDSにMappingがあっても、UI未提供のNatural KeyはURL条件から除外する', () => {
+    expect(parseCardSearchQuery({ mt: 'LongFly', rt: 'spade' })).toEqual(createSearchForm())
+  })
+
+  it('未対応のNatural Keyを除外し、各Collection内と別項目の有効値を保持する', () => {
+    const form = parseCardSearchQuery({ cc: 'unknown', mt: 'Fly,LongFly', rt: 'triangle,spade', el: 'fire,unknown', nm: 'カード名' })
+    expect(form).toMatchObject({ cardCategory: '', moveTypes: ['Fly'], rarities: ['triangle'], elements: ['fire'], name: 'カード名' })
+    expect(buildCardSearchQuery(form)).toEqual({ mt: 'Fly', rt: 'triangle', el: 'fire', nm: 'カード名' })
+  })
+
   it('Short UUIDはmaster dataにない有効値もcanonical化して復元する', () => {
     const expected = createSearchForm()
     expected.products = ['22d7e', 'abcde']

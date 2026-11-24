@@ -5,6 +5,7 @@ import type { EventHandler } from 'h3'
 import { getSourceCards } from '~~/server/utils/cardSearch/dataSource'
 import { prepareCardSearch, runCardSearch } from '~~/shared/cardSearch/runner'
 import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS, CARD_SEARCH_PER_PAGE } from '~~/shared/cardSearch/types'
+import type { CardSearchResultPage } from '~~/shared/cardSearch/types'
 import latest from '~~/app/utils/mockData/items/cards.json'
 import { normalizeCatalogText } from '~~/shared/cardSearch/normalizeCatalogText'
 
@@ -90,6 +91,42 @@ describe('最新入力の検索・DTO・API統合（固定全文Oracleなし）'
       actual.push(...result.items.map(card => card.card_id))
     }
     expect(actual).toEqual(ids)
+  })
+
+  it.each([
+    ['triangle', 'Common'],
+    ['star', 'Rare'],
+  ] as const)('rt=%sは配信用データの%sだけを全ページで返す', async (rt, rarityCode) => {
+    const sources = getSourceCards()
+    const expectedIds = latest.cards.filter(card => card.rarity_code === rarityCode).map(card => card.card_id).sort()
+    const perPage = 100
+    const totalPages = Math.max(1, Math.ceil(expectedIds.length / perPage))
+    const runnerIds: string[] = []
+    const apiIds: string[] = []
+
+    for (let page = 1; page <= totalPages; page++) {
+      const query = { rt, perPage: String(perPage), page: String(page) }
+      const result = runCardSearch(sources, prepareCardSearch(query))
+      const response = await request(query)
+      expect(response.status).toBe(200)
+      const body = await response.json() as CardSearchResultPage
+
+      expect(result).toMatchObject({ totalCount: expectedIds.length, totalPages, page, perPage })
+      expect(body).toEqual(result)
+      expect(result.items.every(card => card.rarity_code === rarityCode)).toBe(true)
+      runnerIds.push(...result.items.map(card => card.card_id))
+      apiIds.push(...body.items.map(card => card.card_id))
+    }
+
+    expect(runnerIds.sort()).toEqual(expectedIds)
+    expect(apiIds.sort()).toEqual(expectedIds)
+  })
+
+  it('cc=tokenは配信用データでTokenフラグまたはToken分類を持つカードを返す', () => {
+    const expectedIds = latest.cards.filter(card => card.search_support.is_token || card.card_category_code.toLowerCase() === 'token')
+      .map(card => card.card_id)
+    const { matches } = prepareCardSearch({ cc: 'token' })
+    expect(getSourceCards().filter(({ card }) => matches(card)).map(({ card }) => card.card_id)).toEqual(expectedIds)
   })
 
   it('実loaderは最新JSONを受理し、失敗後retryと共有Promiseを維持する', async () => {

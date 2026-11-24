@@ -159,6 +159,8 @@ URL値を下記のMappingで変換し、Databaseのcodeと完全一致させる�
 
 Mapping外のNatural KeyはParserで除外する。`el=fire,unknown`は`fire`のみ残し、`cc=unknown`は分類条件を除外する。Databaseに他のcodeが存在しても、Mappingを推測して自動追加しない。
 
+上表はURL値とDatabaseのcodeの対応を定義する。現行アプリのParserが受理する値は、UIが提供する選択肢（`lc=all`を含む）に基づく。Mappingに含まれる値でも、UIで提供していない値は手入力のURLで指定されても条件から除外する。たとえば、`mt=LongFly`と`rt=spade`は条件から除外され、`mt=Fly,LongFly`と`rt=triangle,spade`ではそれぞれ`Fly`と`triangle`が残る。
+
 ### 4.2 短縮UUID
 
 対象は`ct / pd / fa / ra / il / eat / re / are`。URL値を、各Parameterが対応するDatabase IDの末尾と照合する。

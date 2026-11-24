@@ -2,6 +2,27 @@ import { normalizeCatalogText } from './normalizeCatalogText'
 import type { SearchForm, NumericCondition, FilteredNumericCondition, SlotCondition } from '~~/app/types/ui/search'
 import type { Card, Ability, Effect, SearchCostAlternative, SearchCostComponent, SearchCostType } from '~~/types/cards/finderCards'
 
+const CARD_CATEGORY_NATURAL_KEY_TO_CODE: Readonly<Record<Exclude<SearchForm['cardCategory'], ''>, { cardCode: string, itemCode?: string }>> = {
+  unit: { cardCode: 'Unit' },
+  spell: { cardCode: 'Spell' },
+  land: { cardCode: 'Land' },
+  ritual: { cardCode: 'Ritual' },
+  summoner: { cardCode: 'Summoner' },
+  token: { cardCode: 'Token' },
+  'item-consume': { cardCode: 'Item', itemCode: 'Consume' },
+  'item-equip': { cardCode: 'Item', itemCode: 'Equip' },
+  'item-bullet': { cardCode: 'Item', itemCode: 'Bullet' },
+}
+
+const ELEMENT_NATURAL_KEY_TO_CODE: Readonly<Record<string, string>> = {
+  fire: 'Fire',
+  water: 'Water',
+  earth: 'Earth',
+  air: 'Air',
+  holy: 'Holy',
+  curse: 'Curse',
+}
+
 const RARITY_NATURAL_KEY_TO_CODE: Readonly<Record<string, string>> = {
   circle: 'Basic',
   triangle: 'Common',
@@ -13,6 +34,8 @@ const RARITY_NATURAL_KEY_TO_CODE: Readonly<Record<string, string>> = {
   crescent: 'DragonJr',
   hexagram: 'Summoner',
 }
+
+const LAND_CATEGORY_NATURAL_KEY_TO_CODE = { none: 'None', ritual: 'Ritual' } as const
 
 const compare = (actual: number | null | undefined, condition: NumericCondition) => actual !== null && actual !== undefined && (condition.value === null
   || (condition.operator === 'gte' ? actual >= condition.value : condition.operator === 'lte' ? actual <= condition.value : actual === condition.value))
@@ -93,9 +116,9 @@ const resistancesMatch = (ability: Ability | null | undefined, wanted: readonly 
 const textIncludes = (actual: string, wanted: string) => !wanted || actual.toLocaleLowerCase().includes(wanted.toLocaleLowerCase())
 const effectTextIncludes = (actual: string, wanted: string) => !wanted || normalizeEffectText(actual).includes(normalizeEffectText(wanted))
 const effectMatches = (effect: Effect, criteria: SearchForm) =>
-  (!criteria.effectTypes.length || includesAny(criteria.effectTypes, [String(effect.effect_type_code).toLowerCase()]))
+  (!criteria.effectTypes.length || criteria.effectTypes.some(code => code === effect.effect_type_code))
   && (!criteria.effectActivationTypes.length || includesAny(criteria.effectActivationTypes, [String(effect.effect_activation_type_id).toLowerCase()]))
-  && (!criteria.effectActivationCategories.length || includesAny(criteria.effectActivationCategories, [String(effect.effect_activation_category_code).toLowerCase()]))
+  && (!criteria.effectActivationCategories.length || criteria.effectActivationCategories.some(code => code === effect.effect_activation_category_code))
   && effectTextIncludes(effect.effect_text, criteria.effectText)
 
 const COST_CONDITIONS = [
@@ -157,7 +180,10 @@ const costEffectMatches = (effect: Effect, active: ReturnType<typeof prepareCost
 export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => boolean) => {
   const keyword = criteria.keyword ? normalizeCatalogText(criteria.keyword) : ''
   const archetypeText = criteria.archetypeText ? normalizeCatalogText(criteria.archetypeText) : ''
-  const rarityCodes = criteria.rarities.map(value => RARITY_NATURAL_KEY_TO_CODE[value] ?? value)
+  const cardCategory = criteria.cardCategory ? CARD_CATEGORY_NATURAL_KEY_TO_CODE[criteria.cardCategory] : undefined
+  const elementCodes = new Set(criteria.elements.map(value => ELEMENT_NATURAL_KEY_TO_CODE[value] ?? value))
+  const rarityCodes = new Set(criteria.rarities.map(value => RARITY_NATURAL_KEY_TO_CODE[value] ?? value))
+  const landCategoryCode = criteria.landCategory === 'all' ? undefined : LAND_CATEGORY_NATURAL_KEY_TO_CODE[criteria.landCategory]
   const hasAbilityItemSlots = hasSlotCriteria(criteria.abilityItemSlots)
   const hasAbilitySpellSlots = hasSlotCriteria(criteria.abilitySpellSlots)
   const hasAdditionalItemSlots = hasSlotCriteria(criteria.additionalAbilityItemSlots)
@@ -166,24 +192,30 @@ export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => 
   const hasCostCriteria = COST_CONDITIONS.some(({ condition }) => criteria[condition].match === 'none' || Object.values(criteria[condition].slots).some(value => value > 0))
   const costConditions = hasCostCriteria ? prepareCostConditions(criteria) : []
   return (card: Card): boolean => {
-    const category = card.search_support.is_token ? 'token' : card.card_category_code.toLowerCase() === 'item' ? `item-${card.item?.item_category_code.toLowerCase()}` : card.card_category_code.toLowerCase()
-    if (criteria.cardCategory && category !== criteria.cardCategory) return false
+    if (cardCategory) {
+      const categoryCode = card.search_support.is_token || card.card_category_code.toLowerCase() === 'token'
+        ? 'Token'
+        : card.card_category_code
+      if (categoryCode !== cardCategory.cardCode || (cardCategory.itemCode && card.item?.item_category_code !== cardCategory.itemCode)) return false
+    }
     if (!textIncludes(card.name, criteria.name) || !textIncludes(card.reference_label, criteria.referenceLabel)) return false
     if (keyword && !card.search_support.full_text?.includes(keyword)) return false
     if (archetypeText && !card.search_support.archetype_text?.includes(archetypeText)) return false
-    if (criteria.elements.length && !includesAny(criteria.elements, [...(card.unit?.elements ?? []), ...(card.spell?.elements ?? [])].map(x => x.element_code.toLowerCase()))) return false
+    if (elementCodes.size && !card.unit?.elements?.some(element => elementCodes.has(element.element_code))
+      && !card.spell?.elements?.some(element => elementCodes.has(element.element_code))) return false
     if (criteria.cardTypes.length && !includesAny(criteria.cardTypes, card.card_types.flatMap(x => [x.card_type_id, x.card_type_name]).map(x => x.toLowerCase()))) return false
     if (criteria.products.length && !includesAny(criteria.products, [card.product.product_id])) return false
     if (criteria.factions.length && !includesAny(criteria.factions, card.factions.flatMap(x => [x.faction_id, x.faction_name]).map(x => x.toLowerCase()))) return false
-    if (criteria.blocks.length && !includesAny(criteria.blocks, card.blocks.flatMap(x => [x.block_code, x.block_name]).map(x => x.toLowerCase()))) return false
-    if ((rarityCodes.length && !includesAny(rarityCodes, [card.rarity_code])) || (criteria.illustrators.length && !includesAny(criteria.illustrators, [card.illustrator_id]))) return false
+    if (criteria.blocks.length && !card.blocks.some(block => criteria.blocks.some(code => code === block.block_code))) return false
+    if (rarityCodes.size && !rarityCodes.has(card.rarity_code)) return false
+    if (criteria.illustrators.length && !includesAny(criteria.illustrators, [card.illustrator_id])) return false
 
     const unit = card.unit
     if (isFilteredActive(criteria.level) && (!unit || (criteria.level.filterType === 'include' && !unit.is_instant_summon) || (criteria.level.filterType === 'exclude' && unit.is_instant_summon) || !compare(unit.level, criteria.level))) return false
     if (isFilteredActive(criteria.heroPoint) && (!unit || (criteria.heroPoint.filterType === 'include' && !unit.is_hero) || (criteria.heroPoint.filterType === 'exclude' && unit.is_hero) || (criteria.heroPoint.filterType !== 'exclude' && criteria.heroPoint.value !== null && !compare(unit.hero_point, criteria.heroPoint)))) return false
     if (criteria.attack.value !== null && (!unit || !compare(unit.attack, criteria.attack))) return false
     if (criteria.defense.value !== null && (!unit || !compare(unit.defense, criteria.defense))) return false
-    if (criteria.moveTypes.length && !includesAny(criteria.moveTypes, unit ? [unit.move_type_code.toLowerCase()] : [])) return false
+    if (criteria.moveTypes.length && !criteria.moveTypes.some(code => code === unit?.move_type_code)) return false
     if (criteria.races.length && !includesAny(criteria.races, (unit?.races ?? []).flatMap(x => [x.race_id, x.race_name]).map(x => x.toLowerCase()))) return false
     if ((criteria.abilityItemSlots.match === 'none' && !unit) || (criteria.abilitySpellSlots.match === 'none' && !unit)
       || (hasAbilityItemSlots && !slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item')) || (hasAbilitySpellSlots && !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell'))) return false
@@ -202,7 +234,7 @@ export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => 
     if (isFilteredActive(criteria.additionalDefender) && (!matchesFiltered(equip?.ability?.defender, criteria.additionalDefender))) return false
     if (!resistancesMatch(equip?.ability, criteria.additionalResistances)) return false
     if (criteria.limit.value !== null && (!card.land || !compare(card.land.land_limit, criteria.limit))) return false
-    if (criteria.landCategory && criteria.landCategory !== 'all' && ![card.land?.land_category_code.toLowerCase(), card.land?.land_category_name.toLowerCase()].includes(criteria.landCategory)) return false
+    if (landCategoryCode && card.land?.land_category_code !== landCategoryCode) return false
 
     if ((hasEffectCriteria || hasCostCriteria)
       && !card.effects.some(effect => (!hasEffectCriteria || effectMatches(effect, criteria)) && (!hasCostCriteria || costEffectMatches(effect, costConditions)))) return false
