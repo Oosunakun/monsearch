@@ -4,6 +4,7 @@ import SearchFieldElement from '~~/app/components/cards/search/basic/SearchField
 import SearchFieldDivider from '~~/app/components/cards/search/shared/SearchFieldDivider.vue'
 import SearchFieldCardCategory from '~~/app/components/cards/search/basic/SearchFieldCardCategory.vue'
 import SearchFieldCardType from '~~/app/components/cards/search/basic/SearchFieldCardType.vue'
+import SearchFieldArchetypeText from '~~/app/components/cards/search/basic/SearchFieldArchetypeText.vue'
 import SearchFieldKeyword from '~~/app/components/cards/search/basic/SearchFieldKeyword.vue'
 
 import type { SearchForm } from '~~/app/types/ui/search'
@@ -21,6 +22,8 @@ const emit = defineEmits<{ submit: [] }>()
   <SearchFieldElement v-model="model" />
   <SearchFieldDivider />
   <SearchFieldCardType v-model="model" />
+  <SearchFieldDivider />
+  <SearchFieldArchetypeText v-model="model" @submit="emit('submit')" />
   <SearchFieldDivider />
   <SearchFieldKeyword v-model="model" @submit="emit('submit')" />
 </template>
