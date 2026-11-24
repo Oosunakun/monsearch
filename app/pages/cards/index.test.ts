@@ -6,11 +6,13 @@ import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import CardsPage from './index.vue'
+import ResultControls from '~~/app/components/cards/result/controls/ResultControls.vue'
 import ResultList from '~~/app/components/cards/result/layout/ResultList.vue'
 import { displayCard } from '~~/tests/fixtures/cardSearch/cards'
 import type { CardSearchResultPage } from '~~/server/types/cardSearch'
 
 const analytics = vi.hoisted(() => ({ submit: vi.fn(), finishSubmit: vi.fn(), results: vi.fn() }))
+const { navigateTo } = vi.hoisted(() => ({ navigateTo: vi.fn() }))
 vi.mock('~~/app/composables/useAnalytics', () => ({ useAnalytics: () => analytics }))
 
 const searchState = {
@@ -23,12 +25,13 @@ vi.mock('vue-router', async importOriginal => ({
   useRoute: () => routeState,
 }))
 mockNuxtImport('useCardSearch', () => () => searchState)
+mockNuxtImport('navigateTo', () => navigateTo)
 vi.mock('vuetify', () => ({ useDisplay: () => ({ mobile: ref(false) }) }))
 
-const mountPage = () => mount(CardsPage, { global: { stubs: {
+const mountPage = (stubResultControls = true) => mount(CardsPage, { global: { stubs: {
   ContentMaxWidthContainer: { template: '<div><slot /></div>' },
   SectionCardShell: { template: '<div><slot name="header" /><slot /></div>' },
-  SectionHeader: true, ResultControls: true, ResultSummary: true,
+  SectionHeader: true, ResultControls: stubResultControls, ResultSummary: true,
   ResultDisplaySettings: true, ItemHeaderStat: true, ItemBody: true,
   ItemEffect: true, ItemMeta: true, CardTextureBackground: true,
   SkeletonLoader: { template: '<div class="loading">loading</div>' },
@@ -37,6 +40,25 @@ const mountPage = () => mount(CardsPage, { global: { stubs: {
   VChip: { template: '<span class="v-chip"><slot /></span>' },
   VPagination: true, VDivider: true, VBtn: { template: '<button><slot /></button>' },
 } } })
+
+it('「条件を編集」で種族・タイプと他の検索条件を詳細検索へ渡す', async () => {
+  const originalQuery = routeState.query
+  const query = { att: 'ドラゴン', cc: 'unit', kw: '飛行' }
+  routeState.query = query
+  navigateTo.mockClear()
+  const wrapper = mountPage(false)
+
+  try {
+    const button = wrapper.getComponent(ResultControls).get('button')
+    expect(button.text()).toBe('条件を編集')
+    await button.trigger('click')
+
+    expect(navigateTo).toHaveBeenCalledExactlyOnceWith({ path: '/cards/search', query })
+  } finally {
+    wrapper.unmount()
+    routeState.query = originalQuery
+  }
+})
 
 describe('cards result pageの描画', () => {
   beforeEach(() => {

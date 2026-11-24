@@ -4,7 +4,10 @@ import { nextTick, ref, watch } from 'vue'
 import type { LocationQuery } from 'vue-router'
 import SearchPage from './search.vue'
 import SearchSlotSelector from '~~/app/components/cards/search/shared/SearchSlotSelector.vue'
+import SearchRow from '~~/app/components/cards/search/shared/SearchRow.vue'
+import SearchActions from '~~/app/components/cards/search/layout/SearchActions.vue'
 import SearchFormBasic from '~~/app/components/cards/search/layout/SearchFormBasic.vue'
+import SearchFieldArchetypeText from '~~/app/components/cards/search/basic/SearchFieldArchetypeText.vue'
 import SearchFieldName from '~~/app/components/cards/search/basic/SearchFieldName.vue'
 import SearchFieldKeyword from '~~/app/components/cards/search/basic/SearchFieldKeyword.vue'
 import SearchFieldReferenceLabel from '~~/app/components/cards/search/other/SearchFieldReferenceLabel.vue'
@@ -55,17 +58,20 @@ describe('card search page', () => {
   })
 
   it.each<{ query: LocationQuery; expected: Partial<ReturnType<typeof createSearchForm>> }>([
-    { query: { cc: 'summoner', kw: 'アーニャ' }, expected: { cardCategory: 'summoner', keyword: 'アーニャ' } },
+    { query: { cc: 'summoner', kw: 'アーニャ', att: ' サモナー ' }, expected: { cardCategory: 'summoner', keyword: 'アーニャ', archetypeText: 'サモナー' } },
     { query: { cc: 'unit' }, expected: { cardCategory: 'unit', keyword: '' } },
   ])('restores deferred query $query after ready with real child components', async ({ query, expected }) => {
-    await mountSearch()
+    const wrapper = await mountSearch()
+    const input = wrapper.getComponent(SearchFieldArchetypeText).get('input')
     expect(form.value).toEqual(createSearchForm())
     expect(readyCallbacks).toHaveLength(1)
     routeQuery.value = query
     await nextTick()
     expect(form.value).toEqual(createSearchForm())
+    expect(input.element.value).toBe('')
     await becomeReady()
     expect(form.value).toMatchObject(expected)
+    expect(input.element.value).toBe(expected.archetypeText ?? '')
     expect(routeQuery.value).toEqual(query)
   })
 
@@ -116,6 +122,17 @@ describe('card search page', () => {
     expect(form.value).toEqual(edited)
   })
 
+  it('preserves archetype input entered before deferred restoration', async () => {
+    const wrapper = await mountSearch()
+    const input = wrapper.getComponent(SearchFieldArchetypeText).get('input')
+    await input.setValue('ドラゴン')
+    routeQuery.value = { att: 'スピリット' }
+    await becomeReady()
+
+    expect(input.element.value).toBe('ドラゴン')
+    expect(form.value.archetypeText).toBe('ドラゴン')
+  })
+
   it('does not restore after unmount', async () => {
     const wrapper = await mountSearch()
     const original = form.value
@@ -147,6 +164,17 @@ describe('card search page', () => {
     expect(form.value.keyword).toBe('user edit')
   })
 
+  it('shows the restored archetype on SPA entry and keeps it when resubmitted unchanged', async () => {
+    const query = { att: 'ドラゴン', cc: 'unit', kw: '飛行' }
+    routeQuery.value = query
+    const wrapper = await mountSearch(false)
+
+    expect(wrapper.getComponent(SearchFieldArchetypeText).get('input').element.value).toBe('ドラゴン')
+    await wrapper.getComponent(SearchActions).get('button').trigger('click')
+
+    expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query })
+  })
+
   it('submits edits to the restored query through the existing builder', async () => {
     const wrapper = await mountSearch()
     routeQuery.value = { cc: 'summoner', kw: 'アーニャ' }
@@ -156,10 +184,46 @@ describe('card search page', () => {
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { cc: 'summoner', kw: 'ダメージ' } })
   })
 
+  it.each<{ initialQuery: LocationQuery; inputValue: string; expectedQuery: LocationQuery }>([
+    { initialQuery: {}, inputValue: 'ドラゴン', expectedQuery: { att: 'ドラゴン' } },
+    { initialQuery: { att: 'ドラゴン' }, inputValue: ' スピリット ', expectedQuery: { att: 'スピリット' } },
+    { initialQuery: { att: 'ドラゴン' }, inputValue: '　 ', expectedQuery: {} },
+  ])('submits archetype input $inputValue with the other search conditions', async ({ initialQuery, inputValue, expectedQuery }) => {
+    const otherConditions = { cc: 'unit', kw: '飛行' }
+    routeQuery.value = { ...otherConditions, ...initialQuery }
+    const wrapper = await mountSearch(false)
+    await wrapper.getComponent(SearchFieldArchetypeText).get('input').setValue(inputValue)
+    expect(push).not.toHaveBeenCalled()
+
+    await wrapper.getComponent(SearchActions).get('button').trigger('click')
+
+    expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query: { ...otherConditions, ...expectedQuery } })
+  })
+
+  it('clears only the restored archetype and omits it on the next search', async () => {
+    const otherConditions = { cc: 'unit', kw: '飛行' }
+    routeQuery.value = { ...otherConditions, att: 'ドラゴン' }
+    const wrapper = await mountSearch(false)
+    const field = wrapper.getComponent(SearchFieldArchetypeText)
+    const clear = field.get('button')
+    expect(clear.element.disabled).toBe(false)
+
+    await clear.trigger('click')
+
+    expect(field.get('input').element.value).toBe('')
+    expect(clear.element.disabled).toBe(true)
+    expect(wrapper.getComponent(SearchFieldKeyword).get('input').element.value).toBe('飛行')
+    expect(push).not.toHaveBeenCalled()
+
+    await wrapper.getComponent(SearchActions).get('button').trigger('click')
+    expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query: otherConditions })
+  })
+
   it.each([
     ['nm', SearchFieldName],
     ['kw', SearchFieldKeyword],
     ['rl', SearchFieldReferenceLabel],
+    ['att', SearchFieldArchetypeText],
   ] as const)('submits the latest input as %s with existing conditions once', async (alias, field) => {
     routeQuery.value = { cc: 'unit', el: 'fire' }
     const wrapper = await mountSearch(false)
@@ -185,6 +249,9 @@ describe('card search page', () => {
     ['legacy IME code', SearchFieldKeyword, { key: 'Enter', isComposing: false }, 229],
     ['a repeated Enter', SearchFieldReferenceLabel, { key: 'Enter', repeat: true }],
     ['Space', SearchFieldReferenceLabel, { key: ' ' }],
+    ['IME composition in archetype input', SearchFieldArchetypeText, { key: 'Enter', isComposing: true }],
+    ['legacy IME code in archetype input', SearchFieldArchetypeText, { key: 'Enter', isComposing: false }, 229],
+    ['a repeated Enter in archetype input', SearchFieldArchetypeText, { key: 'Enter', repeat: true }],
   ] as const)('leaves %s available for its original behavior', async (_case, field, init, keyCode?: number) => {
     const wrapper = await mountSearch(false)
     const input = wrapper.getComponent(field).get('input')
@@ -218,9 +285,20 @@ describe('card search page', () => {
     expect(routeQuery.value).toEqual(representativeCardSearchQuery)
   })
 
-  it('restores defaults for an empty route query', async () => {
-    await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
+  it('restores defaults for an empty route query and shows the archetype input after card type', async () => {
+    const wrapper = await mountSearch(false)
     expect(form.value).toEqual(createSearchForm())
+
+    const basic = wrapper.getComponent(SearchFormBasic)
+    expect(basic.findAllComponents(SearchRow).map(row => row.props('label'))).toEqual([
+      'カード名', 'カード分類', '属性', 'タイプ', '種族・タイプ', 'キーワード',
+    ])
+    const field = basic.getComponent(SearchFieldArchetypeText)
+    const input = field.get('input')
+    expect(input.attributes('aria-label')).toBe('種族・タイプ')
+    expect(input.attributes('placeholder')).toBe('種族・タイプを入力...')
+    expect(input.element.value).toBe('')
+    expect(field.get('button').element.disabled).toBe(true)
   })
 
   it('navigates populated submissions with a logical query', async () => {
