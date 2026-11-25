@@ -13,6 +13,7 @@ import SearchFieldCardCategory from '~~/app/components/cards/search/basic/Search
 import SearchFieldElement from '~~/app/components/cards/search/basic/SearchFieldElement.vue'
 import SearchFieldName from '~~/app/components/cards/search/basic/SearchFieldName.vue'
 import SearchFieldKeyword from '~~/app/components/cards/search/basic/SearchFieldKeyword.vue'
+import SearchFieldEffectText from '~~/app/components/cards/search/effect/SearchFieldEffectText.vue'
 import SearchFieldAdditionalAttack from '~~/app/components/cards/search/equipment/SearchFieldAdditionalAttack.vue'
 import SearchFieldAdditionalCharge from '~~/app/components/cards/search/equipment/SearchFieldAdditionalCharge.vue'
 import SearchFieldLimit from '~~/app/components/cards/search/land/SearchFieldLimit.vue'
@@ -450,6 +451,7 @@ describe('card search page', () => {
     ['kw', SearchFieldKeyword],
     ['rl', SearchFieldReferenceLabel],
     ['att', SearchFieldArchetypeText],
+    ['etx', SearchFieldEffectText],
   ] as const)('submits the latest input as %s with existing conditions once', async (alias, field) => {
     routeQuery.value = { cc: 'unit', el: 'fire' }
     const wrapper = await mountSearch(false)
@@ -478,6 +480,9 @@ describe('card search page', () => {
     ['IME composition in archetype input', SearchFieldArchetypeText, { key: 'Enter', isComposing: true }],
     ['legacy IME code in archetype input', SearchFieldArchetypeText, { key: 'Enter', isComposing: false }, 229],
     ['a repeated Enter in archetype input', SearchFieldArchetypeText, { key: 'Enter', repeat: true }],
+    ['IME composition in card text input', SearchFieldEffectText, { key: 'Enter', isComposing: true }],
+    ['legacy IME code in card text input', SearchFieldEffectText, { key: 'Enter', isComposing: false }, 229],
+    ['a repeated Enter in card text input', SearchFieldEffectText, { key: 'Enter', repeat: true }],
   ] as const)('leaves %s available for its original behavior', async (_case, field, init, keyCode?: number) => {
     const wrapper = await mountSearch(false)
     const input = wrapper.getComponent(field).get('input')
@@ -493,15 +498,55 @@ describe('card search page', () => {
     expect(ancestorKeydown).toHaveBeenCalledExactlyOnceWith(event)
     expect(push).not.toHaveBeenCalled()
     expect(analytics.submit).not.toHaveBeenCalled()
+    expect(analytics.finishSubmit).not.toHaveBeenCalled()
   })
 
-  it('does not submit Enter from a card text field or a category chip', async () => {
+  it('does not submit Enter from a category chip', async () => {
     const wrapper = await mountSearch(false)
-    await wrapper.get('input[placeholder="カードテキストを入力..."]').trigger('keydown', { key: 'Enter' })
     await wrapper.get('.v-chip').trigger('keydown', { key: 'Enter' })
 
     expect(push).not.toHaveBeenCalled()
     expect(analytics.submit).not.toHaveBeenCalled()
+  })
+
+  it('submits the same card text and other conditions with the search button', async () => {
+    routeQuery.value = { cc: 'unit', el: 'fire' }
+    const wrapper = await mountSearch(false)
+    await wrapper.getComponent(SearchFieldEffectText).get('input').setValue('  確定済み  ')
+
+    await getSearchButton(wrapper).trigger('click')
+
+    const query = { cc: 'unit', el: 'fire', etx: '確定済み' }
+    expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query })
+    expect(analytics.submit).toHaveBeenCalledExactlyOnceWith('advanced', query)
+    expect(analytics.finishSubmit).toHaveBeenCalledExactlyOnceWith(1)
+  })
+
+  it('clears only card text and omits it on the next Enter search', async () => {
+    const wrapper = await mountSearch(false)
+    const nameInput = wrapper.getComponent(SearchFieldName).get('input')
+    await nameInput.setValue('ドラゴン')
+    const field = wrapper.getComponent(SearchFieldEffectText)
+    const input = field.get('input')
+    await input.setValue('飛行')
+    const clear = field.get('button')
+    expect(clear.element.disabled).toBe(false)
+
+    await clear.trigger('click')
+
+    expect(input.element.value).toBe('')
+    expect(nameInput.element.value).toBe('ドラゴン')
+    expect(clear.element.disabled).toBe(true)
+    expect(push).not.toHaveBeenCalled()
+    expect(analytics.submit).not.toHaveBeenCalled()
+    expect(analytics.finishSubmit).not.toHaveBeenCalled()
+
+    await input.trigger('keydown', { key: 'Enter' })
+
+    const query = { nm: 'ドラゴン' }
+    expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query })
+    expect(analytics.submit).toHaveBeenCalledExactlyOnceWith('advanced', query)
+    expect(analytics.finishSubmit).toHaveBeenCalledExactlyOnceWith(1)
   })
 
   it('restores every representative field family from the route query', async () => {
