@@ -34,12 +34,10 @@ export const buildCardSearchQuery = (form: Readonly<SearchForm>): LogicalCardSea
   const query: LogicalCardSearchQuery = {}
   const put = (alias: keyof LogicalCardSearchQuery, value: string | undefined) => { if (value !== undefined) query[alias] = value }
   const putComparison = (alias: keyof LogicalCardSearchQuery, value: Readonly<NumericCondition>) => put(alias, comparison(value))
-  const putFiltered = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<FilteredNumericCondition>, alwaysShowValue = false) => {
-    const base = comparison(value)
+  const putFiltered = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<FilteredNumericCondition>, independentComparison = false) => {
     if (!isSearchFilter(value.filterType)) return
     if (value.filterType !== 'all') put(modifier, value.filterType)
-    if (value.filterType === 'exclude' && !alwaysShowValue) return
-    if (base) put(alias, base)
+    if (independentComparison || value.filterType === 'include') putComparison(alias, value)
   }
   const putSlots = (modifier: keyof LogicalCardSearchQuery, alias: keyof LogicalCardSearchQuery, value: Readonly<SlotCondition>, allowed: ReadonlySet<string>, supportsNone = false) => {
     if (supportsNone && value.match === 'none') {

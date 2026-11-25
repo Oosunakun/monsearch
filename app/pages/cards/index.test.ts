@@ -60,6 +60,23 @@ it('「条件を編集」で種族・タイプと他の検索条件を詳細検�
   }
 })
 
+it.each<LocationQuery>([{ it: 'gte:2', nm: '保持する条件' }, { he: 'eq:0', nm: '保持する条件' }])(
+  '「条件を編集」でComparison単独のQueryをそのまま渡す (%j)',
+  async (query) => {
+    const originalQuery = routeState.query
+    routeState.query = query
+    navigateTo.mockClear()
+    const wrapper = mountPage(false)
+    try {
+      await wrapper.getComponent(ResultControls).get('button').trigger('click')
+      expect(navigateTo).toHaveBeenCalledExactlyOnceWith({ path: '/cards/search', query })
+    } finally {
+      wrapper.unmount()
+      routeState.query = originalQuery
+    }
+  },
+)
+
 describe('cards result pageの描画', () => {
   beforeEach(() => {
     searchState.status.value = 'success'

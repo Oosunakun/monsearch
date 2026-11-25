@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { buildCardSearchQuery } from './cardSearchQueryBuilder'
 import { parseCardSearchQuery } from './cardSearchQueryParser'
-import { cloneSearchForm, createFreshSearchForm, createPopulatedSearchForm } from './cardSearchQueryTestFixtures'
+import { cloneSearchForm, createFreshSearchForm, createPopulatedSearchForm, numericPresenceAliases } from './cardSearchQueryTestFixtures'
 
 describe('buildCardSearchQuery', () => {
   it('kw/attの原表現・内部空白・改行・タブをURL round tripで維持する', () => {
@@ -116,6 +116,59 @@ describe('buildCardSearchQuery', () => {
       lvm: 'exclude',
       lv: 'gte:2',
     })
+  })
+
+  describe.each(numericPresenceAliases)('%s のModifierとComparison', (field, modifier, alias) => {
+    it.each([
+      ['すべて', { filterType: 'all', operator: 'gte', value: 2 }, {}],
+      ['あり・数値なし', { filterType: 'include', operator: 'gte', value: null }, { [modifier]: 'include' }],
+      ['あり・数値あり', { filterType: 'include', operator: 'eq', value: 0 }, { [modifier]: 'include', [alias]: 'eq:0' }],
+      ['なし', { filterType: 'exclude', operator: 'gte', value: 2 }, { [modifier]: 'exclude' }],
+    ] as const)('%s で出力だけを切り替える', (_label, condition, expected) => {
+      const form = createFreshSearchForm()
+      form[field] = condition
+      const snapshot = cloneSearchForm(form)
+      const query = buildCardSearchQuery(form)
+      expect(query).toEqual(expected)
+      expect(Object.keys(query)).toEqual(Object.keys(expected))
+      expect(form).toEqual(snapshot)
+    })
+  })
+
+  it.each([
+    ['all', { lv: 'gte:2' }],
+    ['include', { lvm: 'include', lv: 'gte:2' }],
+    ['exclude', { lvm: 'exclude', lv: 'gte:2' }],
+  ] as const)('レベルの比較を即時召喚の %s から独立して出力する', (filterType, expected) => {
+    const form = createFreshSearchForm()
+    form.level = { filterType, operator: 'gte', value: 2 }
+    expect(buildCardSearchQuery(form)).toEqual(expected)
+  })
+
+  it('ありで負数を出力し、不正な比較はModifierだけを出力する', () => {
+    const form = createFreshSearchForm()
+    form.initiative = { filterType: 'include', operator: 'lte', value: -1 }
+    form.charge = { filterType: 'include', operator: 'gte', value: Number.POSITIVE_INFINITY }
+    form.defender.filterType = 'include'
+    Object.assign(form.defender, { operator: 'invalid', value: 2 })
+    expect(buildCardSearchQuery(form)).toEqual({ itm: 'include', it: 'lte:-1', chm: 'include', dem: 'include' })
+  })
+
+  it.each([
+    ['', ['hem', 'itm', 'chm', 'dem', 'aitm', 'achm', 'adem']],
+    ['unit', ['cc', 'hem', 'itm', 'chm', 'dem']],
+    ['item-equip', ['cc', 'aitm', 'achm', 'adem']],
+    ['token', ['cc', 'hem', 'itm', 'chm', 'dem', 'aitm', 'achm', 'adem']],
+    ['spell', ['cc']],
+  ] as const)('分類 %s に適用する条件だけを順序どおり出力する', (category, keys) => {
+    const form = createFreshSearchForm()
+    form.cardCategory = category
+    for (const [field] of numericPresenceAliases) {
+      form[field] = { filterType: 'exclude', operator: 'gte', value: 2 }
+    }
+    const snapshot = cloneSearchForm(form)
+    expect(Object.keys(buildCardSearchQuery(form))).toEqual(keys)
+    expect(form).toEqual(snapshot)
   })
 
   it('serializes additional initiative with its dedicated modifier alias', () => {

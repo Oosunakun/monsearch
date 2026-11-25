@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { cardSearchParityQueries } from '~~/app/utils/search/cardSearchQueryTestFixtures'
-import { makeCard, makeSearchCard, makeSearchEquipmentCard, textEffect, ordinaryEffect } from '~~/tests/fixtures/cardSearch/cards'
+import { makeCard, makeNumericPresenceCards, makeSearchCard, makeSearchEquipmentCard, textEffect, ordinaryEffect } from '~~/tests/fixtures/cardSearch/cards'
 import { historicalSources, sourcesFor } from '~~/tests/fixtures/cardSearch/sources'
 import { createCardSearchMatcher, matchesCardSearch, searchCards } from './search'
 import * as catalogNormalizer from '~~/shared/cardSearch/normalizeCatalogText'
@@ -20,6 +20,69 @@ beforeEach(() => {
   fixedSources = sourcesFor([makeSearchCard(), makeSearchEquipmentCard(), reported])
 })
 const getSourceCards = () => fixedSources
+
+describe('019 数値能力の適用範囲', () => {
+  it.each([
+    ['initiative', 'itm', 'it', 'unit', 'unit', 'token-unit'],
+    ['charge', 'chm', 'ch', 'unit', 'unit', 'token-unit'],
+    ['defender', 'dem', 'de', 'unit', 'unit', 'token-unit'],
+    ['initiative', 'aitm', 'ait', 'equip', 'item-equip', 'token-equip'],
+    ['charge', 'achm', 'ach', 'equip', 'item-equip', 'token-equip'],
+    ['defender', 'adem', 'ade', 'equip', 'item-equip', 'token-equip'],
+  ] as const)('%s (%s) の適用・欠損・0を区別する', (field, modifier, alias, group, category, tokenId) => {
+    const cards = makeNumericPresenceCards()
+    const nullCard = cards.find(card => card.card_id === `${group}-null`)!
+    // 不完全な受信レコードで、能力行があっても当該プロパティが欠けるケース。
+    const missingValue = makeCard({ ...nullCard, card_id: `${group}-missing-value` })
+    const ability = group === 'unit' ? missingValue.unit!.ability! : missingValue.item!.equip!.ability!
+    Reflect.deleteProperty(ability, field)
+    cards.push(missingValue)
+
+    // 分類と詳細が食い違う入力でも、受信した比較単独の既存評価を維持する。
+    const positive = cards.find(card => card.card_id === `${group}-positive`)!
+    cards.push(makeCard({ ...positive, card_id: 'spell-with-ability', card_category_code: 'Spell' }))
+
+    const matchingIds = (query: Record<string, string>) =>
+      searchCards(cards, parseCardSearchQuery(query)).map(card => card.card_id)
+    const absentIds = [`${group}-null`, `${group}-no-ability`, `${group}-no-detail`]
+    expect(matchingIds({ [modifier]: 'exclude' })).toEqual([...absentIds, tokenId, missingValue.card_id])
+    expect(matchingIds({ [modifier]: 'exclude', [alias]: 'gte:2' })).toEqual([...absentIds, tokenId, missingValue.card_id])
+    expect(matchingIds({ [modifier]: 'exclude', cc: category })).toEqual([...absentIds, missingValue.card_id])
+    expect(matchingIds({ [modifier]: 'exclude', cc: 'token' })).toEqual([tokenId])
+    expect(matchingIds({ [modifier]: 'exclude', cc: 'spell' })).toEqual([])
+    expect(matchingIds({ [modifier]: 'include' })).toEqual([`${group}-positive`, `${group}-zero`, `${group}-negative`])
+    expect(matchingIds({ [modifier]: 'include', [alias]: 'gte:0' })).toEqual([`${group}-positive`, `${group}-zero`])
+    expect(matchingIds({ [alias]: 'gte:2' })).toEqual([`${group}-positive`, 'spell-with-ability'])
+  })
+
+  it.each([
+    [{ he: 'eq:0' }, ['unit-zero', 'unit-negative']],
+    [{ hem: 'include' }, ['unit-positive', 'unit-negative']],
+    [{ hem: 'include', he: 'eq:0' }, ['unit-negative']],
+    [{ hem: 'exclude', he: 'gte:99' }, ['unit-zero', 'unit-null', 'unit-no-ability', 'token-unit']],
+    [{ lv: 'gte:2' }, ['unit-positive', 'unit-zero', 'unit-negative', 'unit-null', 'unit-no-ability', 'token-unit']],
+    [{ lvm: 'include', lv: 'gte:2' }, ['unit-positive']],
+    [{ lvm: 'exclude', lv: 'gte:2' }, ['unit-zero', 'unit-negative', 'unit-null', 'unit-no-ability', 'token-unit']],
+  ] as const)('%j の英雄点・レベル・即時召喚の既存判定を維持する', (query, expectedIds) => {
+    const cards = makeNumericPresenceCards()
+    expect(searchCards(cards, parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(expectedIds)
+  })
+
+  it.each([
+    ['ssm', 'unit-positive', ['unit-zero', 'unit-negative', 'unit-null', 'unit-no-ability', 'token-unit']],
+    // 所持枠の none は装備品詳細の有無で判定し、分類コードの表記は参照しない。
+    ['assm', 'equip-positive', ['equip-zero', 'equip-negative', 'equip-null', 'equip-no-ability', 'item-lowercase-equip', 'token-equip']],
+  ] as const)('%s=none は対応詳細を要求し、正の所持枠を持つカードを除外する', (alias, positiveId, expectedIds) => {
+    const cards = makeNumericPresenceCards()
+    const positive = cards.find(card => card.card_id === positiveId)!
+    const ability = positive.unit?.ability ?? positive.item!.equip!.ability!
+    ability.ability_slots = [{
+      ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火',
+      ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1,
+    }]
+    expect(searchCards(cards, parseCardSearchQuery({ [alias]: 'none' })).map(card => card.card_id)).toEqual(expectedIds)
+  })
+})
 
 
 
