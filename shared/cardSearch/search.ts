@@ -48,7 +48,9 @@ const includesAny = (wanted: readonly string[], actual: readonly string[]) => {
   })
 }
 const isFilteredActive = (condition: FilteredNumericCondition) => condition.filterType !== 'all' || condition.value !== null
-const matchesFiltered = (actual: number | null | undefined, condition: FilteredNumericCondition) => {
+const matchesNumericAbility = (actual: number | null | undefined, condition: FilteredNumericCondition, applicable: boolean) => {
+  if (!isFilteredActive(condition)) return true
+  if (condition.filterType !== 'all' && !applicable) return false
   if (condition.filterType === 'exclude') return actual === null || actual === undefined
   return actual !== null && actual !== undefined && (condition.value === null || compare(actual, condition))
 }
@@ -192,10 +194,10 @@ export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => 
   const hasCostCriteria = COST_CONDITIONS.some(({ condition }) => criteria[condition].match === 'none' || Object.values(criteria[condition].slots).some(value => value > 0))
   const costConditions = hasCostCriteria ? prepareCostConditions(criteria) : []
   return (card: Card): boolean => {
+    const categoryCode = card.search_support?.is_token || card.card_category_code.toLowerCase() === 'token'
+      ? 'Token'
+      : card.card_category_code
     if (cardCategory) {
-      const categoryCode = card.search_support.is_token || card.card_category_code.toLowerCase() === 'token'
-        ? 'Token'
-        : card.card_category_code
       if (categoryCode !== cardCategory.cardCode || (cardCategory.itemCode && card.item?.item_category_code !== cardCategory.itemCode)) return false
     }
     if (!textIncludes(card.name, criteria.name) || !textIncludes(card.reference_label, criteria.referenceLabel)) return false
@@ -211,6 +213,7 @@ export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => 
     if (criteria.illustrators.length && !includesAny(criteria.illustrators, [card.illustrator_id])) return false
 
     const unit = card.unit
+    const unitAbilityApplicable = categoryCode === 'Token' ? unit != null : categoryCode === 'Unit'
     if (isFilteredActive(criteria.level) && (!unit || (criteria.level.filterType === 'include' && !unit.is_instant_summon) || (criteria.level.filterType === 'exclude' && unit.is_instant_summon) || !compare(unit.level, criteria.level))) return false
     if (isFilteredActive(criteria.heroPoint) && (!unit || (criteria.heroPoint.filterType === 'include' && !unit.is_hero) || (criteria.heroPoint.filterType === 'exclude' && unit.is_hero) || (criteria.heroPoint.filterType !== 'exclude' && criteria.heroPoint.value !== null && !compare(unit.hero_point, criteria.heroPoint)))) return false
     if (criteria.attack.value !== null && (!unit || !compare(unit.attack, criteria.attack))) return false
@@ -219,19 +222,22 @@ export const createCardSearchMatcher = (criteria: SearchForm): ((card: Card) => 
     if (criteria.races.length && !includesAny(criteria.races, (unit?.races ?? []).flatMap(x => [x.race_id, x.race_name]).map(x => x.toLowerCase()))) return false
     if ((criteria.abilityItemSlots.match === 'none' && !unit) || (criteria.abilitySpellSlots.match === 'none' && !unit)
       || (hasAbilityItemSlots && !slotsMatch(unit?.ability, criteria.abilityItemSlots, 'Item')) || (hasAbilitySpellSlots && !slotsMatch(unit?.ability, criteria.abilitySpellSlots, 'Spell'))) return false
-    if (isFilteredActive(criteria.initiative) && (!matchesFiltered(unit?.ability?.initiative, criteria.initiative))) return false
-    if (isFilteredActive(criteria.charge) && (!matchesFiltered(unit?.ability?.charge, criteria.charge))) return false
-    if (isFilteredActive(criteria.defender) && (!matchesFiltered(unit?.ability?.defender, criteria.defender))) return false
+    if (!matchesNumericAbility(unit?.ability?.initiative, criteria.initiative, unitAbilityApplicable)) return false
+    if (!matchesNumericAbility(unit?.ability?.charge, criteria.charge, unitAbilityApplicable)) return false
+    if (!matchesNumericAbility(unit?.ability?.defender, criteria.defender, unitAbilityApplicable)) return false
     if (!resistancesMatch(unit?.ability, criteria.resistances)) return false
 
     const equip = card.item?.equip
+    const equipmentAbilityApplicable = categoryCode === 'Token'
+      ? equip != null
+      : categoryCode === 'Item' && card.item?.item_category_code === 'Equip'
     if (criteria.additionalAttack.value !== null && (!equip || !compare(equip.attack, criteria.additionalAttack))) return false
     if (criteria.additionalDefense.value !== null && (!equip || !compare(equip.defense, criteria.additionalDefense))) return false
     if ((criteria.additionalAbilityItemSlots.match === 'none' && !equip) || (criteria.additionalAbilitySpellSlots.match === 'none' && !equip)
       || (hasAdditionalItemSlots && !slotsMatch(equip?.ability, criteria.additionalAbilityItemSlots, 'Item')) || (hasAdditionalSpellSlots && !slotsMatch(equip?.ability, criteria.additionalAbilitySpellSlots, 'Spell'))) return false
-    if (isFilteredActive(criteria.additionalInitiative) && (!matchesFiltered(equip?.ability?.initiative, criteria.additionalInitiative))) return false
-    if (isFilteredActive(criteria.additionalCharge) && (!matchesFiltered(equip?.ability?.charge, criteria.additionalCharge))) return false
-    if (isFilteredActive(criteria.additionalDefender) && (!matchesFiltered(equip?.ability?.defender, criteria.additionalDefender))) return false
+    if (!matchesNumericAbility(equip?.ability?.initiative, criteria.additionalInitiative, equipmentAbilityApplicable)) return false
+    if (!matchesNumericAbility(equip?.ability?.charge, criteria.additionalCharge, equipmentAbilityApplicable)) return false
+    if (!matchesNumericAbility(equip?.ability?.defender, criteria.additionalDefender, equipmentAbilityApplicable)) return false
     if (!resistancesMatch(equip?.ability, criteria.additionalResistances)) return false
     if (criteria.limit.value !== null && (!card.land || !compare(card.land.land_limit, criteria.limit))) return false
     if (landCategoryCode && card.land?.land_category_code !== landCategoryCode) return false

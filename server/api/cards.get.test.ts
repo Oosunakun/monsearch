@@ -23,8 +23,8 @@ import { CARD_SEARCH_SORT_KEYS, CARD_SEARCH_SORT_ORDERS, CARD_SEARCH_PER_PAGE } 
 import { expectedIds, revisedAtkPageIds } from '~~/specs/015-search-result-sorting/verification/sort-expectations'
 import { fixtureOrders, makeSortFixtures } from '~~/specs/015-search-result-sorting/verification/sort-fixtures'
 
-import { historicalSources } from '~~/tests/fixtures/cardSearch/sources'
-import { makeSearchCard, makeCard } from '~~/tests/fixtures/cardSearch/cards'
+import { historicalSources, sourcesFor } from '~~/tests/fixtures/cardSearch/sources'
+import { makeSearchCard, makeCard, makeNumericPresenceCards } from '~~/tests/fixtures/cardSearch/cards'
 beforeEach(() => { vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(historicalSources()) })
 
 let cardsHandler: EventHandler
@@ -402,6 +402,32 @@ describe('GET /api/cards contract', () => {
     expect(filteredBody.totalCount).toBeGreaterThan(0)
     expect(filteredBody.totalCount).toBeLessThan(allBody.totalCount)
     expect(filteredBody.items.map(item => item.reference_label)).toEqual(expected.slice(0, 100).map(card => card.reference_label))
+  })
+})
+
+describe('019 数値条件のHTTP APIとCSRの一致', () => {
+  it.each([
+    { query: 'it=gte:2', ids: ['unit-positive'], totalCount: 1, categories: { Unit: 1 } },
+    { query: 'itm=exclude&it=gte:2', ids: ['token-unit', 'unit-no-ability', 'unit-no-detail', 'unit-null'], totalCount: 4, categories: { Unit: 3, Token: 1 } },
+    { query: 'aitm=exclude', ids: ['equip-no-ability', 'equip-no-detail', 'equip-null', 'token-equip'], totalCount: 4, categories: { Item: 3, token: 1 } },
+    { query: 'he=eq:0', ids: ['unit-negative', 'unit-zero'], totalCount: 2, categories: { Unit: 2 } },
+    { query: 'hem=include&he=eq:0', ids: ['unit-negative'], totalCount: 1, categories: { Unit: 1 } },
+    { query: 'lvm=exclude&lv=gte:2', ids: ['token-unit', 'unit-negative', 'unit-no-ability', 'unit-null', 'unit-zero'], totalCount: 5, categories: { Unit: 4, Token: 1 } },
+    { query: 'cc=item-equip&achm=include&ach=gte:0&order=desc&page=99', ids: ['equip-zero', 'equip-positive'], totalCount: 2, categories: { Item: 2 } },
+  ])('$query は両経路で手書きの結果契約に一致する', async ({ query, ids, totalCount, categories }) => {
+    const sources = sourcesFor(makeNumericPresenceCards())
+    vi.spyOn(dataSource, 'getSourceCards').mockReturnValue(sources)
+    const response = await requestCards(query)
+    expect(response.status).toBe(200)
+    const api: CardSearchResultPage = await response.json()
+    const csr = runCardSearch(sources, prepareCardSearch(normalizeClientSearchQuery(parseQuery(query))))
+    for (const result of [api, csr]) {
+      expect(result.items.map(card => card.card_id)).toEqual(ids)
+      expect(result.totalCount).toBe(totalCount)
+      expect(result).toMatchObject({ page: 1, perPage: 20, totalPages: 1 })
+      expect(Object.fromEntries(result.categoryBreakdown.map(({ categoryCode, count }) => [categoryCode, count]))).toEqual(categories)
+    }
+    expect(api).toEqual(JSON.parse(JSON.stringify(csr)))
   })
 })
 

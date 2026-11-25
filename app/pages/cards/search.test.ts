@@ -14,10 +14,14 @@ import SearchFieldElement from '~~/app/components/cards/search/basic/SearchField
 import SearchFieldName from '~~/app/components/cards/search/basic/SearchFieldName.vue'
 import SearchFieldKeyword from '~~/app/components/cards/search/basic/SearchFieldKeyword.vue'
 import SearchFieldAdditionalAttack from '~~/app/components/cards/search/equipment/SearchFieldAdditionalAttack.vue'
+import SearchFieldAdditionalCharge from '~~/app/components/cards/search/equipment/SearchFieldAdditionalCharge.vue'
 import SearchFieldLimit from '~~/app/components/cards/search/land/SearchFieldLimit.vue'
 import SearchFieldReferenceLabel from '~~/app/components/cards/search/other/SearchFieldReferenceLabel.vue'
 import SearchFieldAbilitySlotSpell from '~~/app/components/cards/search/unit/SearchFieldAbilitySlotSpell.vue'
 import SearchFieldCharge from '~~/app/components/cards/search/unit/SearchFieldCharge.vue'
+import SearchFieldHero from '~~/app/components/cards/search/unit/SearchFieldHero.vue'
+import SearchFieldInitiative from '~~/app/components/cards/search/unit/SearchFieldInitiative.vue'
+import SearchFieldLevel from '~~/app/components/cards/search/unit/SearchFieldLevel.vue'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
 import { createRepresentativeSearchForm, representativeCardSearchQuery } from '~~/app/utils/search/cardSearchQueryTestFixtures'
 
@@ -89,6 +93,96 @@ describe('card search page', () => {
     vi.unstubAllGlobals()
   })
 
+  for (const [field, modifier, component] of [
+    ['charge', 'chm', SearchFieldCharge],
+    ['additionalCharge', 'achm', SearchFieldAdditionalCharge],
+    ['heroPoint', 'hem', SearchFieldHero],
+  ] as const) {
+    const timeout = field === 'charge' ? 15_000 : undefined
+    it(`${field} の数値と演算子をModifier・分類切替後も保持する`, { timeout }, async () => {
+      const wrapper = await mountSearch(false)
+      const control = wrapper.getComponent(component)
+      const select = (label: string) => control.findAll('button').find(button => button.text() === label)!.trigger('click')
+
+      await select('あり')
+      const comparison = control.getComponent(SearchValueWithOperator)
+      await comparison.findAll('button').find(button => button.text() === '一致')!.trigger('click')
+      await comparison.findAll('button').find(button => button.text() === '2')!.trigger('click')
+
+      await select('すべて')
+      expect(control.findComponent(SearchValueWithOperator).exists()).toBe(false)
+      expect(form.value[field]).toEqual({ filterType: 'all', operator: 'eq', value: 2 })
+      await getSearchButton(wrapper).trigger('click')
+      expect(push).toHaveBeenLastCalledWith({ path: '/cards' })
+      await select('あり')
+      expect(control.getComponent(SearchValueWithOperator).props()).toMatchObject({ operator: 'eq', modelValue: 2 })
+
+      await select('なし')
+      expect(control.findComponent(SearchValueWithOperator).exists()).toBe(false)
+      expect(form.value[field]).toEqual({ filterType: 'exclude', operator: 'eq', value: 2 })
+      await getSearchButton(wrapper).trigger('click')
+      expect(push).toHaveBeenLastCalledWith({ path: '/cards', query: { [modifier]: 'exclude' } })
+      await select('あり')
+
+      const section: unknown = control.element.closest('.is-collapsible')
+      if (!(section instanceof HTMLElement)) throw new Error(`${field}のセクションが見つかりません`)
+      const categories = wrapper.getComponent(SearchFieldCardCategory).findAll('.v-chip')
+      await categories.find(chip => chip.text() === '召喚術師')!.trigger('click')
+      expect(section.style.display).toBe('none')
+      expect(form.value[field]).toEqual({ filterType: 'include', operator: 'eq', value: 2 })
+      await categories.find(chip => chip.text() === 'トークン')!.trigger('click')
+      expect(form.value.cardCategory).toBe('token')
+      expect(section.style.display).not.toBe('none')
+      expect(control.getComponent(SearchValueWithOperator).props()).toMatchObject({ operator: 'eq', modelValue: 2 })
+
+      await getClearButton(wrapper).trigger('click')
+      expect(form.value[field]).toEqual(createSearchForm()[field])
+    })
+  }
+
+  it('レベルのComparisonは即時召喚Modifierに関わらず表示・送信する', async () => {
+    routeQuery.value = { lv: 'gte:2' }
+    const wrapper = await mountSearch(false)
+    const level = wrapper.getComponent(SearchFieldLevel)
+    expect(level.getComponent(SearchValueWithOperator).props('modelValue')).toBe(2)
+    await level.findAll('button').find(button => button.text() === '即時不可')!.trigger('click')
+    expect(level.getComponent(SearchValueWithOperator).props('modelValue')).toBe(2)
+    await getSearchButton(wrapper).trigger('click')
+    expect(push).toHaveBeenLastCalledWith({ path: '/cards', query: { lvm: 'exclude', lv: 'gte:2' } })
+  })
+
+  describe.each([
+    ['initiative', 'itm', 'it', 'gte', 2, SearchFieldInitiative],
+    ['heroPoint', 'hem', 'he', 'eq', 0, SearchFieldHero],
+  ] as const)('%s のComparison単独URL', (field, modifier, alias, operator, value, component) => {
+    it.each([false, true])('SPA初期化・直アクセスから編集して再検索する (hydrating=%s)', async (hydrating) => {
+      const comparison = `${operator}:${value}`
+      const query = { [alias]: comparison, nm: '保持する条件' }
+      if (!hydrating) routeQuery.value = query
+      const wrapper = await mountSearch(hydrating)
+      if (hydrating) {
+        expect(form.value[field]).toEqual(createSearchForm()[field])
+        routeQuery.value = query
+        await becomeReady()
+      }
+
+      const control = wrapper.getComponent(component)
+      expect(control.findAll('button').find(button => button.text() === 'すべて')!.classes()).toContain('v-btn--active')
+      expect(control.findComponent(SearchValueWithOperator).exists()).toBe(false)
+      expect(form.value[field]).toEqual({ filterType: 'all', operator, value })
+      await getSearchButton(wrapper).trigger('click')
+      expect(push).toHaveBeenLastCalledWith({ path: '/cards', query: { nm: '保持する条件' } })
+
+      await control.findAll('button').find(button => button.text() === 'あり')!.trigger('click')
+      expect(control.getComponent(SearchValueWithOperator).props()).toMatchObject({ operator, modelValue: value })
+      await getSearchButton(wrapper).trigger('click')
+      expect(push).toHaveBeenLastCalledWith({
+        path: '/cards', query: { nm: '保持する条件', [modifier]: 'include', [alias]: comparison },
+      })
+      expect(routeQuery.value).toEqual(query)
+    })
+  })
+
   it('clears all sections, including numeric and slot inputs hidden before the clear', async () => {
     routeQuery.value = {
       ...representativeCardSearchQuery,
@@ -105,8 +199,8 @@ describe('card search page', () => {
       { label: '地形', field: wrapper.getComponent(SearchFieldLimit).element },
     ].map(({ label, field }) => {
       // DOMに接続されていないマウントでも、v-show が付けるインラインスタイルは確認できる。
-      const section = field.closest<HTMLElement>('.is-collapsible')
-      if (!section) throw new Error(`${label}のセクションが見つかりません`)
+      const section: unknown = field.closest('.is-collapsible')
+      if (!(section instanceof HTMLElement)) throw new Error(`${label}のセクションが見つかりません`)
       return { label, section }
     })
 

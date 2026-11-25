@@ -14,6 +14,8 @@
 
 詳細検索で条件を入力して検索すると、結果画面へ移動します。「条件を編集」で検索フォームへ戻れます。検索にはJavaScriptが必要です。
 
+イニシアチブなどの数値条件で「すべて」を選ぶと、その数値で絞り込みません。「なし」は、その能力の適用対象カードから能力を持たないものを探します。数値比較だけを指定したURL（例 `/cards?it=gte:2`）は引き続き直接検索できます。条件を編集して再検索すると、画面で選んだ「すべて」「あり」「なし」に従ってURLを作り直します。 [検索URLの仕様](docs/architecture/query_specification.md)
+
 ## 技術構成
 
 Nuxt、Vue、TypeScript（strict）、Vuetifyを使用しています。検証にはESLint、Vitest、Nuxt Test Utilsを使用します。依存バージョンは[package.json](package.json)と[package-lock.json](package-lock.json)を参照してください。
