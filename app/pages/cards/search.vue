@@ -19,12 +19,12 @@ import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 const route = useRoute()
 const router = useRouter()
 const analytics = useAnalytics()
-const { form } = useCardSearchForm(parseCardSearchQuery(route.query))
+const { form, resetForm } = useCardSearchForm(parseCardSearchQuery(route.query))
+let edited = false
 
 if (import.meta.client && useNuxtApp().isHydrating) {
   const initialFormKey = JSON.stringify(form.value)
   const initialPath = route.path
-  let edited = false
   let disposed = false
   let settled = false
   // 同値の初期通知は無視し、実際に編集されたフォームは遅延復元で上書きしない。
@@ -44,6 +44,12 @@ if (import.meta.client && useNuxtApp().isHydrating) {
       form.value = parseCardSearchQuery(route.query)
     }
   })
+}
+
+const clearSearchConditions = () => {
+  // 値がすでに既定値でも、明示的なクリアを遅延復元より優先する。
+  edited = true
+  resetForm()
 }
 
 // 明示的な検索実行
@@ -157,6 +163,6 @@ const shownLandSectionCardShell = computed(() => {
       <SearchFormOther v-model="form" @submit="executeSearch" />
     </SectionCardShell>
 
-    <SearchActions :on-execute="executeSearch" />
+    <SearchActions :on-execute="executeSearch" :on-clear="clearSearchConditions" />
   </ContentMaxWidthContainer>
 </template>

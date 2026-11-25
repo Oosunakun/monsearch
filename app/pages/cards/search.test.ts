@@ -4,13 +4,20 @@ import { nextTick, ref, watch } from 'vue'
 import type { LocationQuery } from 'vue-router'
 import SearchPage from './search.vue'
 import SearchSlotSelector from '~~/app/components/cards/search/shared/SearchSlotSelector.vue'
+import SearchValueWithOperator from '~~/app/components/cards/search/shared/SearchValueWithOperator.vue'
 import SearchRow from '~~/app/components/cards/search/shared/SearchRow.vue'
 import SearchActions from '~~/app/components/cards/search/layout/SearchActions.vue'
 import SearchFormBasic from '~~/app/components/cards/search/layout/SearchFormBasic.vue'
 import SearchFieldArchetypeText from '~~/app/components/cards/search/basic/SearchFieldArchetypeText.vue'
+import SearchFieldCardCategory from '~~/app/components/cards/search/basic/SearchFieldCardCategory.vue'
+import SearchFieldElement from '~~/app/components/cards/search/basic/SearchFieldElement.vue'
 import SearchFieldName from '~~/app/components/cards/search/basic/SearchFieldName.vue'
 import SearchFieldKeyword from '~~/app/components/cards/search/basic/SearchFieldKeyword.vue'
+import SearchFieldAdditionalAttack from '~~/app/components/cards/search/equipment/SearchFieldAdditionalAttack.vue'
+import SearchFieldLimit from '~~/app/components/cards/search/land/SearchFieldLimit.vue'
 import SearchFieldReferenceLabel from '~~/app/components/cards/search/other/SearchFieldReferenceLabel.vue'
+import SearchFieldAbilitySlotSpell from '~~/app/components/cards/search/unit/SearchFieldAbilitySlotSpell.vue'
+import SearchFieldCharge from '~~/app/components/cards/search/unit/SearchFieldCharge.vue'
 import { createSearchForm } from '~~/app/utils/search/cardSearchFormFactory'
 import { createRepresentativeSearchForm, representativeCardSearchQuery } from '~~/app/utils/search/cardSearchQueryTestFixtures'
 
@@ -19,35 +26,58 @@ mockNuxtImport('onNuxtReady', () => (callback: () => void) => { readyCallbacks.p
 const analytics = vi.hoisted(() => ({ submit: vi.fn(() => 1), finishSubmit: vi.fn(), results: vi.fn() }))
 vi.mock('~~/app/composables/useAnalytics', () => ({ useAnalytics: () => analytics }))
 const push = vi.fn()
+const replace = vi.fn()
 const routeQuery = ref<LocationQuery>({})
 const routePath = ref('/cards/search')
 let form = ref(createSearchForm())
 vi.mock('vue-router', async (importOriginal) => ({
   ...await importOriginal<typeof import('vue-router')>(),
   useRoute: () => ({ get query() { return routeQuery.value }, get path() { return routePath.value } }),
-  useRouter: () => ({ push }),
+  useRouter: () => ({ push, replace }),
 }))
-vi.mock('~~/app/composables/useCardSearchForm', () => ({
-  useCardSearchForm: (initialForm: ReturnType<typeof createSearchForm>) => {
-    form = ref(structuredClone(initialForm))
-    return { form }
-  },
-}))
+vi.mock('~~/app/composables/useCardSearchForm', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('~~/app/composables/useCardSearchForm')>()
+  return {
+    ...actual,
+    useCardSearchForm: (...args: Parameters<typeof actual.useCardSearchForm>) => {
+      const state = actual.useCardSearchForm(...args)
+      form = state.form
+      return state
+    },
+  }
+})
 
 describe('card search page', () => {
   const wrappers: Array<Awaited<ReturnType<typeof mountSuspended>>> = []
-  const mountSearch = async (hydrating = true) => {
+  const mountSearch = async (hydrating = true, stubSlotOverlays = false) => {
+    const slotOverlay = { template: '<div><slot /></div>' }
     useNuxtApp().isHydrating = hydrating
-    const wrapper = await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
+    const wrapper = await mountSuspended(SearchPage, {
+      global: {
+        stubs: {
+          teleport: true,
+          ...(stubSlotOverlays ? { VDialog: slotOverlay, VBottomSheet: slotOverlay } : {}),
+        },
+      },
+    })
     wrappers.push(wrapper)
     return wrapper
   }
+  const getSearchButton = (wrapper: Awaited<ReturnType<typeof mountSearch>>) => {
+    const button = wrapper.getComponent(SearchActions).findAll('button')
+      .find(button => button.text() === 'この条件で検索')
+    if (!button) throw new Error('「この条件で検索」ボタンが見つかりません')
+    return button
+  }
+  const getClearButton = (wrapper: Awaited<ReturnType<typeof mountSearch>>) =>
+    wrapper.getComponent(SearchActions).get('button[aria-label="すべての条件をクリア"]')
   const becomeReady = async () => {
     for (const callback of readyCallbacks.splice(0)) callback()
     await nextTick()
   }
   beforeEach(() => {
     analytics.submit.mockClear(); analytics.finishSubmit.mockClear()
+    replace.mockReset()
     push.mockReset(); routeQuery.value = {}; routePath.value = '/cards/search'; form.value = createSearchForm()
     readyCallbacks.length = 0
     useNuxtApp().isHydrating = false
@@ -55,6 +85,82 @@ describe('card search page', () => {
   afterEach(() => {
     for (const wrapper of wrappers.splice(0)) wrapper.unmount()
     useNuxtApp().isHydrating = false
+    vi.restoreAllMocks()
+    vi.unstubAllGlobals()
+  })
+
+  it('clears all sections, including numeric and slot inputs hidden before the clear', async () => {
+    routeQuery.value = {
+      ...representativeCardSearchQuery,
+      cc: 'token', pd: '22d7e', aat: 'eq:2', lc: 'ritual', etx: '飛行', rl: '参照ラベル',
+    }
+    const wrapper = await mountSearch(false)
+    const name = wrapper.getComponent(SearchFieldName).get('input')
+    const fire = wrapper.getComponent(SearchFieldElement).get<HTMLInputElement>('input[value="fire"]')
+    const charge = wrapper.getComponent(SearchFieldCharge)
+    const slots = wrapper.getComponent(SearchFieldAbilitySlotSpell).getComponent(SearchSlotSelector)
+    const categorySections = [
+      { label: 'ユニット', field: charge.element },
+      { label: '装備品', field: wrapper.getComponent(SearchFieldAdditionalAttack).element },
+      { label: '地形', field: wrapper.getComponent(SearchFieldLimit).element },
+    ].map(({ label, field }) => {
+      // DOMに接続されていないマウントでも、v-show が付けるインラインスタイルは確認できる。
+      const section = field.closest<HTMLElement>('.is-collapsible')
+      if (!section) throw new Error(`${label}のセクションが見つかりません`)
+      return { label, section }
+    })
+
+    await name.setValue('編集中')
+    await fire.setValue(false)
+    expect(form.value.elements).toEqual(['water'])
+
+    await charge.findAll('button').find(button => button.text() === 'あり')!.trigger('click')
+    const comparison = charge.getComponent(SearchValueWithOperator)
+    await comparison.findAll('button').find(button => button.text() === '一致')!.trigger('click')
+    await comparison.findAll('button').find(button => button.text() === '2')!.trigger('click')
+    await charge.findAll('button').find(button => button.text() === 'なし')!.trigger('click')
+    expect(charge.findComponent(SearchValueWithOperator).exists()).toBe(false)
+    expect(form.value.charge).toEqual({ filterType: 'exclude', operator: 'eq', value: 2 })
+
+    expect(form.value.abilitySpellSlots).toEqual({ match: 'and', slots: { water: 2, fire: 1 } })
+    const fireSlot = slots.findAll('.active-chip').find(chip => chip.text().startsWith('火'))
+    expect(fireSlot).toBeDefined()
+    await fireSlot!.get('.v-chip__close').trigger('click')
+    expect(form.value.abilitySpellSlots.slots).toEqual({ water: 2 })
+    await slots.findAll('button').find(button => button.text() === 'なし')!.trigger('click')
+    expect(form.value.abilitySpellSlots).toEqual({ match: 'none', slots: { water: 2 } })
+    expect(slots.find('.active-chip').exists()).toBe(false)
+
+    await wrapper.getComponent(SearchFieldCardCategory).findAll('.v-chip')
+      .find(chip => chip.text() === '召喚術師')!.trigger('click')
+    expect(form.value.cardCategory).toBe('summoner')
+    for (const { label, section } of categorySections) {
+      expect(section.style.display, `${label}は分類選択後に非表示`).toBe('none')
+    }
+    expect(form.value).toMatchObject({
+      name: '編集中', products: ['22d7e'], attack: { operator: 'eq', value: 0 },
+      additionalAttack: { operator: 'eq', value: 2 }, landCategory: 'ritual',
+      effectText: '飛行', referenceLabel: '参照ラベル',
+    })
+
+    const confirm = vi.fn(() => false)
+    vi.stubGlobal('confirm', confirm)
+    await getClearButton(wrapper).trigger('click')
+
+    expect(confirm).not.toHaveBeenCalled()
+    expect(form.value).toEqual(createSearchForm())
+    expect(name.element.value).toBe('')
+    expect(wrapper.getComponent(SearchFieldElement).get<HTMLInputElement>('input[value="water"]').element.checked).toBe(false)
+    for (const { label, section } of categorySections) {
+      expect(section.style.display, `${label}はクリア後に再表示`).not.toBe('none')
+    }
+    expect(slots.props('match')).toBe('or')
+    expect(slots.props('slots')).toEqual({})
+    expect(slots.find('.active-chip').exists()).toBe(false)
+
+    await charge.findAll('button').find(button => button.text() === 'あり')!.trigger('click')
+    expect(charge.getComponent(SearchValueWithOperator).props()).toMatchObject({ operator: 'gte', modelValue: null })
+    expect(charge.find('.btn-active').exists()).toBe(false)
   })
 
   it.each<{ query: LocationQuery; expected: Partial<ReturnType<typeof createSearchForm>> }>([
@@ -107,6 +213,32 @@ describe('card search page', () => {
     routeQuery.value = { cc: 'unit' }
     await becomeReady()
     expect(form.value.cardCategory).toBe('unit')
+  })
+
+  it.each([false, true])('keeps an explicit clear before ready and allows URL restoration on a new mount (hydrating: %s)', async (hydratingAgain) => {
+    const wrapper = await mountSearch()
+    const name = wrapper.getComponent(SearchFieldName).get('input')
+    expect(form.value).toEqual(createSearchForm())
+    await getClearButton(wrapper).trigger('click')
+
+    const query = { ...representativeCardSearchQuery, unknown: 'ignored', aat: 'invalid' }
+    routeQuery.value = query
+    await becomeReady()
+
+    expect(form.value).toEqual(createSearchForm())
+    expect(name.element.value).toBe('')
+    expect(routeQuery.value).toEqual(query)
+    expect(push).not.toHaveBeenCalled()
+
+    wrapper.unmount()
+    wrappers.pop()
+    if (hydratingAgain) routeQuery.value = {}
+    const reopened = await mountSearch(hydratingAgain)
+    routeQuery.value = query
+    await becomeReady()
+
+    expect(form.value).toEqual(createRepresentativeSearchForm())
+    expect(reopened.getComponent(SearchFieldName).get('input').element.value).toBe('青い竜 🐉')
   })
 
   it.each(['keyword', 'nested slots', 'edit then undo'])('preserves %s edits made before ready', async (kind) => {
@@ -170,7 +302,7 @@ describe('card search page', () => {
     const wrapper = await mountSearch(false)
 
     expect(wrapper.getComponent(SearchFieldArchetypeText).get('input').element.value).toBe('ドラゴン')
-    await wrapper.getComponent(SearchActions).get('button').trigger('click')
+    await getSearchButton(wrapper).trigger('click')
 
     expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query })
   })
@@ -180,7 +312,7 @@ describe('card search page', () => {
     routeQuery.value = { cc: 'summoner', kw: 'アーニャ' }
     await becomeReady()
     form.value.keyword = 'ダメージ'
-    await wrapper.findAll('button').at(-1)!.trigger('click')
+    await getSearchButton(wrapper).trigger('click')
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { cc: 'summoner', kw: 'ダメージ' } })
   })
 
@@ -195,7 +327,7 @@ describe('card search page', () => {
     await wrapper.getComponent(SearchFieldArchetypeText).get('input').setValue(inputValue)
     expect(push).not.toHaveBeenCalled()
 
-    await wrapper.getComponent(SearchActions).get('button').trigger('click')
+    await getSearchButton(wrapper).trigger('click')
 
     expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query: { ...otherConditions, ...expectedQuery } })
   })
@@ -215,7 +347,7 @@ describe('card search page', () => {
     expect(wrapper.getComponent(SearchFieldKeyword).get('input').element.value).toBe('飛行')
     expect(push).not.toHaveBeenCalled()
 
-    await wrapper.getComponent(SearchActions).get('button').trigger('click')
+    await getSearchButton(wrapper).trigger('click')
     expect(push).toHaveBeenCalledExactlyOnceWith({ path: '/cards', query: otherConditions })
   })
 
@@ -280,7 +412,7 @@ describe('card search page', () => {
 
   it('restores every representative field family from the route query', async () => {
     routeQuery.value = representativeCardSearchQuery
-    await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
+    await mountSearch(false)
     expect(form.value).toEqual(createRepresentativeSearchForm())
     expect(routeQuery.value).toEqual(representativeCardSearchQuery)
   })
@@ -302,9 +434,9 @@ describe('card search page', () => {
   })
 
   it('navigates populated submissions with a logical query', async () => {
-    const wrapper = await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
+    const wrapper = await mountSearch(false)
     form.value.name = ' Dragon '
-    await wrapper.findAll('button').at(-1)!.trigger('click')
+    await getSearchButton(wrapper).trigger('click')
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: 'Dragon' } })
     expect(analytics.submit).toHaveBeenCalledWith('advanced', { nm: 'Dragon' })
     expect(analytics.finishSubmit).toHaveBeenCalledWith(1)
@@ -312,52 +444,78 @@ describe('card search page', () => {
 
   it('rebuilds a restored form after adding, changing, and removing conditions', async () => {
     routeQuery.value = { nm: 'Dragon', el: 'fire,water', at: 'eq:2', unknown: 'discarded' }
-    const wrapper = await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
+    const wrapper = await mountSearch(false)
     form.value.name = ''
     form.value.elements = ['water']
     form.value.attack = { operator: 'gte', value: 0 }
-    await wrapper.findAll('button').at(-1)!.trigger('click')
+    await getSearchButton(wrapper).trigger('click')
 
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { el: 'water', at: 'gte:0' } })
   })
 
   it('canonically round-trips an unchanged restored form', async () => {
     routeQuery.value = { el: ['water', 'fire,water'], nm: ' Dragon ' }
-    const wrapper = await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
-    await wrapper.findAll('button').at(-1)!.trigger('click')
+    const wrapper = await mountSearch(false)
+    await getSearchButton(wrapper).trigger('click')
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: 'Dragon', el: 'fire,water' } })
   })
 
   it('keeps valid fields when malformed route conditions are present', async () => {
     routeQuery.value = { nm: '有効', at: 'broken', lv: 'lte:3', lvm: 'include', unknown: 'ignored' }
-    const wrapper = await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
+    const wrapper = await mountSearch(false)
     expect(form.value.name).toBe('有効')
     expect(form.value.attack).toEqual({ operator: 'gte', value: null })
-    await wrapper.findAll('button').at(-1)!.trigger('click')
+    await getSearchButton(wrapper).trigger('click')
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { nm: '有効', lvm: 'include', lv: 'lte:3' } })
   })
 
   it('navigates an empty submission to bare /cards', async () => {
-    const wrapper = await mountSuspended(SearchPage, { global: { stubs: { teleport: true } } })
-    await wrapper.findAll('button').at(-1)!.trigger('click')
+    const wrapper = await mountSearch(false)
+    await getSearchButton(wrapper).trigger('click')
     expect(push).toHaveBeenCalledWith({ path: '/cards' })
   })
 
+  it.each(['', '再入力'])('only searches after an explicit submit with the post-clear input %j', async (input) => {
+    const query = { nm: '復元された条件', cc: 'unit', at: 'eq:0' }
+    routeQuery.value = query
+    const wrapper = await mountSearch(false)
+    const location = window.location.href
+    const historyLength = window.history.length
+    const pushState = vi.spyOn(window.history, 'pushState')
+    const replaceState = vi.spyOn(window.history, 'replaceState')
+    const clear = getClearButton(wrapper)
+    await clear.trigger('click')
+    await clear.trigger('click')
+
+    expect(form.value).toEqual(createSearchForm())
+    if (input) await wrapper.getComponent(SearchFieldName).get('input').setValue(input)
+
+    expect(routePath.value).toBe('/cards/search')
+    expect(routeQuery.value).toEqual(query)
+    expect(window.location.href).toBe(location)
+    expect(window.history.length).toBe(historyLength)
+    expect(pushState).not.toHaveBeenCalled()
+    expect(replaceState).not.toHaveBeenCalled()
+    expect(push).not.toHaveBeenCalled()
+    expect(replace).not.toHaveBeenCalled()
+    expect(analytics.submit).not.toHaveBeenCalled()
+    expect(analytics.finishSubmit).not.toHaveBeenCalled()
+
+    await getSearchButton(wrapper).trigger('click')
+
+    expect(push).toHaveBeenCalledExactlyOnceWith(input ? { path: '/cards', query: { nm: input } } : { path: '/cards' })
+    expect(analytics.submit).toHaveBeenCalledExactlyOnceWith('advanced', input ? { nm: input } : {})
+    expect(analytics.finishSubmit).toHaveBeenCalledExactlyOnceWith(1)
+  })
+
   it('navigates UI-selected slots with their logical query alias', async () => {
-    const wrapper = await mountSuspended(SearchPage, {
-      global: {
-        stubs: {
-          teleport: true,
-          VDialog: { template: '<div><slot /></div>' },
-        },
-      },
-    })
+    const wrapper = await mountSearch(false, true)
     const slotSelector = wrapper.findComponent(SearchSlotSelector)
     const incrementButton = slotSelector.findAllComponents({ name: 'VBtn' })
       .find(button => button.props('icon') === 'mdi-plus')
     expect(incrementButton).toBeDefined()
     await incrementButton!.trigger('click')
-    await wrapper.findAll('button').at(-1)!.trigger('click')
+    await getSearchButton(wrapper).trigger('click')
 
     expect(push).toHaveBeenCalledWith({ path: '/cards', query: { is: 'multi:1' } })
   })
