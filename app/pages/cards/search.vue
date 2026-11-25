@@ -149,7 +149,7 @@ const shownLandSectionCardShell = computed(() => {
         <SectionHeader title="特殊能力・カード効果" color="accent" text-class="text-white" />
       </template>
       
-      <SearchFormEffect v-model="form" />
+      <SearchFormEffect v-model="form" @submit="executeSearch" />
     </SectionCardShell>
 
     <SectionCardShell
