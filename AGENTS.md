@@ -11,8 +11,12 @@
 - 権限昇格やSandbox外実行など、実行方法を変更する場合は、実行前に必ずユーザーへ確認してください。
 - 環境制約による失敗であると判断した場合は、その根拠を示してください。
 
-<!-- SPECKIT START -->
-For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan
-at specs/002-query-builder/plan.md
-<!-- SPECKIT END -->
+# Documentation Governance
+
+1. `docs/architecture/` の正式Specificationを、現行の承認済み仕様の正本とする。
+2. `specs/` 配下の番号付きFeatureディレクトリは、Featureごとの要件・設計・判断・検証の履歴とする。完了済みFeatureの資料は原則として変更しない。
+3. 後続Featureで仕様を変更するときは、変更理由と設計判断を新Featureの資料に記録し、対応する正式Specificationを更新する。過去Featureの資料は当時の記録として保存する。
+4. 仕様の優先順位は、Feature番号の大小だけで判断しない。
+5. ソースコードとテストは、現在の実装動作を判断する一次情報とする。承認済み仕様との矛盾はHuman Reviewに報告し、どちらを採用するかの判断を委ねる。
+6. Query Data Specification系列の3文書だけで、検索意味論・Decision履歴・改訂候補を理解できるようにする。系列外の資料との照合や、系列外のDecision番号だけに依存する説明を避ける。
+7. 系列外の関連資料は調査・検証に利用できる。正式Specificationに必要な規則は、該当文書に明記する。

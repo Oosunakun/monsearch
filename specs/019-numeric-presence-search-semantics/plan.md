@@ -114,3 +114,11 @@ Query Specificationの別日本語版やQuery Data Specificationの別英語版�
 **HD-01（A案、APPROVED）** をMatcher設計とテストマトリクスに反映した。Query Data Specificationの更新時は、FR-006・FR-007と同じ期待結果を明記する。未決のHuman Decisionはない。
 
 憲章の型安全性、テスト可能性、段階的変更、既存の責務分割を設計に反映した。統合Human Reviewの決定はSpec・Planへ反映済み。Tasks作成と既存ドキュメント・READMEの更新は次工程で行う。
+
+## 実装後Human Reviewの決定（APPROVED）
+
+現行の承認済み仕様の正本を `docs/architecture/` に置き、完了済みFeatureの要件・設計・判断・検証資料を当時の履歴として保存する方針を承認した。上記「ドキュメント更新方針」は当初の計画として残す。
+
+当初はFeature 002・005・010の資料を更新する計画で、T018・T019として一度変更した。実装後のHuman Reviewで履歴保全を優先し、その変更を撤回した。現行の規則は正式Specificationに反映し、Query Data Specification系列の3文書は、系列内で検索意味論・Decision履歴・改訂候補を理解できるように整理した。
+
+Feature 019の最終成果物はコミット `41e827d` に含まれる。ソースコードの実装、テスト・lint・typecheckの結果、ブラウザー検証に対するHumanの承認は維持する。 [実施記録と最終状態](tasks.md#実装後human-reviewの記録)
