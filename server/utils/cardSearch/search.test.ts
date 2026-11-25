@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { parseCardSearchQuery } from '~~/app/utils/search/cardSearchQueryParser'
 import { cardSearchParityQueries } from '~~/app/utils/search/cardSearchQueryTestFixtures'
-import { makeSearchCard, makeSearchEquipmentCard, textEffect, ordinaryEffect } from '~~/tests/fixtures/cardSearch/cards'
+import { makeCard, makeNumericPresenceCards, makeSearchCard, makeSearchEquipmentCard, textEffect, ordinaryEffect } from '~~/tests/fixtures/cardSearch/cards'
 import { historicalSources, sourcesFor } from '~~/tests/fixtures/cardSearch/sources'
 import { createCardSearchMatcher, matchesCardSearch, searchCards } from './search'
 import * as catalogNormalizer from '~~/shared/cardSearch/normalizeCatalogText'
@@ -20,6 +20,69 @@ beforeEach(() => {
   fixedSources = sourcesFor([makeSearchCard(), makeSearchEquipmentCard(), reported])
 })
 const getSourceCards = () => fixedSources
+
+describe('019 数値能力の適用範囲', () => {
+  it.each([
+    ['initiative', 'itm', 'it', 'unit', 'unit', 'token-unit'],
+    ['charge', 'chm', 'ch', 'unit', 'unit', 'token-unit'],
+    ['defender', 'dem', 'de', 'unit', 'unit', 'token-unit'],
+    ['initiative', 'aitm', 'ait', 'equip', 'item-equip', 'token-equip'],
+    ['charge', 'achm', 'ach', 'equip', 'item-equip', 'token-equip'],
+    ['defender', 'adem', 'ade', 'equip', 'item-equip', 'token-equip'],
+  ] as const)('%s (%s) の適用・欠損・0を区別する', (field, modifier, alias, group, category, tokenId) => {
+    const cards = makeNumericPresenceCards()
+    const nullCard = cards.find(card => card.card_id === `${group}-null`)!
+    // 不完全な受信レコードで、能力行があっても当該プロパティが欠けるケース。
+    const missingValue = makeCard({ ...nullCard, card_id: `${group}-missing-value` })
+    const ability = group === 'unit' ? missingValue.unit!.ability! : missingValue.item!.equip!.ability!
+    Reflect.deleteProperty(ability, field)
+    cards.push(missingValue)
+
+    // 分類と詳細が食い違う入力でも、受信した比較単独の既存評価を維持する。
+    const positive = cards.find(card => card.card_id === `${group}-positive`)!
+    cards.push(makeCard({ ...positive, card_id: 'spell-with-ability', card_category_code: 'Spell' }))
+
+    const matchingIds = (query: Record<string, string>) =>
+      searchCards(cards, parseCardSearchQuery(query)).map(card => card.card_id)
+    const absentIds = [`${group}-null`, `${group}-no-ability`, `${group}-no-detail`]
+    expect(matchingIds({ [modifier]: 'exclude' })).toEqual([...absentIds, tokenId, missingValue.card_id])
+    expect(matchingIds({ [modifier]: 'exclude', [alias]: 'gte:2' })).toEqual([...absentIds, tokenId, missingValue.card_id])
+    expect(matchingIds({ [modifier]: 'exclude', cc: category })).toEqual([...absentIds, missingValue.card_id])
+    expect(matchingIds({ [modifier]: 'exclude', cc: 'token' })).toEqual([tokenId])
+    expect(matchingIds({ [modifier]: 'exclude', cc: 'spell' })).toEqual([])
+    expect(matchingIds({ [modifier]: 'include' })).toEqual([`${group}-positive`, `${group}-zero`, `${group}-negative`])
+    expect(matchingIds({ [modifier]: 'include', [alias]: 'gte:0' })).toEqual([`${group}-positive`, `${group}-zero`])
+    expect(matchingIds({ [alias]: 'gte:2' })).toEqual([`${group}-positive`, 'spell-with-ability'])
+  })
+
+  it.each([
+    [{ he: 'eq:0' }, ['unit-zero', 'unit-negative']],
+    [{ hem: 'include' }, ['unit-positive', 'unit-negative']],
+    [{ hem: 'include', he: 'eq:0' }, ['unit-negative']],
+    [{ hem: 'exclude', he: 'gte:99' }, ['unit-zero', 'unit-null', 'unit-no-ability', 'token-unit']],
+    [{ lv: 'gte:2' }, ['unit-positive', 'unit-zero', 'unit-negative', 'unit-null', 'unit-no-ability', 'token-unit']],
+    [{ lvm: 'include', lv: 'gte:2' }, ['unit-positive']],
+    [{ lvm: 'exclude', lv: 'gte:2' }, ['unit-zero', 'unit-negative', 'unit-null', 'unit-no-ability', 'token-unit']],
+  ] as const)('%j の英雄点・レベル・即時召喚の既存判定を維持する', (query, expectedIds) => {
+    const cards = makeNumericPresenceCards()
+    expect(searchCards(cards, parseCardSearchQuery(query)).map(card => card.card_id)).toEqual(expectedIds)
+  })
+
+  it.each([
+    ['ssm', 'unit-positive', ['unit-zero', 'unit-negative', 'unit-null', 'unit-no-ability', 'token-unit']],
+    // 所持枠の none は装備品詳細の有無で判定し、分類コードの表記は参照しない。
+    ['assm', 'equip-positive', ['equip-zero', 'equip-negative', 'equip-null', 'equip-no-ability', 'item-lowercase-equip', 'token-equip']],
+  ] as const)('%s=none は対応詳細を要求し、正の所持枠を持つカードを除外する', (alias, positiveId, expectedIds) => {
+    const cards = makeNumericPresenceCards()
+    const positive = cards.find(card => card.card_id === positiveId)!
+    const ability = positive.unit?.ability ?? positive.item!.equip!.ability!
+    ability.ability_slots = [{
+      ability_slot_type_code: 'SpellFire', ability_slot_type_name: '火',
+      ability_slot_category_code: 'Spell', ability_slot_category_name: 'Spell', slot_count: 1,
+    }]
+    expect(searchCards(cards, parseCardSearchQuery({ [alias]: 'none' })).map(card => card.card_id)).toEqual(expectedIds)
+  })
+})
 
 
 
@@ -176,9 +239,12 @@ describe('US3 既存検索と原文の保持', () => {
     const token = structuredClone(normal)
     token.card_id = 'token'
     token.search_support.is_token = true
+    const tokenByCode = { ...structuredClone(normal), card_id: 'token-by-code', card_category_code: 'Token' }
+    const tokenByLowercaseCode = { ...structuredClone(normal), card_id: 'token-by-lowercase-code', card_category_code: 'token' }
+    const cards = [normal, token, tokenByCode, tokenByLowercaseCode]
     for (const query of [{}, { kw: 'catalog-only', att: 'archetype-only' }]) {
-      expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'unit' })).map(card => card.card_id)).toEqual(['normal'])
-      expect(searchCards([normal, token], parseFixtureQuery({ ...query, cc: 'token' })).map(card => card.card_id)).toEqual(['token'])
+      expect(searchCards(cards, parseFixtureQuery({ ...query, cc: 'unit' }))).toEqual([normal])
+      expect(searchCards(cards, parseFixtureQuery({ ...query, cc: 'token' }))).toEqual([token, tokenByCode, tokenByLowercaseCode])
     }
   })
 })
@@ -188,11 +254,84 @@ describe('searchCards', () => {
     ['circle', 'Basic'], ['triangle', 'Common'], ['rhombus', 'Uncommon'], ['star', 'Rare'],
     ['club', 'SuperRare'], ['spade', 'Special'], ['heart', 'Promotion'], ['crescent', 'DragonJr'], ['hexagram', 'Summoner'],
   ] as const)('rt のNatural Key %sをDatabase code %sへMappingする', (naturalKey, rarityCode) => {
-    const source = getSourceCards().map(item => item.card)
-    const card = structuredClone(source[0]!)
-    card.rarity_code = rarityCode
+    const criteria = createSearchForm()
+    criteria.rarities = [naturalKey]
+    const card = makeCard({ rarity_code: rarityCode })
+    const suffixOnly = makeCard({ rarity_code: `Other${rarityCode}` })
+    const lowercaseOnly = makeCard({ rarity_code: rarityCode.toLowerCase() })
 
-    expect(searchCards([card], parseCardSearchQuery({ rt: naturalKey }))).toEqual([card])
+    expect(searchCards([card, suffixOnly, lowercaseOnly], criteria)).toEqual([card])
+  })
+
+  it.each([
+    ['triangle', 'Common', 'Uncommon'],
+    ['star', 'Rare', 'SuperRare'],
+  ] as const)('rt=%sは%sだけを返し%sを除外する', (rt, expectedCode, suffixCode) => {
+    const exact = makeCard({ rarity_code: expectedCode })
+    const suffixOnly = makeCard({ rarity_code: suffixCode })
+    expect(searchCards([exact, suffixOnly], parseCardSearchQuery({ rt }))).toEqual([exact])
+  })
+
+  it.each([
+    ['item-consume', 'Consume'], ['item-equip', 'Equip'], ['item-bullet', 'Bullet'],
+  ] as const)('cc=%sはItemかつアイテム分類%sの場合に一致する', (cc, itemCode) => {
+    const item = { item_category_code: itemCode, item_category_name: '', consume: null, equip: null, bullet: null }
+    const exact = makeCard({ card_category_code: 'Item', item })
+    const wrongCardCategory = makeCard({ card_category_code: 'Unit', item })
+    const wrongItemCategory = makeCard({ card_category_code: 'Item', item: { ...item, item_category_code: itemCode.toLowerCase() } })
+    const missingItem = makeCard({ card_category_code: 'Item' })
+    expect(searchCards([exact, wrongCardCategory, wrongItemCategory, missingItem], parseCardSearchQuery({ cc }))).toEqual([exact])
+  })
+
+  it('rtとelは各Collection内がOR、異なる項目間がANDになる', () => {
+    const element = (code: string) => ({ element_code: code, element_name: '' })
+    const commonFire = makeCard({ rarity_code: 'Common' })
+    commonFire.unit!.elements = [element('Fire')]
+    const rareWater = makeCard({ rarity_code: 'Rare', card_category_code: 'Spell', unit: null, spell: { elements: [element('Water')] } })
+    const uncommonFire = makeCard({ ...commonFire, rarity_code: 'Uncommon' })
+    const rareSuffixFire = makeCard({ ...rareWater, spell: { elements: [element('SpellFire')] } })
+
+    const criteria = parseCardSearchQuery({ rt: 'triangle,star', el: 'fire,water' })
+    expect(searchCards([commonFire, rareWater, uncommonFire, rareSuffixFire], criteria)).toEqual([commonFire, rareWater])
+  })
+
+  it('mt=FlyはLongFlyと進軍データがないカードを除外する', () => {
+    const fly = makeCard()
+    fly.unit!.move_type_code = 'Fly'
+    const longFly = makeCard()
+    longFly.unit!.move_type_code = 'LongFly'
+    const missingUnit = makeCard({ unit: null })
+    const cards = [fly, longFly, missingUnit]
+    expect(searchCards(cards, parseCardSearchQuery({ mt: 'Fly' }))).toEqual([fly])
+
+    const criteria = createSearchForm()
+    criteria.moveTypes = ['LongFly']
+    expect(searchCards(cards, criteria)).toEqual([longFly])
+  })
+
+  it('blは表示名や末尾が一致するブロックを除外する', () => {
+    const exact = makeCard({ blocks: [{ block_code: 'Deus', block_name: 'DE' }] })
+    const nameOnly = makeCard({ blocks: [{ block_code: 'Anniversary', block_name: 'Deus' }] })
+    const suffixOnly = makeCard({ blocks: [{ block_code: 'OtherDeus', block_name: '別ブロック' }] })
+    expect(searchCards([exact, nameOnly, suffixOnly], parseCardSearchQuery({ bl: 'Deus' }))).toEqual([exact])
+  })
+
+  it.each([['none', 'None'], ['ritual', 'Ritual']] as const)('lc=%sは地形分類コード%sで絞り込む', (lc, code) => {
+    const exact = makeCard({ land: { land_category_code: code, land_category_name: '地形', land_limit: 8 } })
+    const nameOnly = makeCard({ land: { ...exact.land!, land_category_code: 'Other', land_category_name: code } })
+    const cards = [exact, nameOnly, makeCard()]
+    expect(searchCards(cards, parseCardSearchQuery({ lc }))).toEqual([exact])
+    expect(searchCards(cards, parseCardSearchQuery({ lc: 'all' }))).toEqual(cards)
+  })
+
+  it.each([
+    ['eft', 'effect_type_code', 'ActionSkill'],
+    ['eac', 'effect_activation_category_code', 'Battle'],
+  ] as const)('%sは末尾だけが一致する効果と効果がないカードを除外する', (alias, field, code) => {
+    const exact = makeCard({ effects: [{ ...ordinaryEffect, [field]: code }] })
+    const suffixOnly = makeCard({ effects: [{ ...ordinaryEffect, [field]: `Other${code}` }] })
+    const noEffects = makeCard({ effects: [] })
+    expect(searchCards([exact, suffixOnly, noEffects], parseCardSearchQuery({ [alias]: code }))).toEqual([exact])
   })
 
   it('rt=club はfixtureのSuperRareカードを返す', () => {
@@ -645,14 +784,20 @@ describe('searchCards', () => {
     expect(searchCards([card], parseCardSearchQuery({ etx: 'カタカナ' }))).toEqual([])
   })
 
-  it('同一Effect Parameter内の複数Collection値はORのまま一致する', () => {
-    const source = getSourceCards().map(item => item.card)
-    const card = structuredClone(source.find(value => value.effects.length >= 2)!)
-    card.effects[0]!.effect_type_code = 'ActionSkill'
-    card.effects[1]!.effect_type_code = 'DeclareSkill'
-
-    const criteria = parseCardSearchQuery({ eft: 'ActionSkill,DeclareSkill' })
-
-    expect(searchCards([card], criteria)).toEqual([card])
+  it('eftとeacの各CollectionはORで、本文・Short UUID・コストも同一Effectで満たす', () => {
+    const effect: Card['effects'][number] = {
+      ...ordinaryEffect,
+      effect_type_code: 'DeclareSkill',
+      effect_activation_category_code: 'Field',
+      effect_activation_type_id: '019d81a0-7987-75eb-9d86-aaaaaaaaaaaa',
+      effect_text: '同一Effectの本文',
+      effect_cost_id: 'known',
+      effect_cost_text: 'コスト',
+      search_cost: { alternatives: [{ costs: [{ type: 'other', value: 'trash', quantity: 1 }] }], has_other_cost: false },
+    }
+    const matching = makeCard({ effects: [effect] })
+    const distributed = makeCard({ effects: [{ ...effect, search_cost: null }, { ...textEffect, search_cost: effect.search_cost }] })
+    const criteria = parseCardSearchQuery({ eft: 'ActionSkill,DeclareSkill', eac: 'Battle,Field', eat: 'AAAAA', etx: '同一Effectの本文', coe: 'trash:1' })
+    expect(searchCards([matching, distributed], criteria)).toEqual([matching])
   })
 })

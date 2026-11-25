@@ -5,6 +5,16 @@ import { createSearchForm } from './cardSearchFormFactory'
 
 export const createFreshSearchForm = (): SearchForm => createSearchForm()
 
+export const numericPresenceAliases = [
+  ['heroPoint', 'hem', 'he'],
+  ['initiative', 'itm', 'it'],
+  ['charge', 'chm', 'ch'],
+  ['defender', 'dem', 'de'],
+  ['additionalInitiative', 'aitm', 'ait'],
+  ['additionalCharge', 'achm', 'ach'],
+  ['additionalDefender', 'adem', 'ade'],
+] as const
+
 export const representativeCardSearchQuery: LocationQuery = {
   nm: '青い竜 🐉',
   cc: 'unit',

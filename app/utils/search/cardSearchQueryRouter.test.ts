@@ -6,6 +6,31 @@ import { createFreshSearchForm } from './cardSearchQueryTestFixtures'
 import { buildProductSearchLocation } from './productSearchLocation'
 
 describe('card search router round trip', () => {
+  it.each([
+    ['it', 'itm', 'gte:2'],
+    ['he', 'hem', 'eq:0'],
+  ] as const)('%s 単独のURLを編集し、現在のModifierに従って再生成する', async (alias, modifier, comparison) => {
+    const component = { template: '<div />' }
+    const router = createRouter({
+      history: createMemoryHistory(),
+      routes: [{ path: '/cards', component }, { path: '/cards/search', component }],
+    })
+    const name = '青い Dragon 🐉 &=,:?'
+    await router.push({ path: '/cards', query: { nm: name, [alias]: comparison } })
+    const incoming = router.currentRoute.value.query
+    expect(incoming).toEqual({ nm: name, [alias]: comparison })
+
+    await router.push({ path: '/cards/search', query: incoming })
+    const form = parseCardSearchQuery(router.currentRoute.value.query)
+    await router.push({ path: '/cards', query: buildCardSearchQuery(form) })
+    expect(router.currentRoute.value.query).toEqual({ nm: name })
+
+    const field = alias === 'it' ? 'initiative' : 'heroPoint'
+    form[field].filterType = 'include'
+    await router.push({ path: '/cards', query: buildCardSearchQuery(form) })
+    expect(router.currentRoute.value.query).toEqual({ nm: name, [modifier]: 'include', [alias]: comparison })
+  })
+
   it('preserves Unicode, spaces, emoji and reserved punctuation', async () => {
     const router = createRouter({ history: createMemoryHistory(), routes: [{ path: '/cards', component: { template: '<div />' } }] })
     const form = createFreshSearchForm(); form.name = '青い Dragon 🐉 &=,:?'

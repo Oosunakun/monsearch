@@ -1,14 +1,14 @@
 # Query Data Specification
 
-**Version:** 1.1.0
+**Version:** 1.2.0
 **Status:** Approved — Domain Semantics（下記の未決定事項・公開前提を含めて合意済み）  
 **Scope:** Repository Internal Specification
 
 ## 1. 目的と責務
 
-本書は、Query Parameterとカードデータの対応、および検索条件にカードが一致する意味を定義する。対話で確認したshared understandingを正式仕様として統合したものであり、現実装の挙動を追認する文書ではない。
+本書は、Query Parameterとカードデータの対応、および検索条件にカードが一致する意味を定義する現行の正式仕様である。検索意味論の理解に必要なParameterの短い名前（Alias）、値の解釈、比較・結合・欠損の扱いを本書に記載する。URL全体の構文、順序、重複解決、エンコードはURL形式の責務とする。
 
-URLのParameter名・構文・順序・重複解決・encodingは、採用済みの[URL Query Specification 1.1.0](query_specification.md)を正とする。本書はその未規定のデータ対応・検索意味論を補う。
+過去の判断と後続の改訂は[Decision履歴](query_data_specification_note.md)、当時の改訂候補と残った論点は[改訂候補一覧](query_data_specification_revision_candidates.md)に記録する。
 
 本書の承認は、Schema変更・migration・実装・データ整備・機能公開の完了を意味しない。具体的SQL、検索の最適化、UI設計、コストの解析方式は本書の対象外である。
 
@@ -17,12 +17,12 @@ URLのParameter名・構文・順序・重複解決・encodingは、採用済み
 | 項目 | 状態 |
 |---|---|
 | データ対応・一致条件・組合せ・NULL・数量 | 本書の規則で確定 |
-| 短縮UUIDの文字種・大小文字・所定長を必要とすること | 確定。具体的長さ、固定長か最低長かは未決定 |
-| 通常・追加イニシアチブの所持Modifier | `itm` / `aitm`、順序 `itm → it` / `aitm → ait` として確定。default `all` は省略 |
+| 短縮UUIDの形式 | ASCII 16進固定5文字。受信は大文字小文字を区別せず、canonical表記は小文字 |
+| 通常・追加イニシアチブの所持Modifier | `itm` / `aitm`、順序 `itm → it` / `aitm → ait` として確定。フォームの `all` は両Aliasを省略 |
 | コストの構造化・Schema・migration・解析・人手確認 | 別設計。必要な構造化・検証の完了までコスト検索を公開しない |
 | Schemaとmockの不整合、実装差分 | 本書への整合が必要。修正は別作業 |
 
-未決定事項を任意長UUIDの受理、推測したAlias、部分的なコスト検索などで埋めてはならない。
+未決定事項を推測したAliasや部分的なコスト検索などで埋めてはならない。
 
 ## 2. 検索対象と条件の結合
 
@@ -53,13 +53,22 @@ URLのParameter名・構文・順序・重複解決・encodingは、採用済み
 
 Tokenは任意のカードの体裁を取り得て、欠損した情報や既存の基本分類に当てはまらない用途も含む。Tokenという分類自体から能力・statの適用範囲を制限しない。通常／追加featureは共通テーブルからカード分類・アイテム分類および対応データに応じて抽出する。
 
-適用対象のカードで能力行がなければ能力なしと判定できるが、適用対象外のカードを「能力なし」の検索に含めない。数値Comparisonは対象の値がない場合に一致しない。
+通常・追加のイニシアチブ、チャージ、ディフェンダーの所持Modifier（§5.2）には、次の適用条件を用いる（承認済みのHD-01）。Tokenは `search_support.is_token` またはカード分類コード `Token`（大文字小文字を区別しない）で識別する。
+
+| カード | 適用する能力 | 「なし」に一致する欠損 |
+|---|---|---|
+| 非Tokenの `Unit` | 通常能力 | `unit`、`unit.ability`、対象値 |
+| 非Tokenの `Item` かつ `item.item_category_code === 'Equip'` | 追加能力 | `item.equip`、`item.equip.ability`、対象値 |
+| Tokenで `unit` が存在 | 通常能力 | `unit.ability`、対象値 |
+| Tokenで `item.equip` が存在 | 追加能力 | `item.equip.ability`、対象値 |
+
+非Tokenで `item` 自体が欠損してEquipと識別できない場合、追加能力の適用対象外となる。戦闘スペル・地形などの非Token、および対応する詳細がないTokenも、該当能力の適用対象外となる。適用対象外は「あり」「なし」のどちらにも一致しない。英雄点・即時召喚・所持枠には各条件の既存規則（§5.3・§6）を適用する。
 
 通常能力はユニット自身の能力、追加能力は装備品が装備先へ与える能力を指す。効果テキストによる一時的・条件付きの変更は効果検索で扱う。
 
 ## 3. ParameterとDatabaseの対応
 
-以下はデータの参照先と意味の対応表である。URLのcanonical順序はURL Query Specificationに従う。`UUID`はDatabaseの完全IDに対する短縮UUID照合（§4.2）、`code`はMapping変換後の完全一致（§4.1）を示す。
+以下はデータの参照先と意味の対応表である。`UUID`はDatabaseの完全IDに対する短縮UUID照合（§4.2）、`code`はMapping変換後の完全一致（§4.1）を示す。
 
 ### 3.1 基本・分類・文字列
 
@@ -159,18 +168,17 @@ URL値を下記のMappingで変換し、Databaseのcodeと完全一致させる�
 
 Mapping外のNatural KeyはParserで除外する。`el=fire,unknown`は`fire`のみ残し、`cc=unknown`は分類条件を除外する。Databaseに他のcodeが存在しても、Mappingを推測して自動追加しない。
 
+上表はURL値とDatabaseのcodeの対応を定義する。現行アプリのParserが受理する値は、UIが提供する選択肢（`lc=all`を含む）に基づく。Mappingに含まれる値でも、UIで提供していない値は手入力のURLで指定されても条件から除外する。たとえば、`mt=LongFly`と`rt=spade`は条件から除外され、`mt=Fly,LongFly`と`rt=triangle,spade`ではそれぞれ`Fly`と`triangle`が残る。
+
 ### 4.2 短縮UUID
 
 対象は`ct / pd / fa / ra / il / eat / re / are`。URL値を、各Parameterが対応するDatabase IDの末尾と照合する。
 
-- 有効形式には16進数字であることと、所定の文字列長を満たすことが必要。照合では大文字小文字を区別しない。
-- 所定長の具体値、固定長か最低長かは未決定。空でない任意長の16進数字列を無条件に受理しない。
-- 短縮値の生成・長さ決定・衝突チェックはParameter作成側の責務。検索側は衝突確認済みの値を受け取る前提で後方一致する。
+- 有効形式はASCII 16進固定5文字（`[0-9A-Fa-f]{5}`）。受信・照合時は大文字小文字を区別せず、canonical URLの表記は小文字とする。
+- 短縮値の生成と衝突チェックはParameter作成側の責務。検索側は衝突確認済みの値を受け取る前提で後方一致する。
 - 衝突を確認する名前空間はParameterごとであり、異なるParameter間の同一短縮値を許容する。
 - 有効形式だが対応IDがない場合は条件を保持し、その値を非ヒットとする。Collectionの他のIDは通常のORで評価する。
-- 不正形式はURL仕様の不正値処理に従う。形式の検証とDatabase IDの存在確認を混同しない。
-
-既存選択肢にある8文字を固定長として採用していない。3〜5文字等の候補を含む長さの検討は生成側の別途決定事項である。
+- 不正形式の値は検索条件から除外する。形式が有効で対応IDがない値は条件に残る。
 
 ## 5. 数値・所持・属性条件
 
@@ -194,24 +202,28 @@ initiative / charge / defender / additionalInitiative / additionalCharge /
 additionalDefender に共通する。Hero Point は同じ Modifier 語彙を使用するが、
 存在性の参照先は `is_hero` である。
 
-| 値 | 条件 |
-|---|---|
-| `include` | 対象数値が非NULL。0も含む。Comparisonがあれば追加で評価する。Comparisonなしでも条件として成立する |
-| `exclude` | 対象数値がNULLまたは値なし。Comparisonは検索評価に使用しない |
-| `all` | 値の有無で絞り込まない（default）。Comparisonがあれば評価する |
+Modifierは「すべて」「あり」「なし」の選択を表し、Comparisonは `gte:2` のような演算子と数値の組である。通常・追加の6項目と英雄点の対応Aliasは§3.2を参照する。
 
-Modifierは数値Comparisonなしでも意味を持つ。`include` と Comparison は AND で評価する。
-`exclude` と Comparison が併記されても、Comparisonは検索評価に使用しない。
-Parserは両方をSearchFormへ保持してよいが、Builderは`exclude` ModifierだけをCanonical URLへ出力する。
+| Modifier | 受信時の検索条件（通常・追加6項目） | 7項目の編集フォームからのURL生成 |
+|---|---|---|
+| `include`（あり） | §2.3の適用対象で値が存在する。0も含む。Comparisonを併記した場合はANDで評価する | Modifierと、有効なComparisonがあればComparisonを出力 |
+| `exclude`（なし） | §2.3の適用対象で値がNULLまたは欠損している。Comparisonは評価しない | Modifierのみ出力 |
+| `all`（すべて）、受信時はModifier省略も同じ | 値の有無では絞り込まず、Comparisonがあれば通常の数値比較だけを評価する | 両Aliasを省略 |
 
-Hero Pointの`exclude`は`is_hero`を参照し、Hero Point Comparisonを検索評価に使用しない。
+`include` と `exclude` はComparisonなしでも有効である。編集フォームにはModifierとComparisonを独立に復元し、Modifierを切り替えても同じフォーム内では数値と演算子を保持する。`all` と `exclude` では比較欄を隠し、`include` で表示する。たとえば `/cards?it=gte:2` は直接開くとイニシアチブ2以上を検索する。条件編集では `all` と内部の `gte:2` に復元し、そのまま再検索すれば比較を省略する。`include` を選んで再検索すれば `itm=include&it=gte:2` になる（他条件がない場合）。
+
+フォームからURLを生成するときは、分類未指定またはTokenなら通常・追加の両グループを出力できる。ユニットでは通常能力と英雄点、装備品では追加能力が出力対象となる。その他の分類では7項目を省略する。分類により省略される値は同じフォームに保持する。受信検索時に明示された通常・追加能力の `include` / `exclude` は、§2.3に従って実カードの適用対象を判定する。
+
+Hero Pointはユニットの `is_hero` を参照する。`include` は英雄属性があるユニットに一致し、Comparisonがあれば追加評価する。`exclude` は英雄属性がないユニットに一致し、Comparisonを評価しない。Comparison単独の `he` は英雄属性を条件に加えず、英雄点だけを比較する。
 
 ### 5.3 boolean属性Modifier
 
-`lvm`は`is_instant_summon`を対象とする。`lvm`単独でも条件として有効で、
+`lvm`はユニットの`is_instant_summon`を対象とする。`include`は即時召喚可、`exclude`は即時召喚不可、`all`または省略は即時召喚属性による絞り込みなしを表す。
+`lvm`単独でも条件として有効で、
 `lv` Comparisonとは独立した条件である。したがって、
 `lv=gte:3&lvm=exclude`はレベル3以上かつ即時召喚不可を意味し、
-`lvm=exclude`でもLevel Comparisonを評価する。
+`lvm=exclude`でもLevel Comparisonを評価する。フォームからの出力でも
+`lv` と `lvm` は独立し、`lv` 単独または `lvm` との併記が可能である。
 
 Hero Pointの`hem`は§5.2の存在性Modifier semanticsに従い、
 `is_hero`を参照する。`hem=exclude`ではHero Point Comparisonを検索評価に
@@ -307,7 +319,7 @@ Effect自体が存在しないカードは、コストnoneだけの指定にも�
 
 原文構造化、Schema変更、migration、解析方式、人間による確認、検証完了基準、公開制御は別設計とする。解析できた部分だけでの検索や「解析不能なら非ヒット」というfallbackを正式採用しない。未解析・未定義を「なし」と同一視しない。
 
-現Repositoryでは入力UI・URL送信・API受理がある一方、検索本体はコストを評価していない。既存URL・直接APIを含む未提供時の応答と公開制御が必要であり、条件未適用の結果を適用済みとして扱わない。具体的な制御方式は未決定である。
+未提供時は、既存URLや直接APIを含め、条件を適用していない結果を適用済みとして扱わない。未提供時の応答と公開制御の設計は本節の対象外とする。入力UI・URL送信・API受理と検索評価が分かれていた当時の課題は[改訂候補一覧](query_data_specification_revision_candidates.md#コスト検索の公開前提d52)に記録する。
 
 ## 8. 自由記述検索
 
@@ -345,8 +357,12 @@ Effect自体が存在しないカードは、コストnoneだけの指定にも�
 | 同名の別cardsレコードに必要条件が分散 | 別レコードの情報を合算しない |
 | `at=eq:0`、保存値0 / NULL | 0は一致、NULLは非ヒット |
 | `chm=include`、保存値0 | 一致 |
-| `chm=exclude&ch=gte:2` | chargeの値なしだけを評価し、Comparisonは検索評価に使用しない |
-| 適用対象カードに能力行なし、所持exclude | 一致。Comparisonには非ヒット |
+| `chm=exclude&ch=gte:2` | 適用対象のchargeの値なしだけを評価する |
+| `itm=exclude`、非TokenのUnitで `unit` が欠損 | 一致。戦闘スペル・地形は非ヒット |
+| `aitm=exclude`、非TokenのItem・Equipで `item.equip` が欠損 | 一致。`item` が欠損してEquipと識別できないItemは非ヒット |
+| `aitm=exclude`、Tokenで `item.equip` があり能力行がない | 一致。装備品詳細がないTokenは非ヒット |
+| URLで `it=gte:2` のみ指定 | 直接検索は2以上で絞り込む。無変更の編集フォームから再検索すると比較を省略し、「あり」を選ぶと `itm=include&it=gte:2` を生成する |
+| `lvm=exclude&lv=gte:2` | 即時召喚不可とレベル2以上の両方を評価 |
 | 同種枠の数量1の行が2つ、指定個数2 | 非ヒット。合算しない |
 | 枠の数量0のみ、対象枠none | 一致 |
 | `ssm=none`に`ss`も併記 | Pairを無視し、再構築でも削除 |
@@ -366,11 +382,11 @@ Effect自体が存在しないカードは、コストnoneだけの指定にも�
 
 | 対象 | 扱い |
 |---|---|
-| UUIDの所定長 | 生成側で別途決定。決定前に任意長を有効とみなさない |
-| initiative / additionalInitiative Modifier | `itm` / `aitm` と順序 `itm → it` / `aitm → ait` を正式URL仕様へ反映済み |
-| Modifier単独・exclude時Comparison | 既存Modifier語彙で正式化。`include` / `exclude` は単独成立、`exclude` はComparisonを検索評価・Canonical URL出力から除外。ParserはForm保持可 |
-| 未知UUIDを選択肢集合だけで削除するParser | 形式検証とID存在確認を分離し、D60・D63へ整合 |
-| 数値型・検索・UI | NULLと0、比較と所持の分離、単独Modifierに対応する本Featureの設計・実装対象 |
+| 短縮UUIDの形式 | ASCII 16進固定5文字、大文字小文字を区別しない受理、小文字canonicalで確定（§4.2） |
+| initiative / additionalInitiative Modifier | `itm` / `aitm` を使用し、両方を出力する場合は `itm → it` / `aitm → ait` の順 |
+| 通常・追加能力の適用と数値Modifier | §2.3・§5.2で確定。適用対象と欠損を区別し、Comparison単独URLの受信とフォームからの新規生成にそれぞれの規則を適用 |
+| 選択肢にない短縮UUID | 形式が有効なら保持し、対応IDがなければその値を非ヒットとする（§4.2） |
+| 数値型・検索・UI | NULLと0、比較と所持の分離、単独Modifierの扱いは§5を参照 |
 | affinityの分類軸 | mockとSchema CHECKの不整合を別途修正。ID検索へcategory条件を追加して解決しない |
 | コスト構造化・検証・公開 | §7.5を満たす別設計が必要 |
 | mockの0と実カード表記の差 | データ整備として確認。検索中に0をNULLへ変換しない |
@@ -380,19 +396,13 @@ Effect自体が存在しないカードは、コストnoneだけの指定にも�
 
 ## 11. Decisionと根拠
 
-| 本書の範囲 | Decision |
+| 本書の範囲 | Decision履歴で確認できる内容 |
 |---|---|
-| 責務・カード単位・基本結合 | D1〜D7、D27、D40 |
-| 数値・所持・複数行 | D8、D28、D30〜D43（数値の最終方針はD33〜D40） |
-| ID・Mapping | D14、D20、D26、D54〜D60、D62〜D63 |
-| Pair Collection | D12〜D13、D19、D30、D41〜D42、D61 |
-| コスト | D9〜D11、D16〜D18、D25、D32、訂正後D44、D46〜D53、D64 |
-| 文字列 | D15、D22〜D24（D21のNFKC一律案を置換） |
-
-- [Decision履歴](query_data_specification_note.md)：撤回・更新を含む対話記録。現在の規範は本書を参照する。
-- [コスト原文調査](query_cost_notation_research.md)：mockの305非空コスト・90種類を調査した範囲と限界。
-- [改訂候補一覧](query_data_specification_revision_candidates.md)：本書の意味を実現するための別作業。
-- [用語集](../../CONTEXT.md)：Domain用語。
-- [ADR: コスト検索の公開前提](../adr/0001-cost-search-publication-prerequisites.md)：構造化・検証を公開前提とした理由。
+| 責務・カード単位・基本結合 | [D1〜D7の当初判断](query_data_specification_note.md#合意済みdecision)。検索はカード1件単位で、異なるParameterの条件は原則AND |
+| 数値・所持・複数行 | [D8、D28、D30〜D43とHD-01の改訂経緯](query_data_specification_note.md#合意済みdecision)。HD-01の確定規則は本書§2.3・§5.2 |
+| ID・Mapping | [D14、D20、D26、D54〜D60、D62〜D63](query_data_specification_note.md#合意済みdecision)。Natural Keyの完全一致と短縮UUIDの末尾照合は本書§4 |
+| Pair Collection | [D12〜D13、D19、D30、D41〜D42、D61](query_data_specification_note.md#合意済みdecision)。数量・Modifierの確定規則は本書§6 |
+| コスト | [D9〜D11、D16〜D18、D25、D32、訂正後D44、D46〜D53、D64](query_data_specification_note.md#合意済みdecision)。公開にはコストの構造化と検証を要する（§7.5） |
+| 文字列 | [D15、D21〜D24](query_data_specification_note.md#合意済みdecision)。一律NFKC案から照合時だけの限定正規化へ変更（§8） |
 
 意味を変える変更は新たなDecisionとして記録し、本書とURL仕様の責務境界を維持する。

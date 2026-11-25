@@ -1,4 +1,4 @@
-import type { Card, Effect, FinderCards } from '~~/types/cards/finderCards'
+import type { Ability, Card, Effect, FinderCards } from '~~/types/cards/finderCards'
 import type { CardSearchResultItem } from '~~/shared/cardSearch/types'
 import expectedProjection from './projection-expected.json'
 
@@ -60,6 +60,48 @@ export const makeSearchEquipmentCard = (): Card => {
   card.unit = null
   card.item = { item_category_code: 'equip', item_category_name: '装備品', consume: null, bullet: null, equip: { attack: 0, defense: 0, ability } }
   return card
+}
+
+export const makeNumericPresenceCards = (): Card[] => {
+  const ability = (value: number | null): Ability => ({
+    initiative: value, charge: value, defender: value, ability_slots: [], affinities: [],
+  })
+  const unit = (details: Ability | null): NonNullable<Card['unit']> => ({
+    ...fixtureCard.unit!, level: 3, ability: details,
+  })
+  const equipment = (details: Ability | null): NonNullable<Card['item']> => ({
+    item_category_code: 'Equip', item_category_name: '装備品', consume: null, bullet: null,
+    equip: { attack: 0, defense: 0, ability: details },
+  })
+  const card = (id: string, category: string, overrides: Partial<Card> = {}): Card => makeCard({
+    card_id: id, card_category_code: category, unit: null, effects: [], ...overrides,
+  })
+  return [
+    card('unit-positive', 'Unit', { unit: { ...unit(ability(2)), is_hero: true, hero_point: 2, is_instant_summon: true } }),
+    card('unit-zero', 'Unit', { unit: { ...unit(ability(0)), hero_point: 0 } }),
+    card('unit-negative', 'Unit', { unit: { ...unit(ability(-1)), is_hero: true, hero_point: 0 } }),
+    card('unit-null', 'Unit', { unit: unit(ability(null)) }),
+    card('unit-no-ability', 'Unit', { unit: unit(null) }),
+    card('unit-no-detail', 'Unit'),
+    card('equip-positive', 'Item', { item: equipment(ability(2)) }),
+    card('equip-zero', 'Item', { item: equipment(ability(0)) }),
+    card('equip-negative', 'Item', { item: equipment(ability(-1)) }),
+    card('equip-null', 'Item', { item: equipment(ability(null)) }),
+    card('equip-no-ability', 'Item', { item: equipment(null) }),
+    card('equip-no-detail', 'Item', { item: { ...equipment(null), equip: null } }),
+    card('item-no-detail', 'Item'),
+    card('item-lowercase-equip', 'Item', { item: { ...equipment(null), item_category_code: 'equip' } }),
+    card('consume', 'Item', { item: { ...equipment(null), item_category_code: 'Consume', consume: {}, equip: null } }),
+    card('bullet', 'Item', { item: { ...equipment(null), item_category_code: 'Bullet', bullet: {}, equip: null } }),
+    card('spell', 'Spell'),
+    card('land', 'Land'),
+    card('ritual', 'Ritual'),
+    card('summoner', 'Summoner'),
+    card('token-unit', 'Token', { unit: unit(null) }),
+    card('token-equip', 'token', { item: equipment(null) }),
+    card('token-no-detail', 'Token'),
+    card('flagged-token-no-detail', 'Unit', { search_support: { ...fixtureCard.search_support, is_token: true } }),
+  ]
 }
 
 // 境界の素材は本番・歴史入力から選ばず、値をここで明示する。

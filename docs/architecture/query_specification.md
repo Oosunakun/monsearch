@@ -1,6 +1,6 @@
 # Query Specification
 
-**Version:** 1.1.0
+**Version:** 1.2.0
 **Status:** Approved  
 **Scope:** Repository Internal Specification
 
@@ -48,11 +48,11 @@ It does **not** specify:
 
 ### Principle 1. Canonical Representation
 
-The same search conditions shall always produce the same canonical URL Query representation.
+The same applicable form conditions shall always produce the same canonical URL Query representation.
 
 The Query Builder is responsible for generating canonical URLs.
 
-The Query Parser should accept non-canonical input whenever practical. Rebuilding the parsed result through the Query Builder shall always produce the canonical representation.
+The Query Parser should accept non-canonical input whenever practical. The Query Builder generates a canonical URL from the current form state. A URL opened for search is evaluated from the parsed input. See §2.4.1 for Comparison-only links.
 
 ---
 
@@ -95,7 +95,7 @@ The Query Parser should tolerate unknown parameters, unexpected ordering, and ot
 
 Unknown or unsupported parameters shall be ignored without affecting valid search conditions.
 
-After parsing, rebuilding through the Query Builder shall normalize the URL into its canonical representation.
+On form submission, the Query Builder applies the canonical output rules to the restored and edited form.
 
 ---
 
@@ -208,12 +208,10 @@ ssm=and
 
 Modifier parameters represent search behavior rather than search values.
 
-For numeric value-existence Modifiers, `all` is the default and is omitted. Explicit
-`include` and `exclude` values are retained. For these Modifiers, an
-`exclude` value suppresses the corresponding Comparison in the canonical
-output even if the Parser restored that Comparison into the internal Query
-Object. The Parser may restore both values; the next Builder pass performs the
-canonical normalization.
+For the seven numeric Modifiers in §2.4.1, canonical form submission emits
+`include` or `exclude` when selected. The Comparison is emitted only with
+`include` and a valid Comparison. The Parser restores valid Modifiers and
+Comparisons independently.
 
 Level is an exception: `lvm=exclude` does not suppress `lv` because Level
 Comparison and `is_instant_summon` are independent conditions.
@@ -245,21 +243,31 @@ For `initiative`, `charge`, `defender`, `additionalInitiative`,
 `additionalCharge`, `additionalDefender`, and `heroPoint`, the existing
 `all | include | exclude` Modifier vocabulary is used.
 
-| Modifier | Comparison in the Query Object | Canonical Builder output |
+| Modifier | Comparison when searching from an incoming URL | Canonical output from the edit form |
 |---|---|---|
-| `all` | Evaluate when present | Modifier omitted; Comparison retained |
-| `include` | Evaluate when present | Modifier and Comparison (if present) |
+| `all` (default when omitted) | Evaluate when present | Omit both Modifier and Comparison |
+| `include` | Evaluate when present | Modifier and Comparison (when valid) |
 | `exclude` | Do not evaluate | Modifier only |
 
 `include` without a Comparison is a complete condition. `exclude` without a
-Comparison is also a complete condition. The Parser may restore a valid
-Comparison beside `exclude`; it must not delete or null it during parsing, but
-the Builder must omit that Comparison when producing the canonical query.
+Comparison is also a complete condition. Changing the Modifier retains the
+Comparison and operator in the same form. The comparison controls appear when
+`include` is selected.
 
-For `heroPoint`, the Modifier checks `is_hero`; an `exclude` Modifier does not
-evaluate the Hero Point Comparison. `level` is not part of this rule: its
-`lvm` Modifier checks `is_instant_summon`, while `lv` remains an independent
-Comparison and is valid even with `lvm=exclude`.
+Opening `/cards?it=gte:2` directly searches for initiative of at least 2. **Edit
+conditions** opens a form with `all` selected and the Comparison retained.
+Submitting with `all` omits both aliases. Selecting `include` and submitting
+produces `/cards?itm=include&it=gte:2` when this is the only condition.
+
+For `heroPoint`, an explicit `include` or `exclude` checks the unit's
+`is_hero` attribute. A Comparison-only URL such as `he=eq:0` applies the point
+comparison without an `is_hero` restriction. The Parser restores the default
+`all` and the Comparison. See [Query Data Specification §5.2](query_data_specification.md#52-所持modifier)
+for data applicability and matching.
+
+For Level, `lvm` checks `is_instant_summon` and `lv` is an independent
+Comparison. The Builder can emit `lv` alone or with `lvm=include` or
+`lvm=exclude`.
 
 ---
 
@@ -485,6 +493,7 @@ Default Omission Rule defines the conditions under which the Query Builder shall
 - Default Filter: Omit when the filter is the default value.
 - Default Match: Omit when the logical match is the default value.
 - Incomplete Comparison: Omit when either the comparison operator or comparison value is missing.
+- Comparison requires Include: Apply the Comparison validity rules and emit only with `include`, as defined in §2.4.1.
 
 |Query Object Property|Parameter Alias|Value Format|Query Object Type|Default Omission Rule|
 |----|----|----|----|----|
@@ -499,7 +508,7 @@ Default Omission Rule defines the conditions under which the Query Builder shall
 |level.filterType|lvm|Modifier|Modifier|Default Filter|
 |level|lv|Comparison|Comparison|Incomplete Comparison|
 |heroPoint.filterType|hem|Modifier|Modifier|Default Filter|
-|heroPoint|he|Comparison|Comparison|Incomplete Comparison|
+|heroPoint|he|Comparison|Comparison|Comparison requires Include|
 |attack|at|Comparison|Comparison|Incomplete Comparison|
 |defense|df|Comparison|Comparison|Incomplete Comparison|
 |moveTypes|mt|Collection|Collection|Empty Collection|
@@ -509,11 +518,11 @@ Default Omission Rule defines the conditions under which the Query Builder shall
 |abilitySpellSlots.match|ssm|Modifier|Modifier|Default Match|
 |abilitySpellSlots|ss|Pair Collection|Pair Collection|Empty Collection|
 |initiative.filterType|itm|Modifier|Modifier|Default Filter|
-|initiative|it|Comparison|Comparison|Incomplete Comparison|
+|initiative|it|Comparison|Comparison|Comparison requires Include|
 |charge.filterType|chm|Modifier|Modifier|Default Filter|
-|charge|ch|Comparison|Comparison|Incomplete Comparison|
+|charge|ch|Comparison|Comparison|Comparison requires Include|
 |defender.filterType|dem|Modifier|Modifier|Default Filter|
-|defender|de|Comparison|Comparison|Incomplete Comparison|
+|defender|de|Comparison|Comparison|Comparison requires Include|
 |resistances|re|Collection|Collection|Empty Collection|
 |additionalAttack|aat|Comparison|Comparison|Incomplete Comparison|
 |additionalDefense|adf|Comparison|Comparison|Incomplete Comparison|
@@ -522,11 +531,11 @@ Default Omission Rule defines the conditions under which the Query Builder shall
 |additionalAbilitySpellSlots.match|assm|Modifier|Modifier|Default Match|
 |additionalAbilitySpellSlots|ass|Pair Collection|Pair Collection|Empty Collection|
 |additionalInitiative.filterType|aitm|Modifier|Modifier|Default Filter|
-|additionalInitiative|ait|Comparison|Comparison|Incomplete Comparison|
+|additionalInitiative|ait|Comparison|Comparison|Comparison requires Include|
 |additionalCharge.filterType|achm|Modifier|Modifier|Default Filter|
-|additionalCharge|ach|Comparison|Comparison|Incomplete Comparison|
+|additionalCharge|ach|Comparison|Comparison|Comparison requires Include|
 |additionalDefender.filterType|adem|Modifier|Modifier|Default Filter|
-|additionalDefender|ade|Comparison|Comparison|Incomplete Comparison|
+|additionalDefender|ade|Comparison|Comparison|Comparison requires Include|
 |additionalResistances|are|Collection|Collection|Empty Collection|
 |limit|lm|Comparison|Comparison|Incomplete Comparison|
 |landCategory|lc|Primitive|Primitive|Empty|
@@ -551,7 +560,8 @@ This section defines the canonical representation of URL Query parameters.
 
 The Query Builder is responsible for producing canonical URLs.
 
-The Query Parser should accept non-canonical input whenever practical and normalize it through the Query Builder.
+The Query Parser accepts non-canonical input whenever practical. The Builder
+applies canonical rules when a form generates a new URL.
 
 ---
 
@@ -661,7 +671,10 @@ The Query Builder shall always generate canonical URL Query parameters.
 
 The Query Parser shall accept non-canonical input whenever practical.
 
-Rebuilding a parsed Query Object through the Query Builder shall always produce the canonical representation.
+Rebuilding a parsed Query Object through the Query Builder produces the
+canonical representation of the current form. For the seven fields in §2.4.1,
+an incoming Comparison-only URL still applies the comparison on direct search.
+Rebuilding the resulting form with `all` omits it.
 
 ```
 Non-Canonical URL
@@ -806,6 +819,10 @@ Backward compatibility shall be maintained within the same Major version.
 
 Changes introduced in Minor or Revision releases shall not invalidate URLs that conform to previous Minor or Revision releases of the same Major version.
 
+Previously generated Comparison-only URLs for the seven fields in §2.4.1 remain
+valid when opened directly and retain their numeric comparison. Submitting the
+edit form generates a new URL from the current Modifier selection.
+
 Major version changes may introduce incompatible changes.
 
 ---
@@ -844,7 +861,8 @@ This section defines the responsibilities and guarantees provided by the Query B
 
 Both components shall conform to this specification.
 
-Together, they guarantee a deterministic and reversible transformation between a Query Object and URL Query parameters.
+Together, they preserve applicable conditions emitted by the Builder across a
+round trip. The Parser also accepts input beyond the Builder's canonical output.
 
 ---
 
@@ -860,10 +878,9 @@ The Query Builder shall guarantee the following.
 - Never generate duplicate parameters.
 - Never generate invalid parameter values.
 
-For numeric Modifiers, the Builder shall omit default `all`, retain explicit
-`include` / `exclude`, allow Modifier-only conditions, and omit the Comparison
-when the Modifier is `exclude`. The Parser may retain that Comparison in the
-internal Query Object so a UI can restore it; canonical rebuilding removes it.
+For the seven fields in §2.4.1, the Builder emits neither alias for `all`, emits
+`include` with a Comparison when valid, and emits only the Modifier for `exclude`.
+Level Comparison is emitted independently from its Modifier.
 
 The Query Builder shall not perform framework-specific URL encoding.
 
@@ -880,11 +897,11 @@ The Query Parser shall guarantee the following.
 - Ignore unknown parameters.
 - Ignore invalid parameter values while continuing to parse the remaining valid parameters.
 
-For numeric Modifiers, the Parser may restore a valid Comparison beside an
-`exclude` Modifier into the internal Query Object. It shall not delete or
-nullify that Comparison during parsing; the canonical Builder is responsible
-for omitting it on the next rebuild. This rule does not apply to Level,
-whose Comparison remains effective with `lvm=exclude`.
+The Parser restores a valid Comparison independently from its Modifier,
+including Comparison-only input and a Comparison beside `exclude`. A missing
+Modifier restores `all`. The Builder applies the current form selection at
+submission, and the search evaluator applies the incoming conditions on a
+direct request.
 
 The Query Parser shall never fail solely because non-canonical or unknown parameters are present.
 
@@ -892,9 +909,8 @@ The Query Parser shall never fail solely because non-canonical or unknown parame
 
 ## 7.3 Round-trip Guarantee
 
-The Query Builder and Query Parser shall preserve the logical meaning of a Query Object.
-
-The following transformation shall be reversible.
+The following transformation preserves the form conditions emitted by the
+Builder. Omitted conditions restore to their defaults on URL reload.
 
 ```text
 Query Object
@@ -912,7 +928,9 @@ Query Parser
 Query Object
 ```
 
-Likewise, rebuilding a parsed URL shall always produce the canonical representation.
+Rebuilding a parsed URL produces the canonical representation of the edit
+form. For a Comparison-only URL covered by §2.4.1, an unchanged form still
+selects `all` and therefore generates a URL without that Comparison.
 
 ```text
 Non-Canonical URL
@@ -930,7 +948,8 @@ Non-Canonical URL
  Canonical URL
 ```
 
-This guarantee ensures that different URL representations describing the same search conditions are normalized into a single canonical representation.
+Different representations of the same applicable form conditions generate the
+same canonical URL.
 
 ---
 
