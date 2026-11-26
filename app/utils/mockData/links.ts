@@ -11,7 +11,7 @@ export const mockAboutLinkItems = [
     title: 'モンコレLCG 支援プロジェクト',
     subtitle: 'クラウドファンディング',
     icon: 'mdi-hand-coin-outline',
-    href: 'https://camp-fire.jp/projects/963507/idea'
+    href: 'https://camp-fire.jp/projects/963507/view'
   },
   {
     id: '3',

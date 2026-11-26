@@ -1,8 +1,9 @@
 import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { createHash } from 'node:crypto'
 import { parseQuery } from 'vue-router'
-import { historicalSources } from '~~/tests/fixtures/cardSearch/sources'
-import { makeCard } from '~~/tests/fixtures/cardSearch/cards'
+import { historicalSources, sourcesFor } from '~~/tests/fixtures/cardSearch/sources'
+import { makeCard, makeNumericPresenceCards } from '~~/tests/fixtures/cardSearch/cards'
+import { numericPresenceAliases } from '~~/app/utils/search/cardSearchQueryTestFixtures'
 import { withoutEffectConditions } from '~~/tests/helpers/historicalCardSearchResult'
 import type { HistoricalCardSearchResultItem } from '~~/tests/helpers/historicalCardSearchResult'
 import baseline from '~~/specs/014-search-catalog-normalization/verification/baseline.json'
@@ -48,6 +49,30 @@ beforeAll(() => {
   expect(conditions.some(value => value !== '')).toBe(true)
 })
 const search = (query: string) => runCardSearch(getSourceCards(), prepareCardSearch(normalizeClientSearchQuery(parseQuery(query))))
+
+describe('019 受信したComparison単独URL', () => {
+  it.each(numericPresenceAliases)('%s はModifier省略と明示allで同じ期待IDに一致する', (_field, modifier, alias) => {
+    const sources = sourcesFor(makeNumericPresenceCards())
+    const expectedId = alias.startsWith('a') ? 'equip-positive' : 'unit-positive'
+    for (const query of [`${alias}=gte:2`, `${modifier}=all&${alias}=gte:2`]) {
+      const result = runCardSearch(sources, prepareCardSearch(normalizeClientSearchQuery(parseQuery(query))))
+      expect(result.items.map(card => card.card_id)).toEqual([expectedId])
+      expect(result.totalCount).toBe(1)
+    }
+  })
+
+  it.each([
+    ['he=eq:0', ['unit-negative', 'unit-zero']],
+    ['hem=include&he=eq:0', ['unit-negative']],
+  ] as const)('%s の英雄属性を明示Modifierだけで絞り込む', (query, expectedIds) => {
+    const result = runCardSearch(
+      sourcesFor(makeNumericPresenceCards()),
+      prepareCardSearch(normalizeClientSearchQuery(parseQuery(query))),
+    )
+    expect(result.items.map(card => card.card_id)).toEqual(expectedIds)
+    expect(result.totalCount).toBe(expectedIds.length)
+  })
+})
 
 describe('CSR runnerの独立した固定oracle', () => {
   it.each(baseline.cases)('$nameの全ページ/境界/完全DTOはFeature014固定値と一致する', example => {

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { buildCardSearchQuery } from './cardSearchQueryBuilder'
 import { parseCardSearchQuery } from './cardSearchQueryParser'
 import { createSearchForm } from './cardSearchFormFactory'
+import { numericPresenceAliases } from './cardSearchQueryTestFixtures'
 
 describe('parseCardSearchQuery', () => {
   it('kw/attは末尾値の前後trimだけを行い、照合用N₀を入力へ反映しない', () => {
@@ -37,6 +38,18 @@ describe('parseCardSearchQuery', () => {
     expect(form.initiative).toEqual({ filterType: 'exclude', operator: 'gte', value: 2 })
     expect(form.additionalInitiative.filterType).toBe('include')
     expect(buildCardSearchQuery(form)).toEqual({ itm: 'exclude', aitm: 'include' })
+  })
+
+  it.each(numericPresenceAliases)('%s のComparisonをModifierと独立して復元する', (field, modifier, alias) => {
+    for (const filterType of [undefined, 'all', 'exclude'] as const) {
+      const query = { nm: '有効', [alias]: ['gte:1', 'eq:0'], ...(filterType ? { [modifier]: ['include', filterType] } : {}) }
+      const form = parseCardSearchQuery(query)
+      expect(form[field]).toEqual({ filterType: filterType ?? 'all', operator: 'eq', value: 0 })
+      expect(form.name).toBe('有効')
+    }
+    const malformed = parseCardSearchQuery({ nm: '有効', [modifier]: ['include', 'unknown'], [alias]: ['eq:0', 'eq:invalid'] })
+    expect(malformed[field]).toEqual(createSearchForm()[field])
+    expect(malformed.name).toBe('有効')
   })
 
   it.each([
@@ -94,6 +107,16 @@ describe('parseCardSearchQuery', () => {
     expect(form.attack).toEqual({ operator: 'gte', value: null })
     expect(form.level).toEqual({ filterType: 'include', operator: 'gte', value: null })
     expect(form.abilitySpellSlots.slots).toEqual({ fire: 3, water: 2 })
+  })
+
+  it('QDSにMappingがあっても、UI未提供のNatural KeyはURL条件から除外する', () => {
+    expect(parseCardSearchQuery({ mt: 'LongFly', rt: 'spade' })).toEqual(createSearchForm())
+  })
+
+  it('未対応のNatural Keyを除外し、各Collection内と別項目の有効値を保持する', () => {
+    const form = parseCardSearchQuery({ cc: 'unknown', mt: 'Fly,LongFly', rt: 'triangle,spade', el: 'fire,unknown', nm: 'カード名' })
+    expect(form).toMatchObject({ cardCategory: '', moveTypes: ['Fly'], rarities: ['triangle'], elements: ['fire'], name: 'カード名' })
+    expect(buildCardSearchQuery(form)).toEqual({ mt: 'Fly', rt: 'triangle', el: 'fire', nm: 'カード名' })
   })
 
   it('Short UUIDはmaster dataにない有効値もcanonical化して復元する', () => {
